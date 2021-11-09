@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "D:/code/asteria/asteria",
+	"sourceRoot": "D:/code/asteria/asteria_source/asteria",
 	"sources": [
 		"stdin"
 	],

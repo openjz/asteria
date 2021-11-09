@@ -13,7 +13,8 @@
       <pubDate>Mon, 08 Nov 2021 23:51:05 +0800</pubDate>
       
       <guid>http://example.org/posts/my-first-post/</guid>
-      <description>my first post hello world!</description>
+      <description>my first post hello world!
+test github auto deploy.</description>
     </item>
     
   </channel>

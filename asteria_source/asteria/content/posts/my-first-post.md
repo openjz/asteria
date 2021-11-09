@@ -7,3 +7,5 @@ draft: false
 # my first post
 
 hello world!
+
+test github auto deploy.
