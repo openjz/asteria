@@ -8,4 +8,4 @@ draft: false
 
 hello world!
 
-test github auto deploy.
+test github auto deploy 2.
