@@ -4,18 +4,12 @@ date = 2021-11-14T10:09:46+08:00
 lastmod = 2021-11-14T10:09:46+08:00
 tags = ["css"]
 categories = ["笔记"]
-imgs = []
-cover = ""  # image show on top
-readingTime = true  # show reading time after article date
-toc = true
-comments = false
-justify = false  # text-align: justify;
-single = false  # display as a single page, hide navigation on bottom, like as about page.
-license = ""  # CC License
 draft = false
 +++
 
 # CSS入门笔记
+
+参考[MDN教程](https://developer.mozilla.org/zh-CN/docs/Learn/CSS)
 
 ## 一、导入 css
 
