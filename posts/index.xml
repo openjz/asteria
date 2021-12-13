@@ -1,22 +1,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 公子杰</title>
-    <link>http://example.org/asteria/posts/</link>
+    <link>http://xxx.shiwj.top/posts/</link>
     <description>Recent content in Posts on 公子杰</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>©2021 openjz, jiezi.</copyright>
     <lastBuildDate>Sun, 14 Nov 2021 10:09:46 +0800</lastBuildDate>
     
-        <atom:link href="http://example.org/asteria/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://xxx.shiwj.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>css入门笔记</title>
-      <link>http://example.org/asteria/posts/css-note/</link>
+      <link>http://xxx.shiwj.top/posts/css-note/</link>
       <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
       
-      <guid>http://example.org/asteria/posts/css-note/</guid>
+      <guid>http://xxx.shiwj.top/posts/css-note/</guid>
       <description>&lt;h1 id=&#34;css入门笔记&#34;&gt;CSS入门笔记&lt;/h1&gt;
+&lt;p&gt;参考&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Learn/CSS&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MDN教程&lt;/a&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;一导入-css&#34;&gt;一、导入 css&lt;/h2&gt;
 &lt;p&gt;1、导入外部样式：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;styles.css&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
@@ -459,7 +461,7 @@
   &lt;span class=&#34;k&#34;&gt;top&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;margin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;/*使用auto居中*/&lt;/span&gt;
 
-  &lt;span class=&#34;k&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
   &lt;span class=&#34;k&#34;&gt;background&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;white&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;padding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
@@ -520,6 +522,16 @@
 &lt;/li&gt;
 &lt;li&gt;一组CSS规则，会在测试通过且媒体类型正确的时候应用。&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mysql入门笔记</title>
+      <link>http://xxx.shiwj.top/posts/mysql-note/</link>
+      <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
+      
+      <guid>http://xxx.shiwj.top/posts/mysql-note/</guid>
+      <description>&lt;h1 id=&#34;mysql入门笔记&#34;&gt;mysql入门笔记&lt;/h1&gt;
 </description>
     </item>
     
