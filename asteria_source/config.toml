@@ -1,5 +1,5 @@
-baseURL = 'http://example.org/asteria'
-# baseURL = 'http://xxx.shiwj.top/'
+# baseURL = 'http://example.org/asteria'
+baseURL = 'http://xxx.shiwj.top/'
 publishDir = '../'
 theme = 'hugo-notepadium'
 
