@@ -532,6 +532,9 @@
       
       <guid>http://xxx.shiwj.top/posts/mysql-note/</guid>
       <description>&lt;h1 id=&#34;mysql入门笔记&#34;&gt;mysql入门笔记&lt;/h1&gt;
+&lt;p&gt;参考《mysql必知必会》&lt;/p&gt;
+&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
+&lt;p&gt;模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。&lt;/p&gt;
 </description>
     </item>
     
