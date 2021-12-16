@@ -533,8 +533,33 @@
       <guid>http://xxx.shiwj.top/posts/mysql-note/</guid>
       <description>&lt;h1 id=&#34;mysql入门笔记&#34;&gt;mysql入门笔记&lt;/h1&gt;
 &lt;p&gt;参考《mysql必知必会》&lt;/p&gt;
-&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
+&lt;h2 id=&#34;一基本概念&#34;&gt;一、基本概念&lt;/h2&gt;
 &lt;p&gt;模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。&lt;/p&gt;
+&lt;p&gt;主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;二mysql工具&#34;&gt;二、mysql工具&lt;/h2&gt;
+&lt;p&gt;mysql安装包中自带一个命令行工具&lt;code&gt;mysql&lt;/code&gt;，这是一个运行在命令行的mysql客户端。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令用&lt;code&gt;;&lt;/code&gt;或&lt;code&gt;\g&lt;/code&gt;结束，&lt;code&gt;\G&lt;/code&gt;可以使横向表格纵向输出&lt;/li&gt;
+&lt;li&gt;输入&lt;code&gt;help&lt;/code&gt;或&lt;code&gt;\h&lt;/code&gt;查看帮助&lt;/li&gt;
+&lt;li&gt;输入quit或exit退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mysql默认端口是3306&lt;/p&gt;
+&lt;h2 id=&#34;三使用mysql&#34;&gt;三、使用mysql&lt;/h2&gt;
+&lt;p&gt;一些关于数据库和表的命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看所有数据库：&lt;code&gt;show databases;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选择数据库：&lt;code&gt;use xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看所有表：&lt;code&gt;show tables;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看服务器状态：&lt;code&gt;show status;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看权限：&lt;code&gt;show grants;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看数据库和表的创建语句：&lt;code&gt;show create database/table xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看服务器错误和告警：&lt;code&gt;show errors/warnings;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;help show&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

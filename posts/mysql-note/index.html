@@ -7,8 +7,33 @@
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">mysql入门笔记</h1><p class="article date">Sunday, 2021-11-14</p></section><article class="article markdown-body"><h1 id="mysql入门笔记">mysql入门笔记</h1>
 <p>参考《mysql必知必会》</p>
-<h2 id="基本概念">基本概念</h2>
+<h2 id="一基本概念">一、基本概念</h2>
 <p>模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。</p>
+<p>主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。</p>
+<blockquote>
+<p>主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上</p>
+</blockquote>
+<h2 id="二mysql工具">二、mysql工具</h2>
+<p>mysql安装包中自带一个命令行工具<code>mysql</code>，这是一个运行在命令行的mysql客户端。</p>
+<ul>
+<li>命令用<code>;</code>或<code>\g</code>结束，<code>\G</code>可以使横向表格纵向输出</li>
+<li>输入<code>help</code>或<code>\h</code>查看帮助</li>
+<li>输入quit或exit退出</li>
+</ul>
+<p>mysql默认端口是3306</p>
+<h2 id="三使用mysql">三、使用mysql</h2>
+<p>一些关于数据库和表的命令：</p>
+<ul>
+<li>查看所有数据库：<code>show databases;</code></li>
+<li>选择数据库：<code>use xxx;</code></li>
+<li>查看所有表：<code>show tables;</code></li>
+<li>查看表的列：<code>show columns from xxx;</code></li>
+<li>查看服务器状态：<code>show status;</code></li>
+<li>查看权限：<code>show grants;</code></li>
+<li>查看数据库和表的创建语句：<code>show create database/table xxx;</code></li>
+<li>查看服务器错误和告警：<code>show errors/warnings;</code></li>
+<li><code>help show</code></li>
+</ul>
 </article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/css-note/"><span class="iconfont icon-article"></span>css入门笔记</a></p></section></div></section><section id="footer"><div class="footer-wrap">
