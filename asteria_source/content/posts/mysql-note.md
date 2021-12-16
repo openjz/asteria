@@ -33,12 +33,13 @@ mysql默认端口是3306
 
 一些关于数据库和表的命令：
 
-- 查看所有数据库：`show databases;`
 - 选择数据库：`use xxx;`
-- 查看所有表：`show tables;`
-- 查看表的列：`show columns from xxx;`
-- 查看服务器状态：`show status;`
-- 查看权限：`show grants;`
-- 查看数据库和表的创建语句：`show create database/table xxx;`
-- 查看服务器错误和告警：`show errors/warnings;`
-- `help show`
+- 查看（`show`）
+    - 所有数据库：`show databases;`
+    - 所有表：`show tables;`
+    - 表的列：`show columns from xxx;`
+    - 服务器状态：`show status;`
+    - 权限：`show grants;`
+    - 数据库和表的创建语句：`show create database/table xxx;`
+    - 服务器错误和告警：`show errors/warnings;`
+    - `help show`

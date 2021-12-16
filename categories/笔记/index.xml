@@ -550,15 +550,19 @@
 &lt;h2 id=&#34;三使用mysql&#34;&gt;三、使用mysql&lt;/h2&gt;
 &lt;p&gt;一些关于数据库和表的命令：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;查看所有数据库：&lt;code&gt;show databases;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;选择数据库：&lt;code&gt;use xxx;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看所有表：&lt;code&gt;show tables;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看服务器状态：&lt;code&gt;show status;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看权限：&lt;code&gt;show grants;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看数据库和表的创建语句：&lt;code&gt;show create database/table xxx;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看服务器错误和告警：&lt;code&gt;show errors/warnings;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看（&lt;code&gt;show&lt;/code&gt;）
+&lt;ul&gt;
+&lt;li&gt;所有数据库：&lt;code&gt;show databases;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;所有表：&lt;code&gt;show tables;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;服务器状态：&lt;code&gt;show status;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;权限：&lt;code&gt;show grants;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库和表的创建语句：&lt;code&gt;show create database/table xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;服务器错误和告警：&lt;code&gt;show errors/warnings;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;help show&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
