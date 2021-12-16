@@ -38,6 +38,7 @@ mysql默认端口是3306
     - 所有数据库：`show databases;`
     - 所有表：`show tables;`
     - 表的列：`show columns from xxx;`
+        - 和`desc xxx;`作用相同
     - 服务器状态：`show status;`
     - 权限：`show grants;`
     - 数据库和表的创建语句：`show create database/table xxx;`

@@ -555,7 +555,11 @@
 &lt;ul&gt;
 &lt;li&gt;所有数据库：&lt;code&gt;show databases;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;所有表：&lt;code&gt;show tables;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;和&lt;code&gt;desc xxx;&lt;/code&gt;作用相同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;服务器状态：&lt;code&gt;show status;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;权限：&lt;code&gt;show grants;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;数据库和表的创建语句：&lt;code&gt;show create database/table xxx;&lt;/code&gt;&lt;/li&gt;
