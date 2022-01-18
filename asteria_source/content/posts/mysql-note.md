@@ -47,7 +47,7 @@ mysql默认端口是3306
     - 服务器错误和告警：`show errors/warnings;`
     - `help show`
 
-## 检索（select）
+## 四、检索（select）
 
 ### 简单select
 
@@ -69,9 +69,10 @@ select table_hello.field1 from table_hello;
 select distinct field from table_hello;
 select distinct field1,field2 from table_hello;
 ```
+功能：
 
 - 只检索单个字段时，列出字段所有可能的取值
-- 检索多个字段时，两个字段取值的笛卡尔积
+- 检索多个字段时，列出两个字段取值的笛卡尔积
 
 ### limit
 
@@ -99,6 +100,7 @@ select field1 from table_hello order by field1,field2;
 
 - `limit`要放在`order by`后面（先排序、再选行）
 - 按多个列排序时，先按前面的列排，值相同时，再按后面的列排
+- 同时使用`order by`和`limit`时，`order by`在前，`limit`在后
 
 排序方向（升序/降序）
 
@@ -110,3 +112,50 @@ select field1 from table_hello order by field1,field2;
 ```sql
 select field1 from table_hello order by field1 desc,field2;
 ```
+
+## 五、过滤条件（where）
+
+操作符：
+
+- `=`、`!=`(也可以用`<>`表示不等于)
+- <、<=、>、>=
+- between，检索字段值位于一个范围内的数据
+- is null，检查字段值为null的数据
+- and、or，and优先级高于or，可以用括号调整优先级
+- in，后面跟着一个值列表，例如(1,3,5)
+- not，对后面的所有条件取反
+- like，利用通配符匹配
+- regexp，利用正则表达式，匹配
+
+between例子：
+
+```sql
+-- 查找值为2~4的数据
+select * from table_video where maudit_status between 2 and 4;
+-- 或
+select * from table_video where maudit_time between "2022-01-02 00:00:00" and "2022-01-03 00:00:00";
+```
+
+not例子：
+
+```sql
+select * from table_video where maudit_status not in (2,3);
+-- 或
+select * from table_video where maudit_time between "2022-01-02 00:00:00" and "2022-01-03 00:00:00";
+```
+
+### 通配符
+
+通过`like`关键字使用通配符匹配
+
+`%`，匹配任意字符出现任意次数（包括0次）
+
+`_`，下划线，匹配一个任意字符（出现一次，不多不少）
+
+### 正则表达式
+
+mysql仅支持正则表达式的一个很小的子集
+
+正则表达式是本身是字符串，因此使用转义字符时要先转义一次`\`，所以最终使用转义字符的时候，总是要写`\\`
+
+mysql使用`[[:<:]]`和``[[:>:]]``匹配单词的开头和结尾，类似`\b`
