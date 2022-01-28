@@ -638,6 +638,38 @@
 &lt;p&gt;mysql仅支持正则表达式的一个很小的子集&lt;/p&gt;
 &lt;p&gt;正则表达式是本身是字符串，因此使用转义字符时要先转义一次&lt;code&gt;\&lt;/code&gt;，所以最终使用转义字符的时候，总是要写&lt;code&gt;\\&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;mysql使用&lt;code&gt;[[:&amp;lt;:]]&lt;/code&gt;和&lt;code&gt;[[:&amp;gt;:]]&lt;/code&gt;匹配单词的开头和结尾，类似&lt;code&gt;\b&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;六计算字段字段计算&#34;&gt;六、计算字段（字段计算）&lt;/h2&gt;
+&lt;p&gt;计算字段在select语句中创建（计算字段是指经过计算后得到的临时字段）&lt;/p&gt;
+&lt;h3 id=&#34;1-拼接字段-concat&#34;&gt;1. 拼接字段 concat()&lt;/h3&gt;
+&lt;p&gt;很多dbms使用+或||拼接字段，mysql必须使用concat()函数&lt;/p&gt;
+&lt;p&gt;例如，&lt;code&gt;select concat(name, &#39;(&#39;, status, &#39;)&#39;) from table_user order by name limit 3;&lt;/code&gt; 将字段name和status拼接成name(status)的形式，会产生以下输出：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;+--------------------------------+
+| concat(name, &#39;(&#39;, status, &#39;)&#39;) |
++--------------------------------+
+| 000007e(2)    |
+| 00000b0(4)    |
+| 0000253(2)    |
++--------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以使用&lt;code&gt;ltrim()&lt;/code&gt;、&lt;code&gt;rtrim()&lt;/code&gt;、&lt;code&gt;trim()&lt;/code&gt;删除数据左侧、右侧和两侧的空白符&lt;/p&gt;
+&lt;p&gt;可以使用&lt;code&gt;as&lt;/code&gt;关键字为新字段赋予&lt;strong&gt;别名&lt;/strong&gt;，例如&lt;code&gt;select concat(name, &#39;(&#39;, status, &#39;)&#39;) as new_name ...&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-算术计算&#34;&gt;2. 算术计算&lt;/h3&gt;
+&lt;p&gt;包括加减乘除和圆括号&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;select field1*field2 as new_name from ...&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;七数据处理&#34;&gt;七、数据处理&lt;/h2&gt;
+&lt;p&gt;使用函数进行数据处理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文本处理函数：
+&lt;ul&gt;
+&lt;li&gt;去除空白符：trim、ltrim、rtrim&lt;/li&gt;
+&lt;li&gt;大小写转换：upper、lower&lt;/li&gt;
+&lt;li&gt;字符串长度：length&lt;/li&gt;
+&lt;li&gt;定位子串位置：locate&lt;/li&gt;
+&lt;li&gt;查找子串：substring&lt;/li&gt;
+&lt;li&gt;从左边或右边起获取子字符串：left、right&lt;/li&gt;
+&lt;li&gt;获取字符串的发音：soundex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
