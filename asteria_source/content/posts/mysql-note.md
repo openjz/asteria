@@ -182,7 +182,7 @@ mysql使用`[[:<:]]`和``[[:>:]]``匹配单词的开头和结尾，类似`\b`
 
 可以使用`ltrim()`、`rtrim()`、`trim()`删除数据左侧、右侧和两侧的空白符
 
-可以使用`as`关键字为新字段赋予**别名**，例如`select concat(name, '(', status, ')') as new_name ...`
+**可以使用`as`关键字为新字段赋予别名**，例如`select concat(name, '(', status, ')') as new_name ...`
 
 ### 2. 算术计算
 
@@ -198,10 +198,23 @@ mysql使用`[[:<:]]`和``[[:>:]]``匹配单词的开头和结尾，类似`\b`
     - 去除空白符：trim、ltrim、rtrim
     - 大小写转换：upper、lower
     - 字符串长度：length
-    - 定位子串位置：locate
+    - 定位子串起始下标：locate
     - 查找子串：substring
     - 从左边或右边起获取子字符串：left、right
     - 获取字符串的发音：soundex
+- 日期和时间处理函数：
+    - 时间和日期计算（加减天数，或加减时分秒）：
+        - adddate, date_add, subdate, date_sub
+        - addtime, subtime
+        - datediff
+    - 格式化：date_format(date,format)，参数date是合法的日期时间，format是日期/时间的输出格式, 例如：
+        ```sql
+        mysql> SELECT DATE_FORMAT('1997-10-04 22:23:00', '%H %k %I %r %T %S %w');
+        '22 22 10 10:23:00 PM 22:23:00 00 6'
+        ```
+    - 获得当前日期/时间：now, curdate, curtime
+    - 返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year 
+
 
 
 

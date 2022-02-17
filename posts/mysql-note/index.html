@@ -125,7 +125,7 @@
 | 0000253(2)    |
 +--------------------------------+
 </code></pre><p>可以使用<code>ltrim()</code>、<code>rtrim()</code>、<code>trim()</code>删除数据左侧、右侧和两侧的空白符</p>
-<p>可以使用<code>as</code>关键字为新字段赋予<strong>别名</strong>，例如<code>select concat(name, '(', status, ')') as new_name ...</code></p>
+<p><strong>可以使用<code>as</code>关键字为新字段赋予别名</strong>，例如<code>select concat(name, '(', status, ')') as new_name ...</code></p>
 <h3 id="2-算术计算">2. 算术计算</h3>
 <p>包括加减乘除和圆括号</p>
 <p><code>select field1*field2 as new_name from ...</code></p>
@@ -137,10 +137,27 @@
 <li>去除空白符：trim、ltrim、rtrim</li>
 <li>大小写转换：upper、lower</li>
 <li>字符串长度：length</li>
-<li>定位子串位置：locate</li>
+<li>定位子串起始下标：locate</li>
 <li>查找子串：substring</li>
 <li>从左边或右边起获取子字符串：left、right</li>
 <li>获取字符串的发音：soundex</li>
+</ul>
+</li>
+<li>日期和时间处理函数：
+<ul>
+<li>时间和日期计算（加减天数，或加减时分秒）：
+<ul>
+<li>adddate, date_add, subdate, date_sub</li>
+<li>addtime, subtime</li>
+<li>datediff</li>
+</ul>
+</li>
+<li>格式化：date_format(date,format)，参数date是合法的日期时间，format是日期/时间的输出格式, 例如：
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="s1">&#39;1997-10-04 22:23:00&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%H %k %I %r %T %S %w&#39;</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="s1">&#39;22 22 10 10:23:00 PM 22:23:00 00 6&#39;</span><span class="w">
+</span></code></pre></div></li>
+<li>获得当前日期/时间：now, curdate, curtime</li>
+<li>返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year</li>
 </ul>
 </li>
 </ul>
