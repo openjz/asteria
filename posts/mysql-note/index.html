@@ -112,7 +112,7 @@
 <p>mysql仅支持正则表达式的一个很小的子集</p>
 <p>正则表达式是本身是字符串，因此使用转义字符时要先转义一次<code>\</code>，所以最终使用转义字符的时候，总是要写<code>\\</code></p>
 <p>mysql使用<code>[[:&lt;:]]</code>和<code>[[:&gt;:]]</code>匹配单词的开头和结尾，类似<code>\b</code></p>
-<h2 id="六计算字段字段计算">六、计算字段（字段计算）</h2>
+<h2 id="六计算字段临时生成的字段">六、计算字段（临时生成的字段）</h2>
 <p>计算字段在select语句中创建（计算字段是指经过计算后得到的临时字段）</p>
 <h3 id="1-拼接字段-concat">1. 拼接字段 concat()</h3>
 <p>很多dbms使用+或||拼接字段，mysql必须使用concat()函数</p>
@@ -158,6 +158,13 @@
 </span></code></pre></div></li>
 <li>获得当前日期/时间：now, curdate, curtime</li>
 <li>返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year</li>
+</ul>
+</li>
+<li>数值处理
+<ul>
+<li>cos, sin, tan, pi</li>
+<li>abs, exp, sqrt,</li>
+<li>mod, rand</li>
 </ul>
 </li>
 </ul>

@@ -160,7 +160,7 @@ mysql仅支持正则表达式的一个很小的子集
 
 mysql使用`[[:<:]]`和``[[:>:]]``匹配单词的开头和结尾，类似`\b`
 
-## 六、计算字段（字段计算）
+## 六、计算字段（临时生成的字段）
 
 计算字段在select语句中创建（计算字段是指经过计算后得到的临时字段）
 
@@ -213,7 +213,11 @@ mysql使用`[[:<:]]`和``[[:>:]]``匹配单词的开头和结尾，类似`\b`
         '22 22 10 10:23:00 PM 22:23:00 00 6'
         ```
     - 获得当前日期/时间：now, curdate, curtime
-    - 返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year 
+    - 返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year
+- 数值处理
+    - cos, sin, tan, pi
+    - abs, exp, sqrt,
+    - mod, rand
 
 
 

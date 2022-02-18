@@ -638,7 +638,7 @@
 &lt;p&gt;mysql仅支持正则表达式的一个很小的子集&lt;/p&gt;
 &lt;p&gt;正则表达式是本身是字符串，因此使用转义字符时要先转义一次&lt;code&gt;\&lt;/code&gt;，所以最终使用转义字符的时候，总是要写&lt;code&gt;\\&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;mysql使用&lt;code&gt;[[:&amp;lt;:]]&lt;/code&gt;和&lt;code&gt;[[:&amp;gt;:]]&lt;/code&gt;匹配单词的开头和结尾，类似&lt;code&gt;\b&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;六计算字段字段计算&#34;&gt;六、计算字段（字段计算）&lt;/h2&gt;
+&lt;h2 id=&#34;六计算字段临时生成的字段&#34;&gt;六、计算字段（临时生成的字段）&lt;/h2&gt;
 &lt;p&gt;计算字段在select语句中创建（计算字段是指经过计算后得到的临时字段）&lt;/p&gt;
 &lt;h3 id=&#34;1-拼接字段-concat&#34;&gt;1. 拼接字段 concat()&lt;/h3&gt;
 &lt;p&gt;很多dbms使用+或||拼接字段，mysql必须使用concat()函数&lt;/p&gt;
@@ -684,6 +684,13 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;获得当前日期/时间：now, curdate, curtime&lt;/li&gt;
 &lt;li&gt;返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;数值处理
+&lt;ul&gt;
+&lt;li&gt;cos, sin, tan, pi&lt;/li&gt;
+&lt;li&gt;abs, exp, sqrt,&lt;/li&gt;
+&lt;li&gt;mod, rand&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
