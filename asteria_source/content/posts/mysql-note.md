@@ -1,7 +1,7 @@
 +++
 title = "mysql入门笔记"
-date = 2021-11-14T10:09:46+08:00
-lastmod = 2021-11-14T10:09:46+08:00
+date = 2021-12-10T10:09:46+08:00
+lastmod = 2022-03-07T10:09:46+08:00
 tags = ["mysql"]
 categories = ["笔记"]
 draft = false
@@ -218,6 +218,81 @@ mysql使用`[[:<:]]`和``[[:>:]]``匹配单词的开头和结尾，类似`\b`
     - cos, sin, tan, pi
     - abs, exp, sqrt,
     - mod, rand
+
+## 八、汇总数据（数据聚合，aggregate）
+
+上面的介绍的数据处理函数是对单条数据的处理。数据聚合是要对表中多条数据进行汇总，比如计算行数，求均值等。
+
+聚集函数运行在整个表上，返回单个值，常用聚集函数有：
+
+- avg: 计算均值。`select avg(price) as avg_price where id=1003`
+- count: 计数。`count(*)`计算行数，无论行中是否有null值。`count(column)`对特定列有值的行计数，略过null值。
+- max、min: 返回指定列中的最大值和最小值 
+- sum: 返回指定列的和。也可以对计算字段求和，例如`select sum(price*quantity) as total_price`
+
+**字段前面可以带参数**，`select avg(PARAM field) as tmp`，参数要放在PARAM的位置，默认参数是`all`，另外一种参数是`distinct`，它们的区别是，`all`对全部行进行聚集，`distinct`对该列的每个取值只统计一次。
+
+可以在单条语句中执行多个聚集计算，`select avg(f1) as tmp1, min(f2) as tmp2...`
+
+### 1.对数据分组（group by）
+
+假设有表staff
+
+```text
+id  name    dept    salary  edlevel hiredate
+1   张三     rd      2000    3       2009-10-11
+2   李四     rd      2500    3       2009-10-01
+3   王五     qa      2600    5       2010-10-02
+4   王六     qa      2300    4       2010-10-03
+5   马七     qa      2100    4       2010-10-06
+6   赵八     pm      3000    5       2010-10-05
+7   钱九     pm      3100    7       2010-10-07
+8   孙十     pm      3500    7       2010-10-06
+```
+
+执行以下sql
+
+```sql
+SELECT dept, edlevel, MAX( salary ) AS maxsal
+FROM staff
+WHERE hiredate > '2010-01-01'
+GROUP BY dept, edlevel
+ORDER BY dept, edlevel;
+```
+
+结果
+
+```
+dept edlevel maxsal
+qa 4 2300
+qa 5 2600
+pm 5 3000
+pm 7 3500
+```
+
+`group by`用于对数据进行分组，规则如下：
+
+- `group by`必须位于`where`和`order by`之间
+- `group by`后面可以跟多个列或表达式（但不能是聚集函数），结果按笛卡尔积展示
+- `group by`后面跟的每个列必须都写到`select`后面
+- 如果`select`语句中同时有字段和聚集函数，则sql中必须使用`group by`
+
+### 2.过滤分组（having）
+
+having类似where，where对行进行过滤，having对分组进行过滤，例如：
+
+```sql
+select cust_id, count(*) as orders
+from products
+group by cust_id
+having count(*) >= 2;
+```
+
+## 九、select子句顺序
+
+select - from - where - group by - having - order by - limit
+
+
 
 
 

@@ -5,10 +5,250 @@
     <description>Recent content in Posts on 公子杰</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>©2021 openjz, jiezi.</copyright>
-    <lastBuildDate>Sun, 14 Nov 2021 10:09:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Mar 2022 11:30:00 +0800</lastBuildDate>
     
         <atom:link href="http://xxx.shiwj.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>冷热和出汗是怎么回事</title>
+      <link>http://xxx.shiwj.top/posts/cold_heat_sweat/</link>
+      <pubDate>Wed, 02 Mar 2022 11:30:00 +0800</pubDate>
+      
+      <guid>http://xxx.shiwj.top/posts/cold_heat_sweat/</guid>
+      <description>&lt;h1 id=&#34;冷热和出汗是怎么回事&#34;&gt;冷热和出汗是怎么回事&lt;/h1&gt;
+&lt;p&gt;本文参考各种网络内容&lt;/p&gt;
+&lt;h2 id=&#34;人是如何感觉到冷热的&#34;&gt;人是如何感觉到冷热的&lt;/h2&gt;
+&lt;p&gt;人体有两个温度，核心温度和体表温度。核心温度是指人体内的温度，作为恒温动物，人体的核心温度是相对恒定的，一般在37度左右。体表温度是指人体表面的温度，也是人体感知到的温度。人体皮肤神经纤维中，有许多外周温度感受器，分为冷觉感受器和热觉感受器。一般来说，体表温度在30-35摄氏度时，人体不会有冷热的感觉，当体表温度低于30摄氏度时（此时外界温度可能在20摄氏度以下），会产生冷觉，当体表温度高于35摄氏度时，会产生热觉。&lt;/p&gt;
+&lt;p&gt;还有另外一种说法，人感觉到的不是温度，而是温度变化。但是这个说法禁不起推敲，假如一个人连续一个月都位于三十七八摄氏度的环境中，那么这个人一定是一直感觉到热的，难道他的体表温度连续一个月都在增加吗？所以这种说法是有问题的。&lt;/p&gt;
+&lt;h2 id=&#34;出汗是怎么回事&#34;&gt;出汗是怎么回事&lt;/h2&gt;
+&lt;p&gt;出汗是人体的一种散热手段。&lt;/p&gt;
+&lt;p&gt;医学上有一个“体温调定点”理论，这个理论认为，人体下丘脑的体温调节中枢有一个体温调定点，当核心温度小于体温调定点时，人体会发热，反之人体会散热。&lt;/p&gt;
+&lt;h2 id=&#34;为什么发烧的时候会感觉到冷&#34;&gt;为什么发烧的时候会感觉到冷&lt;/h2&gt;
+&lt;p&gt;有两种说法，一种说法认为发烧的时候人体为了提高核心温度，会收缩皮肤表层血管，导致体表温度降低，所以人体会感觉到冷。另外一种说法是，人体为了提高核心温度，会调高体温调定点，这时大脑就会让人感觉到冷。（所以到底那种说法是正确的？）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mysql入门笔记</title>
+      <link>http://xxx.shiwj.top/posts/mysql-note/</link>
+      <pubDate>Fri, 10 Dec 2021 10:09:46 +0800</pubDate>
+      
+      <guid>http://xxx.shiwj.top/posts/mysql-note/</guid>
+      <description>&lt;h1 id=&#34;mysql入门笔记&#34;&gt;mysql入门笔记&lt;/h1&gt;
+&lt;p&gt;参考《mysql必知必会》&lt;/p&gt;
+&lt;h2 id=&#34;一基本概念&#34;&gt;一、基本概念&lt;/h2&gt;
+&lt;p&gt;模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。&lt;/p&gt;
+&lt;p&gt;主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;子句（clause）：SQL由子句构成，例如&lt;code&gt;from&lt;/code&gt;、&lt;code&gt;order by&lt;/code&gt;等。&lt;/p&gt;
+&lt;h2 id=&#34;二mysql工具&#34;&gt;二、mysql工具&lt;/h2&gt;
+&lt;p&gt;mysql安装包中自带一个命令行工具&lt;code&gt;mysql&lt;/code&gt;，这是一个运行在命令行的mysql客户端。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令用&lt;code&gt;;&lt;/code&gt;或&lt;code&gt;\g&lt;/code&gt;结束，&lt;code&gt;\G&lt;/code&gt;可以使横向表格纵向输出&lt;/li&gt;
+&lt;li&gt;输入&lt;code&gt;help&lt;/code&gt;或&lt;code&gt;\h&lt;/code&gt;查看帮助&lt;/li&gt;
+&lt;li&gt;输入quit或exit退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mysql默认端口是3306&lt;/p&gt;
+&lt;h2 id=&#34;三使用mysql&#34;&gt;三、使用mysql&lt;/h2&gt;
+&lt;p&gt;一些关于数据库和表的命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择数据库：&lt;code&gt;use xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看（&lt;code&gt;show&lt;/code&gt;）
+&lt;ul&gt;
+&lt;li&gt;所有数据库：&lt;code&gt;show databases;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;所有表：&lt;code&gt;show tables;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;和&lt;code&gt;desc xxx;&lt;/code&gt;作用相同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;服务器状态：&lt;code&gt;show status;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;权限：&lt;code&gt;show grants;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数据库和表的创建语句：&lt;code&gt;show create database/table xxx;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;服务器错误和告警：&lt;code&gt;show errors/warnings;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;help show&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;四检索select&#34;&gt;四、检索（select）&lt;/h2&gt;
+&lt;h3 id=&#34;简单select&#34;&gt;简单select&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;字段前面可以加上表名，例如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;distinct&#34;&gt;distinct&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;distinct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;distinct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只检索单个字段时，列出字段所有可能的取值&lt;/li&gt;
+&lt;li&gt;检索多个字段时，列出两个字段取值的笛卡尔积&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;limit&#34;&gt;limit&lt;/h3&gt;
+&lt;p&gt;返回前n行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;返回m行，从第n行开始（行号从0开始）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 或
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;排序order-by子句&#34;&gt;排序（order by子句）&lt;/h3&gt;
+&lt;p&gt;按单个列或多个列排序&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;limit&lt;/code&gt;要放在&lt;code&gt;order by&lt;/code&gt;后面（先排序、再选行）&lt;/li&gt;
+&lt;li&gt;按多个列排序时，先按前面的列排，值相同时，再按后面的列排&lt;/li&gt;
+&lt;li&gt;同时使用&lt;code&gt;order by&lt;/code&gt;和&lt;code&gt;limit&lt;/code&gt;时，&lt;code&gt;order by&lt;/code&gt;在前，&lt;code&gt;limit&lt;/code&gt;在后&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;排序方向（升序/降序）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;升序（&lt;code&gt;asc&lt;/code&gt;）：默认是升序&lt;/li&gt;
+&lt;li&gt;降序（&lt;code&gt;desc&lt;/code&gt;）：&lt;code&gt;order by field2 desc&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;desc&lt;/code&gt;只对一个列有效，对多个列排序时，必须在想降序排的列后面都加上&lt;code&gt;desc&lt;/code&gt;，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;desc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;五过滤条件where&#34;&gt;五、过滤条件（where）&lt;/h2&gt;
+&lt;p&gt;操作符：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;=&lt;/code&gt;、&lt;code&gt;!=&lt;/code&gt;(也可以用&lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;表示不等于)&lt;/li&gt;
+&lt;li&gt;&amp;lt;、&amp;lt;=、&amp;gt;、&amp;gt;=&lt;/li&gt;
+&lt;li&gt;between，检索字段值位于一个范围内的数据&lt;/li&gt;
+&lt;li&gt;is null，检查字段值为null的数据&lt;/li&gt;
+&lt;li&gt;and、or，and优先级高于or，可以用括号调整优先级&lt;/li&gt;
+&lt;li&gt;in，后面跟着一个值列表，例如(1,3,5)&lt;/li&gt;
+&lt;li&gt;not，对后面的所有条件取反&lt;/li&gt;
+&lt;li&gt;like，利用通配符匹配&lt;/li&gt;
+&lt;li&gt;regexp，利用正则表达式，匹配&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;between例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- 查找值为2~4的数据
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_status&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;between&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 或
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_time&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;between&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-02 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-03 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;not例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_status&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 或
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_time&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;between&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-02 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-03 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;通配符&#34;&gt;通配符&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;like&lt;/code&gt;关键字使用通配符匹配&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;%&lt;/code&gt;，匹配任意字符出现任意次数（包括0次）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;_&lt;/code&gt;，下划线，匹配一个任意字符（出现一次，不多不少）&lt;/p&gt;
+&lt;h3 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h3&gt;
+&lt;p&gt;mysql仅支持正则表达式的一个很小的子集&lt;/p&gt;
+&lt;p&gt;正则表达式是本身是字符串，因此使用转义字符时要先转义一次&lt;code&gt;\&lt;/code&gt;，所以最终使用转义字符的时候，总是要写&lt;code&gt;\\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;mysql使用&lt;code&gt;[[:&amp;lt;:]]&lt;/code&gt;和&lt;code&gt;[[:&amp;gt;:]]&lt;/code&gt;匹配单词的开头和结尾，类似&lt;code&gt;\b&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;六计算字段临时生成的字段&#34;&gt;六、计算字段（临时生成的字段）&lt;/h2&gt;
+&lt;p&gt;计算字段在select语句中创建（计算字段是指经过计算后得到的临时字段）&lt;/p&gt;
+&lt;h3 id=&#34;1-拼接字段-concat&#34;&gt;1. 拼接字段 concat()&lt;/h3&gt;
+&lt;p&gt;很多dbms使用+或||拼接字段，mysql必须使用concat()函数&lt;/p&gt;
+&lt;p&gt;例如，&lt;code&gt;select concat(name, &#39;(&#39;, status, &#39;)&#39;) from table_user order by name limit 3;&lt;/code&gt; 将字段name和status拼接成name(status)的形式，会产生以下输出：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;+--------------------------------+
+| concat(name, &#39;(&#39;, status, &#39;)&#39;) |
++--------------------------------+
+| 000007e(2)    |
+| 00000b0(4)    |
+| 0000253(2)    |
++--------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以使用&lt;code&gt;ltrim()&lt;/code&gt;、&lt;code&gt;rtrim()&lt;/code&gt;、&lt;code&gt;trim()&lt;/code&gt;删除数据左侧、右侧和两侧的空白符&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可以使用&lt;code&gt;as&lt;/code&gt;关键字为新字段赋予别名&lt;/strong&gt;，例如&lt;code&gt;select concat(name, &#39;(&#39;, status, &#39;)&#39;) as new_name ...&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-算术计算&#34;&gt;2. 算术计算&lt;/h3&gt;
+&lt;p&gt;包括加减乘除和圆括号&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;select field1*field2 as new_name from ...&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;七数据处理&#34;&gt;七、数据处理&lt;/h2&gt;
+&lt;p&gt;使用函数进行数据处理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文本处理函数：
+&lt;ul&gt;
+&lt;li&gt;去除空白符：trim、ltrim、rtrim&lt;/li&gt;
+&lt;li&gt;大小写转换：upper、lower&lt;/li&gt;
+&lt;li&gt;字符串长度：length&lt;/li&gt;
+&lt;li&gt;定位子串起始下标：locate&lt;/li&gt;
+&lt;li&gt;查找子串：substring&lt;/li&gt;
+&lt;li&gt;从左边或右边起获取子字符串：left、right&lt;/li&gt;
+&lt;li&gt;获取字符串的发音：soundex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;日期和时间处理函数：
+&lt;ul&gt;
+&lt;li&gt;时间和日期计算（加减天数，或加减时分秒）：
+&lt;ul&gt;
+&lt;li&gt;adddate, date_add, subdate, date_sub&lt;/li&gt;
+&lt;li&gt;addtime, subtime&lt;/li&gt;
+&lt;li&gt;datediff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;格式化：date_format(date,format)，参数date是合法的日期时间，format是日期/时间的输出格式, 例如：
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DATE_FORMAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;1997-10-04 22:23:00&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%H %k %I %r %T %S %w&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;22 22 10 10:23:00 PM 22:23:00 00 6&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;获得当前日期/时间：now, curdate, curtime&lt;/li&gt;
+&lt;li&gt;返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;数值处理
+&lt;ul&gt;
+&lt;li&gt;cos, sin, tan, pi&lt;/li&gt;
+&lt;li&gt;abs, exp, sqrt,&lt;/li&gt;
+&lt;li&gt;mod, rand&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;八汇总数据数据聚合aggregate&#34;&gt;八、汇总数据（数据聚合，aggregate）&lt;/h2&gt;
+&lt;p&gt;上面的介绍的数据处理函数是对单条数据的处理。数据聚合是要对表中多条数据进行汇总，比如计算行数，求均值等。&lt;/p&gt;
+&lt;p&gt;聚集函数运行在整个表上，返回单个值，常用聚集函数有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;avg: 计算均值。&lt;code&gt;select avg(price) as avg_price where id=1003&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;count: 计数。&lt;code&gt;count(*)&lt;/code&gt;计算行数，无论行中是否有null值。&lt;code&gt;count(column)&lt;/code&gt;对特定列有值的行计数，略过null值。&lt;/li&gt;
+&lt;li&gt;max、min: 返回指定列中的最大值和最小值&lt;/li&gt;
+&lt;li&gt;sum: 返回指定列的和。也可以对计算字段求和，例如&lt;code&gt;select sum(price*quantity) as total_price&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;字段前面可以带参数&lt;/strong&gt;，&lt;code&gt;select avg(PARAM field) as tmp&lt;/code&gt;，参数要放在PARAM的位置，默认参数是&lt;code&gt;all&lt;/code&gt;，另外一种参数是&lt;code&gt;distinct&lt;/code&gt;，它们的区别是，&lt;code&gt;all&lt;/code&gt;对全部行进行聚集，&lt;code&gt;distinct&lt;/code&gt;对该列的每个取值只统计一次。&lt;/p&gt;
+&lt;p&gt;可以在单条语句中执行多个聚集计算，&lt;code&gt;select avg(f1) as tmp1, min(f2) as tmp2...&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1对数据分组group-by&#34;&gt;1.对数据分组（group by）&lt;/h3&gt;
+&lt;p&gt;假设有表staff&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;id  name    dept    salary  edlevel hiredate
+1   张三     rd      2000    3       2009-10-11
+2   李四     rd      2500    3       2009-10-01
+3   王五     qa      2600    5       2010-10-02
+4   王六     qa      2300    4       2010-10-03
+5   马七     qa      2100    4       2010-10-06
+6   赵八     pm      3000    5       2010-10-05
+7   钱九     pm      3100    7       2010-10-07
+8   孙十     pm      3500    7       2010-10-06
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行以下sql&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dept&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;edlevel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;MAX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;salary&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxsal&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;staff&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hiredate&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;2010-01-01&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GROUP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dept&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;edlevel&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ORDER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dept&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;edlevel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dept edlevel maxsal
+qa 4 2300
+qa 5 2600
+pm 5 3000
+pm 7 3500
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;group by&lt;/code&gt;用于对数据进行分组，规则如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;group by&lt;/code&gt;必须位于&lt;code&gt;where&lt;/code&gt;和&lt;code&gt;order by&lt;/code&gt;之间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;group by&lt;/code&gt;后面可以跟多个列或表达式（但不能是聚集函数），结果按笛卡尔积展示&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;group by&lt;/code&gt;后面跟的每个列必须都写到&lt;code&gt;select&lt;/code&gt;后面&lt;/li&gt;
+&lt;li&gt;如果&lt;code&gt;select&lt;/code&gt;语句中同时有字段和聚集函数，则sql中必须使用&lt;code&gt;group by&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2过滤分组having&#34;&gt;2.过滤分组（having）&lt;/h3&gt;
+&lt;p&gt;having类似where，where对行进行过滤，having对分组进行过滤，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;as&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;orders&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;products&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;having&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;九select子句顺序&#34;&gt;九、select子句顺序&lt;/h2&gt;
+&lt;p&gt;select - from - where - group by - having - order by - limit&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>css入门笔记</title>
@@ -522,197 +762,6 @@
 &lt;/li&gt;
 &lt;li&gt;一组CSS规则，会在测试通过且媒体类型正确的时候应用。&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>mysql入门笔记</title>
-      <link>http://xxx.shiwj.top/posts/mysql-note/</link>
-      <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
-      
-      <guid>http://xxx.shiwj.top/posts/mysql-note/</guid>
-      <description>&lt;h1 id=&#34;mysql入门笔记&#34;&gt;mysql入门笔记&lt;/h1&gt;
-&lt;p&gt;参考《mysql必知必会》&lt;/p&gt;
-&lt;h2 id=&#34;一基本概念&#34;&gt;一、基本概念&lt;/h2&gt;
-&lt;p&gt;模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。&lt;/p&gt;
-&lt;p&gt;主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;子句（clause）：SQL由子句构成，例如&lt;code&gt;from&lt;/code&gt;、&lt;code&gt;order by&lt;/code&gt;等。&lt;/p&gt;
-&lt;h2 id=&#34;二mysql工具&#34;&gt;二、mysql工具&lt;/h2&gt;
-&lt;p&gt;mysql安装包中自带一个命令行工具&lt;code&gt;mysql&lt;/code&gt;，这是一个运行在命令行的mysql客户端。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;命令用&lt;code&gt;;&lt;/code&gt;或&lt;code&gt;\g&lt;/code&gt;结束，&lt;code&gt;\G&lt;/code&gt;可以使横向表格纵向输出&lt;/li&gt;
-&lt;li&gt;输入&lt;code&gt;help&lt;/code&gt;或&lt;code&gt;\h&lt;/code&gt;查看帮助&lt;/li&gt;
-&lt;li&gt;输入quit或exit退出&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;mysql默认端口是3306&lt;/p&gt;
-&lt;h2 id=&#34;三使用mysql&#34;&gt;三、使用mysql&lt;/h2&gt;
-&lt;p&gt;一些关于数据库和表的命令：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;选择数据库：&lt;code&gt;use xxx;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;查看（&lt;code&gt;show&lt;/code&gt;）
-&lt;ul&gt;
-&lt;li&gt;所有数据库：&lt;code&gt;show databases;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;所有表：&lt;code&gt;show tables;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;表的列：&lt;code&gt;show columns from xxx;&lt;/code&gt;
-&lt;ul&gt;
-&lt;li&gt;和&lt;code&gt;desc xxx;&lt;/code&gt;作用相同&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;服务器状态：&lt;code&gt;show status;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;权限：&lt;code&gt;show grants;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;数据库和表的创建语句：&lt;code&gt;show create database/table xxx;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;服务器错误和告警：&lt;code&gt;show errors/warnings;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;help show&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;四检索select&#34;&gt;四、检索（select）&lt;/h2&gt;
-&lt;h3 id=&#34;简单select&#34;&gt;简单select&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;字段前面可以加上表名，例如&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;distinct&#34;&gt;distinct&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;distinct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;distinct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;只检索单个字段时，列出字段所有可能的取值&lt;/li&gt;
-&lt;li&gt;检索多个字段时，列出两个字段取值的笛卡尔积&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;limit&#34;&gt;limit&lt;/h3&gt;
-&lt;p&gt;返回前n行&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;返回m行，从第n行开始（行号从0开始）&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 或
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;排序order-by子句&#34;&gt;排序（order by子句）&lt;/h3&gt;
-&lt;p&gt;按单个列或多个列排序&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;limit&lt;/code&gt;要放在&lt;code&gt;order by&lt;/code&gt;后面（先排序、再选行）&lt;/li&gt;
-&lt;li&gt;按多个列排序时，先按前面的列排，值相同时，再按后面的列排&lt;/li&gt;
-&lt;li&gt;同时使用&lt;code&gt;order by&lt;/code&gt;和&lt;code&gt;limit&lt;/code&gt;时，&lt;code&gt;order by&lt;/code&gt;在前，&lt;code&gt;limit&lt;/code&gt;在后&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;排序方向（升序/降序）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;升序（&lt;code&gt;asc&lt;/code&gt;）：默认是升序&lt;/li&gt;
-&lt;li&gt;降序（&lt;code&gt;desc&lt;/code&gt;）：&lt;code&gt;order by field2 desc&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;desc&lt;/code&gt;只对一个列有效，对多个列排序时，必须在想降序排的列后面都加上&lt;code&gt;desc&lt;/code&gt;，例如：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_hello&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;order&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;by&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;desc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;五过滤条件where&#34;&gt;五、过滤条件（where）&lt;/h2&gt;
-&lt;p&gt;操作符：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;=&lt;/code&gt;、&lt;code&gt;!=&lt;/code&gt;(也可以用&lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;表示不等于)&lt;/li&gt;
-&lt;li&gt;&amp;lt;、&amp;lt;=、&amp;gt;、&amp;gt;=&lt;/li&gt;
-&lt;li&gt;between，检索字段值位于一个范围内的数据&lt;/li&gt;
-&lt;li&gt;is null，检查字段值为null的数据&lt;/li&gt;
-&lt;li&gt;and、or，and优先级高于or，可以用括号调整优先级&lt;/li&gt;
-&lt;li&gt;in，后面跟着一个值列表，例如(1,3,5)&lt;/li&gt;
-&lt;li&gt;not，对后面的所有条件取反&lt;/li&gt;
-&lt;li&gt;like，利用通配符匹配&lt;/li&gt;
-&lt;li&gt;regexp，利用正则表达式，匹配&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;between例子：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- 查找值为2~4的数据
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_status&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;between&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 或
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_time&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;between&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-02 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-03 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;not例子：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_status&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 或
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;table_video&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maudit_time&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;between&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-02 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2022-01-03 00:00:00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;通配符&#34;&gt;通配符&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;like&lt;/code&gt;关键字使用通配符匹配&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;%&lt;/code&gt;，匹配任意字符出现任意次数（包括0次）&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;_&lt;/code&gt;，下划线，匹配一个任意字符（出现一次，不多不少）&lt;/p&gt;
-&lt;h3 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h3&gt;
-&lt;p&gt;mysql仅支持正则表达式的一个很小的子集&lt;/p&gt;
-&lt;p&gt;正则表达式是本身是字符串，因此使用转义字符时要先转义一次&lt;code&gt;\&lt;/code&gt;，所以最终使用转义字符的时候，总是要写&lt;code&gt;\\&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;mysql使用&lt;code&gt;[[:&amp;lt;:]]&lt;/code&gt;和&lt;code&gt;[[:&amp;gt;:]]&lt;/code&gt;匹配单词的开头和结尾，类似&lt;code&gt;\b&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;六计算字段临时生成的字段&#34;&gt;六、计算字段（临时生成的字段）&lt;/h2&gt;
-&lt;p&gt;计算字段在select语句中创建（计算字段是指经过计算后得到的临时字段）&lt;/p&gt;
-&lt;h3 id=&#34;1-拼接字段-concat&#34;&gt;1. 拼接字段 concat()&lt;/h3&gt;
-&lt;p&gt;很多dbms使用+或||拼接字段，mysql必须使用concat()函数&lt;/p&gt;
-&lt;p&gt;例如，&lt;code&gt;select concat(name, &#39;(&#39;, status, &#39;)&#39;) from table_user order by name limit 3;&lt;/code&gt; 将字段name和status拼接成name(status)的形式，会产生以下输出：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;+--------------------------------+
-| concat(name, &#39;(&#39;, status, &#39;)&#39;) |
-+--------------------------------+
-| 000007e(2)    |
-| 00000b0(4)    |
-| 0000253(2)    |
-+--------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以使用&lt;code&gt;ltrim()&lt;/code&gt;、&lt;code&gt;rtrim()&lt;/code&gt;、&lt;code&gt;trim()&lt;/code&gt;删除数据左侧、右侧和两侧的空白符&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;可以使用&lt;code&gt;as&lt;/code&gt;关键字为新字段赋予别名&lt;/strong&gt;，例如&lt;code&gt;select concat(name, &#39;(&#39;, status, &#39;)&#39;) as new_name ...&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2-算术计算&#34;&gt;2. 算术计算&lt;/h3&gt;
-&lt;p&gt;包括加减乘除和圆括号&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;select field1*field2 as new_name from ...&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;七数据处理&#34;&gt;七、数据处理&lt;/h2&gt;
-&lt;p&gt;使用函数进行数据处理&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;文本处理函数：
-&lt;ul&gt;
-&lt;li&gt;去除空白符：trim、ltrim、rtrim&lt;/li&gt;
-&lt;li&gt;大小写转换：upper、lower&lt;/li&gt;
-&lt;li&gt;字符串长度：length&lt;/li&gt;
-&lt;li&gt;定位子串起始下标：locate&lt;/li&gt;
-&lt;li&gt;查找子串：substring&lt;/li&gt;
-&lt;li&gt;从左边或右边起获取子字符串：left、right&lt;/li&gt;
-&lt;li&gt;获取字符串的发音：soundex&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;日期和时间处理函数：
-&lt;ul&gt;
-&lt;li&gt;时间和日期计算（加减天数，或加减时分秒）：
-&lt;ul&gt;
-&lt;li&gt;adddate, date_add, subdate, date_sub&lt;/li&gt;
-&lt;li&gt;addtime, subtime&lt;/li&gt;
-&lt;li&gt;datediff&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;格式化：date_format(date,format)，参数date是合法的日期时间，format是日期/时间的输出格式, 例如：
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DATE_FORMAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;1997-10-04 22:23:00&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%H %k %I %r %T %S %w&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;22 22 10 10:23:00 PM 22:23:00 00 6&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;获得当前日期/时间：now, curdate, curtime&lt;/li&gt;
-&lt;li&gt;返回一个日期时间的特定部分：date, day, dayofweek, hour, minute, month, second, time, year&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;数值处理
-&lt;ul&gt;
-&lt;li&gt;cos, sin, tan, pi&lt;/li&gt;
-&lt;li&gt;abs, exp, sqrt,&lt;/li&gt;
-&lt;li&gt;mod, rand&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>冷热和出汗是怎么回事</title>
-      <link>http://xxx.shiwj.top/posts/cold_heat_sweat/</link>
-      <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
-      
-      <guid>http://xxx.shiwj.top/posts/cold_heat_sweat/</guid>
-      <description>&lt;h1 id=&#34;冷热和出汗是怎么回事&#34;&gt;冷热和出汗是怎么回事&lt;/h1&gt;
-&lt;p&gt;本文参考各种网络内容&lt;/p&gt;
-&lt;h2 id=&#34;人是如何感觉到冷热的&#34;&gt;人是如何感觉到冷热的&lt;/h2&gt;
-&lt;p&gt;人体有两个温度，核心温度和体表温度。核心温度是指人体内的温度，作为恒温动物，人体的核心温度是相对恒定的，一般在37度左右。体表温度是指人体表面的温度，也是人体感知到的温度。人体皮肤神经纤维中，有许多外周温度感受器，分为冷觉感受器和热觉感受器。一般来说，体表温度在30-35摄氏度时，人体不会有冷热的感觉，当体表温度低于30摄氏度时（此时外界温度可能在20摄氏度以下），会产生冷觉，当体表温度高于35摄氏度时，会产生热觉。&lt;/p&gt;
-&lt;p&gt;还有另外一种说法，人感觉到的不是温度，而是温度变化。但是这个说法禁不起推敲，假如一个人连续一个月都位于三十七八摄氏度的环境中，那么这个人一定是一直感觉到热的，难道他的体表温度连续一个月都在增加吗？所以这种说法是有问题的。&lt;/p&gt;
-&lt;h2 id=&#34;出汗是怎么回事&#34;&gt;出汗是怎么回事&lt;/h2&gt;
-&lt;p&gt;出汗是人体的一种散热手段。&lt;/p&gt;
-&lt;p&gt;医学上有一个“体温调定点”理论，这个理论认为，人体下丘脑的体温调节中枢有一个体温调定点，当核心温度小于体温调定点时，人体会发热，反之人体会散热。&lt;/p&gt;
-&lt;h2 id=&#34;为什么发烧的时候会感觉到冷&#34;&gt;为什么发烧的时候会感觉到冷&lt;/h2&gt;
-&lt;p&gt;有两种说法，一种说法认为发烧的时候人体为了提高核心温度，会收缩皮肤表层血管，导致体表温度降低，所以人体会感觉到冷。另外一种说法是，人体为了提高核心温度，会调高体温调定点，这时大脑就会让人感觉到冷。（所以到底那种说法是正确的？）&lt;/p&gt;
 </description>
     </item>
     

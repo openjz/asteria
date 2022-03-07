@@ -5,7 +5,7 @@
 <meta name="twitter:title" content="mysql入门笔记" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">公子杰</span></a></span>
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">mysql入门笔记</h1><p class="article date">Sunday, 2021-11-14</p></section><article class="article markdown-body"><h1 id="mysql入门笔记">mysql入门笔记</h1>
+    <h1 class="article title">mysql入门笔记</h1><p class="article date">Friday, 2021-12-10<span class="lastmod"> • 更新于 Monday, 2022-03-07</span></p></section><article class="article markdown-body"><h1 id="mysql入门笔记">mysql入门笔记</h1>
 <p>参考《mysql必知必会》</p>
 <h2 id="一基本概念">一、基本概念</h2>
 <p>模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。</p>
@@ -168,9 +168,58 @@
 </ul>
 </li>
 </ul>
+<h2 id="八汇总数据数据聚合aggregate">八、汇总数据（数据聚合，aggregate）</h2>
+<p>上面的介绍的数据处理函数是对单条数据的处理。数据聚合是要对表中多条数据进行汇总，比如计算行数，求均值等。</p>
+<p>聚集函数运行在整个表上，返回单个值，常用聚集函数有：</p>
+<ul>
+<li>avg: 计算均值。<code>select avg(price) as avg_price where id=1003</code></li>
+<li>count: 计数。<code>count(*)</code>计算行数，无论行中是否有null值。<code>count(column)</code>对特定列有值的行计数，略过null值。</li>
+<li>max、min: 返回指定列中的最大值和最小值</li>
+<li>sum: 返回指定列的和。也可以对计算字段求和，例如<code>select sum(price*quantity) as total_price</code></li>
+</ul>
+<p><strong>字段前面可以带参数</strong>，<code>select avg(PARAM field) as tmp</code>，参数要放在PARAM的位置，默认参数是<code>all</code>，另外一种参数是<code>distinct</code>，它们的区别是，<code>all</code>对全部行进行聚集，<code>distinct</code>对该列的每个取值只统计一次。</p>
+<p>可以在单条语句中执行多个聚集计算，<code>select avg(f1) as tmp1, min(f2) as tmp2...</code></p>
+<h3 id="1对数据分组group-by">1.对数据分组（group by）</h3>
+<p>假设有表staff</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">id  name    dept    salary  edlevel hiredate
+1   张三     rd      2000    3       2009-10-11
+2   李四     rd      2500    3       2009-10-01
+3   王五     qa      2600    5       2010-10-02
+4   王六     qa      2300    4       2010-10-03
+5   马七     qa      2100    4       2010-10-06
+6   赵八     pm      3000    5       2010-10-05
+7   钱九     pm      3100    7       2010-10-07
+8   孙十     pm      3500    7       2010-10-06
+</code></pre></div><p>执行以下sql</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">edlevel</span><span class="p">,</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">maxsal</span><span class="w">
+</span><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">staff</span><span class="w">
+</span><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">hiredate</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2010-01-01&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">edlevel</span><span class="w">
+</span><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">edlevel</span><span class="p">;</span><span class="w">
+</span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>dept edlevel maxsal
+qa 4 2300
+qa 5 2600
+pm 5 3000
+pm 7 3500
+</code></pre><p><code>group by</code>用于对数据进行分组，规则如下：</p>
+<ul>
+<li><code>group by</code>必须位于<code>where</code>和<code>order by</code>之间</li>
+<li><code>group by</code>后面可以跟多个列或表达式（但不能是聚集函数），结果按笛卡尔积展示</li>
+<li><code>group by</code>后面跟的每个列必须都写到<code>select</code>后面</li>
+<li>如果<code>select</code>语句中同时有字段和聚集函数，则sql中必须使用<code>group by</code></li>
+</ul>
+<h3 id="2过滤分组having">2.过滤分组（having）</h3>
+<p>having类似where，where对行进行过滤，having对分组进行过滤，例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">cust_id</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">orders</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w">
+</span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">cust_id</span><span class="w">
+</span><span class="w"></span><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">
+</span></code></pre></div><h2 id="九select子句顺序">九、select子句顺序</h2>
+<p>select - from - where - group by - having - order by - limit</p>
 </article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
 </div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/css-note/"><span class="iconfont icon-article"></span>css入门笔记</a></p><p><a class="link" href="/posts/cold_heat_sweat/"><span class="iconfont icon-article"></span>冷热和出汗是怎么回事</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/cold_heat_sweat/"><span class="iconfont icon-article"></span>冷热和出汗是怎么回事</a></p><p><a class="link" href="/posts/css-note/"><span class="iconfont icon-article"></span>css入门笔记</a></p></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2021 openjz, jiezi.</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
