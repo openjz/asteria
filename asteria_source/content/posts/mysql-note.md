@@ -19,7 +19,15 @@ draft = false
 
 >主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上
 
+外键（foreign key）：外键是表中的一个字段，对应另一个表的主键。
+
+>可伸缩性（scale），一个设计良好的数据库能够良好应对数据量的增加，我们把这种情况称为数据库的可伸缩性好，可伸缩性离不开外键的使用。
+
+>检索性能可能会受多种因素影响：检索操作（子查询、联表查询...），数据量，是否有索引或键
+
 子句（clause）：SQL由子句构成，例如`from`、`order by`等。
+
+完全限定列名：`表名.列名`，`video.md5`
 
 ## 二、mysql工具
 
@@ -292,9 +300,93 @@ having count(*) >= 2;
 
 select - from - where - group by - having - order by - limit
 
+## 十、子查询（select嵌套）
 
+涉及到多个表时可能会用到子查询。子查询嵌套太多会导致性能问题。
 
+例一：利用子查询进行过滤
 
+```sql
+select cust_id from orders 
+where order_num in (
+    select order_num from orderitems where prod_id = "TNT2"
+);
+```
+
+应该保证where中的列和子查询中select的列保持一致
+
+例二：将子查询作为字段
+
+```sql
+select cust_name ,
+    (select count(*) from orders where orders.cust_id = customers.cust_id) as orders
+from customers;
+```
+
+该子查询对从customers表中检索出的每行一次（即，先检索customers表，对检索出的每一行，执行子查询）。这种子查询被称为**相关子查询（correlated subquery）**
+
+## 十一、联结表（联表，join）
+
+>数据库设计中经常需要配合使用多张互相关联的业务表，目的是降低冗余和解耦
+>
+>联结是sql执行过程中建立的，表定义中并不存在联结
+
+例一，使用where子句建立联结，如果没有联结条件，会返回笛卡尔积
+
+```sql
+select vend_name, prod_name, prod_price
+from vendors, products
+where vendors.vend_id = products.vend_id
+order by vend_name, prod_name;
+```
+
+例一这种联结也被称为**内部联结**，也可以写为
+
+```sql
+select vend_name, prod_name, prod_price
+from vendors INNER JOIN products
+ON vendors.vend_id = products.vend_id;
+```
+
+例二，联结多个表
+
+```sql
+select vend_name, prod_name, prod_price, quantity
+from orderitems, vendors, products
+where vendors.vend_id = products.vend_id
+    and orderitems.prod_id = products.prod_id
+    and order_num = 20005;
+```
+
+### 1.内部联结（等值联结）
+
+见上例
+
+### 2.自联结
+
+表别名：`as`关键字同样可以给表指定别名
+
+例子：根据某产品id找出生产该产品的厂家生产的其他产品
+
+```sql
+select p1.prod_id, p1.prod_name
+from products as p1, products as p2
+where p1.vend_id = p2.vend_id
+    and p2.prod_id = 'DTNTR';
+```
+
+### 3.自然联结
+
+自然联结是指检索结果中没有重复的列(不是行)，可以使用通配符让系统自动去掉重复的列，一般是对某个表使用通配符，然后手动指定其他表中的列，例如：
+
+```sql
+select c.*, o.order_num, o.order_date
+    oi.prod_id, oi.quantity, oi.item_price
+from customers as c, orders as o, orderitems as oi
+where c.cust_id = o.cust_id
+    and oi.order_num = o.order_num
+    and prod_id = 'FB';
+```
 
 
 
