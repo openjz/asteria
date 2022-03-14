@@ -414,4 +414,55 @@ group by customers.cust_id;
 
 以上sql的作用是：获得所有客户的订单数，包括哪些没有订单的客户
 
+## 十二、组合查询（union）
+
+同时执行多个select，并将结果作为单个查询结果集返回。例如
+
+```sql
+select vend_id, prod_id, prod_price
+from products
+where prod_id <=5
+union
+select vend_id, prod_id, prod_price
+from products
+where vend_id in (1001,1002);
+```
+
+union的规则：
+
+- union中的每个查询必须包含相同的列、表达式或聚集函数
+- union会自动对返回的行去重，如果不想去重，要使用`union all`
+- 只能有一个order by，必须放在最后一个select之后。
+
+## 十三、全文本搜索
+
+建表时指定全文检索：
+
+```sql
+create table demo
+{
+    ...
+    some_words text null,
+    ...
+    fulltext(some_words)
+}   engine=MyISAM;
+```
+
+使用函数 match 和 against 进行全文搜索，match 指定要匹配的列，against 指定要使用的搜索表达式。例如
+
+```sql
+select node_text
+from productnodes
+where match(node_text) against('rabbit');
+```
+
+搜索不区分大小写。搜索结果默认以匹配接近程度进行排序。
+
+match和against的计算结果实际上是一个匹配等级值，表示匹配的接近程度，例如
+
+```sql
+select node_text, match(node_text) against('rabbit') as ranks
+from productnodes;
+```
+
 

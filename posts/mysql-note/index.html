@@ -292,7 +292,39 @@ pm 7 3500
 </span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="w">
 </span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="p">;</span><span class="w">
 </span></code></pre></div><p>以上sql的作用是：获得所有客户的订单数，包括哪些没有订单的客户</p>
-</article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
+<h2 id="十二组合查询union">十二、组合查询（union）</h2>
+<p>同时执行多个select，并将结果作为单个查询结果集返回。例如</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">&lt;=</span><span class="mi">5</span><span class="w">
+</span><span class="w"></span><span class="k">union</span><span class="w">
+</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span><span class="w">
+</span></code></pre></div><p>union的规则：</p>
+<ul>
+<li>union中的每个查询必须包含相同的列、表达式或聚集函数</li>
+<li>union会自动对返回的行去重，如果不想去重，要使用<code>union all</code></li>
+<li>只能有一个order by，必须放在最后一个select之后。</li>
+</ul>
+<h2 id="十三全文本搜索">十三、全文本搜索</h2>
+<p>建表时指定全文检索：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">demo</span><span class="w">
+</span><span class="w"></span><span class="err">{</span><span class="w">
+</span><span class="w">    </span><span class="p">...</span><span class="w">
+</span><span class="w">    </span><span class="n">some_words</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">...</span><span class="w">
+</span><span class="w">    </span><span class="n">fulltext</span><span class="p">(</span><span class="n">some_words</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="err">}</span><span class="w">   </span><span class="n">engine</span><span class="o">=</span><span class="n">MyISAM</span><span class="p">;</span><span class="w">
+</span></code></pre></div><p>使用函数 match 和 against 进行全文搜索，match 指定要匹配的列，against 指定要使用的搜索表达式。例如</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">node_text</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">productnodes</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="n">node_text</span><span class="p">)</span><span class="w"> </span><span class="n">against</span><span class="p">(</span><span class="s1">&#39;rabbit&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></div><p>搜索不区分大小写。搜索结果默认以匹配接近程度进行排序。</p>
+<p>match和against的计算结果实际上是一个匹配等级值，表示匹配的接近程度，例如</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">node_text</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="n">node_text</span><span class="p">)</span><span class="w"> </span><span class="n">against</span><span class="p">(</span><span class="s1">&#39;rabbit&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ranks</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">productnodes</span><span class="p">;</span><span class="w">
+</span></code></pre></div></article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/cold_heat_sweat/"><span class="iconfont icon-article"></span>冷热和出汗是怎么回事</a></p><p><a class="link" href="/posts/css-note/"><span class="iconfont icon-article"></span>css入门笔记</a></p></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2021 openjz, jiezi.</p>
