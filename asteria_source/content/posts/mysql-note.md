@@ -1,7 +1,7 @@
 +++
 title = "mysql入门笔记"
 date = 2021-12-10T10:09:46+08:00
-lastmod = 2022-03-07T10:09:46+08:00
+lastmod = 2022-03-14T03:33:00+08:00
 tags = ["mysql"]
 categories = ["笔记"]
 draft = false
@@ -388,5 +388,30 @@ where c.cust_id = o.cust_id
     and prod_id = 'FB';
 ```
 
+### 4.外部联结
+
+与内部联结不同，外部联结的执行结果中包含没有产生关联的行。例如，下面这个sql想按客户id（cust_id）建立关联，检索出客户和订单的关系，并要求结果中包含没有订单的客户。
+
+```sql
+select customers.cust_id, orders.order_num
+from customers LEFT OUTER JOIN orders
+ON customers.cust_id, orders.cust_id
+```
+
+关键字：
+- `left outer join`：`left`要求结果中包含`outer join`左边表中的无关联行
+- `right outer join`：结果中包含右边表中的无关联行
+
+### 5.联结中带聚集函数
+
+```sql
+select customers.cust_name, customers.cust_id,
+    count(orders.order_num) as num_ord
+from customers left outer join orders
+on customers.cust_id = orders.cust_id
+group by customers.cust_id;
+```
+
+以上sql的作用是：获得所有客户的订单数，包括哪些没有订单的客户
 
 
