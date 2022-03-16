@@ -308,6 +308,9 @@ pm 7 3500
 <li>只能有一个order by，必须放在最后一个select之后。</li>
 </ul>
 <h2 id="十三全文本搜索">十三、全文本搜索</h2>
+<blockquote>
+<p>mysql通过建立全文索引（倒排索引）来支持全文搜索。</p>
+</blockquote>
 <p>建表时指定全文检索：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">demo</span><span class="w">
 </span><span class="w"></span><span class="err">{</span><span class="w">
@@ -322,9 +325,18 @@ pm 7 3500
 </span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="n">node_text</span><span class="p">)</span><span class="w"> </span><span class="n">against</span><span class="p">(</span><span class="s1">&#39;rabbit&#39;</span><span class="p">);</span><span class="w">
 </span></code></pre></div><p>搜索不区分大小写。搜索结果默认以匹配接近程度进行排序。</p>
 <p>match和against的计算结果实际上是一个匹配等级值，表示匹配的接近程度，例如</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">node_text</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="n">node_text</span><span class="p">)</span><span class="w"> </span><span class="n">against</span><span class="p">(</span><span class="s1">&#39;rabbit&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ranks</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">node_text</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="n">node_text</span><span class="p">)</span><span class="w"> </span><span class="n">against</span><span class="p">(</span><span class="s1">&#39;rabbit&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">matchrank</span><span class="w">
 </span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">productnodes</span><span class="p">;</span><span class="w">
-</span></code></pre></div></article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
+</span></code></pre></div><p><strong>查询扩展</strong>：放宽搜索范围，搜索结果中可能不包含指定的检索词，例如<code>select node_text, match(node_text) against('rabbit' with query expansion) as matchrank from productnodes;</code></p>
+<p><strong>布尔文本搜索</strong>：<code>against('xxx' in boolean mode)</code>，性能较差，可以不需要fulltext索引。可以指定要匹配的词，要排斥的词，匹配优先级等。</p>
+<h2 id="十四数据的插入删除和更新增删改">十四、数据的插入、删除和更新（增删改）</h2>
+<h3 id="1插入">1.插入</h3>
+<p>简单写法：<code>insert into customers values(null,'xxx','xxx',null);</code>，各个列必须以它们在表定义中的顺序填充</p>
+<p>复杂写法：指定要插入的列</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">customers</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">city</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">,</span><span class="s1">&#39;asd&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">);</span><span class="w">
+</span></code></pre></div><p>可以给多组value，例如，<code>values('xxx','xxx'),('222',NULL);</code></p>
+<p>插入检索出的数据，例如，<code>insert into table1(xx,xx,xx) select xx,xx,xx from table2 where...;</code></p>
+</article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/cold_heat_sweat/"><span class="iconfont icon-article"></span>冷热和出汗是怎么回事</a></p><p><a class="link" href="/posts/css-note/"><span class="iconfont icon-article"></span>css入门笔记</a></p></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2021 openjz, jiezi.</p>

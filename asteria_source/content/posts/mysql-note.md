@@ -436,6 +436,8 @@ union的规则：
 
 ## 十三、全文本搜索
 
+>mysql通过建立全文索引（倒排索引）来支持全文搜索。
+
 建表时指定全文检索：
 
 ```sql
@@ -461,8 +463,26 @@ where match(node_text) against('rabbit');
 match和against的计算结果实际上是一个匹配等级值，表示匹配的接近程度，例如
 
 ```sql
-select node_text, match(node_text) against('rabbit') as ranks
+select node_text, match(node_text) against('rabbit') as matchrank
 from productnodes;
 ```
 
+**查询扩展**：放宽搜索范围，搜索结果中可能不包含指定的检索词，例如`select node_text, match(node_text) against('rabbit' with query expansion) as matchrank from productnodes;`
 
+**布尔文本搜索**：`against('xxx' in boolean mode)`，性能较差，可以不需要fulltext索引。可以指定要匹配的词，要排斥的词，匹配优先级等。
+
+## 十四、数据的插入、删除和更新（增删改）
+
+### 1.插入
+
+简单写法：`insert into customers values(null,'xxx','xxx',null);`，各个列必须以它们在表定义中的顺序填充
+
+复杂写法：指定要插入的列
+
+```sql
+insert into customers(name, address, city) values('123','asd', null);
+```
+
+可以给多组value，例如，`values('xxx','xxx'),('222',NULL);`
+
+插入检索出的数据，例如，`insert into table1(xx,xx,xx) select xx,xx,xx from table2 where...;`
