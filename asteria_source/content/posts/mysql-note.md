@@ -486,3 +486,86 @@ insert into customers(name, address, city) values('123','asd', null);
 可以给多组value，例如，`values('xxx','xxx'),('222',NULL);`
 
 插入检索出的数据，例如，`insert into table1(xx,xx,xx) select xx,xx,xx from table2 where...;`
+
+### 2.更新
+
+>更新操作一定要带上条件，否则就会更新全表
+
+```sql
+update tablename 
+set cust_email='xxxx',
+    cust_name = 'sss'
+where cust_id = 2345;
+```
+
+可以在update语句中使用子查询
+
+`ignore`关键字：update默认的逻辑是只要有一行数据更新失败就失败，`ignore`可以跳过更新失败的行，继续更新其他行
+
+### 3.删除
+
+>删除操作一定要带上条件，否则就会删除表中的所有数据
+
+`delete from customers where cust_id = 1234;`
+
+删除全表：`truncate table tablename`，实际上是直接把表删除后再新建一个表
+
+## 十五、创建和操作表
+
+### 1.创建表
+
+查看数据库和表的创建语句：`show create database/table xxx;`
+
+create语句：
+
+```sql
+CREATE TABLE if not exists `table_video` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `object_name` varchar(64) NOT NULL DEFAULT '' COMMENT 'bos上存储的文件名字',
+  `convert_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '转码状态',
+  `thumb_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '封面状态',
+  `maudit_status` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT 'status of machine audit',
+  `origin_bos_url` varchar(510) NOT NULL DEFAULT '' COMMENT '原始文件的bos_url',
+  `source_url` varchar(510) NOT NULL DEFAULT '' COMMENT '原始文件转码后的url',
+  `thumb_url` varchar(510) NOT NULL DEFAULT '' COMMENT '缩略图url',
+  `src_create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建任务时间 -- DSP推入时间',
+  `src_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新任务时间 -- 仅仅标识DSP重新推入时间',
+  `convert_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '转换完成时间 -- 转换完成时间',
+  `thumb_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '封面状态修改时间',
+  `maudit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'timestamp of machine audit info update',
+  `maudit_result` varchar(4096) NOT NULL DEFAULT '' COMMENT 'result of machine audit, json string',
+  `video_info` varchar(4096) NOT NULL DEFAULT '' COMMENT 'video info, json string',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `object_name` (`object_name`),
+  KEY `idx_src_create_time` (`src_create_time`),
+  KEY `idx_src_update_time` (`src_update_time`)
+) ENGINE=InnoDB AUTO_INCREMENT=3425436 DEFAULT CHARSET=utf8 COMMENT='视频表';
+```
+
+规则：
+
+1. 主键可以是多个列，例如，`PRIMARY KEY (`id1`,`id2`)`
+2. 每个表只允许一列`auto_increment`，并且该列必须能被索引（一般是把这列设置为主键）
+3. 不允许使用函数作为默认值，只能用常量
+4. **外键不允许跨引擎** 
+
+### 2.修改表
+
+```sql
+alter table xxx
+add phone_num char(20); --增加列
+
+alter table xxx
+drop column phone_num; --删除列
+
+alter table xxx
+add constraint xxx_fk foreign key (vend_id) references vendors (id); --添加一个外键约束（在vend_id这一列上，添加一个名为xxx_fk的外键约束）
+
+ALTER TABLE students
+DROP FOREIGN KEY fk_class_id; -- 删除外键约束
+
+drop table xxx; --删除表
+
+rename table xxx to xxx2; --重命名表
+```
+
