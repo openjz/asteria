@@ -5,7 +5,7 @@
 <meta name="twitter:title" content="mysql入门笔记" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">公子杰</span></a></span>
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">mysql入门笔记</h1><p class="article date">Friday, 2021-12-10<span class="lastmod"> • 更新于 Monday, 2022-03-14</span></p></section><article class="article markdown-body"><h1 id="mysql入门笔记">mysql入门笔记</h1>
+    <h1 class="article title">mysql入门笔记</h1><p class="article date">Friday, 2021-12-10<span class="lastmod"> • 更新于 Monday, 2022-03-21</span></p></section><article class="article markdown-body"><h1 id="mysql入门笔记">mysql入门笔记</h1>
 <p>参考《mysql必知必会》</p>
 <h2 id="一基本概念">一、基本概念</h2>
 <p>模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。</p>
@@ -400,7 +400,117 @@ pm 7 3500
 </span><span class="w"></span><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w"> </span><span class="c1">--删除表
 </span><span class="c1"></span><span class="w">
 </span><span class="w"></span><span class="k">rename</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">xxx2</span><span class="p">;</span><span class="w"> </span><span class="c1">--重命名表
-</span></code></pre></div></article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
+</span></code></pre></div><h2 id="十六视图">十六、视图</h2>
+<p>视图是虚拟的表，它只是把查询封装了一下，里面并不包含数据，因此使用视图时要注意性能问题。可以利用视图简化复杂的联结查询</p>
+<p>视图操作：</p>
+<ul>
+<li>create view, drop view, create or replace view</li>
+<li>show create view xxx, 查看创建视图的语句</li>
+</ul>
+<h2 id="十七存储过程">十七、存储过程</h2>
+<p>存储过程把一系列操作封装在一起。<strong>可以在存储过程中加入事务</strong>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">xxx</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="k">begin</span><span class="w">
+</span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">end</span><span class="p">;</span><span class="w">
+</span></code></pre></div><p><strong>如果是在mysql命令行客户端使用该语句，要对命令结束符做临时修改</strong>，例如:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span><span class="w">
+</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">xxx</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="k">begin</span><span class="w">
+</span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">end</span><span class="o">//</span><span class="w">
+</span><span class="w"></span><span class="k">delimiter</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></code></pre></div><p>执行存储过程：<code>call xxx();</code></p>
+<p>删除存储过程：<code>drop procedure (if exists) xxx;</code></p>
+<p>查看存储过程创建语句：<code>show create procedure xxx;</code></p>
+<p>查看存储过程信息：<code>show procedure status (like 'procedure_name');</code></p>
+<h3 id="1参数和变量">1.参数和变量</h3>
+<p>所有mysql变量都必须以<code>@</code>开头</p>
+<p>定义一个用户变量：<code>set @num=1;</code>或<code>set @num:=1;</code></p>
+<p>定义存储过程时带参数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- in/out/inout分别对应输入变量、输出变量和输入输出变量
+</span><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">xxx</span><span class="p">(</span><span class="w">
+</span><span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="n">value1</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">value2</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="k">inout</span><span class="w"> </span><span class="n">value3</span><span class="w"> </span><span class="nb">boolean</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="k">comment</span><span class="w"> </span><span class="s1">&#39;This is a comment&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">begin</span><span class="w">
+</span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">value2</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">end</span><span class="p">;</span><span class="w">
+</span></code></pre></div><p>执行存储过程：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">call</span><span class="w"> </span><span class="n">xxx</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">v3</span><span class="p">);</span><span class="w">
+</span></code></pre></div><p>获取存储过程的输出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">v3</span><span class="p">;</span><span class="w">
+</span></code></pre></div><p>可以在存储过程中写逻辑：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">declare</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">declare</span><span class="w"> </span><span class="n">xxx2</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="n">xxx2</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span><span class="w">    </span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w">
+</span></code></pre></div><h3 id="2游标">2.游标</h3>
+<p>mysql游标只能用于存储过程和函数。游标可以用来从select返回的结果集中一行一行地取数据。</p>
+<h3 id="3触发器">3.触发器</h3>
+<p>触发器可以让mysql在某个表发生更改时自动执行某个动作。触发器可以响应delete、insert或update语句。</p>
+<h2 id="十八事务">十八、事务</h2>
+<p>一些概念：</p>
+<ul>
+<li>事务（transaction）：是指一组sql语句</li>
+<li>回滚（rollback）：只能在事务内部使用</li>
+<li>提交（commit）：做最终的写入操作</li>
+<li>保留点（savepoint）：事务处理中设置的临时占位符，可以回滚到保留点，而不是整个事务</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">start</span><span class="w"> </span><span class="k">transaction</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="k">rollback</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="n">savepoint</span><span class="w"> </span><span class="n">xx</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="k">rollback</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">xx</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="k">commit</span><span class="p">;</span><span class="w">
+</span></code></pre></div><h2 id="十九用户及权限管理">十九、用户及权限管理</h2>
+<p>数据库mysql.user表中有所有的用户信息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="n">identified</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">rename</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">xxx2</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">drop</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">show</span><span class="w"> </span><span class="n">grants</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w"> </span><span class="c1">--显示用户权限
+</span><span class="c1"></span><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w"> </span><span class="c1">--grant授予权限
+</span><span class="c1"></span><span class="k">revoke</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">xxx</span><span class="p">;</span><span class="w"> </span><span class="c1">--revoke撤销权限 
+</span><span class="c1"></span><span class="k">set</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Password</span><span class="p">(</span><span class="s1">&#39;123456&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">--改密码
+</span></code></pre></div><h2 id="二十数据库维护">二十、数据库维护</h2>
+<ol>
+<li>数据备份
+<ul>
+<li>命令行工具：mysqldump、mysqlhotcopy</li>
+<li>命令：<code>backup table</code>、<code>select into outfile</code>、<code>restore table</code>、<code>flush tables</code></li>
+</ul>
+</li>
+<li>检查状态
+<ul>
+<li><code>analyse table</code>、<code>check table</code></li>
+</ul>
+</li>
+<li>日志
+<ul>
+<li>错误日志：data/hostname.err，命令行参数</li>
+<li>查询日志：data/hostname.log，记录所有mysql活动</li>
+<li>二进制日志：data/hostname-bin，记录数据更新语句</li>
+<li>慢查询日志：data/hostname-slow.log，记录执行缓慢的查询</li>
+</ul>
+</li>
+</ol>
+<h2 id="二十一改善性能">二十一、改善性能</h2>
+<ul>
+<li>使用explain语句让mysql解释它如何执行某个select语句</li>
+<li>join、union和子查询的性能不一定谁高谁低，需要具体问题具体分析</li>
+<li>不要用<code>select *</code></li>
+<li>使用多条select语句和union来代替or条件</li>
+<li>索引提升查询性能，但是会降低插入、删除和更新的性能</li>
+<li>like很慢</li>
+<li>&hellip;</li>
+</ul>
+</article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/mysql/>mysql</a></section>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/cold_heat_sweat/"><span class="iconfont icon-article"></span>冷热和出汗是怎么回事</a></p><p><a class="link" href="/posts/css-note/"><span class="iconfont icon-article"></span>css入门笔记</a></p></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2021 openjz, jiezi.</p>

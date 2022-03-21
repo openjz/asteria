@@ -1,7 +1,7 @@
 +++
 title = "mysql入门笔记"
 date = 2021-12-10T10:09:46+08:00
-lastmod = 2022-03-14T03:33:00+08:00
+lastmod = 2022-03-21T10:33:00+08:00
 tags = ["mysql"]
 categories = ["笔记"]
 draft = false
@@ -568,4 +568,151 @@ drop table xxx; --删除表
 
 rename table xxx to xxx2; --重命名表
 ```
+
+## 十六、视图
+
+视图是虚拟的表，它只是把查询封装了一下，里面并不包含数据，因此使用视图时要注意性能问题。可以利用视图简化复杂的联结查询
+
+视图操作：
+
+- create view, drop view, create or replace view
+- show create view xxx, 查看创建视图的语句
+
+## 十七、存储过程
+
+存储过程把一系列操作封装在一起。**可以在存储过程中加入事务**。
+
+```sql
+create procedure xxx()
+begin
+    select xxx from xxx;
+end;
+```
+
+**如果是在mysql命令行客户端使用该语句，要对命令结束符做临时修改**，例如:
+
+```sql
+delimiter //
+create procedure xxx()
+begin
+    select xxx from xxx;
+end//
+delimiter ;
+```
+
+执行存储过程：`call xxx();`
+
+删除存储过程：`drop procedure (if exists) xxx;`
+
+查看存储过程创建语句：`show create procedure xxx;`
+
+查看存储过程信息：`show procedure status (like 'procedure_name');`
+
+### 1.参数和变量
+
+所有mysql变量都必须以`@`开头
+
+定义一个用户变量：`set @num=1;`或`set @num:=1;`
+
+定义存储过程时带参数：
+
+```sql
+-- in/out/inout分别对应输入变量、输出变量和输入输出变量
+create procedure xxx(
+    in value1 int,
+    out value2 decimal(8,2),
+    inout value3 boolean
+) comment 'This is a comment'
+begin
+    select xxx into value2 from ... ;
+end;
+```
+
+执行存储过程：
+
+```sql
+call xxx(20, @v2, @v3);
+```
+
+获取存储过程的输出：
+
+```sql
+select @v2, @v3;
+```
+
+可以在存储过程中写逻辑：
+
+```sql
+declare xxx int default 6;
+declare xxx2 boolean default false;
+
+if xxx2 then
+    ...
+end if;
+```
+
+### 2.游标
+
+mysql游标只能用于存储过程和函数。游标可以用来从select返回的结果集中一行一行地取数据。
+
+### 3.触发器
+
+触发器可以让mysql在某个表发生更改时自动执行某个动作。触发器可以响应delete、insert或update语句。
+
+## 十八、事务
+
+一些概念：
+- 事务（transaction）：是指一组sql语句
+- 回滚（rollback）：只能在事务内部使用
+- 提交（commit）：做最终的写入操作
+- 保留点（savepoint）：事务处理中设置的临时占位符，可以回滚到保留点，而不是整个事务
+
+```sql
+start transaction;
+...
+rollback;
+...
+savepoint xx;
+...
+rollback to xx;
+...
+commit;
+```
+
+## 十九、用户及权限管理
+
+数据库mysql.user表中有所有的用户信息
+
+```sql
+create user xxx identified by 'password';
+rename user xxx to xxx2;
+drop user xxx;
+show grants for xxx; --显示用户权限
+grant select on db.* to xxx; --grant授予权限
+revoke select on db.* to xxx; --revoke撤销权限 
+set password for xxx = Password('123456'); --改密码
+```
+
+## 二十、数据库维护
+
+1. 数据备份
+    - 命令行工具：mysqldump、mysqlhotcopy
+    - 命令：`backup table`、`select into outfile`、`restore table`、`flush tables`
+2. 检查状态
+    - `analyse table`、`check table`
+3. 日志
+    - 错误日志：data/hostname.err，命令行参数
+    - 查询日志：data/hostname.log，记录所有mysql活动
+    - 二进制日志：data/hostname-bin，记录数据更新语句
+    - 慢查询日志：data/hostname-slow.log，记录执行缓慢的查询
+
+## 二十一、改善性能
+
+- 使用explain语句让mysql解释它如何执行某个select语句
+- join、union和子查询的性能不一定谁高谁低，需要具体问题具体分析
+- 不要用`select *`
+- 使用多条select语句和union来代替or条件
+- 索引提升查询性能，但是会降低插入、删除和更新的性能
+- like很慢
+- ...
 
