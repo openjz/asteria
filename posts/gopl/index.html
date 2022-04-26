@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Gopl&nbsp;&ndash;&nbsp;公子杰</title><link rel="stylesheet" href="/css/core.min.7630b687e7b073be49cada2a9d6892783f03daa5061cb7a6a1e239d6c1617c7d52542d2ecf34a9dd5fd87a010fac2822.css" integrity="sha384-djC2h&#43;ewc75JytoqnWiSeD8D2qUGHLemoeI51sFhfH1SVC0uzzSp3V/YegEPrCgi"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Gopl" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">公子杰</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Gopl</h1><p class="article date">Tuesday, 2022-04-26<span class="reading-time"> • 预计阅读时间 2 分钟</span></p></section><article class="article markdown-body"><h1 id="golang入门笔记">golang入门笔记</h1>
+<p>参考《Go程序设计语言》</p>
+<h2 id="一程序结构">一、程序结构</h2>
+<ol>
+<li>go程序使用驼峰式命名风格</li>
+<li>零值，变量的初始值，数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值</li>
+<li>短变量声明，<code>a,b := f()</code>，a和b中至少有一个得是新变量，不能全是已经声明的变量</li>
+<li>指针，函数返回局部变量的地址是安全的（见 6.变量的生命周期）</li>
+<li>new函数，new函数创建一个新值并返回其地址</li>
+<li>变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new</li>
+<li>多重赋值，例如<code>a,b := 1,&quot;xxx</code>或<code>x,y = y,x</code>，后者用来交换变量的值</li>
+<li>类型转换，<code>var a T = T.(b)</code>，每个类型都会提供<code>T.(x)</code>将x的值转换为T（前提是允许这种转换）</li>
+<li>导出的标识符才能在包外被访问到，导出的标识符以大写字母开头</li>
+<li>包初始化，从初始化变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量</li>
+<li>init函数，可以有任意个，在程序启动时按照声明顺序自动执行</li>
+</ol>
+</article>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/db_transaction/"><span class="iconfont icon-article"></span>Db_transaction</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 openjz, jiezi.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p><p style="font-size: 12px;"><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">津ICP备2020010292号-1</a></p></div>
+</section><script src="/js/prism.min.442843b7ea6eef5105ab77a4c16488edbd8210fcd77efef362770e1bf0c3a47130e20e0553ae0388b6a50e4cd49a315e.js" integrity="sha384-RChDt&#43;pu71EFq3ekwWSI7b2CEPzXfv7zYncOG/DDpHEw4g4FU64DiLalDkzUmjFe"></script></body>
+
+</html>

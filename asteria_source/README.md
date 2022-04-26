@@ -10,4 +10,6 @@ This is my web site.
 
 本地调试：`hugo server`
 
+新建文章：`hugo new posts/xxx.md`
+
 
