@@ -27,7 +27,7 @@
 &lt;li&gt;new函数，new函数创建一个新值并返回其地址&lt;/li&gt;
 &lt;li&gt;变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new&lt;/li&gt;
 &lt;li&gt;多重赋值，例如&lt;code&gt;a,b := 1,&amp;quot;xxx&lt;/code&gt;或&lt;code&gt;x,y = y,x&lt;/code&gt;，后者用来交换变量的值&lt;/li&gt;
-&lt;li&gt;类型转换，&lt;code&gt;var a T = T.(b)&lt;/code&gt;，每个类型都会提供&lt;code&gt;T.(x)&lt;/code&gt;将x的值转换为T（前提是允许这种转换）&lt;/li&gt;
+&lt;li&gt;类型转换，&lt;code&gt;var a T = T(b)&lt;/code&gt;，每个类型都会提供&lt;code&gt;T(x)&lt;/code&gt;将x的值转换为T（前提是允许这种转换）&lt;/li&gt;
 &lt;li&gt;导出的标识符才能在包外被访问到，导出的标识符以大写字母开头&lt;/li&gt;
 &lt;li&gt;包初始化，从初始化变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量&lt;/li&gt;
 &lt;li&gt;init函数，可以有任意个，在程序启动时按照声明顺序自动执行&lt;/li&gt;
