@@ -2,8 +2,8 @@
 title = "数据库事务"
 date = 2022-04-20T11:57:47+08:00
 lastmod = 2022-04-20T11:57:47+08:00
-tags = []
-categories = []
+tags = ["数据库"]
+categories = ["文章"]
 imgs = []
 cover = ""  # image show on top
 readingTime = true  # show reading time after article date
