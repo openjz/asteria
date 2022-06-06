@@ -71,7 +71,3 @@ showTags = true             # /tags/
   icp = "津ICP备2020010292号-1"     # example: 粤ICP备20056596号-1
   gongan = ""  # example: 粤公网安备 44030502005645号
   code = ""    # example: 44030502005645
-
-[module]
-[[module.imports]]
-path = 'github.com/alex-shpak/hugo-book'

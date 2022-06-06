@@ -1,165 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="golang入门笔记 # 参考《Go程序设计语言》 一、程序结构 # go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&q">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="golang入门笔记" />
-<meta property="og:description" content="golang入门笔记 # 参考《Go程序设计语言》 一、程序结构 # go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&q" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://xxx.shiwj.top/posts/gopl/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-04-26T11:18:48+08:00" />
-<meta property="article:modified_time" content="2022-04-26T11:18:48+08:00" />
-
-<title>golang入门笔记 | 公子杰</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/zh.search.min.d3bb116351be1db66dca5dd0e35f7b7ba77de60ac586d6872b7ce9ff23458e91.js" integrity="sha256-07sRY1G&#43;HbZtyl3Q4197e6d95grFhtaHK3zp/yNFjpE=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
-        
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>公子杰</span>
-  </a>
-</h2>
-
-
-<div class="book-search">
-  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner hidden"></div>
-  <ul id="book-search-results"></ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
-
-  <strong>golang入门笔记</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
-
-
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#一程序结构">一、程序结构</a></li>
-    <li><a href="#二基本数据">二、基本数据</a>
-      <ul>
-        <li><a href="#21-整型">2.1 整型</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/gopl/">golang入门笔记</a>
-  </h1>
-  
-  <h5>April 26, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/golang/">golang</a>
-  </div>
-  
-
-
-
-<h1 id="golang入门笔记">
-  golang入门笔记
-  <a class="anchor" href="#golang%e5%85%a5%e9%97%a8%e7%ac%94%e8%ae%b0">#</a>
-</h1>
+<html lang="zh"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>golang入门笔记&nbsp;&ndash;&nbsp;公子杰</title><link rel="stylesheet" href="/css/core.min.7630b687e7b073be49cada2a9d6892783f03daa5061cb7a6a1e239d6c1617c7d52542d2ecf34a9dd5fd87a010fac2822.css" integrity="sha384-djC2h&#43;ewc75JytoqnWiSeD8D2qUGHLemoeI51sFhfH1SVC0uzzSp3V/YegEPrCgi"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="golang入门笔记" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">公子杰</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">golang入门笔记</h1><p class="article date">Tuesday, 2022-04-26<span class="reading-time"> • 预计阅读时间 3 分钟</span></p></section><article class="article markdown-body"><h1 id="golang入门笔记">golang入门笔记</h1>
 <p>参考《Go程序设计语言》</p>
-<h2 id="一程序结构">
-  一、程序结构
-  <a class="anchor" href="#%e4%b8%80%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84">#</a>
-</h2>
+<h2 id="一程序结构">一、程序结构</h2>
 <ol>
 <li>go程序使用驼峰式命名风格</li>
 <li>零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值</li>
@@ -178,14 +26,8 @@ https://github.com/alex-shpak/hugo-book
 <li>init函数，可以有任意个，在程序启动时按照声明顺序自动执行</li>
 <li>包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）</li>
 </ol>
-<h2 id="二基本数据">
-  二、基本数据
-  <a class="anchor" href="#%e4%ba%8c%e5%9f%ba%e6%9c%ac%e6%95%b0%e6%8d%ae">#</a>
-</h2>
-<h3 id="21-整型">
-  2.1 整型
-  <a class="anchor" href="#21-%e6%95%b4%e5%9e%8b">#</a>
-</h3>
+<h2 id="二基本数据">二、基本数据</h2>
+<h3 id="21-整型">2.1 整型</h3>
 <ol>
 <li>int8、int16、int32、int64、uint8、uint16、uint32、uint64</li>
 <li>int和uint，在不同平台上大小不同（通常是32位或64位）</li>
@@ -206,75 +48,13 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ol>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
+</article><section class="article labels"><a class="category" href=/categories/%E7%AC%94%E8%AE%B0/>笔记</a><a class="tag" href=/tags/golang/>golang</a></section>
 </div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/posts/db_transaction/"><span class="iconfont icon-article"></span>数据库事务</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 openjz, jiezi.</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p><p style="font-size: 12px;"><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">津ICP备2020010292号-1</a></p></div>
+</section><script src="/js/prism.min.442843b7ea6eef5105ab77a4c16488edbd8210fcd77efef362770e1bf0c3a47130e20e0553ae0388b6a50e4cd49a315e.js" integrity="sha384-RChDt&#43;pu71EFq3ekwWSI7b2CEPzXfv7zYncOG/DDpHEw4g4FU64DiLalDkzUmjFe"></script></body>
 
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#一程序结构">一、程序结构</a></li>
-    <li><a href="#二基本数据">二、基本数据</a>
-      <ul>
-        <li><a href="#21-整型">2.1 整型</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
-</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

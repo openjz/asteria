@@ -29,5 +29,6 @@ hugo mod init github.com/openjz/asteria/tree/main/asteria_source
 path = 'github.com/alex-shpak/hugo-book'
 ```
 
-3. hugo mod get -u 
+3. hugo mod get -u，更新所有依赖
+4. hugo mod vendor
 
