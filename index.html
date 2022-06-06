@@ -1,19 +1,181 @@
 <!DOCTYPE html>
-<html lang="zh"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>公子杰</title><link rel="stylesheet" href="/css/core.min.7630b687e7b073be49cada2a9d6892783f03daa5061cb7a6a1e239d6c1617c7d52542d2ecf34a9dd5fd87a010fac2822.css" integrity="sha384-djC2h&#43;ewc75JytoqnWiSeD8D2qUGHLemoeI51sFhfH1SVC0uzzSp3V/YegEPrCgi"><link rel="alternate" type="application/rss+xml" href="/index.xml" title="公子杰" /><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="公子杰" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">公子杰</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><ul class="note list"><li class="item"><a class="note" href="/posts/gopl/">
-            <p class="note title">golang入门笔记</p><p class="note date">Tuesday, 2022-04-26</p><p class="note content">golang入门笔记 参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值，数字是0，字符串是&quot;&quo<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/golang/">golang</a></p></li><li class="item"><a class="note" href="/posts/db_transaction/">
-            <p class="note title">数据库事务</p><p class="note date">Wednesday, 2022-04-20</p><p class="note content">数据库事务 事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E6%96%87%E7%AB%A0/">文章</a><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></p></li><li class="item"><a class="note" href="/posts/cold_heat_sweat/">
-            <p class="note title">冷热和出汗是怎么回事</p><p class="note date">Wednesday, 2022-03-02</p><p class="note content">冷热和出汗是怎么回事 本文参考各种网络内容 人是如何感觉到冷热的 人体有两个温度，核心温度和体表温度。核心温度是指人体内的温度，作为恒温动物，人体<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></p></li><li class="item"><a class="note" href="/posts/mysql-note/">
-            <p class="note title">mysql入门笔记</p><p class="note date">Friday, 2021-12-10</p><p class="note content">mysql入门笔记 参考《mysql必知必会》 一、基本概念 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/mysql/">mysql</a></p></li><li class="item"><a class="note" href="/posts/css-note/">
-            <p class="note title">css入门笔记</p><p class="note date">Sunday, 2021-11-14</p><p class="note content">CSS入门笔记 参考MDN教程 一、导入 css 1、导入外部样式： &lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式 使用 style 元素 &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt;<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/css/">css</a></p></li></ul></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 openjz, jiezi.</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p><p style="font-size: 12px;"><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">津ICP备2020010292号-1</a></p></div>
-</section><script src="/js/prism.min.442843b7ea6eef5105ab77a4c16488edbd8210fcd77efef362770e1bf0c3a47130e20e0553ae0388b6a50e4cd49a315e.js" integrity="sha384-RChDt&#43;pu71EFq3ekwWSI7b2CEPzXfv7zYncOG/DDpHEw4g4FU64DiLalDkzUmjFe"></script></body>
+<html lang="zh" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.89.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="公子杰" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://xxx.shiwj.top/" />
 
+<title>公子杰 | 公子杰</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/zh.search.min.d3bb116351be1db66dca5dd0e35f7b7ba77de60ac586d6872b7ce9ff23458e91.js" integrity="sha256-07sRY1G&#43;HbZtyl3Q4197e6d95grFhtaHK3zp/yNFjpE=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://xxx.shiwj.top/index.xml" title="公子杰" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>公子杰</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>公子杰</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      <ul class="note list"><li class="item"><a class="note" href="/posts/gopl/">
+            <p class="note title">golang入门笔记</p><p class="note date">Tuesday, 2022-04-26</p><p class="note content">golang入门笔记 # 参考《Go程序设计语言》 一、程序结构 # go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&q<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/golang/">golang</a></p></li><li class="item"><a class="note" href="/posts/db_transaction/">
+            <p class="note title">数据库事务</p><p class="note date">Wednesday, 2022-04-20</p><p class="note content">数据库事务 # 事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 # 脏读：当前事务可以读取到其<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E6%96%87%E7%AB%A0/">文章</a><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></p></li><li class="item"><a class="note" href="/posts/cold_heat_sweat/">
+            <p class="note title">冷热和出汗是怎么回事</p><p class="note date">Wednesday, 2022-03-02</p><p class="note content">冷热和出汗是怎么回事 # 本文参考各种网络内容 人是如何感觉到冷热的 # 人体有两个温度，核心温度和体表温度。核心温度是指人体内的温度，作为恒温动物，<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></p></li><li class="item"><a class="note" href="/posts/mysql-note/">
+            <p class="note title">mysql入门笔记</p><p class="note date">Friday, 2021-12-10</p><p class="note content">mysql入门笔记 # 参考《mysql必知必会》 一、基本概念 # 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/mysql/">mysql</a></p></li><li class="item"><a class="note" href="/posts/css-note/">
+            <p class="note title">css入门笔记</p><p class="note date">Sunday, 2021-11-14</p><p class="note content">CSS入门笔记 # 参考MDN教程 一、导入 css # 1、导入外部样式： &lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式 使用 style 元素 &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; }<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/css/">css</a></p></li></ul> 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

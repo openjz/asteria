@@ -72,5 +72,6 @@ showTags = true             # /tags/
   gongan = ""  # example: 粤公网安备 44030502005645号
   code = ""    # example: 44030502005645
 
-
-
+[module]
+[[module.imports]]
+path = 'github.com/alex-shpak/hugo-book'
