@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据库 on 星星</title>
-    <link>https://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <link>http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
     <description>Recent content in 数据库 on 星星</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 20 Apr 2022 11:57:47 +0800</lastBuildDate><atom:link href="https://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Apr 2022 11:57:47 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数据库事务</title>
-      <link>https://blog.shiwj.top/posts/db-transaction/</link>
+      <link>http://blog.shiwj.top/posts/db-transaction/</link>
       <pubDate>Wed, 20 Apr 2022 11:57:47 +0800</pubDate>
       
-      <guid>https://blog.shiwj.top/posts/db-transaction/</guid>
+      <guid>http://blog.shiwj.top/posts/db-transaction/</guid>
       <description>事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚
 事务的并发问题 #   脏读：当前事务可以读取到其他事务未提交的数据 不可重复读：当前事务前后两次使用相同的查询语句查到了不同的数据，原因是在事务执行过程中，有其他事务对这批数据做了增删改操作。如果当前事务的两次读操作分别发生在其他事务开始前和提交后，读到的数据不一致，这就不算脏读，属于不可重复读问题。 幻读：事务进行读操作发现数据不存在，试图插入数据，但是插入失败，或者事务发现数据存在，试图更新数据，但更新失败，原因是事务读数据后，有其他事务对数据做了增删操作。即使数据库能够保证不发生脏读和不可重复读,仍有可能发生幻读，现象是每次读数据结果都是不存在，但就是不能插入数据，或者是每次读数据结果都是存在，但就是更新不了。  </description>
     </item>

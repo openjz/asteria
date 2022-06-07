@@ -10,9 +10,9 @@
 <meta property="og:description" content="事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚
 事务的并发问题 #   脏读：当前事务可以读取到其他事务未提交的数据 不可重复读：当前事务前后两次使用相同的查询语句查到了不同的数据，原因是在事务执行过程中，有其他事务对这批数据做了增删改操作。如果当前事务的两次读操作分别发生在其他事务开始前和提交后，读到的数据不一致，这就不算脏读，属于不可重复读问题。 幻读：事务进行读操作发现数据不存在，试图插入数据，但是插入失败，或者事务发现数据存在，试图更新数据，但更新失败，原因是事务读数据后，有其他事务对数据做了增删操作。即使数据库能够保证不发生脏读和不可重复读,仍有可能发生幻读，现象是每次读数据结果都是不存在，但就是不能插入数据，或者是每次读数据结果都是存在，但就是更新不了。  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.shiwj.top/posts/db-transaction/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://blog.shiwj.top/posts/db-transaction/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-20T11:57:47+08:00" />
-<meta property="article:modified_time" content="2022-04-20T11:57:47+08:00" />
+<meta property="article:modified_time" content="2022-06-07T21:48:53+08:00" />
 
 <title>数据库事务 | 星星</title>
 <link rel="manifest" href="/manifest.json">
@@ -175,6 +175,12 @@ https://github.com/alex-shpak/hugo-book
         
   <div class="flex flex-wrap justify-between">
 
+
+  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/456f2efd6ed92e0c930096c41ca59e3b5f6da93d" title='最后修改者 swj | June 7, 2022' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>June 7, 2022</span>
+    </a>
+  </div>
 
 
 

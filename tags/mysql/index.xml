@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mysql on 星星</title>
-    <link>https://blog.shiwj.top/tags/mysql/</link>
+    <link>http://blog.shiwj.top/tags/mysql/</link>
     <description>Recent content in mysql on 星星</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 10 Dec 2021 10:09:46 +0800</lastBuildDate><atom:link href="https://blog.shiwj.top/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Dec 2021 10:09:46 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mysql入门笔记</title>
-      <link>https://blog.shiwj.top/posts/mysql-note/</link>
+      <link>http://blog.shiwj.top/posts/mysql-note/</link>
       <pubDate>Fri, 10 Dec 2021 10:09:46 +0800</pubDate>
       
-      <guid>https://blog.shiwj.top/posts/mysql-note/</guid>
+      <guid>http://blog.shiwj.top/posts/mysql-note/</guid>
       <description>参考《mysql必知必会》
 一、基本概念 #  模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。
 主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。

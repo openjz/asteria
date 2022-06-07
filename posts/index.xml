@@ -2,36 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on 星星</title>
-    <link>https://blog.shiwj.top/posts/</link>
+    <link>http://blog.shiwj.top/posts/</link>
     <description>Recent content in Blog on 星星</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 26 Apr 2022 11:18:48 +0800</lastBuildDate><atom:link href="https://blog.shiwj.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://blog.shiwj.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>golang入门笔记</title>
-      <link>https://blog.shiwj.top/posts/gopl/</link>
+      <link>http://blog.shiwj.top/posts/gopl/</link>
       <pubDate>Tue, 26 Apr 2022 11:18:48 +0800</pubDate>
       
-      <guid>https://blog.shiwj.top/posts/gopl/</guid>
+      <guid>http://blog.shiwj.top/posts/gopl/</guid>
       <description>参考《Go程序设计语言》
 一、程序结构 #   go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&amp;quot;&amp;quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&amp;quot;xxx&amp;quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 #  2.1 整型 #   int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;amp;^是与非运算（AND NOT），&amp;lt;&amp;lt;是左移，&amp;gt;&amp;gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&amp;gt;&amp;gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&amp;gt;&amp;gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&amp;raquo;1结果为-3）      2.2. 浮点型 #   两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  </description>
     </item>
     
     <item>
       <title>数据库事务</title>
-      <link>https://blog.shiwj.top/posts/db-transaction/</link>
+      <link>http://blog.shiwj.top/posts/db-transaction/</link>
       <pubDate>Wed, 20 Apr 2022 11:57:47 +0800</pubDate>
       
-      <guid>https://blog.shiwj.top/posts/db-transaction/</guid>
+      <guid>http://blog.shiwj.top/posts/db-transaction/</guid>
       <description>事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚
 事务的并发问题 #   脏读：当前事务可以读取到其他事务未提交的数据 不可重复读：当前事务前后两次使用相同的查询语句查到了不同的数据，原因是在事务执行过程中，有其他事务对这批数据做了增删改操作。如果当前事务的两次读操作分别发生在其他事务开始前和提交后，读到的数据不一致，这就不算脏读，属于不可重复读问题。 幻读：事务进行读操作发现数据不存在，试图插入数据，但是插入失败，或者事务发现数据存在，试图更新数据，但更新失败，原因是事务读数据后，有其他事务对数据做了增删操作。即使数据库能够保证不发生脏读和不可重复读,仍有可能发生幻读，现象是每次读数据结果都是不存在，但就是不能插入数据，或者是每次读数据结果都是存在，但就是更新不了。  </description>
     </item>
     
     <item>
       <title>mysql入门笔记</title>
-      <link>https://blog.shiwj.top/posts/mysql-note/</link>
+      <link>http://blog.shiwj.top/posts/mysql-note/</link>
       <pubDate>Fri, 10 Dec 2021 10:09:46 +0800</pubDate>
       
-      <guid>https://blog.shiwj.top/posts/mysql-note/</guid>
+      <guid>http://blog.shiwj.top/posts/mysql-note/</guid>
       <description>参考《mysql必知必会》
 一、基本概念 #  模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。
 主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。
@@ -49,10 +48,10 @@
     
     <item>
       <title>css入门笔记</title>
-      <link>https://blog.shiwj.top/posts/css-note/</link>
+      <link>http://blog.shiwj.top/posts/css-note/</link>
       <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
       
-      <guid>https://blog.shiwj.top/posts/css-note/</guid>
+      <guid>http://blog.shiwj.top/posts/css-note/</guid>
       <description>参考 MDN教程
 一、导入 css #  1、导入外部样式：
 &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt; 2、内部样式
