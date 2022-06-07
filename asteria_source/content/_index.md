@@ -9,5 +9,5 @@ type: docs
 
 ## 本人
 
-![图片-本人](https://swjblog.oss-cn-beijing.aliyuncs.com/image/me.jpg)
+![图片-本人](https://swjblog.oss-cn-beijing.aliyuncs.com/image/me_little.jpg)
 
