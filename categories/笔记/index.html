@@ -1,17 +1,407 @@
 <!DOCTYPE html>
-<html lang="zh"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>笔记&nbsp;&ndash;&nbsp;公子杰</title><link rel="stylesheet" href="/css/core.min.7630b687e7b073be49cada2a9d6892783f03daa5061cb7a6a1e239d6c1617c7d52542d2ecf34a9dd5fd87a010fac2822.css" integrity="sha384-djC2h&#43;ewc75JytoqnWiSeD8D2qUGHLemoeI51sFhfH1SVC0uzzSp3V/YegEPrCgi"><link rel="alternate" type="application/rss+xml" href="/categories/%E7%AC%94%E8%AE%B0/index.xml" title="公子杰" /><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="笔记" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">公子杰</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">分类</a><a class="nav item" href="/tags/">标签</a></nav></div></span></div></section><section id="content"><section class="article header"><h1>笔记</h1></section><ul class="note list"><li class="item"><a class="note" href="/posts/gopl/">
-            <p class="note title">golang入门笔记</p><p class="note date">Tuesday, 2022-04-26</p><p class="note content">golang入门笔记 参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quo<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/golang/">golang</a></p></li><li class="item"><a class="note" href="/posts/mysql-note/">
-            <p class="note title">mysql入门笔记</p><p class="note date">Friday, 2021-12-10</p><p class="note content">mysql入门笔记 参考《mysql必知必会》 一、基本概念 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/mysql/">mysql</a></p></li><li class="item"><a class="note" href="/posts/css-note/">
-            <p class="note title">css入门笔记</p><p class="note date">Sunday, 2021-11-14</p><p class="note content">CSS入门笔记 参考MDN教程 一、导入 css 1、导入外部样式： &lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式 使用 style 元素 &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt;<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="tag" href="/tags/css/">css</a></p></li></ul></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 openjz, jiezi.</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p><p style="font-size: 12px;"><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">津ICP备2020010292号-1</a></p></div>
-</section><script src="/js/prism.min.442843b7ea6eef5105ab77a4c16488edbd8210fcd77efef362770e1bf0c3a47130e20e0553ae0388b6a50e4cd49a315e.js" integrity="sha384-RChDt&#43;pu71EFq3ekwWSI7b2CEPzXfv7zYncOG/DDpHEw4g4FU64DiLalDkzUmjFe"></script></body>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="笔记" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.shiwj.top/categories/%E7%AC%94%E8%AE%B0/" />
 
+<title>笔记 | 星星</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://blog.shiwj.top/categories/%E7%AC%94%E8%AE%B0/index.xml" title="星星" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>星星</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>笔记</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/%E6%96%87%E7%AB%A0/">文章</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/golang/">golang</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">mysql</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/css/">css</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/gopl/">golang入门笔记</a>
+    </h2>
+    
+  <h5>April 26, 2022</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/golang/">golang</a>
+  </div>
+  
+
+
+
+
+    <p>参考《Go程序设计语言》
+一、程序结构 #   go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&quot;xxx&quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 #  2.1 整型 #   int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;^是与非运算（AND NOT），&lt;&lt;是左移，&gt;&gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&gt;&gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&gt;&gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&raquo;1结果为-3）      2.2. 浮点型 #   两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/mysql-note/">mysql入门笔记</a>
+    </h2>
+    
+  <h5>December 10, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/mysql/">mysql</a>
+  </div>
+  
+
+
+
+
+    <p>参考《mysql必知必会》
+一、基本概念 #  模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。
+主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。
+ 主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上
+ 外键（foreign key）：外键是表中的一个字段，对应另一个表的主键。
+ 可伸缩性（scale），一个设计良好的数据库能够良好应对数据量的增加，我们把这种情况称为数据库的可伸缩性好，可伸缩性离不开外键的使用。
+  检索性能可能会受多种因素影响：检索操作（子查询、联表查询&hellip;），数据量，是否有索引或键
+ 子句（clause）：SQL由子句构成，例如from、order by等。
+完全限定列名：表名.列名，video.md5
+二、mysql工具 #  mysql安装包中自带一个命令行工具mysql，这是一个运行在命令行的mysql客户端。
+ 命令用;或\g结束，\G可以使横向表格纵向输出 输入help或\h查看帮助 输入quit或exit退出  mysql默认端口是3306
+三、使用mysql #  一些关于数据库和表的命令：
+ 选择数据库：use xxx; 查看（show）  所有数据库：show databases; 所有表：show tables; 表的列：show columns from xxx;  和desc xxx;作用相同   服务器状态：show status; 权限：show grants; 数据库和表的创建语句：show create database/table xxx; 服务器错误和告警：show errors/warnings; help show    四、检索（select） #  简单select #  select field1 from table_hello; select field1,field2,field3 from table_hello; select * from table_hello; 字段前面可以加上表名，例如
+        <a href="/posts/mysql-note/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/css-note/">css入门笔记</a>
+    </h2>
+    
+  <h5>November 14, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/css/">css</a>
+  </div>
+  
+
+
+
+
+    <p>参考 MDN教程
+一、导入 css #  1、导入外部样式：
+&lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式
+使用 style 元素
+&lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt; ... &lt;/html&gt; 3、内联样式
+使用 style 属性
+&lt;h1 style=&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;&gt; Hello World! &lt;/h1&gt; 语法 #  1、选择器+大括号，属性:值;
+h1 { color: red; font-size: 5em; } 2、函数
+        <a href="/posts/css-note/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        <footer class="flex flex-wrap justify-between">
+    <div>
+      <p>
+        &copy; 2022 shiwj all rights reserved.
+      </p>
+      <p>
+        津ICP备2020010292号-1
+      </p>
+    </div>
+  </footer>
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/%E6%96%87%E7%AB%A0/">文章</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/golang/">golang</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">mysql</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/css/">css</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

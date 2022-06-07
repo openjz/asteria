@@ -7,8 +7,6 @@ categories = ["笔记"]
 draft = false
 +++
 
-# CSS入门笔记
-
 参考[MDN教程](https://developer.mozilla.org/zh-CN/docs/Learn/CSS)
 
 ## 一、导入 css

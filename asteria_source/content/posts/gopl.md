@@ -4,18 +4,8 @@ date = 2022-04-26T11:18:48+08:00
 lastmod = 2022-04-26T11:18:48+08:00
 tags = ["golang"]
 categories = ["笔记"]
-imgs = []
-cover = ""  # image show on top
-readingTime = true  # show reading time after article date
-toc = true
-comments = false
-justify = false  # text-align: justify;
-single = false  # display as a single page, hide navigation on bottom, like as about page.
-license = ""  # CC License
 draft = false
 +++
-
-# golang入门笔记
 
 参考《Go程序设计语言》
 

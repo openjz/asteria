@@ -1,6 +1,6 @@
 # asteria
 
-This is my web site.
+This is my personal web site.
 
 ## hugo命令
 
@@ -27,19 +27,10 @@ hugo mod init github.com/openjz/asteria/tree/main/asteria_source
 
 ```toml
 [module]
-  # uncomment line below for temporary local development of module
-  # replacements = "github.com/google/docsy -> ../../docsy"
-  proxy = 'https://goproxy.cn,direct'
-  [module.hugoVersion]
-    extended = true
-    min = "0.75.0"
-  [[module.imports]]
-    path = "github.com/google/docsy"
-    disable = false
-  [[module.imports]]
-    path = "github.com/google/docsy/dependencies"
-    disable = false  
-```  
+proxy = 'https://goproxy.cn,direct'
+[[module.imports]]
+path = 'github.com/alex-shpak/hugo-book'
+```
 
-3. hugo mod get -u，下载并更新所有依赖
+3. hugo mod get -u，更新所有依赖
 

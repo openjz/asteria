@@ -7,8 +7,6 @@ categories = ["笔记"]
 draft = false
 +++
 
-# mysql入门笔记
-
 参考《mysql必知必会》
 
 ## 一、基本概念
