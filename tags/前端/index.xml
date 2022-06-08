@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端 on 星星</title>
+    <link>http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 前端 on 星星</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 14 Nov 2021 10:09:46 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>css入门笔记</title>
+      <link>http://blog.shiwj.top/posts/css-note/</link>
+      <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
+      
+      <guid>http://blog.shiwj.top/posts/css-note/</guid>
+      <description>参考 MDN教程
+一、导入 css #  1、导入外部样式：
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt; 2、内部样式
+使用 style 元素
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;My CSS experiment&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; ... &amp;lt;/html&amp;gt; 3、内联样式
+使用 style 属性
+&amp;lt;h1 style=&amp;#34;color: blue;background-color: yellow;border: 1px solid black;&amp;#34;&amp;gt; Hello World! &amp;lt;/h1&amp;gt; 语法 #  1、选择器+大括号，属性:值;
+h1 { color: red; font-size: 5em; } 2、函数</description>
+    </item>
+    
+  </channel>
+</rss>

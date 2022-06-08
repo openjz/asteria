@@ -2,8 +2,8 @@
 title = "css入门笔记"
 date = 2021-11-14T10:09:46+08:00
 lastmod = 2021-11-14T10:09:46+08:00
-tags = ["css"]
-categories = ["笔记"]
+tags = ["css","前端"]
+categories = ["计算机"]
 draft = false
 +++
 
