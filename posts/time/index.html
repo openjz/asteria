@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="unix时间戳 #  unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，全世界的计算机在同一时刻获取到的时间戳都是相同的。
+<meta name="description" content="unix时间戳 #  unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，各时区的计算机在同一时刻获取到的时间戳都是相同的。
+unix时间戳不存在时区问题，因此在传递时间参数的时候，传时间戳明显比传格式化的时间字符串更方便，更明确
 2038年问题 #  相当一部分unix操作系统使用32位有符号整型保存时间戳，因此时间戳的值最大也只有2147483647，换算成UTC时间为&quot;2038-01-19 03:14:07&quot;，一旦超过这个时间，这些系统的时间戳就会变成一个无效值，可能会导致程序出错，这就是2038年问题。
  这有点类似于千年虫问题，2000年以前，很多计算机程序由于程序设计有问题，在时间超过2000年1月1日零点之后，程序会因为无法正确处理时间导致处理出错或程序崩溃（例如有些程序只用年份的后两位表示年份，导致2000年会被误认为是1900年）
  ">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="计算机中的时间" />
-<meta property="og:description" content="unix时间戳 #  unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，全世界的计算机在同一时刻获取到的时间戳都是相同的。
+<meta property="og:description" content="unix时间戳 #  unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，各时区的计算机在同一时刻获取到的时间戳都是相同的。
+unix时间戳不存在时区问题，因此在传递时间参数的时候，传时间戳明显比传格式化的时间字符串更方便，更明确
 2038年问题 #  相当一部分unix操作系统使用32位有符号整型保存时间戳，因此时间戳的值最大也只有2147483647，换算成UTC时间为&quot;2038-01-19 03:14:07&quot;，一旦超过这个时间，这些系统的时间戳就会变成一个无效值，可能会导致程序出错，这就是2038年问题。
  这有点类似于千年虫问题，2000年以前，很多计算机程序由于程序设计有问题，在时间超过2000年1月1日零点之后，程序会因为无法正确处理时间导致处理出错或程序崩溃（例如有些程序只用年份的后两位表示年份，导致2000年会被误认为是1900年）
  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/posts/time/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-08T12:29:06+08:00" />
-<meta property="article:modified_time" content="2022-06-08T12:29:06+08:00" />
+<meta property="article:modified_time" content="2022-06-08T12:51:23+08:00" />
 
 <title>计算机中的时间 | 星星</title>
 <link rel="manifest" href="/manifest.json">
@@ -167,7 +169,8 @@ https://github.com/alex-shpak/hugo-book
   unix时间戳
   <a class="anchor" href="#unix%e6%97%b6%e9%97%b4%e6%88%b3">#</a>
 </h2>
-<p>unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，全世界的计算机在同一时刻获取到的时间戳都是相同的。</p>
+<p>unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，各时区的计算机在同一时刻获取到的时间戳都是相同的。</p>
+<p>unix时间戳不存在时区问题，因此在传递时间参数的时候，传时间戳明显比传格式化的时间字符串更方便，更明确</p>
 <h2 id="2038年问题">
   2038年问题
   <a class="anchor" href="#2038%e5%b9%b4%e9%97%ae%e9%a2%98">#</a>
@@ -184,6 +187,12 @@ https://github.com/alex-shpak/hugo-book
         
   <div class="flex flex-wrap justify-between">
 
+
+  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/e5afc62ee7a52bcd06f3016c2caf52a4d04ef167" title='最后修改者 swj | June 8, 2022' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>June 8, 2022</span>
+    </a>
+  </div>
 
 
 
