@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="数据库" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="考编" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" />
+<meta property="og:url" content="http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/" />
 
-<title>数据库 | 星星</title>
+<title>考编 | 星星</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" title="星星" />
+<link rel="alternate" type="application/rss+xml" href="http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/index.xml" title="星星" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -96,7 +96,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>数据库</strong>
+  <strong>考编</strong>
 
   <label for="toc-control">
     
@@ -184,111 +184,34 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/posts/time/">计算机中的时间</a>
+      <a href="/posts/xingce-tips/">行测技巧</a>
     </h2>
     
-  <h5>June 8, 2022</h5>
+  <h5>June 15, 2022</h5>
 
 
 
   
   <div>
     
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+      <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
   </div>
   
 
   
   <div>
     
-      <a href="/tags/mysql/">mysql</a>, 
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+      <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
   </div>
   
 
 
 
 
-    <p>unix时间戳 #  unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，各时区的计算机在同一时刻获取到的时间戳都是相同的。
-unix时间戳不存在时区问题，因此在传递时间参数的时候，传时间戳明显比传格式化的时间字符串更方便，更明确
-2038年问题 #  相当一部分unix操作系统使用32位有符号整型保存时间戳，因此时间戳的值最大也只有2147483647，换算成UTC时间为&quot;2038-01-19 03:14:07&quot;，一旦超过这个时间，这些系统的时间戳就会变成一个无效值，可能会导致程序出错，这就是2038年问题。
- 这有点类似于千年虫问题，2000年以前，很多计算机程序由于程序设计有问题，在时间超过2000年1月1日零点之后，程序会因为无法正确处理时间导致处理出错或程序崩溃（例如有些程序只用年份的后两位表示年份，导致2000年会被误认为是1900年）
- 
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/db-transaction/">数据库事务</a>
-    </h2>
-    
-  <h5>April 20, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-  </div>
-  
-
-
-
-
-    <p>事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚
-事务的并发问题 #   脏读：当前事务可以读取到其他事务未提交的数据 不可重复读：当前事务前后两次使用相同的查询语句查到了不同的数据，原因是在事务执行过程中，有其他事务对这批数据做了增删改操作。如果当前事务的两次读操作分别发生在其他事务开始前和提交后，读到的数据不一致，这就不算脏读，属于不可重复读问题。 幻读：事务进行读操作发现数据不存在，试图插入数据，但是插入失败，或者事务发现数据存在，试图更新数据，但更新失败，原因是事务读数据后，有其他事务对数据做了增删操作。即使数据库能够保证不发生脏读和不可重复读,仍有可能发生幻读，现象是每次读数据结果都是不存在，但就是不能插入数据，或者是每次读数据结果都是存在，但就是更新不了。  
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/mysql-note/">mysql入门笔记</a>
-    </h2>
-    
-  <h5>December 10, 2021</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/mysql/">mysql</a>, 
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-  </div>
-  
-
-
-
-
-    <p>参考《mysql必知必会》
-一、基本概念 #  模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。
-主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。
- 主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上
- 外键（foreign key）：外键是表中的一个字段，对应另一个表的主键。
- 可伸缩性（scale），一个设计良好的数据库能够良好应对数据量的增加，我们把这种情况称为数据库的可伸缩性好，可伸缩性离不开外键的使用。
-  检索性能可能会受多种因素影响：检索操作（子查询、联表查询&hellip;），数据量，是否有索引或键
- 子句（clause）：SQL由子句构成，例如from、order by等。
-完全限定列名：表名.列名，video.md5
-二、mysql工具 #  mysql安装包中自带一个命令行工具mysql，这是一个运行在命令行的mysql客户端。
- 命令用;或\g结束，\G可以使横向表格纵向输出 输入help或\h查看帮助 输入quit或exit退出  mysql默认端口是3306
-三、使用mysql #  一些关于数据库和表的命令：
- 选择数据库：use xxx; 查看（show）  所有数据库：show databases; 所有表：show tables; 表的列：show columns from xxx;  和desc xxx;作用相同   服务器状态：show status; 权限：show grants; 数据库和表的创建语句：show create database/table xxx; 服务器错误和告警：show errors/warnings; help show    四、检索（select） #  简单select #  select field1 from table_hello; select field1,field2,field3 from table_hello; select * from table_hello; 字段前面可以加上表名，例如
-        <a href="/posts/mysql-note/">...</a>
+    <p>速算技巧 #  求解对象 #   基期、现期、增长量、增长率 平均值、比重  选项差距 #  差距大：
+ 四个选项首位均不同 首位相同，第二位的差大于首位  差距小：
+ 存在首位相同的选项，且选项的第二位差小于等于首位。  运算技巧 #   直除  应用场景：多位数除法（三位数以上） 方法：分母保留2位或3位有效数字 选项差距大，四舍五入保留2位；选项差距小，四舍五入保留3位；   多位数求和  应用场景：123.4+567.8+901.2 方法：先对各个位求和，从百位求起，然后将各个位的求和结果错位相加   尾数求和  应用场景：多个多位数相加，选项精确到了最后一位并且尾数各不相同 方法：只对尾数求和   增长量计算-假设法  应用场景：现期15048，同比增长率20.5%，求现期和基期的差 方法：先假设一个基期（通常假设一个整数），求出增量；对余量，重复这个过程。适用于选项差距小的情况   增长量计算-百分数化简为分数  适用于选项差距大、增长率绝对值大于等于5%的情况   \[\frac{1}{3}=33.3\%,\frac{1}{6}=16.7\%,\frac{1}{7}=14.3\%\]   \[\frac{1}{8}=12.5\%,\frac{1}{9}=11.1\%,\frac{1}{11}=9.1\%\]   \[\frac{1}{12}=8.3\%,\frac{1}{13}=7.7\%,\frac{1}{14}=7.1\%\]   \[\frac{1}{15}=6.
+        <a href="/posts/xingce-tips/">...</a>
       
     </p>
   </article>
