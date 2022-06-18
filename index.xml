@@ -6,6 +6,20 @@
     <description>Recent content in 主页 on 星星</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>数字签名和数字证书</title>
+      <link>http://blog.shiwj.top/posts/digital-signatures-certificates/</link>
+      <pubDate>Sat, 18 Jun 2022 14:28:00 +0800</pubDate>
+      
+      <guid>http://blog.shiwj.top/posts/digital-signatures-certificates/</guid>
+      <description>数字签名 #  数字签名的作用是保证数据的完整性和保密性
+数据完整性通过对数据做摘要保证
+数据的保密性通过对数据和摘要做公钥加密保证，接收人只能用发送人提供的公钥才能解密消息，用其他人提供的公钥无法解密消息
+具体的交互流程是
+ 发送人对消息做加密和摘要，生成数字签名和加密信息，并将签名和信息一起发送给接收人 接收人收到消息后，使用发送人的公钥校验数字签名，校验通过后，即可证明消息的完整性 接收人对消息进行解密，查看消息，对消息做出答复，并用发送人的公钥对答复加密，回复给发送人  数字证书 #  在使用数字签名的过程中存在一个问题，即接收人无法判断发送人的公钥是否可信，换言之，发送人提供的公钥有可能被篡改或伪造。数字证书就是为了解决公钥的可信性问题而被发明出来的。
+具体的做法是，由一个权威的证书颁发机构（CA）使用它自己的公钥对发送人的公钥做一个数字签名，并将这个数字签名作为证书颁发给发送人，发送人给接收人发送消息时，将证书一并附上，由接收人去验证。CA会为其自己的公钥颁发一个根证书，提前提供给用户，用户从根证书中获取到CA的公钥，对CA颁发的证书进行验证。</description>
+    </item>
+    
+    <item>
       <title>行测技巧</title>
       <link>http://blog.shiwj.top/posts/xingce-tips/</link>
       <pubDate>Wed, 15 Jun 2022 14:24:30 +0800</pubDate>
