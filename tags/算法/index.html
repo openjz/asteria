@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Categories" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="算法" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://blog.shiwj.top/categories/" />
+<meta property="og:url" content="http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/" />
 
-<title>Categories | 星星</title>
+<title>算法 | 星星</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://blog.shiwj.top/categories/index.xml" title="星星" />
+<link rel="alternate" type="application/rss+xml" href="http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/index.xml" title="星星" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -96,7 +96,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Categories</strong>
+  <strong>算法</strong>
 
   <label for="toc-control">
     
@@ -209,7 +209,7 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+      <a href="/posts/algorithm-problem/">算法题</a>
     </h2>
     
   <h5>July 6, 2022</h5>
@@ -217,53 +217,40 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-
-  
-
-
-
-
-    <p>
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
-    </h2>
+  <div>
     
-  <h5>June 26, 2022</h5>
-
-
-
+      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+  </div>
   
 
   
-
-
-
-
-    <p>
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-    </h2>
+  <div>
     
-  <h5>June 21, 2022</h5>
-
-
-
-  
-
+      <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
   
 
 
 
 
-    <p>
+    <p>寻找两个正序数组的中位数 #  给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
+方法1-归并法 #  方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m+n)
+方法2-改良的归并法 #  方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
+寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m+n))
+这里面有一个关键问题，为什么比较步长是k/2？
+为了解释这个问题，先看一个例子，
+A：1，2，3，8 B：4，5，6，7 有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
+下面说明为什么是k/2
+在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
+假设有以下两个序列
+A：a0,a1,...,am B: b0,b1,...,bn 假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
+ ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
+情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &lt;= kth &lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &lt;= Kth &lt;= ap，即不能让位于比较点的两个数都大于等于Kth
+当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
+相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。
+方法3-二分法 #  方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
+ 中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1+左序列2视为左半部分，将右序列1+右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。
+那如何找到切分位置？在较短序列上进行二分搜索即可
     </p>
   </article>
   

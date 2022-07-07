@@ -1,10 +1,13 @@
 ---
-title: "计算机八股"
+title: "事业编计算机八股"
 date: 2022-06-21T19:21:16+08:00
 # bookComments: false
 # bookSearchExclude: false
+tags :
+- "八股"
 categories : 
 - "计算机"
+- "考编"
 ---
 
 ## 操作系统
