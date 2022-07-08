@@ -5,7 +5,16 @@
     <link>http://blog.shiwj.top/tags/</link>
     <description>Recent content in Tags on 星星</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 Jul 2022 11:37:09 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Jul 2022 12:23:09 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>http://blog.shiwj.top/tags/python/</link>
+      <pubDate>Fri, 08 Jul 2022 12:23:09 +0800</pubDate>
+      
+      <guid>http://blog.shiwj.top/tags/python/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>算法</title>
       <link>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</link>

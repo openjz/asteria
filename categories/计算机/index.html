@@ -119,7 +119,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>9</span>
+          <span>10</span>
         </li>
       
         <li class="flex justify-between">
@@ -140,6 +140,11 @@ https://github.com/alex-shpak/hugo-book
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/python/">python</a>
+          <span>1</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
@@ -209,6 +214,36 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
+      <a href="/posts/python-demo/">python demo</a>
+    </h2>
+    
+  <h5>July 8, 2022</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/python/">python</a>
+  </div>
+  
+
+
+
+
+    <p>创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
       <a href="/posts/algorithm-problem/">算法题</a>
     </h2>
     
@@ -239,11 +274,11 @@ https://github.com/alex-shpak/hugo-book
 寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m+n))
 这里面有一个关键问题，为什么比较步长是k/2？
 为了解释这个问题，先看一个例子，
-A：1，2，3，8 B：4，5，6，7 有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
+A：1，2，3，8 B：4，5，6，7有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
 下面说明为什么是k/2
 在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
 假设有以下两个序列
-A：a0,a1,...,am B: b0,b1,...,bn 假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
+A：a0,a1,...,amB: b0,b1,...,bn假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
  ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
 情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &lt;= kth &lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &lt;= Kth &lt;= ap，即不能让位于比较点的两个数都大于等于Kth
 当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
@@ -589,7 +624,7 @@ h1 { color: red; font-size: 5em; } 2、函数
       
         <li class="flex justify-between">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>9</span>
+          <span>10</span>
         </li>
       
         <li class="flex justify-between">
@@ -610,6 +645,11 @@ h1 { color: red; font-size: 5em; } 2、函数
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/python/">python</a>
+          <span>1</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>

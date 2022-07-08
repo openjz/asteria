@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 星星</title>
+    <link>http://blog.shiwj.top/tags/python/</link>
+    <description>Recent content in python on 星星</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 08 Jul 2022 12:23:09 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python demo</title>
+      <link>http://blog.shiwj.top/posts/python-demo/</link>
+      <pubDate>Fri, 08 Jul 2022 12:23:09 +0800</pubDate>
+      
+      <guid>http://blog.shiwj.top/posts/python-demo/</guid>
+      <description>创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] </description>
+    </item>
+    
+  </channel>
+</rss>
