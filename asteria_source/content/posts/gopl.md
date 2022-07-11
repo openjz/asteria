@@ -90,6 +90,7 @@ draft = false
         11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
         ```
     - 使用函数`utf8.RuneCountInString(s)`计算字符串中的字符数量
-    - utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号`'\uFFFD'`作为替换
+    - utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号`\uFFFD`作为替换
 9. byte和rune的区别，rune保存的是unicode码点，并不是utf-8编码后的字节，因此，`[]byte`转换为`[]rune`之后，使用`fmt.Printf("%x",s)`输出的结果并不一样
-10. 整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（`'\uFFFD'`）
+10. 整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（`\uFFFD`）
+11. 字面量`'A'`是rune类型

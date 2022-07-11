@@ -282,11 +282,12 @@ https://github.com/alex-shpak/hugo-book
 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 </code></pre></li>
 <li>使用函数<code>utf8.RuneCountInString(s)</code>计算字符串中的字符数量</li>
-<li>utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号<code>'\uFFFD'</code>作为替换</li>
+<li>utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号<code>\uFFFD</code>作为替换</li>
 </ul>
 </li>
 <li>byte和rune的区别，rune保存的是unicode码点，并不是utf-8编码后的字节，因此，<code>[]byte</code>转换为<code>[]rune</code>之后，使用<code>fmt.Printf(&quot;%x&quot;,s)</code>输出的结果并不一样</li>
-<li>整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（<code>'\uFFFD'</code>）</li>
+<li>整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（<code>\uFFFD</code>）</li>
+<li>字面量<code>'A'</code>是rune类型</li>
 </ol>
 </article>
  
