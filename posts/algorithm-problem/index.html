@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
+<meta name="description" content="常用方法 #  常用方法：动态规划，双指针，排序
+常用数据结构：map，堆，栈，队列
+寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
  方法1-归并法 #  方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
 方法2-改良的归并法 #  方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
 寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m&#43;n))
@@ -21,11 +23,12 @@ A：a0,a1,...,amB: b0,b1,...,bn假设比较步长为p，位于比较点的两�
 方法3-二分法 #  方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
  中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1&#43;左序列2视为左半部分，将右序列1&#43;右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。
 那如何找到切分位置？在较短序列上进行二分搜索即可
-正则表达式匹配 #   给你一个字符串s和一个字符规律p，请你来实现一个支持&#39;.&lsquo;和&rsquo;*&lsquo;的正则表达式匹配。
- &lsquo;.&lsquo;匹配任意单个字符 &lsquo;*&lsquo;匹配零个或多个前面的那一个元素  所谓匹配，是要涵盖整个字符串s的，而不是部分字符串。">
+正则表达式匹配 #   给你一个字符串s和一个字符规律p，请你来实现一个支持&#39;.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="算法题" />
-<meta property="og:description" content="寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
+<meta property="og:description" content="常用方法 #  常用方法：动态规划，双指针，排序
+常用数据结构：map，堆，栈，队列
+寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
  方法1-归并法 #  方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
 方法2-改良的归并法 #  方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
 寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m&#43;n))
@@ -43,12 +46,11 @@ A：a0,a1,...,amB: b0,b1,...,bn假设比较步长为p，位于比较点的两�
 方法3-二分法 #  方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
  中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1&#43;左序列2视为左半部分，将右序列1&#43;右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。
 那如何找到切分位置？在较短序列上进行二分搜索即可
-正则表达式匹配 #   给你一个字符串s和一个字符规律p，请你来实现一个支持&#39;.&lsquo;和&rsquo;*&lsquo;的正则表达式匹配。
- &lsquo;.&lsquo;匹配任意单个字符 &lsquo;*&lsquo;匹配零个或多个前面的那一个元素  所谓匹配，是要涵盖整个字符串s的，而不是部分字符串。" />
+正则表达式匹配 #   给你一个字符串s和一个字符规律p，请你来实现一个支持&#39;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/posts/algorithm-problem/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-06T11:37:09+08:00" />
-<meta property="article:modified_time" content="2022-07-11T22:14:27+08:00" />
+<meta property="article:modified_time" content="2022-07-12T11:18:00+08:00" />
 
 <title>算法题 | 星星</title>
 <link rel="manifest" href="/manifest.json">
@@ -153,6 +155,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
+        <li><a href="#常用方法">常用方法</a></li>
         <li><a href="#寻找两个正序数组的中位数">寻找两个正序数组的中位数</a>
           <ul>
             <li><a href="#方法1-归并法">方法1-归并法</a></li>
@@ -163,6 +166,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#正则表达式匹配">正则表达式匹配</a></li>
         <li><a href="#求最长回文子串">求最长回文子串</a></li>
         <li><a href="#盛水最多的容器">盛水最多的容器</a></li>
+        <li><a href="#三数之和">三数之和</a></li>
       </ul>
     </li>
   </ul>
@@ -202,6 +206,12 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+<h2 id="常用方法">
+  常用方法
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95">#</a>
+</h2>
+<p>常用方法：动态规划，双指针，排序</p>
+<p>常用数据结构：map，堆，栈，队列</p>
 <h2 id="寻找两个正序数组的中位数">
   寻找两个正序数组的中位数
   <a class="anchor" href="#%e5%af%bb%e6%89%be%e4%b8%a4%e4%b8%aa%e6%ad%a3%e5%ba%8f%e6%95%b0%e7%bb%84%e7%9a%84%e4%b8%ad%e4%bd%8d%e6%95%b0">#</a>
@@ -303,6 +313,17 @@ B: b0,b1,...,bn
 <p>返回容器可以储存的最大水量。</p>
 </blockquote>
 <p>用双指针法求解，双指针的初始位置位于数组两端，不断向中间逼近，每次移动高度较低的指针（移动指针会导致容器底部变小，为了寻找更大的容积，就要舍弃较低的边，保留较高的边）</p>
+<h2 id="三数之和">
+  三数之和
+  <a class="anchor" href="#%e4%b8%89%e6%95%b0%e4%b9%8b%e5%92%8c">#</a>
+</h2>
+<blockquote>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
+</blockquote>
+<p>三数之和要求对组合去重，这个问题和两数之和有所不同，在两数之和问题中，每个数只能属于一个组合，所以，要对组合去重，只要给已经构成组合的数打标记即可，不用对组合打标记。但是对三数之和问题不能采用这种去重方法，因为一个数可以属于多个组合，如果要采用打标记这种方式，必须对组合打标记，不能对数打标记。</p>
+<p>因此，通过打标记去重在三数之和问题中不可行</p>
+<p>采用排序+双指针的方法，可以在O(n^2)的时间复杂度内完成求解</p>
 </article>
  
       
@@ -312,9 +333,9 @@ B: b0,b1,...,bn
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/d10d423e0574732289245f4c33d8221b0b807690" title='最后修改者 swj | July 11, 2022' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/0c4f84e4073773c25014ef3b8e2bbb3325b53046" title='最后修改者 swj | July 12, 2022' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 11, 2022</span>
+      <span>July 12, 2022</span>
     </a>
   </div>
 
@@ -361,6 +382,7 @@ B: b0,b1,...,bn
   <ul>
     <li>
       <ul>
+        <li><a href="#常用方法">常用方法</a></li>
         <li><a href="#寻找两个正序数组的中位数">寻找两个正序数组的中位数</a>
           <ul>
             <li><a href="#方法1-归并法">方法1-归并法</a></li>
@@ -371,6 +393,7 @@ B: b0,b1,...,bn
         <li><a href="#正则表达式匹配">正则表达式匹配</a></li>
         <li><a href="#求最长回文子串">求最长回文子串</a></li>
         <li><a href="#盛水最多的容器">盛水最多的容器</a></li>
+        <li><a href="#三数之和">三数之和</a></li>
       </ul>
     </li>
   </ul>
