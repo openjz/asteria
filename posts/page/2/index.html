@@ -119,7 +119,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>10</span>
+          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -140,6 +140,11 @@ https://github.com/alex-shpak/hugo-book
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+          <span>1</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/python/">python</a>
@@ -211,6 +216,51 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/mysql-note/">mysql入门笔记</a>
+    </h2>
+    
+  <h5>December 10, 2021</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/mysql/">mysql</a>, 
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+  
+
+
+
+
+    <p>参考《mysql必知必会》
+一、基本概念 #  模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。
+主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。
+ 主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上
+ 外键（foreign key）：外键是表中的一个字段，对应另一个表的主键。
+ 可伸缩性（scale），一个设计良好的数据库能够良好应对数据量的增加，我们把这种情况称为数据库的可伸缩性好，可伸缩性离不开外键的使用。
+  检索性能可能会受多种因素影响：检索操作（子查询、联表查询&hellip;），数据量，是否有索引或键
+ 子句（clause）：SQL由子句构成，例如from、order by等。
+完全限定列名：表名.列名，video.md5
+二、mysql工具 #  mysql安装包中自带一个命令行工具mysql，这是一个运行在命令行的mysql客户端。
+ 命令用;或\g结束，\G可以使横向表格纵向输出 输入help或\h查看帮助 输入quit或exit退出  mysql默认端口是3306
+三、使用mysql #  一些关于数据库和表的命令：
+ 选择数据库：use xxx; 查看（show）  所有数据库：show databases; 所有表：show tables; 表的列：show columns from xxx;  和desc xxx;作用相同   服务器状态：show status; 权限：show grants; 数据库和表的创建语句：show create database/table xxx; 服务器错误和告警：show errors/warnings; help show    四、检索（select） #  简单select #  select field1 from table_hello; select field1,field2,field3 from table_hello; select * from table_hello; 字段前面可以加上表名，例如
+        <a href="/posts/mysql-note/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -332,7 +382,7 @@ h1 { color: red; font-size: 5em; } 2、函数
       
         <li class="flex justify-between">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>10</span>
+          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -353,6 +403,11 @@ h1 { color: red; font-size: 5em; } 2、函数
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+          <span>1</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/python/">python</a>

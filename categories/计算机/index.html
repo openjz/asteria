@@ -119,7 +119,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>10</span>
+          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -140,6 +140,11 @@ https://github.com/alex-shpak/hugo-book
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+          <span>1</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/python/">python</a>
@@ -211,6 +216,55 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/ip-address/">关于IP地址的发展</a>
+    </h2>
+    
+  <h5>July 15, 2022</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+  </div>
+  
+
+
+
+
+    <p>IP地址的发展 #  最开始将IP地址分为ABCDE五类地址，后来为了不浪费IP地址资源提出了划分子网，发明了子网掩码，再后来又（在可变长子网掩码VLSM的基础上）提出了无分类域间路由CIDR（Classless Inter-Domain Routing），提出了变长网络前缀，进一步提高了IP地址利用率
+在最初的五类IP编址方法中，IP地址是两级编址，由网络号+主机号构成。划分子网被提出后，IP地址变为了三级编址，即网络号+子网号+主机号。而CIDR不再使用之前的IP地址分类和划分子网的概念，使用长度可变的网络前缀代替了网络号和子网号，使用“斜线记法”，即在IP地址后面加一个斜线“/”，然后写上网络前缀所占的位数。
+CIDR实际上已经没有子网的概念，但仍然使用掩码这一称呼，IP地址从三级（网络号+子网号+主机号）又变回了两级（网络号+主机号）
+最初的五类IP地址 #  一个IPv4地址共四个字节，由网络号和主机号组成。IPv4地址分为A、B、C、D、E五类
+网络号全0代表本网络，因此，A、B、C类地址分别有一个网络号不能使用（0.0.0.0/8，128.0.0.0/16，192.0.0.0/24）。但是随着后来子网和CIDR的出现，IP地址分类已经没有意义，128.0.0.0/16已经被分配出去了，192.0.0.0/24暂时还保留在IANA手中，以后或许会分配出去，只有0.0.0.0/8这个网络号仍然保留，代表本网络
+此处参考
+  知乎tckidd的回答  RFC790-Assigned numbers，RFC790中给出了具体的IP地址划分  RFC791-Internet Protocol，RFC791中规定了全0表示本网络  RFC3330-Special-Use IPv4 Addresses，RFC3330声明了128.0.0.0/16和192.0.0.0/24不再保留  主机号全1表示本网络中的所有主机，因此主机号全1的IP地址是一个广播地址。主机号全0时这个IP地址就是网络号。
+特殊地址：
+  环回地址（loopback），127.0.0.1，等价于localhost和本机ip。（实际上整个127.0.0.0/8网段都是环回地址）
+  地址0.0.0.0代表本机
+  0.0.0.0/8中除0.0.0.0以外的其他地址用于表示本网络中的特定主机
+  主机号全0
+  主机号全1
+  A类网络号占一个字节，由0开头。其中，全0的网络号被0.0.0.0/8占用，全1的网络号被环回地址占用，因此A类网络号范围是1~126。
+  B类网络号占两个字节，由10开头（范围是128.0.0.0/16~191.255.0.0/16）
+  C类网络号占三个字节，由110开头
+  D类IP地址是多播地址，由1110开头
+  E类IP地址保留，由11110开头
+  A、B、C三类地址都各自划分出一块区域作为私有地址
+ A类私有地址，10.0.0.0~10.255.255.255 B类私有地址，172.16.0.0~172.31.255.255 C类私有地址，192.168.0.0~192.168.255.255  
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -533,48 +587,28 @@ unix时间戳不存在时区问题，因此在传递时间参数的时候，传�
     </p>
   </article>
   
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/css-note/">css入门笔记</a>
-    </h2>
-    
-  <h5>November 14, 2021</h5>
-
-
 
   
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/css/">css</a>, 
-      <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-  
-
-
-
-
-    <p>参考 MDN教程
-一、导入 css #  1、导入外部样式：
-&lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式
-使用 style 元素
-&lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt; ... &lt;/html&gt; 3、内联样式
-使用 style 属性
-&lt;h1 style=&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;&gt; Hello World! &lt;/h1&gt; 语法 #  1、选择器+大括号，属性:值;
-h1 { color: red; font-size: 5em; } 2、函数
-        <a href="/posts/css-note/">...</a>
-      
-    </p>
-  </article>
-  
-
-  
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a href="#" aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a href="#" aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
  
       
 
@@ -627,7 +661,7 @@ h1 { color: red; font-size: 5em; } 2、函数
       
         <li class="flex justify-between">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>10</span>
+          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -648,6 +682,11 @@ h1 { color: red; font-size: 5em; } 2、函数
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+          <span>1</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/python/">python</a>
