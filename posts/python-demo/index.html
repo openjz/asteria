@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] ">
+<meta name="description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
+#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 ">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="python demo" />
-<meta property="og:description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] " />
+<meta property="og:description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
+#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/posts/python-demo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-08T12:23:09+08:00" />
@@ -116,6 +118,7 @@ https://github.com/alex-shpak/hugo-book
     <li>
       <ul>
         <li><a href="#创建数组">创建数组</a></li>
+        <li><a href="#栈和队列">栈和队列</a></li>
       </ul>
     </li>
   </ul>
@@ -164,6 +167,18 @@ array1d <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</spa
 array1d_2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(s))]
 <span style="color:#75715e"># 2维数组</span>
 array2d <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>(len(s)) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(s))]
+</code></pre></div><h2 id="栈和队列">
+  栈和队列
+  <a class="anchor" href="#%e6%a0%88%e5%92%8c%e9%98%9f%e5%88%97">#</a>
+</h2>
+<p>可以使用collections模块中的deque作为栈和队列，性能比基础的list要好，参考
+  <a href="https://docs.python.org/3/library/collections.html#collections.deque">python3官方文档 collections—Container datatypes</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#栈</span>
+d <span style="color:#f92672">=</span> deque() <span style="color:#75715e">#初始化</span>
+d<span style="color:#f92672">.</span>append(c) <span style="color:#75715e">#入栈</span>
+len(d)  <span style="color:#75715e">#获取栈中元素个数</span>
+d[len(d)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#75715e">#检查栈顶</span>
+d<span style="color:#f92672">.</span>pop() <span style="color:#75715e">#出栈</span>
 </code></pre></div></article>
  
       
@@ -223,6 +238,7 @@ array2d <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</sp
     <li>
       <ul>
         <li><a href="#创建数组">创建数组</a></li>
+        <li><a href="#栈和队列">栈和队列</a></li>
       </ul>
     </li>
   </ul>
