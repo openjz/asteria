@@ -1,5 +1,5 @@
 ---
-title: "python demo"
+title: "Python Demo"
 date: 2022-07-08T12:23:09+08:00
 # bookComments: false
 # bookSearchExclude: false
