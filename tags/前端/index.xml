@@ -8,11 +8,11 @@
     <lastBuildDate>Sun, 14 Nov 2021 10:09:46 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>css入门笔记</title>
-      <link>http://blog.shiwj.top/posts/css-note/</link>
+      <link>http://blog.shiwj.top/posts/css-mdn-tutorial/</link>
       <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
       
-      <guid>http://blog.shiwj.top/posts/css-note/</guid>
-      <description>参考 MDN教程
+      <guid>http://blog.shiwj.top/posts/css-mdn-tutorial/</guid>
+      <description>参考 MDN css入门教程
 一、导入 css #  1、导入外部样式：
 &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt; 2、内部样式
 使用 style 元素

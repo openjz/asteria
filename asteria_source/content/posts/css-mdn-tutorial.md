@@ -7,7 +7,7 @@ categories = ["计算机"]
 draft = false
 +++
 
-参考[MDN教程](https://developer.mozilla.org/zh-CN/docs/Learn/CSS)
+参考[MDN css入门教程](https://developer.mozilla.org/zh-CN/docs/Learn/CSS)
 
 ## 一、导入 css
 

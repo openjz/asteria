@@ -10,6 +10,11 @@ categories :
 - "计算机"
 ---
 
+## 参考
+
+1. [unity manual](https://docs.unity3d.com/Manual/)
+2. [unity-essentials系列教程](https://learn.unity.com/pathway/unity-essentials)
+
 ## 本文约定
 
 **粗体**代表术语
@@ -44,8 +49,3 @@ categories :
 1. **primitive object（原始对象）**
     - Primitive object是基本3D形状的游戏对象，例如立方体（cube）和球体（sphere），可以将它们添加到场景中作为后续导入资源的占位对象。 
     - 如何在创建中创建：在hierarchy的空白处右键，选择3D object，选择一个原始对象
-
-## 参考
-
-1. [unity manual](https://docs.unity3d.com/Manual/)
-1. [unity-essentials](https://learn.unity.com/pathway/unity-essentials) -> Get started with Unity -> project start creating -> Tutorial·Get started in the Unity Editor
