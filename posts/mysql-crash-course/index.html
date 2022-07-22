@@ -34,7 +34,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/posts/mysql-crash-course/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-10T10:09:46+08:00" />
-<meta property="article:modified_time" content="2022-03-21T10:33:00+08:00" />
+<meta property="article:modified_time" content="2022-07-21T01:12:01+08:00" />
 
 <title>mysql入门笔记 | 星星</title>
 <link rel="manifest" href="/manifest.json">
@@ -494,7 +494,6 @@ https://github.com/alex-shpak/hugo-book
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> dept, edlevel, <span style="color:#66d9ef">MAX</span>( salary ) <span style="color:#66d9ef">AS</span> maxsal
 <span style="color:#66d9ef">FROM</span> staff
 <span style="color:#66d9ef">WHERE</span> hiredate <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;2010-01-01&#39;</span>
-<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> dept, edlevel
 <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> dept, edlevel;
 </code></pre></div><p>结果</p>
 <pre tabindex="0"><code>dept edlevel maxsal
@@ -502,13 +501,15 @@ qa 4 2300
 qa 5 2600
 pm 5 3000
 pm 7 3500
-</code></pre><p><code>group by</code>用于对数据进行分组，规则如下：</p>
+</code></pre><p><code>group by</code>用于对数据进行分组，如果检索字段中有聚集函数的话，<code>group by</code>按分组聚集，而不是按整个结果集聚集。规则如下：</p>
 <ul>
 <li><code>group by</code>必须位于<code>where</code>和<code>order by</code>之间</li>
-<li><code>group by</code>后面可以跟多个列或表达式（但不能是聚集函数），结果按笛卡尔积展示</li>
+<li><code>group by</code>后面可以跟多个列或表达式（但不能是聚集函数），如果是表达式，<code>select</code>后面必须也有这个表达式</li>
+<li>除了聚集函数以外，<code>select</code>后面跟着的每一列都得写到<code>group by</code>后面</li>
 <li><code>group by</code>后面跟的每个列必须都写到<code>select</code>后面</li>
 <li>如果<code>select</code>语句中同时有字段和聚集函数，则sql中必须使用<code>group by</code></li>
 </ul>
+<p><code>group by</code>按分组列的笛卡尔积展示结果，也意味着能够利用<code>group by</code>对分组列去重，这也是为什么<code>select</code>中的列<code>group by</code>都要有，因为如果<code>select</code>中有一列<code>group by</code>中没有，比如<code>select a,b from xxx group by a;</code>，当a的同一个取值对应多个b的取值时，<code>group by</code>就没办法按笛卡尔积展示分组结果了（不可能在同一行同时展示b的多个取值）</p>
 <h3 id="2过滤分组having">
   2.过滤分组（having）
   <a class="anchor" href="#2%e8%bf%87%e6%bb%a4%e5%88%86%e7%bb%84having">#</a>
@@ -891,6 +892,12 @@ savepoint xx;
         
   <div class="flex flex-wrap justify-between">
 
+
+  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/cdbdc61ba4021d1e72c9ce7dda0425eba6512c4c" title='最后修改者 swj | July 21, 2022' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>July 21, 2022</span>
+    </a>
+  </div>
 
 
 

@@ -262,7 +262,6 @@ id  name    dept    salary  edlevel hiredate
 SELECT dept, edlevel, MAX( salary ) AS maxsal
 FROM staff
 WHERE hiredate > '2010-01-01'
-GROUP BY dept, edlevel
 ORDER BY dept, edlevel;
 ```
 
@@ -276,12 +275,15 @@ pm 5 3000
 pm 7 3500
 ```
 
-`group by`用于对数据进行分组，规则如下：
+`group by`用于对数据进行分组，如果检索字段中有聚集函数的话，`group by`按分组聚集，而不是按整个结果集聚集。规则如下：
 
 - `group by`必须位于`where`和`order by`之间
-- `group by`后面可以跟多个列或表达式（但不能是聚集函数），结果按笛卡尔积展示
+- `group by`后面可以跟多个列或表达式（但不能是聚集函数），如果是表达式，`select`后面必须也有这个表达式
+- 除了聚集函数以外，`select`后面跟着的每一列都得写到`group by`后面
 - `group by`后面跟的每个列必须都写到`select`后面
 - 如果`select`语句中同时有字段和聚集函数，则sql中必须使用`group by`
+
+`group by`按分组列的笛卡尔积展示结果，也意味着能够利用`group by`对分组列去重，这也是为什么`select`中的列`group by`都要有，因为如果`select`中有一列`group by`中没有，比如`select a,b from xxx group by a;`，当a的同一个取值对应多个b的取值时，`group by`就没办法按笛卡尔积展示分组结果了（不可能在同一行同时展示b的多个取值）
 
 ### 2.过滤分组（having）
 
