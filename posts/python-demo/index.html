@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
-#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 ">
+<meta name="description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
+#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 堆 #  python标准库heapq模块实现了一个堆，用法如下：
+data = [2,1,5] #准备数据集 heapq.heapify(data) # 建堆 heapq.heappush(data,2) # push heapq.heappop(data) # pop len(data) # 获取堆大小 data[0] #检查堆顶元素 # 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的 heapq.nlargest(n, iterable, key=None)和heapq.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Python Demo" />
-<meta property="og:description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
-#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 " />
+<meta property="og:description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
+#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 堆 #  python标准库heapq模块实现了一个堆，用法如下：
+data = [2,1,5] #准备数据集 heapq.heapify(data) # 建堆 heapq.heappush(data,2) # push heapq.heappop(data) # pop len(data) # 获取堆大小 data[0] #检查堆顶元素 # 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的 heapq.nlargest(n, iterable, key=None)和heapq." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/posts/python-demo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-08T12:23:09+08:00" />
@@ -119,6 +121,7 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#创建数组">创建数组</a></li>
         <li><a href="#栈和队列">栈和队列</a></li>
+        <li><a href="#堆">堆</a></li>
       </ul>
     </li>
   </ul>
@@ -171,7 +174,7 @@ array2d <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</sp
   栈和队列
   <a class="anchor" href="#%e6%a0%88%e5%92%8c%e9%98%9f%e5%88%97">#</a>
 </h2>
-<p>可以使用collections模块中的deque作为栈和队列，性能比基础的list要好，参考
+<p>可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考
   <a href="https://docs.python.org/3/library/collections.html#collections.deque">python3官方文档 collections—Container datatypes</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#栈</span>
 d <span style="color:#f92672">=</span> deque() <span style="color:#75715e">#初始化</span>
@@ -179,6 +182,66 @@ d<span style="color:#f92672">.</span>append(c) <span style="color:#75715e">#入�
 len(d)  <span style="color:#75715e">#获取栈中元素个数</span>
 d[len(d)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#75715e">#检查栈顶</span>
 d<span style="color:#f92672">.</span>pop() <span style="color:#75715e">#出栈</span>
+</code></pre></div><h2 id="堆">
+  堆
+  <a class="anchor" href="#%e5%a0%86">#</a>
+</h2>
+<p>python标准库heapq模块实现了一个堆，用法如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">5</span>]  <span style="color:#75715e">#准备数据集</span>
+heapq<span style="color:#f92672">.</span>heapify(data) <span style="color:#75715e"># 建堆</span>
+heapq<span style="color:#f92672">.</span>heappush(data,<span style="color:#ae81ff">2</span>) <span style="color:#75715e"># push</span>
+heapq<span style="color:#f92672">.</span>heappop(data) <span style="color:#75715e"># pop</span>
+len(data) <span style="color:#75715e"># 获取堆大小</span>
+data[<span style="color:#ae81ff">0</span>] <span style="color:#75715e">#检查堆顶元素</span>
+            
+<span style="color:#75715e"># 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的</span>
+heapq<span style="color:#f92672">.</span>nlargest(n, iterable, key<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)和heapq<span style="color:#f92672">.</span>nsmallest(n, iterable, key<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+
+<span style="color:#75715e"># 归并有序序列，返回一个迭代器</span>
+heapq<span style="color:#f92672">.</span>merge(<span style="color:#f92672">*</span>iterables, key<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</code></pre></div><p>注意：</p>
+<ol>
+<li>heapq只实现了最小堆，如果想使用最大堆，可以通过在push和pop时对元素取反来实现</li>
+<li>如果数据集中是自定义对象，可以通过给类定义比较方法来使用heapq，例如</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@total_ordering</span> <span style="color:#75715e">#用了这个注解以后，只需要定义两个运算符</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HeapEle</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, val<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, next<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+        self<span style="color:#f92672">.</span>val <span style="color:#f92672">=</span> val
+        self<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> next
+    <span style="color:#66d9ef">def</span> __eq__(self,other):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>val <span style="color:#f92672">==</span> other<span style="color:#f92672">.</span>val
+    <span style="color:#66d9ef">def</span> __lt__(self,other):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>val <span style="color:#f92672">&lt;</span> other<span style="color:#f92672">.</span>val
+</code></pre></div><p>merge函数例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> heapq
+
+<span style="color:#75715e"># 1.简单例子</span>
+l0 <span style="color:#f92672">=</span> heapq<span style="color:#f92672">.</span>merge([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>],[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">8</span>])
+<span style="color:#75715e"># 遍历迭代器-方法1，使用常规for语句进行遍历</span>
+<span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> l0:
+    print(v)
+<span style="color:#75715e"># 遍历迭代器-方法2，使用next()函数</span>
+<span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+    <span style="color:#66d9ef">try</span>:
+        print (next(l0))
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">StopIteration</span>:
+        <span style="color:#66d9ef">break</span>
+<span style="color:#75715e"># 将迭代器转为list</span>
+list(l0)
+
+<span style="color:#75715e"># 2. 对自定义类进行归并</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListNode</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, val<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, next<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+        self<span style="color:#f92672">.</span>val <span style="color:#f92672">=</span> val
+        self<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> next
+
+l1 <span style="color:#f92672">=</span> [ListNode(<span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">4</span>,<span style="color:#66d9ef">None</span>)]
+l2 <span style="color:#f92672">=</span> [ListNode(<span style="color:#ae81ff">1</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">3</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">5</span>,<span style="color:#66d9ef">None</span>)]
+
+l3 <span style="color:#f92672">=</span> heapq<span style="color:#f92672">.</span>merge(l1,l2,key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> a:a<span style="color:#f92672">.</span>val)
+<span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> l3:
+    print(v<span style="color:#f92672">.</span>val)
 </code></pre></div></article>
  
       
@@ -239,6 +302,7 @@ d<span style="color:#f92672">.</span>pop() <span style="color:#75715e">#出栈</
       <ul>
         <li><a href="#创建数组">创建数组</a></li>
         <li><a href="#栈和队列">栈和队列</a></li>
+        <li><a href="#堆">堆</a></li>
       </ul>
     </li>
   </ul>
