@@ -1,141 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>golang on Example Site</title>
+        <title>golang - Tag - 星</title>
         <link>http://blog.shiwj.top/tags/golang/</link>
-        <description>Recent content in golang on Example Site</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Tue, 26 Apr 2022 11:18:48 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/golang/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>golang入门笔记</title>
-        <link>http://blog.shiwj.top/posts/go-gopl/</link>
-        <pubDate>Tue, 26 Apr 2022 11:18:48 +0800</pubDate>
-        
-        <guid>http://blog.shiwj.top/posts/go-gopl/</guid>
-        <description>&lt;p&gt;参考《Go程序设计语言》&lt;/p&gt;
-&lt;h2 id=&#34;一程序结构&#34;&gt;一、程序结构&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;go程序使用驼峰式命名风格&lt;/li&gt;
-&lt;li&gt;零值，变量的初始值。数字是0，字符串是&amp;quot;&amp;quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值&lt;/li&gt;
-&lt;li&gt;短变量声明，&lt;code&gt;a,b := f()&lt;/code&gt;，a和b中至少有一个得是新变量，不能全是已经声明的变量
-&lt;ul&gt;
-&lt;li&gt;一个例外，如果a,b是在外层作用域声明的，&lt;code&gt;:=&lt;/code&gt;会将它们声明为新变量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期）&lt;/li&gt;
-&lt;li&gt;new函数，new函数创建一个新值并返回其地址&lt;/li&gt;
-&lt;li&gt;变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），&lt;strong&gt;编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;多重赋值，例如&lt;code&gt;a,b := 1,&amp;quot;xxx&amp;quot;&lt;/code&gt;或&lt;code&gt;x,y = y,x&lt;/code&gt;，后者用来交换变量的值&lt;/li&gt;
-&lt;li&gt;类型转换，&lt;code&gt;var a T = T(b)&lt;/code&gt;，每个类型都会提供&lt;code&gt;T(x)&lt;/code&gt;将x的值转换为T（前提是允许这种转换）&lt;/li&gt;
-&lt;li&gt;导出的标识符才能在包外被访问到，导出的标识符以大写字母开头&lt;/li&gt;
-&lt;li&gt;包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量&lt;/li&gt;
-&lt;li&gt;init函数，可以有任意个，在程序启动时按照声明顺序自动执行&lt;/li&gt;
-&lt;li&gt;包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;二基本数据&#34;&gt;二、基本数据&lt;/h2&gt;
-&lt;h3 id=&#34;21-整型&#34;&gt;2.1 整型&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;int8、int16、int32、int64、uint8、uint16、uint32、uint64&lt;/li&gt;
-&lt;li&gt;int和uint，在不同平台上大小不同（通常是32位或64位）&lt;/li&gt;
-&lt;li&gt;rune，等价于int32，表示一个unicode码点&lt;/li&gt;
-&lt;li&gt;byte，等价于uint8，表示一个原始的字节&lt;/li&gt;
-&lt;li&gt;uintptr，可以存放一个指针，用于底层编程&lt;/li&gt;
-&lt;li&gt;golang中%运算结果的正负号总是和被除数一致&lt;/li&gt;
-&lt;li&gt;位运算。&lt;code&gt;&amp;amp;&lt;/code&gt;是与运算（AND），&lt;code&gt;|&lt;/code&gt;是或运算（OR），&lt;code&gt;^&lt;/code&gt;是异或和非运算（XOR，NOT），&lt;code&gt;&amp;amp;^&lt;/code&gt;是与非运算（AND NOT），&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;是左移，&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;是右移
-&lt;ul&gt;
-&lt;li&gt;1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位）&lt;/li&gt;
-&lt;li&gt;与非运算的作用是按右操作数的位分布清空左操作数中的对应位&lt;/li&gt;
-&lt;li&gt;右移操作&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;
-&lt;ul&gt;
-&lt;li&gt;有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0）&lt;/li&gt;
-&lt;li&gt;右移操作&lt;code&gt;x&amp;gt;&amp;gt;n&lt;/code&gt;等价于&lt;code&gt;x/2^n&lt;/code&gt;，向下取整（朝负无穷方向取整，例如-5&amp;raquo;1结果为-3）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;22-浮点型&#34;&gt;2.2 浮点型&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;两种浮点型，float32和float64&lt;/li&gt;
-&lt;li&gt;math包给出了浮点型的极限值，例如&lt;code&gt;math.MaxFloat32&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;23-复数&#34;&gt;2.3 复数&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;两种复数，complex64，complex128&lt;/li&gt;
-&lt;li&gt;写法：&lt;code&gt;3.14i&lt;/code&gt;、&lt;code&gt;1+2i&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;可以使用&lt;code&gt;==&lt;/code&gt;和&lt;code&gt;!=&lt;/code&gt;判断是否等值&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;24-布尔&#34;&gt;2.4 布尔&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;逻辑运算的短路行为，如果运算符左边的操作数能直接确定最终结果，则右边的操作数不会计算在内&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;比&lt;code&gt;||&lt;/code&gt;优先级高，助记技巧：&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;是逻辑乘法，&lt;code&gt;||&lt;/code&gt;是逻辑加法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;25-字符串&#34;&gt;2.5 字符串&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;len函数返回的是字节数，不是字符数&lt;/li&gt;
-&lt;li&gt;生成子串操作&lt;code&gt;s[i:j]&lt;/code&gt;取的是字节，不是字符。&lt;/li&gt;
-&lt;li&gt;下标访问操作&lt;code&gt;s[i]&lt;/code&gt;访问的也是第i个字节，不是字符&lt;/li&gt;
-&lt;li&gt;range循环&lt;code&gt;i,r := range &amp;quot;xxx&amp;quot;&lt;/code&gt;中的i表示字节序号，r是字符（rune）&lt;/li&gt;
-&lt;li&gt;字符串可以通过&lt;code&gt;==&lt;/code&gt;或&lt;code&gt;&amp;lt;&lt;/code&gt;比较，&lt;strong&gt;比较运算按字节进行&lt;/strong&gt;，结果服从其字典序排序&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;字符串值无法改变&lt;/strong&gt;（字符串值所包含的字节序列永不可变），只能将一个新字符串赋值给字符串变量（例如，&lt;code&gt;s+=&amp;quot;xxx&amp;quot;&lt;/code&gt;只是将&lt;code&gt;+=&lt;/code&gt;运算新生成的字符串赋值给了s，并没有改变s原有的字符串值）。这么设计的好处是：
-&lt;ul&gt;
-&lt;li&gt;两个字符串变量能够安全地共用同一段底层内存&lt;/li&gt;
-&lt;li&gt;字符串拷贝的开销小&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;字符串字面量
-&lt;ul&gt;
-&lt;li&gt;转义。除了常见的&lt;code&gt;&#39;\n&#39;&lt;/code&gt;等转义字符以外，&lt;code&gt;&#39;\xhh&#39;&lt;/code&gt;用16进制数&lt;code&gt;hh&lt;/code&gt;表示这个字节，&lt;code&gt;&#39;\ooo&#39;&lt;/code&gt;用八进制数&lt;code&gt;ooo&lt;/code&gt;表示这个字节，这两者都表示单字节&lt;/li&gt;
-&lt;li&gt;原生字符串字面量用反引号&lt;code&gt;`...`&lt;/code&gt;书写。原生字符串中转义不起作用，可以包含换行，字符串内容和书写内容完全一致。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;utf-8
-&lt;ul&gt;
-&lt;li&gt;utf-8是go的默认编码&lt;/li&gt;
-&lt;li&gt;unicode字符有两种表示形式，&lt;code&gt;\uhhhh&lt;/code&gt;表示16位码点，&lt;code&gt;\Uhhhhhhhh&lt;/code&gt;表示32位码点，区别是小写的u和大写的U&lt;/li&gt;
-&lt;li&gt;以下字符串是等价的，注意：直接用16进制转义（\x）书写的字符串是&amp;quot;世界&amp;quot;经utf-8编码后的实际字节，而\u和\U后面跟的是unicode码点，并不是实际的utf-8字节
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;世界&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;s&#34;&gt;&amp;#34;\xe4\xb8\x96\xe7\x95\x8c&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;s&#34;&gt;&amp;#34;\u4e16\u754c&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;s&#34;&gt;&amp;#34;\U00004e16\U0000754c&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;utf-8编码规则（只有&amp;quot;xxx&amp;quot;部分才是unicode码点信息）
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;0xxxxxxx
-110xxxxx 10xxxxxx
-1110xxxx 10xxxxxx 10xxxxxx
-11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;使用函数&lt;code&gt;utf8.RuneCountInString(s)&lt;/code&gt;计算字符串中的字符数量&lt;/li&gt;
-&lt;li&gt;utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号&lt;code&gt;\uFFFD&lt;/code&gt;作为替换&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;byte和rune的区别，rune保存的是unicode码点，并不是utf-8编码后的字节，因此，&lt;code&gt;[]byte&lt;/code&gt;转换为&lt;code&gt;[]rune&lt;/code&gt;之后，使用&lt;code&gt;fmt.Printf(&amp;quot;%x&amp;quot;,s)&lt;/code&gt;输出的结果并不一样&lt;/li&gt;
-&lt;li&gt;整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（&lt;code&gt;\uFFFD&lt;/code&gt;）&lt;/li&gt;
-&lt;li&gt;字面量&lt;code&gt;&#39;A&#39;&lt;/code&gt;是rune类型&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        </item>
-        
-    </channel>
+        <description>golang - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 26 Apr 2022 11:18:48 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/golang/" rel="self" type="application/rss+xml" /><item>
+    <title>golang入门笔记</title>
+    <link>http://blog.shiwj.top/go-gopl/</link>
+    <pubDate>Tue, 26 Apr 2022 11:18:48 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/go-gopl/</guid>
+    <description><![CDATA[参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal]]></description>
+</item>
+</channel>
 </rss>

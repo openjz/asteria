@@ -1,0 +1,88 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>编程 - Category - 星</title>
+        <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
+        <description>编程 - Category - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 15 Jul 2022 10:45:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>关于IP地址的发展</title>
+    <link>http://blog.shiwj.top/ip-address/</link>
+    <pubDate>Fri, 15 Jul 2022 10:45:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/ip-address/</guid>
+    <description><![CDATA[IP地址的发展 最开始将IP地址分为ABCDE五类地址，后来为了不浪费IP地址资源提出了划分子网，发明了子网掩码，再后来又（在可变长子网掩码V]]></description>
+</item>
+<item>
+    <title>Python Demo</title>
+    <link>http://blog.shiwj.top/python-demo/</link>
+    <pubDate>Fri, 08 Jul 2022 12:23:09 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/python-demo/</guid>
+    <description><![CDATA[for循环 1 2 3 4 5 6 7 8 9 10 11 12 n = [1,2,3,4] # 正序 for v in n: ... for i in range(10): ... # 倒序 for v in reversed(n): ... for i in range(10,-1,-1): #从10到0，步长为-1，第三个参数为步长 ... 创建数]]></description>
+</item>
+<item>
+    <title>算法题</title>
+    <link>http://blog.shiwj.top/algorithm-problem/</link>
+    <pubDate>Wed, 06 Jul 2022 11:37:09 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/algorithm-problem/</guid>
+    <description><![CDATA[常用方法 常用方法： 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递]]></description>
+</item>
+<item>
+    <title>Unity入门笔记</title>
+    <link>http://blog.shiwj.top/unity-note/</link>
+    <pubDate>Sun, 26 Jun 2022 10:48:30 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/unity-note/</guid>
+    <description><![CDATA[参考 unity manual unity-essentials系列教程 本文约定 粗体代表术语 编辑器操作 场景视图导航 pan（移动视图）：使用“手”工具，按住鼠标左键拖]]></description>
+</item>
+<item>
+    <title>事业编计算机知识</title>
+    <link>http://blog.shiwj.top/kaobian-cs/</link>
+    <pubDate>Tue, 21 Jun 2022 19:21:16 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/kaobian-cs/</guid>
+    <description><![CDATA[数据库 数据库的特征 持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独]]></description>
+</item>
+<item>
+    <title>数字签名和数字证书</title>
+    <link>http://blog.shiwj.top/digital-signatures-certificates/</link>
+    <pubDate>Sat, 18 Jun 2022 14:28:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/digital-signatures-certificates/</guid>
+    <description><![CDATA[一、数字签名 数字签名的作用是保证数据的完整性和保密性 数据完整性通过对数据做摘要保证 数据的保密性通过对数据和摘要做公钥加密保证，接收人只能用发]]></description>
+</item>
+<item>
+    <title>计算机中的时间</title>
+    <link>http://blog.shiwj.top/time/</link>
+    <pubDate>Wed, 08 Jun 2022 12:29:06 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/time/</guid>
+    <description><![CDATA[unix时间戳 unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间]]></description>
+</item>
+<item>
+    <title>golang入门笔记</title>
+    <link>http://blog.shiwj.top/go-gopl/</link>
+    <pubDate>Tue, 26 Apr 2022 11:18:48 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/go-gopl/</guid>
+    <description><![CDATA[参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal]]></description>
+</item>
+<item>
+    <title>数据库事务</title>
+    <link>http://blog.shiwj.top/db-transaction/</link>
+    <pubDate>Wed, 20 Apr 2022 11:57:47 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/db-transaction/</guid>
+    <description><![CDATA[事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事务未提交的]]></description>
+</item>
+<item>
+    <title>mysql入门笔记</title>
+    <link>http://blog.shiwj.top/mysql-crash-course/</link>
+    <pubDate>Fri, 10 Dec 2021 10:09:46 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/mysql-crash-course/</guid>
+    <description><![CDATA[参考《mysql必知必会》 一、基本概念 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包]]></description>
+</item>
+</channel>
+</rss>

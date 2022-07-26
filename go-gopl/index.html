@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>golang入门笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="golang入门笔记" />
+<meta property="og:description" content="参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/go-gopl/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-26T11:18:48+08:00" />
+<meta property="article:modified_time" content="2022-07-21T01:12:01+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="golang入门笔记"/>
+<meta name="twitter:description" content="参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/go-gopl/" /><link rel="prev" href="http://blog.shiwj.top/db-transaction/" /><link rel="next" href="http://blog.shiwj.top/time/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "golang入门笔记",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/go-gopl\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "golang","wordcount":  2228 ,
+        "url": "http:\/\/blog.shiwj.top\/go-gopl\/","datePublished": "2022-04-26T11:18:48+08:00","dateModified": "2022-07-21T01:12:01+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  719 ,
+                    "height":  931 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">golang入门笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-26">2022-04-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2228 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一程序结构">一、程序结构</a></li>
+    <li><a href="#二基本数据">二、基本数据</a>
+      <ul>
+        <li><a href="#21-整型">2.1 整型</a></li>
+        <li><a href="#22-浮点型">2.2 浮点型</a></li>
+        <li><a href="#23-复数">2.3 复数</a></li>
+        <li><a href="#24-布尔">2.4 布尔</a></li>
+        <li><a href="#25-字符串">2.5 字符串</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>参考《Go程序设计语言》</p>
+<h2 id="一程序结构">一、程序结构</h2>
+<ol>
+<li>go程序使用驼峰式命名风格</li>
+<li>零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值</li>
+<li>短变量声明，<code>a,b := f()</code>，a和b中至少有一个得是新变量，不能全是已经声明的变量
+<ul>
+<li>一个例外，如果a,b是在外层作用域声明的，<code>:=</code>会将它们声明为新变量</li>
+</ul>
+</li>
+<li>指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期）</li>
+<li>new函数，new函数创建一个新值并返回其地址</li>
+<li>变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），<strong>编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new</strong></li>
+<li>多重赋值，例如<code>a,b := 1,&quot;xxx&quot;</code>或<code>x,y = y,x</code>，后者用来交换变量的值</li>
+<li>类型转换，<code>var a T = T(b)</code>，每个类型都会提供<code>T(x)</code>将x的值转换为T（前提是允许这种转换）</li>
+<li>导出的标识符才能在包外被访问到，导出的标识符以大写字母开头</li>
+<li>包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量</li>
+<li>init函数，可以有任意个，在程序启动时按照声明顺序自动执行</li>
+<li>包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）</li>
+</ol>
+<h2 id="二基本数据">二、基本数据</h2>
+<h3 id="21-整型">2.1 整型</h3>
+<ol>
+<li>int8、int16、int32、int64、uint8、uint16、uint32、uint64</li>
+<li>int和uint，在不同平台上大小不同（通常是32位或64位）</li>
+<li>rune，等价于int32，表示一个unicode码点</li>
+<li>byte，等价于uint8，表示一个原始的字节</li>
+<li>uintptr，可以存放一个指针，用于底层编程</li>
+<li>golang中%运算结果的正负号总是和被除数一致</li>
+<li>位运算。<code>&amp;</code>是与运算（AND），<code>|</code>是或运算（OR），<code>^</code>是异或和非运算（XOR，NOT），<code>&amp;^</code>是与非运算（AND NOT），<code>&lt;&lt;</code>是左移，<code>&gt;&gt;</code>是右移
+<ul>
+<li>1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位）</li>
+<li>与非运算的作用是按右操作数的位分布清空左操作数中的对应位</li>
+<li>右移操作<code>&gt;&gt;</code>
+<ul>
+<li>有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0）</li>
+<li>右移操作<code>x&gt;&gt;n</code>等价于<code>x/2^n</code>，向下取整（朝负无穷方向取整，例如-5&raquo;1结果为-3）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="22-浮点型">2.2 浮点型</h3>
+<ol>
+<li>两种浮点型，float32和float64</li>
+<li>math包给出了浮点型的极限值，例如<code>math.MaxFloat32</code></li>
+<li>特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义</li>
+</ol>
+<h3 id="23-复数">2.3 复数</h3>
+<ol>
+<li>两种复数，complex64，complex128</li>
+<li>写法：<code>3.14i</code>、<code>1+2i</code></li>
+<li>可以使用<code>==</code>和<code>!=</code>判断是否等值</li>
+</ol>
+<h3 id="24-布尔">2.4 布尔</h3>
+<ol>
+<li>逻辑运算的短路行为，如果运算符左边的操作数能直接确定最终结果，则右边的操作数不会计算在内</li>
+<li><code>&amp;&amp;</code>比<code>||</code>优先级高，助记技巧：<code>&amp;&amp;</code>是逻辑乘法，<code>||</code>是逻辑加法</li>
+</ol>
+<h3 id="25-字符串">2.5 字符串</h3>
+<ol>
+<li>len函数返回的是字节数，不是字符数</li>
+<li>生成子串操作<code>s[i:j]</code>取的是字节，不是字符。</li>
+<li>下标访问操作<code>s[i]</code>访问的也是第i个字节，不是字符</li>
+<li>range循环<code>i,r := range &quot;xxx&quot;</code>中的i表示字节序号，r是字符（rune）</li>
+<li>字符串可以通过<code>==</code>或<code>&lt;</code>比较，<strong>比较运算按字节进行</strong>，结果服从其字典序排序</li>
+<li><strong>字符串值无法改变</strong>（字符串值所包含的字节序列永不可变），只能将一个新字符串赋值给字符串变量（例如，<code>s+=&quot;xxx&quot;</code>只是将<code>+=</code>运算新生成的字符串赋值给了s，并没有改变s原有的字符串值）。这么设计的好处是：
+<ul>
+<li>两个字符串变量能够安全地共用同一段底层内存</li>
+<li>字符串拷贝的开销小</li>
+</ul>
+</li>
+<li>字符串字面量
+<ul>
+<li>转义。除了常见的<code>'\n'</code>等转义字符以外，<code>'\xhh'</code>用16进制数<code>hh</code>表示这个字节，<code>'\ooo'</code>用八进制数<code>ooo</code>表示这个字节，这两者都表示单字节</li>
+<li>原生字符串字面量用反引号<code>`...`</code>书写。原生字符串中转义不起作用，可以包含换行，字符串内容和书写内容完全一致。</li>
+</ul>
+</li>
+<li>utf-8
+<ul>
+<li>utf-8是go的默认编码</li>
+<li>unicode字符有两种表示形式，<code>\uhhhh</code>表示16位码点，<code>\Uhhhhhhhh</code>表示32位码点，区别是小写的u和大写的U</li>
+<li>以下字符串是等价的，注意：直接用16进制转义（\x）书写的字符串是&quot;世界&quot;经utf-8编码后的实际字节，而\u和\U后面跟的是unicode码点，并不是实际的utf-8字节
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="s">&#34;世界&#34;</span>
+<span class="s">&#34;\xe4\xb8\x96\xe7\x95\x8c&#34;</span>
+<span class="s">&#34;\u4e16\u754c&#34;</span>
+<span class="s">&#34;\U00004e16\U0000754c&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>utf-8编码规则（只有&quot;xxx&quot;部分才是unicode码点信息）
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">0xxxxxxx
+110xxxxx 10xxxxxx
+1110xxxx 10xxxxxx 10xxxxxx
+11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>使用函数<code>utf8.RuneCountInString(s)</code>计算字符串中的字符数量</li>
+<li>utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号<code>\uFFFD</code>作为替换</li>
+</ul>
+</li>
+<li>byte和rune的区别，rune保存的是unicode码点，并不是utf-8编码后的字节，因此，<code>[]byte</code>转换为<code>[]rune</code>之后，使用<code>fmt.Printf(&quot;%x&quot;,s)</code>输出的结果并不一样</li>
+<li>整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（<code>\uFFFD</code>）</li>
+<li>字面量<code>'A'</code>是rune类型</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-21&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/cdbdc61ba4021d1e72c9ce7dda0425eba6512c4c" target="_blank" title="commit by swj(905622665@qq.com) cdbdc61ba4021d1e72c9ce7dda0425eba6512c4c: some modify">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>cdbdc61</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/go-gopl/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/golang/">golang</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/db-transaction/" class="prev" rel="prev" title="数据库事务"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>数据库事务</a>
+            <a href="/time/" class="next" rel="next" title="计算机中的时间">计算机中的时间<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
