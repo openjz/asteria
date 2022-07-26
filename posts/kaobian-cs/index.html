@@ -1,269 +1,414 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="数据库 #  数据库的特征 #   持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性  数据库管理系统（DBMS） #  位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数据库 数据库的特征  持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性  数据库管理系统（DBMS） 位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用
  DDL，数据定义语言（建库、建表等） DML，数据操纵语言（增、删、改） DCL，数据控制语言 DQL，数据查询语言  此外还负责网络通信，保障数据安全性和完整性，事务控制，并发控制等
-数据库系统结构 #  三级模式：外模式、模式和内模式
+数据库系统结构 三级模式：外模式、模式和内模式
 二级映射：外模式-模式映射、模式-内模式映射
 外模式，又称子模式或用户模式，对应用户级，用户使用外模式描述语言来定义用户的数据记录，或者使用DML对数据记录做描述。
 模式，又称概念模式或逻辑模式，对应于概念级，是所有用户的公共数据视图，使用DDL来描述。
 内模式，又称存储模式，对应于物理级，描述了数据在存储介质上的物理结构。
-数据模型 #  数据模型分为概念数据模型、逻辑数据模型、物理数据模型
+数据模型 数据模型分为概念数据模型、逻辑数据模型、物理数据模型
 概念数据模型是从用户视角描述数据，反映客观世界的联系和规则
 E-R图（实体-联系图）是一种概念模型，用实体、属性和联系来描述客观世界，联系也称关系，分为一对一、一对多、多对多。实体用矩形表示，属性用椭圆形表示，关系用菱形表示。
 逻辑数据模型由数据结构、数据操作和完整性约束构成
 数据库支持的逻辑数据模型有层次模型、网状模型、关系模型和面向对象模型。
-关系型数据库 #  关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型
-关系规范化理论 #  关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。
+关系型数据库 关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型
+关系规范化理论 关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。
 完整的关系模式是一个五元组R(U,D,Dom,F)，R是关系，U是属性集，D是属性的域，Dom是属性到域的映射，F为属性的数据依赖集
 关系模型可以简化为一个三元组R(U,F)
 数据依赖是关系模式的重点，包括函数依赖、多值依赖和连接依赖
 函数依赖
-对于R(U)，设X和Y是U的两个子集，如果对任意一个X，有唯一的Y与之对应，则这个依赖是函数依赖，称为“X函数确定Y”或“Y函数依赖X”，记为X-&gt;Y，X为决定因素，Y为依赖因素。例如，确定了学号，就能确定姓名、性别等。
+对于R(U)，设X和Y是U的两个子集，如果对任意一个X，有唯一的Y与之对应，则这个依赖是函数依赖，称为“X函数确定Y”或“Y函数依赖X”，记为X-&amp;gt;Y，X为决定因素，Y为依赖因素。例如，确定了学号，就能确定姓名、性别等。
 函数依赖有三种情形
  平凡函数依赖和非平凡函数依赖
 如果Y是X的子集，Y对X就是平凡函数依赖，否则是非平凡函数依赖。 完全函数依赖和部分函数依赖
 如果X的任何一个真子集都不能决定Y，Y对X就是完全函数依赖，否则是部分函数依赖。 传递函数依赖
-如果X-&gt;Y，Y-&gt;Z，且不存在Y-&gt;X，那么Z对X传递依赖。  码/键
+如果X-&amp;gt;Y，Y-&amp;gt;Z，且不存在Y-&amp;gt;X，那么Z对X传递依赖。  码/键
  码/键
 表中的一个或几个属性，用来标识该表的每一行或与另一个表产生联系 超码/超键
 去掉一个属性，还是码 候选码/候选键
-最小的码（属性集完全函数依赖于该码） 主码/主键">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="事业编计算机八股" />
-<meta property="og:description" content="数据库 #  数据库的特征 #   持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性  数据库管理系统（DBMS） #  位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用
+最小的码（属性集完全函数依赖于该码） 主码/主键
+从候选码中选一个 主属性
+候选码中的属性是主属性  规范化
+不同的规范化程度可用范式来衡量。目前有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、BC范式（BCNF）、第四范式（4NF）和第五范式（5NF）。
+ 第一范式，关系R的每个属性都不可分解，都是原子的 第二范式，关系R满足第一范式，且所有非主属性都完全函数依赖于任意候选码 第三范式，关系R满足第二范式，所有非主属性都不传递函数依赖于任何候选码 BCNF范式，基于满足第一范式的基础之上，是对第三范式的改进   BCNF范式，关系R满足第一范式，对任何非平凡依赖X-&amp;gt;Y（Y!'><title>事业编计算机八股</title>
+
+<link rel='canonical' href='http://blog.shiwj.top/posts/kaobian-cs/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='事业编计算机八股'>
+<meta property='og:description' content='数据库 数据库的特征  持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性  数据库管理系统（DBMS） 位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用
  DDL，数据定义语言（建库、建表等） DML，数据操纵语言（增、删、改） DCL，数据控制语言 DQL，数据查询语言  此外还负责网络通信，保障数据安全性和完整性，事务控制，并发控制等
-数据库系统结构 #  三级模式：外模式、模式和内模式
+数据库系统结构 三级模式：外模式、模式和内模式
 二级映射：外模式-模式映射、模式-内模式映射
 外模式，又称子模式或用户模式，对应用户级，用户使用外模式描述语言来定义用户的数据记录，或者使用DML对数据记录做描述。
 模式，又称概念模式或逻辑模式，对应于概念级，是所有用户的公共数据视图，使用DDL来描述。
 内模式，又称存储模式，对应于物理级，描述了数据在存储介质上的物理结构。
-数据模型 #  数据模型分为概念数据模型、逻辑数据模型、物理数据模型
+数据模型 数据模型分为概念数据模型、逻辑数据模型、物理数据模型
 概念数据模型是从用户视角描述数据，反映客观世界的联系和规则
 E-R图（实体-联系图）是一种概念模型，用实体、属性和联系来描述客观世界，联系也称关系，分为一对一、一对多、多对多。实体用矩形表示，属性用椭圆形表示，关系用菱形表示。
 逻辑数据模型由数据结构、数据操作和完整性约束构成
 数据库支持的逻辑数据模型有层次模型、网状模型、关系模型和面向对象模型。
-关系型数据库 #  关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型
-关系规范化理论 #  关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。
+关系型数据库 关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型
+关系规范化理论 关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。
 完整的关系模式是一个五元组R(U,D,Dom,F)，R是关系，U是属性集，D是属性的域，Dom是属性到域的映射，F为属性的数据依赖集
 关系模型可以简化为一个三元组R(U,F)
 数据依赖是关系模式的重点，包括函数依赖、多值依赖和连接依赖
 函数依赖
-对于R(U)，设X和Y是U的两个子集，如果对任意一个X，有唯一的Y与之对应，则这个依赖是函数依赖，称为“X函数确定Y”或“Y函数依赖X”，记为X-&gt;Y，X为决定因素，Y为依赖因素。例如，确定了学号，就能确定姓名、性别等。
+对于R(U)，设X和Y是U的两个子集，如果对任意一个X，有唯一的Y与之对应，则这个依赖是函数依赖，称为“X函数确定Y”或“Y函数依赖X”，记为X-&amp;gt;Y，X为决定因素，Y为依赖因素。例如，确定了学号，就能确定姓名、性别等。
 函数依赖有三种情形
  平凡函数依赖和非平凡函数依赖
 如果Y是X的子集，Y对X就是平凡函数依赖，否则是非平凡函数依赖。 完全函数依赖和部分函数依赖
 如果X的任何一个真子集都不能决定Y，Y对X就是完全函数依赖，否则是部分函数依赖。 传递函数依赖
-如果X-&gt;Y，Y-&gt;Z，且不存在Y-&gt;X，那么Z对X传递依赖。  码/键
+如果X-&amp;gt;Y，Y-&amp;gt;Z，且不存在Y-&amp;gt;X，那么Z对X传递依赖。  码/键
  码/键
 表中的一个或几个属性，用来标识该表的每一行或与另一个表产生联系 超码/超键
 去掉一个属性，还是码 候选码/候选键
-最小的码（属性集完全函数依赖于该码） 主码/主键" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/kaobian-cs/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-21T19:21:16+08:00" />
-<meta property="article:modified_time" content="2022-07-22T12:21:41+08:00" />
+最小的码（属性集完全函数依赖于该码） 主码/主键
+从候选码中选一个 主属性
+候选码中的属性是主属性  规范化
+不同的规范化程度可用范式来衡量。目前有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、BC范式（BCNF）、第四范式（4NF）和第五范式（5NF）。
+ 第一范式，关系R的每个属性都不可分解，都是原子的 第二范式，关系R满足第一范式，且所有非主属性都完全函数依赖于任意候选码 第三范式，关系R满足第二范式，所有非主属性都不传递函数依赖于任何候选码 BCNF范式，基于满足第一范式的基础之上，是对第三范式的改进   BCNF范式，关系R满足第一范式，对任何非平凡依赖X-&amp;gt;Y（Y!'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/kaobian-cs/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='八股' /><meta property='article:published_time' content='2022-06-21T19:21:16&#43;08:00'/><meta property='article:modified_time' content='2022-06-21T19:21:16&#43;08:00'/>
+<meta name="twitter:title" content="事业编计算机八股">
+<meta name="twitter:description" content="数据库 数据库的特征  持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性  数据库管理系统（DBMS） 位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用
+ DDL，数据定义语言（建库、建表等） DML，数据操纵语言（增、删、改） DCL，数据控制语言 DQL，数据查询语言  此外还负责网络通信，保障数据安全性和完整性，事务控制，并发控制等
+数据库系统结构 三级模式：外模式、模式和内模式
+二级映射：外模式-模式映射、模式-内模式映射
+外模式，又称子模式或用户模式，对应用户级，用户使用外模式描述语言来定义用户的数据记录，或者使用DML对数据记录做描述。
+模式，又称概念模式或逻辑模式，对应于概念级，是所有用户的公共数据视图，使用DDL来描述。
+内模式，又称存储模式，对应于物理级，描述了数据在存储介质上的物理结构。
+数据模型 数据模型分为概念数据模型、逻辑数据模型、物理数据模型
+概念数据模型是从用户视角描述数据，反映客观世界的联系和规则
+E-R图（实体-联系图）是一种概念模型，用实体、属性和联系来描述客观世界，联系也称关系，分为一对一、一对多、多对多。实体用矩形表示，属性用椭圆形表示，关系用菱形表示。
+逻辑数据模型由数据结构、数据操作和完整性约束构成
+数据库支持的逻辑数据模型有层次模型、网状模型、关系模型和面向对象模型。
+关系型数据库 关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型
+关系规范化理论 关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。
+完整的关系模式是一个五元组R(U,D,Dom,F)，R是关系，U是属性集，D是属性的域，Dom是属性到域的映射，F为属性的数据依赖集
+关系模型可以简化为一个三元组R(U,F)
+数据依赖是关系模式的重点，包括函数依赖、多值依赖和连接依赖
+函数依赖
+对于R(U)，设X和Y是U的两个子集，如果对任意一个X，有唯一的Y与之对应，则这个依赖是函数依赖，称为“X函数确定Y”或“Y函数依赖X”，记为X-&amp;gt;Y，X为决定因素，Y为依赖因素。例如，确定了学号，就能确定姓名、性别等。
+函数依赖有三种情形
+ 平凡函数依赖和非平凡函数依赖
+如果Y是X的子集，Y对X就是平凡函数依赖，否则是非平凡函数依赖。 完全函数依赖和部分函数依赖
+如果X的任何一个真子集都不能决定Y，Y对X就是完全函数依赖，否则是部分函数依赖。 传递函数依赖
+如果X-&amp;gt;Y，Y-&amp;gt;Z，且不存在Y-&amp;gt;X，那么Z对X传递依赖。  码/键
+ 码/键
+表中的一个或几个属性，用来标识该表的每一行或与另一个表产生联系 超码/超键
+去掉一个属性，还是码 候选码/候选键
+最小的码（属性集完全函数依赖于该码） 主码/主键
+从候选码中选一个 主属性
+候选码中的属性是主属性  规范化
+不同的规范化程度可用范式来衡量。目前有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、BC范式（BCNF）、第四范式（4NF）和第五范式（5NF）。
+ 第一范式，关系R的每个属性都不可分解，都是原子的 第二范式，关系R满足第一范式，且所有非主属性都完全函数依赖于任意候选码 第三范式，关系R满足第二范式，所有非主属性都不传递函数依赖于任何候选码 BCNF范式，基于满足第一范式的基础之上，是对第三范式的改进   BCNF范式，关系R满足第一范式，对任何非平凡依赖X-&amp;gt;Y（Y!">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<title>事业编计算机八股 | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-  <strong>事业编计算机八股</strong>
 
-  <label for="toc-control">
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" >
+                计算机
+            </a>
+        
+            <a href="/categories/%E8%80%83%E7%BC%96/" >
+                考编
+            </a>
+        
+    </header>
     
-  </label>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/kaobian-cs/">事业编计算机八股</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 21, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
+</header>
 
-
-  
-  <aside class="hidden clearfix">
+    <section class="article-content">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#数据库">数据库</a>
-          <ul>
-            <li><a href="#数据库的特征">数据库的特征</a></li>
-            <li><a href="#数据库管理系统dbms">数据库管理系统（DBMS）</a></li>
-            <li><a href="#数据库系统结构">数据库系统结构</a></li>
-            <li><a href="#数据模型">数据模型</a></li>
-            <li><a href="#关系型数据库">关系型数据库</a></li>
-            <li><a href="#关系规范化理论">关系规范化理论</a></li>
-            <li><a href="#事务">事务</a></li>
-          </ul>
-        </li>
-        <li><a href="#网络">网络</a>
-          <ul>
-            <li><a href="#服务访问点sap">服务访问点SAP</a></li>
-            <li><a href="#物理层设备">物理层设备</a></li>
-            <li><a href="#数据链路层设备">数据链路层设备</a></li>
-            <li><a href="#交换机和集线器的区别">交换机和集线器的区别</a></li>
-            <li><a href="#mac和llc">MAC和LLC</a></li>
-            <li><a href="#虚电路和数据报">虚电路和数据报</a></li>
-            <li><a href="#internetintranet和extranet">Internet、Intranet和Extranet</a></li>
-          </ul>
-        </li>
-        <li><a href="#操作系统">操作系统</a>
-          <ul>
-            <li><a href="#程序是怎么控制计算机的">程序是怎么控制计算机的</a></li>
-          </ul>
-        </li>
-        <li><a href="#软件工程">软件工程</a>
-          <ul>
-            <li><a href="#软件生命周期">软件生命周期</a></li>
-            <li><a href="#软件生命周期模型">软件生命周期模型</a></li>
-            <li><a href="#需求分析">需求分析</a></li>
-            <li><a href="#软件设计">软件设计</a></li>
-            <li><a href="#软件编码">软件编码</a></li>
-            <li><a href="#软件测试">软件测试</a></li>
-            <li><a href="#软件质量">软件质量</a></li>
-          </ul>
-        </li>
-        <li><a href="#office">office</a></li>
-        <li><a href="#word">word</a></li>
-        <li><a href="#excel">excel</a></li>
-        <li><a href="#powerpoint">powerpoint</a>
-          <ul>
-            <li><a href="#模板">模板</a></li>
-            <li><a href="#公式与函数">公式与函数</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/kaobian-cs/">事业编计算机八股</a>
-  </h1>
-  
-  <h5>June 21, 2022</h5>
-
-
-
-  
-  <div>
     
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>, 
-      <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
-  </div>
-  
-
-
-
-<h2 id="数据库">
-  数据库
-  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
-</h2>
-<h3 id="数据库的特征">
-  数据库的特征
-  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e7%89%b9%e5%be%81">#</a>
-</h3>
+    <h2 id="数据库">数据库</h2>
+<h3 id="数据库的特征">数据库的特征</h3>
 <ol>
 <li>持久存储</li>
 <li>数据结构化，有组织，按一定数据模型组织、描述和存储</li>
@@ -271,10 +416,7 @@ https://github.com/alex-shpak/hugo-book
 <li>数据冗余度低</li>
 <li>数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性</li>
 </ol>
-<h3 id="数据库管理系统dbms">
-  数据库管理系统（DBMS）
-  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9fdbms">#</a>
-</h3>
+<h3 id="数据库管理系统dbms">数据库管理系统（DBMS）</h3>
 <p>位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用</p>
 <ul>
 <li>DDL，数据定义语言（建库、建表等）</li>
@@ -283,33 +425,21 @@ https://github.com/alex-shpak/hugo-book
 <li>DQL，数据查询语言</li>
 </ul>
 <p>此外还负责网络通信，保障数据安全性和完整性，事务控制，并发控制等</p>
-<h3 id="数据库系统结构">
-  数据库系统结构
-  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e7%b3%bb%e7%bb%9f%e7%bb%93%e6%9e%84">#</a>
-</h3>
+<h3 id="数据库系统结构">数据库系统结构</h3>
 <p>三级模式：外模式、模式和内模式</p>
 <p>二级映射：外模式-模式映射、模式-内模式映射</p>
 <p><strong>外模式，又称子模式或用户模式</strong>，对应用户级，用户使用外模式描述语言来定义用户的数据记录，或者使用DML对数据记录做描述。</p>
 <p><strong>模式，又称概念模式或逻辑模式</strong>，对应于概念级，是所有用户的公共数据视图，使用DDL来描述。</p>
 <p><strong>内模式，又称存储模式</strong>，对应于物理级，描述了数据在存储介质上的物理结构。</p>
-<h3 id="数据模型">
-  数据模型
-  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e6%a8%a1%e5%9e%8b">#</a>
-</h3>
+<h3 id="数据模型">数据模型</h3>
 <p><strong>数据模型分为概念数据模型、逻辑数据模型、物理数据模型</strong></p>
 <p><strong>概念数据模型</strong>是从用户视角描述数据，反映客观世界的联系和规则</p>
 <p>E-R图（实体-联系图）是一种概念模型，用实体、属性和联系来描述客观世界，联系也称关系，分为一对一、一对多、多对多。实体用矩形表示，属性用椭圆形表示，关系用菱形表示。</p>
 <p><strong>逻辑数据模型</strong>由数据结构、数据操作和完整性约束构成</p>
 <p>数据库支持的逻辑数据模型有层次模型、网状模型、关系模型和面向对象模型。</p>
-<h3 id="关系型数据库">
-  关系型数据库
-  <a class="anchor" href="#%e5%85%b3%e7%b3%bb%e5%9e%8b%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
-</h3>
+<h3 id="关系型数据库">关系型数据库</h3>
 <p>关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型</p>
-<h3 id="关系规范化理论">
-  关系规范化理论
-  <a class="anchor" href="#%e5%85%b3%e7%b3%bb%e8%a7%84%e8%8c%83%e5%8c%96%e7%90%86%e8%ae%ba">#</a>
-</h3>
+<h3 id="关系规范化理论">关系规范化理论</h3>
 <p>关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。</p>
 <p>完整的关系模式是一个五元组R(U,D,Dom,F)，R是关系，U是属性集，D是属性的域，Dom是属性到域的映射，F为属性的数据依赖集</p>
 <p>关系模型可以简化为一个三元组R(U,F)</p>
@@ -353,78 +483,39 @@ https://github.com/alex-shpak/hugo-book
 （3）没有任何属性完全函数依赖于非码的任何一组属性</p>
 </blockquote>
 <p>数据库设计普遍采用的是基于3NF的设计方法</p>
-<h3 id="事务">
-  事务
-  <a class="anchor" href="#%e4%ba%8b%e5%8a%a1">#</a>
-</h3>
+<h3 id="事务">事务</h3>
 <p>事务是用户定义的一个操作系列，具有原子性，要么都完成，要么都不完成。事务可以是一条SQL语句，也可以是一组SQL语句</p>
 <p>事务的ACID特性：原子性、一致性、隔离性、持久性</p>
-<h2 id="网络">
-  网络
-  <a class="anchor" href="#%e7%bd%91%e7%bb%9c">#</a>
-</h2>
-<h3 id="服务访问点sap">
-  服务访问点SAP
-  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e8%ae%bf%e9%97%ae%e7%82%b9sap">#</a>
-</h3>
+<h2 id="网络">网络</h2>
+<h3 id="服务访问点sap">服务访问点SAP</h3>
 <p>服务访问点SAP是指上下两层协议实体之间的逻辑接口（某一层的SAP是其对上层的访问接口），例如网络层的SAP是IP地址</p>
-<h3 id="物理层设备">
-  物理层设备
-  <a class="anchor" href="#%e7%89%a9%e7%90%86%e5%b1%82%e8%ae%be%e5%a4%87">#</a>
-</h3>
+<h3 id="物理层设备">物理层设备</h3>
 <p>光纤，光纤只能单向传输</p>
 <p>中继器，集线器</p>
-<h3 id="数据链路层设备">
-  数据链路层设备
-  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e9%93%be%e8%b7%af%e5%b1%82%e8%ae%be%e5%a4%87">#</a>
-</h3>
+<h3 id="数据链路层设备">数据链路层设备</h3>
 <p>网桥，交换机</p>
 <p>网卡，网卡工作在物理层和数据链路层的MAC子层</p>
-<h3 id="交换机和集线器的区别">
-  交换机和集线器的区别
-  <a class="anchor" href="#%e4%ba%a4%e6%8d%a2%e6%9c%ba%e5%92%8c%e9%9b%86%e7%ba%bf%e5%99%a8%e7%9a%84%e5%8c%ba%e5%88%ab">#</a>
-</h3>
+<h3 id="交换机和集线器的区别">交换机和集线器的区别</h3>
 <p>集线器工作在物理层，不涉及网络协议层面的工作，只能以广播模式转发数据</p>
 <p>交换机工作在数据链路层，可以根据报文中的MAC地址对数据做针对性的转发</p>
-<h3 id="mac和llc">
-  MAC和LLC
-  <a class="anchor" href="#mac%e5%92%8cllc">#</a>
-</h3>
+<h3 id="mac和llc">MAC和LLC</h3>
 <p>数据链路层有两个子层，逻辑链路控制层（LLC）和介质访问控制层（MAC），LLC层位于MAC层之上。</p>
-<h3 id="虚电路和数据报">
-  虚电路和数据报
-  <a class="anchor" href="#%e8%99%9a%e7%94%b5%e8%b7%af%e5%92%8c%e6%95%b0%e6%8d%ae%e6%8a%a5">#</a>
-</h3>
+<h3 id="虚电路和数据报">虚电路和数据报</h3>
 <p>虚电路和数据报是分组交换的两种方式（分组就是包，是网络层的概念），目前因特网用的就是数据报方式。</p>
 <p>数据报方式为网络层提供无连接服务，每个分组都包含源地址和目的地址，每个分组独立路由和转发，不保证分组按顺序到达，不保证可靠传输。</p>
 <p>虚电路方式为网络层提供面向连接的服务，建立连接后分组只包含一个虚电路号作为标识，同一条虚电路的分组按同一条路由转发，保证分组的有序到达，保证可靠传输。</p>
-<h3 id="internetintranet和extranet">
-  Internet、Intranet和Extranet
-  <a class="anchor" href="#internetintranet%e5%92%8cextranet">#</a>
-</h3>
+<h3 id="internetintranet和extranet">Internet、Intranet和Extranet</h3>
 <p>Internet是英特网，Intranet是企业内部网，Extranet是外联网</p>
-<h2 id="操作系统">
-  操作系统
-  <a class="anchor" href="#%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f">#</a>
-</h2>
+<h2 id="操作系统">操作系统</h2>
 <p>操作系统的发展：单道批处理系统，多道批处理系统，分时系统，实时系统，通用操作系统</p>
-<h3 id="程序是怎么控制计算机的">
-  程序是怎么控制计算机的
-  <a class="anchor" href="#%e7%a8%8b%e5%ba%8f%e6%98%af%e6%80%8e%e4%b9%88%e6%8e%a7%e5%88%b6%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84">#</a>
-</h3>
+<h3 id="程序是怎么控制计算机的">程序是怎么控制计算机的</h3>
 <p>要点：</p>
 <ol>
 <li>程序是指令和数据的有序集合，执行时被装载到内存中</li>
 <li>cpu执行指令的过程，取值，译码，执行，取下一条指令，循环往复</li>
 </ol>
-<h2 id="软件工程">
-  软件工程
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b">#</a>
-</h2>
-<h3 id="软件生命周期">
-  软件生命周期
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">#</a>
-</h3>
+<h2 id="软件工程">软件工程</h2>
+<h3 id="软件生命周期">软件生命周期</h3>
 <ol>
 <li>问题定义及可行性分析</li>
 <li>需求分析</li>
@@ -433,10 +524,7 @@ https://github.com/alex-shpak/hugo-book
 <li>软件编码及测试</li>
 <li>软件维护</li>
 </ol>
-<h3 id="软件生命周期模型">
-  软件生命周期模型
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e6%a8%a1%e5%9e%8b">#</a>
-</h3>
+<h3 id="软件生命周期模型">软件生命周期模型</h3>
 <p>瀑布模型</p>
 <ul>
 <li>各阶段具有顺序性和依赖性</li>
@@ -457,25 +545,13 @@ https://github.com/alex-shpak/hugo-book
 <li>项目流程：制定计划、风险分析、实施工程、客户评估，这个过程反复迭代</li>
 <li>由风险驱动</li>
 </ul>
-<h3 id="需求分析">
-  需求分析
-  <a class="anchor" href="#%e9%9c%80%e6%b1%82%e5%88%86%e6%9e%90">#</a>
-</h3>
+<h3 id="需求分析">需求分析</h3>
 <p>略</p>
-<h3 id="软件设计">
-  软件设计
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e8%ae%be%e8%ae%a1">#</a>
-</h3>
+<h3 id="软件设计">软件设计</h3>
 <p>模块化，高内聚低耦合</p>
-<h3 id="软件编码">
-  软件编码
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e7%bc%96%e7%a0%81">#</a>
-</h3>
+<h3 id="软件编码">软件编码</h3>
 <p>略</p>
-<h3 id="软件测试">
-  软件测试
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95">#</a>
-</h3>
+<h3 id="软件测试">软件测试</h3>
 <p>白盒测试，测试者完全了解程序的结构和处理过程，根据程序的内部逻辑设计测试用例，检查逻辑通路是否符合预期</p>
 <ul>
 <li>逻辑覆盖测试
@@ -503,15 +579,9 @@ https://github.com/alex-shpak/hugo-book
 <li>边界值分析</li>
 <li>错误推测</li>
 </ul>
-<h3 id="软件质量">
-  软件质量
-  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e8%b4%a8%e9%87%8f">#</a>
-</h3>
+<h3 id="软件质量">软件质量</h3>
 <p>功能性、可靠性、可使用性、效率、可维护性、可移植性、重用性</p>
-<h2 id="office">
-  office
-  <a class="anchor" href="#office">#</a>
-</h2>
+<h2 id="office">office</h2>
 <p>快捷键</p>
 <ul>
 <li>保存、搜索（略）</li>
@@ -527,34 +597,22 @@ https://github.com/alex-shpak/hugo-book
 <li>文件-&gt;关闭</li>
 <li>alt+f4</li>
 </ul>
-<h2 id="word">
-  word
-  <a class="anchor" href="#word">#</a>
-</h2>
+<h2 id="word">word</h2>
 <ol>
 <li>两种编辑方式，插入和改写（使用insert键调整）</li>
 <li>查找和替换，开始-&gt;编辑-&gt;替换，或者开始-&gt;编辑-&gt;查找-&gt;高级查找</li>
 <li>缩进方式，左缩进，右缩进，首行缩进，悬挂缩进</li>
 <li>标尺的作用，定位、对齐和缩进等</li>
 </ol>
-<h2 id="excel">
-  excel
-  <a class="anchor" href="#excel">#</a>
-</h2>
+<h2 id="excel">excel</h2>
 <p>一个excel文件最多有255个工作表</p>
 <p>工作簿和工作表</p>
 <ul>
 <li>工作簿是指大的excel文档，工作表是指里面的sheet1、sheet2</li>
 </ul>
-<h2 id="powerpoint">
-  powerpoint
-  <a class="anchor" href="#powerpoint">#</a>
-</h2>
+<h2 id="powerpoint">powerpoint</h2>
 <p>播放快捷键：f5</p>
-<h3 id="模板">
-  模板
-  <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">#</a>
-</h3>
+<h3 id="模板">模板</h3>
 <ul>
 <li>人们通常说的模板是指别人做好的ppt文件，我们拿到后可以在其基础上做修改</li>
 <li>ppt提供了和模板相关的两种功能，<strong>母版和主题</strong>
@@ -565,10 +623,7 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li><strong>官方提供的模板</strong>，官方的模板是以pot/potx格式提供的，官方的模板可以直接在新建文件界面搜索和选择</li>
 </ul>
-<h3 id="公式与函数">
-  公式与函数
-  <a class="anchor" href="#%e5%85%ac%e5%bc%8f%e4%b8%8e%e5%87%bd%e6%95%b0">#</a>
-</h3>
+<h3 id="公式与函数">公式与函数</h3>
 <ol>
 <li>单元格引用
 <ul>
@@ -584,135 +639,353 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
- 
-      
 
-      <footer class="book-footer">
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/ip-address/">
         
-  <div class="flex flex-wrap justify-between">
+        
 
-
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/468317d3eb077cb99249d5402d315c1ed2df91cc" title='最后修改者 swj | July 22, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 22, 2022</span>
+        <div class="article-details">
+            <h2 class="article-title">关于IP地址的发展</h2>
+        </div>
     </a>
-  </div>
+</article>
 
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+            
+                
+<article class="">
+    <a href="/posts/python-demo/">
         
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#数据库">数据库</a>
-          <ul>
-            <li><a href="#数据库的特征">数据库的特征</a></li>
-            <li><a href="#数据库管理系统dbms">数据库管理系统（DBMS）</a></li>
-            <li><a href="#数据库系统结构">数据库系统结构</a></li>
-            <li><a href="#数据模型">数据模型</a></li>
-            <li><a href="#关系型数据库">关系型数据库</a></li>
-            <li><a href="#关系规范化理论">关系规范化理论</a></li>
-            <li><a href="#事务">事务</a></li>
-          </ul>
-        </li>
-        <li><a href="#网络">网络</a>
-          <ul>
-            <li><a href="#服务访问点sap">服务访问点SAP</a></li>
-            <li><a href="#物理层设备">物理层设备</a></li>
-            <li><a href="#数据链路层设备">数据链路层设备</a></li>
-            <li><a href="#交换机和集线器的区别">交换机和集线器的区别</a></li>
-            <li><a href="#mac和llc">MAC和LLC</a></li>
-            <li><a href="#虚电路和数据报">虚电路和数据报</a></li>
-            <li><a href="#internetintranet和extranet">Internet、Intranet和Extranet</a></li>
-          </ul>
-        </li>
-        <li><a href="#操作系统">操作系统</a>
-          <ul>
-            <li><a href="#程序是怎么控制计算机的">程序是怎么控制计算机的</a></li>
-          </ul>
-        </li>
-        <li><a href="#软件工程">软件工程</a>
-          <ul>
-            <li><a href="#软件生命周期">软件生命周期</a></li>
-            <li><a href="#软件生命周期模型">软件生命周期模型</a></li>
-            <li><a href="#需求分析">需求分析</a></li>
-            <li><a href="#软件设计">软件设计</a></li>
-            <li><a href="#软件编码">软件编码</a></li>
-            <li><a href="#软件测试">软件测试</a></li>
-            <li><a href="#软件质量">软件质量</a></li>
-          </ul>
-        </li>
-        <li><a href="#office">office</a></li>
-        <li><a href="#word">word</a></li>
-        <li><a href="#excel">excel</a></li>
-        <li><a href="#powerpoint">powerpoint</a>
-          <ul>
-            <li><a href="#模板">模板</a></li>
-            <li><a href="#公式与函数">公式与函数</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Python Demo</h2>
+        </div>
+    </a>
+</article>
 
- 
-      </div>
-    </aside>
+            
+                
+<article class="">
+    <a href="/posts/algorithm-problem/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">算法题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/unity-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity入门笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/digital-signatures-certificates/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">数字签名和数字证书</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
     
-  </main>
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
-  
-</body>
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#数据库">数据库</a>
+      <ol>
+        <li><a href="#数据库的特征">数据库的特征</a></li>
+        <li><a href="#数据库管理系统dbms">数据库管理系统（DBMS）</a></li>
+        <li><a href="#数据库系统结构">数据库系统结构</a></li>
+        <li><a href="#数据模型">数据模型</a></li>
+        <li><a href="#关系型数据库">关系型数据库</a></li>
+        <li><a href="#关系规范化理论">关系规范化理论</a></li>
+        <li><a href="#事务">事务</a></li>
+      </ol>
+    </li>
+    <li><a href="#网络">网络</a>
+      <ol>
+        <li><a href="#服务访问点sap">服务访问点SAP</a></li>
+        <li><a href="#物理层设备">物理层设备</a></li>
+        <li><a href="#数据链路层设备">数据链路层设备</a></li>
+        <li><a href="#交换机和集线器的区别">交换机和集线器的区别</a></li>
+        <li><a href="#mac和llc">MAC和LLC</a></li>
+        <li><a href="#虚电路和数据报">虚电路和数据报</a></li>
+        <li><a href="#internetintranet和extranet">Internet、Intranet和Extranet</a></li>
+      </ol>
+    </li>
+    <li><a href="#操作系统">操作系统</a>
+      <ol>
+        <li><a href="#程序是怎么控制计算机的">程序是怎么控制计算机的</a></li>
+      </ol>
+    </li>
+    <li><a href="#软件工程">软件工程</a>
+      <ol>
+        <li><a href="#软件生命周期">软件生命周期</a></li>
+        <li><a href="#软件生命周期模型">软件生命周期模型</a></li>
+        <li><a href="#需求分析">需求分析</a></li>
+        <li><a href="#软件设计">软件设计</a></li>
+        <li><a href="#软件编码">软件编码</a></li>
+        <li><a href="#软件测试">软件测试</a></li>
+        <li><a href="#软件质量">软件质量</a></li>
+      </ol>
+    </li>
+    <li><a href="#office">office</a></li>
+    <li><a href="#word">word</a></li>
+    <li><a href="#excel">excel</a></li>
+    <li><a href="#powerpoint">powerpoint</a>
+      <ol>
+        <li><a href="#模板">模板</a></li>
+        <li><a href="#公式与函数">公式与函数</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

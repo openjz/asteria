@@ -1,803 +1,520 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Blog" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/" />
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'><title>Blog</title>
 
-<title>Blog | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://blog.shiwj.top/posts/index.xml" title="星星" />
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<link rel='canonical' href='http://blog.shiwj.top/posts/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='Blog'>
+<meta property='og:description' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-07-15T10:45:00&#43;08:00 '/>
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><link rel="alternate" type="application/rss&#43;xml" href="http://blog.shiwj.top/posts/index.xml">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
-
-  <strong>Blog</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
-
-
-  
-  <aside class="hidden clearfix">
-    
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>11</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/python/">python</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/unity/">unity</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/mysql/">mysql</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/css/">css</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/ip-address/">关于IP地址的发展</a>
-    </h2>
-    
-  <h5>July 15, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
-  </div>
-  
-
-
-
-
-    <p>IP地址的发展 #  最开始将IP地址分为ABCDE五类地址，后来为了不浪费IP地址资源提出了划分子网，发明了子网掩码，再后来又（在可变长子网掩码VLSM的基础上）提出了无分类域间路由CIDR（Classless Inter-Domain Routing），提出了变长网络前缀，进一步提高了IP地址利用率
-在最初的五类IP编址方法中，IP地址是两级编址，由网络号+主机号构成。划分子网被提出后，IP地址变为了三级编址，即网络号+子网号+主机号。而CIDR不再使用之前的IP地址分类和划分子网的概念，使用长度可变的网络前缀代替了网络号和子网号，使用“斜线记法”，即在IP地址后面加一个斜线“/”，然后写上网络前缀所占的位数。
-CIDR实际上已经没有子网的概念，但仍然使用掩码这一称呼，IP地址从三级（网络号+子网号+主机号）又变回了两级（网络号+主机号）
-最初的五类IP地址 #  一个IPv4地址共四个字节，由网络号和主机号组成。IPv4地址分为A、B、C、D、E五类
-网络号全0代表本网络，因此，A、B、C类地址分别有一个网络号不能使用（0.0.0.0/8，128.0.0.0/16，192.0.0.0/24）。但是随着后来子网和CIDR的出现，IP地址分类已经没有意义，128.0.0.0/16已经被分配出去了，192.0.0.0/24暂时还保留在IANA手中，以后或许会分配出去，只有0.0.0.0/8这个网络号仍然保留，代表本网络
-此处参考
-  知乎tckidd的回答  RFC790-Assigned numbers，RFC790中给出了具体的IP地址划分  RFC791-Internet Protocol，RFC791中规定了全0表示本网络  RFC3330-Special-Use IPv4 Addresses，RFC3330声明了128.0.0.0/16和192.0.0.0/24不再保留  主机号全1表示本网络中的所有主机，因此主机号全1的IP地址是一个广播地址。主机号全0时这个IP地址就是网络号。
-特殊地址：
-  环回地址（loopback），127.0.0.1，等价于localhost和本机ip。（实际上整个127.0.0.0/8网段都是环回地址）
-  地址0.0.0.0代表本机
-  0.0.0.0/8中除0.0.0.0以外的其他地址用于表示本网络中的特定主机
-  主机号全0
-  主机号全1
-  A类网络号占一个字节，由0开头。其中，全0的网络号被0.0.0.0/8占用，全1的网络号被环回地址占用，因此A类网络号范围是1~126。
-  B类网络号占两个字节，由10开头（范围是128.0.0.0/16~191.255.0.0/16）
-  C类网络号占三个字节，由110开头
-  D类IP地址是多播地址，由1110开头
-  E类IP地址保留，由11110开头
-  A、B、C三类地址都各自划分出一块区域作为私有地址
- A类私有地址，10.0.0.0~10.255.255.255 B类私有地址，172.16.0.0~172.31.255.255 C类私有地址，192.168.0.0~192.168.255.255  
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/python-demo/">Python Demo</a>
-    </h2>
-    
-  <h5>July 8, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/python/">python</a>
-  </div>
-  
-
-
-
-
-    <p>创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
-#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 堆 #  python标准库heapq模块实现了一个堆，用法如下：
-data = [2,1,5] #准备数据集 heapq.heapify(data) # 建堆 heapq.heappush(data,2) # push heapq.heappop(data) # pop len(data) # 获取堆大小 data[0] #检查堆顶元素 # 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的 heapq.nlargest(n, iterable, key=None)和heapq.
-        <a href="/posts/python-demo/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/algorithm-problem/">算法题</a>
-    </h2>
-    
-  <h5>July 6, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-  
-
-
-
-
-    <p>常用方法 #  常用方法：
- 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解 双指针，重点在于搞清楚什么时候移动哪个指针 二分 回溯  常用辅助工具：排序，map，堆，栈，队列
-寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
- 方法1-归并法 #  方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m+n)
-方法2-改良的归并法 #  方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
-寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m+n))
-这里面有一个关键问题，为什么比较步长是k/2？
-为了解释这个问题，先看一个例子，
-A：1，2，3，8 B：4，5，6，7有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
-下面说明为什么是k/2
-在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
-假设有以下两个序列
-A：a0,a1,...,amB: b0,b1,...,bn假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
- ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
-情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &lt;= kth &lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &lt;= Kth &lt;= ap，即不能让位于比较点的两个数都大于等于Kth
-当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
-相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。
-方法3-二分法 #  方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
- 中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1+左序列2视为左半部分，将右序列1+右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。
-        <a href="/posts/algorithm-problem/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/unity-note/">Unity入门笔记</a>
-    </h2>
-    
-  <h5>June 26, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>, 
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/unity/">unity</a>
-  </div>
-  
-
-
-
-
-    <p>参考 #    unity manual  unity-essentials系列教程  本文约定 #  粗体代表术语
-编辑器操作 #  场景视图导航 #   pan（移动视图）：使用“手”工具，按住鼠标左键拖动视图 zoom（放缩）：使用鼠标滚轮或按住alt和鼠标右键拖动 orbit（环绕物体）：按住alt和鼠标左键拖动 focus（聚焦）：按F聚焦到一个对象  flythrough mode（飞越模式）：飞越模式是指第一人称视角，飞越模式的所有操作都需要按住鼠标右键
- 按住鼠标右键拖动来环顾四周 用wasd前进后退左移右移 用qe上升下降 按住shift移动得更快  场景视图工具 #   快捷键Q，移动相机 快捷键W，移动 快捷键E，旋转 快捷键R，拉伸 快捷键T，2D拉伸 快捷键Y，移动+旋转+拉伸  概念 #   primitive object（原始对象）  Primitive object是基本3D形状的游戏对象，例如立方体（cube）和球体（sphere），可以将它们添加到场景中作为后续导入资源的占位对象。 如何在创建中创建：在hierarchy的空白处右键，选择3D object，选择一个原始对象    
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/kaobian-cs/">事业编计算机八股</a>
-    </h2>
-    
-  <h5>June 21, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>, 
-      <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
-  </div>
-  
-
-
-
-
-    <p>数据库 #  数据库的特征 #   持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性  数据库管理系统（DBMS） #  位于操作系统之上，管理数据库，提供数据定义、数据操纵、数据控制、数据查询四种功能，并对应有以下语言供用户使用
- DDL，数据定义语言（建库、建表等） DML，数据操纵语言（增、删、改） DCL，数据控制语言 DQL，数据查询语言  此外还负责网络通信，保障数据安全性和完整性，事务控制，并发控制等
-数据库系统结构 #  三级模式：外模式、模式和内模式
-二级映射：外模式-模式映射、模式-内模式映射
-外模式，又称子模式或用户模式，对应用户级，用户使用外模式描述语言来定义用户的数据记录，或者使用DML对数据记录做描述。
-模式，又称概念模式或逻辑模式，对应于概念级，是所有用户的公共数据视图，使用DDL来描述。
-内模式，又称存储模式，对应于物理级，描述了数据在存储介质上的物理结构。
-数据模型 #  数据模型分为概念数据模型、逻辑数据模型、物理数据模型
-概念数据模型是从用户视角描述数据，反映客观世界的联系和规则
-E-R图（实体-联系图）是一种概念模型，用实体、属性和联系来描述客观世界，联系也称关系，分为一对一、一对多、多对多。实体用矩形表示，属性用椭圆形表示，关系用菱形表示。
-逻辑数据模型由数据结构、数据操作和完整性约束构成
-数据库支持的逻辑数据模型有层次模型、网状模型、关系模型和面向对象模型。
-关系型数据库 #  关系数据模型，是一种用二维表结构来表示实体和实体间关系的模型
-关系规范化理论 #  关系规范化理论是一种用来指导如何设计关系型数据库的理论，规范化用形式更简洁、结构更规范的关系模式取代原有关系模式，其目的是为了解决不合理的关系模式设计导致的数据冗余、操作异常（增删改异常）等问题。
-完整的关系模式是一个五元组R(U,D,Dom,F)，R是关系，U是属性集，D是属性的域，Dom是属性到域的映射，F为属性的数据依赖集
-关系模型可以简化为一个三元组R(U,F)
-数据依赖是关系模式的重点，包括函数依赖、多值依赖和连接依赖
-函数依赖
-对于R(U)，设X和Y是U的两个子集，如果对任意一个X，有唯一的Y与之对应，则这个依赖是函数依赖，称为“X函数确定Y”或“Y函数依赖X”，记为X-&gt;Y，X为决定因素，Y为依赖因素。例如，确定了学号，就能确定姓名、性别等。
-函数依赖有三种情形
- 平凡函数依赖和非平凡函数依赖
-如果Y是X的子集，Y对X就是平凡函数依赖，否则是非平凡函数依赖。 完全函数依赖和部分函数依赖
-如果X的任何一个真子集都不能决定Y，Y对X就是完全函数依赖，否则是部分函数依赖。 传递函数依赖
-如果X-&gt;Y，Y-&gt;Z，且不存在Y-&gt;X，那么Z对X传递依赖。  码/键
- 码/键
-表中的一个或几个属性，用来标识该表的每一行或与另一个表产生联系 超码/超键
-去掉一个属性，还是码 候选码/候选键
-最小的码（属性集完全函数依赖于该码） 主码/主键
-        <a href="/posts/kaobian-cs/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/digital-signatures-certificates/">数字签名和数字证书</a>
-    </h2>
-    
-  <h5>June 18, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-  </div>
-  
-
-
-
-
-    <p>一、数字签名 #  数字签名的作用是保证数据的完整性和保密性
-数据完整性通过对数据做摘要保证
-数据的保密性通过对数据和摘要做公钥加密保证，接收人只能用发送人提供的公钥才能解密消息，用其他人提供的公钥无法解密消息
-具体的交互流程是
- 发送人对消息做加密和摘要，生成数字签名和加密信息，并将签名和信息一起发送给接收人 接收人收到消息后，使用发送人的公钥校验数字签名，校验通过后，即可证明消息的完整性 接收人对消息进行解密，查看消息，对消息做出答复，并用发送人的公钥对答复加密，回复给发送人  二、数字证书 #  在使用数字签名的过程中存在一个问题，即接收人无法判断发送人的公钥是否可信，换言之，发送人提供的公钥有可能被篡改或伪造。数字证书就是为了解决公钥的可信性问题而被发明出来的。
-具体的做法是，由一个权威的证书颁发机构（CA）使用它自己的公钥对发送人的公钥做一个数字签名，并将这个数字签名作为证书颁发给发送人，发送人给接收人发送消息时，将证书一并附上，由接收人去验证。CA会为其自己的公钥颁发一个根证书，提前提供给用户，用户从根证书中获取到CA的公钥，对CA颁发的证书进行验证。
-简单来说，用户先从根证书中拿到CA的公钥，再利用CA的公钥从服务器证书中拿到服务器的公钥，然后再用服务器公钥和服务器通信。
-三、https协议 #  https和http的区别 #   https在http的基础上增加了SSL/TLS协议，SSL/TLS依靠证书验证服务器身份，并对浏览器和服务器之间的通信进行加密 https使用443端口，http使用80端口  SSL/TLS #   SSL，Secure Sockets Layer TLS，Transport Layer Security SSL/TLS是对因特网上的数据传输进行身份验证和加密的协议，SSL/TLS是对ssl和tls的统称，tls更先进，更安全的ssl，正在逐渐取代ssl SSL/TLS有多个版本，使用 How’s My SSL工具查看你的浏览器使用的是哪个SSL/TLS版本 SSL/TLS的握手过程  客户端和服务器互相告知各自支持的SSL/TLS版本，加密算法和压缩算法 客户端验证服务器证书，并获得服务器公钥 双方通过协商生成会话秘钥（会话秘钥是一个对称秘钥，对称加密比公钥加密快） 双方使用会话秘钥进行加密通信    
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/kaobian-xingce-tips/">行测技巧</a>
-    </h2>
-    
-  <h5>June 15, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
-  </div>
-  
-
-
-
-
-    <p>解题原则 #   言语理解与表达  片段阅读  选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题   语句表达  排语序题：排除法很有效，最好能识别出前后句搭配 填横线题：  填空题很多时候考的是语法问题，并不是逻辑问题，不要被某些参考资料的解析所迷惑 不懂的古诗词别瞎选     逻辑填空  主要使用排除法 不懂的词别瞎选，而且多半是错的      数学计算公式 #  溶液问题：
- 浓度=溶质/溶液=溶质/（溶质+溶剂） 两溶液混合后溶质不变  钟表问题：
- 表盘12大格，每格30度 时针转速为30°/小时、0.5°/分，分针转速为6°/分。分针每分钟比时针快5.5° 时针和分针一昼夜（24h）重合22次，垂直44次，180° 22次  剪绳计数：
- 绳子的段数总是比切口数多1 一段绳子对折N次，从中剪M刀，绳子被剪成（M*2^N+1）段  方阵问题：
- M*N的实心方阵，外圈比内圈多8人  组合数：
- A(m,n) = n!/(m-n)! C(m,n) = n!/(m-n)!m!  环形排列：
- n个人排成一圈，有A(n,n)/n种排法。（由于首尾相接的缘故，123456和612345是等价的） n个珍珠串成一条项链，有A(n,n)/2n种排法。（除了首尾相接以外，由于可以正反翻面的缘故，1234和4321是等价的，即正序和倒序也是等价的）  摸球问题
-        <a href="/posts/kaobian-xingce-tips/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/time/">计算机中的时间</a>
-    </h2>
-    
-  <h5>June 8, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-
-
-
-
-    <p>unix时间戳 #  unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间，各时区的计算机在同一时刻获取到的时间戳都是相同的。
-unix时间戳不存在时区问题，因此在传递时间参数的时候，传时间戳明显比传格式化的时间字符串更方便，更明确
-2038年问题 #  相当一部分unix操作系统使用32位有符号整型保存时间戳，因此时间戳的值最大也只有2147483647，换算成UTC时间为&quot;2038-01-19 03:14:07&quot;，一旦超过这个时间，这些系统的时间戳就会变成一个无效值，可能会导致程序出错，这就是2038年问题。
- 这有点类似于千年虫问题，2000年以前，很多计算机程序由于程序设计有问题，在时间超过2000年1月1日零点之后，程序会因为无法正确处理时间导致处理出错或程序崩溃（例如有些程序只用年份的后两位表示年份，导致2000年会被误认为是1900年）
- 
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/go-gopl/">golang入门笔记</a>
-    </h2>
-    
-  <h5>April 26, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/golang/">golang</a>
-  </div>
-  
-
-
-
-
-    <p>参考《Go程序设计语言》
-一、程序结构 #   go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&quot;xxx&quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 #  2.1 整型 #   int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;^是与非运算（AND NOT），&lt;&lt;是左移，&gt;&gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&gt;&gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&gt;&gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&raquo;1结果为-3）      2.2 浮点型 #   两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  2.
-        <a href="/posts/go-gopl/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/db-transaction/">数据库事务</a>
-    </h2>
-    
-  <h5>April 20, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-  </div>
-  
-
-
-
-
-    <p>事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚
-事务的并发问题 #   脏读：当前事务可以读取到其他事务未提交的数据 不可重复读：当前事务前后两次使用相同的查询语句查到了不同的数据，原因是在事务执行过程中，有其他事务对这批数据做了增删改操作。如果当前事务的两次读操作分别发生在其他事务开始前和提交后，读到的数据不一致，这就不算脏读，属于不可重复读问题。 幻读：事务进行读操作发现数据不存在，试图插入数据，但是插入失败，或者事务发现数据存在，试图更新数据，但更新失败，原因是事务读数据后，有其他事务对数据做了增删操作。即使数据库能够保证不发生脏读和不可重复读,仍有可能发生幻读，现象是每次读数据结果都是不存在，但就是不能插入数据，或者是每次读数据结果都是存在，但就是更新不了。  
-    </p>
-  </article>
-  
-
-  
-    <ul class="pagination pagination-default">
-      <li class="page-item disabled">
-        <a href="#" aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item disabled">
-        <a href="#" aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item active">
-        <a href="#" aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
- 
-      
-
-      <footer class="book-footer">
         
-  <div class="flex flex-wrap justify-between">
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/456f2efd6ed92e0c930096c41ca59e3b5f6da93d" title='最后修改者 swj | June 7, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 7, 2022</span>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <header>
+        <h3 class="section-title">
+            
+                Section
+            
+        </h3>
+
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">12 pages</h3>
+                <h1 class="section-term">Blog</h1>
+                
+            </div>
+        </div>
+    </header>
+    
+    <section class="article-list--compact">
+        
+            <article>
+    <a href="/posts/ip-address/">
+        <div class="article-details">
+            <h2 class="article-title">关于IP地址的发展</h2>
+            <footer class="article-time">
+                <time datetime='2022-07-15T10:45:00&#43;08:00'>Jul 15, 2022</time>
+            </footer>
+        </div>
     </a>
-  </div>
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+</article>
         
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>11</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/python/">python</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/unity/">unity</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/mysql/">mysql</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/css/">css</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
+            <article>
+    <a href="/posts/python-demo/">
+        <div class="article-details">
+            <h2 class="article-title">Python Demo</h2>
+            <footer class="article-time">
+                <time datetime='2022-07-08T12:23:09&#43;08:00'>Jul 08, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="/posts/algorithm-problem/">
+        <div class="article-details">
+            <h2 class="article-title">算法题</h2>
+            <footer class="article-time">
+                <time datetime='2022-07-06T11:37:09&#43;08:00'>Jul 06, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="/posts/unity-note/">
+        <div class="article-details">
+            <h2 class="article-title">Unity入门笔记</h2>
+            <footer class="article-time">
+                <time datetime='2022-06-26T10:48:30&#43;08:00'>Jun 26, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="/posts/kaobian-cs/">
+        <div class="article-details">
+            <h2 class="article-title">事业编计算机八股</h2>
+            <footer class="article-time">
+                <time datetime='2022-06-21T19:21:16&#43;08:00'>Jun 21, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
 
- 
-      </div>
+        
+            
+                <span class='page-link current'>1</span>
+                
+            
+            
+                    <a class='page-link' href='/posts/page/2/'>2</a>
+                
+            
+            
+                    <a class='page-link' href='/posts/page/3/'>3</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Archives</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Categories</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="font_size_11">
+                计算机
+            </a>
+        
+            <a href="/categories/%E8%80%83%E7%BC%96/" class="font_size_2">
+                考编
+            </a>
+        
+            <a href="/categories/%E6%B8%B8%E6%88%8F/" class="font_size_1">
+                游戏
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="font_size_2">
+                数据库
+            </a>
+        
+            <a href="/tags/css/" class="font_size_1">
+                css
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_1">
+                golang
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_1">
+                mysql
+            </a>
+        
+            <a href="/tags/python/" class="font_size_1">
+                python
+            </a>
+        
+            <a href="/tags/unity/" class="font_size_1">
+                unity
+            </a>
+        
+            <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="font_size_1">
+                信息安全
+            </a>
+        
+            <a href="/tags/%E5%85%AB%E8%82%A1/" class="font_size_1">
+                八股
+            </a>
+        
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" class="font_size_1">
+                前端
+            </a>
+        
+            <a href="/tags/%E7%AE%97%E6%B3%95/" class="font_size_1">
+                算法
+            </a>
+        
+    </div>
+</section>
+            
+        
     </aside>
-    
-  </main>
 
-  
-</body>
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,184 +1,337 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="解题原则 #   言语理解与表达  片段阅读  选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题   语句表达  排语序题：排除法很有效，最好能识别出前后句搭配 填横线题：  填空题很多时候考的是语法问题，并不是逻辑问题，不要被某些参考资料的解析所迷惑 不懂的古诗词别瞎选     逻辑填空  主要使用排除法 不懂的词别瞎选，而且多半是错的      数学计算公式 #  溶液问题：
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='解题原则  言语理解与表达  片段阅读  选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题   语句表达  排语序题：排除法很有效，最好能识别出前后句搭配 填横线题：  填空题很多时候考的是语法问题，并不是逻辑问题，不要被某些参考资料的解析所迷惑 不懂的古诗词别瞎选     逻辑填空  主要使用排除法 不懂的词别瞎选，而且多半是错的      图推技巧 数学计算公式 溶液问题：
  浓度=溶质/溶液=溶质/（溶质&#43;溶剂） 两溶液混合后溶质不变  钟表问题：
  表盘12大格，每格30度 时针转速为30°/小时、0.5°/分，分针转速为6°/分。分针每分钟比时针快5.5° 时针和分针一昼夜（24h）重合22次，垂直44次，180° 22次  剪绳计数：
  绳子的段数总是比切口数多1 一段绳子对折N次，从中剪M刀，绳子被剪成（M*2^N&#43;1）段  方阵问题：
  M*N的实心方阵，外圈比内圈多8人  组合数：
  A(m,n) = n!/(m-n)! C(m,n) = n!/(m-n)!m!  环形排列：
- n个人排成一圈，有A(n,n)/n种排法。（由于首尾相接的缘故，123456和612345是等价的） n个珍珠串成一条项链，有A(n,n)/2n种排法。（除了首尾相接以外，由于可以正反翻面的缘故，1234和4321是等价的，即正序和倒序也是等价的）  摸球问题">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="行测技巧" />
-<meta property="og:description" content="解题原则 #   言语理解与表达  片段阅读  选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题   语句表达  排语序题：排除法很有效，最好能识别出前后句搭配 填横线题：  填空题很多时候考的是语法问题，并不是逻辑问题，不要被某些参考资料的解析所迷惑 不懂的古诗词别瞎选     逻辑填空  主要使用排除法 不懂的词别瞎选，而且多半是错的      数学计算公式 #  溶液问题：
+ n个人排成一圈，有A(n,n)/n种排法。（由于首尾相接的缘故，123456和612345是等价的） n个珍珠串成一条项链，有A(n,n)/2n种排法。（除了首尾相接以外，由于可以正反翻面的缘故，1234和4321是等价的，即正序和倒序也是等价的）  摸球问题
+ 从装有n种球的口袋中，至少要摸出(m-1)n&#43;1个球，才能保证其中有m个球是同一种球，假设每种球足够多。（最坏的情况下，前(m-1)n次摸出m-1副球，再多模一个，无论如何也能有m个一样的 从装有n种球的口袋中，最多摸出(m-1)n个球使得任意m个球不是同一种球，假设每种球足够多。（和上面的问题是一个道理）  经济利润问题'><title>行测技巧</title>
+
+<link rel='canonical' href='http://blog.shiwj.top/posts/kaobian-xingce-tips/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='行测技巧'>
+<meta property='og:description' content='解题原则  言语理解与表达  片段阅读  选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题   语句表达  排语序题：排除法很有效，最好能识别出前后句搭配 填横线题：  填空题很多时候考的是语法问题，并不是逻辑问题，不要被某些参考资料的解析所迷惑 不懂的古诗词别瞎选     逻辑填空  主要使用排除法 不懂的词别瞎选，而且多半是错的      图推技巧 数学计算公式 溶液问题：
  浓度=溶质/溶液=溶质/（溶质&#43;溶剂） 两溶液混合后溶质不变  钟表问题：
  表盘12大格，每格30度 时针转速为30°/小时、0.5°/分，分针转速为6°/分。分针每分钟比时针快5.5° 时针和分针一昼夜（24h）重合22次，垂直44次，180° 22次  剪绳计数：
  绳子的段数总是比切口数多1 一段绳子对折N次，从中剪M刀，绳子被剪成（M*2^N&#43;1）段  方阵问题：
  M*N的实心方阵，外圈比内圈多8人  组合数：
  A(m,n) = n!/(m-n)! C(m,n) = n!/(m-n)!m!  环形排列：
- n个人排成一圈，有A(n,n)/n种排法。（由于首尾相接的缘故，123456和612345是等价的） n个珍珠串成一条项链，有A(n,n)/2n种排法。（除了首尾相接以外，由于可以正反翻面的缘故，1234和4321是等价的，即正序和倒序也是等价的）  摸球问题" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/kaobian-xingce-tips/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-15T14:24:30+08:00" />
-<meta property="article:modified_time" content="2022-07-15T12:09:12+08:00" />
+ n个人排成一圈，有A(n,n)/n种排法。（由于首尾相接的缘故，123456和612345是等价的） n个珍珠串成一条项链，有A(n,n)/2n种排法。（除了首尾相接以外，由于可以正反翻面的缘故，1234和4321是等价的，即正序和倒序也是等价的）  摸球问题
+ 从装有n种球的口袋中，至少要摸出(m-1)n&#43;1个球，才能保证其中有m个球是同一种球，假设每种球足够多。（最坏的情况下，前(m-1)n次摸出m-1副球，再多模一个，无论如何也能有m个一样的 从装有n种球的口袋中，最多摸出(m-1)n个球使得任意m个球不是同一种球，假设每种球足够多。（和上面的问题是一个道理）  经济利润问题'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/kaobian-xingce-tips/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='行测' /><meta property='article:published_time' content='2022-06-15T14:24:30&#43;08:00'/><meta property='article:modified_time' content='2022-06-15T14:24:30&#43;08:00'/>
+<meta name="twitter:title" content="行测技巧">
+<meta name="twitter:description" content="解题原则  言语理解与表达  片段阅读  选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题   语句表达  排语序题：排除法很有效，最好能识别出前后句搭配 填横线题：  填空题很多时候考的是语法问题，并不是逻辑问题，不要被某些参考资料的解析所迷惑 不懂的古诗词别瞎选     逻辑填空  主要使用排除法 不懂的词别瞎选，而且多半是错的      图推技巧 数学计算公式 溶液问题：
+ 浓度=溶质/溶液=溶质/（溶质&#43;溶剂） 两溶液混合后溶质不变  钟表问题：
+ 表盘12大格，每格30度 时针转速为30°/小时、0.5°/分，分针转速为6°/分。分针每分钟比时针快5.5° 时针和分针一昼夜（24h）重合22次，垂直44次，180° 22次  剪绳计数：
+ 绳子的段数总是比切口数多1 一段绳子对折N次，从中剪M刀，绳子被剪成（M*2^N&#43;1）段  方阵问题：
+ M*N的实心方阵，外圈比内圈多8人  组合数：
+ A(m,n) = n!/(m-n)! C(m,n) = n!/(m-n)!m!  环形排列：
+ n个人排成一圈，有A(n,n)/n种排法。（由于首尾相接的缘故，123456和612345是等价的） n个珍珠串成一条项链，有A(n,n)/2n种排法。（除了首尾相接以外，由于可以正反翻面的缘故，1234和4321是等价的，即正序和倒序也是等价的）  摸球问题
+ 从装有n种球的口袋中，至少要摸出(m-1)n&#43;1个球，才能保证其中有m个球是同一种球，假设每种球足够多。（最坏的情况下，前(m-1)n次摸出m-1副球，再多模一个，无论如何也能有m个一样的 从装有n种球的口袋中，最多摸出(m-1)n个球使得任意m个球不是同一种球，假设每种球足够多。（和上面的问题是一个道理）  经济利润问题">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<title>行测技巧 | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-  <strong>行测技巧</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
 
 
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#解题原则">解题原则</a></li>
-        <li><a href="#数学计算公式">数学计算公式</a></li>
-        <li><a href="#速算技巧">速算技巧</a>
-          <ul>
-            <li><a href="#求解对象">求解对象</a></li>
-            <li><a href="#选项差距">选项差距</a></li>
-            <li><a href="#运算技巧">运算技巧</a></li>
-          </ul>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
         </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
 
 
 
-  </aside>
-  
- 
-      </header>
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
 
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/kaobian-xingce-tips/">行测技巧</a>
-  </h1>
-  
-  <h5>June 15, 2022</h5>
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
 
 
 
-  
-  <div>
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-      <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-  </div>
-  
-
-  
-  <div>
+    <header class="article-category">
+        
+            <a href="/categories/%E8%80%83%E7%BC%96/" >
+                考编
+            </a>
+        
+    </header>
     
-      <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
-  </div>
-  
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/kaobian-xingce-tips/">行测技巧</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
 
 
 
-<h2 id="解题原则">
-  解题原则
-  <a class="anchor" href="#%e8%a7%a3%e9%a2%98%e5%8e%9f%e5%88%99">#</a>
-</h2>
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="解题原则">解题原则</h2>
 <ul>
 <li>言语理解与表达
 <ul>
@@ -207,10 +360,8 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h2 id="数学计算公式">
-  数学计算公式
-  <a class="anchor" href="#%e6%95%b0%e5%ad%a6%e8%ae%a1%e7%ae%97%e5%85%ac%e5%bc%8f">#</a>
-</h2>
+<h2 id="图推技巧">图推技巧</h2>
+<h2 id="数学计算公式">数学计算公式</h2>
 <p>溶液问题：</p>
 <ul>
 <li>浓度=溶质/溶液=溶质/（溶质+溶剂）</li>
@@ -288,22 +439,13 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>M个空瓶换N瓶酒，x个空瓶最多可以喝到xN/(M-N)瓶酒。（默认可以借瓶换瓶）</li>
 </ul>
-<h2 id="速算技巧">
-  速算技巧
-  <a class="anchor" href="#%e9%80%9f%e7%ae%97%e6%8a%80%e5%b7%a7">#</a>
-</h2>
-<h3 id="求解对象">
-  求解对象
-  <a class="anchor" href="#%e6%b1%82%e8%a7%a3%e5%af%b9%e8%b1%a1">#</a>
-</h3>
+<h2 id="速算技巧">速算技巧</h2>
+<h3 id="求解对象">求解对象</h3>
 <ol>
 <li>基期、现期、增长量、增长率</li>
 <li>平均值、比重</li>
 </ol>
-<h3 id="选项差距">
-  选项差距
-  <a class="anchor" href="#%e9%80%89%e9%a1%b9%e5%b7%ae%e8%b7%9d">#</a>
-</h3>
+<h3 id="选项差距">选项差距</h3>
 <p>差距大：</p>
 <ol>
 <li>四个选项首位均不同</li>
@@ -313,10 +455,7 @@ https://github.com/alex-shpak/hugo-book
 <ol>
 <li>存在首位相同的选项，且选项的第二位差小于等于首位。</li>
 </ol>
-<h3 id="运算技巧">
-  运算技巧
-  <a class="anchor" href="#%e8%bf%90%e7%ae%97%e6%8a%80%e5%b7%a7">#</a>
-</h3>
+<h3 id="运算技巧">运算技巧</h3>
 <ol>
 <li>直除
 <ul>
@@ -346,39 +485,21 @@ https://github.com/alex-shpak/hugo-book
 <li>增长量计算-百分数化简为分数
 <ul>
 <li>适用于选项差距大、增长率绝对值大于等于5%的情况
-
-<link rel="stylesheet" href="/katex/katex.min.css" />
-<script defer src="/katex/katex.min.js"></script>
-<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
-  \[
-        \frac{1}{3}=33.3\%,\frac{1}{6}=16.7\%,\frac{1}{7}=14.3\%
-    \]
-</span>
-
-<span>
-  \[
-        \frac{1}{8}=12.5\%,\frac{1}{9}=11.1\%,\frac{1}{11}=9.1\%
-    \]
-</span>
-
-<span>
-  \[
-        \frac{1}{12}=8.3\%,\frac{1}{13}=7.7\%,\frac{1}{14}=7.1\%
-    \]
-</span>
-
-<span>
-  \[
-        \frac{1}{15}=6.7\%,\frac{1}{16}=6.25\%,\frac{1}{17}=5.9\%
-    \]
-</span>
-
-<span>
-  \[
-        \frac{1}{18}=5.55\%,\frac{1}{19}=5.26\%
-    \]
-</span>
-</li>
+$$
+\frac{1}{3}=33.3%,\frac{1}{6}=16.7%,\frac{1}{7}=14.3%
+$$
+$$
+\frac{1}{8}=12.5%,\frac{1}{9}=11.1%,\frac{1}{11}=9.1%
+$$
+$$
+\frac{1}{12}=8.3%,\frac{1}{13}=7.7%,\frac{1}{14}=7.1%
+$$
+$$
+\frac{1}{15}=6.7%,\frac{1}{16}=6.25%,\frac{1}{17}=5.9%
+$$
+$$
+\frac{1}{18}=5.55%,\frac{1}{19}=5.26%
+$$</li>
 </ul>
 </li>
 <li>增长量计算-基期近似
@@ -387,97 +508,264 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
- 
-      
 
-      <footer class="book-footer">
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/kaobian-cs/">
         
-  <div class="flex flex-wrap justify-between">
+        
 
-
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/2ea5ed3790a490bbcda26fdcea7bf271b28d583a" title='最后修改者 swj | July 15, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 15, 2022</span>
+        <div class="article-details">
+            <h2 class="article-title">事业编计算机八股</h2>
+        </div>
     </a>
-  </div>
+</article>
 
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
+            
+        </div>
     </div>
-  </footer>
-      </footer>
+</aside>
 
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
+     
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
         
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#解题原则">解题原则</a></li>
-        <li><a href="#数学计算公式">数学计算公式</a></li>
-        <li><a href="#速算技巧">速算技巧</a>
-          <ul>
-            <li><a href="#求解对象">求解对象</a></li>
-            <li><a href="#选项差距">选项差距</a></li>
-            <li><a href="#运算技巧">运算技巧</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
-  </main>
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
-  
-</body>
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#解题原则">解题原则</a></li>
+    <li><a href="#图推技巧">图推技巧</a></li>
+    <li><a href="#数学计算公式">数学计算公式</a></li>
+    <li><a href="#速算技巧">速算技巧</a>
+      <ol>
+        <li><a href="#求解对象">求解对象</a></li>
+        <li><a href="#选项差距">选项差距</a></li>
+        <li><a href="#运算技巧">运算技巧</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,176 +1,320 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="参考《Go程序设计语言》
-一、程序结构 #   go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&quot;xxx&quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 #  2.1 整型 #   int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;^是与非运算（AND NOT），&lt;&lt;是左移，&gt;&gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&gt;&gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&gt;&gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&raquo;1结果为-3）      2.2 浮点型 #   两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（&#43;Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  2.">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="golang入门笔记" />
-<meta property="og:description" content="参考《Go程序设计语言》
-一、程序结构 #   go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&quot;xxx&quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 #  2.1 整型 #   int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;^是与非运算（AND NOT），&lt;&lt;是左移，&gt;&gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&gt;&gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&gt;&gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&raquo;1结果为-3）      2.2 浮点型 #   两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（&#43;Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  2." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/go-gopl/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-04-26T11:18:48+08:00" />
-<meta property="article:modified_time" content="2022-07-21T01:12:01+08:00" />
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考《Go程序设计语言》
+一、程序结构  go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&amp;quot;&amp;quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&amp;quot;xxx&amp;quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 2.1 整型  int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;amp;^是与非运算（AND NOT），&amp;lt;&amp;lt;是左移，&amp;gt;&amp;gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&amp;gt;&amp;gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&amp;gt;&amp;gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&amp;raquo;1结果为-3）      2.2 浮点型  两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（&#43;Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  2.3 复数  两种复数，complex64，complex128 写法：3.14i、1&#43;2i 可以使用==和!=判断是否等值  2.'><title>golang入门笔记</title>
 
-<title>golang入门笔记 | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<link rel='canonical' href='http://blog.shiwj.top/posts/go-gopl/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='golang入门笔记'>
+<meta property='og:description' content='参考《Go程序设计语言》
+一、程序结构  go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&amp;quot;&amp;quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&amp;quot;xxx&amp;quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 2.1 整型  int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;amp;^是与非运算（AND NOT），&amp;lt;&amp;lt;是左移，&amp;gt;&amp;gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&amp;gt;&amp;gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&amp;gt;&amp;gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&amp;raquo;1结果为-3）      2.2 浮点型  两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（&#43;Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  2.3 复数  两种复数，complex64，complex128 写法：3.14i、1&#43;2i 可以使用==和!=判断是否等值  2.'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/go-gopl/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='golang' /><meta property='article:published_time' content='2022-04-26T11:18:48&#43;08:00'/><meta property='article:modified_time' content='2022-04-26T11:18:48&#43;08:00'/>
+<meta name="twitter:title" content="golang入门笔记">
+<meta name="twitter:description" content="参考《Go程序设计语言》
+一、程序结构  go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&amp;quot;&amp;quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值 短变量声明，a,b := f()，a和b中至少有一个得是新变量，不能全是已经声明的变量  一个例外，如果a,b是在外层作用域声明的，:=会将它们声明为新变量   指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期） new函数，new函数创建一个新值并返回其地址 变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是var还是new 多重赋值，例如a,b := 1,&amp;quot;xxx&amp;quot;或x,y = y,x，后者用来交换变量的值 类型转换，var a T = T(b)，每个类型都会提供T(x)将x的值转换为T（前提是允许这种转换） 导出的标识符才能在包外被访问到，导出的标识符以大写字母开头 包初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量 init函数，可以有任意个，在程序启动时按照声明顺序自动执行 包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）  二、基本数据 2.1 整型  int8、int16、int32、int64、uint8、uint16、uint32、uint64 int和uint，在不同平台上大小不同（通常是32位或64位） rune，等价于int32，表示一个unicode码点 byte，等价于uint8，表示一个原始的字节 uintptr，可以存放一个指针，用于底层编程 golang中%运算结果的正负号总是和被除数一致 位运算。&amp;amp;是与运算（AND），|是或运算（OR），^是异或和非运算（XOR，NOT），&amp;amp;^是与非运算（AND NOT），&amp;lt;&amp;lt;是左移，&amp;gt;&amp;gt;是右移  1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位） 与非运算的作用是按右操作数的位分布清空左操作数中的对应位 右移操作&amp;gt;&amp;gt;  有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0） 右移操作x&amp;gt;&amp;gt;n等价于x/2^n，向下取整（朝负无穷方向取整，例如-5&amp;raquo;1结果为-3）      2.2 浮点型  两种浮点型，float32和float64 math包给出了浮点型的极限值，例如math.MaxFloat32 特殊值：正无穷、负无穷、无意义（&#43;Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义  2.3 复数  两种复数，complex64，complex128 写法：3.14i、1&#43;2i 可以使用==和!=判断是否等值  2.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-  <strong>golang入门笔记</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
 
 
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#一程序结构">一、程序结构</a></li>
-        <li><a href="#二基本数据">二、基本数据</a>
-          <ul>
-            <li><a href="#21-整型">2.1 整型</a></li>
-            <li><a href="#22-浮点型">2.2 浮点型</a></li>
-            <li><a href="#23-复数">2.3 复数</a></li>
-            <li><a href="#24-布尔">2.4 布尔</a></li>
-            <li><a href="#25-字符串">2.5 字符串</a></li>
-          </ul>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
         </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
 
 
 
-  </aside>
-  
- 
-      </header>
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
 
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/go-gopl/">golang入门笔记</a>
-  </h1>
-  
-  <h5>April 26, 2022</h5>
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
 
 
 
-  
-  <div>
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" >
+                计算机
+            </a>
+        
+    </header>
     
-      <a href="/tags/golang/">golang</a>
-  </div>
-  
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/go-gopl/">golang入门笔记</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 26, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
 
 
 
-<p>参考《Go程序设计语言》</p>
-<h2 id="一程序结构">
-  一、程序结构
-  <a class="anchor" href="#%e4%b8%80%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84">#</a>
-</h2>
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>参考《Go程序设计语言》</p>
+<h2 id="一程序结构">一、程序结构</h2>
 <ol>
 <li>go程序使用驼峰式命名风格</li>
 <li>零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是false，接口（interface）和引用类型（slice、指针、map、通道、函数）是nil，数组和结构体的零值是其所有元素或成员的零值</li>
@@ -189,14 +333,8 @@ https://github.com/alex-shpak/hugo-book
 <li>init函数，可以有任意个，在程序启动时按照声明顺序自动执行</li>
 <li>包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）</li>
 </ol>
-<h2 id="二基本数据">
-  二、基本数据
-  <a class="anchor" href="#%e4%ba%8c%e5%9f%ba%e6%9c%ac%e6%95%b0%e6%8d%ae">#</a>
-</h2>
-<h3 id="21-整型">
-  2.1 整型
-  <a class="anchor" href="#21-%e6%95%b4%e5%9e%8b">#</a>
-</h3>
+<h2 id="二基本数据">二、基本数据</h2>
+<h3 id="21-整型">2.1 整型</h3>
 <ol>
 <li>int8、int16、int32、int64、uint8、uint16、uint32、uint64</li>
 <li>int和uint，在不同平台上大小不同（通常是32位或64位）</li>
@@ -217,36 +355,24 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ol>
-<h3 id="22-浮点型">
-  2.2 浮点型
-  <a class="anchor" href="#22-%e6%b5%ae%e7%82%b9%e5%9e%8b">#</a>
-</h3>
+<h3 id="22-浮点型">2.2 浮点型</h3>
 <ol>
 <li>两种浮点型，float32和float64</li>
 <li>math包给出了浮点型的极限值，例如<code>math.MaxFloat32</code></li>
 <li>特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0或sqrt(-1)为无意义</li>
 </ol>
-<h3 id="23-复数">
-  2.3 复数
-  <a class="anchor" href="#23-%e5%a4%8d%e6%95%b0">#</a>
-</h3>
+<h3 id="23-复数">2.3 复数</h3>
 <ol>
 <li>两种复数，complex64，complex128</li>
 <li>写法：<code>3.14i</code>、<code>1+2i</code></li>
 <li>可以使用<code>==</code>和<code>!=</code>判断是否等值</li>
 </ol>
-<h3 id="24-布尔">
-  2.4 布尔
-  <a class="anchor" href="#24-%e5%b8%83%e5%b0%94">#</a>
-</h3>
+<h3 id="24-布尔">2.4 布尔</h3>
 <ol>
 <li>逻辑运算的短路行为，如果运算符左边的操作数能直接确定最终结果，则右边的操作数不会计算在内</li>
 <li><code>&amp;&amp;</code>比<code>||</code>优先级高，助记技巧：<code>&amp;&amp;</code>是逻辑乘法，<code>||</code>是逻辑加法</li>
 </ol>
-<h3 id="25-字符串">
-  2.5 字符串
-  <a class="anchor" href="#25-%e5%ad%97%e7%ac%a6%e4%b8%b2">#</a>
-</h3>
+<h3 id="25-字符串">2.5 字符串</h3>
 <ol>
 <li>len函数返回的是字节数，不是字符数</li>
 <li>生成子串操作<code>s[i:j]</code>取的是字节，不是字符。</li>
@@ -270,17 +396,37 @@ https://github.com/alex-shpak/hugo-book
 <li>utf-8是go的默认编码</li>
 <li>unicode字符有两种表示形式，<code>\uhhhh</code>表示16位码点，<code>\Uhhhhhhhh</code>表示32位码点，区别是小写的u和大写的U</li>
 <li>以下字符串是等价的，注意：直接用16进制转义（\x）书写的字符串是&quot;世界&quot;经utf-8编码后的实际字节，而\u和\U后面跟的是unicode码点，并不是实际的utf-8字节
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#e6db74">&#34;世界&#34;</span>
-<span style="color:#e6db74">&#34;\xe4\xb8\x96\xe7\x95\x8c&#34;</span>
-<span style="color:#e6db74">&#34;\u4e16\u754c&#34;</span>
-<span style="color:#e6db74">&#34;\U00004e16\U0000754c&#34;</span>
-</code></pre></div></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="s">&#34;世界&#34;</span>
+<span class="s">&#34;\xe4\xb8\x96\xe7\x95\x8c&#34;</span>
+<span class="s">&#34;\u4e16\u754c&#34;</span>
+<span class="s">&#34;\U00004e16\U0000754c&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>utf-8编码规则（只有&quot;xxx&quot;部分才是unicode码点信息）
-<pre tabindex="0"><code>0xxxxxxx
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">0xxxxxxx
 110xxxxx 10xxxxxx
 1110xxxx 10xxxxxx 10xxxxxx
 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-</code></pre></li>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>使用函数<code>utf8.RuneCountInString(s)</code>计算字符串中的字符数量</li>
 <li>utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号<code>\uFFFD</code>作为替换</li>
 </ul>
@@ -289,98 +435,316 @@ https://github.com/alex-shpak/hugo-book
 <li>整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（<code>\uFFFD</code>）</li>
 <li>字面量<code>'A'</code>是rune类型</li>
 </ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/golang/">golang</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
- 
-      
 
-      <footer class="book-footer">
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/ip-address/">
         
-  <div class="flex flex-wrap justify-between">
+        
 
-
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/cdbdc61ba4021d1e72c9ce7dda0425eba6512c4c" title='最后修改者 swj | July 21, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 21, 2022</span>
+        <div class="article-details">
+            <h2 class="article-title">关于IP地址的发展</h2>
+        </div>
     </a>
-  </div>
+</article>
 
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+            
+                
+<article class="">
+    <a href="/posts/python-demo/">
         
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#一程序结构">一、程序结构</a></li>
-        <li><a href="#二基本数据">二、基本数据</a>
-          <ul>
-            <li><a href="#21-整型">2.1 整型</a></li>
-            <li><a href="#22-浮点型">2.2 浮点型</a></li>
-            <li><a href="#23-复数">2.3 复数</a></li>
-            <li><a href="#24-布尔">2.4 布尔</a></li>
-            <li><a href="#25-字符串">2.5 字符串</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Python Demo</h2>
+        </div>
+    </a>
+</article>
 
- 
-      </div>
-    </aside>
+            
+                
+<article class="">
+    <a href="/posts/algorithm-problem/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">算法题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/unity-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity入门笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/kaobian-cs/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">事业编计算机八股</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
     
-  </main>
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
-  
-</body>
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一程序结构">一、程序结构</a></li>
+    <li><a href="#二基本数据">二、基本数据</a>
+      <ol>
+        <li><a href="#21-整型">2.1 整型</a></li>
+        <li><a href="#22-浮点型">2.2 浮点型</a></li>
+        <li><a href="#23-复数">2.3 复数</a></li>
+        <li><a href="#24-布尔">2.4 布尔</a></li>
+        <li><a href="#25-字符串">2.5 字符串</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

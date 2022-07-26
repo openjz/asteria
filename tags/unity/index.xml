@@ -1,21 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>unity on 星星</title>
-    <link>http://blog.shiwj.top/tags/unity/</link>
-    <description>Recent content in unity on 星星</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Jun 2022 10:48:30 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/unity/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Unity入门笔记</title>
-      <link>http://blog.shiwj.top/posts/unity-note/</link>
-      <pubDate>Sun, 26 Jun 2022 10:48:30 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/posts/unity-note/</guid>
-      <description>参考 #    unity manual  unity-essentials系列教程  本文约定 #  粗体代表术语
-编辑器操作 #  场景视图导航 #   pan（移动视图）：使用“手”工具，按住鼠标左键拖动视图 zoom（放缩）：使用鼠标滚轮或按住alt和鼠标右键拖动 orbit（环绕物体）：按住alt和鼠标左键拖动 focus（聚焦）：按F聚焦到一个对象  flythrough mode（飞越模式）：飞越模式是指第一人称视角，飞越模式的所有操作都需要按住鼠标右键
- 按住鼠标右键拖动来环顾四周 用wasd前进后退左移右移 用qe上升下降 按住shift移动得更快  场景视图工具 #   快捷键Q，移动相机 快捷键W，移动 快捷键E，旋转 快捷键R，拉伸 快捷键T，2D拉伸 快捷键Y，移动+旋转+拉伸  概念 #   primitive object（原始对象）  Primitive object是基本3D形状的游戏对象，例如立方体（cube）和球体（sphere），可以将它们添加到场景中作为后续导入资源的占位对象。 如何在创建中创建：在hierarchy的空白处右键，选择3D object，选择一个原始对象    </description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>unity on Example Site</title>
+        <link>http://blog.shiwj.top/tags/unity/</link>
+        <description>Recent content in unity on Example Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 26 Jun 2022 10:48:30 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/unity/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Unity入门笔记</title>
+        <link>http://blog.shiwj.top/posts/unity-note/</link>
+        <pubDate>Sun, 26 Jun 2022 10:48:30 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/posts/unity-note/</guid>
+        <description>&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.unity3d.com/Manual/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;unity manual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.unity.com/pathway/unity-essentials&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;unity-essentials系列教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;本文约定&#34;&gt;本文约定&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;粗体&lt;/strong&gt;代表术语&lt;/p&gt;
+&lt;h2 id=&#34;编辑器操作&#34;&gt;编辑器操作&lt;/h2&gt;
+&lt;h3 id=&#34;场景视图导航&#34;&gt;场景视图导航&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;pan（移动视图）&lt;/strong&gt;：使用“手”工具，按住鼠标左键拖动视图&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;zoom（放缩）&lt;/strong&gt;：使用鼠标滚轮或按住alt和鼠标右键拖动&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;orbit（环绕物体）&lt;/strong&gt;：按住alt和鼠标左键拖动&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;focus（聚焦）&lt;/strong&gt;：按F聚焦到一个对象&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;flythrough mode（飞越模式）&lt;/strong&gt;：飞越模式是指第一人称视角，飞越模式的所有操作都需要按住鼠标右键&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;按住鼠标右键拖动来环顾四周&lt;/li&gt;
+&lt;li&gt;用wasd前进后退左移右移&lt;/li&gt;
+&lt;li&gt;用qe上升下降&lt;/li&gt;
+&lt;li&gt;按住shift移动得更快&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;场景视图工具&#34;&gt;场景视图工具&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;快捷键Q，移动相机&lt;/li&gt;
+&lt;li&gt;快捷键W，移动&lt;/li&gt;
+&lt;li&gt;快捷键E，旋转&lt;/li&gt;
+&lt;li&gt;快捷键R，拉伸&lt;/li&gt;
+&lt;li&gt;快捷键T，2D拉伸&lt;/li&gt;
+&lt;li&gt;快捷键Y，移动+旋转+拉伸&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;primitive object（原始对象）&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Primitive object是基本3D形状的游戏对象，例如立方体（cube）和球体（sphere），可以将它们添加到场景中作为后续导入资源的占位对象。&lt;/li&gt;
+&lt;li&gt;如何在创建中创建：在hierarchy的空白处右键，选择3D object，选择一个原始对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

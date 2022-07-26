@@ -1,494 +1,520 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Blog" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/" />
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'><title>Blog</title>
 
-<title>Blog | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://blog.shiwj.top/posts/index.xml" title="星星" />
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<link rel='canonical' href='http://blog.shiwj.top/posts/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='Blog'>
+<meta property='og:description' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-07-15T10:45:00&#43;08:00 '/>
+<meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><link rel="alternate" type="application/rss&#43;xml" href="http://blog.shiwj.top/posts/index.xml">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
-
-  <strong>Blog</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
-
-
-  
-  <aside class="hidden clearfix">
-    
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>11</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/python/">python</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/unity/">unity</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/mysql/">mysql</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/css/">css</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/mysql-crash-course/">mysql入门笔记</a>
-    </h2>
-    
-  <h5>December 10, 2021</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/mysql/">mysql</a>, 
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-  </div>
-  
-
-
-
-
-    <p>参考《mysql必知必会》
-一、基本概念 #  模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包括表、视图、存储过程、索引等。schema通常是指数据库或表的布局和结构等信息。
-主键（primary key）：主键定义在表的一列上，用来唯一地标识每一行，因此主键的值不能重复，每一行对应的主键值都是唯一的。
- 主键有几个使用习惯，（1）不更新主键，（2）一般把主键定义在自增id列上
- 外键（foreign key）：外键是表中的一个字段，对应另一个表的主键。
- 可伸缩性（scale），一个设计良好的数据库能够良好应对数据量的增加，我们把这种情况称为数据库的可伸缩性好，可伸缩性离不开外键的使用。
-  检索性能可能会受多种因素影响：检索操作（子查询、联表查询&hellip;），数据量，是否有索引或键
- 子句（clause）：SQL由子句构成，例如from、order by等。
-完全限定列名：表名.列名，video.md5
-二、mysql工具 #  mysql安装包中自带一个命令行工具mysql，这是一个运行在命令行的mysql客户端。
- 命令用;或\g结束，\G可以使横向表格纵向输出 输入help或\h查看帮助 输入quit或exit退出  mysql默认端口是3306
-三、使用mysql #  一些关于数据库和表的命令：
- 选择数据库：use xxx; 查看（show）  所有数据库：show databases; 所有表：show tables; 表的列：show columns from xxx;  和desc xxx;作用相同   服务器状态：show status; 权限：show grants; 数据库和表的创建语句：show create database/table xxx; 服务器错误和告警：show errors/warnings; help show    四、检索（select） #  简单select #  select field1 from table_hello; select field1,field2,field3 from table_hello; select * from table_hello; 字段前面可以加上表名，例如
-        <a href="/posts/mysql-crash-course/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/css-mdn-tutorial/">css入门笔记</a>
-    </h2>
-    
-  <h5>November 14, 2021</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/css/">css</a>, 
-      <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-  
-
-
-
-
-    <p>参考 MDN css入门教程
-一、导入 css #  1、导入外部样式：
-&lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式
-使用 style 元素
-&lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt; ... &lt;/html&gt; 3、内联样式
-使用 style 属性
-&lt;h1 style=&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;&gt; Hello World! &lt;/h1&gt; 语法 #  1、选择器+大括号，属性:值;
-h1 { color: red; font-size: 5em; } 2、函数
-        <a href="/posts/css-mdn-tutorial/">...</a>
-      
-    </p>
-  </article>
-  
-
-  
-    <ul class="pagination pagination-default">
-      <li class="page-item">
-        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item active">
-        <a href="#" aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item disabled">
-        <a href="#" aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item disabled">
-        <a href="#" aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
- 
-      
-
-      <footer class="book-footer">
         
-  <div class="flex flex-wrap justify-between">
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/456f2efd6ed92e0c930096c41ca59e3b5f6da93d" title='最后修改者 swj | June 7, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 7, 2022</span>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <header>
+        <h3 class="section-title">
+            
+                Section
+            
+        </h3>
+
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">12 pages</h3>
+                <h1 class="section-term">Blog</h1>
+                
+            </div>
+        </div>
+    </header>
+    
+    <section class="article-list--compact">
+        
+            <article>
+    <a href="/posts/digital-signatures-certificates/">
+        <div class="article-details">
+            <h2 class="article-title">数字签名和数字证书</h2>
+            <footer class="article-time">
+                <time datetime='2022-06-18T14:28:00&#43;08:00'>Jun 18, 2022</time>
+            </footer>
+        </div>
     </a>
-  </div>
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+</article>
         
-  <nav>
-  <ul>
-  
-    
-    <li class="book-section-flat">
-      <strong>Categories</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-          <span>11</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/%E8%80%83%E7%BC%96/">考编</a>
-          <span>2</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-    
-    <li class="book-section-flat">
-      <strong>Tags</strong>
-      <ul>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/python/">python</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/unity/">unity</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%85%AB%E8%82%A1/">八股</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E8%A1%8C%E6%B5%8B/">行测</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/mysql/">mysql</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/css/">css</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-          <span>1</span>
-        </li>
-      
-      </ul>
-    </li>
-    
-  
-  </ul>
-</nav>
+            <article>
+    <a href="/posts/kaobian-xingce-tips/">
+        <div class="article-details">
+            <h2 class="article-title">行测技巧</h2>
+            <footer class="article-time">
+                <time datetime='2022-06-15T14:24:30&#43;08:00'>Jun 15, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="/posts/time/">
+        <div class="article-details">
+            <h2 class="article-title">计算机中的时间</h2>
+            <footer class="article-time">
+                <time datetime='2022-06-08T12:29:06&#43;08:00'>Jun 08, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="/posts/go-gopl/">
+        <div class="article-details">
+            <h2 class="article-title">golang入门笔记</h2>
+            <footer class="article-time">
+                <time datetime='2022-04-26T11:18:48&#43;08:00'>Apr 26, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="/posts/db-transaction/">
+        <div class="article-details">
+            <h2 class="article-title">数据库事务</h2>
+            <footer class="article-time">
+                <time datetime='2022-04-20T11:57:47&#43;08:00'>Apr 20, 2022</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
 
- 
-      </div>
+        
+            
+                    <a class='page-link' href='/posts/'>1</a>
+                
+            
+            
+                <span class='page-link current'>2</span>
+                
+            
+            
+                    <a class='page-link' href='/posts/page/3/'>3</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Archives</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Categories</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="font_size_11">
+                计算机
+            </a>
+        
+            <a href="/categories/%E8%80%83%E7%BC%96/" class="font_size_2">
+                考编
+            </a>
+        
+            <a href="/categories/%E6%B8%B8%E6%88%8F/" class="font_size_1">
+                游戏
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="font_size_2">
+                数据库
+            </a>
+        
+            <a href="/tags/css/" class="font_size_1">
+                css
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_1">
+                golang
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_1">
+                mysql
+            </a>
+        
+            <a href="/tags/python/" class="font_size_1">
+                python
+            </a>
+        
+            <a href="/tags/unity/" class="font_size_1">
+                unity
+            </a>
+        
+            <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="font_size_1">
+                信息安全
+            </a>
+        
+            <a href="/tags/%E5%85%AB%E8%82%A1/" class="font_size_1">
+                八股
+            </a>
+        
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" class="font_size_1">
+                前端
+            </a>
+        
+            <a href="/tags/%E7%AE%97%E6%B3%95/" class="font_size_1">
+                算法
+            </a>
+        
+    </div>
+</section>
+            
+        
     </aside>
-    
-  </main>
 
-  
-</body>
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

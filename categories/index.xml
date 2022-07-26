@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Categories on 星星</title>
-    <link>http://blog.shiwj.top/categories/</link>
-    <description>Recent content in Categories on 星星</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 15 Jul 2022 10:45:00 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>计算机</title>
-      <link>http://blog.shiwj.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
-      <pubDate>Fri, 15 Jul 2022 10:45:00 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>游戏</title>
-      <link>http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/</link>
-      <pubDate>Sun, 26 Jun 2022 10:48:30 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>考编</title>
-      <link>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</link>
-      <pubDate>Tue, 21 Jun 2022 19:21:16 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Categories on Example Site</title>
+        <link>http://blog.shiwj.top/categories/</link>
+        <description>Recent content in Categories on Example Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 15 Jul 2022 10:45:00 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>计算机</title>
+        <link>http://blog.shiwj.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+        <pubDate>Fri, 15 Jul 2022 10:45:00 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>游戏</title>
+        <link>http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/</link>
+        <pubDate>Sun, 26 Jun 2022 10:48:30 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>考编</title>
+        <link>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</link>
+        <pubDate>Tue, 21 Jun 2022 19:21:16 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>

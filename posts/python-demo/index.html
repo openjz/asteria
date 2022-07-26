@@ -1,332 +1,851 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
-#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 堆 #  python标准库heapq模块实现了一个堆，用法如下：
-data = [2,1,5] #准备数据集 heapq.heapify(data) # 建堆 heapq.heappush(data,2) # push heapq.heappop(data) # pop len(data) # 获取堆大小 data[0] #检查堆顶元素 # 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的 heapq.nlargest(n, iterable, key=None)和heapq.">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Python Demo" />
-<meta property="og:description" content="创建数组 #  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))] 栈和队列 #  可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考 python3官方文档 collections—Container datatypes
-#栈 d = deque() #初始化 d.append(c) #入栈 len(d) #获取栈中元素个数 d[len(d)-1] #检查栈顶 d.pop() #出栈 堆 #  python标准库heapq模块实现了一个堆，用法如下：
-data = [2,1,5] #准备数据集 heapq.heapify(data) # 建堆 heapq.heappush(data,2) # push heapq.heappop(data) # pop len(data) # 获取堆大小 data[0] #检查堆顶元素 # 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的 heapq.nlargest(n, iterable, key=None)和heapq." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/python-demo/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-08T12:23:09+08:00" />
-<meta property="article:modified_time" content="2022-07-19T23:48:42+08:00" />
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='for循环 1 2 3 4 5 6 7 8 9 10 11 12  n = [1,2,3,4] # 正序 for v in n: ... for i in range(10): ... # 倒序 for v in reversed(n): ... for i in range(10,-1,-1): #从10到0，步长为-1，第三个参数为步长 ...   创建数组 1 2 3 4 5  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))]   栈和队列-deque 可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考python3官方文档 collections—Container datatypes'><title>Python Demo</title>
 
-<title>Python Demo | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
-        
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
+<link rel='canonical' href='http://blog.shiwj.top/posts/python-demo/'>
 
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='Python Demo'>
+<meta property='og:description' content='for循环 1 2 3 4 5 6 7 8 9 10 11 12  n = [1,2,3,4] # 正序 for v in n: ... for i in range(10): ... # 倒序 for v in reversed(n): ... for i in range(10,-1,-1): #从10到0，步长为-1，第三个参数为步长 ...   创建数组 1 2 3 4 5  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))]   栈和队列-deque 可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考python3官方文档 collections—Container datatypes'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/python-demo/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2022-07-08T12:23:09&#43;08:00'/><meta property='article:modified_time' content='2022-07-08T12:23:09&#43;08:00'/>
+<meta name="twitter:title" content="Python Demo">
+<meta name="twitter:description" content="for循环 1 2 3 4 5 6 7 8 9 10 11 12  n = [1,2,3,4] # 正序 for v in n: ... for i in range(10): ... # 倒序 for v in reversed(n): ... for i in range(10,-1,-1): #从10到0，步长为-1，第三个参数为步长 ...   创建数组 1 2 3 4 5  # 1维数组 array1d = [0]*(len(s)) array1d_2 = [0 for i in range(len(s))] # 2维数组 array2d = [[0]*(len(s)) for i in range(len(s))]   栈和队列-deque 可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考python3官方文档 collections—Container datatypes">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
-
-  <strong>Python Demo</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
-
-
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#创建数组">创建数组</a></li>
-        <li><a href="#栈和队列">栈和队列</a></li>
-        <li><a href="#堆">堆</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/python-demo/">Python Demo</a>
-  </h1>
-  
-  <h5>July 8, 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/python/">python</a>
-  </div>
-  
-
-
-
-<h2 id="创建数组">
-  创建数组
-  <a class="anchor" href="#%e5%88%9b%e5%bb%ba%e6%95%b0%e7%bb%84">#</a>
-</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 1维数组</span>
-array1d <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>(len(s))
-array1d_2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(s))]
-<span style="color:#75715e"># 2维数组</span>
-array2d <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>(len(s)) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(s))]
-</code></pre></div><h2 id="栈和队列">
-  栈和队列
-  <a class="anchor" href="#%e6%a0%88%e5%92%8c%e9%98%9f%e5%88%97">#</a>
-</h2>
-<p>可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考
-  <a href="https://docs.python.org/3/library/collections.html#collections.deque">python3官方文档 collections—Container datatypes</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#栈</span>
-d <span style="color:#f92672">=</span> deque() <span style="color:#75715e">#初始化</span>
-d<span style="color:#f92672">.</span>append(c) <span style="color:#75715e">#入栈</span>
-len(d)  <span style="color:#75715e">#获取栈中元素个数</span>
-d[len(d)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#75715e">#检查栈顶</span>
-d<span style="color:#f92672">.</span>pop() <span style="color:#75715e">#出栈</span>
-</code></pre></div><h2 id="堆">
-  堆
-  <a class="anchor" href="#%e5%a0%86">#</a>
-</h2>
-<p>python标准库heapq模块实现了一个堆，用法如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">5</span>]  <span style="color:#75715e">#准备数据集</span>
-heapq<span style="color:#f92672">.</span>heapify(data) <span style="color:#75715e"># 建堆</span>
-heapq<span style="color:#f92672">.</span>heappush(data,<span style="color:#ae81ff">2</span>) <span style="color:#75715e"># push</span>
-heapq<span style="color:#f92672">.</span>heappop(data) <span style="color:#75715e"># pop</span>
-len(data) <span style="color:#75715e"># 获取堆大小</span>
-data[<span style="color:#ae81ff">0</span>] <span style="color:#75715e">#检查堆顶元素</span>
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
-<span style="color:#75715e"># 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的</span>
-heapq<span style="color:#f92672">.</span>nlargest(n, iterable, key<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)和heapq<span style="color:#f92672">.</span>nsmallest(n, iterable, key<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
 
-<span style="color:#75715e"># 归并有序序列，返回一个迭代器</span>
-heapq<span style="color:#f92672">.</span>merge(<span style="color:#f92672">*</span>iterables, key<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
-</code></pre></div><p>注意：</p>
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" >
+                计算机
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/python-demo/">Python Demo</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="for循环">for循环</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="c1"># 正序</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">n</span><span class="p">:</span>
+    <span class="o">...</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="o">...</span>
+<span class="c1"># 倒序</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="o">...</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1">#从10到0，步长为-1，第三个参数为步长</span>
+    <span class="o">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="创建数组">创建数组</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 1维数组</span>
+<span class="n">array1d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="n">array1d_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))]</span>
+<span class="c1"># 2维数组</span>
+<span class="n">array2d</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="栈和队列-deque">栈和队列-deque</h2>
+<p>可以使用标准库collections模块中的deque作为栈和队列，性能比基础的list要好，参考<a class="link" href="https://docs.python.org/3/library/collections.html#collections.deque"  target="_blank" rel="noopener"
+    >python3官方文档 collections—Container datatypes</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#栈</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span> <span class="c1">#初始化</span>
+<span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">#入栈</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1">#获取栈中元素个数</span>
+<span class="n">d</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#检查栈顶</span>
+<span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1">#出栈</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="堆-heapq">堆-heapq</h2>
+<p>python标准库heapq模块实现了一个堆，用法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>  <span class="c1">#准备数据集</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 建堆</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># push</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># pop</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 获取堆大小</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#检查堆顶元素</span>
+            
+<span class="c1"># 以下两个函数是基于堆的通用功能函数，数据集不必是已排序的</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="n">和heapq</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># 归并有序序列，返回一个迭代器</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="o">*</span><span class="n">iterables</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：</p>
 <ol>
 <li>heapq只实现了最小堆，如果想使用最大堆，可以通过在push和pop时对元素取反来实现</li>
 <li>如果数据集中是自定义对象，可以通过给类定义比较方法来使用heapq，例如</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@total_ordering</span> <span style="color:#75715e">#用了这个注解以后，只需要定义两个运算符</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HeapEle</span>:
-    <span style="color:#66d9ef">def</span> __init__(self, val<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, next<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        self<span style="color:#f92672">.</span>val <span style="color:#f92672">=</span> val
-        self<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> next
-    <span style="color:#66d9ef">def</span> __eq__(self,other):
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>val <span style="color:#f92672">==</span> other<span style="color:#f92672">.</span>val
-    <span style="color:#66d9ef">def</span> __lt__(self,other):
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>val <span style="color:#f92672">&lt;</span> other<span style="color:#f92672">.</span>val
-</code></pre></div><p>merge函数例子：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> heapq
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nd">@total_ordering</span> <span class="c1">#用了这个注解以后，只需要定义两个运算符</span>
+<span class="k">class</span> <span class="nc">HeapEle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">val</span>
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">val</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>heapq.merge函数例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">heapq</span>
 
-<span style="color:#75715e"># 1.简单例子</span>
-l0 <span style="color:#f92672">=</span> heapq<span style="color:#f92672">.</span>merge([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>],[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">8</span>])
-<span style="color:#75715e"># 遍历迭代器-方法1，使用常规for语句进行遍历</span>
-<span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> l0:
-    print(v)
-<span style="color:#75715e"># 遍历迭代器-方法2，使用next()函数</span>
-<span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-    <span style="color:#66d9ef">try</span>:
-        print (next(l0))
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">StopIteration</span>:
-        <span style="color:#66d9ef">break</span>
-<span style="color:#75715e"># 将迭代器转为list</span>
-list(l0)
+<span class="c1"># 1.简单例子</span>
+<span class="n">l0</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="c1"># 遍历迭代器-方法1，使用常规for语句进行遍历</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">l0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="c1"># 遍历迭代器-方法2，使用next()函数</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">l0</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="c1"># 将迭代器转为list</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">l0</span><span class="p">)</span>
 
-<span style="color:#75715e"># 2. 对自定义类进行归并</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListNode</span>:
-    <span style="color:#66d9ef">def</span> __init__(self, val<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, next<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        self<span style="color:#f92672">.</span>val <span style="color:#f92672">=</span> val
-        self<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> next
+<span class="c1"># 2. 对自定义类进行归并</span>
+<span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
 
-l1 <span style="color:#f92672">=</span> [ListNode(<span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">4</span>,<span style="color:#66d9ef">None</span>)]
-l2 <span style="color:#f92672">=</span> [ListNode(<span style="color:#ae81ff">1</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">3</span>,<span style="color:#66d9ef">None</span>),ListNode(<span style="color:#ae81ff">5</span>,<span style="color:#66d9ef">None</span>)]
+<span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="n">ListNode</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="n">ListNode</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="kc">None</span><span class="p">)]</span>
+<span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="n">ListNode</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="n">ListNode</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="n">ListNode</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">None</span><span class="p">)]</span>
 
-l3 <span style="color:#f92672">=</span> heapq<span style="color:#f92672">.</span>merge(l1,l2,key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> a:a<span style="color:#f92672">.</span>val)
-<span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> l3:
-    print(v<span style="color:#f92672">.</span>val)
-</code></pre></div></article>
- 
-      
+<span class="n">l3</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="n">a</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">l3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="list操作">list操作</h2>
+<h3 id="翻转">翻转</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">n</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1"># 原地翻转</span>
+<span class="nb">reversed</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># 返回一个翻转后的迭代器，原序列不变</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="二分查找-bisect">二分查找-bisect</h2>
+<p>只能在正序序列上二分查找</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">bisect</span><span class="o">.</span><span class="n">bisect_left</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
-      <footer class="book-footer">
+<span class="n">bisect</span><span class="o">.</span><span class="n">bisect_right</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">bisect</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面这三个函数都返回一个插入位置</p>
+<p>bisect_left 返回的是已存在元素x左侧位置，插入点 i 将 a 分为两半，a[lo:i] 全部小于 x，a[i:hi] 全部大于等于 x。</p>
+<p>bisect_right 和 bisect返回已存在元素 x 右侧位置，a[lo:i] 全部小于等于 x, a[i:hi] 全部大于 x。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
-  <div class="flex flex-wrap justify-between">
+            <a href="/tags/python/">python</a>
+        
+    </section>
 
 
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/c43bcff03b6cc9fc4401da3dc4c5305362244d8a" title='最后修改者 swj | July 19, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 19, 2022</span>
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/ip-address/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于IP地址的发展</h2>
+        </div>
     </a>
-  </div>
+</article>
 
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+            
+                
+<article class="">
+    <a href="/posts/algorithm-problem/">
         
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#创建数组">创建数组</a></li>
-        <li><a href="#栈和队列">栈和队列</a></li>
-        <li><a href="#堆">堆</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
 
+        <div class="article-details">
+            <h2 class="article-title">算法题</h2>
+        </div>
+    </a>
+</article>
 
- 
-      </div>
-    </aside>
+            
+                
+<article class="">
+    <a href="/posts/unity-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity入门笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/kaobian-cs/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">事业编计算机八股</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/digital-signatures-certificates/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">数字签名和数字证书</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
     
-  </main>
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
-  
-</body>
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#for循环">for循环</a></li>
+    <li><a href="#创建数组">创建数组</a></li>
+    <li><a href="#栈和队列-deque">栈和队列-deque</a></li>
+    <li><a href="#堆-heapq">堆-heapq</a></li>
+    <li><a href="#list操作">list操作</a>
+      <ol>
+        <li><a href="#翻转">翻转</a></li>
+      </ol>
+    </li>
+    <li><a href="#二分查找-bisect">二分查找-bisect</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

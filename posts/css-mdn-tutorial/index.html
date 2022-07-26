@@ -1,265 +1,453 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="参考 MDN css入门教程
-一、导入 css #  1、导入外部样式：
-&lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考MDN css入门教程
+一、导入 css 1、导入外部样式：
+1  &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt;   2、内部样式
 使用 style 元素
-&lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt; ... &lt;/html&gt; 3、内联样式
-使用 style 属性
-&lt;h1 style=&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;&gt; Hello World! &lt;/h1&gt; 语法 #  1、选择器&#43;大括号，属性:值;
-h1 { color: red; font-size: 5em; } 2、函数">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="css入门笔记" />
-<meta property="og:description" content="参考 MDN css入门教程
-一、导入 css #  1、导入外部样式：
-&lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;My CSS experiment&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; ... &amp;lt;/html&amp;gt;   3、内联样式
+使用 style 属性'><title>css入门笔记</title>
+
+<link rel='canonical' href='http://blog.shiwj.top/posts/css-mdn-tutorial/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='css入门笔记'>
+<meta property='og:description' content='参考MDN css入门教程
+一、导入 css 1、导入外部样式：
+1  &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt;   2、内部样式
 使用 style 元素
-&lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &lt;/style&gt; &lt;/head&gt; ... &lt;/html&gt; 3、内联样式
-使用 style 属性
-&lt;h1 style=&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;&gt; Hello World! &lt;/h1&gt; 语法 #  1、选择器&#43;大括号，属性:值;
-h1 { color: red; font-size: 5em; } 2、函数" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/css-mdn-tutorial/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-11-14T10:09:46+08:00" />
-<meta property="article:modified_time" content="2022-07-21T01:12:01+08:00" />
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;My CSS experiment&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; ... &amp;lt;/html&amp;gt;   3、内联样式
+使用 style 属性'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/css-mdn-tutorial/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='css' /><meta property='article:tag' content='前端' /><meta property='article:published_time' content='2021-11-14T10:09:46&#43;08:00'/><meta property='article:modified_time' content='2021-11-14T10:09:46&#43;08:00'/>
+<meta name="twitter:title" content="css入门笔记">
+<meta name="twitter:description" content="参考MDN css入门教程
+一、导入 css 1、导入外部样式：
+1  &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt;   2、内部样式
+使用 style 元素
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;My CSS experiment&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; h1 { color: blue; background-color: yellow; border: 1px solid black; } p { color: red; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; ... &amp;lt;/html&amp;gt;   3、内联样式
+使用 style 属性">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<title>css入门笔记 | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-  <strong>css入门笔记</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
 
 
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#一导入-css">一、导入 css</a></li>
-        <li><a href="#语法">语法</a></li>
-        <li><a href="#选择器和选择符">选择器和选择符</a></li>
-        <li><a href="#继承">继承</a></li>
-        <li><a href="#层叠">层叠</a></li>
-        <li><a href="#盒子">盒子</a></li>
-        <li><a href="#盒模型">盒模型</a></li>
-        <li><a href="#背景和边框">背景和边框</a></li>
-        <li><a href="#文本方向与逻辑属性">文本方向与逻辑属性</a></li>
-        <li><a href="#处理内容溢出">处理内容溢出</a></li>
-        <li><a href="#值和单位">值和单位</a></li>
-        <li><a href="#尺寸">尺寸</a></li>
-        <li><a href="#替换元素和表单">替换元素和表单</a></li>
-        <li><a href="#字体">字体</a></li>
-        <li><a href="#布局">布局</a>
-          <ul>
-            <li><a href="#正常布局流">正常布局流</a></li>
-            <li><a href="#flexbox弹性盒子">flexbox（弹性盒子）</a></li>
-            <li><a href="#grid网格">grid（网格）</a></li>
-            <li><a href="#浮动float">浮动（float）</a></li>
-            <li><a href="#定位position">定位（position）</a></li>
-            <li><a href="#多列布局">多列布局</a></li>
-            <li><a href="#响应式布局">响应式布局</a></li>
-            <li><a href="#媒体查询">媒体查询</a></li>
-          </ul>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
         </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
 
 
 
-  </aside>
-  
- 
-      </header>
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
 
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/css-mdn-tutorial/">css入门笔记</a>
-  </h1>
-  
-  <h5>November 14, 2021</h5>
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
 
 
 
-  
-  <div>
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" >
+                计算机
+            </a>
+        
+    </header>
     
-      <a href="/tags/css/">css</a>, 
-      <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-  
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/css-mdn-tutorial/">css入门笔记</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 14, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
 
 
 
-<p>参考
-  <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS">MDN css入门教程</a></p>
-<h2 id="一导入-css">
-  一、导入 css
-  <a class="anchor" href="#%e4%b8%80%e5%af%bc%e5%85%a5-css">#</a>
-</h2>
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>参考<a class="link" href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS"  target="_blank" rel="noopener"
+    >MDN css入门教程</a></p>
+<h2 id="一导入-css">一、导入 css</h2>
 <p>1、导入外部样式：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;styles.css&#34;</span> /&gt;
-</code></pre></div><p>2、内部样式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;styles.css&#34;</span> <span class="p">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2、内部样式</p>
 <p>使用 style 元素</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span>&gt;
-  &lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span> /&gt;
-    &lt;<span style="color:#f92672">title</span>&gt;My CSS experiment&lt;/<span style="color:#f92672">title</span>&gt;
-    &lt;<span style="color:#f92672">style</span>&gt;
-      <span style="color:#f92672">h1</span> {
-        <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">blue</span>;
-        <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>;
-        <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">black</span>;
-      }
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My CSS experiment<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+      <span class="nt">h1</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+        <span class="k">background-color</span><span class="p">:</span> <span class="kc">yellow</span><span class="p">;</span>
+        <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span>
+      <span class="p">}</span>
 
-      <span style="color:#f92672">p</span> {
-        <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>;
-      }
-    &lt;/<span style="color:#f92672">style</span>&gt;
-  &lt;/<span style="color:#f92672">head</span>&gt;
+      <span class="nt">p</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   ...
-&lt;/<span style="color:#f92672">html</span>&gt;
-</code></pre></div><p>3、内联样式</p>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3、内联样式</p>
 <p>使用 style 属性</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;</span>&gt;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;</span><span class="p">&gt;</span>
   Hello World!
-&lt;/<span style="color:#f92672">h1</span>&gt;
-</code></pre></div><h2 id="语法">
-  语法
-  <a class="anchor" href="#%e8%af%ad%e6%b3%95">#</a>
-</h2>
+<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="语法">语法</h2>
 <p>1、选择器+大括号，属性:值;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">h1</span> {
-  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>;
-  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">em</span>;
-}
-</code></pre></div><p>2、函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">h1</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2、函数</p>
 <p><code>width: calc(90% - 30px);</code></p>
 <p>3、@规则</p>
 <p>@import：导入样式表
 @media：媒体查询（当条件成立时才应用样式）</p>
 <p>4、速记属性</p>
 <p>允许在一行中设置多个属性值，如 padding、border 等，例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">padding</span><span style="color:#f92672">:</span> <span style="color:#f92672">10px</span> <span style="color:#f92672">15px</span> <span style="color:#f92672">15px</span> <span style="color:#f92672">5px</span><span style="color:#f92672">;</span>
-<span style="color:#75715e">/* 等价于 */</span>
-<span style="color:#f92672">padding-top</span><span style="color:#f92672">:</span> <span style="color:#f92672">10px</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">padding-right</span><span style="color:#f92672">:</span> <span style="color:#f92672">15px</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">padding-bottom</span><span style="color:#f92672">:</span> <span style="color:#f92672">15px</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">padding-left</span><span style="color:#f92672">:</span> <span style="color:#f92672">5px</span><span style="color:#f92672">;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">padding</span><span class="o">:</span> <span class="nt">10px</span> <span class="nt">15px</span> <span class="nt">15px</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="c">/* 等价于 */</span>
+<span class="nt">padding-top</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
+<span class="nt">padding-right</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+<span class="nt">padding-bottom</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+<span class="nt">padding-left</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
 
-<span style="color:#f92672">background</span><span style="color:#f92672">:</span> <span style="color:#f92672">red</span> <span style="color:#f92672">url</span><span style="color:#f92672">(</span><span style="color:#f92672">bg-graphic</span>.<span style="color:#a6e22e">png</span><span style="color:#f92672">)</span>
-<span style="color:#75715e">/* 等价于 */</span>
-<span style="color:#f92672">background-color</span><span style="color:#f92672">:</span> <span style="color:#f92672">red</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">background-image</span><span style="color:#f92672">:</span> <span style="color:#f92672">url</span><span style="color:#f92672">(</span><span style="color:#f92672">bg-graphic</span>.<span style="color:#a6e22e">png</span><span style="color:#f92672">);</span>
-</code></pre></div><h2 id="选择器和选择符">
-  选择器和选择符
-  <a class="anchor" href="#%e9%80%89%e6%8b%a9%e5%99%a8%e5%92%8c%e9%80%89%e6%8b%a9%e7%ac%a6">#</a>
-</h2>
-<table>
+<span class="nt">background</span><span class="o">:</span> <span class="nt">red</span> <span class="nt">url</span><span class="o">(</span><span class="nt">bg-graphic</span><span class="p">.</span><span class="nc">png</span><span class="o">)</span>
+<span class="c">/* 等价于 */</span>
+<span class="nt">background-color</span><span class="o">:</span> <span class="nt">red</span><span class="o">;</span>
+<span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="nt">bg-graphic</span><span class="p">.</span><span class="nc">png</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="选择器和选择符">选择器和选择符</h2>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>选择器</th>
@@ -296,14 +484,14 @@ https://github.com/alex-shpak/hugo-book
 <td>*</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>注：</p>
 <ul>
 <li><strong>多个选择器连在一起写代表“与”的关系</strong>。</li>
-<li>伪类代表元素的状态，伪元素是一种虚拟的元素。
-  <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements">参考：常见伪类和伪元素</a></li>
+<li>伪类代表元素的状态，伪元素是一种虚拟的元素。<a class="link" href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements"  target="_blank" rel="noopener"
+    >参考：常见伪类和伪元素</a></li>
 </ul>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -328,21 +516,24 @@ https://github.com/alex-shpak/hugo-book
 <td>h1 ~ p</td>
 </tr>
 </tbody>
-</table>
-<h2 id="继承">
-  继承
-  <a class="anchor" href="#%e7%bb%a7%e6%89%bf">#</a>
-</h2>
+</table></div>
+<h2 id="继承">继承</h2>
 <p>继承：有些父元素上的 css 属性可以被子元素继承，有些不能。</p>
 <p>使用 inherit、initial、unset、revert 这四个属性值控制继承，例如</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">my-class-1</span> <span style="color:#f92672">a</span> {
-  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">inherit</span>;
-}
-</code></pre></div><p>属性 all 可以用来代表所有属性</p>
-<h2 id="层叠">
-  层叠
-  <a class="anchor" href="#%e5%b1%82%e5%8f%a0">#</a>
-</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">my-class-1</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>属性 all 可以用来代表所有属性</p>
+<h2 id="层叠">层叠</h2>
 <ol>
 <li>多个相同权重的规则应用到同一个元素时，后面的覆盖前面的</li>
 <li>选择器具有优先级，优先级计算公式
@@ -358,10 +549,7 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>当浏览器遇到无法解析的 css 时（比如 css 拼写错误）这个 css 会被忽略。</li>
 </ol>
-<h2 id="盒子">
-  盒子
-  <a class="anchor" href="#%e7%9b%92%e5%ad%90">#</a>
-</h2>
+<h2 id="盒子">盒子</h2>
 <p>块级盒子（Block Box）：</p>
 <ul>
 <li>盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间</li>
@@ -387,10 +575,7 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h2 id="盒模型">
-  盒模型
-  <a class="anchor" href="#%e7%9b%92%e6%a8%a1%e5%9e%8b">#</a>
-</h2>
+<h2 id="盒模型">盒模型</h2>
 <p>完整的 CSS 盒模型应用于块级盒子，内联盒子只使用盒模型中定义的部分内容。</p>
 <p>盒模型组成：content、padding、border、margin</p>
 <ul>
@@ -400,10 +585,7 @@ https://github.com/alex-shpak/hugo-book
 <p>外边距折叠：如果两个元素相邻，它们之间的距离不是两个元素的 margin 之和，而是取两个元素 margin 的较大值</p>
 <p>margin 可以为负值。padding 不可以为负</p>
 <p>属性写法（去掉后缀就是简写）：{margin/border/padding}-{top/right/bottom/left}-{width/style/color}</p>
-<h2 id="背景和边框">
-  背景和边框
-  <a class="anchor" href="#%e8%83%8c%e6%99%af%e5%92%8c%e8%be%b9%e6%a1%86">#</a>
-</h2>
+<h2 id="背景和边框">背景和边框</h2>
 <p>背景（background）:</p>
 <ul>
 <li>background-image 属性可以有多个图片，图片会叠在一起显示</li>
@@ -414,10 +596,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>{border}-{width/style/color/radius}</li>
 </ul>
-<h2 id="文本方向与逻辑属性">
-  文本方向与逻辑属性
-  <a class="anchor" href="#%e6%96%87%e6%9c%ac%e6%96%b9%e5%90%91%e4%b8%8e%e9%80%bb%e8%be%91%e5%b1%9e%e6%80%a7">#</a>
-</h2>
+<h2 id="文本方向与逻辑属性">文本方向与逻辑属性</h2>
 <p>writing-mode: horizontal-tb、vertical-rl、vertical-lr</p>
 <p>逻辑属性是为了解决文本方向变化时盒子的高宽等属性不能正确变化的问题，例如</p>
 <ul>
@@ -426,10 +605,7 @@ https://github.com/alex-shpak/hugo-book
 <li>内外边距、边框也有对应的逻辑属性</li>
 <li>属性值也有对应的逻辑属性值</li>
 </ul>
-<h2 id="处理内容溢出">
-  处理内容溢出
-  <a class="anchor" href="#%e5%a4%84%e7%90%86%e5%86%85%e5%ae%b9%e6%ba%a2%e5%87%ba">#</a>
-</h2>
+<h2 id="处理内容溢出">处理内容溢出</h2>
 <p>内容溢出</p>
 <ul>
 <li>overflow:visible/hidden/scroll/auto</li>
@@ -442,12 +618,9 @@ https://github.com/alex-shpak/hugo-book
 <li>overflow-wraps</li>
 <li>hyphens</li>
 </ul>
-<h2 id="值和单位">
-  值和单位
-  <a class="anchor" href="#%e5%80%bc%e5%92%8c%e5%8d%95%e4%bd%8d">#</a>
-</h2>
-<p>
-  <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units">参考：CSS 的值与单位</a></p>
+<h2 id="值和单位">值和单位</h2>
+<p><a class="link" href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units"  target="_blank" rel="noopener"
+    >参考：CSS 的值与单位</a></p>
 <p>css 值可以使用关键字和值。关键字是指 red、top 等。</p>
 <ul>
 <li>数值类型：<code>integer</code>、<code>number</code>、<code>dimension</code>、<code>&lt;percentage&gt;</code>、<code>&lt;length&gt;</code>
@@ -477,10 +650,7 @@ https://github.com/alex-shpak/hugo-book
 <li>字符串，例如<code>content: &quot;This is a string&quot;</code></li>
 <li>函数，例如 rgb()、url()、calc()等</li>
 </ul>
-<h2 id="尺寸">
-  尺寸
-  <a class="anchor" href="#%e5%b0%ba%e5%af%b8">#</a>
-</h2>
+<h2 id="尺寸">尺寸</h2>
 <p>原始尺寸/固有尺寸：</p>
 <ul>
 <li>例如图像本身的尺寸</li>
@@ -500,22 +670,16 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>vw 和 vh</li>
 </ul>
-<h2 id="替换元素和表单">
-  替换元素和表单
-  <a class="anchor" href="#%e6%9b%bf%e6%8d%a2%e5%85%83%e7%b4%a0%e5%92%8c%e8%a1%a8%e5%8d%95">#</a>
-</h2>
+<h2 id="替换元素和表单">替换元素和表单</h2>
 <p>替换元素：指图像和视频元素，css 不能影响其内部布局</p>
 <ul>
 <li>调整大小，object-fit: cover/contain/fill;</li>
 <li>在 flex 和 grid 布局中，元素会被拉伸，而图像不会</li>
 </ul>
 <p>表单的样式在不同浏览器上不太统一，需要额外设置 css 样式保证其初始样式一致，已经有一些工具帮开发人员完成了这个工作，例如 Normalize.css。</p>
-<h2 id="字体">
-  字体
-  <a class="anchor" href="#%e5%ad%97%e4%bd%93">#</a>
-</h2>
-<p>web 安全字体：可以在任何一种操作系统上找到的字体。
-  <a href="https://www.cssfontstack.com/">参考：cssfontstack</a></p>
+<h2 id="字体">字体</h2>
+<p>web 安全字体：可以在任何一种操作系统上找到的字体。<a class="link" href="https://www.cssfontstack.com/"  target="_blank" rel="noopener"
+    >参考：cssfontstack</a></p>
 <p>五种字体的大类型：</p>
 <ul>
 <li>serif，有衬线字体，衬线是指字体笔画尾端的小装饰，常见于印刷体字体</li>
@@ -536,24 +700,28 @@ https://github.com/alex-shpak/hugo-book
 <li>word-spacing</li>
 </ul>
 <p>web 字体：访问时和页面一起下载，本不需要本地事先有这种字体</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">@<span style="color:#66d9ef">font-face</span> {
-  <span style="color:#f92672">font-family</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;myFont&#34;</span><span style="color:#f92672">;</span>
-  <span style="color:#f92672">src</span><span style="color:#f92672">:</span> <span style="color:#f92672">url</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;myFont.ttf&#34;</span><span style="color:#f92672">);</span>
-}
-</code></pre></div><p>注意：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">font-face</span> <span class="p">{</span>
+  <span class="nt">font-family</span><span class="o">:</span> <span class="s2">&#34;myFont&#34;</span><span class="o">;</span>
+  <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&#34;myFont.ttf&#34;</span><span class="o">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：</p>
 <ol>
 <li>有些字体有版权，不能随便用</li>
 <li>不同浏览器支持的字体格式可能不同，常见的格式有.ttf, .woff, .woff2 等</li>
 <li>在线字体服务，例如 google fonts，可以从第三方站点导入字体，例如用<code>&lt;link&gt;</code>或<code>@import</code>导入字体，不需要开发人员自己提供字体</li>
 </ol>
-<h2 id="布局">
-  布局
-  <a class="anchor" href="#%e5%b8%83%e5%b1%80">#</a>
-</h2>
-<h3 id="正常布局流">
-  正常布局流
-  <a class="anchor" href="#%e6%ad%a3%e5%b8%b8%e5%b8%83%e5%b1%80%e6%b5%81">#</a>
-</h3>
+<h2 id="布局">布局</h2>
+<h3 id="正常布局流">正常布局流</h3>
 <p>正常布局流是指默认的布局。</p>
 <ul>
 <li>块元素的布局方向垂直于书写方向</li>
@@ -561,10 +729,7 @@ https://github.com/alex-shpak/hugo-book
 <li>默认的，块元素的宽度是其父元素的 100%，高度与其内容高度一致。内联元素的 height 和 width 与内容一致。</li>
 <li>外边距叠加</li>
 </ul>
-<h3 id="flexbox弹性盒子">
-  flexbox（弹性盒子）
-  <a class="anchor" href="#flexbox%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90">#</a>
-</h3>
+<h3 id="flexbox弹性盒子">flexbox（弹性盒子）</h3>
 <p>display:flex</p>
 <p>flexbox 用于创建横向或纵向的一维布局，里面的子元素被称为 flex 项，flex 有以下特点：</p>
 <ul>
@@ -596,10 +761,7 @@ https://github.com/alex-shpak/hugo-book
 <li>justify-content 控制 flex 项在主轴上的位置，其值包括 flex-start、flex-end、flex-around、flex-between</li>
 </ul>
 <p>排序：使用 order 属性，默认值是 0，值越大，越往后排</p>
-<h3 id="grid网格">
-  grid（网格）
-  <a class="anchor" href="#grid%e7%bd%91%e6%a0%bc">#</a>
-</h3>
+<h3 id="grid网格">grid（网格）</h3>
 <p>display:grid</p>
 <p>默认只有一列，创建多个列：</p>
 <ul>
@@ -621,13 +783,25 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>使用minmax函数设置行列尺寸，minmax函数可以设置一个取值范围，例如minmax(100px, auto)，下面是一个例子</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">container</span> {
-  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">grid</span>;
-  <span style="color:#66d9ef">grid-template-columns</span>: <span style="color:#a6e22e">repeat</span>(<span style="color:#66d9ef">auto</span><span style="color:#f92672">-</span><span style="color:#66d9ef">fill</span>, <span style="color:#a6e22e">minmax</span>(<span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">1</span>fr));
-  <span style="color:#66d9ef">grid-auto-rows</span>: <span style="color:#a6e22e">minmax</span>(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>, <span style="color:#66d9ef">auto</span>);
-  <span style="color:#66d9ef">grid-gap</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
-}
-</code></pre></div></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="o">-</span><span class="kc">fill</span><span class="p">,</span> <span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span> <span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
+  <span class="k">grid-auto-rows</span><span class="p">:</span> <span class="nf">minmax</span><span class="p">(</span><span class="mi">100</span><span class="kt">px</span><span class="p">,</span> <span class="kc">auto</span><span class="p">);</span>
+  <span class="k">grid-gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <p>利用分隔线放置内容</p>
 <ul>
@@ -642,40 +816,65 @@ https://github.com/alex-shpak/hugo-book
 <li>一个连续的区域必须是一个矩形</li>
 <li>使用.符号让一个格子留空</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">container</span> {
-  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">grid</span>;
-  <span style="color:#66d9ef">grid-template-areas</span>:
-      <span style="color:#e6db74">&#34;header header&#34;</span>
-      <span style="color:#e6db74">&#34;sidebar content&#34;</span>
-      <span style="color:#e6db74">&#34;footer footer&#34;</span>;
-  <span style="color:#66d9ef">grid-template-columns</span>: <span style="color:#ae81ff">1</span>fr <span style="color:#ae81ff">3</span>fr;
-  <span style="color:#66d9ef">grid-gap</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
-}
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+  <span class="k">grid-template-areas</span><span class="p">:</span>
+      <span class="s2">&#34;header header&#34;</span>
+      <span class="s2">&#34;sidebar content&#34;</span>
+      <span class="s2">&#34;footer footer&#34;</span><span class="p">;</span>
+  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">1</span><span class="n">fr</span> <span class="mi">3</span><span class="n">fr</span><span class="p">;</span>
+  <span class="k">grid-gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#f92672">header</span> {
-  <span style="color:#66d9ef">grid-area</span>: header;
-}
+<span class="nt">header</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="n">header</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#f92672">article</span> {
-  <span style="color:#66d9ef">grid-area</span>: <span style="color:#66d9ef">content</span>;
-}
+<span class="nt">article</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="k">content</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#f92672">aside</span> {
-  <span style="color:#66d9ef">grid-area</span>: sidebar;
-}
+<span class="nt">aside</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="n">sidebar</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#f92672">footer</span> {
-  <span style="color:#66d9ef">grid-area</span>: footer;
-}
-</code></pre></div><h3 id="浮动float">
-  浮动（float）
-  <a class="anchor" href="#%e6%b5%ae%e5%8a%a8float">#</a>
-</h3>
+<span class="nt">footer</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="n">footer</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="浮动float">浮动（float）</h3>
 <p>略</p>
-<h3 id="定位position">
-  定位（position）
-  <a class="anchor" href="#%e5%ae%9a%e4%bd%8dposition">#</a>
-</h3>
+<h3 id="定位position">定位（position）</h3>
 <ul>
 <li>
 <p>静态定位：<code>position: static;</code>，默认值，将元素放入文档布局流中的正常位置</p>
@@ -693,25 +892,38 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p>固定定位：<code>position: fixed;</code>，固定定位固定元素相对于浏览器视口本身。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#75715e">/*让一个固定定位元素顶部居中*/</span>
-<span style="color:#f92672">h1</span> {
-  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">fixed</span>;
-  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">0</span>;
-  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>; <span style="color:#75715e">/*使用auto居中*/</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="c">/*让一个固定定位元素顶部居中*/</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
+  <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/*使用auto居中*/</span>
 
-  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">500</span><span style="color:#66d9ef">px</span>;
-  <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">white</span>;
-  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
-}
-</code></pre></div></li>
+  <span class="k">width</span><span class="p">:</span> <span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">background</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p><code>position: sticky;</code>：相对定位和固定定位的混合体，被定位的元素一开始表现得像相对定位一样，直到它滚动到某个阈值点（例如，距视口顶部1​​0px）后它就变得固定了。</p>
 </li>
 </ul>
-<h3 id="多列布局">
-  多列布局
-  <a class="anchor" href="#%e5%a4%9a%e5%88%97%e5%b8%83%e5%b1%80">#</a>
-</h3>
+<h3 id="多列布局">多列布局</h3>
 <p>通过这两个属性开启多列布局，column-count 或者 column-width</p>
 <ul>
 <li>column-count属性创建指定列数，由浏览器计算每一列分配多少空间。</li>
@@ -720,17 +932,25 @@ https://github.com/alex-shpak/hugo-book
 <li>用 column-rule 在列间加入一条分割线。column-rule 是 column-rule-color 和 column-rule-style的缩写，接受和 border 一样的单位。</li>
 <li>禁止内容折断：break-inside: avoid 或 page-break-inside: avoid</li>
 </ul>
-<h3 id="响应式布局">
-  响应式布局
-  <a class="anchor" href="#%e5%93%8d%e5%ba%94%e5%bc%8f%e5%b8%83%e5%b1%80">#</a>
-</h3>
+<h3 id="响应式布局">响应式布局</h3>
 <p>媒体查询：当满足指定条件时css才会被应用，例如</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">@<span style="color:#66d9ef">media</span> <span style="color:#f92672">screen</span> <span style="color:#f92672">and</span> <span style="color:#f92672">(</span><span style="color:#f92672">min-width</span><span style="color:#f92672">:</span> <span style="color:#f92672">800px</span><span style="color:#f92672">)</span> {
-  .<span style="color:#a6e22e">container</span> {
-    <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">em</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">em</span>;
-  }
-} 
-</code></pre></div><p>断点：媒体查询，以及样式改变时的点，被叫做断点（breakpoints），通常是一个阈值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">800px</span><span class="o">)</span> <span class="p">{</span>
+  <span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>断点：媒体查询，以及样式改变时的点，被叫做断点（breakpoints），通常是一个阈值。</p>
 <p>现代布局方式，多栏布局，弹性盒子和网格默认是响应式的。</p>
 <p>视口元标签：</p>
 <ul>
@@ -748,14 +968,20 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h3 id="媒体查询">
-  媒体查询
-  <a class="anchor" href="#%e5%aa%92%e4%bd%93%e6%9f%a5%e8%af%a2">#</a>
-</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">@<span style="color:#66d9ef">media</span> <span style="color:#f92672">media-type</span> <span style="color:#f92672">and</span> <span style="color:#f92672">(</span><span style="color:#f92672">media-feature-rule</span><span style="color:#f92672">)</span> {
-  <span style="color:#75715e">/* CSS rules go here */</span>
-}
-</code></pre></div><p>它由以下部分组成：</p>
+<h3 id="媒体查询">媒体查询</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">media</span> <span class="nt">media-type</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">media-feature-rule</span><span class="o">)</span> <span class="p">{</span>
+  <span class="c">/* CSS rules go here */</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>它由以下部分组成：</p>
 <ul>
 <li>一个媒体类型，告诉浏览器这段代码是用在什么类型的媒体上的（例如印刷品或者屏幕）；
 <ul>
@@ -769,114 +995,334 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>一组CSS规则，会在测试通过且媒体类型正确的时候应用。</li>
 </ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/css/">css</a>
+        
+            <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
- 
-      
 
-      <footer class="book-footer">
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/ip-address/">
         
-  <div class="flex flex-wrap justify-between">
+        
 
-
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/cdbdc61ba4021d1e72c9ce7dda0425eba6512c4c" title='最后修改者 swj | July 21, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 21, 2022</span>
+        <div class="article-details">
+            <h2 class="article-title">关于IP地址的发展</h2>
+        </div>
     </a>
-  </div>
+</article>
 
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+            
+                
+<article class="">
+    <a href="/posts/python-demo/">
         
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#一导入-css">一、导入 css</a></li>
-        <li><a href="#语法">语法</a></li>
-        <li><a href="#选择器和选择符">选择器和选择符</a></li>
-        <li><a href="#继承">继承</a></li>
-        <li><a href="#层叠">层叠</a></li>
-        <li><a href="#盒子">盒子</a></li>
-        <li><a href="#盒模型">盒模型</a></li>
-        <li><a href="#背景和边框">背景和边框</a></li>
-        <li><a href="#文本方向与逻辑属性">文本方向与逻辑属性</a></li>
-        <li><a href="#处理内容溢出">处理内容溢出</a></li>
-        <li><a href="#值和单位">值和单位</a></li>
-        <li><a href="#尺寸">尺寸</a></li>
-        <li><a href="#替换元素和表单">替换元素和表单</a></li>
-        <li><a href="#字体">字体</a></li>
-        <li><a href="#布局">布局</a>
-          <ul>
-            <li><a href="#正常布局流">正常布局流</a></li>
-            <li><a href="#flexbox弹性盒子">flexbox（弹性盒子）</a></li>
-            <li><a href="#grid网格">grid（网格）</a></li>
-            <li><a href="#浮动float">浮动（float）</a></li>
-            <li><a href="#定位position">定位（position）</a></li>
-            <li><a href="#多列布局">多列布局</a></li>
-            <li><a href="#响应式布局">响应式布局</a></li>
-            <li><a href="#媒体查询">媒体查询</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Python Demo</h2>
+        </div>
+    </a>
+</article>
 
- 
-      </div>
-    </aside>
+            
+                
+<article class="">
+    <a href="/posts/algorithm-problem/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">算法题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/unity-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity入门笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/kaobian-cs/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">事业编计算机八股</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
     
-  </main>
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
-  
-</body>
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一导入-css">一、导入 css</a></li>
+    <li><a href="#语法">语法</a></li>
+    <li><a href="#选择器和选择符">选择器和选择符</a></li>
+    <li><a href="#继承">继承</a></li>
+    <li><a href="#层叠">层叠</a></li>
+    <li><a href="#盒子">盒子</a></li>
+    <li><a href="#盒模型">盒模型</a></li>
+    <li><a href="#背景和边框">背景和边框</a></li>
+    <li><a href="#文本方向与逻辑属性">文本方向与逻辑属性</a></li>
+    <li><a href="#处理内容溢出">处理内容溢出</a></li>
+    <li><a href="#值和单位">值和单位</a></li>
+    <li><a href="#尺寸">尺寸</a></li>
+    <li><a href="#替换元素和表单">替换元素和表单</a></li>
+    <li><a href="#字体">字体</a></li>
+    <li><a href="#布局">布局</a>
+      <ol>
+        <li><a href="#正常布局流">正常布局流</a></li>
+        <li><a href="#flexbox弹性盒子">flexbox（弹性盒子）</a></li>
+        <li><a href="#grid网格">grid（网格）</a></li>
+        <li><a href="#浮动float">浮动（float）</a></li>
+        <li><a href="#定位position">定位（position）</a></li>
+        <li><a href="#多列布局">多列布局</a></li>
+        <li><a href="#响应式布局">响应式布局</a></li>
+        <li><a href="#媒体查询">媒体查询</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

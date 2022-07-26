@@ -1,118 +1,107 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on 星星</title>
-    <link>http://blog.shiwj.top/tags/</link>
-    <description>Recent content in Tags on 星星</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 15 Jul 2022 10:45:00 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>网络</title>
-      <link>http://blog.shiwj.top/tags/%E7%BD%91%E7%BB%9C/</link>
-      <pubDate>Fri, 15 Jul 2022 10:45:00 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E7%BD%91%E7%BB%9C/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>http://blog.shiwj.top/tags/python/</link>
-      <pubDate>Fri, 08 Jul 2022 12:23:09 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>算法</title>
-      <link>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</link>
-      <pubDate>Wed, 06 Jul 2022 11:37:09 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>unity</title>
-      <link>http://blog.shiwj.top/tags/unity/</link>
-      <pubDate>Sun, 26 Jun 2022 10:48:30 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/unity/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>八股</title>
-      <link>http://blog.shiwj.top/tags/%E5%85%AB%E8%82%A1/</link>
-      <pubDate>Tue, 21 Jun 2022 19:21:16 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E5%85%AB%E8%82%A1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>信息安全</title>
-      <link>http://blog.shiwj.top/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
-      <pubDate>Sat, 18 Jun 2022 14:28:00 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>行测</title>
-      <link>http://blog.shiwj.top/tags/%E8%A1%8C%E6%B5%8B/</link>
-      <pubDate>Wed, 15 Jun 2022 14:24:30 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E8%A1%8C%E6%B5%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>http://blog.shiwj.top/tags/golang/</link>
-      <pubDate>Tue, 26 Apr 2022 11:18:48 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>数据库</title>
-      <link>http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <pubDate>Wed, 20 Apr 2022 11:57:47 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mysql</title>
-      <link>http://blog.shiwj.top/tags/mysql/</link>
-      <pubDate>Fri, 10 Dec 2021 10:09:46 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>css</title>
-      <link>http://blog.shiwj.top/tags/css/</link>
-      <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>前端</title>
-      <link>http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/</link>
-      <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
-      
-      <guid>http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Tags on Example Site</title>
+        <link>http://blog.shiwj.top/tags/</link>
+        <description>Recent content in Tags on Example Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 15 Jul 2022 10:45:00 +0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>网络</title>
+        <link>http://blog.shiwj.top/tags/%E7%BD%91%E7%BB%9C/</link>
+        <pubDate>Fri, 15 Jul 2022 10:45:00 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E7%BD%91%E7%BB%9C/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>python</title>
+        <link>http://blog.shiwj.top/tags/python/</link>
+        <pubDate>Fri, 08 Jul 2022 12:23:09 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>算法</title>
+        <link>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</link>
+        <pubDate>Wed, 06 Jul 2022 11:37:09 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>unity</title>
+        <link>http://blog.shiwj.top/tags/unity/</link>
+        <pubDate>Sun, 26 Jun 2022 10:48:30 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/unity/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>八股</title>
+        <link>http://blog.shiwj.top/tags/%E5%85%AB%E8%82%A1/</link>
+        <pubDate>Tue, 21 Jun 2022 19:21:16 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E5%85%AB%E8%82%A1/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>信息安全</title>
+        <link>http://blog.shiwj.top/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
+        <pubDate>Sat, 18 Jun 2022 14:28:00 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>行测</title>
+        <link>http://blog.shiwj.top/tags/%E8%A1%8C%E6%B5%8B/</link>
+        <pubDate>Wed, 15 Jun 2022 14:24:30 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E8%A1%8C%E6%B5%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>golang</title>
+        <link>http://blog.shiwj.top/tags/golang/</link>
+        <pubDate>Tue, 26 Apr 2022 11:18:48 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/golang/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>数据库</title>
+        <link>http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+        <pubDate>Wed, 20 Apr 2022 11:57:47 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>mysql</title>
+        <link>http://blog.shiwj.top/tags/mysql/</link>
+        <pubDate>Fri, 10 Dec 2021 10:09:46 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/mysql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>css</title>
+        <link>http://blog.shiwj.top/tags/css/</link>
+        <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/css/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>前端</title>
+        <link>http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/</link>
+        <pubDate>Sun, 14 Nov 2021 10:09:46 +0800</pubDate>
+        
+        <guid>http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>

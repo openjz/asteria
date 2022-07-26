@@ -1,249 +1,415 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="常用方法 #  常用方法：
- 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解 双指针，重点在于搞清楚什么时候移动哪个指针 二分 回溯  常用辅助工具：排序，map，堆，栈，队列
-寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
- 方法1-归并法 #  方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
-方法2-改良的归并法 #  方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='常用方法 常用方法：
+ 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解 双指针，重点在于搞清楚什么时候移动哪个指针 二分 回溯 分治  常用辅助工具：排序，map，堆，栈，队列
+leetcode 4.寻找两个正序数组的中位数  给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
+ 方法1-归并法 方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
+方法2-改良的归并法 方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
 寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m&#43;n))
 这里面有一个关键问题，为什么比较步长是k/2？
 为了解释这个问题，先看一个例子，
-A：1，2，3，8 B：4，5，6，7有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
+1 2  A：1，2，3，8 B：4，5，6，7   有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
 下面说明为什么是k/2
 在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
 假设有以下两个序列
-A：a0,a1,...,amB: b0,b1,...,bn假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
+1 2  A：a0,a1,...,am B: b0,b1,...,bn   假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
  ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
-情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &lt;= kth &lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &lt;= Kth &lt;= ap，即不能让位于比较点的两个数都大于等于Kth
+情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &amp;lt;= kth &amp;lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &amp;lt;= Kth &amp;lt;= ap，即不能让位于比较点的两个数都大于等于Kth
 当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
 相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。
-方法3-二分法 #  方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
+方法3-二分法 方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
+ 中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1&#43;左序列2视为左半部分，将右序列1&#43;右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。'><title>算法题</title>
+
+<link rel='canonical' href='http://blog.shiwj.top/posts/algorithm-problem/'>
+
+<link rel="stylesheet" href="/scss/style.min.fe253589db5a54c99fe6b16bfbaf0243d856d34f8c07f3534613b39ed043b738.css"><meta property='og:title' content='算法题'>
+<meta property='og:description' content='常用方法 常用方法：
+ 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解 双指针，重点在于搞清楚什么时候移动哪个指针 二分 回溯 分治  常用辅助工具：排序，map，堆，栈，队列
+leetcode 4.寻找两个正序数组的中位数  给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
+ 方法1-归并法 方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
+方法2-改良的归并法 方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
+寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m&#43;n))
+这里面有一个关键问题，为什么比较步长是k/2？
+为了解释这个问题，先看一个例子，
+1 2  A：1，2，3，8 B：4，5，6，7   有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
+下面说明为什么是k/2
+在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
+假设有以下两个序列
+1 2  A：a0,a1,...,am B: b0,b1,...,bn   假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
+ ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
+情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &amp;lt;= kth &amp;lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &amp;lt;= Kth &amp;lt;= ap，即不能让位于比较点的两个数都大于等于Kth
+当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
+相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。
+方法3-二分法 方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
+ 中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1&#43;左序列2视为左半部分，将右序列1&#43;右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。'>
+<meta property='og:url' content='http://blog.shiwj.top/posts/algorithm-problem/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='算法' /><meta property='article:published_time' content='2022-07-06T11:37:09&#43;08:00'/><meta property='article:modified_time' content='2022-07-06T11:37:09&#43;08:00'/>
+<meta name="twitter:title" content="算法题">
+<meta name="twitter:description" content="常用方法 常用方法：
+ 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解 双指针，重点在于搞清楚什么时候移动哪个指针 二分 回溯 分治  常用辅助工具：排序，map，堆，栈，队列
+leetcode 4.寻找两个正序数组的中位数  给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
+ 方法1-归并法 方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
+方法2-改良的归并法 方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
+寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m&#43;n))
+这里面有一个关键问题，为什么比较步长是k/2？
+为了解释这个问题，先看一个例子，
+1 2  A：1，2，3，8 B：4，5，6，7   有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
+下面说明为什么是k/2
+在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
+假设有以下两个序列
+1 2  A：a0,a1,...,am B: b0,b1,...,bn   假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
+ ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
+情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &amp;lt;= kth &amp;lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &amp;lt;= Kth &amp;lt;= ap，即不能让位于比较点的两个数都大于等于Kth
+当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
+相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。
+方法3-二分法 方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
  中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1&#43;左序列2视为左半部分，将右序列1&#43;右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="算法题" />
-<meta property="og:description" content="常用方法 #  常用方法：
- 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解 双指针，重点在于搞清楚什么时候移动哪个指针 二分 回溯  常用辅助工具：排序，map，堆，栈，队列
-寻找两个正序数组的中位数 #   给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数
- 方法1-归并法 #  方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m&#43;n)
-方法2-改良的归并法 #  方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。
-寻找中位数问题可以视为寻找第k大数问题的特殊情况，现在设中位数是第k大的数为Kth，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了Kth。由于k每次缩小一半，时间复杂度为O(log(m&#43;n))
-这里面有一个关键问题，为什么比较步长是k/2？
-为了解释这个问题，先看一个例子，
-A：1，2，3，8 B：4，5，6，7有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。
-下面说明为什么是k/2
-在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证Kth不在被排除的数中，换言之，我们一定不能让位于比较点的两个数都大于Kth。
-假设有以下两个序列
-A：a0,a1,...,amB: b0,b1,...,bn假设比较步长为p，位于比较点的两个数是ap，bp，现在对Kth所在位置分情况讨论
- ap和bp都在Kth之前 ap在Kth之前，bp在Kth之后（即Kth∈[b0,bp]） ap在Kth之后（即Kth∈[a0,ap]），bp在Kth之前  情况1不做讨论，排除哪个都行。
-情况2和情况3是等价的，现在假设Kth∈[a0,ap]，即a0 &lt;= kth &lt;= ap，如果我们想排除[b0,bp]，就必须保证bp &lt;= Kth &lt;= ap，即不能让位于比较点的两个数都大于等于Kth
-当比较步长p为k/2时，[a0,ap]和[b0,bp]加起来一共k个数，如果ap和bp都大于Kth，[a0,ap]和[b0,bp]加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于Kth这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。
-相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。
-方法3-二分法 #  方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：
- 中位数两边的数个数相等 中位数左边最大的数小于右边最小的数、  具体方法是分别将序列1和序列2一分为2，将左序列1&#43;左序列2视为左半部分，将右序列1&#43;右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/posts/algorithm-problem/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-06T11:37:09+08:00" />
-<meta property="article:modified_time" content="2022-07-15T12:09:12+08:00" />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<title>算法题 | 星星</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
-  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
-</head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>星星</span>
-  </a>
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/" >
-        Blog
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
         
-  <div class="flex align-center justify-between">
-  <label for="menu-control">
-    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
-  </label>
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
-  <strong>算法题</strong>
-
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
-</div>
 
 
-  
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#常用方法">常用方法</a></li>
-        <li><a href="#寻找两个正序数组的中位数">寻找两个正序数组的中位数</a>
-          <ul>
-            <li><a href="#方法1-归并法">方法1-归并法</a></li>
-            <li><a href="#方法2-改良的归并法">方法2-改良的归并法</a></li>
-            <li><a href="#方法3-二分法">方法3-二分法</a></li>
-          </ul>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
         </li>
-        <li><a href="#正则表达式匹配">正则表达式匹配</a></li>
-        <li><a href="#求最长回文子串">求最长回文子串</a></li>
-        <li><a href="#盛水最多的容器">盛水最多的容器</a></li>
-        <li><a href="#三数之和">三数之和</a></li>
-        <li><a href="#合并k个升序链表">合并K个升序链表</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
 
 
 
-  </aside>
-  
- 
-      </header>
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
 
-      
-      
-<article class="markdown">
-  <h1>
-    <a href="/posts/algorithm-problem/">算法题</a>
-  </h1>
-  
-  <h5>July 6, 2022</h5>
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
 
 
 
-  
-  <div>
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://blog.shiwj.top/" selected>English</option>
+                        
+                            <option value="http://blog.shiwj.top/zh-cn/" >中文</option>
+                        
+                            <option value="http://blog.shiwj.top/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
-  </div>
-  
-
-  
-  <div>
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" >
+                计算机
+            </a>
+        
+    </header>
     
-      <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-  
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/algorithm-problem/">算法题</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 06, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
 
 
 
-<h2 id="常用方法">
-  常用方法
-  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95">#</a>
-</h2>
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="常用方法">常用方法</h2>
 <p>常用方法：</p>
 <ol>
 <li>动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递推方程，（3）搞清楚基本问题的解</li>
 <li>双指针，重点在于搞清楚什么时候移动哪个指针</li>
 <li>二分</li>
 <li>回溯</li>
+<li>分治</li>
 </ol>
 <p>常用辅助工具：排序，map，堆，栈，队列</p>
-<h2 id="寻找两个正序数组的中位数">
-  寻找两个正序数组的中位数
-  <a class="anchor" href="#%e5%af%bb%e6%89%be%e4%b8%a4%e4%b8%aa%e6%ad%a3%e5%ba%8f%e6%95%b0%e7%bb%84%e7%9a%84%e4%b8%ad%e4%bd%8d%e6%95%b0">#</a>
-</h2>
+<h2 id="leetcode-4寻找两个正序数组的中位数">leetcode 4.寻找两个正序数组的中位数</h2>
 <blockquote>
 <p>给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数</p>
 </blockquote>
-<h3 id="方法1-归并法">
-  方法1-归并法
-  <a class="anchor" href="#%e6%96%b9%e6%b3%951-%e5%bd%92%e5%b9%b6%e6%b3%95">#</a>
-</h3>
+<h3 id="方法1-归并法">方法1-归并法</h3>
 <p>方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m+n)</p>
-<h3 id="方法2-改良的归并法">
-  方法2-改良的归并法
-  <a class="anchor" href="#%e6%96%b9%e6%b3%952-%e6%94%b9%e8%89%af%e7%9a%84%e5%bd%92%e5%b9%b6%e6%b3%95">#</a>
-</h3>
+<h3 id="方法2-改良的归并法">方法2-改良的归并法</h3>
 <p>方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。</p>
 <p><strong>寻找中位数问题可以视为寻找第k大数问题的特殊情况</strong>，现在设中位数是第k大的数为<code>Kth</code>，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了<code>Kth</code>。由于k每次缩小一半，时间复杂度为O(log(m+n))</p>
 <p><strong>这里面有一个关键问题，为什么比较步长是k/2</strong>？</p>
 <p>为了解释这个问题，先看一个例子，</p>
-<pre tabindex="0"><code>A：1，2，3，8  
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">A：1，2，3，8  
 B：4，5，6，7
-</code></pre><p>有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。</p>
 <p>下面说明为什么是k/2</p>
 <p>在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证<code>Kth</code>不在被排除的数中，换言之，<strong>我们一定不能让位于比较点的两个数都大于<code>Kth</code></strong>。</p>
 <p>假设有以下两个序列</p>
-<pre tabindex="0"><code>A：a0,a1,...,am
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">A：a0,a1,...,am
 B: b0,b1,...,bn
-</code></pre><p>假设比较步长为p，位于比较点的两个数是<code>ap</code>，<code>bp</code>，现在对<code>Kth</code>所在位置分情况讨论</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>假设比较步长为p，位于比较点的两个数是<code>ap</code>，<code>bp</code>，现在对<code>Kth</code>所在位置分情况讨论</p>
 <ol>
 <li><code>ap</code>和<code>bp</code>都在<code>Kth</code>之前</li>
 <li><code>ap</code>在<code>Kth</code>之前，<code>bp</code>在<code>Kth</code>之后（即<code>Kth∈[b0,bp]</code>）</li>
@@ -253,10 +419,7 @@ B: b0,b1,...,bn
 <p>情况2和情况3是等价的，现在假设<code>Kth∈[a0,ap]</code>，即<code>a0 &lt;= kth &lt;= ap</code>，如果我们想排除<code>[b0,bp]</code>，就必须保证<code>bp &lt;= Kth &lt;= ap</code>，即不能让位于比较点的两个数都大于等于<code>Kth</code></p>
 <p>当比较步长p为k/2时，<code>[a0,ap]</code>和<code>[b0,bp]</code>加起来一共k个数，如果<code>ap</code>和<code>bp</code>都大于<code>Kth</code>，<code>[a0,ap]</code>和<code>[b0,bp]</code>加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于<code>Kth</code>这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。</p>
 <p>相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。</p>
-<h3 id="方法3-二分法">
-  方法3-二分法
-  <a class="anchor" href="#%e6%96%b9%e6%b3%953-%e4%ba%8c%e5%88%86%e6%b3%95">#</a>
-</h3>
+<h3 id="方法3-二分法">方法3-二分法</h3>
 <p>方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：</p>
 <ol>
 <li>中位数两边的数个数相等</li>
@@ -264,10 +427,7 @@ B: b0,b1,...,bn
 </ol>
 <p>具体方法是分别将序列1和序列2一分为2，将左序列1+左序列2视为左半部分，将右序列1+右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。</p>
 <p>那如何找到切分位置？在较短序列上进行二分搜索即可</p>
-<h2 id="正则表达式匹配">
-  正则表达式匹配
-  <a class="anchor" href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f%e5%8c%b9%e9%85%8d">#</a>
-</h2>
+<h2 id="leetcode-10正则表达式匹配">leetcode 10.正则表达式匹配</h2>
 <blockquote>
 <p>给你一个字符串s和一个字符规律p，请你来实现一个支持'.&lsquo;和&rsquo;*&lsquo;的正则表达式匹配。</p>
 <ul>
@@ -280,23 +440,36 @@ B: b0,b1,...,bn
 <ol>
 <li>将问题转化为求<code>f[i][j]</code>的问题，<code>f[i][j]</code>指字符串s的前i个字符和模式p的前j个字符是否匹配。</li>
 <li>以下是该问题的求解方程
-<pre tabindex="0"><code>1. 当p[j-1]不是'*'时，
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. 当p[j-1]不是&#39;*&#39;时，
     如果p[j-1]和s[i-1]匹配，
         f[i][j] = f[i-1][j-1]
     否则
         f[i][j] = false
-2. 当p[j-1]是'*'时（要看'*'前面那个字符），
-    如果p[j-2]不和s[i-1]匹配(字母和'*'的组合被干掉)，
+2. 当p[j-1]是&#39;*&#39;时（要看&#39;*&#39;前面那个字符），
+    如果p[j-2]不和s[i-1]匹配(字母和&#39;*&#39;的组合被干掉)，
         f[i][j] = f[i][j-2]
-    否则，既可以字母和'*'的组合被干掉也可以s[i-1]被干掉
+    否则，既可以字母和&#39;*&#39;的组合被干掉也可以s[i-1]被干掉
         f[i][j] = f[i][j-2] or f[i-1][j]
-</code></pre></li>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>当s和p都为空时，视为匹配，即<code>f[0][0]=True</code>。p为空，s为空时，一定不匹配，即<code>f[0][x]=False</code>。<strong>而s为空，p不为空时，不一定匹配，例如p为<code>a*a*</code>时，可以和空串形成匹配，因此在循环时，i要从0开始，j可以从1开始</strong>。</li>
 </ol>
-<h2 id="求最长回文子串">
-  求最长回文子串
-  <a class="anchor" href="#%e6%b1%82%e6%9c%80%e9%95%bf%e5%9b%9e%e6%96%87%e5%ad%90%e4%b8%b2">#</a>
-</h2>
+<h2 id="leetcode-5求最长回文子串">leetcode 5.求最长回文子串</h2>
 <blockquote>
 <p>给你一个字符串s，找到s中最长的回文子串。</p>
 <p>示例 1：</p>
@@ -306,20 +479,14 @@ B: b0,b1,...,bn
 </blockquote>
 <p>使用动态规划求解</p>
 <p>将问题转换为求<code>f[i][j]</code>的问题，<code>f[i][j]</code>是指s的子串<code>s[i,j]</code>是否为回文串，求<code>f[i][j]</code>之前要先求出<code>f[i+1][j-1]</code></p>
-<h2 id="盛水最多的容器">
-  盛水最多的容器
-  <a class="anchor" href="#%e7%9b%9b%e6%b0%b4%e6%9c%80%e5%a4%9a%e7%9a%84%e5%ae%b9%e5%99%a8">#</a>
-</h2>
+<h2 id="leetcode-11盛水最多的容器">leetcode 11.盛水最多的容器</h2>
 <blockquote>
 <p>给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。</p>
 <p>找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
 <p>返回容器可以储存的最大水量。</p>
 </blockquote>
 <p>用双指针法求解，双指针的初始位置位于数组两端，不断向中间逼近，每次移动高度较低的指针（移动指针会导致容器底部变小，为了寻找更大的容积，就要舍弃较低的边，保留较高的边）</p>
-<h2 id="三数之和">
-  三数之和
-  <a class="anchor" href="#%e4%b8%89%e6%95%b0%e4%b9%8b%e5%92%8c">#</a>
-</h2>
+<h2 id="leetcode-15三数之和">leetcode 15.三数之和</h2>
 <blockquote>
 <p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</p>
 <p>注意：答案中不可以包含重复的三元组。</p>
@@ -327,10 +494,7 @@ B: b0,b1,...,bn
 <p>三数之和要求对组合去重，这个问题和两数之和有所不同，在两数之和问题中，每个数只能属于一个组合，所以，要对组合去重，只要给已经构成组合的数打标记即可，不用对组合打标记。但是对三数之和问题不能采用这种去重方法，因为一个数可以属于多个组合，如果要采用打标记这种方式，必须对组合打标记，不能对数打标记。</p>
 <p>因此，通过打标记去重在三数之和问题中不可行</p>
 <p>采用排序+双指针的方法，可以在O(n^2)的时间复杂度内完成求解</p>
-<h2 id="合并k个升序链表">
-  合并K个升序链表
-  <a class="anchor" href="#%e5%90%88%e5%b9%b6k%e4%b8%aa%e5%8d%87%e5%ba%8f%e9%93%be%e8%a1%a8">#</a>
-</h2>
+<h2 id="leetcode-23合并k个升序链表">leetcode 23.合并K个升序链表</h2>
 <blockquote>
 <p>给你一个链表数组，每个链表都已经按升序排列。</p>
 <p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
@@ -339,101 +503,332 @@ B: b0,b1,...,bn
 <p>方法1，从k个链表的开头各拿出一个节点，从这k个节点中选取一个最小的链接到大链表中，利用堆选取最小元素，堆操作的时间复杂度是O(logk)，一共n个节点，总的时间复杂度为O(nlogk)</p>
 <p>方法2，对k个链表进行两两归并，归并次数是logk，归并的时间复杂度是O(n)，总的时间复杂度是O(nlogk)</p>
 <p>方法2的归并策略是尽量降低归并次数，还有另外一种归并策略是尽量降低比较次数，具体方法是每次选取长度最短的两个序列进行归并，但是由于本题是对链表进行归并，无法快速获取序列长度，因此无法采用这种策略</p>
+<h2 id="leetcode-31下一个排列">leetcode 31.下一个排列</h2>
+<blockquote>
+<p>给你一个整数数组 nums，找出nums 的下一个排列。</p>
+<p>必须原地修改，只允许使用额外常数空间。</p>
+</blockquote>
+<p>思路</p>
+<p>如果序列最后两个元素是正序，直接交换这两个元素即可</p>
+<p>在剩下的情况中，每个排列都可以分成前后两个子序列a，b，并且子序列b是一个倒序序列</p>
+<p>例如，</p>
+<p>[1,2,5,4,3] = a+b = [1,2]+[5,4,3]</p>
+<p>此时子序列b自己没有下一个排列，要想为nums找到下一个排列，必须把a的最后一个元素和b中的一个元素交换，这个元素必须刚好大于a。交换后，子序列b仍然是一个倒序序列，将b翻转，就完成了求解</p>
+<p>两次遍历，一次翻转，时间复杂度为O(n)，第二次遍历可以改成二分查找，但是总的时间复杂度仍然是O(n)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
- 
-      
 
-      <footer class="book-footer">
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/ip-address/">
         
-  <div class="flex flex-wrap justify-between">
+        
 
-
-  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/2ea5ed3790a490bbcda26fdcea7bf271b28d583a" title='最后修改者 swj | July 15, 2022' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 15, 2022</span>
+        <div class="article-details">
+            <h2 class="article-title">关于IP地址的发展</h2>
+        </div>
     </a>
-  </div>
+</article>
 
-
-
-
-</div>
-
-
-
-  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-
-
- 
-        <footer class="flex flex-wrap justify-between">
-    <div>
-      <p>
-        &copy; 2022 shiwj all rights reserved.
-      </p>
-      <p>
-        津ICP备2020010292号-1
-      </p>
-    </div>
-  </footer>
-      </footer>
-
-      
-  
-  <div class="book-comments">
-
-</div>
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
-
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
+            
+                
+<article class="">
+    <a href="/posts/python-demo/">
         
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#常用方法">常用方法</a></li>
-        <li><a href="#寻找两个正序数组的中位数">寻找两个正序数组的中位数</a>
-          <ul>
-            <li><a href="#方法1-归并法">方法1-归并法</a></li>
-            <li><a href="#方法2-改良的归并法">方法2-改良的归并法</a></li>
-            <li><a href="#方法3-二分法">方法3-二分法</a></li>
-          </ul>
-        </li>
-        <li><a href="#正则表达式匹配">正则表达式匹配</a></li>
-        <li><a href="#求最长回文子串">求最长回文子串</a></li>
-        <li><a href="#盛水最多的容器">盛水最多的容器</a></li>
-        <li><a href="#三数之和">三数之和</a></li>
-        <li><a href="#合并k个升序链表">合并K个升序链表</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Python Demo</h2>
+        </div>
+    </a>
+</article>
 
- 
-      </div>
-    </aside>
+            
+                
+<article class="">
+    <a href="/posts/unity-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity入门笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/kaobian-cs/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">事业编计算机八股</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/digital-signatures-certificates/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">数字签名和数字证书</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
     
-  </main>
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
-  
-</body>
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#常用方法">常用方法</a></li>
+    <li><a href="#leetcode-4寻找两个正序数组的中位数">leetcode 4.寻找两个正序数组的中位数</a>
+      <ol>
+        <li><a href="#方法1-归并法">方法1-归并法</a></li>
+        <li><a href="#方法2-改良的归并法">方法2-改良的归并法</a></li>
+        <li><a href="#方法3-二分法">方法3-二分法</a></li>
+      </ol>
+    </li>
+    <li><a href="#leetcode-10正则表达式匹配">leetcode 10.正则表达式匹配</a></li>
+    <li><a href="#leetcode-5求最长回文子串">leetcode 5.求最长回文子串</a></li>
+    <li><a href="#leetcode-11盛水最多的容器">leetcode 11.盛水最多的容器</a></li>
+    <li><a href="#leetcode-15三数之和">leetcode 15.三数之和</a></li>
+    <li><a href="#leetcode-23合并k个升序链表">leetcode 23.合并K个升序链表</a></li>
+    <li><a href="#leetcode-31下一个排列">leetcode 31.下一个排列</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
