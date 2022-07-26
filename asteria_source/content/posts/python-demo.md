@@ -6,7 +6,7 @@ date: 2022-07-08T12:23:09+08:00
 tags : 
 - "python"
 categories : 
-- "计算机"
+- "编程"
 ---
 
 ## for循环

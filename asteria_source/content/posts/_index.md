@@ -1,7 +1,1 @@
----
-menu:
-  after:
-    name: blog
-    weight: 5
-title: Blog
----
+<!-- 主页的文章索引页 -->

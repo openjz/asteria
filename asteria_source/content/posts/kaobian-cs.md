@@ -1,12 +1,11 @@
 ---
-title: "事业编计算机八股"
+title: "事业编计算机知识"
 date: 2022-06-21T19:21:16+08:00
 # bookComments: false
 # bookSearchExclude: false
 tags :
-- "八股"
 categories : 
-- "计算机"
+- "编程"
 - "考编"
 ---
 

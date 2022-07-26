@@ -3,7 +3,7 @@ title = "mysql入门笔记"
 date = 2021-12-10T10:09:46+08:00
 lastmod = 2022-03-21T10:33:00+08:00
 tags = ["mysql","数据库"]
-categories = ["计算机"]
+categories = ["编程"]
 draft = false
 +++
 
