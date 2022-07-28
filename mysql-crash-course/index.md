@@ -515,27 +515,17 @@ where cust_id = 2345;
 create语句：
 
 ```sql
-CREATE TABLE if not exists `table_video` (
+CREATE TABLE if not exists `video` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `object_name` varchar(64) NOT NULL DEFAULT '' COMMENT 'bos上存储的文件名字',
-  `convert_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '转码状态',
-  `thumb_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '封面状态',
+  `file` varchar(64) NOT NULL DEFAULT '' COMMENT '文件名',
   `maudit_status` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT 'status of machine audit',
-  `origin_bos_url` varchar(510) NOT NULL DEFAULT '' COMMENT '原始文件的bos_url',
-  `source_url` varchar(510) NOT NULL DEFAULT '' COMMENT '原始文件转码后的url',
-  `thumb_url` varchar(510) NOT NULL DEFAULT '' COMMENT '缩略图url',
-  `src_create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建任务时间 -- DSP推入时间',
-  `src_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新任务时间 -- 仅仅标识DSP重新推入时间',
-  `convert_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '转换完成时间 -- 转换完成时间',
-  `thumb_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '封面状态修改时间',
-  `maudit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'timestamp of machine audit info update',
-  `maudit_result` varchar(4096) NOT NULL DEFAULT '' COMMENT 'result of machine audit, json string',
-  `video_info` varchar(4096) NOT NULL DEFAULT '' COMMENT 'video info, json string',
+  `source_url` varchar(510) NOT NULL DEFAULT '' COMMENT '原始url',
+  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+  `maudit_result` varchar(4096) NOT NULL DEFAULT '' COMMENT 'result of machine audit',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `object_name` (`object_name`),
+  UNIQUE KEY `object_name` (`file`),
   KEY `idx_src_create_time` (`src_create_time`),
-  KEY `idx_src_update_time` (`src_update_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=3425436 DEFAULT CHARSET=utf8 COMMENT='视频表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='视频表';
 ```
 
 规则：
