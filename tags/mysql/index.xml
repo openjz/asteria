@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/mysql/</link>
         <description>mysql - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 10 Dec 2021 10:09:46 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/mysql/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 28 Jul 2022 16:05:37 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/mysql/" rel="self" type="application/rss+xml" /><item>
+    <title>mysql中的复杂查询</title>
+    <link>http://blog.shiwj.top/13.mysql-complex-sql/</link>
+    <pubDate>Thu, 28 Jul 2022 16:05:37 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/13.mysql-complex-sql/</guid>
+    <description><![CDATA[group by&hellip;having和where的区别 mysql先对数据按照where子句过滤，然后在对返回的结果分组，最后对分组后的数据按照]]></description>
+</item>
+<item>
     <title>mysql入门笔记</title>
     <link>http://blog.shiwj.top/mysql-crash-course/</link>
     <pubDate>Fri, 10 Dec 2021 10:09:46 &#43;0800</pubDate>

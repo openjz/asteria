@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 15 Jul 2022 10:45:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 28 Jul 2022 16:05:37 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>mysql中的复杂查询</title>
+    <link>http://blog.shiwj.top/13.mysql-complex-sql/</link>
+    <pubDate>Thu, 28 Jul 2022 16:05:37 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/13.mysql-complex-sql/</guid>
+    <description><![CDATA[group by&hellip;having和where的区别 mysql先对数据按照where子句过滤，然后在对返回的结果分组，最后对分组后的数据按照]]></description>
+</item>
+<item>
     <title>关于IP地址的发展</title>
     <link>http://blog.shiwj.top/ip-address/</link>
     <pubDate>Fri, 15 Jul 2022 10:45:00 &#43;0800</pubDate>
@@ -42,7 +50,7 @@
     <pubDate>Tue, 21 Jun 2022 19:21:16 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/kaobian-cs/</guid>
-    <description><![CDATA[数据库 数据库的特征 持久存储 数据结构化，有组织，按一定数据模型组织、描述和存储 数据可共享 数据冗余度低 数据独立性高，易扩展。数据独立性分为逻辑独]]></description>
+    <description><![CDATA[考点 操作系统 网络基础 组成原理/体系结构 数据库 office windows 软件工程 编程语言(c、java) 数据结构 基础算法 安全 windows win7开机时进入安全模式按f8 数据库]]></description>
 </item>
 <item>
     <title>数字签名和数字证书</title>
@@ -58,7 +66,7 @@
     <pubDate>Wed, 15 Jun 2022 14:24:30 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/kaobian-xingce-tips/</guid>
-    <description><![CDATA[解题原则 言语理解与表达 片段阅读 选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题 语句表达 排语序题：排除法很有效，最好能识别出前]]></description>
+    <description><![CDATA[解题原则 言语理解与表达 片段阅读 选主旨题：重点在于弄清楚逻辑，尤其要会识别选项的“无中生有”问题 语句表达 排语序题：排除法很有效；最好能识别出前]]></description>
 </item>
 <item>
     <title>计算机中的时间</title>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/go-gopl/</guid>
     <description><![CDATA[参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal]]></description>
-</item>
-<item>
-    <title>数据库事务</title>
-    <link>http://blog.shiwj.top/db-transaction/</link>
-    <pubDate>Wed, 20 Apr 2022 11:57:47 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/db-transaction/</guid>
-    <description><![CDATA[事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事务未提交的]]></description>
 </item>
 </channel>
 </rss>

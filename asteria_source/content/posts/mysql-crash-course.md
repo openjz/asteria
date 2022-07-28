@@ -296,6 +296,8 @@ group by cust_id
 having count(*) >= 2;
 ```
 
+having和where的区别是，where在分组前过滤，having在分组后过滤
+
 ## 九、select子句顺序
 
 select - from - where - group by - having - order by - limit
@@ -395,7 +397,7 @@ where c.cust_id = o.cust_id
 ```sql
 select customers.cust_id, orders.order_num
 from customers LEFT OUTER JOIN orders
-ON customers.cust_id, orders.cust_id
+ON customers.cust_id = orders.cust_id
 ```
 
 关键字：

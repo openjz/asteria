@@ -133,6 +133,6 @@ bisect.bisect(a, x, lo=0, hi=len(a), *, key=None)
 
 上面这三个函数都返回一个插入位置
 
-bisect_left 返回的是已存在元素x左侧位置，插入点 i 将 a 分为两半，a[lo:i] 全部小于 x，a[i:hi] 全部大于等于 x。
+bisect_left 返回的是已存在元素x左侧位置，插入点 i 将 a 分为两半，a[lo:i] 全部小于 x，a[i:hi] 全部大于等于 x。**也就是说，bisect_left返回的是第一个大于等于x的i。当 i!=hi 且 a[i]==x 时，证明a中存在x**。
 
-bisect_right 和 bisect返回已存在元素 x 右侧位置，a[lo:i] 全部小于等于 x, a[i:hi] 全部大于 x。
+bisect_right 和 bisect返回已存在元素 x 右侧位置，a[lo:i] 全部小于等于 x, a[i:hi] 全部大于 x。**也就是说，bisect和bisect_right返回的是第一个大于x的i。当 a[i-1]==x 时，证明a中存在x**。

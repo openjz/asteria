@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "python","wordcount":  892 ,
+                        }],"genre": "posts","keywords": "python","wordcount":  986 ,
         "url": "http:\/\/blog.shiwj.top\/python-demo\/","datePublished": "2022-07-08T12:23:09+08:00","dateModified": "2022-07-26T14:32:45+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -114,7 +114,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python Demo</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-08">2022-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;892 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-08">2022-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;986 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -359,8 +359,8 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>上面这三个函数都返回一个插入位置</p>
-<p>bisect_left 返回的是已存在元素x左侧位置，插入点 i 将 a 分为两半，a[lo:i] 全部小于 x，a[i:hi] 全部大于等于 x。</p>
-<p>bisect_right 和 bisect返回已存在元素 x 右侧位置，a[lo:i] 全部小于等于 x, a[i:hi] 全部大于 x。</p>
+<p>bisect_left 返回的是已存在元素x左侧位置，插入点 i 将 a 分为两半，a[lo:i] 全部小于 x，a[i:hi] 全部大于等于 x。<strong>也就是说，bisect_left返回的是第一个大于等于x的i。当 i!=hi 且 a[i]==x 时，证明a中存在x</strong>。</p>
+<p>bisect_right 和 bisect返回已存在元素 x 右侧位置，a[lo:i] 全部小于等于 x, a[i:hi] 全部大于 x。<strong>也就是说，bisect和bisect_right返回的是第一个大于x的i。当 a[i-1]==x 时，证明a中存在x</strong>。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
