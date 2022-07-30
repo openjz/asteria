@@ -21,12 +21,12 @@
     <description><![CDATA[IP地址的发展 最开始将IP地址分为ABCDE五类地址，后来为了不浪费IP地址资源提出了划分子网，发明了子网掩码，再后来又（在可变长子网掩码V]]></description>
 </item>
 <item>
-    <title>Python Demo</title>
-    <link>http://blog.shiwj.top/python-demo/</link>
+    <title>Python 基础</title>
+    <link>http://blog.shiwj.top/python-basic/</link>
     <pubDate>Fri, 08 Jul 2022 12:23:09 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/python-demo/</guid>
-    <description><![CDATA[for循环 1 2 3 4 5 6 7 8 9 10 11 12 n = [1,2,3,4] # 正序 for v in n: ... for i in range(10): ... # 倒序 for v in reversed(n): ... for i in range(10,-1,-1): #从10到0，步长为-1，第三个参数为步长 ... 创建数]]></description>
+    <guid>http://blog.shiwj.top/python-basic/</guid>
+    <description><![CDATA[格式化输入输出 参考https://docs.python.org/zh-cn/3/tutorial/inputoutput.html#for]]></description>
 </item>
 <item>
     <title>算法题</title>
@@ -50,7 +50,7 @@
     <pubDate>Tue, 21 Jun 2022 19:21:16 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/kaobian-cs/</guid>
-    <description><![CDATA[考点 操作系统 网络基础 组成原理/体系结构 数据库 office windows 软件工程 编程语言(c、java) 数据结构 基础算法 安全 windows win7开机时进入安全模式按f8 数据库]]></description>
+    <description><![CDATA[考点 操作系统 网络基础 组成原理/体系结构 数据库 office windows 软件工程 编程语言(c、java) 数据结构 基础算法 安全 windows win7 开机时进入安全模式按 f8 数据库 数据库的]]></description>
 </item>
 <item>
     <title>数字签名和数字证书</title>
