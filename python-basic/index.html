@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "python","wordcount":  1223 ,
+                        }],"genre": "posts","keywords": "python","wordcount":  1177 ,
         "url": "http:\/\/blog.shiwj.top\/python-basic\/","datePublished": "2022-07-08T12:23:09+08:00","dateModified": "2022-07-30T13:35:33+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -114,7 +114,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python 基础</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-08">2022-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1223 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-08">2022-07-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1177 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -140,7 +140,7 @@
         <li><a href="#不同语言中的拷贝和引用">不同语言中的拷贝和引用</a></li>
       </ul>
     </li>
-    <li><a href="#lambda表达式">lambda表达式</a></li>
+    <li><a href="#lambda-表达式">lambda 表达式</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="格式化输入输出">格式化输入输出</h2>
@@ -296,7 +296,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 1. 创建生成器</span>
 <span class="c1"># （1）生成器表达式（类似列表推导式）</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="c1"># （2）生成器函数</span>
 <span class="k">def</span> <span class="nf">gen1</span><span class="p">():</span>
   <span class="k">yield</span> <span class="mi">1</span>
@@ -318,18 +318,18 @@
 </div>
 </div><h2 id="拷贝">拷贝</h2>
 <h3 id="可变类型和不可变类型">可变类型和不可变类型</h3>
-<p>python里的类型分为可变类型和不可变类型两类</p>
-<p>常见的基本类型，例如整型、字符串类型、浮点型，这些类型都是不可变类型。不可变类型类似于其他语言中的值类型，如果对象a赋值给对象b，并且要修改b，python就会先把内存复制一份再修改，也就是说，修改a不会影响b，是一种copy-on-write机制。</p>
-<p>可变类型一般是容器类型，例如list、dict、tuple等。可变类型类似于其它语言中的引用类型，对象a给对象b赋值时传递的是引用，修改b中的数据会导致同时修改a和b</p>
+<p>python 里的类型分为可变类型和不可变类型两类</p>
+<p>常见的基本类型，例如整型、字符串类型、浮点型，这些类型都是不可变类型。不可变类型类似于其他语言中的值类型，如果对象 a 赋值给对象 b，并且要修改 b，python 就会先把内存复制一份再修改，也就是说，修改 a 不会影响 b，是一种 copy-on-write 机制。</p>
+<p>可变类型一般是容器类型，例如 list、dict、tuple 等。可变类型类似于其它语言中的引用类型，对象 a 给对象 b 赋值时传递的是引用，修改 b 中的数据会导致同时修改 a 和 b</p>
 <h3 id="深拷贝和浅拷贝">深拷贝和浅拷贝</h3>
-<p>深拷贝和浅拷贝特指标准库copy模块中的copy和deepcopy。</p>
-<p>copy被称为浅拷贝，只拷贝第一层数据，如果第一层某个数据是一个list，那只会把这个list的引用拷贝过来</p>
-<p>deepcopy被称为深拷贝，是一种递归拷贝</p>
+<p>深拷贝和浅拷贝特指标准库 copy 模块中的 copy 和 deepcopy。</p>
+<p>copy 被称为浅拷贝，只拷贝第一层数据，如果第一层某个数据是一个 list，那只会把这个 list 的引用拷贝过来</p>
+<p>deepcopy 被称为深拷贝，是一种递归拷贝</p>
 <h3 id="不同语言中的拷贝和引用">不同语言中的拷贝和引用</h3>
-<p>像python、golang、java等上层语言对拷贝和引用的处理和C++不同。</p>
-<p>在这些上层语言中，一般都会区分引用类型和值类型，对于值类型，<code>=</code>操作符往往执行的是拷贝操作，对于引用类型，<code>=</code>操作符往往会执行传递引用操作，引用类型的拷贝往往需要一个专门的操作，例如python中是<code>copy</code>，java中是<code>clone</code>。</p>
-<p>而在C++中，<code>=</code>操作符无论对什么对象都是赋值/拷贝操作，如果想传引用，必须在引用变量初始化的时候对其传递引用，并且要指定被传值的变量是引用类型（利用<code>&amp;</code>）。这就导致了，在C++中，引用变量一旦创建就不能修改引用指向，后续做的所有<code>=</code>操作都是对引用对象的拷贝/赋值操作</p>
-<h2 id="lambda表达式">lambda表达式</h2>
+<p>像 python、golang、java 等上层语言对拷贝和引用的处理和 C++不同。</p>
+<p>在这些上层语言中，一般都会区分引用类型和值类型，对于值类型，<code>=</code>操作符往往执行的是拷贝操作，对于引用类型，<code>=</code>操作符往往会执行传递引用操作，引用类型的拷贝往往需要一个专门的操作，例如 python 中是<code>copy</code>，java 中是<code>clone</code>。</p>
+<p>而在 C++中，<code>=</code>操作符无论对什么对象都是赋值/拷贝操作，如果想传引用，必须在引用变量初始化的时候对其传递引用，并且要指定被传值的变量是引用类型（利用<code>&amp;</code>）。这就导致了，在 C++中，引用变量一旦创建就不能修改引用指向，后续做的所有<code>=</code>操作都是对引用对象的拷贝/赋值操作</p>
+<h2 id="lambda-表达式">lambda 表达式</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
