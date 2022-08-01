@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>mysql中的复杂查询 - 星</title><meta name="Description" content=""><meta property="og:title" content="mysql中的复杂查询" />
-<meta property="og:description" content="group by&hellip;having和where的区别 mysql先对数据按照where子句过滤，然后在对返回的结果分组，最后对分组后的数据按照" />
+<meta property="og:description" content="group by&hellip;having 和 where 的区别 mysql 先对数据按照 where 子句过滤，然后在对返回的结果分组，最后对分组后的数据按照 having 子句过滤。 where 是对行过滤，而 having 是对分组过滤，所以可以在" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/13.mysql-complex-sql/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-28T16:05:37+08:00" />
@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="mysql中的复杂查询"/>
-<meta name="twitter:description" content="group by&hellip;having和where的区别 mysql先对数据按照where子句过滤，然后在对返回的结果分组，最后对分组后的数据按照"/>
+<meta name="twitter:description" content="group by&hellip;having 和 where 的区别 mysql 先对数据按照 where 子句过滤，然后在对返回的结果分组，最后对分组后的数据按照 having 子句过滤。 where 是对行过滤，而 having 是对分组过滤，所以可以在"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  1073 ,
+                        }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  2447 ,
         "url": "http:\/\/blog.shiwj.top\/13.mysql-complex-sql\/","datePublished": "2022-07-28T16:05:37+08:00","dateModified": "2022-07-28T17:20:33+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -114,8 +114,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">mysql中的复杂查询</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1073 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2447 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -123,21 +123,75 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#group-byhaving和where的区别">group by&hellip;having和where的区别</a></li>
-    <li><a href="#joinon和where的区别">join&hellip;on和where的区别</a></li>
-    <li><a href="#case函数">case函数</a></li>
+    <li><a href="#group-byhaving-和-where-的区别">group by&hellip;having 和 where 的区别</a></li>
+    <li><a href="#joinon-和-where-的区别">join&hellip;on 和 where 的区别</a></li>
+    <li><a href="#窗口函数">窗口函数</a>
+      <ul>
+        <li><a href="#介绍">介绍</a></li>
+        <li><a href="#用法">用法</a></li>
+        <li><a href="#常用窗口函数">常用窗口函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#其他">其他</a>
+      <ul>
+        <li><a href="#case-函数">case 函数</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="group-byhaving和where的区别">group by&hellip;having和where的区别</h2>
-<p>mysql先对数据按照where子句过滤，然后在对返回的结果分组，最后对分组后的数据按照having子句过滤。</p>
-<p>where是对行过滤，而having是对分组过滤，所以可以在having子句后面使用聚集函数，而在where子句后面使用聚集函数是没有意义的。</p>
-<h2 id="joinon和where的区别">join&hellip;on和where的区别</h2>
-<p>在联结查询中，join&hellip;on&hellip;子句和where子句是可以一起出现的，要想弄清楚它们的区别，首先要清楚联结查询的过程。联结查询时要先根据联结条件对两张表做笛卡尔积，生成一个大表，然后再对这个大表做过滤，最终得到查询结果。</p>
-<p>join&hellip;on和where的区别在于，join&hellip;on&hellip;子句是在联结时生效，而where子句是在联结后生效。</p>
-<p>因此，当联结是外部联结（联结子句是left join或right join）时，由于外部联结会将左表或右表中没有建立联结的行都返回，所以on后面的条件不会去掉那些不符合条件的行，而where子句是严格的，会将不等值的行都去掉。</p>
-<p>而当联结是内部联结（等值联结）的时候，联结子句（join&hellip;on&hellip;）只会返回等值的行，这时写在on后面的条件和where子句中的条件是等价的，因此，使用内部联结的时候，完全可以用where子句代替join&hellip;on&hellip;</p>
-<h2 id="case函数">case函数</h2>
-<p>case函数可以用在select子句里，并将其结果命名为一个字段，还可以按这个字段分组，比如以下sql</p>
+            </div><div class="content" id="content"><h2 id="group-byhaving-和-where-的区别">group by&hellip;having 和 where 的区别</h2>
+<p>mysql 先对数据按照 where 子句过滤，然后在对返回的结果分组，最后对分组后的数据按照 having 子句过滤。</p>
+<p>where 是对行过滤，而 having 是对分组过滤，所以可以在 having 子句后面使用聚集函数，而在 where 子句后面使用聚集函数是没有意义的。</p>
+<h2 id="joinon-和-where-的区别">join&hellip;on 和 where 的区别</h2>
+<p>在联结查询中，join&hellip;on&hellip;子句和 where 子句是可以一起出现的，要想弄清楚它们的区别，首先要清楚联结查询的过程。联结查询时要先根据联结条件对两张表做笛卡尔积，生成一个大表，然后再对这个大表做过滤，最终得到查询结果。</p>
+<p>join&hellip;on 和 where 的区别在于，join&hellip;on&hellip;子句是在联结时生效，而 where 子句是在联结后生效。</p>
+<p>因此，当联结是外部联结（联结子句是 left join 或 right join）时，由于外部联结会将左表或右表中没有建立联结的行都返回，所以 on 后面的条件不会去掉那些不符合条件的行，而 where 子句是严格的，会将不等值的行都去掉。</p>
+<p>而当联结是内部联结（等值联结）的时候，联结子句（join&hellip;on&hellip;）只会返回等值的行，这时写在 on 后面的条件和 where 子句中的条件是等价的，因此，使用内部联结的时候，完全可以用 where 子句代替 join&hellip;on&hellip;</p>
+<h2 id="窗口函数">窗口函数</h2>
+<p>参考<a href="https://dev.mysql.com/doc/refman/8.0/en/window-functions.html" target="_blank" rel="noopener noreffer">mysql-8.0-documentation-window-functions</a>
+</p>
+<h3 id="介绍">介绍</h3>
+<p>窗口函数是 mysql 8.0 加入的功能，目的是为了满足分组统计场景的查询需求。</p>
+<p>我们使用 SQL 语句查数据时通常会有一些统计分析的需求（例如聚合和排序），一般有以下三类统计场景：</p>
+<ol>
+<li>简单统计<br>
+按条件查出数据后，对返回数据整体做统计操作，这种统计使用<code>select...from...where...order by</code>配合聚合函数即可完成。</li>
+<li>分组聚合<br>
+按条件查出数据后，对数据分组，然后对每个分组做聚合操作，每个分组返回一条数据即可，这种统计使用<code>group by</code>即可完成。</li>
+<li>分组排序<br>
+很多时候我们既想分组，又想对分组聚合，又想把分组内部的数据全部返回，而不是每个分组只返回一个数据，这时光用<code>group by</code>是不能完成任务的，为了解决问题，我们经常要写一堆复杂的自联结，不仅 SQL 难以读懂，而且查询效率也很低下。</li>
+</ol>
+<p>窗口函数的引入就是为了方便解决上述第三种查询场景，<strong>我们可以使用窗口函数对分组内部的数据做统计，然后把统计后的数据全部返回，并且可以按排序为每行计算出一个序号</strong>，方便我们使用序号对数据做二次过滤</p>
+<p>对于窗口函数来说，“滑动窗口”的概念非常重要。窗口函数会对组内的每条记录执行统计，这需要给窗口函数规定一个统计范围（例如统计范围是从当前行的前一行到当前行的后一行），我们把这个统计范围称为窗口，有的窗口函数的窗口是固定的，有的是滑动的，需要用户指定</p>
+<h3 id="用法">用法</h3>
+<p>以下是窗口函数的用法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 简单写法（把窗口函数返回的行序号作为新的一列new_col）
+</span><span class="c1"></span><span class="k">select</span><span class="w">
+</span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">-- 上面也可以把分组条件拆成单独的window语句
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="k">select</span><span class="w">
+</span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
+</span><span class="w"></span><span class="n">window</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>窗口函数的完整语法如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -148,7 +202,157 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">case</span><span class="w"> 
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">window_function_name</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span><span class="w">
+</span><span class="w">    </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">        </span><span class="p">[</span><span class="n">partition_defintion</span><span class="p">]</span><span class="w">
+</span><span class="w">        </span><span class="p">[</span><span class="n">order_definition</span><span class="p">]</span><span class="w">
+</span><span class="w">        </span><span class="p">[</span><span class="n">frame_definition</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>window_function_name(expression) </code>是窗口函数，<code>over()</code>为窗口函数指定了分组规则，如果里面什么都不写就是在整个表上运行窗口函数</p>
+<p><code>partition</code>子句定义了按哪些列分组，<code>order by</code>子句定义了按哪些列排序，<code>frame</code>子句定义了一个滑动窗口，分为按行定义和按范围定义</p>
+<p>窗口函数只能用在 select 列表和 order by 子句里。mysql 是对 where、group by、having 子句返回的结果上进行窗口函数的处理，处理顺序在 order by、limit、select distinct 之前</p>
+<p>frame语法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- frame_units是窗口类型，frame_extent是窗口范围
+</span><span class="c1"></span><span class="n">frame_units</span><span class="w"> </span><span class="n">frame_extent</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">-- frame_units有两种，ROWS和RANGE，分别是按行指定范围和直接指定范围
+</span><span class="c1"></span><span class="n">frame_units</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="err">{</span><span class="k">ROWS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RANGE</span><span class="err">}</span><span class="w">
+</span><span class="w"></span><span class="c1">-- 对于ROWS，也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
+</span><span class="c1"></span><span class="n">frame_extent</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="err">{</span><span class="n">frame_start</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">frame_between</span><span class="err">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">frame_between</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">frame_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">frame_end</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">frame_start</span><span class="p">,</span><span class="w"> </span><span class="n">frame_end</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w">
+</span><span class="w">    </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span><span class="w">  </span><span class="c1">-- 当前行
+</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="c1">-- 分组第一行
+</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w"> </span><span class="c1">-- 分组最后一行
+</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="c1">-- 当前行之前的expr行，例如10 PRECEDING的意思是当前行之前的10行
+</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w"> </span><span class="c1">-- 当前行之后的expr行
+</span><span class="c1"></span><span class="err">}</span><span class="w">
+</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="常用窗口函数">常用窗口函数</h3>
+<p>以下是常用窗口函数（不是全部）</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row_number()</td>
+<td>返回分组内排序后的行号</td>
+</tr>
+<tr>
+<td>rank()</td>
+<td>返回排序后的序号，如果有并列的行，它们行号相同，行号是并列组前面的总记录数+1</td>
+</tr>
+<tr>
+<td>dense_rank()</td>
+<td>返回分组内排序后的序号，如果有并列的行，它们行号相同，行号是上一个并列组的序号+1</td>
+</tr>
+<tr>
+<td>first_value(expr)/last_value(expr)</td>
+<td>返回窗口中的第一个行或最后一个行，并对其做表达式计算</td>
+</tr>
+<tr>
+<td>lag(expr,N,default)</td>
+<td>返回分组内位于当前行之前N行（这里是指上方）的行，default是指如果没有之前N行返回的值，N和default的默认值分别为1和null</td>
+</tr>
+<tr>
+<td>lead(expr,N,default)</td>
+<td>返回分组内位于当前行之后N行（下方）的行。（这里的之前之后是指遍历顺序）</td>
+</tr>
+<tr>
+<td>nth_value(expr,N)</td>
+<td>返回窗口内的第n行</td>
+</tr>
+<tr>
+<td>ntile(n)</td>
+<td>将组内行平均分成n个桶，返回每个行所属的桶号</td>
+</tr>
+</tbody>
+</table>
+<p>以下是row_number、rank和dense_rank的区别</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+------+------------+------+------------+
+| val  | row_number | rank | dense_rank |
++------+------------+------+------------+
+|    1 |          1 |    1 |          1 |
+|    1 |          2 |    1 |          1 |
+|    2 |          3 |    3 |          2 |
+|    3 |          4 |    4 |          3 |
+|    3 |          5 |    4 |          3 |
+|    3 |          6 |    4 |          3 |
+|    4 |          7 |    7 |          4 |
+|    4 |          8 |    7 |          4 |
+|    5 |          9 |    9 |          5 |
++------+------------+------+------------+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="其他">其他</h2>
+<h3 id="case-函数">case 函数</h3>
+<p>case 函数可以用在 select 子句里，并将其结果命名为一个字段，还可以按这个字段分组，比如以下 sql</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">case</span><span class="w">
 </span><span class="w"></span><span class="k">when</span><span class="w"> </span><span class="n">age</span><span class="o">&gt;=</span><span class="mi">25</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s2">&#34;25岁及以上&#34;</span><span class="w">
 </span><span class="w"></span><span class="k">else</span><span class="w"> </span><span class="s2">&#34;25岁以下&#34;</span><span class="w">
 </span><span class="w"></span><span class="k">end</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">age_cut</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">number</span><span class="w">
@@ -156,7 +360,7 @@
 </span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">age_cut</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>这个sql返回的结果如下所示</p>
+</div><p>这个 sql 返回的结果如下所示</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -169,7 +373,7 @@
 25岁及以上,3
 </code></pre></td></tr></table>
 </div>
-</div><p>case函数有两种写法，第一种，</p>
+</div><p>case 函数有两种写法，第一种，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -188,7 +392,7 @@
 </span><span class="w"></span><span class="k">END</span><span class="w"> </span><span class="k">CASE</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>第二种（有点类似于golang的switch语句），</p>
+</div><p>第二种（有点类似于 golang 的 switch 语句），</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
