@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>事业编计算机知识 - 星</title><meta name="Description" content=""><meta property="og:title" content="事业编计算机知识" />
-<meta property="og:description" content="考点 操作系统 网络基础 组成原理/体系结构 数据库 office windows 软件工程 编程语言(c、java) 数据结构 基础算法 安全 背题 1. 软件可维护性 决定因素：可理解性、可" />
+<meta property="og:description" content="考点 组成原理 windows office 网络 操作系统 数据库 软件工程 编程语言(c、java) 数据结构 基础算法 安全 简答题 1. 软件可维护性 决定因素：可理解性、可测试性、可修" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/kaobian-cs/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-21T19:21:16+08:00" />
@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="事业编计算机知识"/>
-<meta name="twitter:description" content="考点 操作系统 网络基础 组成原理/体系结构 数据库 office windows 软件工程 编程语言(c、java) 数据结构 基础算法 安全 背题 1. 软件可维护性 决定因素：可理解性、可"/>
+<meta name="twitter:description" content="考点 组成原理 windows office 网络 操作系统 数据库 软件工程 编程语言(c、java) 数据结构 基础算法 安全 简答题 1. 软件可维护性 决定因素：可理解性、可测试性、可修"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","wordcount":  4355 ,
+                        }],"genre": "posts","wordcount":  5515 ,
         "url": "http:\/\/blog.shiwj.top\/kaobian-cs\/","datePublished": "2022-06-21T19:21:16+08:00","dateModified": "2022-08-01T20:33:32+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -114,8 +114,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">事业编计算机知识</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%80%83%E7%BC%96/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>考编</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4355 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5515 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -124,15 +124,29 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#考点">考点</a></li>
-    <li><a href="#背题">背题</a>
+    <li><a href="#简答题">简答题</a>
       <ul>
         <li><a href="#1-软件可维护性">1. 软件可维护性</a></li>
         <li><a href="#2-网络接入方法">2. 网络接入方法</a></li>
         <li><a href="#3-网络攻击">3. 网络攻击</a></li>
-        <li><a href="#4-bs架构">4. B/S架构</a></li>
+        <li><a href="#4-bs-架构">4. B/S 架构</a></li>
+        <li><a href="#5-ipv6技术介绍">5. IPv6技术介绍</a></li>
+        <li><a href="#6-计算机网络类别和特点">6. 计算机网络类别和特点</a></li>
+        <li><a href="#7-如何在计算机网络中实现资源共享">7. 如何在计算机网络中实现资源共享</a></li>
+        <li><a href="#8-计算机软件系统的分类和功能">8. 计算机软件系统的分类和功能</a></li>
       </ul>
     </li>
-    <li><a href="#windows">windows</a></li>
+    <li><a href="#组成原理">组成原理</a>
+      <ul>
+        <li><a href="#图灵和冯诺依曼">图灵和冯诺依曼</a></li>
+        <li><a href="#字符编码方案">字符编码方案</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows-系统">windows 系统</a>
+      <ul>
+        <li><a href="#windows快捷键">windows快捷键</a></li>
+      </ul>
+    </li>
     <li><a href="#数据库">数据库</a>
       <ul>
         <li><a href="#数据库的特征">数据库的特征</a></li>
@@ -147,11 +161,10 @@
     <li><a href="#网络">网络</a>
       <ul>
         <li><a href="#服务访问点-sap">服务访问点 SAP</a></li>
-        <li><a href="#物理层设备">物理层设备</a></li>
-        <li><a href="#数据链路层设备">数据链路层设备</a></li>
+        <li><a href="#物理层">物理层</a></li>
+        <li><a href="#数据链路层">数据链路层</a></li>
         <li><a href="#交换机和集线器的区别">交换机和集线器的区别</a></li>
-        <li><a href="#mac-和-llc">MAC 和 LLC</a></li>
-        <li><a href="#虚电路和数据报">虚电路和数据报</a></li>
+        <li><a href="#网络层">网络层</a></li>
         <li><a href="#internetintranet-和-extranet">Internet、Intranet 和 Extranet</a></li>
       </ul>
     </li>
@@ -187,20 +200,20 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="考点">考点</h2>
-<ol>
-<li>操作系统</li>
-<li>网络基础</li>
-<li>组成原理/体系结构</li>
-<li>数据库</li>
-<li>office</li>
+<ol start="3">
+<li>组成原理</li>
 <li>windows</li>
+<li>office</li>
+<li>网络</li>
+<li>操作系统</li>
+<li>数据库</li>
 <li>软件工程</li>
 <li>编程语言(c、java)</li>
 <li>数据结构</li>
 <li>基础算法</li>
 <li>安全</li>
 </ol>
-<h2 id="背题">背题</h2>
+<h2 id="简答题">简答题</h2>
 <h3 id="1-软件可维护性">1. 软件可维护性</h3>
 <p><strong>决定因素</strong>：可理解性、可测试性、可修改性、可移植性、可重用性</p>
 <p><strong>提高方法</strong>：</p>
@@ -234,13 +247,75 @@
 <h3 id="3-网络攻击">3. 网络攻击</h3>
 <p>网络攻击：DOS/DDOS 攻击、SQL 注入、XSS 攻击（JS 注入）、会话劫持、DNS 劫持、暴力破解密码、电子邮件攻击、恶意软件/病毒/木马攻击</p>
 <p>防范网络攻击：系统升级，安全补丁，强密码，防火墙，杀毒软件，扫描下载程序，不点击可疑邮件</p>
-<h3 id="4-bs架构">4. B/S架构</h3>
+<h3 id="4-bs-架构">4. B/S 架构</h3>
 <p>浏览器/服务器架构：略</p>
 <p>好处：容易运维，使用方便</p>
 <p>存在的问题：数据安全问题，处理负载问题，耗时问题，灵活性问题</p>
-<h2 id="windows">windows</h2>
+<h3 id="5-ipv6技术介绍">5. IPv6技术介绍</h3>
+<p>IPv6的全称是Internet Protocol Version 6，译为“互联网协议版本6”，是IETF（互联网工程任务组）设计的用于替代现行IP协议（IPv4）的下一代IP协议</p>
+<p>为何要提出IPv6技术（和IPv4相比的优势，解决了什么问题）:</p>
+<ol>
+<li>IPv4地址长度32位，IPv6地址长度128位。解决了IPv4地址空间不足的问题，可以做到为每台设备分配一个唯一的IP地址。</li>
+<li>IPv6的路由表更小，提高了路由器转发数据包的速度</li>
+<li>IPv6更安全，IPv6可以在网络层对数据加密和校验，在网络层就可以保证数据传输的安全性和完整性。</li>
+<li>IPv6允许对协议进行扩充</li>
+<li>IPv6增强了对组播的支持和对流的控制，对提升多媒体服务的质量有很大好处</li>
+<li>IPv6加入了对自动配置的支持（是对DHCP协议的改进和扩充），提高网络管理效率，降低网络管理成本</li>
+</ol>
+<h3 id="6-计算机网络类别和特点">6. 计算机网络类别和特点</h3>
+<p>按覆盖范围分类，分为：WAN（广域网，覆盖范围几十到几千公里，是因特网的核心），MAN（城域网），LAN，PAN（覆盖范围只有几米），CAN，SAN等</p>
+<p>按使用对象分类，分为：公网，私网</p>
+<h3 id="7-如何在计算机网络中实现资源共享">7. 如何在计算机网络中实现资源共享</h3>
+<p>要点</p>
+<ul>
+<li>条件，路由，交换机，DHCP等等</li>
+<li>局域网
+<ul>
+<li>将某一台计算机的目录设置为局域网共享，获奖这台计算机连接的打印机设置为共享</li>
+<li>将网络打印机，网络硬盘组等设备作为独立的设备接入局域网，实现资源共享</li>
+<li>远程登陆</li>
+</ul>
+</li>
+<li>公网
+<ul>
+<li>去中心化的对等网络p2p</li>
+<li>中心化的资源共享服务，http服务，ftp服务等</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-计算机软件系统的分类和功能">8. 计算机软件系统的分类和功能</h3>
+<p>要点</p>
+<ul>
+<li>分为系统软件和应用软件
+<ul>
+<li>系统软件包括操作系统、语言处理系统（编译系统）、数据库管理系统</li>
+<li>应用软件是为了解决实际问题，面向某个具体的领域而设计的软件。应用软件分为通用软件和专用软件
+<ul>
+<li>电子邮件、web浏览器、办公软件、图像处理、音视频处理、科学计算软件，工业控制软件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="组成原理">组成原理</h2>
+<p>多媒体信息：文本，图片，音频，视频，动画&hellip;</p>
+<h3 id="图灵和冯诺依曼">图灵和冯诺依曼</h3>
+<p>图灵，计算机科学之父，人工智能之父，计算机科学的奠基人</p>
+<p>冯·诺依曼，现代计算机之父，博弈论之父，提出冯诺依曼结构</p>
+<h3 id="字符编码方案">字符编码方案</h3>
+<p>输入码是指输入字符时的编码，例如五笔码、全拼码等</p>
+<p>交换码是指逻辑上的编码标准，例如 unicode 就是一种交换码</p>
+<p>内码是指字符在计算机内部实际的编码方案，例如 utf-8 就是一种内码</p>
+<h2 id="windows-系统">windows 系统</h2>
+<p>windows通配符：“*”用于匹配多个字符，“?”用于匹配单个字符</p>
+<h3 id="windows快捷键">windows快捷键</h3>
 <ol>
 <li>win7 开机时进入安全模式按 f8</li>
+<li>切换语言，shift+alt</li>
+<li>切换输入法，shift+ctrl</li>
+<li>切换输入法的语言，shift或ctrl+空格</li>
+<li>全半角状态转换，shift+空格</li>
+<li>打开开始菜单，ctrl+esc或win</li>
 </ol>
 <h2 id="数据库">数据库</h2>
 <h3 id="数据库的特征">数据库的特征</h3>
@@ -322,45 +397,43 @@
 <p>事务是用户定义的一个操作系列，具有原子性，要么都完成，要么都不完成。事务可以是一条 SQL 语句，也可以是一组 SQL 语句</p>
 <p>事务的 ACID 特性：原子性、一致性、隔离性、持久性</p>
 <h2 id="网络">网络</h2>
-<ol>
-<li>CSMA/CD 协议，发送数据前先侦听总线的忙/闲状态，发送数据的同时要进行冲突检测</li>
-<li>接入因特网的方式
-<ol>
-<li>拨号接入
-<ol>
-<li>普通电话线（普通 MODEM）拨号接入</li>
-<li>ISDN 线路拨号接入</li>
-<li>宽带 ADSL 拨号接入</li>
-</ol>
-</li>
-<li>专线接入
-<ol>
-<li>Cable-MODEM（线缆调制解调器）是利用现成的有线电视（CATV）网接入</li>
-<li>光纤接入</li>
-</ol>
-</li>
-<li>局域网接入</li>
-<li>无线接入</li>
-<li>电力宽带上网</li>
-</ol>
-</li>
-<li>网络攻击：DOS/DDOS 攻击、SQL 注入、XSS 攻击（JS 注入）、会话劫持、DNS 劫持、暴力破解密码、电子邮件攻击、恶意软件/病毒/木马攻击</li>
-<li>防范网络攻击：系统升级，安全补丁，强密码，防火墙，杀毒软件，扫描下载程序，不点击可疑邮件</li>
-</ol>
+<p>按网络覆盖范围分类</p>
+<ul>
+<li>WAN（wide area network），广域网</li>
+<li>MAN（metropolitan area network），城域网</li>
+<li>LAN（local area network），局域网</li>
+<li>WLAN（wireless local area network），无线局域网</li>
+<li>PAN（personal area network），个人区域网络（蓝牙、USB 等）</li>
+<li>CAN（campus area network），校园区域网络</li>
+<li>SAN（storage area network），存储区域网络</li>
+</ul>
 <h3 id="服务访问点-sap">服务访问点 SAP</h3>
 <p>服务访问点 SAP 是指上下两层协议实体之间的逻辑接口（某一层的 SAP 是其对上层的访问接口），例如网络层的 SAP 是 IP 地址</p>
-<h3 id="物理层设备">物理层设备</h3>
-<p>光纤，光纤只能单向传输</p>
-<p>中继器，集线器</p>
-<h3 id="数据链路层设备">数据链路层设备</h3>
-<p>网桥，交换机</p>
-<p>网卡，网卡工作在物理层和数据链路层的 MAC 子层</p>
+<h3 id="物理层">物理层</h3>
+<p>物理层设备：</p>
+<ul>
+<li>光纤，光纤只能单向传输</li>
+<li>中继器，集线器</li>
+</ul>
+<h3 id="数据链路层">数据链路层</h3>
+<p>数据链路层设备：</p>
+<ul>
+<li>网桥，交换机</li>
+<li>网卡，网卡工作在物理层和数据链路层的 MAC 子层</li>
+</ul>
+<p>数据链路层有两个子层，逻辑链路控制层（LLC）和介质访问控制层（MAC），LLC 层位于 MAC 层之上。</p>
+<p>CSMA/CD 协议，发送数据前先侦听总线的忙/闲状态，发送数据的同时要进行冲突检测</p>
+<p>以太网拓扑结构有很多种，主要是<strong>总线型</strong>，加入交换机后，变为<strong>星型</strong>拓扑。其他结构还有：</p>
+<ul>
+<li>环型</li>
+<li>树型</li>
+<li>网状型</li>
+</ul>
 <h3 id="交换机和集线器的区别">交换机和集线器的区别</h3>
 <p>集线器工作在物理层，不涉及网络协议层面的工作，只能以广播模式转发数据</p>
 <p>交换机工作在数据链路层，可以根据报文中的 MAC 地址对数据做针对性的转发</p>
-<h3 id="mac-和-llc">MAC 和 LLC</h3>
-<p>数据链路层有两个子层，逻辑链路控制层（LLC）和介质访问控制层（MAC），LLC 层位于 MAC 层之上。</p>
-<h3 id="虚电路和数据报">虚电路和数据报</h3>
+<h3 id="网络层">网络层</h3>
+<p><strong>虚电路和数据报</strong></p>
 <p>虚电路和数据报是分组交换的两种方式（分组就是包，是网络层的概念），目前因特网用的就是数据报方式。</p>
 <p>数据报方式为网络层提供无连接服务，每个分组都包含源地址和目的地址，每个分组独立路由和转发，不保证分组按顺序到达，不保证可靠传输。</p>
 <p>虚电路方式为网络层提供面向连接的服务，建立连接后分组只包含一个虚电路号作为标识，同一条虚电路的分组按同一条路由转发，保证分组的有序到达，保证可靠传输。</p>
@@ -474,7 +547,12 @@
 <li>两种编辑方式，插入和改写（使用 insert 键调整）</li>
 <li>查找和替换，开始-&gt;编辑-&gt;替换，或者开始-&gt;编辑-&gt;查找-&gt;高级查找</li>
 <li>缩进方式，左缩进，右缩进，首行缩进，悬挂缩进</li>
-<li>标尺的作用，定位、对齐和缩进等</li>
+<li>标尺的作用，定位、对齐和缩进等。
+<ul>
+<li>小三角用来调整缩进（左缩进，右缩进，首行缩进），小方块用来设置制表位的对齐方式。</li>
+<li>拖动标尺边界，可以设置页边距</li>
+</ul>
+</li>
 <li>在快速选择区三击，可选择整篇文章</li>
 </ol>
 <h2 id="excel">excel</h2>
@@ -482,6 +560,7 @@
 <li>一个 excel 文件最多有 255 个工作表</li>
 <li>工作簿是指大的 excel 文档，工作表是指里面的 sheet1、sheet2</li>
 <li>公式以等号开头</li>
+<li>每个单元格最多可以容纳约32000个字符</li>
 </ol>
 <h3 id="公式与函数">公式与函数</h3>
 <ol>

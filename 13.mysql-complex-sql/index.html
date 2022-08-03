@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/13.mysql-complex-sql/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-28T16:05:37+08:00" />
-<meta property="article:modified_time" content="2022-08-01T20:33:32+08:00" />
+<meta property="article:modified_time" content="2022-08-01T20:37:21+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
@@ -34,7 +34,7 @@
                             "width":  3200 ,
                             "height":  2048 
                         }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  2445 ,
-        "url": "http:\/\/blog.shiwj.top\/13.mysql-complex-sql\/","datePublished": "2022-07-28T16:05:37+08:00","dateModified": "2022-08-01T20:33:32+08:00","publisher": {
+        "url": "http:\/\/blog.shiwj.top\/13.mysql-complex-sql\/","datePublished": "2022-07-28T16:05:37+08:00","dateModified": "2022-08-01T20:37:21+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -158,7 +158,7 @@
 按条件查出数据后，对返回数据整体做统计操作，这种统计使用<code>select...from...where...order by</code>配合聚合函数即可完成。</li>
 <li>分组聚合<br>
 按条件查出数据后，对数据分组，然后对每个分组做聚合操作，每个分组返回一条数据即可，这种统计使用<code>group by</code>即可完成。</li>
-<li>分组排序<br>
+<li>分组统计<br>
 很多时候我们既想分组，又想对分组聚合，又想把分组内部的数据全部返回，而不是每个分组只返回一个数据，这时光用<code>group by</code>是不能完成任务的，为了解决问题，我们经常要写一堆复杂的自联结，不仅 SQL 难以读懂，而且查询效率也很低下。</li>
 </ol>
 <p>窗口函数的引入就是为了方便解决上述第三种查询场景，<strong>我们可以使用窗口函数对分组内部的数据做统计，然后把统计后的数据全部返回，并且可以按排序为每行计算出一个序号</strong>，方便我们使用序号对数据做二次过滤</p>
@@ -415,8 +415,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-08-01&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/a5628ac0d1a3a85e80991b4e0c31740f3dde00cd" target="_blank" title="commit by swj(905622665@qq.com) a5628ac0d1a3a85e80991b4e0c31740f3dde00cd: mysql &amp;&amp; xingce">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>a5628ac</a></span>
+                <span>Updated on 2022-08-01&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/ccd3d073b90cc710699afd394cc8aa623c583b8d" target="_blank" title="commit by swj(905622665@qq.com) ccd3d073b90cc710699afd394cc8aa623c583b8d: fix error">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>ccd3d07</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
