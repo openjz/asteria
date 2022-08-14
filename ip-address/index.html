@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "网络","wordcount":  1188 ,
+                        }],"genre": "posts","keywords": "网络","wordcount":  1215 ,
         "url": "http:\/\/blog.shiwj.top\/ip-address\/","datePublished": "2022-07-15T10:45:00+08:00","dateModified": "2022-07-28T17:18:57+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -114,7 +114,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">关于IP地址的发展</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-15">2022-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1188 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-15">2022-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1215 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -133,7 +133,7 @@
 <p>CIDR实际上已经没有子网的概念，但仍然使用掩码这一称呼，IP地址从三级（网络号+子网号+主机号）又变回了两级（网络号+主机号）</p>
 <h2 id="最初的五类ip地址">最初的五类IP地址</h2>
 <p>一个IPv4地址共四个字节，由网络号和主机号组成。IPv4地址分为A、B、C、D、E五类</p>
-<p><strong>网络号全0</strong>代表本网络，因此，A、B、C类地址分别有一个网络号不能使用（0.0.0.0/8，128.0.0.0/16，192.0.0.0/24）。但是随着后来子网和CIDR的出现，IP地址分类已经没有意义，128.0.0.0/16已经被分配出去了，192.0.0.0/24暂时还保留在IANA手中，以后或许会分配出去，只有0.0.0.0/8这个网络号仍然保留，代表本网络</p>
+<p><strong>网络号全0</strong>代表本网络，因此，A、B、C类地址分别有一个网络号不能使用（0.0.0.0/8，128.0.0.0/16，192.0.0.0/24）。但是随着后来子网和CIDR的出现，IP地址分类已经没有意义，128.0.0.0/16已经被分配出去了，192.0.0.0/24暂时还保留在IANA手中，以后或许会分配出去，只有0.0.0.0/8这个网络号被0.0.0.0占用，代表未指定地址</p>
 <p>此处参考</p>
 <ul>
 <li><a href="https://www.zhihu.com/question/37927675" target="_blank" rel="noopener noreffer">知乎tckidd的回答</a>
@@ -152,7 +152,7 @@
 <p>环回地址（loopback），127.0.0.1，等价于localhost和本机ip。（实际上整个127.0.0.0/8网段都是环回地址）</p>
 </li>
 <li>
-<p>地址0.0.0.0代表本机</p>
+<p>地址0.0.0.0代表未指定地址，一般用于默认地址，相当于占位符</p>
 </li>
 <li>
 <p>0.0.0.0/8中除0.0.0.0以外的其他地址用于表示本网络中的特定主机</p>

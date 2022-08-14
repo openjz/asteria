@@ -110,14 +110,94 @@ IPv6的全称是Internet Protocol Version 6，译为“互联网协议版本6”
 - 物理层：建立、维护、断开物理连接，二进制数据的实际传输，有相关物理协议
 - 数据链路层：逻辑连接，主机间通信、硬件地址寻址，数据差错校验，局域网通信协议，PPPoE、CSMA/CD
 - 网络层：主机利用网络地址通信，以网络地址为标识（例如IP地址），网络地址寻址、路由、转发，维护路由表，有相关网络协议、IPv4、IPv6
-- 运输层：进程级别的通信，连接，以“主机:端口号”（套接字）作为标识，有TCP/UDP协议
+- 传输层：进程级别的通信，连接，以“主机:端口号”（套接字）作为标识，有TCP/UDP协议
 - 会话层：创建、管理、终止会话
 - 表示层：数据格式化、加密、压缩
 - 应用层：负责网络应用级别的通信，HTTP、HTTPS、SSH、FTP
 
+### 10.星型网络优缺点
+
+优点：
+
+1. 结构简单、容易实现和维护
+2. 节点易扩展
+3. 可靠性高，坏一个节点不会导致全网瘫痪
+4. 易扩展
+5. 传输速度快
+
+缺点：
+
+1. 中央节点负载高，易成为瓶颈
+2. 中心节点故障，整个网络故障
+3. 线路利用率低
+
+### 11.中间件
+
+中间件（middleware），分布式系统基础软件，位于应用服务/软件和系统服务（操作系统、数据库）之间，主要解决分布式环境下数据传输、数据访问、应用调度、系统构建和系统集成、流程管理等问题，能够实现系统之间的互联互通，提高系统资源利用率
+
+满足大量应用需要
+
+- 分布式存储、分布式计算
+- 消息中间件
+- 网络代理（负载均衡、数据接入、访问控制、数据转发和路由、安全认证）
+- cdn
+- 缓存
+- 容器编排
+
+### 12.数据库优化
+
+数据库方面
+
+- 建集群，多台机器多台服务同时I/O
+- 开启查询缓存
+
+表优化
+
+- 选择更好的存储引擎
+- 对经常在条件、分组子句中出现的列建索引
+- 按照数据范式优化表设计，合理拆分表，降低冗余
+- 分区
+- 分库分表（横向/纵向）
+- 优化字段设计，尽量使用简单/小的数据类型，整形优于字符串，尽量使用定长类型，索引字段越小越好
+
+SQL语句优化
+
+- 使用连接查询代替子查询
+- 限制查询字段
+- 限制查询条数
+- 限制使用子查询、联表查询
+- 尽量减少字符串匹配，尤其是正则表达式匹配和like匹配
+- 配合慢查询日志优化
+
+
 ## 组成原理
 
 多媒体信息：文本，图片，音频，视频，动画...
+
+计算机内部通常是并行传输，通信线路上通常是串行传输
+
+### 编码
+
+码距：两个码不同的二进制位数
+
+### RAID
+
+- **raid0**：假设有disk1、disk2、disk3、disk4四块硬盘，数据被分为四份分别放在四块硬盘上
+  - 优点：硬盘空间利用率高、处理大文件速度快
+  - 缺点：一块硬盘损坏，所有数据均不可用
+- **raid1**：至少要有两块硬盘，一块硬盘存储，一块硬盘做备份
+  - 优点：提供数据冗余
+  - 缺点：可使用容量减半
+- raid2：在raid0基础上加入汉明码纠错
+- raid3：在raid0基础上增加一块硬盘专门做奇偶校验
+- raid4：不常见，略
+- **raid5**：和raid0类似，一个数据分为多份，分别存储到不同的硬盘上去，但会有另外一块硬盘专门存放这个数据的校验码，各个数据的存储是独立的，所有硬盘都可以作为存储盘和校验盘
+  - 优点：兼顾存储性能、数据安全、存储成本
+  - 缺点：有两块或两块以上硬盘损坏，数据就无法恢复、数据重建慢
+- raid6：在raid5的基础上加入双重校验
+- raid10/raid01：raid1和raid0的结合
+- **raid7**：最优化的异步高I/O速率和高数据传输率，RAID7 不仅仅是一种技术，还是一种存储计算机，可完全独立于主机运行，不占用主机CPU资源
+
 
 ### 图灵和冯诺依曼
 
@@ -139,6 +219,9 @@ IPv6的全称是Internet Protocol Version 6，译为“互联网协议版本6”
 并行接口，支持热插拔
 - IEEE 1394  
 串行接口，传输速度快。最早由苹果公司为了取代SCSI提出。USB和IEEE 1394是现今比较流行的两种外部总线标准
+- rs232：两排，共9针（一排4针，一排5针），全双工，距离短，速度慢
+- rs485：无固定接口，半双工，距离长，速度快
+- DVI接口：三排15针
 
 ### 周期
 
@@ -164,6 +247,10 @@ PCI总线
 
 windows通配符：“*”用于匹配多个字符，“?”用于匹配单个字符
 
+windows中不能作为文件名的是：/\<>?*
+
+fat分区最大2TB，最大文件4GB
+
 ### windows快捷键
 
 1. win7 开机时进入安全模式按 f8
@@ -177,11 +264,10 @@ windows通配符：“*”用于匹配多个字符，“?”用于匹配单个�
 
 ### 数据库的特征
 
-1. 持久存储
-2. 数据结构化，有组织，按一定数据模型组织、描述和存储
-3. 数据可共享
-4. 数据冗余度低
-5. 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性
+0. 持久存储（不属于基本特点，选择题不选）
+1. 数据结构化，有组织，按一定数据模型组织、描述和存储（数据冗余度低）
+2. 数据可共享
+3. 数据独立性高，易扩展。数据独立性分为逻辑独立性和物理独立性
 
 ### 数据库管理系统（DBMS）
 
@@ -282,11 +368,13 @@ E-R 图（实体-联系图）是一种概念模型，用实体、属性和联系
 
 ## 网络
 
+计算机网络要求误码率低于10^-6，如果达不到这个指标，就必须进行差错校验
+
 按网络覆盖范围分类
 
 - WAN（wide area network），广域网
 - MAN（metropolitan area network），城域网
-- LAN（local area network），局域网
+- LAN（local area network），局域网，是一种点对点结构的网络
 - WLAN（wireless local area network），无线局域网
 - PAN（personal area network），个人区域网络（蓝牙、USB 等）
 - CAN（campus area network），校园区域网络
@@ -302,13 +390,25 @@ E-R 图（实体-联系图）是一种概念模型，用实体、属性和联系
 
 - 光纤，光纤只能单向传输，光纤抗干扰和传输距离都比同轴电缆强
 - 中继器，集线器
-- 双绞线：既可以传输模拟信号，又可以传输数字信号
+- 双绞线
+  - 既可以传输模拟信号，又可以传输数字信号
+  - 不仅适用点到点连接，也适用多点连接
+
+计算机中的传输设备包括：双绞线、同轴电缆、光纤、无线传输介质（无线电波、微波、红外线、激光）
+
+物理协议
+
+- 电气特性：电压范围
+- 功能特性：电平代表的含义
+- 规程特性：事件顺序
+- 机械特性：接口外形、形状、大小、引脚数
 
 ### 数据链路层
 
 数据链路层设备：
 
-- 网桥，交换机
+- 网桥
+- 交换机
 - 网卡，网卡工作在物理层和数据链路层的 MAC 子层
 
 数据链路层有两个子层，逻辑链路控制层（LLC）和介质访问控制层（MAC），LLC 层位于 MAC 层之上。
@@ -341,6 +441,10 @@ CSMA/CD 协议，发送数据前先侦听总线的忙/闲状态，发送数据�
 
 Internet 是英特网，Intranet 是企业内部网，Extranet 是外联网
 
+### 安全
+
+文件型病毒主要感染com和exe文件
+
 ## 操作系统
 
 操作系统的发展：单道批处理系统，多道批处理系统，分时系统，实时系统，通用操作系统
@@ -353,6 +457,8 @@ Internet 是英特网，Intranet 是企业内部网，Extranet 是外联网
 2. cpu 执行指令的过程，取值，译码，执行，取下一条指令，循环往复
 
 ## 软件工程
+
+项目管理三角形：范围、时间、成本
 
 ### 软件生命周期
 
@@ -533,3 +639,224 @@ Internet 是英特网，Intranet 是企业内部网，Extranet 是外联网
   - 母版用来定义一些可复用的版式。（操作：视图->幻灯片母版）
   - 主题比母版高级，每个主题里面都包含一套母版，还另外做了统一的配色、字体、效果等。主题做好后会导出成 thmx 文件（操作：设计->主题）
 - **官方提供的模板**，官方的模板是以 pot/potx 格式提供的，官方的模板可以直接在新建文件界面搜索和选择
+
+## 程序设计
+
+结构化程序三种基本结构：顺序、分支、循环，goto语句属于无条件跳转语句，属于非结构化程序
+
+## c程序基本结构
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+
+#define mydef 0
+
+struct mystruct {
+  int a;
+  char *b;
+}
+
+int main() {
+  return 0;
+}
+// 标准输入输出
+int a;
+scanf("%d",&a);
+printf("%d",a);
+// 按行
+char * in = char[100]; 
+char * out = "123";
+char * res = gets(in); //返回字符串或NULL
+int res = puts(out); //返回长度或EOF
+//按字符
+int res = getchar(); //返回字符或EOF
+int res = putchar(c);//返回字符或EOF
+
+// 文件操作
+// 打开关闭文件
+FILE * f = fopen("/data/input","r") //r读，w写，a追加
+int status = fclose(f)
+// 读写字符
+char * in = char[100]; 
+char * out = "123";
+char * res = fgets(in,10,f); //返回字符串或NULL
+int res = fputs(out,); //返回长度或EOF
+int res = fgetc(f);
+int res = fputc(c,f);
+// 读写块
+char buffer[100];
+char c[] = "This is w3schools";
+int res = fread(buffer, strlen(c)+1,1,f) //参数：buffer，块大小，块个数，文件，返回读取长度
+int res = fwrite(buffer, strlen(c)+1,1,f) //参数：buffer，块大小，块个数，文件，返回写入长度
+
+//初始化结构体
+struct mystruct mst = {1,NULL};
+//数组
+int a[5] = {2, 3, 4, 4, 7};
+//指针
+int *b = (int *)malloc(sizeof(int)*5);
+b = (int *)realloc(b, sizeof(int)*10);
+free(b)
+//字符串/内存操作
+char *s1 = "123";
+char *s2 = "234";
+char *res = strcat(s1,s2); //s2拼接到s1的末尾
+char *res = strncat(s1,s2,n); //把s2的前n个字符拼接到s1的末尾
+int res = strcmp(s1,s2);  //s1>s2，返回大于0，s1<s2，返回小于0，s1=s2，返回等于0，
+int res = strncmp(s1,s2,n); //比较前n个字符
+char *strcpy(char *dest, const char *src);
+char *strncpy(char *dest, const char *src, size_t n);
+int memcmp(const void *str1, const void *str2, size_t n)
+void *memcpy(void *dest, const void *src, size_t n)
+void *memmove(void *dest, const void *src, size_t n)
+void *memset(void *str, int c, size_t n)
+// math，操作数都是double
+b = exp(a)  //e^x
+b = pow(x,y)  //x^y
+b = sqrt(a) //平方根
+b = log(a)  //自然对数，基数为e
+b = log10(a)  //基数为10
+b = fabs(a) //绝对值
+b = ceil(a) //向上取整
+b = floor(a)  //向下取整
+b = sin/cos/tan(a)  //三角函数
+
+```
+
+## java程序基本结构
+
+```java
+
+public class Hello{
+  public static void main(String []args){
+    System.out.println("Hello World");
+  }
+}
+
+//import
+import java.util.Scanner;
+import java.lang.String;
+import java.lang.Integer;
+import java.lang.Double;
+import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+
+//标准输入输出
+Scanner scan = new Scanner(System.in); 
+if(scan.hasNext()){     //按单词输入
+  String str1 = scan.next();
+}
+Scanner scan = new Scanner(System.in); 
+if(scan.hasNextLine()){   //按行输入
+    String str2 = scan.nextLine();
+}
+System.out.println("Hello World");
+
+//类型转换
+String.valueOf(xxx) //万物转String
+//int和String互转
+Integer.toString(xxx) //int、Integer转String
+Integer a = Integer(5)
+a.toString(xxx) //Integer转String
+Integer.valueOf("...")  //String转Integer
+Integer.valueOf("...").intValue()  //String转int
+Integer.parseInt("...")  //String转int
+//其他类型和String互转大同小异
+
+//异常处理（捕获全部异常）
+try{}catch(Exception e){
+   System.out.println("Exception thrown  :" + e);
+}
+//序列化到文件
+try{
+    FileOutputStream fileOut = new FileOutputStream("data/out");
+    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+    out.writeObject(e);
+    out.close();
+    fileOut.close();
+}catch(IOException e){
+    e.printStackTrace();
+}
+//从文件反序列化
+Employee e = null;
+try{
+    FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+    ObjectInputStream in = new ObjectInputStream(fileIn);
+    e = (Employee) in.readObject();
+    in.close();
+    fileIn.close();
+}catch(IOException i){
+    i.printStackTrace();
+    return;
+}catch(ClassNotFoundException c){
+    c.printStackTrace();
+    return;
+}
+//读写文件
+//写（FileWriter）
+try {
+  FileWriter myWriter = new FileWriter("filename.txt");
+  myWriter.write("Files in Java might be tricky, but it is fun enough!");
+  myWriter.close();
+} catch (IOException e) {
+  e.printStackTrace();
+}
+//读（Scanner）
+try {
+  File myObj = new File("filename.txt");
+  Scanner myReader = new Scanner(myObj);
+  while (myReader.hasNextLine()) {
+    String data = myReader.nextLine();
+    System.out.println(data);
+  }
+  myReader.close();
+} catch (FileNotFoundException e) {
+  e.printStackTrace();
+}
+//arraylist
+ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+myNumbers.add(33);
+myNumbers.remove(0);  //按下标删
+myNumbers.get(0); //按下标获取
+myNumbers.size(); //获取大小
+for(int i =0;i<myNumbers.size();++i){
+  myNumbers.get(i);
+}
+//hashmap
+HashMap<Integer,String> mymap = new HashMap<Integer,String>();
+mymap.put(3,"11")
+mymap.get(3)
+mymap.remove(3)
+mymap.size()
+for (Map.Entry<String, String> entry : map.entrySet()) {
+    String mapKey = entry.getKey();
+    String mapValue = entry.getValue();
+    System.out.println(mapKey + "：" + mapValue);
+}
+for (String key : map.keySet()) {
+  System.out.println(key);
+}
+for (String value : map.values()) {
+  System.out.println(value);
+}
+//String操作
+String s2  = "Hello".substring(1, 4); // 开始和结束索引
+String[] parts = str.split(",");  //切分
+String res = String.join(",",parts);  //拼接
+s2.length();  //获取字符串长度
+//math
+Math.abs(a)
+Math.max(a,b)
+Math.min(a,b)
+Math.ceil(a,b)
+Math.exp(a)
+Math.pow(a,b)
+Math.sqrt(a)
+Math.log(a)
+Math.log10(a)
+Math.sin/cos/tan(a)
+```
