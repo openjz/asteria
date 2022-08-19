@@ -18,7 +18,7 @@
     <pubDate>Wed, 15 Jun 2022 14:24:30 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/kaobian-xingce-tips/</guid>
-    <description><![CDATA[图推技巧 元素组成相同 -&gt; 位置规律 元素组成相似 -&gt; 看样式（颜色、求交/求和） 元素组成不相似 -&gt;看属性 属性 -&gt; 曲线/直线、对称、封闭/开放、 属性]]></description>
+    <description><![CDATA[数推技巧 最常用的还是做差，幂次修正，和递推 递推（三个数居多，也有两个数和一个数）、两两分组、奇偶项、幂次修正（最大三次幂） 两两做差/和、商/]]></description>
 </item>
 </channel>
 </rss>

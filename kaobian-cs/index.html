@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","wordcount":  9789 ,
+                        }],"genre": "posts","wordcount":  10283 ,
         "url": "http:\/\/blog.shiwj.top\/kaobian-cs\/","datePublished": "2022-06-21T19:21:16+08:00","dateModified": "2022-08-14T12:13:04+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -114,8 +114,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">事业编计算机知识</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%80%83%E7%BC%96/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>考编</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9789 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;20 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;10283 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;21 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -138,6 +138,8 @@
         <li><a href="#10星型网络优缺点">10.星型网络优缺点</a></li>
         <li><a href="#11中间件">11.中间件</a></li>
         <li><a href="#12数据库优化">12.数据库优化</a></li>
+        <li><a href="#13-什么是事务及事务的特性">13. 什么是事务及事务的特性</a></li>
+        <li><a href="#14-什么是视图">14. 什么是视图</a></li>
       </ul>
     </li>
     <li><a href="#组成原理">组成原理</a>
@@ -338,7 +340,13 @@
 </ol>
 <h3 id="11中间件">11.中间件</h3>
 <p>中间件（middleware），分布式系统基础软件，位于应用服务/软件和系统服务（操作系统、数据库）之间，主要解决分布式环境下数据传输、数据访问、应用调度、系统构建和系统集成、流程管理等问题，能够实现系统之间的互联互通，提高系统资源利用率</p>
-<p>满足大量应用需要</p>
+<p>中间件可分为</p>
+<ul>
+<li>基础中间件，交易中间件、消息中间件等，用于节点间、应用与服务之间互联互通。基础中间件是构建分布式应用的基础。</li>
+<li>集成中间件，用于异构系统（不同的数据库系统、业务应用系统等）之间的互联互通、数据共享、业务流程协调统一等功能，并构建灵活可扩展的分布式企业应用</li>
+<li>行业领域应用平台，为满足特定行业、企业需要，便于快速方便地构建应用，而在原有基础中间件、集成中间件的基础上开发的中间件。所提供的服务与特定行业相关</li>
+</ul>
+<p>中间件有：</p>
 <ul>
 <li>分布式存储、分布式计算</li>
 <li>消息中间件</li>
@@ -371,6 +379,16 @@
 <li>尽量减少字符串匹配，尤其是正则表达式匹配和like匹配</li>
 <li>配合慢查询日志优化</li>
 </ul>
+<h3 id="13-什么是事务及事务的特性">13. 什么是事务及事务的特性</h3>
+<p>事务是用户定义的一个操作序列，具有原子性，要么都完成，要么都不完成。事务可以是一条 SQL 语句，也可以是一组 SQL 语句</p>
+<p>事务的 ACID 特性：原子性、一致性、隔离性、持久性</p>
+<ul>
+<li>持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。</li>
+</ul>
+<h3 id="14-什么是视图">14. 什么是视图</h3>
+<p>视图是一种虚拟的表，它只有表定义，而不包含具体的数据。</p>
+<p>在SQL中，视图是基于SQL语句的结果集的可视化表，实际上是一条select语句，这个语句返回的结果集被视为一个表。</p>
+<p>视图中的数据并不属于视图本身，而是属于基本的表。用户对视图进行操作时，系统根据视图的定义去操作与视图相关联的基本表</p>
 <h2 id="组成原理">组成原理</h2>
 <p>多媒体信息：文本，图片，音频，视频，动画&hellip;</p>
 <p>计算机内部通常是并行传输，通信线路上通常是串行传输</p>
