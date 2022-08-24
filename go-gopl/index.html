@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>golang入门笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="golang入门笔记" />
-<meta property="og:description" content="参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal" />
+<meta property="og:description" content="参考《Go程序设计语言》 看本文前最好先看google的a tour of go 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/go-gopl/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-26T11:18:48+08:00" />
-<meta property="article:modified_time" content="2022-07-26T14:32:45+08:00" />
+<meta property="article:modified_time" content="2022-08-23T12:21:55+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="golang入门笔记"/>
-<meta name="twitter:description" content="参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal"/>
+<meta name="twitter:description" content="参考《Go程序设计语言》 看本文前最好先看google的a tour of go 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,8 +33,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "golang","wordcount":  2239 ,
-        "url": "http:\/\/blog.shiwj.top\/go-gopl\/","datePublished": "2022-04-26T11:18:48+08:00","dateModified": "2022-07-26T14:32:45+08:00","publisher": {
+                        }],"genre": "posts","keywords": "golang","wordcount":  3390 ,
+        "url": "http:\/\/blog.shiwj.top\/go-gopl\/","datePublished": "2022-04-26T11:18:48+08:00","dateModified": "2022-08-23T12:21:55+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -114,8 +114,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">golang入门笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-26">2022-04-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2239 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-26">2022-04-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3390 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -131,11 +131,21 @@
         <li><a href="#23-复数">2.3 复数</a></li>
         <li><a href="#24-布尔">2.4 布尔</a></li>
         <li><a href="#25-字符串">2.5 字符串</a></li>
+        <li><a href="#26-常量">2.6 常量</a></li>
+      </ul>
+    </li>
+    <li><a href="#三复合数据类型">三、复合数据类型</a>
+      <ul>
+        <li><a href="#31-数组">3.1 数组</a></li>
+        <li><a href="#32-slice">3.2 slice</a></li>
+        <li><a href="#33-map">3.3 map</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>参考《Go程序设计语言》</p>
+<p>看本文前最好先看google的<a href="https://golang.google.cn/tour/welcome/1" target="_blank" rel="noopener noreffer">a tour of go</a>
+</p>
 <h2 id="一程序结构">一、程序结构</h2>
 <ol>
 <li>go程序使用驼峰式命名风格</li>
@@ -164,13 +174,15 @@
 <li>byte，等价于uint8，表示一个原始的字节</li>
 <li>uintptr，可以存放一个指针，用于底层编程</li>
 <li>golang中%运算结果的正负号总是和被除数一致（取余，不是取模）</li>
-<li>位运算。<code>&amp;</code>是与运算（AND），<code>|</code>是或运算（OR），<code>^</code>是异或和非运算（XOR，NOT），<code>&amp;^</code>是与非运算（AND NOT），<code>&lt;&lt;</code>是左移，<code>&gt;&gt;</code>是右移
+<li>位运算。<code>&amp;</code>是与运算（AND），<code>|</code>是或运算（OR），<code>^</code>是异或运算和非运算（XOR，NOT），<code>&amp;^</code>是与非运算（AND NOT），<code>&lt;&lt;</code>是左移，<code>&gt;&gt;</code>是右移
 <ul>
 <li>1和a做异或等价于对a取反，即1^a = ^a（这里的1和a是单独的一位）</li>
 <li>与非运算的作用是按右操作数的位分布清空左操作数中的对应位</li>
 <li>右移操作<code>&gt;&gt;</code>
 <ul>
-<li>有符号数右移按符号位填补空位（因为移的是补码，补码补1就等于原码补0）</li>
+<li>有符号数左移是逻辑移位，符号位参与移位，低位补0</li>
+<li>有符号数右移是算术移位按符号位填补空位（因为移的是补码，补码补1就等于原码补0）</li>
+<li>无符号数都是逻辑移位</li>
 <li>右移操作<code>x&gt;&gt;n</code>等价于<code>x/2^n</code>，向下取整（朝负无穷方向取整，例如-5&raquo;1结果为-3）</li>
 </ul>
 </li>
@@ -253,16 +265,66 @@
 <li>utf-8解码器在遇到一个不合理的字节时，会用一个专门的unicode符号<code>\uFFFD</code>作为替换</li>
 </ul>
 </li>
-<li>byte和rune的区别，rune保存的是unicode码点，并不是utf-8编码后的字节，因此，<code>[]byte</code>转换为<code>[]rune</code>之后，使用<code>fmt.Printf(&quot;%x&quot;,s)</code>输出的结果并不一样</li>
-<li>整型转字符串时，将整型视为unicode码点（rune）处理。遇到无效整型时，用专门的替换字符取代（<code>\uFFFD</code>）</li>
+<li>byte和rune的区别，rune保存的是unicode码点，并不是utf-8编码后的字节，因此，字符串转换为<code>[]rune</code>之后，使用<code>fmt.Printf(&quot;%x&quot;,s)</code>输出的结果并不一样</li>
+<li><code>string</code>、<code>[]byte</code>、<code>[]rune</code>之间可以相互转换，<code>byte</code>、<code>rune</code>可以转换为string</li>
 <li>字面量<code>'A'</code>是rune类型</li>
+<li>四个标准包：strings、bytes、strconv、unicode
+<ul>
+<li>strings包提供了字符串操作函数</li>
+<li>bytes包提供了字节slice操作函数、可变字符串类型bytes.Buffer</li>
+<li>strconv包主要用于string和其他类型的转换</li>
+<li>unicode包用于判别文字符号值</li>
+</ul>
+</li>
+</ol>
+<h3 id="26-常量">2.6 常量</h3>
+<ol>
+<li>常量是在编译阶段确定值的数据类型，因此常量可以出现在涉及到类型声明的地方（例如数组长度）</li>
+<li>常量生成器iota，用于创建一系列连续的常量值，从0开始取值，逐项加1。iota可以用在表达式里。</li>
+<li>无类型常量，无类型常量可以有比基本类型更高的精度，至少256位（可以超过基本类型的最值）</li>
+</ol>
+<h2 id="三复合数据类型">三、复合数据类型</h2>
+<p>数组、slice、map、结构体</p>
+<h3 id="31-数组">3.1 数组</h3>
+<ol>
+<li><code>var a [3]int = [3]int{1,2,3}</code>，也可以<code>a := [...]int{1,2,3}</code></li>
+<li>使用<code>len(a)</code>获取数组长度</li>
+<li>初始化时可以同时指定索引，例如<code>a := [...]string{2:&quot;hello&quot;,3:&quot;world&quot;}</code></li>
+<li>如果数组元素类型可比较，则数组也是可比较的，只能用<code>==</code>和<code>!=</code></li>
+<li>传数组参数时不是传引用，而是值传递，拷贝一份副本</li>
+<li>数组长度不可变</li>
+</ol>
+<h3 id="32-slice">3.2 slice</h3>
+<ol>
+<li>slice是一种可变长度的序列。slice是一种轻量的数据结构，底层是个数组。</li>
+<li>slice有三个属性，指针、长度和容量，长度是指slice的元素个数，长度小于等于容量。容量是从起始元素到底层数组的最后一个元素见元素的个数。使用<code>len</code>和<code>cap</code>获取长度和容量。</li>
+<li>一个底层数组可以对应多个slice，slice的范围可以相互重叠。</li>
+<li>slice之间无法比较，可以用bytes.Equal比较两个字节slice</li>
+<li>slice值为nil时，长度和容量都为0，也有不为nil但是长度和容量都是0的slice，例如<code>[]int{}</code>、<code>make([]int,3)[3:]</code></li>
+<li><code>make([]T,len)</code>、<code>make([]T,len,cap)</code></li>
+<li>append可以用来追加元素。append可能会引起底层数据扩容，也可能不会，因此每次调用append都必须更新slice。</li>
+<li>小知识，<code>func(y ...int)</code>，<code>...</code>代表y接受一个可变长度的参数列表</li>
+</ol>
+<h3 id="33-map">3.3 map</h3>
+<ol>
+<li><code>a := map[string]int{&quot;hello&quot;:1,&quot;world&quot;:5,}</code></li>
+<li>创建空map：<code>make(map[K]V)</code>、<code>map[K]V{}</code></li>
+<li>通过下标的方式插入和访问，使用delete移除元素。即使key不存在，这些操作也是安全的，访问一个不存在的键时，其值为零值。</li>
+<li>map中元素的迭代顺序不固定</li>
+<li>小知识，使用range迭代时可以使用空白标识符<code>_</code>忽略一个变量</li>
+<li>判断一个key是否存在，<code>age,ok := a[xxx]</code></li>
+<li>key的类型必须是能用<code>==</code>比较的类型，所以key不能是slice
+<ul>
+<li>可以通过将slice映射成一个字符串来解决，例如<code>fmt.Sprintf(&quot;%q&quot;,[]int{1,2,3})</code>，谓词q是将一个值转换为对应的字符串形式的字面值</li>
+</ul>
+</li>
 </ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-07-26&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/5c25735d49992dadab950234921b0dd55472e4fb" target="_blank" title="commit by swj(905622665@qq.com) 5c25735d49992dadab950234921b0dd55472e4fb: new theme loveit">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>5c25735</a></span>
+                <span>Updated on 2022-08-23&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/ec2bcca9851cf24d9b9a3e3349658ea3b9e84d85" target="_blank" title="commit by shiwenjie(swj6086085@163.com) ec2bcca9851cf24d9b9a3e3349658ea3b9e84d85: kaobian">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>ec2bcca</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

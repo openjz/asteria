@@ -82,7 +82,7 @@
     <pubDate>Tue, 26 Apr 2022 11:18:48 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/go-gopl/</guid>
-    <description><![CDATA[参考《Go程序设计语言》 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&quot;&quot;，布尔值是fal]]></description>
+    <description><![CDATA[参考《Go程序设计语言》 看本文前最好先看google的a tour of go 一、程序结构 go程序使用驼峰式命名风格 零值，变量的初始值。数字是0，字符串是&]]></description>
 </item>
 </channel>
 </rss>
