@@ -4,13 +4,21 @@
         <link>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</link>
         <description>考编 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 21 Jun 2022 19:21:16 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 27 Aug 2022 17:16:07 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/" rel="self" type="application/rss+xml" /><item>
+    <title>考编计算机简答题</title>
+    <link>http://blog.shiwj.top/kaobian-cs-jianda/</link>
+    <pubDate>Sat, 27 Aug 2022 17:16:07 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/kaobian-cs-jianda/</guid>
+    <description><![CDATA[一、软件工程 1.1 软件可维护性 决定因素：可理解性、可测试性、可修改性、可移植性、可重用性 提高方法： 使用先进的软件开发工具（版本管理，测试工具，调]]></description>
+</item>
+<item>
     <title>事业编计算机知识</title>
     <link>http://blog.shiwj.top/kaobian-cs/</link>
     <pubDate>Tue, 21 Jun 2022 19:21:16 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/kaobian-cs/</guid>
-    <description><![CDATA[考点 组成原理 windows office 网络 操作系统 数据库 软件工程 编程语言(c、java) 数据结构 基础算法 安全 简答题 1. 软件可维护性 决定因素：可理解性、可测试性、可修]]></description>
+    <description><![CDATA[考点 组成原理、体系结构 网络 操作系统、windows 数据库 软件工程 安全 office 编程语言(c、java) 基础数据结构、算法 简答题 1. 软件可维护性 决定因素]]></description>
 </item>
 <item>
     <title>行测技巧</title>
