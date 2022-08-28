@@ -167,10 +167,84 @@ draft = false
     - `err := json.Unmarshal(data,&xxx)`，Marshal的逆操作
     - 结构体只有导出的成员才能被Marshal，json字段名称默认为成员名（区分大小写）
     - 可以用成员标签定义字段名，例如
-        ```go
+        ```golang
         type a struct{
             Year int `json:"released"`
         }
         ```
         （成员标签由一组空格分割的key:"value"组成）
+2. 模板（实现格式和代码彻底分离）
+    - 模板是一个字符串
+    - 一个`{{...}}`称为操作，可以输出值、选择结构体成员、调用函数、提供控制逻辑、实例化其他模板等
+    - 点号`'.'`表示当前值，最开始表示模板的输入参数
+    - `'|'`将前一个操作的结果当作下一个操作的输入
+    - 将模板定义为一个字符串或文件、初始化时解析模板（并指定自定义函数）、运行时执行模板（提供输入输出）
+    - html/template包会自动对html元字符转义，text/template包不会，一定要用对包。（可以将输入数据指定为`template.HTML`类型不让html/template自动转义，也就是说，`template.HTML`类型会被看做是html数据，而不是纯文本）
 
+## 四、函数
+
+1. 可以对函数返回值命名，有命名的返回值可以不写在return语句里（但是这么做会降低代码可读性）。
+2. 错误处理策略
+    - 出错后应当能提供一个错误链
+    - 错误消息首字母不应该被大写，而且尽量避免换行（方便使用grep这样的工具找错误）- 重试 + 超时
+3. 匿名函数
+    - 可以用来实现闭包
+    - 可以在函数内部定义函数，例如
+        ```golang
+        d := func() int {
+            var x int
+            return x * x
+        }
+	    fmt.Println(d())
+        ```
+    - 当匿名函数需要递归时，必须先按照上面这样把函数赋值给一个变量
+    - 捕获变量时要注意，如果捕获的是迭代变量，迭代变量是会不断更新的！
+4. 变长函数
+    - 在参数列表最后的类型名称之前使用省略号`"..."`，例如`func sum(vals ... int) int{...}`
+    - 如何调用变长函数：
+        ```golang
+        sum(1,2,3)
+        //或
+        values := []int{1,2,3}
+        sum(values...)
+        ```
+5. 延迟函数调用，`defer`
+6. panic，panic发生时，正常程序会终止执行，goroutine会执行所有defer函数，程序会异常退出并留下日志消息
+    - 可以手动触发panic，例如`panic(fmt.Sprint("xxx"))`
+    - defer函数以倒序执行，从调用栈最外层的函数开始，一直到main
+    - panic消息输出到标准错误流，包含调用栈信息
+    - runtime包提供了获取调用栈的方法，例如
+        ```golang
+        var buf [4096]byte
+        n := runtime.Stack(buf[:],false)
+        os.Stdout.Write(buf[:n])
+        ```
+    - 从panic中恢复，如果在发生panic的函数的defer语句中调用recover函数，panic发生时程序就不会异常退出，而是将panic消息作为recover的返回值，如果没有panic，recover就返回nil（**可以在defer函数中修改函数返回值！**），例如
+        ```golang
+        func Parse() err error {
+            defer func(){
+                if p := recover(); p!=nil{
+                    err = fmt.Errorf("xxx") //可以在recover时修改函数返回值
+                }
+            }()
+        }
+        ```
+    - 处理panic的一般原则是，不应该去恢复从另一个包发生的panic，也不应该去恢复不是你维护的代码发生的panic
+    - 有选择性地处理panic（但还是强调，预期之内的错误不应该通过panic来处理）
+        ```golang
+        type bailout struct{}
+        ...
+        panic(bailout{})    //在某个地方发生了panic
+        ...
+        defer func() {
+            switch p := recover(); p {
+            case nil:
+                // no panic
+            case bailout{}:
+                // "expected" panic
+                err = fmt.Errorf("multiple title elements")
+            default:
+                panic(p) // unexpected panic; carry on panicking
+            }
+        }()
+        ```
