@@ -3,7 +3,7 @@
 
 参考[MDN css入门教程](https://developer.mozilla.org/zh-CN/docs/Learn/CSS)
 
-## 一、导入 css
+## 导入 css
 
 1、导入外部样式：
 

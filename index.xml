@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 27 Aug 2022 17:16:07 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 16 Sep 2022 08:34:03 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>线程什么时候终止</title>
+    <link>http://blog.shiwj.top/14.threadexit/</link>
+    <pubDate>Fri, 16 Sep 2022 08:34:03 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/14.threadexit/</guid>
+    <description><![CDATA[之前一直有几个疑惑，比如， 一个线程终止后，它创建的其他线程如果没执行完，会跟着终止还是继续执行？ main函数返回后，其他没执行完的线程会终止]]></description>
+</item>
+<item>
     <title>事业编计算机简答题</title>
     <link>http://blog.shiwj.top/kaobian-cs-jianda/</link>
     <pubDate>Sat, 27 Aug 2022 17:16:07 &#43;0800</pubDate>
@@ -76,15 +84,7 @@
     <pubDate>Wed, 15 Jun 2022 14:24:30 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/kaobian-xingce-tips/</guid>
-    <description><![CDATA[错题总结 技巧 主旨题：首句不看，理解为主，找结构，抓重点 推断下文题：以最后一句为主，前文为辅 填句子题，承上启下，以前后句子为主，其他为辅 数量关]]></description>
-</item>
-<item>
-    <title>计算机中的时间</title>
-    <link>http://blog.shiwj.top/time/</link>
-    <pubDate>Wed, 08 Jun 2022 12:29:06 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/time/</guid>
-    <description><![CDATA[unix时间戳 unix时间戳是相对于UTC时间&quot;1970年1月1日 00:00:00&quot;所经过的秒数。由于是相对于UTC时间]]></description>
+    <description><![CDATA[错题总结 数量关系 多 3 倍是指是原来的四倍 数学运算题，“每隔 19 天”指的是“每 20 天” 词语辨析： 乐不思蜀：在新环境中得到乐趣，不想回到原来的环境中 莫]]></description>
 </item>
 </channel>
 </rss>

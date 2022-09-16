@@ -15,7 +15,7 @@ draft = false
 
 1. go 程序使用驼峰式命名风格
 2. 零值，变量的初始值。数字是 0，字符串是""，布尔值是 false，接口（interface）和引用类型（slice、指针、map、通道、函数）是 nil，数组和结构体的零值是其所有元素或成员的零值
-    - 注意，零值也是有类型的，nil也是
+   - 注意，零值也是有类型的，nil 也是
 3. 短变量声明，`a,b := f()`，a 和 b 中至少有一个得是新变量，不能全是已经声明的变量
    - 一个例外，如果 a,b 是在外层作用域声明的，`:=`会将它们声明为新变量
 4. 指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期）
@@ -225,7 +225,7 @@ draft = false
      func Parse() err error {
          defer func(){
              if p := recover(); p!=nil{
-                 err = fmt.Errorf("xxx") //可以在recover时修改函数返回值
+                 err = fmt.Errorf("%v",p) //可以在recover时修改函数返回值
              }
          }()
      }
@@ -303,8 +303,104 @@ draft = false
 6. **`T`和`*T`是两个类型，用`T`实现了一个接口，并不能认为`*T`也实现了**。
 7. 空接口类型`interface{}`可以用来代表任意类型
 8. 接口例子
-    - `io.writer`接口，`fmt.Fprintf`的第一个参数是`io.writer`类型
-        - `fmt.Printf` 和 `fmt.Sprintf` 都是对 `fmt.Fprintf` 的封装。
-        - `fmt.Printf`提供的是`*os.File`类型（`os.Stdout`），`fmt.Sprintf`提供的是`*bytes.Buffer`
-    - `fmt.Stringer`接口，这个接口有一个方法`String() string`，可以让一个类型自定义输出自己的方法。
-    - `flag.Value`接口，用于表示一个命令行参数类型，同样有`String() string`方法
+   - `io.writer`接口，`fmt.Fprintf`的第一个参数是`io.writer`类型
+     - `fmt.Printf` 和 `fmt.Sprintf` 都是对 `fmt.Fprintf` 的封装。
+     - `fmt.Printf`提供的是`*os.File`类型（`os.Stdout`），`fmt.Sprintf`提供的是`*bytes.Buffer`。
+   - `fmt.Stringer`接口，这个接口有一个方法`String() string`，可以让一个类型自定义输出自己的方法。
+   - `flag.Value`接口，用于表示一个命令行参数类型，同样有`String() string`方法。
+   - `sort.Interface`接口，用于排序。
+   - `http.Handler`接口，一个`http.Handler`就是一个 web 接口，可以用`ServeMux`将多个 handler 组合起来。
+     - web 服务器每次都会用一个新的 goroutine 来调用处理函数，因此处理函数要注意并发问题
+   - `error`接口，go 预先定义了一些实现了 error 接口的类型，例如`*errorString`、`Errno`
+9. 对于一个接口变量来说，它有两个类型，静态类型和动态类型，静态类型就是这个接口类型，动态类型是它的实际类型
+   - 接口类型的零值是 nil，对于一个 nil 接口，它的动态类型和动态值都是 nil，静态类型还是接口类型
+10. 接口值可以使用`==`和`!=`比较，当接口值动态类型和动态值都相等时两个接口值相等
+    - 如果动态类型不可比较，比较时会 panic
+11. **注意区分接口值为 nil 和接口动态值为 nil**，容易引起 bug
+12. 类型断言，`x.(T)`
+      - 把接口值持有的具体类型T的值提取出来
+      - 或者把接口转换为另外一个接口，保留接口的动态类型和动态值（前提是动态类型实现了要转换的接口）
+         - 如果接口A是接口B的子集，接口B可以直接赋值给接口A，不需要类型断言，反过来不行
+      - 操作数为空接口值时类型断言失败
+      - 可以获取类型断言的结果，`f,ok := x.(T)`，类型断言失败，ok为false，**可以利用这个来检查接口是否能转换成一个具体类型或另外一个接口类型**
+      - 可以使用类型分支来简化一长串类型断言，例如
+
+         ```golang
+         switch x.(type) {
+            case nil:
+            case int:
+            case bool:
+            default:
+         }
+         //扩展写法，在这种写法中，x被赋予的是接口的动态值而不是类型，可以把这个值拿到case块中去使用
+         switch x:=x.(type) {
+            case nil:
+            case int:
+            case bool:
+            default:
+         }
+         ```
+
+## 七、协程
+
+主要是goroutine和channel
+
+1. 程序启动时只有一个协程，即main函数所在的协程，称为主协程
+2. 启动一个协程，`go f()`
+3. main函数返回时，所有协程终止
+4. channel用于协程间通信。channel有类型，例如`chan int`是int类型的channel。同种类型的channel可以使用`==`比较。
+5. channel操作
+   - 创建channel，`ch := make(chan int)`
+   - 把x发送给channel ch，`ch <- x`
+   - 从channel ch中接受数据并赋值给x，`x := <- ch`
+   - 接受并丢弃结果，`<- ch`
+   - 关闭channel，`close(ch)`
+6. 创建channel时可以指定容量，例如`ch := make(chan int,3)`，不指定容量时容量默认为0，创建出来的叫无缓冲通道
+7. 无缓冲通道上的发送操作会阻塞，直到消息被接收，发送协程才会继续执行。反过来，接收操作也会阻塞，直到有协程向channel发送一个消息
+   - 换句话说，无缓冲通道会将发送和接收协程同步化，因此无缓冲通道又称为同步通道
+8. 通道被关闭后，未接收完的数据会被继续接收，然后还能继续接收数据，只不过接收到的是零值
+   - `x, ok := <- ch`，当通道被关闭且数据被接受完后，ok的值为false
+   - 也可以采用直接在通道上迭代的形式，通道关闭并且数据全部接收完后退出循环
+      ```golang
+      for x := range ch {
+         ...
+      }
+      ```
+   - close操作不是必须的，只是一种同步手段而已（不像文件，打开后一定要关闭）
+9. 单向通道，类型`chan <- int`只能发送，类型`<- chan int`只能接收
+   - 可以用在函数参数类型上，让参数的用途更清晰
+   - 双向通道可以转换为单向的，反过来不行
+10. 缓冲通道
+   - 缓冲通道满了以后，发送操作会阻塞
+   - 使用cap函数获取通道容量
+   - 使用len函数获取通道内的数据个数
+11. `sync.WaitGroup`，有时候创建的协程数量不固定，可以用它来对协程计数，它是多协程安全的，下面是例子
+
+      ```golang
+      r := make(chan int)
+      var wg sync.WaitGroup
+      //主协程，从一个channel获取数据处理，因此事先不知道到底要创建多少协程
+      for m := range ch {
+         wg.Add(1) //创建协程前计数+1
+         go func(m string){
+            defer wg.Done()  //在defer中对计数-1，确保一定能-1
+            r <- 1
+         }(m)
+      }
+      //等待协程结束必须单独起一个协程，如果把等待操作放在主协程，放在下面这个循环之前，由于channel r是一个无缓冲channel，channel中的数据得不到处理，会导致所有协程都结束不了，如果放在循环后面，由于没人关闭channel r，循环结束不了，所以执行不到等待操作。（由于我们事先不知道到底有多少协程，因此也没办法使用缓冲channel）
+      go func(){
+         wg.Wait()   //等待所有协程结束
+         close(r)
+      }()
+      total := 0
+      //等r被关闭后才能结束循环
+      for i := range r {
+         total += i
+      }
+      ```
+
+问题
+
+1. main函数返回时会调用协程的defer吗
+2. go协程和线程是什么模型，n:m？
+3. go协程能够在main函数返回后继续运行吗？
