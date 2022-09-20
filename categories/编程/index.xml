@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 16 Sep 2022 08:34:03 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 20 Sep 2022 12:35:41 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>取余和取模的区别</title>
+    <link>http://blog.shiwj.top/15.remainder-and-modulo/</link>
+    <pubDate>Tue, 20 Sep 2022 12:35:41 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/15.remainder-and-modulo/</guid>
+    <description><![CDATA[注：以下使用 a % b 表示取余和取模运算 如果a和b都是正数，取余和取模没区别 例如，对于2 % 7，取余和取模的结果都是2，对于9 % 7，取余和取模的结]]></description>
+</item>
+<item>
     <title>线程什么时候终止</title>
     <link>http://blog.shiwj.top/14.threadexit/</link>
     <pubDate>Fri, 16 Sep 2022 08:34:03 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/go-gopl/</guid>
     <description><![CDATA[参考《Go 程序设计语言》 看本文前最好先看 google 的a tour of go 一、程序结构 go 程序使用驼峰式命名风格 零值，变量的初始值。数字是 0，字符串是&quot;&]]></description>
-</item>
-<item>
-    <title>数据库事务</title>
-    <link>http://blog.shiwj.top/db-transaction/</link>
-    <pubDate>Wed, 20 Apr 2022 11:57:47 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/db-transaction/</guid>
-    <description><![CDATA[事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事务未提交的]]></description>
 </item>
 </channel>
 </rss>

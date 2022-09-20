@@ -73,7 +73,7 @@
    - 原生字符串字面量用反引号`` `...` ``书写。原生字符串中转义不起作用，可以包含换行，字符串内容和书写内容完全一致。
 8. utf-8
    - utf-8 是 go 的默认编码
-   - unicode 字符有两种表示形式，`\uhhhh`表示 16 位码点，`\Uhhhhhhhh`表示 32 位码点，区别是小写的 u 和大写的 U
+   - unicode 字符有两种表示形式，`'\uhhhh'`表示 16 位码点，`'\Uhhhhhhhh'`表示 32 位码点，区别是小写的 u 和大写的 U
    - 以下字符串是等价的，注意：直接用 16 进制转义（\x）书写的字符串是"世界"经 utf-8 编码后的实际字节，而\u 和\U 后面跟的是 unicode 码点，并不是实际的 utf-8 字节
      ```go
      "世界"
@@ -138,7 +138,7 @@
 5. 小知识，使用 range 迭代时可以使用空白标识符`_`忽略一个变量
 6. 判断一个 key 是否存在，`age,ok := a[xxx]`
 7. key 的类型必须是能用`==`比较的类型，所以 key 不能是 slice
-   - 可以通过将 slice 映射成一个字符串来解决，例如`fmt.Sprintf("%q",[]int{1,2,3})`，谓词 q 是将一个值转换为对应的字符串形式的字面值
+   - 可以通过将 slice 映射成一个字符串来解决，例如`fmt.Sprintf("%q",[]int{1,2,3})`，谓词 q 是将一个值转换为对应的字符形式的字面值
 
 ### 3.4 结构体
 
@@ -342,7 +342,7 @@
 1. 程序启动时只有一个协程，即main函数所在的协程，称为主协程
 2. 启动一个协程，`go f()`
 3. main函数返回时，所有协程终止
-4. channel用于协程间通信。channel有类型，例如`chan int`是int类型的channel。同种类型的channel可以使用`==`比较。
+4. channel用于协程间通信。channel有类型，例如`chan int`是int类型的channel。同种类型的channel可以使用`==`比较，这时如果它们的引用相同，结果为真，否则为假。
 5. channel操作
    - 创建channel，`ch := make(chan int)`
    - 把x发送给channel ch，`ch <- x`
@@ -352,7 +352,9 @@
 6. 创建channel时可以指定容量，例如`ch := make(chan int,3)`，不指定容量时容量默认为0，创建出来的叫无缓冲通道
 7. 无缓冲通道上的发送操作会阻塞，直到消息被接收，发送协程才会继续执行。反过来，接收操作也会阻塞，直到有协程向channel发送一个消息
    - 换句话说，无缓冲通道会将发送和接收协程同步化，因此无缓冲通道又称为同步通道
-8. 通道被关闭后，未接收完的数据会被继续接收，然后还能继续接收数据，只不过接收到的是零值
+8. **通道被关闭后，能收不能发**
+   - 向关闭的通道发数据会panic
+   - 通道被关闭后，未接收完的数据会被继续接收，然后还能继续接收数据，只不过接收到的是零值
    - `x, ok := <- ch`，当通道被关闭且数据被接受完后，ok的值为false
    - 也可以采用直接在通道上迭代的形式，通道关闭并且数据全部接收完后退出循环
       ```golang
@@ -368,7 +370,7 @@
    - 缓冲通道满了以后，发送操作会阻塞
    - 使用cap函数获取通道容量
    - 使用len函数获取通道内的数据个数
-11. `sync.WaitGroup`，有时候创建的协程数量不固定，可以用它来对协程计数，它是多协程安全的，下面是例子
+11. `sync.WaitGroup`，有时候创建的协程数量不固定，可以用它来对协程计数，它是并发安全的，下面是例子
 
       ```golang
       r := make(chan int)
@@ -392,9 +394,230 @@
          total += i
       }
       ```
+12. 可以利用缓冲通道限制并发数，例如
 
-问题
+      ```golang
+      //设定并发数为20
+      var tokens = make(chan struct{}, 20)
+      //获取一个token
+      token <- struct{}{}
+      //协程处理...
+      //处理完成后释放token
+      <- token
+      ```
+13. select多路复用（注意不是switch），如下所示，每个case指定一次通道的接收或发送操作，select一次执行一个case，**如果同时满足多个case，select随机选择一个**
 
-1. main函数返回时会调用协程的defer吗
-2. go协程和线程是什么模型，n:m？
-3. go协程能够在main函数返回后继续运行吗？
+      ```golang
+      select {
+      case <- ch1:
+      case x := <-ch2:
+      case ch3 <- y:
+      default:
+      }
+      ```
+      当我们不想在一个通道还没准备好的情况下被阻塞时，可以使用select多路复用
+14. nil通道
+      - 在nil通道上收发是合法的，只是会永远阻塞
+      - select中的nil通道永远不会被选择
+15. 小知识：go中的标签不光可以用于goto语句
+   - 可以让break跳出好几层，例如
+      ```golang
+      loop:
+         for{
+            select{
+            case _,ok := <- ch :
+               if !ok {
+                  break loop
+               }
+            }
+         }
+      ```
+   - continue同理，可以跳出多层
+16. 关闭通道操作可以作为一种广播机制，创建一个通道，不往里面发送任何数据，只要一关闭通道，所有监听这个通道的协程都会接收到一个零值，它们就知道通道被关闭了
+17. goroutine调式技巧，执行一个panic调用，运行时将转储程序中所有goroutine的栈
+
+总结一下，实现goroutine之间的同步可以采用以下方式：
+
+1. 使用channel发送消息
+2. 利用channel关闭实现广播机制
+3. 利用sync.WaitGroup对goroutine计数
+4. 利用缓冲channel实现一个计数信号量，来限制并发数
+   - 容量为1的channel被称为二进制信号量
+5. 利用select同时处理多个通道的读写操作
+
+## 八、并发时如何共享变量
+
+1. 竞态，竞态是指并发导致对数据的操作出现冲突的情况。
+2. 如何避免竞态（2、3是两种重要方案）
+   1. 并发前把变量初始化好，并发期间不修改变量
+   2. 避免多个goroutine访问同一个变量，（go箴言，不要通过共享内存来通信，应该通过通信来共享内存）。**一种方法是让一个goroutine代理一个共享变量的操作，其他goroutine通过通道来对这个变量进行操作，这个代理goroutine被称作监控goroutine**。
+   3. **使用互斥机制**
+3. 互斥锁`sync.Mutex`
+   - 有一种代替的办法是使用一个容量为1的channel作为二进制信号量，把对共享变量的并发访问数限制到1
+   - mutex的用法
+      ```golang
+      var mu sync.Mutex
+      mu.Lock()
+      //...临界区域 
+      mu.UnLock()
+      ```
+   - 为了确保释放锁，unlock操作经常放在defer里
+4. 读写锁`sync.RWMutex`，读锁`RLock()`、`RUnlock()`，读写锁`Lock()`、`Unlock()`
+5. 对一个变量，如果写操作加了锁，那么读操作也应该加锁，原因有两点
+   1. 防止读操作插入到写操作序列中
+   2. 现代cpu各个核心有各自独立的缓存，通道通信和互斥量操作等同步原语会导致处理器把积累的写操作刷回到内存，保证操作结果对运行在其他核心的goroutine可见。但是如果不使用同步原语，就有可能发生共享变量在各个核心上的缓存不一致的问题
+6. `sync.Once`，是一个针对一次性初始化问题的解决方案
+   - 一次性初始化问题，实际开发中经常会遇到这样的场景，访问一个共享变量前要先去判断这个变量有没有初始化，如果没有，要先将其初始化然后再访问，这是并发不安全的，用法：
+      ```golang
+      var loadonce sync.Once
+      loadonce.Do(initfunc)   //initfunc用于初始化变量
+      //...访问操作
+      ```
+   - sync.Once内部包含一个互斥量和一个bool变量，bool变量用于标记共享变量是否已完成初始化
+7. 竞态检测器
+   - 用于分析程序是否存在竞态
+   - 在`go build`、`go run`、`go test`命令后面加上`-race`参数即可
+   - 竞态检测器会记录所有对共享变量的访问，会记录所有同步操作
+   - 竞态检测器只能检查出运行时发生的竞态，检查不出来没发生的竞态
+
+## 九、goroutine和OS线程
+
+### 9.1 栈
+
+**每个OS线程都有一个固定大小的栈空间**（通常为2MB），这个栈空间对goroutine来说太大了（go中一次创建十万个goroutine也是常见的），但是对很多递归深度比较深的函数又太小了
+
+**goroutine也有栈，但是大小不固定**。goroutine刚创建出来时栈很小（典型情况只有2KB），并且可以按需扩大和缩小，最大限制甚至可以达到1GB
+
+### 9.2 调度
+
+OS线程由操作系统内核来调度，线程切换需要完整的上下文切换，这个操作很耗时。
+
+goroutine由go runtime调度，goroutine运行在线程上，是一种m:n的调度。goroutine调度在用户态完成，开销很小。
+
+Go调度器使用GOMAXPROCS参数确定需要使用多少OS线程，默认是cpu核数
+
+### 9.3 标识
+
+线程都有标识，goroutine没有。（不鼓励threadlocal这种东西）
+
+## 十、包和go工具
+
+### 10.1 go为什么编译快
+
+1. 所有包依赖必须列在文件头部，编译器分析包依赖时不需要读取整个文件
+2. 没有循环依赖，依赖构成一个有向无环图，可以包之间可以单独编译甚至并行编译
+3. 编译出的目标文件不仅包含它自己的导出信息，还包含依赖包的导出信息，因此go编译一个包时，go只需要去看导入依赖对应的目标文件，不需要层层去找依赖的目标文件
+
+### 10.2 包
+
+1. 每个目录下面只能有一个包。
+2. main包会告诉go build调用连接器生成一个可执行文件。
+3. 一个目录下可以有一个额外的test包，包名以_test结尾，文件名以_test.go结尾，这会告诉go test两个包都需要构建。
+4. 有些依赖管理工具会在包名末尾加上一个版本后缀，实际的包名不包含这个后缀，例如`xx/xx/yaml.v2`的包名应该是`yaml`
+5. 重命名导入，解决包名冲突
+6. 空导入，只导入但是不引用包中的名字，例如`import _ "image/png"`（有时候导入仅仅是为了执行包的初始化）
+7. 包的导入路径是相对于`$GOPATH/src`
+8. 包可以自定义导入域名，防止因托管网站的变化导致导入路径变化
+9. 常用go工具
+   - `go env`
+   - `go get`
+   - `go build`、`go install`
+   - `go doc`、`godoc`
+      - `go doc`命令用于查看包、成员、方法的声明和注释
+      - `godoc`命令用于在本地启动一个文档服务器，例如`godoc -http=localhost:6060`，里面包括所有标准库的包和用户自己的包，需要单独安装这个命令。
+   - `go list`
+10. vendor目录，维护依赖的本地副本
+11. 内部包，位于internal目录中，只能被internal的父目录下的包引用
+
+## 十一、测试
+
+一个典型的测试命令：`go test -v -run="xxx" xxx_test.go`，`-run`是一个正则表达式，用于过滤要测试的函数名，被测试对象不光可以是一个文件，也可以是一个包。
+
+### 11.1 包内测试和外部测试
+
+- 包内测试是指测试代码和产品代码的包名一致，外部测试是指测试代码在一个单独的包中，以产品包名拼上_test作为包名
+- 有时候会将产品包内的一些方法暴露给测试包，这些方法一般写在一个单独的包内测试文件export_test.go中
+
+### 11.2 测试覆盖率
+
+- 著名计算机科学家Edsger Dijkstra说，“测试的目的是发现bug，而不是证明其不存在”
+- 使用 go tool cover查看覆盖工具的使用方法
+- 简单的测试覆盖率命令，`go test -cover`
+- 复杂的测试覆盖率命令，`go test -coverprofile=c.out -covermode=count`，`-coverprofile`参数将覆盖率数据输出到文件中，`-covermode=count`表示每个语句块的执行测试将被计数
+- `go tool cover -html=c.out`命令将生成一个html版的测试报告
+
+### 11.3 其他
+
+- testing包还可以用来做基准测试
+   - 测试函数前缀是`Benchmark`，参数是`*testing.B`
+   - 测试命令`go test -bench=xxx`
+- 性能优化工具pprof
+   - 测试命令
+      ```bash
+      go test -cpuprofile=cpu.out
+      go test -blockprofile=block.out
+      go test -memprofile=mem.out
+      ```
+   - 一般都是针对基准测试进行性能分析
+      ```bash
+      go test -run=NONE -bench=xxx -cpuprofile=cpu.out
+      ```
+   - 使用pprof工具生成性能分析报告
+      ```bash
+      go tool pprof ...各种参数 cpu.out
+      ```
+- 示例函数，函数名的格式为`Example`拼上被演示函数的函数名，没有参数和返回值，
+   - 目的是作为文档，godoc会将示例函数和函数关联到一起
+   - 在函数体末尾加上以下注释可以让go test运行示例函数并检查实际输出和注释中的输出是否匹配
+      ```golang
+      // Output: 或 Unordered Output:
+      // Ava
+      // Jess
+      // [Jess Sarah Zoe]
+      ```
+
+## 十二、反射
+
+1. `reflect.Type`
+   - `reflect.Type`是一个接口类型，这个接口只有一个实现，即类型描述符，接口值中的动态类型就是类型描述符
+   - `reflect.TypeOf(x)`返回一个类型描述符，并且**只会返回具体类型**，不会返回接口类型
+2. `refect.Value`
+   - `reflect.ValueOf(x)`返回一个`reflect.Value`类型，**ValueOf从接口值中提取值部分，所以永远返回一个具体的值**
+   - `reflect.Value.Type()`方法会返回value的类型，返回值是`reflect.Type`类型
+   - `reflect.Value.Interface()`方法将一个Value类型转为一个interface{}接口值，是valueof的逆操作
+   - `reflect.Value.Kind()`方法会返回类型分类（类型分类是`reflect.Kind`类型，其实是个uint类型，其零值是reflect.Invalid）
+3. 使用反射的例子可以参考`gopl.io/ch12/format`和`gopl.io/ch12/display`
+4. 非导出字段在反射下也是可见的
+5. **接口类型的值可以通过从其他Value类型值间接获得**
+6. 使用`reflect.Value`设置值
+   ```golang
+   x := 2
+   //获取一个可寻址的x
+   d := reflect.ValueOf(&x).Elem()
+   //方法1，通过指针修改x的值
+   px := d.Addr().Interface().(*int)
+   *px = 3
+   //方法2，通过set方法修改d
+   d.Set(reflect.ValueOf(4))
+   ```
+   - 在不可寻址的reflect.Value上调用Set会崩溃
+      - （在指向interface{}的reflect.Value上调用SetInt等特化Set方法时会崩溃）
+   - 不能更新结构体未导出字段的值
+   - `reflect.Value.CanAddr()`方法判断变量是否可寻址
+   - `reflect.Value.CanSet()`方法判断变量是否可寻址且可修改
+7. 可以通过`reflect.Type.Field`方法获取结构体字段名和tag
+8. 可以通过`reflect.Type.Method`方法获取类型的方法，但是只描述方法名和类型
+9. 也可以通过`reflect.Value.Method`方法获取到绑定了接收者的方法，但是只描述方法名和类型，可以用`reflect.Value.Call`调用函数
+10. 慎用反射
+   - 反射中存在的类型错误是编译时检查不出来的，只能在运行时以崩溃的方式报告
+   - 反射会造成代码的可读性降低
+   - 反射慢
+
+## 十三、低级编程
+
+本章主要介绍unsafe包和cgo工具
+
+unsafe是提供了对go内置特性的访问，这些特性不安全，因为他们暴露了go的内存布局。unsafe广泛用在和操作系统交互的底层包中（runtime、os、syscall、net）
+
+cgo工具用来调用c程序
+
