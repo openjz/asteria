@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "算法","wordcount":  3102 ,
+                        }],"genre": "posts","keywords": "算法","wordcount":  3127 ,
         "url": "http:\/\/blog.shiwj.top\/algorithm-problem\/","datePublished": "2022-07-06T11:37:09+08:00","dateModified": "2022-07-28T17:18:57+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,7 +82,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">算法题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3102 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3127 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -195,9 +195,11 @@ B: b0,b1,...,bn
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. 当p[j-1]不是&#39;*&#39;时，
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 注意，p[0]和s[0]对应的是f[1][1]
+1. 当p[j-1]不是&#39;*&#39;时，
     如果p[j-1]和s[i-1]匹配，
         f[i][j] = f[i-1][j-1]
     否则

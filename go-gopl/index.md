@@ -290,8 +290,8 @@
 ## 六、接口
 
 1. 接口是一种抽象类型，里面都是方法，没有数据。
-2. 接口可以嵌套，和嵌套匿名结构体类似，嵌套接口时只需要提供一个接口名，可以直接访问嵌套接口的方法。
-3. 和结构体嵌套不同，接口嵌套和直接将嵌套接口的方法列出效果是一样的，方法定义的顺序也无所谓。
+2. 结构体中可以嵌套一个接口，和嵌套匿名结构体类似，也可以嵌套一个匿名接口，可以直接访问匿名接口的方法。
+3. 接口 A 内部可以嵌套接口 B，这和把 B 的方法直接列在 A 里是一样的，并且接口中方法定义的顺序也无所谓。
 4. 如果一个类型实现了一个接口的所有方法，那么这个类型实现了这个接口。
 5. 当一个类型实现了接口时，该类型才能赋值给接口
 6. **`T`和`*T`是两个类型，用`T`实现了一个接口，并不能认为`*T`也实现了**。
@@ -312,222 +312,239 @@
     - 如果动态类型不可比较，比较时会 panic
 11. **注意区分接口值为 nil 和接口动态值为 nil**，容易引起 bug
 12. 类型断言，`x.(T)`
-      - 把接口值持有的具体类型T的值提取出来
-      - 或者把接口转换为另外一个接口，保留接口的动态类型和动态值（前提是动态类型实现了要转换的接口）
-         - 如果接口A是接口B的子集，接口B可以直接赋值给接口A，不需要类型断言，反过来不行
-      - 操作数为空接口值时类型断言失败
-      - 可以获取类型断言的结果，`f,ok := x.(T)`，类型断言失败，ok为false，**可以利用这个来检查接口是否能转换成一个具体类型或另外一个接口类型**
-      - 可以使用类型分支来简化一长串类型断言，例如
 
-         ```golang
-         switch x.(type) {
-            case nil:
-            case int:
-            case bool:
-            default:
-         }
-         //扩展写法，在这种写法中，x被赋予的是接口的动态值而不是类型，可以把这个值拿到case块中去使用
-         switch x:=x.(type) {
-            case nil:
-            case int:
-            case bool:
-            default:
-         }
-         ```
+    - 把接口值持有的具体类型 T 的值提取出来
+    - 或者把接口转换为另外一个接口，保留接口的动态类型和动态值（前提是动态类型实现了要转换的接口）
+      - 如果接口 A 是接口 B 的子集，接口 B 可以直接赋值给接口 A，不需要类型断言，反过来不行
+    - 操作数为空接口值时类型断言失败
+    - 可以获取类型断言的结果，`f,ok := x.(T)`，类型断言失败，ok 为 false，**可以利用这个来检查接口是否能转换成一个具体类型或另外一个接口类型**
+    - 可以使用类型分支来简化一长串类型断言，例如
+
+      ```golang
+      switch x.(type) {
+         case nil:
+         case int:
+         case bool:
+         default:
+      }
+      //扩展写法，在这种写法中，x被赋予的是接口的动态值而不是类型，可以把这个值拿到case块中去使用
+      switch x:=x.(type) {
+         case nil:
+         case int:
+         case bool:
+         default:
+      }
+      ```
+
+> 另外，关于 golang 中的**组合**
+>
+> 组合是指结构体嵌套结构体、结构体嵌套接口
+>
+> 这里面值得注意的**匿名结构体和匿名接口的组合**
+>
+> 假设结构体 A 实现了接口 I，结构体B中嵌套了匿名结构体A，结构体C中嵌套了匿名结构I，那么B和C都被视为实现了接口I，并且B和C都可以重写接口方法
 
 ## 七、协程
 
-主要是goroutine和channel
+主要是 goroutine 和 channel
 
-1. 程序启动时只有一个协程，即main函数所在的协程，称为主协程
+1. 程序启动时只有一个协程，即 main 函数所在的协程，称为主协程
 2. 启动一个协程，`go f()`
-3. main函数返回时，所有协程终止
-4. channel用于协程间通信。channel有类型，例如`chan int`是int类型的channel。同种类型的channel可以使用`==`比较，这时如果它们的引用相同，结果为真，否则为假。
-5. channel操作
-   - 创建channel，`ch := make(chan int)`
-   - 把x发送给channel ch，`ch <- x`
-   - 从channel ch中接受数据并赋值给x，`x := <- ch`
+3. main 函数返回时，所有协程终止
+4. channel 用于协程间通信。channel 有类型，例如`chan int`是 int 类型的 channel。同种类型的 channel 可以使用`==`比较，这时如果它们的引用相同，结果为真，否则为假。
+5. channel 操作
+   - 创建 channel，`ch := make(chan int)`
+   - 把 x 发送给 channel ch，`ch <- x`
+   - 从 channel ch 中接受数据并赋值给 x，`x := <- ch`
    - 接受并丢弃结果，`<- ch`
-   - 关闭channel，`close(ch)`
-6. 创建channel时可以指定容量，例如`ch := make(chan int,3)`，不指定容量时容量默认为0，创建出来的叫无缓冲通道
-7. 无缓冲通道上的发送操作会阻塞，直到消息被接收，发送协程才会继续执行。反过来，接收操作也会阻塞，直到有协程向channel发送一个消息
+   - 关闭 channel，`close(ch)`
+6. 创建 channel 时可以指定容量，例如`ch := make(chan int,3)`，不指定容量时容量默认为 0，创建出来的叫无缓冲通道
+7. 无缓冲通道上的发送操作会阻塞，直到消息被接收，发送协程才会继续执行。反过来，接收操作也会阻塞，直到有协程向 channel 发送一个消息
    - 换句话说，无缓冲通道会将发送和接收协程同步化，因此无缓冲通道又称为同步通道
 8. **通道被关闭后，能收不能发**
-   - 向关闭的通道发数据会panic
+   - 向关闭的通道发数据会 panic
    - 通道被关闭后，未接收完的数据会被继续接收，然后还能继续接收数据，只不过接收到的是零值
-   - `x, ok := <- ch`，当通道被关闭且数据被接受完后，ok的值为false
+   - `x, ok := <- ch`，当通道被关闭且数据被接受完后，ok 的值为 false
    - 也可以采用直接在通道上迭代的形式，通道关闭并且数据全部接收完后退出循环
-      ```golang
-      for x := range ch {
-         ...
-      }
-      ```
-   - close操作不是必须的，只是一种同步手段而已（不像文件，打开后一定要关闭）
+     ```golang
+     for x := range ch {
+        ...
+     }
+     ```
+   - close 操作不是必须的，只是一种同步手段而已（不像文件，打开后一定要关闭）
 9. 单向通道，类型`chan <- int`只能发送，类型`<- chan int`只能接收
    - 可以用在函数参数类型上，让参数的用途更清晰
    - 双向通道可以转换为单向的，反过来不行
 10. 缓冲通道
-   - 缓冲通道满了以后，发送操作会阻塞
-   - 使用cap函数获取通道容量
-   - 使用len函数获取通道内的数据个数
+
+- 缓冲通道满了以后，发送操作会阻塞
+- 使用 cap 函数获取通道容量
+- 使用 len 函数获取通道内的数据个数
+
 11. `sync.WaitGroup`，有时候创建的协程数量不固定，可以用它来对协程计数，它是并发安全的，下面是例子
 
-      ```golang
-      r := make(chan int)
-      var wg sync.WaitGroup
-      //主协程，从一个channel获取数据处理，因此事先不知道到底要创建多少协程
-      for m := range ch {
-         wg.Add(1) //创建协程前计数+1
-         go func(m string){
-            defer wg.Done()  //在defer中对计数-1，确保一定能-1
-            r <- 1
-         }(m)
-      }
-      //等待协程结束必须单独起一个协程，如果把等待操作放在主协程，放在下面这个循环之前，由于channel r是一个无缓冲channel，channel中的数据得不到处理，会导致所有协程都结束不了，如果放在循环后面，由于没人关闭channel r，循环结束不了，所以执行不到等待操作。（由于我们事先不知道到底有多少协程，因此也没办法使用缓冲channel）
-      go func(){
-         wg.Wait()   //等待所有协程结束
-         close(r)
-      }()
-      total := 0
-      //等r被关闭后才能结束循环
-      for i := range r {
-         total += i
-      }
-      ```
+    ```golang
+    r := make(chan int)
+    var wg sync.WaitGroup
+    //主协程，从一个channel获取数据处理，因此事先不知道到底要创建多少协程
+    for m := range ch {
+       wg.Add(1) //创建协程前计数+1
+       go func(m string){
+          defer wg.Done()  //在defer中对计数-1，确保一定能-1
+          r <- 1
+       }(m)
+    }
+    //等待协程结束必须单独起一个协程，如果把等待操作放在主协程，放在下面这个循环之前，由于channel r是一个无缓冲channel，channel中的数据得不到处理，会导致所有协程都结束不了，如果放在循环后面，由于没人关闭channel r，循环结束不了，所以执行不到等待操作。（由于我们事先不知道到底有多少协程，因此也没办法使用缓冲channel）
+    go func(){
+       wg.Wait()   //等待所有协程结束
+       close(r)
+    }()
+    total := 0
+    //等r被关闭后才能结束循环
+    for i := range r {
+       total += i
+    }
+    ```
+
 12. 可以利用缓冲通道限制并发数，例如
 
-      ```golang
-      //设定并发数为20
-      var tokens = make(chan struct{}, 20)
-      //获取一个token
-      token <- struct{}{}
-      //协程处理...
-      //处理完成后释放token
-      <- token
-      ```
-13. select多路复用（注意不是switch），如下所示，每个case指定一次通道的接收或发送操作，select一次执行一个case，**如果同时满足多个case，select随机选择一个**
+    ```golang
+    //设定并发数为20
+    var tokens = make(chan struct{}, 20)
+    //获取一个token
+    token <- struct{}{}
+    //协程处理...
+    //处理完成后释放token
+    <- token
+    ```
 
-      ```golang
-      select {
-      case <- ch1:
-      case x := <-ch2:
-      case ch3 <- y:
-      default:
-      }
-      ```
-      当我们不想在一个通道还没准备好的情况下被阻塞时，可以使用select多路复用
-14. nil通道
-      - 在nil通道上收发是合法的，只是会永远阻塞
-      - select中的nil通道永远不会被选择
-15. 小知识：go中的标签不光可以用于goto语句
-   - 可以让break跳出好几层，例如
-      ```golang
-      loop:
-         for{
-            select{
-            case _,ok := <- ch :
-               if !ok {
-                  break loop
-               }
-            }
-         }
-      ```
-   - continue同理，可以跳出多层
+13. select 多路复用（注意不是 switch），如下所示，每个 case 指定一次通道的接收或发送操作，select 一次执行一个 case，**如果同时满足多个 case，select 随机选择一个**
+
+    ```golang
+    select {
+    case <- ch1:
+    case x := <-ch2:
+    case ch3 <- y:
+    default:
+    }
+    ```
+
+    当我们不想在一个通道还没准备好的情况下被阻塞时，可以使用 select 多路复用
+
+14. nil 通道
+    - 在 nil 通道上收发是合法的，只是会永远阻塞
+    - select 中的 nil 通道永远不会被选择
+15. 小知识：go 中的标签不光可以用于 goto 语句
+
+- 可以让 break 跳出好几层，例如
+  ```golang
+  loop:
+     for{
+        select{
+        case _,ok := <- ch :
+           if !ok {
+              break loop
+           }
+        }
+     }
+  ```
+- continue 同理，可以跳出多层
+
 16. 关闭通道操作可以作为一种广播机制，创建一个通道，不往里面发送任何数据，只要一关闭通道，所有监听这个通道的协程都会接收到一个零值，它们就知道通道被关闭了
-17. goroutine调式技巧，执行一个panic调用，运行时将转储程序中所有goroutine的栈
+17. goroutine 调式技巧，执行一个 panic 调用，运行时将转储程序中所有 goroutine 的栈
 
-总结一下，实现goroutine之间的同步可以采用以下方式：
+总结一下，实现 goroutine 之间的同步可以采用以下方式：
 
-1. 使用channel发送消息
-2. 利用channel关闭实现广播机制
-3. 利用sync.WaitGroup对goroutine计数
-4. 利用缓冲channel实现一个计数信号量，来限制并发数
-   - 容量为1的channel被称为二进制信号量
-5. 利用select同时处理多个通道的读写操作
+1. 使用 channel 发送消息
+2. 利用 channel 关闭实现广播机制
+3. 利用 sync.WaitGroup 对 goroutine 计数
+4. 利用缓冲 channel 实现一个计数信号量，来限制并发数
+   - 容量为 1 的 channel 被称为二进制信号量
+5. 利用 select 同时处理多个通道的读写操作
 
 ## 八、并发时如何共享变量
 
 1. 竞态，竞态是指并发导致对数据的操作出现冲突的情况。
-2. 如何避免竞态（2、3是两种重要方案）
+2. 如何避免竞态（2、3 是两种重要方案）
    1. 并发前把变量初始化好，并发期间不修改变量
-   2. 避免多个goroutine访问同一个变量，（go箴言，不要通过共享内存来通信，应该通过通信来共享内存）。**一种方法是让一个goroutine代理一个共享变量的操作，其他goroutine通过通道来对这个变量进行操作，这个代理goroutine被称作监控goroutine**。
+   2. 避免多个 goroutine 访问同一个变量，（go 箴言，不要通过共享内存来通信，应该通过通信来共享内存）。**一种方法是让一个 goroutine 代理一个共享变量的操作，其他 goroutine 通过通道来对这个变量进行操作，这个代理 goroutine 被称作监控 goroutine**。
    3. **使用互斥机制**
 3. 互斥锁`sync.Mutex`
-   - 有一种代替的办法是使用一个容量为1的channel作为二进制信号量，把对共享变量的并发访问数限制到1
-   - mutex的用法
-      ```golang
-      var mu sync.Mutex
-      mu.Lock()
-      //...临界区域 
-      mu.UnLock()
-      ```
-   - 为了确保释放锁，unlock操作经常放在defer里
+   - 有一种代替的办法是使用一个容量为 1 的 channel 作为二进制信号量，把对共享变量的并发访问数限制到 1
+   - mutex 的用法
+     ```golang
+     var mu sync.Mutex
+     mu.Lock()
+     //...临界区域
+     mu.UnLock()
+     ```
+   - 为了确保释放锁，unlock 操作经常放在 defer 里
 4. 读写锁`sync.RWMutex`，读锁`RLock()`、`RUnlock()`，读写锁`Lock()`、`Unlock()`
 5. 对一个变量，如果写操作加了锁，那么读操作也应该加锁，原因有两点
    1. 防止读操作插入到写操作序列中
-   2. 现代cpu各个核心有各自独立的缓存，通道通信和互斥量操作等同步原语会导致处理器把积累的写操作刷回到内存，保证操作结果对运行在其他核心的goroutine可见。但是如果不使用同步原语，就有可能发生共享变量在各个核心上的缓存不一致的问题
+   2. 现代 cpu 各个核心有各自独立的缓存，通道通信和互斥量操作等同步原语会导致处理器把积累的写操作刷回到内存，保证操作结果对运行在其他核心的 goroutine 可见。但是如果不使用同步原语，就有可能发生共享变量在各个核心上的缓存不一致的问题
 6. `sync.Once`，是一个针对一次性初始化问题的解决方案
    - 一次性初始化问题，实际开发中经常会遇到这样的场景，访问一个共享变量前要先去判断这个变量有没有初始化，如果没有，要先将其初始化然后再访问，这是并发不安全的，用法：
-      ```golang
-      var loadonce sync.Once
-      loadonce.Do(initfunc)   //initfunc用于初始化变量
-      //...访问操作
-      ```
-   - sync.Once内部包含一个互斥量和一个bool变量，bool变量用于标记共享变量是否已完成初始化
+     ```golang
+     var loadonce sync.Once
+     loadonce.Do(initfunc)   //initfunc用于初始化变量
+     //...访问操作
+     ```
+   - sync.Once 内部包含一个互斥量和一个 bool 变量，bool 变量用于标记共享变量是否已完成初始化
 7. 竞态检测器
    - 用于分析程序是否存在竞态
    - 在`go build`、`go run`、`go test`命令后面加上`-race`参数即可
    - 竞态检测器会记录所有对共享变量的访问，会记录所有同步操作
    - 竞态检测器只能检查出运行时发生的竞态，检查不出来没发生的竞态
 
-## 九、goroutine和OS线程
+## 九、goroutine 和 OS 线程
 
 ### 9.1 栈
 
-**每个OS线程都有一个固定大小的栈空间**（通常为2MB），这个栈空间对goroutine来说太大了（go中一次创建十万个goroutine也是常见的），但是对很多递归深度比较深的函数又太小了
+**每个 OS 线程都有一个固定大小的栈空间**（通常为 2MB），这个栈空间对 goroutine 来说太大了（go 中一次创建十万个 goroutine 也是常见的），但是对很多递归深度比较深的函数又太小了
 
-**goroutine也有栈，但是大小不固定**。goroutine刚创建出来时栈很小（典型情况只有2KB），并且可以按需扩大和缩小，最大限制甚至可以达到1GB
+**goroutine 也有栈，但是大小不固定**。goroutine 刚创建出来时栈很小（典型情况只有 2KB），并且可以按需扩大和缩小，最大限制甚至可以达到 1GB
 
 ### 9.2 调度
 
-OS线程由操作系统内核来调度，线程切换需要完整的上下文切换，这个操作很耗时。
+OS 线程由操作系统内核来调度，线程切换需要完整的上下文切换，这个操作很耗时。
 
-goroutine由go runtime调度，goroutine运行在线程上，是一种m:n的调度。goroutine调度在用户态完成，开销很小。
+goroutine 由 go runtime 调度，goroutine 运行在线程上，是一种 m:n 的调度。goroutine 调度在用户态完成，开销很小。
 
-Go调度器使用GOMAXPROCS参数确定需要使用多少OS线程，默认是cpu核数
+Go 调度器使用 GOMAXPROCS 参数确定需要使用多少 OS 线程，默认是 cpu 核数
 
 ### 9.3 标识
 
-线程都有标识，goroutine没有。（不鼓励threadlocal这种东西）
+线程都有标识，goroutine 没有。（不鼓励 threadlocal 这种东西）
 
-## 十、包和go工具
+## 十、包和 go 工具
 
-### 10.1 go为什么编译快
+### 10.1 go 为什么编译快
 
 1. 所有包依赖必须列在文件头部，编译器分析包依赖时不需要读取整个文件
 2. 没有循环依赖，依赖构成一个有向无环图，可以包之间可以单独编译甚至并行编译
-3. 编译出的目标文件不仅包含它自己的导出信息，还包含依赖包的导出信息，因此go编译一个包时，go只需要去看导入依赖对应的目标文件，不需要层层去找依赖的目标文件
+3. 编译出的目标文件不仅包含它自己的导出信息，还包含依赖包的导出信息，因此 go 编译一个包时，go 只需要去看导入依赖对应的目标文件，不需要层层去找依赖的目标文件
 
 ### 10.2 包
 
 1. 每个目录下面只能有一个包。
-2. main包会告诉go build调用连接器生成一个可执行文件。
-3. 一个目录下可以有一个额外的test包，包名以_test结尾，文件名以_test.go结尾，这会告诉go test两个包都需要构建。
+2. main 包会告诉 go build 调用连接器生成一个可执行文件。
+3. 一个目录下可以有一个额外的 test 包，包名以\_test 结尾，文件名以\_test.go 结尾，这会告诉 go test 两个包都需要构建。
 4. 有些依赖管理工具会在包名末尾加上一个版本后缀，实际的包名不包含这个后缀，例如`xx/xx/yaml.v2`的包名应该是`yaml`
 5. 重命名导入，解决包名冲突
 6. 空导入，只导入但是不引用包中的名字，例如`import _ "image/png"`（有时候导入仅仅是为了执行包的初始化）
 7. 包的导入路径是相对于`$GOPATH/src`
 8. 包可以自定义导入域名，防止因托管网站的变化导致导入路径变化
-9. 常用go工具
+9. 常用 go 工具
    - `go env`
    - `go get`
    - `go build`、`go install`
    - `go doc`、`godoc`
-      - `go doc`命令用于查看包、成员、方法的声明和注释
-      - `godoc`命令用于在本地启动一个文档服务器，例如`godoc -http=localhost:6060`，里面包括所有标准库的包和用户自己的包，需要单独安装这个命令。
+     - `go doc`命令用于查看包、成员、方法的声明和注释
+     - `godoc`命令用于在本地启动一个文档服务器，例如`godoc -http=localhost:6060`，里面包括所有标准库的包和用户自己的包，需要单独安装这个命令。
    - `go list`
-10. vendor目录，维护依赖的本地副本
-11. 内部包，位于internal目录中，只能被internal的父目录下的包引用
+10. vendor 目录，维护依赖的本地副本
+11. 内部包，位于 internal 目录中，只能被 internal 的父目录下的包引用
 
 ## 十一、测试
 
@@ -535,46 +552,46 @@ Go调度器使用GOMAXPROCS参数确定需要使用多少OS线程，默认是cpu
 
 ### 11.1 包内测试和外部测试
 
-- 包内测试是指测试代码和产品代码的包名一致，外部测试是指测试代码在一个单独的包中，以产品包名拼上_test作为包名
-- 有时候会将产品包内的一些方法暴露给测试包，这些方法一般写在一个单独的包内测试文件export_test.go中
+- 包内测试是指测试代码和产品代码的包名一致，外部测试是指测试代码在一个单独的包中，以产品包名拼上\_test 作为包名
+- 有时候会将产品包内的一些方法暴露给测试包，这些方法一般写在一个单独的包内测试文件 export_test.go 中
 
 ### 11.2 测试覆盖率
 
-- 著名计算机科学家Edsger Dijkstra说，“测试的目的是发现bug，而不是证明其不存在”
-- 使用 go tool cover查看覆盖工具的使用方法
+- 著名计算机科学家 Edsger Dijkstra 说，“测试的目的是发现 bug，而不是证明其不存在”
+- 使用 go tool cover 查看覆盖工具的使用方法
 - 简单的测试覆盖率命令，`go test -cover`
 - 复杂的测试覆盖率命令，`go test -coverprofile=c.out -covermode=count`，`-coverprofile`参数将覆盖率数据输出到文件中，`-covermode=count`表示每个语句块的执行测试将被计数
-- `go tool cover -html=c.out`命令将生成一个html版的测试报告
+- `go tool cover -html=c.out`命令将生成一个 html 版的测试报告
 
 ### 11.3 其他
 
-- testing包还可以用来做基准测试
-   - 测试函数前缀是`Benchmark`，参数是`*testing.B`
-   - 测试命令`go test -bench=xxx`
-- 性能优化工具pprof
-   - 测试命令
-      ```bash
-      go test -cpuprofile=cpu.out
-      go test -blockprofile=block.out
-      go test -memprofile=mem.out
-      ```
-   - 一般都是针对基准测试进行性能分析
-      ```bash
-      go test -run=NONE -bench=xxx -cpuprofile=cpu.out
-      ```
-   - 使用pprof工具生成性能分析报告
-      ```bash
-      go tool pprof ...各种参数 cpu.out
-      ```
+- testing 包还可以用来做基准测试
+  - 测试函数前缀是`Benchmark`，参数是`*testing.B`
+  - 测试命令`go test -bench=xxx`
+- 性能优化工具 pprof
+  - 测试命令
+    ```bash
+    go test -cpuprofile=cpu.out
+    go test -blockprofile=block.out
+    go test -memprofile=mem.out
+    ```
+  - 一般都是针对基准测试进行性能分析
+    ```bash
+    go test -run=NONE -bench=xxx -cpuprofile=cpu.out
+    ```
+  - 使用 pprof 工具生成性能分析报告
+    ```bash
+    go tool pprof ...各种参数 cpu.out
+    ```
 - 示例函数，函数名的格式为`Example`拼上被演示函数的函数名，没有参数和返回值，
-   - 目的是作为文档，godoc会将示例函数和函数关联到一起
-   - 在函数体末尾加上以下注释可以让go test运行示例函数并检查实际输出和注释中的输出是否匹配
-      ```golang
-      // Output: 或 Unordered Output:
-      // Ava
-      // Jess
-      // [Jess Sarah Zoe]
-      ```
+  - 目的是作为文档，godoc 会将示例函数和函数关联到一起
+  - 在函数体末尾加上以下注释可以让 go test 运行示例函数并检查实际输出和注释中的输出是否匹配
+    ```golang
+    // Output: 或 Unordered Output:
+    // Ava
+    // Jess
+    // [Jess Sarah Zoe]
+    ```
 
 ## 十二、反射
 
@@ -582,13 +599,13 @@ Go调度器使用GOMAXPROCS参数确定需要使用多少OS线程，默认是cpu
    - `reflect.Type`是一个接口类型，这个接口只有一个实现，即类型描述符，接口值中的动态类型就是类型描述符
    - `reflect.TypeOf(x)`返回一个类型描述符，并且**只会返回具体类型**，不会返回接口类型
 2. `refect.Value`
-   - `reflect.ValueOf(x)`返回一个`reflect.Value`类型，**ValueOf从接口值中提取值部分，所以永远返回一个具体的值**
-   - `reflect.Value.Type()`方法会返回value的类型，返回值是`reflect.Type`类型
-   - `reflect.Value.Interface()`方法将一个Value类型转为一个interface{}接口值，是valueof的逆操作
-   - `reflect.Value.Kind()`方法会返回类型分类（类型分类是`reflect.Kind`类型，其实是个uint类型，其零值是reflect.Invalid）
+   - `reflect.ValueOf(x)`返回一个`reflect.Value`类型，**ValueOf 从接口值中提取值部分，所以永远返回一个具体的值**
+   - `reflect.Value.Type()`方法会返回 value 的类型，返回值是`reflect.Type`类型
+   - `reflect.Value.Interface()`方法将一个 Value 类型转为一个 interface{}接口值，是 valueof 的逆操作
+   - `reflect.Value.Kind()`方法会返回类型分类（类型分类是`reflect.Kind`类型，其实是个 uint 类型，其零值是 reflect.Invalid）
 3. 使用反射的例子可以参考`gopl.io/ch12/format`和`gopl.io/ch12/display`
 4. 非导出字段在反射下也是可见的
-5. **接口类型的值可以通过从其他Value类型值间接获得**
+5. **接口类型的值可以通过从其他 Value 类型值间接获得**
 6. 使用`reflect.Value`设置值
    ```golang
    x := 2
@@ -600,24 +617,25 @@ Go调度器使用GOMAXPROCS参数确定需要使用多少OS线程，默认是cpu
    //方法2，通过set方法修改d
    d.Set(reflect.ValueOf(4))
    ```
-   - 在不可寻址的reflect.Value上调用Set会崩溃
-      - （在指向interface{}的reflect.Value上调用SetInt等特化Set方法时会崩溃）
+   - 在不可寻址的 reflect.Value 上调用 Set 会崩溃
+     - （在指向 interface{}的 reflect.Value 上调用 SetInt 等特化 Set 方法时会崩溃）
    - 不能更新结构体未导出字段的值
    - `reflect.Value.CanAddr()`方法判断变量是否可寻址
    - `reflect.Value.CanSet()`方法判断变量是否可寻址且可修改
-7. 可以通过`reflect.Type.Field`方法获取结构体字段名和tag
+7. 可以通过`reflect.Type.Field`方法获取结构体字段名和 tag
 8. 可以通过`reflect.Type.Method`方法获取类型的方法，但是只描述方法名和类型
 9. 也可以通过`reflect.Value.Method`方法获取到绑定了接收者的方法，但是只描述方法名和类型，可以用`reflect.Value.Call`调用函数
 10. 慎用反射
-   - 反射中存在的类型错误是编译时检查不出来的，只能在运行时以崩溃的方式报告
-   - 反射会造成代码的可读性降低
-   - 反射慢
+
+- 反射中存在的类型错误是编译时检查不出来的，只能在运行时以崩溃的方式报告
+- 反射会造成代码的可读性降低
+- 反射慢
 
 ## 十三、低级编程
 
-本章主要介绍unsafe包和cgo工具
+本章主要介绍 unsafe 包和 cgo 工具
 
-unsafe是提供了对go内置特性的访问，这些特性不安全，因为他们暴露了go的内存布局。unsafe广泛用在和操作系统交互的底层包中（runtime、os、syscall、net）
+unsafe 是提供了对 go 内置特性的访问，这些特性不安全，因为他们暴露了 go 的内存布局。unsafe 广泛用在和操作系统交互的底层包中（runtime、os、syscall、net）
 
-cgo工具用来调用c程序
+cgo 工具用来调用 c 程序
 
