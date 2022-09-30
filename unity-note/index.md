@@ -1,14 +1,14 @@
 # Unity入门笔记
 
 
+本文约定
+
+- **粗体**代表术语
+
 ## 参考
 
 1. [unity manual](https://docs.unity3d.com/Manual/)
 2. [unity-essentials系列教程](https://learn.unity.com/pathway/unity-essentials)
-
-## 本文约定
-
-**粗体**代表术语
 
 ## 编辑器操作
 
@@ -39,26 +39,28 @@
 
 Gizmos是unity场景视图中的辅助图标，比如选中移动工具以后，场景视图中会出现一个帮助你移动的坐标轴，这个坐标轴就是一个Gizmo
 
+### 快捷键
+
+复制，ctrl+D
+
 ## 3D场景
 
-两个默认GameObject
-
-- Main Camera，玩家的游戏视角
-- Directional Light，给游戏对象打光
-
-每个GameObject都包含一系列component（组件）
-
-- Transform component（变换组件），包含位置（Position）、旋转（Rotation）、大小（Scale）
-    - unity的坐标轴系统是y轴垂直，x、z轴水平
-    - Position，变换组件在坐标轴上的位置
-    - Rotation，变换组件绕坐标轴旋转的角度（从坐标轴的正方向向负方向看，顺时针旋转为正向旋转）
-    - Scale，变换组件沿坐标轴的放缩倍数（值为1时为原始大小）
-
-可以给一个GameObject添加子GameObject，例如给一个Cube（立方体）对象添加一个子Sphere（球体）对象，调整Cube的比例、位置，Sphere会跟着变，但是只有Cube的属性值变了，Sphere的属性值并没有变，也就是说，Sphere的变换组件的属性值是相对于Cube的
-
-## 概念
+### GameObject
 
 1. **primitive object（原始对象）**
     - Primitive object是基本3D形状的游戏对象，例如立方体（cube）和球体（sphere），可以将它们添加到场景中作为后续导入资源的占位对象。 
     - 如何在创建中创建：在hierarchy的空白处右键，选择3D object，选择一个原始对象
+2. 两个默认GameObject
+    - Main Camera，玩家的游戏视角
+    - Directional Light，给游戏对象打光
+3. 每个GameObject都包含一系列component（组件）
+    - Transform component（变换组件），包含位置（Position）、旋转（Rotation）、大小（Scale）
+        - unity的坐标轴系统是y轴垂直，x、z轴水平
+        - Position，变换组件在坐标轴上的位置
+        - Rotation，变换组件绕坐标轴旋转的角度（从坐标轴的正方向向负方向看，顺时针旋转为正向旋转）
+        - Scale，变换组件沿坐标轴的放缩倍数（值为1时为原始大小）
+4. 可以给一个GameObject添加子GameObject，例如给一个Cube（立方体）对象添加一个子Sphere（球体）对象，调整Cube的比例、位置，Sphere会跟着变，但是只有Cube的属性值变了，Sphere的属性值并没有变，也就是说，Sphere的变换组件的属性值是相对于Cube的
+5. **empty GameObject（空对象）**，占位对象，可以作为其他对象的容器
+
+
 
