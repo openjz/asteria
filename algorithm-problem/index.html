@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "算法","wordcount":  3127 ,
+                        }],"genre": "posts","keywords": "算法","wordcount":  3670 ,
         "url": "http:\/\/blog.shiwj.top\/algorithm-problem\/","datePublished": "2022-07-06T11:37:09+08:00","dateModified": "2022-09-25T20:21:54+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">算法题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3127 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3670 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -94,17 +94,19 @@
     <li><a href="#常用方法">常用方法</a></li>
     <li><a href="#leetcode-4寻找两个正序数组的中位数">leetcode 4.寻找两个正序数组的中位数</a>
       <ul>
-        <li><a href="#方法1-归并法">方法1-归并法</a></li>
-        <li><a href="#方法2-改良的归并法">方法2-改良的归并法</a></li>
-        <li><a href="#方法3-二分法">方法3-二分法</a></li>
+        <li><a href="#方法-1-归并法">方法 1-归并法</a></li>
+        <li><a href="#方法-2-改良的归并法">方法 2-改良的归并法</a></li>
+        <li><a href="#方法-3-二分法">方法 3-二分法</a></li>
       </ul>
     </li>
     <li><a href="#leetcode-10正则表达式匹配">leetcode 10.正则表达式匹配</a></li>
     <li><a href="#leetcode-5求最长回文子串">leetcode 5.求最长回文子串</a></li>
     <li><a href="#leetcode-11盛水最多的容器">leetcode 11.盛水最多的容器</a></li>
     <li><a href="#leetcode-15三数之和">leetcode 15.三数之和</a></li>
-    <li><a href="#leetcode-23合并k个升序链表">leetcode 23.合并K个升序链表</a></li>
+    <li><a href="#leetcode-23合并-k-个升序链表">leetcode 23.合并 K 个升序链表</a></li>
     <li><a href="#leetcode-31下一个排列">leetcode 31.下一个排列</a></li>
+    <li><a href="#leetcode-32最长有效括号">leetcode 32.最长有效括号</a></li>
+    <li><a href="#leetcode-81-搜索旋转排序数组-ii">leetcode 81. 搜索旋转排序数组 II</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="常用方法">常用方法</h2>
@@ -121,12 +123,12 @@
 <blockquote>
 <p>给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数</p>
 </blockquote>
-<h3 id="方法1-归并法">方法1-归并法</h3>
-<p>方法1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度O(m+n)</p>
-<h3 id="方法2-改良的归并法">方法2-改良的归并法</h3>
-<p>方法1是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。</p>
-<p><strong>寻找中位数问题可以视为寻找第k大数问题的特殊情况</strong>，现在设中位数是第k大的数为<code>Kth</code>，我们每次比较k/2个数，就能每次排除掉k/2个数。随着被排除的数逐渐增多，k会逐渐变小，当k变为1的时候，比较最后一次，就找到了<code>Kth</code>。由于k每次缩小一半，时间复杂度为O(log(m+n))</p>
-<p><strong>这里面有一个关键问题，为什么比较步长是k/2</strong>？</p>
+<h3 id="方法-1-归并法">方法 1-归并法</h3>
+<p>方法 1，按归并的思路，每次排除一个数，直到找到中位数为止。时间复杂度 O(m+n)</p>
+<h3 id="方法-2-改良的归并法">方法 2-改良的归并法</h3>
+<p>方法 1 是一种比较符合直觉的方法，更进一步，我们考虑每次多排除一些数，以提高算法的执行速度。</p>
+<p><strong>寻找中位数问题可以视为寻找第 k 大数问题的特殊情况</strong>，现在设中位数是第 k 大的数为<code>Kth</code>，我们每次比较 k/2 个数，就能每次排除掉 k/2 个数。随着被排除的数逐渐增多，k 会逐渐变小，当 k 变为 1 的时候，比较最后一次，就找到了<code>Kth</code>。由于 k 每次缩小一半，时间复杂度为 O(log(m+n))</p>
+<p><strong>这里面有一个关键问题，为什么比较步长是 k/2</strong>？</p>
 <p>为了解释这个问题，先看一个例子，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -134,12 +136,12 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">A：1，2，3，8  
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">A：1，2，3，8
 B：4，5，6，7
 </code></pre></td></tr></table>
 </div>
-</div><p>有递增序列A和B，现在我们想找到第4大的数（即4），如果将比较步长设置为4，即直接比较7和8，会导致4,5,6,7全都被排除掉，最后无法找到4。所以我们必须设置合理的比较步长，来避免这种情况。</p>
-<p>下面说明为什么是k/2</p>
+</div><p>有递增序列 A 和 B，现在我们想找到第 4 大的数（即 4），如果将比较步长设置为 4，即直接比较 7 和 8，会导致 4,5,6,7 全都被排除掉，最后无法找到 4。所以我们必须设置合理的比较步长，来避免这种情况。</p>
+<p>下面说明为什么是 k/2</p>
 <p>在对位于比较点的两个数做比较后，我们会将较小数及其之前的数排除掉。为了保证一定能够排除较小数及其之前的数，我们必须保证<code>Kth</code>不在被排除的数中，换言之，<strong>我们一定不能让位于比较点的两个数都大于<code>Kth</code></strong>。</p>
 <p>假设有以下两个序列</p>
 <div class="highlight"><div class="chroma">
@@ -152,36 +154,36 @@ B：4，5，6，7
 B: b0,b1,...,bn
 </code></pre></td></tr></table>
 </div>
-</div><p>假设比较步长为p，位于比较点的两个数是<code>ap</code>，<code>bp</code>，现在对<code>Kth</code>所在位置分情况讨论</p>
+</div><p>假设比较步长为 p，位于比较点的两个数是<code>ap</code>，<code>bp</code>，现在对<code>Kth</code>所在位置分情况讨论</p>
 <ol>
 <li><code>ap</code>和<code>bp</code>都在<code>Kth</code>之前</li>
 <li><code>ap</code>在<code>Kth</code>之前，<code>bp</code>在<code>Kth</code>之后（即<code>Kth∈[b0,bp]</code>）</li>
 <li><code>ap</code>在<code>Kth</code>之后（即<code>Kth∈[a0,ap]</code>），<code>bp</code>在<code>Kth</code>之前</li>
 </ol>
-<p>情况1不做讨论，排除哪个都行。</p>
-<p>情况2和情况3是等价的，现在假设<code>Kth∈[a0,ap]</code>，即<code>a0 &lt;= kth &lt;= ap</code>，如果我们想排除<code>[b0,bp]</code>，就必须保证<code>bp &lt;= Kth &lt;= ap</code>，即不能让位于比较点的两个数都大于等于<code>Kth</code></p>
-<p>当比较步长p为k/2时，<code>[a0,ap]</code>和<code>[b0,bp]</code>加起来一共k个数，如果<code>ap</code>和<code>bp</code>都大于<code>Kth</code>，<code>[a0,ap]</code>和<code>[b0,bp]</code>加起来一定会超过k个数，前后矛盾。所以当比较步长为k/2时必不可能出现比较点的两个数都大于<code>Kth</code>这个情况，反之当比较步长大于k/2时，被比较的两个子序列的数字量大于k，就有可能出现这个情况。</p>
-<p>相应的，如果有三个有序数列，比较步长最长为k/3，有四个序列，比较步长最长为k/4，以此类推。</p>
-<h3 id="方法3-二分法">方法3-二分法</h3>
-<p>方法2是将问题转化为求第K大的数，而方法3是利用了中位数的以下性质：</p>
+<p>情况 1 不做讨论，排除哪个都行。</p>
+<p>情况 2 和情况 3 是等价的，现在假设<code>Kth∈[a0,ap]</code>，即<code>a0 &lt;= kth &lt;= ap</code>，如果我们想排除<code>[b0,bp]</code>，就必须保证<code>bp &lt;= Kth &lt;= ap</code>，即不能让位于比较点的两个数都大于等于<code>Kth</code></p>
+<p>当比较步长 p 为 k/2 时，<code>[a0,ap]</code>和<code>[b0,bp]</code>加起来一共 k 个数，如果<code>ap</code>和<code>bp</code>都大于<code>Kth</code>，<code>[a0,ap]</code>和<code>[b0,bp]</code>加起来一定会超过 k 个数，前后矛盾。所以当比较步长为 k/2 时必不可能出现比较点的两个数都大于<code>Kth</code>这个情况，反之当比较步长大于 k/2 时，被比较的两个子序列的数字量大于 k，就有可能出现这个情况。</p>
+<p>相应的，如果有三个有序数列，比较步长最长为 k/3，有四个序列，比较步长最长为 k/4，以此类推。</p>
+<h3 id="方法-3-二分法">方法 3-二分法</h3>
+<p>方法 2 是将问题转化为求第 K 大的数，而方法 3 是利用了中位数的以下性质：</p>
 <ol>
 <li>中位数两边的数个数相等</li>
 <li>中位数左边最大的数小于右边最小的数、</li>
 </ol>
-<p>具体方法是分别将序列1和序列2一分为2，将左序列1+左序列2视为左半部分，将右序列1+右序列2视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。</p>
+<p>具体方法是分别将序列 1 和序列 2 一分为 2，将左序列 1+左序列 2 视为左半部分，将右序列 1+右序列 2 视为右半部分，保证左半部分的数字个数等于右半部分的数字个数，并且左半部分的最大值大于右半部分的最小值。</p>
 <p>那如何找到切分位置？在较短序列上进行二分搜索即可</p>
 <h2 id="leetcode-10正则表达式匹配">leetcode 10.正则表达式匹配</h2>
 <blockquote>
-<p>给你一个字符串s和一个字符规律p，请你来实现一个支持'.&lsquo;和&rsquo;*&lsquo;的正则表达式匹配。</p>
+<p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持'.&lsquo;和&rsquo;*&lsquo;的正则表达式匹配。</p>
 <ul>
 <li>&lsquo;.&lsquo;匹配任意单个字符</li>
 <li>&lsquo;*&lsquo;匹配零个或多个前面的那一个元素</li>
 </ul>
-<p>所谓匹配，是要涵盖整个字符串s的，而不是部分字符串。</p>
+<p>所谓匹配，是要涵盖整个字符串 s 的，而不是部分字符串。</p>
 </blockquote>
 <p>用动态规划求解</p>
 <ol>
-<li>将问题转化为求<code>f[i][j]</code>的问题，<code>f[i][j]</code>指字符串s的前i个字符和模式p的前j个字符是否匹配。</li>
+<li>将问题转化为求<code>f[i][j]</code>的问题，<code>f[i][j]</code>指字符串 s 的前 i 个字符和模式 p 的前 j 个字符是否匹配。</li>
 <li>以下是该问题的求解方程
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -212,54 +214,87 @@ B: b0,b1,...,bn
 </code></pre></td></tr></table>
 </div>
 </div></li>
-<li>当s和p都为空时，视为匹配，即<code>f[0][0]=True</code>。p为空，s为空时，一定不匹配，即<code>f[0][x]=False</code>。<strong>而s为空，p不为空时，不一定匹配，例如p为<code>a*a*</code>时，可以和空串形成匹配，因此在循环时，i要从0开始，j可以从1开始</strong>。</li>
+<li>当 s 和 p 都为空时，视为匹配，即<code>f[0][0]=True</code>。p 为空，s 为空时，一定不匹配，即<code>f[0][x]=False</code>。<strong>而 s 为空，p 不为空时，不一定匹配，例如 p 为<code>a*a*</code>时，可以和空串形成匹配，因此在循环时，i 要从 0 开始，j 可以从 1 开始</strong>。</li>
 </ol>
 <h2 id="leetcode-5求最长回文子串">leetcode 5.求最长回文子串</h2>
 <blockquote>
-<p>给你一个字符串s，找到s中最长的回文子串。</p>
+<p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
 <p>示例 1：</p>
 <p>输入：s = &ldquo;babad&rdquo;<br>
 输出：&ldquo;bab&rdquo;<br>
 （&ldquo;aba&rdquo; 同样是符合题意的答案。）</p>
 </blockquote>
 <p>使用动态规划求解</p>
-<p>将问题转换为求<code>f[i][j]</code>的问题，<code>f[i][j]</code>是指s的子串<code>s[i,j]</code>是否为回文串，求<code>f[i][j]</code>之前要先求出<code>f[i+1][j-1]</code></p>
+<p>将问题转换为求<code>f[i][j]</code>的问题，<code>f[i][j]</code>是指 s 的子串<code>s[i,j]</code>是否为回文串，求<code>f[i][j]</code>之前要先求出<code>f[i+1][j-1]</code></p>
 <h2 id="leetcode-11盛水最多的容器">leetcode 11.盛水最多的容器</h2>
 <blockquote>
-<p>给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。</p>
-<p>找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<p>给定一个长度为 n 的整数数组  height 。有  n  条垂线，第 i 条线的两个端点是  (i, 0)  和  (i, height[i]) 。</p>
+<p>找出其中的两条线，使得它们与  x  轴共同构成的容器可以容纳最多的水。</p>
 <p>返回容器可以储存的最大水量。</p>
 </blockquote>
 <p>用双指针法求解，双指针的初始位置位于数组两端，不断向中间逼近，每次移动高度较低的指针（移动指针会导致容器底部变小，为了寻找更大的容积，就要舍弃较低的边，保留较高的边）</p>
 <h2 id="leetcode-15三数之和">leetcode 15.三数之和</h2>
 <blockquote>
-<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</p>
+<p>给你一个包含 n 个整数的数组  nums，判断  nums  中是否存在三个元素 a，b，c ，使得  a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</p>
 <p>注意：答案中不可以包含重复的三元组。</p>
 </blockquote>
 <p>三数之和要求对组合去重，这个问题和两数之和有所不同，在两数之和问题中，每个数只能属于一个组合，所以，要对组合去重，只要给已经构成组合的数打标记即可，不用对组合打标记。但是对三数之和问题不能采用这种去重方法，因为一个数可以属于多个组合，如果要采用打标记这种方式，必须对组合打标记，不能对数打标记。</p>
 <p>因此，通过打标记去重在三数之和问题中不可行</p>
-<p>采用排序+双指针的方法，可以在O(n^2)的时间复杂度内完成求解</p>
-<h2 id="leetcode-23合并k个升序链表">leetcode 23.合并K个升序链表</h2>
+<p>采用排序+双指针的方法，可以在 O(n^2)的时间复杂度内完成求解</p>
+<h2 id="leetcode-23合并-k-个升序链表">leetcode 23.合并 K 个升序链表</h2>
 <blockquote>
 <p>给你一个链表数组，每个链表都已经按升序排列。</p>
 <p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
 </blockquote>
-<p>设链表个数为k，节点总数为n</p>
-<p>方法1，从k个链表的开头各拿出一个节点，从这k个节点中选取一个最小的链接到大链表中，利用堆选取最小元素，堆操作的时间复杂度是O(logk)，一共n个节点，总的时间复杂度为O(nlogk)</p>
-<p>方法2，对k个链表进行两两归并，归并次数是logk，归并的时间复杂度是O(n)，总的时间复杂度是O(nlogk)</p>
-<p>方法2的归并策略是尽量降低归并次数，还有另外一种归并策略是尽量降低比较次数，具体方法是每次选取长度最短的两个序列进行归并，但是由于本题是对链表进行归并，无法快速获取序列长度，因此无法采用这种策略</p>
+<p>设链表个数为 k，节点总数为 n</p>
+<p>方法 1，从 k 个链表的开头各拿出一个节点，从这 k 个节点中选取一个最小的链接到大链表中，利用堆选取最小元素，堆操作的时间复杂度是 O(logk)，一共 n 个节点，总的时间复杂度为 O(nlogk)</p>
+<p>方法 2，对 k 个链表进行两两归并，归并次数是 logk，归并的时间复杂度是 O(n)，总的时间复杂度是 O(nlogk)</p>
+<p>方法 2 的归并策略是尽量降低归并次数，还有另外一种归并策略是尽量降低比较次数，具体方法是每次选取长度最短的两个序列进行归并，但是由于本题是对链表进行归并，无法快速获取序列长度，因此无法采用这种策略</p>
 <h2 id="leetcode-31下一个排列">leetcode 31.下一个排列</h2>
 <blockquote>
-<p>给你一个整数数组 nums，找出nums 的下一个排列。</p>
+<p>给你一个整数数组 nums，找出 nums 的下一个排列。</p>
 <p>必须原地修改，只允许使用额外常数空间。</p>
 </blockquote>
 <p>思路</p>
 <p>如果序列最后两个元素是正序，直接交换这两个元素即可</p>
-<p>在剩下的情况中，每个排列都可以分成前后两个子序列a，b，并且子序列b是一个倒序序列</p>
+<p>在剩下的情况中，每个排列都可以分成前后两个子序列 a，b，并且子序列 b 是一个倒序序列</p>
 <p>例如，</p>
 <p>[1,2,5,4,3] = a+b = [1,2]+[5,4,3]</p>
-<p>此时子序列b自己没有下一个排列，要想为nums找到下一个排列，必须把a的最后一个元素和b中的一个元素交换，这个元素必须刚好大于a。交换后，子序列b仍然是一个倒序序列，将b翻转，就完成了求解</p>
-<p>两次遍历，一次翻转，时间复杂度为O(n)，第二次遍历可以改成二分查找，但是总的时间复杂度仍然是O(n)</p>
+<p>此时子序列 b 自己没有下一个排列，要想为 nums 找到下一个排列，必须把 a 的最后一个元素和 b 中的一个元素交换，这个元素必须刚好大于 a。交换后，子序列 b 仍然是一个倒序序列，将 b 翻转，就完成了求解</p>
+<p>两次遍历，一次翻转，时间复杂度为 O(n)，第二次遍历可以改成二分查找，但是总的时间复杂度仍然是 O(n)</p>
+<h2 id="leetcode-32最长有效括号">leetcode 32.最长有效括号</h2>
+<blockquote>
+<p>给你一个只包含 &lsquo;(&rsquo; 和 &lsquo;)&rsquo; 的字符串，找出最长有效（格式正确且连续）括号子串的长度。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">//策略：&#39;)&#39;决定是否有效，有效时更新max，遍历完成后，不管stack为空还是不为空，都结束
+</span><span class="c1">//1. 当前为&#39;)&#39;，匹配后stack为空，[start,cur]有效，更新max，cur+1
+</span><span class="c1">//2. 当前为&#39;)&#39;，匹配后stack不为空，[top+1,cur]有效，更新max，cur+1
+</span><span class="c1">//3. 当前为&#39;)&#39;，stack为空，无匹配，[start,cur]无效，start和cur都移动到cur+1位置
+</span><span class="c1">//4. 当前为&#39;(&#39;，入栈，cur+1
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="leetcode-81-搜索旋转排序数组-ii">leetcode 81. 搜索旋转排序数组 II</h2>
+<blockquote>
+<p>在旋转数组中搜索目标值 target，旋转数组中有重复数组</p>
+</blockquote>
+<p>思路很简单，在旋转数组上的任意位置切分，切成两个数组，其中一定有一个数组是有序的，可以在这个有序数组上进行二分查找，如果找不到，在另一个数组上递归。</p>
+<p>处理流程：</p>
+<ol>
+<li>对于数组 a[start,end]，计算中间位置 mid</li>
+<li>如果 a[mid] == target，返回mid</li>
+<li>如果 a[mid] &gt; a[left]，左半边一定有序，先在左半边二分查找，再在右半边递归</li>
+<li>如果 a[mid] &lt; a[left]，右半边一定有序，先在右半边二分查找，再在左半边递归</li>
+<li>否则，直接依次在两边递归。（注：这种情况没必要考虑那么多复杂的边界情况，因为无论进行多少判断，最坏情况下时间复杂度都会退化到O(n)）</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
