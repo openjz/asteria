@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "算法","wordcount":  3670 ,
+                        }],"genre": "posts","keywords": "算法","wordcount":  4630 ,
         "url": "http:\/\/blog.shiwj.top\/algorithm-problem\/","datePublished": "2022-07-06T11:37:09+08:00","dateModified": "2022-09-30T20:44:10+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">算法题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3670 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4630 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -107,6 +107,8 @@
     <li><a href="#leetcode-31下一个排列">leetcode 31.下一个排列</a></li>
     <li><a href="#leetcode-32最长有效括号">leetcode 32.最长有效括号</a></li>
     <li><a href="#leetcode-81-搜索旋转排序数组-ii">leetcode 81. 搜索旋转排序数组 II</a></li>
+    <li><a href="#leetcode-53最大子数组和">leetcode 53.最大子数组和</a></li>
+    <li><a href="#leetcode-55跳跃游戏">leetcode 55.跳跃游戏</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="常用方法">常用方法</h2>
@@ -266,23 +268,18 @@ B: b0,b1,...,bn
 <blockquote>
 <p>给你一个只包含 &lsquo;(&rsquo; 和 &lsquo;)&rsquo; 的字符串，找出最长有效（格式正确且连续）括号子串的长度。</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">//策略：&#39;)&#39;决定是否有效，有效时更新max，遍历完成后，不管stack为空还是不为空，都结束
-</span><span class="c1">//1. 当前为&#39;)&#39;，匹配后stack为空，[start,cur]有效，更新max，cur+1
-</span><span class="c1">//2. 当前为&#39;)&#39;，匹配后stack不为空，[top+1,cur]有效，更新max，cur+1
-</span><span class="c1">//3. 当前为&#39;)&#39;，stack为空，无匹配，[start,cur]无效，start和cur都移动到cur+1位置
-</span><span class="c1">//4. 当前为&#39;(&#39;，入栈，cur+1
-</span></code></pre></td></tr></table>
-</div>
-</div><h2 id="leetcode-81-搜索旋转排序数组-ii">leetcode 81. 搜索旋转排序数组 II</h2>
+<p><strong>思路</strong></p>
+<p>使用滑动窗口法配合栈来解决</p>
+<p>左括号<code>'('</code>入栈，用来和右括号进行匹配，右括号<code>')'</code>决定是否匹配到了一个有效的括号序列，有效时更新结果（使用<code>max</code>表示结果）。</p>
+<p>从滑动窗口起点开始往后遍历。</p>
+<p>用<code>start</code>表示滑动窗口起点，用<code>cur</code>表示当前遍历的位置，用<code>stack</code>表示栈，<strong>当遇到右括号时</strong>，共分为以下几种情况</p>
+<ol>
+<li>匹配后<code>stack</code>为空，代表[<code>start</code>,<code>cur</code>]有效，更新结果，<code>cur</code>+1</li>
+<li>匹配后<code>stack</code>不为空，[<code>stack 顶部元素+1</code>,<code>cur</code>]有效，更新结果，<code>cur</code>+1</li>
+<li><code>stack</code>为空，无法匹配，[<code>start</code>,<code>cur</code>]无效，移动窗口起点，将<code>start</code>移动到<code>cur</code>位置</li>
+</ol>
+<p>遍历完成后，丢掉栈中剩余的左括号</p>
+<h2 id="leetcode-81-搜索旋转排序数组-ii">leetcode 81. 搜索旋转排序数组 II</h2>
 <blockquote>
 <p>在旋转数组中搜索目标值 target，旋转数组中有重复数组</p>
 </blockquote>
@@ -290,11 +287,45 @@ B: b0,b1,...,bn
 <p>处理流程：</p>
 <ol>
 <li>对于数组 a[start,end]，计算中间位置 mid</li>
-<li>如果 a[mid] == target，返回mid</li>
+<li>如果 a[mid] == target，返回 mid</li>
 <li>如果 a[mid] &gt; a[left]，左半边一定有序，先在左半边二分查找，再在右半边递归</li>
 <li>如果 a[mid] &lt; a[left]，右半边一定有序，先在右半边二分查找，再在左半边递归</li>
-<li>否则，直接依次在两边递归。（注：这种情况没必要考虑那么多复杂的边界情况，因为无论进行多少判断，最坏情况下时间复杂度都会退化到O(n)）</li>
+<li>否则，直接依次在两边递归。（注：这种情况没必要考虑那么多复杂的边界情况，因为无论进行多少判断，最坏情况下时间复杂度都会退化到 O(n)）</li>
 </ol>
+<h2 id="leetcode-53最大子数组和">leetcode 53.最大子数组和</h2>
+<blockquote>
+<p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>子数组 是数组中的一个连续部分。</p>
+</blockquote>
+<p>本题不适合用滑动窗口法，原因是对于任何一个窗口，必须遍历到数组末尾，才能滑动这个窗口，时间复杂度时间复杂度过高</p>
+<p>一个更好的方法是将问题转化为求“以第 n 个数字结尾的子序列中，和最大的子序列之和”</p>
+<p>例如，对于 nums = [1,5,4,6]，求以第 4 个数字结尾的子序列中，和最大的子序列之和，我们将这个问题表示为 f(4)</p>
+<p>f(4)包含以下子序列</p>
+<ul>
+<li>A = [6]</li>
+<li>B = [4,6]</li>
+<li>C = [5,4,6]</li>
+<li>D = [1,5,4,6]</li>
+</ul>
+<p>那么，f(4) = max(A,B,C,D)，其中，和最大的子序列是 D = [1,5,4,6]，因此，f(4) = sum(D) = 16</p>
+<p>然而，光求出 f(4)并不能解决问题，如果第四个数字不是 6，是个负数，那么和最大的子序列就不在 f(4)包含的序列中，可能在 f(3)中，或是在 f(2)中</p>
+<p>因此，问题最终变成了求 max(f(1), f(2), f(3), f(4))</p>
+<p>然后我们发现，f(4)中，子序列 B、C、D 删掉最后一个数字之后得到的序列[4], [5,4], [1,5,4]恰好覆盖了所有以第三个数字结尾的子序列，也就是说，f(4)依赖 f(3)</p>
+<p><strong>这时，f(n)变成了一个动态规划问题：f(n) = max(nums[n], f(n-1)+nums[n])，f(1)=nums[1]</strong></p>
+<p>与此同时我们发现，从第一个数开始，每向后遍历一个位置，就能得到对应位置 i 的 f(i)值，而max(f(1)~f(n))可以在从求 f(1)到求 f(n)的过程中得到，因此本题可以通过对数组做一次遍历完成求解</p>
+<h2 id="leetcode-55跳跃游戏">leetcode 55.跳跃游戏</h2>
+<blockquote>
+<p>给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个下标。</p>
+</blockquote>
+<p>思路：</p>
+<p>如果某个起跳点值为k，那么这个位置往后的k个位置都能作为新的起跳点</p>
+<p>所有的跳法会构成一棵路径树，我们遍历这棵树，如果能在这颗树上找到最后一个位置，说明能跳到最后一个位置</p>
+<p>上面是一个比较通用的解法，对于本题，解法可以简化一下</p>
+<p>路径树上实际上有很多重复起跳点</p>
+<p>如果我们按照广度优先遍历的方式遍历，并且生成新起跳点时只生成比当前最远起跳点更远的起跳点，就能消除重复节点</p>
+<p>而节点的遍历顺序恰好和数组的遍历顺序一致，所以我们只要顺序遍历数组，并且维护一个最远起跳点即可</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
