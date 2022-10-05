@@ -222,7 +222,7 @@ enableEmoji = true
     type = "lunr"
     # max index length of the chunked content
     # 文章内容最长索引长度
-    contentLength = 4000
+    contentLength = 10
     # placeholder of the search bar
     # 搜索框的占位提示语
     placeholder = ""
@@ -788,7 +788,7 @@ enableEmoji = true
       [languages.en.params.search]
         enable = false
         type = "lunr"
-        contentLength = 4000
+        contentLength = 10
         placeholder = ""
         maxResultLength = 10
         snippetLength = 30
