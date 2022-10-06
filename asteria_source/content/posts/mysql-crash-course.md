@@ -126,7 +126,7 @@ select field1 from table_hello order by field1 desc,field2;
 - `=`、`!=`(也可以用`<>`表示不等于)
 - <、<=、>、>=
 - between，检索字段值位于一个范围内的数据
-- is null，检查字段值为null的数据
+- is [not] null，检索字段值为null或不为null的数据
 - and、or，and优先级高于or，可以用括号调整优先级
 - in，后面跟着一个值列表，例如(1,3,5)
 - not，对后面的所有条件取反
