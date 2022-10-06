@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  2445 ,
+                        }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  2572 ,
         "url": "http:\/\/blog.shiwj.top\/13.mysql-complex-sql\/","datePublished": "2022-07-28T16:05:37+08:00","dateModified": "2022-08-04T00:51:34+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">mysql中的复杂查询</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2445 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2572 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -102,6 +102,7 @@
     </li>
     <li><a href="#其他">其他</a>
       <ul>
+        <li><a href="#if函数">if函数</a></li>
         <li><a href="#case-函数">case 函数</a></li>
       </ul>
     </li>
@@ -130,7 +131,7 @@
 很多时候我们既想分组，又想对分组聚合，又想把分组内部的数据全部返回，而不是每个分组只返回一个数据，这时光用<code>group by</code>是不能完成任务的，为了解决问题，我们经常要写一堆复杂的自联结，不仅 SQL 难以读懂，而且查询效率也很低下。</li>
 </ol>
 <p>窗口函数的引入就是为了方便解决上述第三种查询场景，<strong>我们可以使用窗口函数对分组内部的数据做统计，然后把统计后的数据全部返回，并且可以按排序为每行计算出一个序号</strong>，方便我们使用序号对数据做二次过滤</p>
-<p>对于窗口函数来说，“窗口”的概念非常重要。窗口函数会对组内的每条记录执行统计，这需要给窗口函数规定一个统计范围（例如统计范围是从当前行的前一行到当前行的后一行），我们把这个统计范围称为窗口，有的窗口函数的窗口是固定的，有的是滑动的，需要用户指定</p>
+<p>对于窗口函数来说，“窗口”的概念非常重要。窗口函数会对组内的每条记录执行统计，这需要给窗口函数规定一个统计范围（统计范围不一定是整个分组，也可能只对分组的一部分做统计），我们把这个统计范围称为窗口，有的窗口函数的窗口是固定的，有的是滑动的，需要用户指定</p>
 <h3 id="用法">用法</h3>
 <p>以下是窗口函数的用法</p>
 <div class="highlight"><div class="chroma">
@@ -149,14 +150,14 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 简单写法（把窗口函数返回的行序号作为新的一列new_col）
 </span><span class="c1"></span><span class="k">select</span><span class="w">
-</span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w">
+</span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c1">-- 上面也可以把分组条件拆成单独的window语句
 </span><span class="c1"></span><span class="w">
 </span><span class="w"></span><span class="k">select</span><span class="w">
 </span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w">
 </span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
-</span><span class="w"></span><span class="n">window</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">window</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>窗口函数的完整语法如下</p>
@@ -210,10 +211,10 @@
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- frame_units是窗口类型，frame_extent是窗口范围
 </span><span class="c1"></span><span class="n">frame_units</span><span class="w"> </span><span class="n">frame_extent</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c1">-- frame_units有两种，ROWS和RANGE，分别是按行指定范围和直接指定范围
+</span><span class="w"></span><span class="c1">-- frame_units有两种，ROWS和RANGE，分别是按行的位置指定范围（行的位置就是指“第几行”）和按行的值指定范围（对RANGE模式不太理解，大概是值相同的行在统计上算作同一行）
 </span><span class="c1"></span><span class="n">frame_units</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="err">{</span><span class="k">ROWS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RANGE</span><span class="err">}</span><span class="w">
-</span><span class="w"></span><span class="c1">-- 对于ROWS，也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
+</span><span class="w"></span><span class="c1">-- frame_extent也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
 </span><span class="c1"></span><span class="n">frame_extent</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="err">{</span><span class="n">frame_start</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">frame_between</span><span class="err">}</span><span class="w">
 </span><span class="w">
@@ -242,35 +243,35 @@
 <tbody>
 <tr>
 <td>row_number()</td>
-<td>返回分组内排序后的行号</td>
+<td>返回<strong>分组内</strong>排序后的行号</td>
 </tr>
 <tr>
 <td>rank()</td>
-<td>返回排序后的序号，如果有并列的行，它们行号相同，行号是并列组前面的总记录数+1</td>
+<td>返回<strong>分组内</strong>排序后的序号，如果有并列的行，它们行号相同，行号是并列组前面的总记录数+1</td>
 </tr>
 <tr>
 <td>dense_rank()</td>
-<td>返回分组内排序后的序号，如果有并列的行，它们行号相同，行号是上一个并列组的序号+1</td>
+<td>返回<strong>分组内</strong>排序后的序号，如果有并列的行，它们行号相同，行号是上一个并列组的序号+1</td>
 </tr>
 <tr>
 <td>first_value(expr)/last_value(expr)</td>
-<td>返回窗口中的第一个行或最后一个行，并对其做表达式计算</td>
+<td>返回<strong>窗口中</strong>的第一个行或最后一个行，并对其做表达式计算</td>
 </tr>
 <tr>
 <td>lag(expr,N,default)</td>
-<td>返回分组内位于当前行之前N行（这里是指上方）的行，default是指如果没有之前N行返回的值，N和default的默认值分别为1和null</td>
+<td>返回<strong>分组内</strong>位于当前行之前N行（这里是指上方）的行，default是指如果没有之前N行返回的值，N和default的默认值分别为1和null</td>
 </tr>
 <tr>
 <td>lead(expr,N,default)</td>
-<td>返回分组内位于当前行之后N行（下方）的行。（这里的之前之后是指遍历顺序）</td>
+<td>返回<strong>分组内</strong>位于当前行之后N行（下方）的行。（这里的之前之后是指遍历顺序）</td>
 </tr>
 <tr>
 <td>nth_value(expr,N)</td>
-<td>返回窗口内的第n行</td>
+<td>返回<strong>窗口内</strong>的第n行</td>
 </tr>
 <tr>
 <td>ntile(n)</td>
-<td>将组内行平均分成n个桶，返回每个行所属的桶号</td>
+<td>将<strong>分组内</strong>行平均分成n个桶，返回每个行所属的桶号</td>
 </tr>
 </tbody>
 </table>
@@ -308,6 +309,9 @@
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="其他">其他</h2>
+<h3 id="if函数">if函数</h3>
+<p>if函数可以用在select子句中</p>
+<p>用法：<code>if(expr1,v1,v2)</code>，当expr1的值为真时，返回v1，否则返回v2</p>
 <h3 id="case-函数">case 函数</h3>
 <p>case 函数可以用在 select 子句里，并将其结果命名为一个字段，还可以按这个字段分组，比如以下 sql</p>
 <div class="highlight"><div class="chroma">

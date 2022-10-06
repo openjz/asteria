@@ -36,7 +36,7 @@ join...on 和 where 的区别在于，join...on...子句是在联结时生效，
 
 窗口函数的引入就是为了方便解决上述第三种查询场景，**我们可以使用窗口函数对分组内部的数据做统计，然后把统计后的数据全部返回，并且可以按排序为每行计算出一个序号**，方便我们使用序号对数据做二次过滤
 
-对于窗口函数来说，“窗口”的概念非常重要。窗口函数会对组内的每条记录执行统计，这需要给窗口函数规定一个统计范围（例如统计范围是从当前行的前一行到当前行的后一行），我们把这个统计范围称为窗口，有的窗口函数的窗口是固定的，有的是滑动的，需要用户指定
+对于窗口函数来说，“窗口”的概念非常重要。窗口函数会对组内的每条记录执行统计，这需要给窗口函数规定一个统计范围（统计范围不一定是整个分组，也可能只对分组的一部分做统计），我们把这个统计范围称为窗口，有的窗口函数的窗口是固定的，有的是滑动的，需要用户指定
 
 ### 用法
 
@@ -45,14 +45,14 @@ join...on 和 where 的区别在于，join...on...子句是在联结时生效，
 ```sql
 -- 简单写法（把窗口函数返回的行序号作为新的一列new_col）
 select
-window_function() over(partition xxx order by xxx) as new_col
+window_function() over(partition by xxx order by xxx) as new_col from xxx
 
 -- 上面也可以把分组条件拆成单独的window语句
 
 select
 window_function() over w as new_col
 from xxx
-window w as (partition xxx order by xxx)
+window w as (partition by xxx order by xxx)
 ```
 
 窗口函数的完整语法如下
@@ -78,10 +78,10 @@ frame语法
 -- frame_units是窗口类型，frame_extent是窗口范围
 frame_units frame_extent
 
--- frame_units有两种，ROWS和RANGE，分别是按行指定范围和直接指定范围
+-- frame_units有两种，ROWS和RANGE，分别是按行的位置指定范围（行的位置就是指“第几行”）和按行的值指定范围（对RANGE模式不太理解，大概是值相同的行在统计上算作同一行）
 frame_units:
     {ROWS | RANGE}
--- 对于ROWS，也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
+-- frame_extent也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
 frame_extent:
     {frame_start | frame_between}
 
@@ -104,14 +104,14 @@ frame_start, frame_end: {
 
 | 函数 | 功能 |
 | ---- | ---- |
-|row_number()|返回分组内排序后的行号|
-|rank()|返回排序后的序号，如果有并列的行，它们行号相同，行号是并列组前面的总记录数+1|
-|dense_rank()|返回分组内排序后的序号，如果有并列的行，它们行号相同，行号是上一个并列组的序号+1|
-|first_value(expr)/last_value(expr)|返回窗口中的第一个行或最后一个行，并对其做表达式计算|
-|lag(expr,N,default)|返回分组内位于当前行之前N行（这里是指上方）的行，default是指如果没有之前N行返回的值，N和default的默认值分别为1和null|
-|lead(expr,N,default)|返回分组内位于当前行之后N行（下方）的行。（这里的之前之后是指遍历顺序）|
-|nth_value(expr,N)|返回窗口内的第n行|
-|ntile(n)|将组内行平均分成n个桶，返回每个行所属的桶号|
+|row_number()|返回**分组内**排序后的行号|
+|rank()|返回**分组内**排序后的序号，如果有并列的行，它们行号相同，行号是并列组前面的总记录数+1|
+|dense_rank()|返回**分组内**排序后的序号，如果有并列的行，它们行号相同，行号是上一个并列组的序号+1|
+|first_value(expr)/last_value(expr)|返回**窗口中**的第一个行或最后一个行，并对其做表达式计算|
+|lag(expr,N,default)|返回**分组内**位于当前行之前N行（这里是指上方）的行，default是指如果没有之前N行返回的值，N和default的默认值分别为1和null|
+|lead(expr,N,default)|返回**分组内**位于当前行之后N行（下方）的行。（这里的之前之后是指遍历顺序）|
+|nth_value(expr,N)|返回**窗口内**的第n行|
+|ntile(n)|将**分组内**行平均分成n个桶，返回每个行所属的桶号|
 
 以下是row_number、rank和dense_rank的区别
 ```
@@ -131,6 +131,12 @@ frame_start, frame_end: {
 ```
 
 ## 其他
+
+### if函数
+
+if函数可以用在select子句中
+
+用法：`if(expr1,v1,v2)`，当expr1的值为真时，返回v1，否则返回v2
 
 ### case 函数
 
