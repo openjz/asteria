@@ -89,3 +89,15 @@ Gizmos 是 unity 场景视图中的辅助图标，比如选中移动工具以后
         - tiling，指定选取图片的范围，以offset为起点，取值正负均可，可以大于1。（取值同样表示相对原图的比例）
 - physic material（物理材质），物理材质可以赋予对象弹跳、摩擦力、拉力等物理特性
     - 在对象的colider组件中应用物理材质（可以直接把材质拖到这里）
+
+### prefab（预制物）
+
+- 一个prefab是一个GameObject模板（相当于类），从prefab创建出的实际的GameObject叫做实例（instance）
+- 修改prefab会使所有实例跟着被改
+- 创建prefab，把GameObject直接拖到project窗口中
+- 在hierarchy窗口中，点击，GameObject右边的箭头进入prefab编辑模式（点击的同时按住alt单独编辑prefab）
+- 修改实例的属性称为“override”，修改过的属性左边会出现一条蓝线
+- prefab variant，预制体变体，原prefab称为base prefab（prefab variant相当于是从base prefab继承而来），修改base prefab会影响prefab variant，但反过来不会。
+  - 创建变体，将一个修改过的prefab实例拖到project中时，选择“create prefab variant”
+- nested prefab（表示prefab之间的组合关系）
+  - 在prefab编辑模式下可以创建prefab组合

@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "unity","wordcount":  1395 ,
+                        }],"genre": "posts","keywords": "unity","wordcount":  1830 ,
         "url": "http:\/\/blog.shiwj.top\/unity-note\/","datePublished": "2022-06-26T10:48:30+08:00","dateModified": "2022-10-01T21:14:28+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Unity入门笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B8%B8%E6%88%8F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>游戏</a>&nbsp;<a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1395 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1830 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -104,6 +104,7 @@
       <ul>
         <li><a href="#gameobject">GameObject</a></li>
         <li><a href="#material材质">material（材质）</a></li>
+        <li><a href="#prefab预制物">prefab（预制物）</a></li>
       </ul>
     </li>
   </ul>
@@ -208,6 +209,24 @@
 <li>physic material（物理材质），物理材质可以赋予对象弹跳、摩擦力、拉力等物理特性
 <ul>
 <li>在对象的colider组件中应用物理材质（可以直接把材质拖到这里）</li>
+</ul>
+</li>
+</ul>
+<h3 id="prefab预制物">prefab（预制物）</h3>
+<ul>
+<li>一个prefab是一个GameObject模板（相当于类），从prefab创建出的实际的GameObject叫做实例（instance）</li>
+<li>修改prefab会使所有实例跟着被改</li>
+<li>创建prefab，把GameObject直接拖到project窗口中</li>
+<li>在hierarchy窗口中，点击，GameObject右边的箭头进入prefab编辑模式（点击的同时按住alt单独编辑prefab）</li>
+<li>修改实例的属性称为“override”，修改过的属性左边会出现一条蓝线</li>
+<li>prefab variant，预制体变体，原prefab称为base prefab（prefab variant相当于是从base prefab继承而来），修改base prefab会影响prefab variant，但反过来不会。
+<ul>
+<li>创建变体，将一个修改过的prefab实例拖到project中时，选择“create prefab variant”</li>
+</ul>
+</li>
+<li>nested prefab（表示prefab之间的组合关系）
+<ul>
+<li>在prefab编辑模式下可以创建prefab组合</li>
 </ul>
 </li>
 </ul>
