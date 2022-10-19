@@ -666,7 +666,7 @@ int status = fclose(f)
 char * in = char[100];
 char * out = "123";
 char * res = fgets(in,10,f); //返回字符串或NULL
-int res = fputs(out,); //返回长度或EOF
+int res = fputs(out,f); //返回长度或EOF
 int res = fgetc(f);
 int res = fputc(c,f);
 // 读写块

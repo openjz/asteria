@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "算法","wordcount":  4630 ,
+                        }],"genre": "posts","keywords": "算法","wordcount":  5633 ,
         "url": "http:\/\/blog.shiwj.top\/algorithm-problem\/","datePublished": "2022-07-06T11:37:09+08:00","dateModified": "2022-10-03T21:37:44+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">算法题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4630 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-06">2022-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5633 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -109,6 +109,14 @@
     <li><a href="#leetcode-81-搜索旋转排序数组-ii">leetcode 81. 搜索旋转排序数组 II</a></li>
     <li><a href="#leetcode-53最大子数组和">leetcode 53.最大子数组和</a></li>
     <li><a href="#leetcode-55跳跃游戏">leetcode 55.跳跃游戏</a></li>
+    <li><a href="#leetcode-84-柱状图中最大的矩形">leetcode 84. 柱状图中最大的矩形</a>
+      <ul>
+        <li><a href="#方法1暴力法">方法1.暴力法</a></li>
+        <li><a href="#方法2分治法">方法2.分治法</a></li>
+        <li><a href="#方法3单调栈法">方法3.单调栈法</a></li>
+      </ul>
+    </li>
+    <li><a href="#leetcode-42-接雨水">leetcode 42. 接雨水</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="常用方法">常用方法</h2>
@@ -326,6 +334,35 @@ B: b0,b1,...,bn
 <p>路径树上实际上有很多重复起跳点</p>
 <p>如果我们按照广度优先遍历的方式遍历，并且生成新起跳点时只生成比当前最远起跳点更远的起跳点，就能消除重复节点</p>
 <p>而节点的遍历顺序恰好和数组的遍历顺序一致，所以我们只要顺序遍历数组，并且维护一个最远起跳点即可</p>
+<h2 id="leetcode-84-柱状图中最大的矩形">leetcode 84. 柱状图中最大的矩形</h2>
+<blockquote>
+<p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+</blockquote>
+<h3 id="方法1暴力法">方法1.暴力法</h3>
+<p>遍历所有柱子，每遍历到一个柱子，求出以这个柱子为高度的矩形大小，怎么求呢？以这个柱子为中心，分别向左右两边遍历，找到第一个高度小于它的柱子，此时这两个高度小于它的柱子就是矩形的边界。</p>
+<p>时间复杂度为O(n^2)，需要假设数组两端有两个高度为0的虚拟柱子，作为所有矩形的边界。</p>
+<h3 id="方法2分治法">方法2.分治法</h3>
+<p>遍历一遍，找到高度最低的柱子，此时这个高度最低的柱子把所有柱子分为左右两部分，由于分界点是高度最低的柱子，左右两边所有高度高于这个柱子的矩形都不可能向另外一边扩展，这就给了我们分治的可能性。</p>
+<p>最大的矩形面积 = max(以高度最低的柱子为高度的矩形面积, 左半部分最大矩形面积, 右半部分最大矩形面积）</p>
+<p>平均时间复杂度为O(nlogn)，但在最坏情况下时间复杂度会退化到O(n^2)。（有点类似快速排序）</p>
+<h3 id="方法3单调栈法">方法3.单调栈法</h3>
+<p>单调栈是指栈中的数要么单调递增，要么单调递减</p>
+<p>我们发现一个现象，从左向右遍历柱子，如果当前遍历到的柱子比上一个柱子低，那么以上一个柱子为高度的矩形不可能朝右边扩展。如果我们将高度递增的柱子依次入栈，遇到高度递减的柱子时停下来，就可以确定以栈顶柱子为高度的矩形的面积，矩形的宽度是栈顶柱子和栈中第二个柱子之间的距离。在遍历的过程中随时更新最大值max。</p>
+<p>时间复杂度为O(n)</p>
+<p>注意两点：</p>
+<ol>
+<li>矩形的面积是栈顶柱子距离栈中第二个柱子的距离，而不是它左边紧挨着的柱子的距离。（栈中的两个柱子之间可能隔着很多已经出栈的柱子）</li>
+<li>栈中相邻的柱子高度可以相等，不会影响最终结果，两个相邻的高度相等的柱子，先入栈的柱子构建的矩形面积肯定大于后入栈的柱子构建的矩形面积</li>
+</ol>
+<h2 id="leetcode-42-接雨水">leetcode 42. 接雨水</h2>
+<blockquote>
+<p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
+</blockquote>
+<p>这道题和上一道题一样，也是一道使用单调栈法解决的题，和上一道题不同，这个题的栈是递减栈，把高度递减的柱子入栈，遇到高度递增的柱子停下求以这个柱子为界能接的雨水。</p>
+<p>如果一个柱子比上一个柱子高度更高，那以这个柱子为界能接的雨水 = 以前一个柱子为界能接的雨水量 + 比上一个柱子多出来的高度能接的雨水量</p>
+<p>如果一个柱子比上一个柱子更低，以这个柱子为界能接的雨水量和上一个柱子相等</p>
+<p>遍历到最后一个柱子时所求出的接雨水量就是最终的累计雨水量</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

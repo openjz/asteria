@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/golang/</link>
         <description>golang - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 20 Sep 2022 12:35:41 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/golang/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/golang/" rel="self" type="application/rss+xml" /><item>
+    <title>面试八股-golang</title>
+    <link>http://blog.shiwj.top/16.interview-bagu-golang/</link>
+    <pubDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/16.interview-bagu-golang/</guid>
+    <description><![CDATA[golang 部分内容参考《go 程序员面试笔试宝典》 go 有什么特点 特性 协程 静态编译，编译出的可执行文件体积小 有 runtime、垃圾回收、反射 指针 和其他语言]]></description>
+</item>
+<item>
     <title>取余和取模的区别</title>
     <link>http://blog.shiwj.top/15.remainder-and-modulo/</link>
     <pubDate>Tue, 20 Sep 2022 12:35:41 &#43;0800</pubDate>

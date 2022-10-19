@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>面试八股-golang - 星</title><meta name="Description" content=""><meta property="og:title" content="面试八股-golang" />
+<meta property="og:description" content="golang 部分内容参考《go 程序员面试笔试宝典》 go 有什么特点 特性 协程 静态编译，编译出的可执行文件体积小 有 runtime、垃圾回收、反射 指针 和其他语言" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/16.interview-bagu-golang/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-07T18:41:32+08:00" />
+<meta property="article:modified_time" content="2022-10-07T18:41:32+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="面试八股-golang"/>
+<meta name="twitter:description" content="golang 部分内容参考《go 程序员面试笔试宝典》 go 有什么特点 特性 协程 静态编译，编译出的可执行文件体积小 有 runtime、垃圾回收、反射 指针 和其他语言"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/16.interview-bagu-golang/" /><link rel="prev" href="http://blog.shiwj.top/15.remainder-and-modulo/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "面试八股-golang",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/16.interview-bagu-golang\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "面试, golang","wordcount":  18362 ,
+        "url": "http:\/\/blog.shiwj.top\/16.interview-bagu-golang\/","datePublished": "2022-10-07T18:41:32+08:00","dateModified": "2022-10-07T18:41:32+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-golang</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;18362 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;37 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#golang">golang</a>
+      <ul>
+        <li><a href="#go-有什么特点">go 有什么特点</a></li>
+        <li><a href="#引用类型">引用类型</a></li>
+        <li><a href="#切片slice">切片（slice）</a></li>
+        <li><a href="#map">map</a></li>
+        <li><a href="#接口">接口</a></li>
+        <li><a href="#go-runtime">go runtime</a></li>
+        <li><a href="#go-的协程goroutine">go 的协程（goroutine）</a></li>
+        <li><a href="#goroutine-调度">goroutine 调度</a></li>
+        <li><a href="#channel">channel</a></li>
+        <li><a href="#context">context</a></li>
+        <li><a href="#reflect">reflect</a></li>
+        <li><a href="#指针">指针</a></li>
+        <li><a href="#go-堆和栈">go 堆和栈</a></li>
+        <li><a href="#垃圾回收gc">垃圾回收（GC）</a></li>
+        <li><a href="#go-工具">go 工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#系统">系统</a>
+      <ul>
+        <li><a href="#基础">基础</a></li>
+        <li><a href="#linux-常用命令">linux 常用命令</a></li>
+        <li><a href="#linux的五种io模型">linux的五种I/O模型</a></li>
+        <li><a href="#linux-io多路复用">linux I/O多路复用</a></li>
+        <li><a href="#linux进程">linux进程</a></li>
+        <li><a href="#linux进程间通信ipc">linux进程间通信（IPC）</a></li>
+        <li><a href="#线程同步">线程同步</a></li>
+        <li><a href="#记录锁">记录锁</a></li>
+        <li><a href="#守护进程">守护进程</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络">网络</a>
+      <ul>
+        <li><a href="#unix套接字">unix套接字</a></li>
+        <li><a href="#抓包">抓包</a></li>
+      </ul>
+    </li>
+    <li><a href="#web">web</a>
+      <ul>
+        <li><a href="#如何实现接口的幂等性">如何实现接口的幂等性</a></li>
+      </ul>
+    </li>
+    <li><a href="#分布式">分布式</a>
+      <ul>
+        <li><a href="#分布式概念">分布式概念</a></li>
+        <li><a href="#分布式锁">分布式锁</a></li>
+        <li><a href="#分布式id">分布式id</a></li>
+      </ul>
+    </li>
+    <li><a href="#设计模式">设计模式</a></li>
+    <li><a href="#mysql">mysql</a>
+      <ul>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#2kw-是数据量上限这个说法从何而来">2kw 是数据量上限这个说法从何而来</a></li>
+        <li><a href="#事务">事务</a></li>
+        <li><a href="#innodb-的锁">InnoDB 的锁</a></li>
+        <li><a href="#innodb-mvcc">InnoDB MVCC</a></li>
+        <li><a href="#其他">其他</a></li>
+        <li><a href="#悲观锁和乐观锁">悲观锁和乐观锁</a></li>
+        <li><a href="#优化">优化</a></li>
+        <li><a href="#log">log</a></li>
+      </ul>
+    </li>
+    <li><a href="#redis">redis</a>
+      <ul>
+        <li><a href="#redis的功能">redis的功能</a></li>
+        <li><a href="#redis缓存击穿穿透雪崩">redis缓存击穿、穿透、雪崩</a></li>
+        <li><a href="#利用redis实现分布式锁">利用redis实现分布式锁</a></li>
+        <li><a href="#redis的缓存淘汰策略">redis的缓存淘汰策略</a></li>
+        <li><a href="#如何保证缓存和数据库的一致性">如何保证缓存和数据库的一致性</a></li>
+      </ul>
+    </li>
+    <li><a href="#mq">MQ</a>
+      <ul>
+        <li><a href="#mq的用途">MQ的用途</a></li>
+        <li><a href="#kafka的特点">kafka的特点</a></li>
+        <li><a href="#kafka原理">kafka原理</a></li>
+        <li><a href="#kafka如何保证顺序消费">kafka如何保证顺序消费</a></li>
+        <li><a href="#kafka如何防止消息丢失">kafka如何防止消息丢失</a></li>
+        <li><a href="#kafka如何防止消息重复">kafka如何防止消息重复</a></li>
+      </ul>
+    </li>
+    <li><a href="#系统设计">系统设计</a></li>
+    <li><a href="#其他问题">其他问题</a>
+      <ul>
+        <li><a href="#项目相关">项目相关</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="golang">golang</h2>
+<p>部分内容参考<a href="https://golang.design/go-questions/" target="_blank" rel="noopener noreffer">《go 程序员面试笔试宝典》</a>
+</p>
+<h3 id="go-有什么特点">go 有什么特点</h3>
+<p>特性</p>
+<ul>
+<li>协程</li>
+<li>静态编译，编译出的可执行文件体积小</li>
+<li>有 runtime、垃圾回收、反射</li>
+<li>指针</li>
+</ul>
+<p>和其他语言相比</p>
+<ul>
+<li>go 作为静态编译语言，和 C/C++相比，go 有 runtime，有垃圾回收，有反射</li>
+<li>go 作为有 runtime 的语言，和 java 相比，是 go 静态编译的</li>
+<li>go 支持指针操作</li>
+</ul>
+<h3 id="引用类型">引用类型</h3>
+<ul>
+<li>说明，go 中实际上没有引用这个机制，go 只有值传参，没有所谓的引用传参，我们只是用“引用”来形容一种现象，即传参后，对参数的修改会影响到原变量</li>
+<li>6 种，slice、map、channel、指针、函数、interface</li>
+<li>引用类型的零值是 nil</li>
+<li>数组和结构体不是引用类型，它们的零值是其所有元素和成员的零值</li>
+</ul>
+<h3 id="切片slice">切片（slice）</h3>
+<ul>
+<li>切片和数组
+<ul>
+<li>切片是对数组的引用，切片的底层数据结构是数组。
+<ul>
+<li>切片的长度是切片引用部分的长度，切片的容量是从引用起点到底层数组末尾的长度</li>
+</ul>
+</li>
+<li>切片能扩容，数组不能</li>
+<li>切片如何扩容
+<ul>
+<li>追加元素时发现数组已满会引起扩容</li>
+<li>扩容是给切片重新分配一个更大的数据，并将数据迁移过去</li>
+<li>扩容后会预留一定的 buffer，以免每次追加元素都扩容</li>
+<li>1.18 版本及之前的扩容策略：
+<blockquote>
+<p>当原 slice 容量小于 1024 的时候，新 slice 容量变成原来的 2 倍；原 slice 容量超过 1024，新 slice 容量变成原来的 1.25 倍。</p>
+</blockquote>
+</li>
+<li>在 1.18 版本更新之后，slice 的扩容策略变为了：
+<blockquote>
+<p>当原 slice 容量(oldcap)小于 256 的时候，新 slice(newcap)容量为原来的 2 倍；原 slice 容量超过 256，新 slice 容量 newcap = oldcap+(oldcap+3*256)/4</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>切片实际上上是一个结构体，因此，把切片作为参数传递的时候，如果修改它的底层数组，会影响原切片，但是如果切片发生了扩容，是直接把底层数组给换了，是不会影响到原切片的</strong></li>
+<li>切片不能比较</li>
+</ul>
+<h3 id="map">map</h3>
+<ul>
+<li>map 底层是一个 hash 表，链式 hash，每个 hash 位置指向一个链表，每个链表节点长度为 8（能放 8 个 key-value 对）</li>
+<li><strong>map 实际上是一个指向底层哈希表的指针，因此把 map 作为参数传递后，对参数做的修改都会影响原 map</strong></li>
+<li>map 遍历是无序的，每次遍历的顺序不一样（因为对 hash 位置的遍历是随机的）</li>
+<li>map 扩容
+<ul>
+<li>扩容不是一个立即完成的操作，而是会持续一段时间，每次最多搬运两个 hash 链</li>
+<li>两种扩容场景
+<ol>
+<li>所有的节点都快满了，这时要双倍扩容（扩容后的 hash 空间是原来的两倍），并且要重新计算元素的 hash 值（rehash）</li>
+<li>元素总数很少，节点数量过多，map 退化为链表，这时要等量扩容，扩容后 hash 空间数量和原来相等，只是把数据存储变紧凑了。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>不要用 float 做 key（语法上是可以的，因为 float 可比较），浮点数的精度问题会导致很多诡异的情况。</li>
+<li>map 不是并发安全的，sync.map 是并发安全的</li>
+<li>无法对 map 的 key 或 value 进行取址</li>
+<li>不能直接比较两个 map，只能通过遍历比较</li>
+</ul>
+<h3 id="接口">接口</h3>
+<ul>
+<li>接口的作用
+<ul>
+<li>用于实现继承和多态</li>
+</ul>
+</li>
+<li><strong><code>T</code>和<code>*T</code>是两个类型，用<code>T</code>实现了一个接口，并不能认为<code>*T</code>也实现了</strong>。
+<ul>
+<li>结论，<strong>实现了接收者是值类型的方法，相当于自动实现了接收者是指针类型的方法；而实现了接收者是指针类型的方法，不会自动生成对应接收者是值类型的方法</strong></li>
+<li>换句话说，值类型实现了接口 A，相当于指针类型也实现了接口 A；指针类型实现了接口 A，不会使值类型也实现了接口 A</li>
+</ul>
+</li>
+<li>类型断言的作用
+<ol>
+<li>提取动态值</li>
+<li>转换接口类型</li>
+<li>判断动态值是否能转换为某个类型（利用类型断言返回的 bool 值或 switch 语法糖）</li>
+</ol>
+</li>
+</ul>
+<h3 id="go-runtime">go runtime</h3>
+<ul>
+<li>go runtime 位于应用程序和操作系统之间
+<ul>
+<li>负责应用程序的内存分配、垃圾回收、协程调度、channel 通信</li>
+<li>负责创建 os 线程、调用 system call</li>
+</ul>
+</li>
+</ul>
+<h3 id="go-的协程goroutine">go 的协程（goroutine）</h3>
+<ul>
+<li>协程是什么
+<ul>
+<li>和线程、进程一样是一种并发单位</li>
+</ul>
+</li>
+<li>和系统线程相比
+<ul>
+<li>更细粒度，线程的栈空间是固定的，而且比较大（linux 下为 8MB），而 goroutine 初始栈大小为 2KB，按需扩缩容，无上限</li>
+<li>上下文切换开销小，线程运行在内核态，而协程运行在内核态</li>
+<li>go 协程没有供程序员访问的标识，而线程都有线程号，go 不鼓励类似 threadlocal 这样的东西</li>
+</ul>
+</li>
+<li><strong>goroutine 是如何调度的</strong>
+<ul>
+<li>goroutine 由 go runtime 的 scheduler 调度</li>
+<li>goroutine 运行在系统线程上，是一种 m:n 模型</li>
+<li>线程数通过 GOMAXPROCS 变量调整，默认的系统线程数是物理机的 cpu 核数</li>
+</ul>
+</li>
+</ul>
+<h3 id="goroutine-调度">goroutine 调度</h3>
+<ul>
+<li>go 调度器的最终目的是把 g 尽量均匀的分配到 m 上执行，兼顾公平和效率</li>
+<li>gmp 模型，go 使用三种基础的结构体实现 goroutine 的调度。
+<ul>
+<li>g 代表一个 goroutine，包含：goroutine 栈、状态、指令地址（PC 寄存器的值）</li>
+<li>m 代表一个内核线程，包含正在运行的 goroutine</li>
+<li>p 代表一个虚拟的 processer，维护一个 runnable 状态的 g 队列，m 需要获得 p 才能运行 g</li>
+</ul>
+</li>
+<li>存放 g 的队列有两类，GRQ（全局可运行队列）和 LRQ（本地可运行队列），每个 p 都要关联一个 LRQ。</li>
+<li>go 设计的早期没有 p 和 LRQ，只有 g、m 和 GRQ，每次调度执行一个 g 都要对 GRQ 上锁，效率低下。p 和 LRQ 的设计是为了提高调度的效率。</li>
+<li>工作窃取，如果一个 p 的 LRQ 中已经没有 g，GPQ 中也没有 g，p 会从别的 p 中“偷”一些 g 过来执行</li>
+<li>os 的线程调度是抢占式调度，而 goroutine 的调度是协作式调度（无法硬件中断），但调度是由 runtime 负责的，对用户来说，仍可将 goroutine 的调度视为抢占式调度
+<blockquote>
+<p>协作式调度依靠被调度方主动放弃执行；抢占式调度则依靠调度器强制中断被调度方的执行</p>
+</blockquote>
+</li>
+<li>g 的三种状态，和线程类似
+<ul>
+<li>waiting，等待状态（有时候被称为阻塞状态），由等待网络数据、硬盘 io、等待获取锁、系统调用、sleep</li>
+<li>runnable，可执行状态（就绪状态）</li>
+<li>running，运行状态</li>
+</ul>
+</li>
+<li>m 只有两种状态，自旋状态（工作状态）和非自旋状态（休眠状态），m 会因为找不到工作、gc 等原因进入非自旋状态，其他时间都处于自旋状态。</li>
+<li>main goroutine 退出时会调用 exit(0)退出进程</li>
+</ul>
+<h3 id="channel">channel</h3>
+<ul>
+<li>channel 解决什么问题
+<ul>
+<li>channel 用来在两个 goroutine 之间传递数据，底层数据结构实际上是个队列</li>
+<li>解决协程之间的并发同步问题</li>
+<li>原则，不通过共享内存来通信，而是通过通信共享内存</li>
+<li>是一种比锁层次更高的同步工具</li>
+</ul>
+</li>
+<li>从一个关闭且缓冲区数据读完的 channel 中仍能取到数据，只不过是零值</li>
+<li>操作 channel 的情况总结
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>nil channel</th>
+<th>closed channel</th>
+<th>not nil, not closed channel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>panic</td>
+<td>panic</td>
+<td>正常关闭</td>
+</tr>
+<tr>
+<td>读 &lt;- ch</td>
+<td>阻塞</td>
+<td>缓冲区如果还有数据，会正常读取数据，否则读到对应类型的零值</td>
+<td>阻塞或正常读取数据。</td>
+</tr>
+<tr>
+<td>写 ch &lt;-</td>
+<td>阻塞</td>
+<td>panic</td>
+<td>阻塞或正常写入数据。非缓冲型 channel 没有等待接收者或缓冲型 channel buf 满时会被阻塞</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>使用时要注意防止资源泄露，比如有若干 goroutine 处于阻塞状态，而 channel 的状态一直没有得到改变</li>
+<li>channel 的应用
+<ul>
+<li>解耦生产者和消费者</li>
+<li>广播停止信号</li>
+<li>定时</li>
+<li>控制并发数，把令牌放入缓冲区</li>
+</ul>
+</li>
+</ul>
+<h3 id="context">context</h3>
+<ul>
+<li>context 是什么
+<ul>
+<li>context 一般翻译成上下文，用来在 goroutine 之间传递上下文信息，包括停止信号、超时时间、截止时间、key-value 数据</li>
+<li>context 几乎是并发控制和超时控制的标准做法，很多接口都加上了 context 参数</li>
+<li>context 是一个接口，标准库实现了一些具体的 context 类型，包括 emptyCtx、valueCtx、cancelCtx、timerCtx，还有两个全局变量 background 和 todo</li>
+<li>所有 context 会组成一个树状结构（只不过指向和树是相反的，子 context 指向父 context）</li>
+</ul>
+</li>
+<li>如何取消 context
+<ul>
+<li>父 context 持有一个 channel，可以对所有子 context 广播取消信号，一般会让每个协程携带一个 context，这样就可以把协程也组织成树状结构，父协程可以在请求超时、请求失败时及时向子协程发出终止信号，子协程通过调用 Done()方法获取 channel，并监听 channel 的取消信号</li>
+</ul>
+</li>
+<li>如何查找 value
+<ul>
+<li>从自己开始，顺着父 context，层层向上找</li>
+</ul>
+</li>
+</ul>
+<h3 id="reflect">reflect</h3>
+<ul>
+<li>什么是反射
+<ul>
+<li>反射是一种程序在运行过程中观察自己、修改自己的一种机制，而且这种观察和修改和编译期间做不到的</li>
+</ul>
+</li>
+<li>什么时候用反射
+<ul>
+<li>不知道参数类型的时候</li>
+</ul>
+</li>
+<li>慎用反射的理由
+<ul>
+<li>反射会让代码可读性降低</li>
+<li>反射性能差</li>
+</ul>
+</li>
+</ul>
+<h3 id="指针">指针</h3>
+<ul>
+<li>普通指针（*T），不能参与运算，不同类型不能比较，不能相互转换</li>
+<li>unsafe.Pointer 相当于一个通用指针，能在不同类型之间转换。</li>
+<li>uintptr 可以对指针进行算术运算，但是不会对指向的变量有引用语义，换言之，即使 uintptr 还存在，它指向的变量还是有可能被 gc（他就像 c 里面的指针）</li>
+</ul>
+<h3 id="go-堆和栈">go 堆和栈</h3>
+<p>go 对程序员隐藏了堆和栈的概念，变量分配在栈上还是堆上不取决于变量定义的位置和方法。编译器会对程序进行逃逸分析，如果一个变量在函数之外被引用了，那这个变量会被创建在堆上，否则在栈上</p>
+<h3 id="垃圾回收gc">垃圾回收（GC）</h3>
+<ul>
+<li>垃圾回收机制有两种，追踪式 GC 和引用计数式 GC，go 是追踪式 GC。</li>
+<li>go 的 GC 算法是三色标记法</li>
+<li>内存泄漏有两种
+<ul>
+<li>对不再使用的内存一直有引用</li>
+<li>goroutine 泄露（goroutine 一直阻塞在一个 channel 上）</li>
+</ul>
+</li>
+</ul>
+<h3 id="go-工具">go 工具</h3>
+<ul>
+<li>GOROOT 和 GOPATH 的区别
+<ul>
+<li>GOROOT 是 go 安装的位置</li>
+<li>GOPATH 的作用是提供一个可以寻找 go 源码的路径，GOPATH 目录下需要包含 src、pkg、bin 三个目录，src 存放源文件，pkg 存放编译产出（库文件），bin 存放可执行文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="系统">系统</h2>
+<h3 id="基础">基础</h3>
+<ul>
+<li>什么是协程</li>
+<li>进程和线程的区别
+<ul>
+<li>进程是资源分配的基本单位，线程是调度的基本单位</li>
+<li>线程属于进程，一个进程包含多个线程</li>
+<li>进程间相互隔离，不共享资源，一个挂了不影响其他的，线程共享进程资源，一个线程挂了整个进程全挂</li>
+<li>进程上下文切换开销比线程大</li>
+<li>进程间通信方式和线程不同</li>
+<li>进程存在父子关系，线程不存在</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux-常用命令">linux 常用命令</h3>
+<ul>
+<li><code>ps</code>，查看进程状态
+<ul>
+<li>ps命令参数分三种风格，带“-”的是unix风格，不带的是bsd风格，“&ndash;”是GNU风格，最坑的是不同风格的输出不一样
+<blockquote>
+<p>比如，ps -aux 和 ps aux其实完全不一样，-aux是想打印用户x的所有进程，如果用户x不存在，ps会帮你把命令改写成ps aux</p>
+</blockquote>
+</li>
+<li>查看所有进程
+<ul>
+<li>ps -e，ps -ef，ps -eF，ps -ely</li>
+<li>ps aux，ps ax</li>
+</ul>
+</li>
+<li>查看进程树，ps -ejH，ps axjf</li>
+<li><code>ps aux</code>，<code>x</code>列出没有控制终端的进程，<code>u</code>列出更多信息（用户、CPU、内存等）、<code>a</code>列出所有用户的进程</li>
+<li>ps aux字段含义
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">USER          进程所有者的用户名
+PID           进程ID（Process ID）
+START         进程激活时间
+%CPU          进程的cpu占用率
+%MEM          进程使用内存的百分比
+VSZ           进程使用的虚拟内存大小，以K为单位
+RSS           驻留空间的大小。显示当前常驻内存的程序的K字节数。
+TTY           与进程关联的终端（tty）
+STAT          进程状态，包括下面的状态： 
+      D    不可中断的sleep，通常在IO
+      R    正在运行，或在可运行队列中的进程
+      S    可中断的sleep状态，通常是在等待事件将其唤醒
+      T    暂停状态（ctrl+z）
+      t    由于调试器跟踪而暂停
+      Z    僵尸进程
+      W    进入内存交换（从内核2.6开始无效）
+      X    正在被销毁（非常短暂，几乎不可能被看到）
+  状态描述
+      &lt;    高优先级
+      N    低优先级
+      L    有些页被锁进内存
+      s    session leader
+      +    在前台进程组中
+      l    多线程，克隆线程
+TIME          进程使用的总CPU时间
+COMMAND       被执行的命令行
+NI            进程的优先级值，较小的数字意味着占用较少的CPU时间
+PRI           进程优先级。
+PPID          父进程ID
+WCHAN         进程等待的内核事件名  
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>linux中的虚拟内存不是指swap，是指进程的逻辑地址空间，只有实际访问到的内存会被映射到物理内存，这部分物理内存叫常驻内存。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>grep</code>，文本搜索，<code>-c</code>：仅显示找到的行数，<code>-n</code>：显示行号，<code>-i</code>：忽略大小写，<code>-v</code>：反向搜索（搜索不包含指定字符串的行）</li>
+<li><code>crontab</code>，定时任务，格式，“分 时 日 月 星期 命令”</li>
+<li><code>free</code>，查看内存，默认按KB查看，-b，按字节展示，-k，按KB展示，-m，按MB展示，-g，按GB展示，-h，按适当的单位展示，-s N，隔N秒输出一次
+<ul>
+<li>第一行是内存，第二行是swap</li>
+<li>total是总内存，used是已使用的内存，free是未使用的内存，shared是共享使用的内存，buff/cache是buffer和cache使用的内存，available是应用程序可用的内存。</li>
+<li>和free相比，available算入了page cache
+<blockquote>
+<p>buffer是指buffer cache，buffer cache是存储在内存中的文件块（一个文件块大小不能超过内存页大小）</p>
+<p>cache是指page cache，一般翻译成页高速缓存，是用内存做磁盘缓存，包含对普通文件、块设备文件、内存映射文件的缓存。对块设备文件的缓存就是buffer cache。</p>
+</blockquote>
+</li>
+<li>free命令来自<code>/proc/meminfo</code>文件，直接查看这个文件也行</li>
+</ul>
+</li>
+<li><code>top</code>，实时查看当前系统中的进程状态
+<ul>
+<li>第一部分，系统总体状况
+<ul>
+<li>第一行，当前时间，运行时间（up 2 day），当前用户数量，系统在之前1分钟、5分钟、15分钟的平均负载</li>
+<li>第二行（进程信息），系统中的进程总数，正在运行的进程数，睡眠的进程数，正在停止的进程数，僵尸进程数。</li>
+<li>第三行（cpu占用），用户模式，系统模式&hellip;</li>
+<li>第四、五行（内存信息，和free命令差不多）</li>
+</ul>
+</li>
+<li>第二部分，各个进程的详细信息，以下是各字段含义
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">PID — 进程id
+USER — 进程所有者
+PR — 进程优先级，值越小优先级越高
+NI — nice值。静态优先级，值越小优先级越高
+VIRT — 进程使用的虚拟内存总量，单位kb。
+RES — 常驻内存大小，单位kb。
+SHR — 共享内存大小，单位kb
+S —进程状态。
+%CPU — cpu占用
+%MEM — 内存占用
+TIME+ — 进程使用的CPU时间总计，最小单位是秒
+COMMAND — 命令
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li><code>tar</code>，压缩和打包命令</li>
+<li><code>netstat</code>，查看网络状态
+<ul>
+<li>按域查看，-4，-6，-A &lt;域&gt;，&ndash;域，具体的域有inet（ipv4）、inet6（ipv6）等等</li>
+<li>按socket查看，-t，&ndash;tcp，-u，&ndash;udp，-x，&ndash;unix，-w，&ndash;raw等等</li>
+<li>-a，查看所有socket（默认只显示建立连接的），-n，显示ip而不是域名，-p，显示pid（只有当前用户的进程号），-o，显示timers，-l，只显示监听，-e，显示用户和inode</li>
+<li>-r，查看路由表，-i，查看网卡，-s，查看网络连接统计数据</li>
+<li>-c，持续输出</li>
+</ul>
+</li>
+<li><code>ping</code>，用于检测和目标主机的网络连接
+<ul>
+<li>利用icmp协议的echo信息检查目的主机的可达性、延迟、报文丢失情况
+<blockquote>
+<p>icmp协议（网络控制报文协议）是一种差错报告和信息查询协议，当数据传输出现错误时，利用icmp协议通知源主机数据传输出错，也可以利用icmp查询一些信息。</p>
+<p>icmp报文放在ip报文的数据部分中，从报文结构上来看，icmp是ip的上层协议，但是icmp承担了ip层的任务，因此我们将icmp视为ip层协议</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>traceroute</code>，用于查看到目的主机的路由路径
+<ul>
+<li>traceroute有三种实现，icmp、udp、tcp</li>
+<li>udp，<code>traceroute xxx</code>或<code>traceroute -T xxx</code>，traceroute默认使用udp。向目的主机发送很多不同TTL的UDP报文，并访问一个大于30000的端口号，如果在传输到某个路由器时TTL的值减为0，则路由器回送一个超时的ICMP报文，如果报文到达了目的主机，则目的主机会回送一个端口不可达的ICMP报文。</li>
+<li>icmp，<code>traceroute -I xxx</code>。利用icmp echo实现，向目的主机发送很多不同TTL的ICMP echo请求报文，如果在传输到某个路由器时TTL的值减为0，则路由器回送一个超时的ICMP报文，如果报文到达了目的主机，则目的主机会回送一个ICMP echo响应报文。
+<blockquote>
+<p>TTL通常是指“报文最大生存时间”，但是在icmp里，TTL就是指路由器的跳数</p>
+</blockquote>
+</li>
+<li>tcp，<code>traceroute -T xxx</code></li>
+<li>问题
+<ul>
+<li>使用时看不到目的主机，使用udp协议时可能会出现这种情况，原因是目的主机没开放udp服务，回送不了“端口不可达”icmp报文</li>
+<li>使用时看不到中间路由器，可能是因为中间路由器不支持回送超时icmp报文</li>
+</ul>
+</li>
+<li>windows下的tracert使用icmp实现</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux的五种io模型">linux的五种I/O模型</h3>
+<ul>
+<li>阻塞式I/O
+<ul>
+<li>普通的IO操/作都是阻塞式I/O</li>
+<li>阻塞式I/O可能会被永久阻塞，比如网络连接一直没有数据过来</li>
+</ul>
+</li>
+<li>非阻塞式I/O
+<ul>
+<li>非阻塞式I/O没有永久阻塞的风险，如果I/O操作因为不满足条件而无法完成，调用会立即出错返回</li>
+<li>误区1，阻塞式I/O和异步I/O混为一谈
+<ul>
+<li>非阻塞是强调调用不会进入阻塞状态，调用本身和发起调用的程序流程是顺序的，是同步的，调用一旦返回，这次调用就已经完成了。</li>
+<li>异步I/O强调的是I/O操作和发起调用的流程同时进行，异步调用发起后立即返回的不是最终结果，而是告诉调用者一个“已收到”信息，最终执行完成后通过某种手段通知调用方执行结果。</li>
+</ul>
+</li>
+<li>误区2，非阻塞式I/O会造成进程或线程一直占用CPU
+<ul>
+<li>占用CPU的不是非阻塞式I/O，而是程序员轮询非阻塞式I/O造成的（比如写个死循环不停地调用非阻塞式I/O，直到成功为止）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>信号驱动I/O
+<ul>
+<li>内核用SIGIO这个信号通知进程有事件到达，是一种异步通知机制</li>
+<li>一般是UDP通信会使用这个I/O模型，原因是系统统一使用SIGIO这一个信号表示I/O事件，UDP只有两个事件会发出这个信号（数据到达和发生错误），比较容易判断和处理，而TCP有一堆事件会发出这个信号，而且信号发出过于频繁，没法采用这个I/O模型</li>
+</ul>
+</li>
+<li>I/O多路复用
+<ul>
+<li>同时从多个文件描述符里读数据，可以在同一个线程内一个循环搞定，降低程序复杂度</li>
+<li>通过 I/O 复用函数向内核注册一组文件描述符，当某个文件描述符准备好数据时，I/O 复用函数把其中就绪的文件描述符返回给用户程序，用户程序只需要轮询I/O复用函数即可，I/O复用函数是阻塞式的，因此轮询并不会占用cpu资源</li>
+</ul>
+</li>
+<li>异步I/O
+<ul>
+<li>以上四种I/O模型，最多只能实现异步形式的通知，而最重要的数据传输都是同步的，即数据传输都要由用户线程或进程亲自完成。</li>
+<li>异步I/O数据传输由内核接管，用户进程只需要发起I/O请求和等待完成通知即可</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux-io多路复用">linux I/O多路复用</h3>
+<ul>
+<li>linux的IO多路复用，多路是指多个文件描述符，复用是指单线程或单进程可以同时监听多个文件描述符
+<ul>
+<li>I/O多路复用是linux的五种I/O模型中的一种，是为了解决在同一个用户进程内同时读写多个文件描述符的问题</li>
+<li>三种，select/pselect、poll、epoll</li>
+<li>通过 I/O 复用函数向内核注册一组文件描述符，当某个文件描述符准备好数据时，I/O 复用函数把其中就绪的文件描述符返回给用户程序，用户程序只需要轮询I/O复用函数即可。I/O复用函数是阻塞式的，因此循环调用并不会占用cpu资源。</li>
+<li>I/O复用函数实际上是把文件描述符的状态检查交给内核去接管，用户进程只需要读写数据。</li>
+<li>I/O多路复用通过超时时间来控制文件描述符的阻塞时间</li>
+<li>select
+<ul>
+<li>传给内核的文件描述符集用一个位图来表示，同时要传入一个最大文件描述符+1这个一个值，告诉内核传入的描述符数，内核常量FD_SETSIZE表示这个值的最大值（1024）。</li>
+<li>select返回准备好的描述符数，并且会根据准备好的描述符集覆写用户传入的位图。等于说是select返回以后，用户还得自己去遍历传入的位图，下一次调用select的时候再重新设置位图。</li>
+<li>按事件类型将文件描述符集分为可读、可写和异常三个文件描述符集</li>
+<li>select的变体pselect，调用的时候可以额外指定一个信号屏蔽字</li>
+</ul>
+</li>
+<li>poll
+<ul>
+<li>poll不像select一样为每个条件分别构造一个描述符集，而是采用一个数组，每个元素都是一个结构体，指定了文件描述符和事件类型。事件类型有两个，一个由用户写入，作为参数，一个由内核写入，作为返回。</li>
+<li>poll突破了文件描述符1024上限的限制</li>
+</ul>
+</li>
+<li>epoll
+<ul>
+<li>epoll由linux 2.6版本引入</li>
+<li>epoll有三个函数
+<ul>
+<li>epoll_create，创建epoll句柄（也是一个文件描述符）</li>
+<li>epoll_ctl，注册文件描述符和事件</li>
+<li>epoll_wait，等待事件发生</li>
+</ul>
+</li>
+<li>相比select和poll，epoll解决了什么问题
+<ol>
+<li>解决了select文件描述符上限是1024这个问题</li>
+<li>对于select和poll，内核通过轮询来检查文件描述符的状态，文件描述符越多，效率越低</li>
+<li>select和poll的每次调用是不相关的，每次调用都要重新构造参数，每次调用都会发生从用户态到内核态的内存拷贝</li>
+</ol>
+</li>
+<li>epoll的原理
+<ul>
+<li>epoll背后有一套数据结构在做支撑，因此不需要每次调用epoll_wait之前都重新注册文件描述符，减少了内存拷贝</li>
+<li>epoll不是通过轮询来检查文件描述符的状态，而是给每个文件描述符注册一个回调函数，一旦有注册事件发生，就会调用回调函数把文件描述符加入一个就序列表，epoll_wait函数只是把这个就绪列表返回给用户，效率大大提升。</li>
+<li>epoll有两种工作模式LT（默认）和ET
+<ul>
+<li>LT是如果一个文件描述符处于就绪状态，内核就会通知你操作，即使你每次都不做操作，内核还是每次都会通知你。LT同时支持阻塞式I/O和非阻塞式I/O</li>
+<li>ET是内核只有在文件描述符发生变化的时候才会通知你，如果文件描述符就绪了，你没有做任何操作或者数据没读完，下次内核就不会继续通知你了，因为文件描述符的状态没有变。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux进程">linux进程</h3>
+<ul>
+<li>孤儿进程，父进程结束的进程，由init进程接管，父进程变为init进程</li>
+<li>僵尸进程，进程技术执行，其他的资源都被回收，但是其进程控制块（task_struct）一直没被回收，处于这个状态的进程叫做僵尸进程。
+<ul>
+<li>进程控制块通常是由父进程调用wait函数来回收，以获取子进程的返回码，运行状态等信息。</li>
+<li>解决办法，kill掉其父进程，僵尸进程会被init进程接管并回收。</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux进程间通信ipc">linux进程间通信（IPC）</h3>
+<ul>
+<li>信号，信号是一种软中断机制
+<ul>
+<li>进程可以给一个信号注册一个处理函数，一旦接收到信号，就执行这个处理函数</li>
+<li>如何发信号
+<ul>
+<li>用户按下某些终端按键，如ctrl+c</li>
+<li>用户使用某些特殊命令，如kill</li>
+<li>函数调用，如kill、raise、alarm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>管道
+<ul>
+<li>只能在有公共祖先的进程间通信，比如父子进程</li>
+<li>调用pipe函数创建管道，返回两个文件描述符，对应管道的两端</li>
+<li>通常的做法是在父进程创建管道，然后fork子进程，这样子进程也拥有了这个管道。进程把自己不用的那端关掉。</li>
+<li>协同进程，现在有一个程序P，它从标准输入读，写到标准输出，如果有一个进程A，利用管道写P的标准输入，读P的标准输出，那么执行P的进程就是A的协同进程。
+<ul>
+<li>具体实现，A fork 进程B，创建两个管道p1和p2，p1的方向是从A到B，p2的方向相反，然后在进程B中执行程序P，并将P的标准输入改为p1的读端，将P的标准输出改为p2的写端，这样就实现了A输出到P的标准输入，A从P的标准输入读，此时，B是A的协同进程。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FIFO，又称命名管道
+<ul>
+<li>和管道不同，FIFO可以在两个不相关的进程之间使用</li>
+<li>FIFO创建在文件系统中，有路径名</li>
+</ul>
+</li>
+<li>三种XSI IPC（XSI是POSIX.1中的X/Open系统接口的简写，属于一种Unix规范）
+<ul>
+<li>消息队列
+<ul>
+<li>是内核中的一个链表，由消息队列标识符标识</li>
+<li>消息队列可以实现全双工通信</li>
+<li>消息队列最初的设计目的是提供全双工的高速通信，但随着后来很多新的IPC机制的提出，消息队列的性能优势已经不复存在，并且由于它存在的一些问题，新的程序里已经不推荐使用消息队列了。</li>
+<li>缺陷，没有引用计数</li>
+</ul>
+</li>
+<li>信号量，是一个计数器，用来控制对临界资源的访问
+<ul>
+<li>缺陷，信号量不是一个单个非负值，而是一个信号量值的集合；信号量的定义和初始化不是原子的；无端增加程序的复杂性</li>
+</ul>
+</li>
+<li>共享内存
+<ul>
+<li>共享内存允许多个进程共享一段内存空间，数据不需要来回拷贝，所以共享内存是一种最快的IPC</li>
+<li>共享内存段要先申请，然后连接到进程自己的内存地址空间</li>
+</ul>
+</li>
+<li>XSI IPC的统一缺陷
+<ul>
+<li>它们在内核中是全局的，没有引用计数，不会自动回收，必须手动释放</li>
+<li>XSI IPC的资源不是文件描述符的形式，而是各自专用的标识符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>posix信号量
+<ul>
+<li>解决了XSI信号量的不少问题，性能更高，没有信号量集的设定，不需要手动管理</li>
+<li>推荐用这个</li>
+</ul>
+</li>
+<li>内存映射/存储映射（memory-mapped I/O mmap）
+<ul>
+<li>把一个文件直接映射为一段内存地址，读写这段内存地址就相当于对这个文件I/O</li>
+<li>利用mmap实现</li>
+</ul>
+</li>
+<li>socket
+<ul>
+<li>tcp、udp、unix域</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程同步">线程同步</h3>
+<h3 id="记录锁">记录锁</h3>
+<h3 id="守护进程">守护进程</h3>
+<h2 id="网络">网络</h2>
+<h3 id="unix套接字">unix套接字</h3>
+<ul>
+<li>概念
+<ul>
+<li>进程，是一个通信实体</li>
+<li>ip:port，是一种通信地址资源</li>
+<li>unix套接字，是对一个通信端点的抽象</li>
+<li>套接字类型（可以看作是对传输特性的描述）
+<ul>
+<li>SOCK_DGRAM，固定长度、无连接、不可靠的报文传输</li>
+<li>SOCK_STREAM，面向连接、有序、可靠的字节流传输</li>
+<li>SOCK_RAW，IP协议的数据报接口</li>
+<li>SOCK_SEQPACKET，固定长度、面向连接、有序、可靠的报文传输</li>
+</ul>
+</li>
+<li>域类型
+<ul>
+<li>AF_INET，IPv4域</li>
+<li>AF_INET6，IPv6域</li>
+<li>AF_UNIX，unix域</li>
+<li>AF_UNSPEC，未指定</li>
+</ul>
+</li>
+<li><strong>套接字和域的组合决定了协议</strong>，一个组合可以对应多个协议，在IPv4域中，SOCK_STREAM默认对应TCP协议，SOCK_DGRAM默认对应UDP协议</li>
+</ul>
+</li>
+<li>操作
+<ul>
+<li>socket，创建一个套接字</li>
+<li>bind，绑定一个ip:port</li>
+<li>服务端
+<ul>
+<li>listen，监听请求，监听请求的套接字称为原始套接字</li>
+<li>accept，获得一个连接请求并建立连接，每个连接对应一个新套接字，它们的地址和原始套接字相同</li>
+</ul>
+</li>
+<li>客户端
+<ul>
+<li>connect，和服务端建立连接</li>
+</ul>
+</li>
+<li>close，关闭套接字</li>
+</ul>
+</li>
+<li><strong>一个ip:port可以建立多个tcp连接吗？</strong>
+<ul>
+<li>连接是通过套接字建立的，<strong>一般情况下，一个ip:port只能绑定到一个套接字上</strong>，如果ip:port被占用，又试图去用另外一个套接字用这个地址通信，就会出现端口冲突。</li>
+<li>对于服务端，原始套接字负责监听，每建立一个连接，就创建一个新套接字负责数据传输，原始套接字和新套接字共用一个地址。因此，<strong>对于服务端，一个ip:port可以通过原始套接字建立多个tcp连接</strong>。或者说，只能有一个套接字监听一个ip:port，但是可以和多个客户端建立连接。</li>
+<li>对于客户端，没有原始套接字的概念，一个套接字只能建立一个tcp连接，因而，<strong>对于客户端，一个ip:port只能建立一个tcp连接</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="抓包">抓包</h3>
+<h2 id="web">web</h2>
+<p>http和rpc的区别</p>
+<h3 id="如何实现接口的幂等性">如何实现接口的幂等性</h3>
+<ul>
+<li>接口的幂等性是指多次请求同一个资源和只请求一次产生同样的效果</li>
+<li>接口需要满足幂等的原因是很多操作我们只希望发生一次，比如付款、创建订单等等</li>
+<li>读操作天然具备幂等性</li>
+<li>如何实现幂等性
+<ul>
+<li>在数据库层面，使用唯一key标识一个资源，避免重复插入同一个key</li>
+<li>使用为每个资源记录一个状态，根据状态判断是否能执行操作</li>
+<li>使用全局ID去重</li>
+</ul>
+</li>
+</ul>
+<h2 id="分布式">分布式</h2>
+<h3 id="分布式概念">分布式概念</h3>
+<ul>
+<li>CAP原理，一致性、可用性、分区容错性三者不可兼得</li>
+<li>BASE原理，是在满足分区容错性的前提下，在一致性和可用性之间做的权衡，是指分布式系统可以同时满足基本可用性、软状态和最终一致性。</li>
+<li>脑裂问题，分布式系统发生分区错误后，各分区选举出各自新的master导致分布式系统中存在多个master的情况</li>
+</ul>
+<h3 id="分布式锁">分布式锁</h3>
+<ul>
+<li>分布式锁要解决以下问题
+<ol>
+<li>锁失效的问题，包括集群脑裂、锁到期、锁丢失（master节点挂掉而数据同步还没完成）</li>
+<li>非阻塞问题，获取不到锁要能返回失败</li>
+<li>可重入问题，同一个实例，要能反复获取同一个锁</li>
+</ol>
+</li>
+<li>基于redis实现分布式锁</li>
+<li>基于zookeeper实现分布式锁</li>
+<li>基于数据库实现分布式锁</li>
+</ul>
+<h3 id="分布式id">分布式id</h3>
+<ul>
+<li>为一个资源生成一个全局的唯一id</li>
+<li>方法
+<ul>
+<li>UUID、hash（不推荐）
+<ul>
+<li>优点，可以本地生成，无网络消耗</li>
+<li>缺点，无序，无法建立索引</li>
+</ul>
+</li>
+<li>利用数据库自增id
+<ul>
+<li>缺点，存在数据库单点问题，数据库访问压力大</li>
+</ul>
+</li>
+<li>从数据库批量获取自增id</li>
+<li>利用redis的incr命令实现id的原子性自增
+<ul>
+<li>优点是快，缺点是贵</li>
+</ul>
+</li>
+<li>雪花算法（snowflake）
+<ul>
+<li>优点，可以本地生成，不需要一个中心化的分布式id服务</li>
+<li>原理其实就是通过一些特定标识的拼接，让生成的id不重复的同时还能做到有序</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="设计模式">设计模式</h2>
+<h2 id="mysql">mysql</h2>
+<h3 id="索引">索引</h3>
+<ul>
+<li>什么是索引
+<ul>
+<li>索引是一种能实现对表中某一列或多列的值快速查找的数据结构，常见的是 B+树</li>
+<li>B+树是一种多叉搜索树，叶节点是数据节点，存放着指向行数据的指针，叶节点之间顺序链接</li>
+<li>没有索引的时候，数据的物理存储是按插入顺序存储的，查找数据时要逐行查找</li>
+</ul>
+</li>
+<li>索引的优缺点
+<ul>
+<li>优点：加快查询速度，缩小锁的范围（比如 gap lock 和 next key lock）</li>
+<li>缺点：维护索引要耗费时间和空间，会降低写入速度</li>
+</ul>
+</li>
+<li>mysql 索引分类
+<ul>
+<li>普通索引、唯一索引、主键索引
+<ul>
+<li>普通索引允许重复值和空值</li>
+<li>唯一索引不允许重复值，但允许空值</li>
+<li>主键索引既不允许重复值，又不允许空值</li>
+</ul>
+</li>
+<li>单列索引和组合索引
+<ul>
+<li>组合索引是在多列上构建的索引，查询条件（1）包含组合索引列的前缀并且（2）用 and 连接时才会触发组合索引</li>
+</ul>
+</li>
+<li>全文索引
+<ul>
+<li>可以在列上进行全文搜索</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>怎么判断要不要加索引
+<ul>
+<li>加
+<ul>
+<li>在频繁进行条件判断、分组、排序的列上创建索引</li>
+<li>多读少写或者对读操作耗时要求高时加索引</li>
+</ul>
+</li>
+<li>不加
+<ul>
+<li>写多读少时不要加所索引</li>
+<li>不做条件判断的列不要加索引</li>
+<li>数据大量重复时也不应该加索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>索引命中和失效
+<ul>
+<li>不符合左前缀原则会导致组合索引失效</li>
+<li>where 条件不用 and 连接会导致组合索引失效</li>
+<li>在索引列上做计算、函数调用、不等于比较会导致索引失效</li>
+<li>可以用 explain 语句查看是否命中索引，explain 语句是用来查看 sql 执行计划的</li>
+</ul>
+</li>
+<li>索引实现上分为聚集索引和非聚集索引
+<ul>
+<li>一个表只能有一个聚集索引，之所以叫聚集索引，是因为数据的物理存储顺序就是按聚集索引的排序存储的，也是因为这个原因，一个表只能有一个聚集索引。InnoDB 的聚集索引叶节点存储完整的数据记录。</li>
+<li>其他索引都属于非聚集索引，非聚集索引也叫二级索引或者辅助索引，非聚集索引有两种情况
+<ol>
+<li>数据节点不是直接指向数据记录，而是保存一个聚集索引的 key，每次对非聚集索引的查找都要到聚集索引上查一次数据，这叫“<strong>回表</strong>”。（mysql 的 InnoDB 引擎）</li>
+<li>叶节点直接指向对应的数据块。（mysql 的 MyISAM）</li>
+</ol>
+</li>
+<li>mysql InnoDB 引擎一定会构建一个聚集索引，默认会将主键索引作为聚集索引，如果没有主键索引，会将第一个没有空值的唯一索引作为聚集索引，否则会在一个隐藏的 ROWID 上构建聚集索引，ROWID 是行的唯一标识</li>
+<li>组合索引是以多个列的组合作为 key，例如&quot;(2,3)&quot;</li>
+</ul>
+</li>
+</ul>
+<h3 id="2kw-是数据量上限这个说法从何而来">2kw 是数据量上限这个说法从何而来</h3>
+<ul>
+<li>我们通常认为 B+树超过三层性能会下降</li>
+<li>mysql innodb 一个 B+树节点 16KB，可用空间 15KB</li>
+<li>假设 key 是 bigint 类型（8B），key 加指针（4B）一共 12B</li>
+<li>因此第二层有 1280 个节点，第三层有 1280*1280 个节点</li>
+<li>假设单行数据 1KB，那三层 B+树支持的数据量是 1280*1280*15KB/1KB=24576000，也就是 2kw+</li>
+<li>2kw 只是个参考值，单行数据量如果不是 1KB，数据量上限就不是 2kw 了。机器的硬件配置也会影响 mysql 的性能，比如用 ssd 代替机械硬盘、使用大内存都会提高 mysql 的性能。</li>
+</ul>
+<h3 id="事务">事务</h3>
+<ul>
+<li>ACID 特性
+<ul>
+<li>原子性、一致性、隔离性、持久性</li>
+</ul>
+</li>
+<li>InnoDB 如何实现事务的 ACID 特性
+<ul>
+<li>原子性，通过 undo log 回滚</li>
+<li>一致性</li>
+<li>隔离性
+<ul>
+<li>通过锁保证隔离性，事务在修改数据之前先对数据上锁。锁按照粒度分为表锁和行锁。</li>
+<li>使用 MVCC（多版本并发控制）实现四个隔离级别</li>
+</ul>
+</li>
+<li>持久性，数据落盘之前先要放到 buffer pool，buffer pool 的数据会定期刷到磁盘上去，写入 buffer pool 之前先写到 redo log 中，防止保证数据不会因宕机丢失</li>
+</ul>
+</li>
+</ul>
+<h3 id="innodb-的锁">InnoDB 的锁</h3>
+<ul>
+<li>InnoDB 的锁按粒度分为
+<ul>
+<li>行锁和表锁</li>
+<li>意向锁和非意向锁</li>
+</ul>
+</li>
+<li>按并发控制分为共享锁和排他锁
+<ul>
+<li>共享锁：可以对数据上多个共享锁，但不能同时上共享锁和排他锁（有点像并发编程的读锁）</li>
+<li>排他锁：只能对数据上一个排他锁（有点像并发编程的写锁）</li>
+</ul>
+</li>
+<li>意向锁只能是表级，非意向锁可以是表级的也可以是行级的，因此一共有 6 种组合
+<ul>
+<li>表级的排他锁</li>
+<li>表级的共享锁</li>
+<li>行级的排他锁</li>
+<li>行级的共享锁</li>
+<li>表级的排他意向锁</li>
+<li>表级的共享意向锁</li>
+</ul>
+</li>
+<li><strong>申请行级锁之前要先申请表级的意向锁</strong>（意向锁相当于是行锁在表这个级别的代表）</li>
+<li>表级锁互斥性（X-排他锁，S-共享锁，I-意向锁）
+<table>
+<thead>
+<tr>
+<th></th>
+<th>X</th>
+<th>IX</th>
+<th>S</th>
+<th>IS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>IX</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>S</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>IS</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>行锁有三种
+<ul>
+<li>record lock，单行锁</li>
+<li>gap lock，锁住两个索引值之间的空隙（空隙是指还没有插入值），目的是为了防止幻读，注意，如果没有命中索引，gap 锁会锁全表。</li>
+<li>next-key lock，以上两种锁的结合，也是为了防止幻读。</li>
+</ul>
+</li>
+</ul>
+<h3 id="innodb-mvcc">InnoDB MVCC</h3>
+<ul>
+<li>MVCC 的全称是多版本并发控制，目的是提高数据库的并发性能，实现读-写冲突不加锁</li>
+<li>数据库并发场景
+<ul>
+<li>读-读：不需要并发控制</li>
+<li>读-写：存在脏读、不可重复读、幻读问题</li>
+<li>写-写：存在写入脏数据问题</li>
+</ul>
+</li>
+<li>InnoDB 的读分为快照读和当前读
+<ul>
+<li>当前读，读当前最新的数据，只能通过加锁实现当前读
+<ul>
+<li>select for update、update、insert、dalete 属于当前读</li>
+</ul>
+</li>
+<li>快照读，读一个历史版本，MVCC 利用快照读实现读-写并发不加锁
+<ul>
+<li>select 属于快照读</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MVCC 通过数据记录的三个隐含字段、undo log、read view 实现读-写不加锁
+<ul>
+<li>三个隐藏字段：行 id、上版本指针、最后一个修改数据的事务 id</li>
+<li>各版本会形成一条版本链</li>
+<li>read view，快照，会把和本次读取时的事务 id 和快照作比较，保持快照的一致</li>
+</ul>
+</li>
+</ul>
+<h3 id="其他">其他</h3>
+<p>mysql 的主从同步，利用主服务的 binlog 和从服务的 relay log 实现</p>
+<h3 id="悲观锁和乐观锁">悲观锁和乐观锁</h3>
+<ul>
+<li>repeatable read 隔离级别及以下需要使用悲观锁和乐观锁</li>
+<li>悲观锁和乐观锁是用户层面的概念，不是 mysql 内部的概念，目的是为了解决写-写冲突</li>
+<li>悲观锁是指对数据并发持悲观态度，认为一定会冲突，悲观锁是在操作数据之前对数据上锁
+<ul>
+<li>一般使用数据库本身的锁作为悲观锁</li>
+<li>哪些操作可以上锁
+<ul>
+<li>select for update</li>
+<li>update、insert、delete</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>乐观锁是指对数据并发持乐观态度，认为不一定会冲突，乐观锁是在写入数据时才对数据上锁
+<ul>
+<li>乐观锁一般要配合一个额外的表字段，比如时间戳、版本号等，事务开启后，先查询版本，update 时查询版本并更新版本，由于 update 是当前读，因此 RR 隔离级别乐观锁是有效的</li>
+</ul>
+</li>
+</ul>
+<h3 id="优化">优化</h3>
+<ul>
+<li>表优化
+<ul>
+<li>建索引、去掉不该有的索引</li>
+<li>拆分表，拆出频率低的字段，冗余多的字段</li>
+<li>分表分库</li>
+<li>优化字段类型
+<ul>
+<li>用整型代替字符串类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SQL 优化
+<ul>
+<li>不用 select *，减少“回表”，减少网络传输</li>
+<li>修改不命中索引的写法
+<ul>
+<li>explain 命令查看 sql 的执行计划，可以看到是否命中索引</li>
+<li>不等于比较，字段上进行函数调用，对字段做计算，使用like匹配字符串</li>
+<li>组合索引不符合最左前缀原则，使用or连接条件</li>
+</ul>
+</li>
+<li>用联结查询代替子查询</li>
+<li>用命中索引的范围查询代替偏移量非常大的limit语句</li>
+<li>利用慢查询日志查看执行的比较慢的语句</li>
+</ul>
+</li>
+</ul>
+<h3 id="log">log</h3>
+<ul>
+<li>bin log，记录所有对数据的修改操作</li>
+<li>redo log，用于数据的持久化，防止数据因宕机丢失</li>
+<li>undo log，用于回滚数据</li>
+</ul>
+<h2 id="redis">redis</h2>
+<h3 id="redis的功能">redis的功能</h3>
+<ul>
+<li>redis 是什么
+<ul>
+<li>redis 是一种内存型 kv 数据库，性能高，它的高性能来源于内存存储和 kv 型存储，数据结构简单</li>
+<li>通常用来做缓存</li>
+</ul>
+</li>
+<li>redis 的 5 种主要数据类型
+<ul>
+<li>string，<code>set key value</code>, <code>get key</code>,<code>mget</code>, <code>mset</code></li>
+<li>hash，<code>hset hashkey field value</code>,<code>hget hashkey field</code>, <code>hmset</code>, <code>hmget</code>, <code>hgetall</code></li>
+<li>list，<code>lpush key element1 element2</code>，插入到列表头部</li>
+<li>set，无序，查找时间O(1)</li>
+<li>有序集合，查找时间O(1)，用户给每个key指定一个分数，靠分数排序</li>
+</ul>
+</li>
+<li>redis的单线程模型
+<ul>
+<li>redis的命令执行是单线程的，不存在并发问题</li>
+<li>redis6.0对网络io引入了多线程，但是核心的命令执行仍然是单线程的</li>
+<li>redis利用队列把网络连接和数据处理做了解耦</li>
+</ul>
+</li>
+<li>redis为什么高性能
+<ul>
+<li>高性能来自内存存储和key-value数据结构</li>
+<li>高并发来自基于epoll的I/O多路复用</li>
+</ul>
+</li>
+<li><strong>redis中的原子性</strong>
+<ul>
+<li>redis中经常会提到“原子性”这个词，redis中的原子性是指两条命令之间不会插入其他命令，可以保证严格的前后相邻顺序，但是并不保证全部执行成功，也不会回滚，会出现指令全部执行完毕后，一部分执行成功，另一部分失败</li>
+<li>哪些功能能保证原子性
+<ul>
+<li>事务</li>
+<li>lua脚本</li>
+</ul>
+</li>
+<li>哪些保证不了
+<ul>
+<li>pipeline，pipeline是客户端的行为，对redis是透明的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>redis的事务
+<ul>
+<li>redis的事务实际上就是一组顺序执行的命令集合。</li>
+<li>redis保证事务执行的原子性。</li>
+<li>由于redis的单线程模型，redis不存在命令的并发，也不存在隔离级别。</li>
+</ul>
+</li>
+<li>redis的watch命令
+<ul>
+<li>和事务配合使用</li>
+<li>watch命令用来监控一个或多个指定的key，如果在事务执行之前，被监控的key被修改，则事务取消执行。</li>
+<li>类似一种乐观锁机制，防止多个客户端之间出现并发冲突。</li>
+</ul>
+</li>
+<li>redis的setnx命令
+<ul>
+<li>key不存在时才会写入，写入成功返回0，写入失败返回1</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis缓存击穿穿透雪崩">redis缓存击穿、穿透、雪崩</h3>
+<ol>
+<li>高并发场景下，大量请求查询一个在数据库中存在但是在缓存中不存在的值，导致大量请求直接落到数据库的问题
+<ul>
+<li>限流，例如，对于一个值，只允许一个请求访问数据库，可以为这个key设置分布式锁</li>
+</ul>
+</li>
+<li>高并发场景下，大量请求查询一个在数据库和缓存中都不存在的值，导致大量请求不停地落到数据库的问题
+<ul>
+<li>允许存储null值</li>
+</ul>
+</li>
+<li>高并发下场景下，缓存中很多值在同一时间过期，导致大量请求直接落到数据库的问题
+<ul>
+<li>设置随机过期时间</li>
+</ul>
+</li>
+</ol>
+<h3 id="利用redis实现分布式锁">利用redis实现分布式锁</h3>
+<ul>
+<li>方案1：
+<ul>
+<li>setnx + expire + lua/事务，lua/事务保证setnx+expire成为原子操作（老办法）</li>
+<li>set &hellip; ex &hellip; nx，set命令自带nx和ex，单条命令实现setnx + expire的功能（新办法）</li>
+<li>问题1，实例A上锁，实例A执行期间锁超时被释放了，实例B趁机获得了锁，A执行完毕后把B的锁给释放了。问题2，实例A上锁，master节点挂了，锁还没同步到slave节点上，B实例趁机获得了锁，A执行完毕后把B的锁给释放了。
+<ul>
+<li>value设置为A的标识，释放锁时先查标识，标识对上才能释放</li>
+<li>先查再删需要保证原子性，解决办法，使用lua/事务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方案2：redlock算法，redis官方提出的分布式锁算法，在redis集群部署的情况下可以保证高稳定性。
+<ul>
+<li>假设redis有n个节点，该算法认为，只要超过一般的节点加锁成功，就认为加锁成功，如果加锁的时间超过了超时时间，认为加锁失败。解锁时对全部节点解锁。</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis的缓存淘汰策略">redis的缓存淘汰策略</h3>
+<ul>
+<li>redis中分为两个数据字典，一个字典存所有的key-value，一个字典存key和对应的expire（称为expire字典，只有配置了过期时间的key才会在这里面）</li>
+<li>redis的缓存淘汰策略
+<ol>
+<li>不淘汰任何键，直接返回错误</li>
+<li>在所有key中随机删除</li>
+<li>在所有key中使用LRU算法删除（最近最少使用）</li>
+<li>在所有key中使用LFU算法删除（使用频率最低）</li>
+<li>在expire字典中随即删除key</li>
+<li>在expire字典中删除马上快过期的</li>
+<li>在expire字典中使用LRU算法删除</li>
+<li>在expire字典中使用LFU算法删除</li>
+</ol>
+</li>
+<li>redis的key过期策略
+<ul>
+<li>惰性删除，当客户访问key的时候判断key是否过期，过期就删除</li>
+<li>定期删除，在expire字典中随机采样，取20个key，删掉里面过期的key，如果过期key占比超过1/4，就重复这个过程</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何保证缓存和数据库的一致性">如何保证缓存和数据库的一致性</h3>
+<ul>
+<li>分布式系统要保证分区容错性和可用性，就没办法保证数据的强一致性，最多保证最终一致性，甚至是弱一致性。</li>
+<li>方案1：写入命中缓存时，既更新数据库，又更新缓存。
+<ul>
+<li>问题1：其中一个操作失败导致数据不一致</li>
+<li>问题2：不管是先写缓存还是后写缓存，都会存在写并发问题，例如“A写缓存X=1，B写缓存X=2，B写数据库X=2，A写数据库X=1”，造成了数据不一致。</li>
+</ul>
+</li>
+<li>方案2：写入时删除缓存，写数据库。由读请求写缓存。
+<ul>
+<li>问题1：其中一个操作失败导致数据不一致</li>
+<li>问题2：不存在写并发问题，但存在读写并发问题。</li>
+</ul>
+</li>
+<li>方案1和方案2都会遇到操作失败和并发问题，解决方案
+<ul>
+<li>对于并发问题，使用分布式锁</li>
+<li>对于操作失败问题
+<ol>
+<li>重试，缺陷是会占用更多资源，并且即使是无限重试也不一定100%成功</li>
+<li>异步重试，利用消息队列重试，缺陷是会提高系统复杂度，要解决消息队列的失败问题。</li>
+<li>利用数据库的变更日志更新缓存（例如mysql的binlog）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>从整体复杂度来讲，方案2更好一些，对于方案2，还可以采用写DB后延迟一段时间删除缓存的策略，尽量让缓存不会被写回旧数据</li>
+<li>此外，数据不一致还可能由redis和数据库内部数据不同步导致。</li>
+<li>总之，实现数据的强一致性是不可能的，最终一致性也不能百分百保证，因此，最后，引入手动补偿机制，手动修复极端情况下的不一致数据</li>
+</ul>
+<h2 id="mq">MQ</h2>
+<h3 id="mq的用途">MQ的用途</h3>
+<ul>
+<li>削峰</li>
+<li>解耦</li>
+<li>异步</li>
+</ul>
+<h3 id="kafka的特点">kafka的特点</h3>
+<ul>
+<li>高吞吐量</li>
+<li>消息可持久性存储</li>
+<li>分布式，支持横向扩展</li>
+<li>稳定性低，容易丢数据，容易出现数据重复</li>
+</ul>
+<h3 id="kafka原理">kafka原理</h3>
+<ul>
+<li>kafka是pull模型，不是push模型，消费者要主动拉取数据。</li>
+<li>kafka分为queue模式和topic模式
+<ul>
+<li>queue模式，消息是按顺序消费的，消费者主动拉取消息，每个消息只能被一个消费者消费，并且只能消费一次。</li>
+<li>topic模式，发布订阅模式，一个topic分多个partition，消费者组成消费者组，topic由消费者组订阅。
+<ul>
+<li>同一个topic中，同一个partition内的消息是有序的，不同paitition之间的消息是无序的。</li>
+<li>无论消不消费，消息都不会被删除，直到过期。</li>
+<li>一个消费者组订阅一个topic，消息被均衡地送给每个消费者，分配给各消费者的partition互不相同（不存在两个消费者消费同一个partition的情况）。消费者数量大于partition数量时，会有消费者空闲。</li>
+<li>生产者和消费者都可以指定固定的订阅分区</li>
+<li>rebalance，重平衡，消费者组内消费者数量发生变化时，分区会重新分配，这叫rebalance，消费者定期向partition发送心跳来证明自己存活。</li>
+<li>一个topic可以由多个消费者组订阅，并且这些消费者组消费到的消息是完全相同的。如果想让不同的消费者消费同一个partition，就要把它们分到不同的组中。为了支持同一个消息能被多个消费者消费，kafka会记录partition中不同消费者各自的消费位置。</li>
+<li>每个partition又有多个副本，其中一个是leader副本，其余的是follower副本，leader负责收发消息，follower是备份，leader和follower分布在不同的节点上。</li>
+<li>kafka的节点称为broker</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>生产者同步发送和异步发送模式
+<ul>
+<li><code>producer.type</code>参数指定了生产者是同步发送还是异步发送，值为asnyc时为异步发送，值为sync时为同步发送。用户调用<code>send()</code>方法时，kafka会根据producer.type参数决定消息的发送方式，如果是同步发送，就会直接发送消息，如果是异步发送，会先把消息放入一个本地缓存，然后启动一个发送线程，当缓存中的消息满足一定条件时，发送线程批量发送消息。</li>
+<li><strong>不管同步还是异步模式，消息都是按序发送的，只有发送失败时，才可能破坏发送消息的顺序。</strong></li>
+<li>send函数本身的调用方式是异步调用，也就是说，不管发送模式是同步还是异步，send都会立即返回。</li>
+<li><code>send().get()</code>只是将函数的调用方式从异步改成同步，并不会改变producer的发送模式。</li>
+</ul>
+</li>
+<li>kafka如何实现三种消息传递语义
+<ul>
+<li>at most once，最多一次，消息不会重复，但有可能丢
+<ul>
+<li>ack=0就是at most once</li>
+</ul>
+</li>
+<li>at least once，至少一次，消息不会丢，但有可能重复
+<ul>
+<li>ack=1或者ack=all，配合retries</li>
+</ul>
+</li>
+<li>exaclty once，不多不少正好一次
+<ul>
+<li>ack=all配合retries，保证不丢数据</li>
+<li>启用kafka的幂等配置，<code>enable.idempotence</code>，保证重试不会导致消息重复</li>
+<li>消费者处理完消息之后再手动提交offset，保证消费</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消费者自动、同步、异步提交
+<ul>
+<li>消费者可以配置自动提交offset（<code>auto.commit.enable</code>参数），自动提交和消费消息是异步的，消费者会定期向kafka提交offset。自动提交可能会造成消息丢失，即提交成功但是消费失败</li>
+<li>手动同步提交，除了会阻塞，没什么问题</li>
+<li>手动异步提交，异步提交不会发生阻塞，但是kafka没给异步提交提供重试机制（防止重试导致旧的提交覆盖新的提交）。（但是提交失败本身也会导致重复消费）</li>
+</ul>
+</li>
+<li>kafka事务
+<ul>
+<li>事务场景
+<ul>
+<li>发送多条消息到一个topic</li>
+<li>发送到多个topic、多个partition（典型的分布式事务）</li>
+<li>消费-处理-发送</li>
+</ul>
+</li>
+<li>保证多个消息、多个操作的原子性，即同时成功，同时失败，失败会回滚。</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka如何保证顺序消费">kafka如何保证顺序消费</h3>
+<ul>
+<li>topic端，让生产者和消费者指定同一个partition，并且保证分区有足够多的副本，防止partition挂掉。</li>
+<li>生产端，单线程发送消息
+<ul>
+<li>消息丢失会破坏消息顺序，所以要配置ack=1或ack=all并配置重试</li>
+<li>同时发出多次消息时可能会破坏消息的顺序性（异步发送的一批数据算一次），因此，要将<code>max.in.flight.requests.per.connection</code>参数设置为1（这个参数规定了生产者能同时发送多少条未经确认的消息），还要配置ack=1或ack=all能让broker确认消息。</li>
+</ul>
+</li>
+<li>消费端，单线程消费消息</li>
+</ul>
+<h3 id="kafka如何防止消息丢失">kafka如何防止消息丢失</h3>
+<ul>
+<li>生产者丢消息
+<ul>
+<li>kafka客户端支持异步发送消息，生产者丢失消息会发生在这个过程中，可能会由于网络原因或者数据太大等原因发送失败</li>
+<li>解决方法
+<ol>
+<li>配置retries，消息发送失败就重试</li>
+<li>给发送方法加回调函数，消息发送失败时进行特殊处理（例如重试、记录日志并根据日志异步重试）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>broker丢消息
+<ul>
+<li>leader分区每收到一条消息都要同步到follower，如果数据还没落盘或者没等同步完leader就挂了，某一个follower成为了新的leader，就会导致消息丢失。</li>
+<li>解决办法，利用ack机制解决
+<ul>
+<li>ack机制是指kafka接收到消息后会向生产者发送确认，<strong>ack参数影响了kafka的消息持久性</strong>，ack参数有三种（<code>request.required.acks</code>参数）
+<ul>
+<li>ack = 0， 生产者不会等待broker发送ack，这种情况无法保证不丢数据。（生产者的retries参数这时也是失效的）</li>
+<li>ack = 1，leader分区接收到数据后，向生产者返回ack，如果消息没有同步到follower中，就会导致数据丢失。（kafka默认的是ack=1）</li>
+<li>ack = all，等leader向所有follower同步完数据，才会返回ack。</li>
+</ul>
+</li>
+<li>可以利用ack=all配合retries参数让生产者失败重试，保证数据不丢失。（<code>message.send.max.retries</code>参数用来设置发送端重试次数）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消费者丢消息
+<ul>
+<li>消费者可以配置自动提交offset（<code>auto.commit.enable</code>参数），自动提交和消费消息是异步的，消费者会定期向kafka提交offset，如果offset已经提交，而消息消费失败，就会丢失消息</li>
+<li>解决办法，将自动提交offset改为手动提交，消息消费完成后再提交offset</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka如何防止消息重复">kafka如何防止消息重复</h3>
+<ul>
+<li>消息重复的情况
+<ul>
+<li>生产者失败重试导致的消息重复</li>
+<li>消费者未提交offset导致的消息重复
+<ul>
+<li>消息处理完成，消费者突然挂了，未能成功提交offset</li>
+<li>消息正在处理，partition发生了重平衡</li>
+</ul>
+</li>
+<li>上游业务发送了重复的消息</li>
+</ul>
+</li>
+<li>解决办法
+<ul>
+<li>对于第一种情况，启用kafka幂等配置，重试不会导致消息重复</li>
+<li>对于后两种情况，需要在业务层面实现接口的幂等性</li>
+</ul>
+</li>
+</ul>
+<h2 id="系统设计">系统设计</h2>
+<p>根据场景设计（微信发红包）</p>
+<p>读多写多、读多写少、写多读少、写少读少</p>
+<p>系统指标</p>
+<p>并发数、耗时、数据量</p>
+<h2 id="其他问题">其他问题</h2>
+<p>在一个超大数据集上操作的问题</p>
+<h3 id="项目相关">项目相关</h3>
+<p>es</p>
+<ul>
+<li>项目有什么难点，怎么解决的</li>
+<li>学到了什么</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/16.interview-bagu-golang/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>,&nbsp;<a href="/tags/golang/">golang</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/15.remainder-and-modulo/" class="prev" rel="prev" title="取余和取模的区别"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>取余和取模的区别</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

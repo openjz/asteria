@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>面试 - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/</link>
+        <description>面试 - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+    <title>面试八股-golang</title>
+    <link>http://blog.shiwj.top/16.interview-bagu-golang/</link>
+    <pubDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/16.interview-bagu-golang/</guid>
+    <description><![CDATA[golang 部分内容参考《go 程序员面试笔试宝典》 go 有什么特点 特性 协程 静态编译，编译出的可执行文件体积小 有 runtime、垃圾回收、反射 指针 和其他语言]]></description>
+</item>
+</channel>
+</rss>
