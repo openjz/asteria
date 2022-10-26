@@ -4,7 +4,23 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 23 Oct 2022 19:00:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>打印html页面</title>
+    <link>http://blog.shiwj.top/18.webpage-print/</link>
+    <pubDate>Sun, 23 Oct 2022 19:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/18.webpage-print/</guid>
+    <description><![CDATA[pt、mm和px的区别 px是像素，pt是磅（1/72英寸），mm是毫米（1英寸=25.4mm） pt和mm是物理长度单位，这个物理长度指的是印]]></description>
+</item>
+<item>
+    <title>html入门笔记</title>
+    <link>http://blog.shiwj.top/17.html-mdn-tutorial/</link>
+    <pubDate>Sun, 23 Oct 2022 09:17:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/17.html-mdn-tutorial/</guid>
+    <description><![CDATA[参考： MDN html教程 MDN web表单教程 1、基本概念 元素：开始标签、内容、结束标签。例如：&lt;p&gt;你好&lt;/p&gt; 属性：例如：]]></description>
+</item>
+<item>
     <title>面试八股-golang</title>
     <link>http://blog.shiwj.top/16.interview-bagu-golang/</link>
     <pubDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</pubDate>
@@ -67,22 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/algorithm-problem/</guid>
     <description><![CDATA[常用方法 常用方法： 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递]]></description>
-</item>
-<item>
-    <title>Unity入门笔记</title>
-    <link>http://blog.shiwj.top/unity-note/</link>
-    <pubDate>Sun, 26 Jun 2022 10:48:30 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/unity-note/</guid>
-    <description><![CDATA[参考 unity manual unity-essentials 系列教程 编辑器操作 场景视图导航 pan（移动视图）：使用“手”工具，按住鼠标左键拖动视图 zoom（放缩）：使用鼠标滚轮或按住 alt 和鼠标]]></description>
-</item>
-<item>
-    <title>事业编计算机知识</title>
-    <link>http://blog.shiwj.top/kaobian-cs/</link>
-    <pubDate>Tue, 21 Jun 2022 19:21:16 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/kaobian-cs/</guid>
-    <description><![CDATA[考点 组成原理、体系结构 网络 操作系统、windows 数据库 软件工程 安全 office 编程语言(c、java) 基础数据结构、算法 组成原理 多媒体信息：文本，图]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>html入门笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="html入门笔记" />
+<meta property="og:description" content="参考： MDN html教程 MDN web表单教程 1、基本概念 元素：开始标签、内容、结束标签。例如：&lt;p&gt;你好&lt;/p&gt; 属性：例如：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/17.html-mdn-tutorial/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-23T09:17:00+08:00" />
+<meta property="article:modified_time" content="2022-10-23T09:17:00+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="html入门笔记"/>
+<meta name="twitter:description" content="参考： MDN html教程 MDN web表单教程 1、基本概念 元素：开始标签、内容、结束标签。例如：&lt;p&gt;你好&lt;/p&gt; 属性：例如："/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/17.html-mdn-tutorial/" /><link rel="prev" href="http://blog.shiwj.top/16.interview-bagu-golang/" /><link rel="next" href="http://blog.shiwj.top/18.webpage-print/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "html入门笔记",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/17.html-mdn-tutorial\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "前端, html","wordcount":  6750 ,
+        "url": "http:\/\/blog.shiwj.top\/17.html-mdn-tutorial\/","datePublished": "2022-10-23T09:17:00+08:00","dateModified": "2022-10-23T09:17:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">html入门笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-23">2022-10-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6750 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1基本概念">1、基本概念</a></li>
+    <li><a href="#2head标签">2、<code>&lt;head&gt;</code>标签</a></li>
+    <li><a href="#3文档结构">3、文档结构</a>
+      <ul>
+        <li><a href="#文本结构">文本结构</a></li>
+        <li><a href="#超链接">超链接</a></li>
+        <li><a href="#文字排版">文字排版</a></li>
+        <li><a href="#文档布局元素">文档布局元素</a></li>
+      </ul>
+    </li>
+    <li><a href="#4多媒体">4、多媒体</a>
+      <ul>
+        <li><a href="#图片">图片</a></li>
+        <li><a href="#音视频">音视频</a></li>
+        <li><a href="#其他嵌入类型">其他嵌入类型</a></li>
+        <li><a href="#svg图">SVG图</a></li>
+        <li><a href="#响应式图片自适应图片">响应式图片（自适应图片）</a></li>
+      </ul>
+    </li>
+    <li><a href="#5表格">5、表格</a>
+      <ul>
+        <li><a href="#基本">基本</a></li>
+        <li><a href="#其他">其他</a></li>
+      </ul>
+    </li>
+    <li><a href="#6表单form">6、表单（form）</a>
+      <ul>
+        <li><a href="#基础">基础</a></li>
+        <li><a href="#表单部件">表单部件</a></li>
+        <li><a href="#发送表单数据">发送表单数据</a></li>
+        <li><a href="#校验表单数据">校验表单数据</a></li>
+        <li><a href="#自定义表单控件">自定义表单控件</a></li>
+        <li><a href="#用js发送表单">用js发送表单</a></li>
+        <li><a href="#使用css定制表单样式">使用css定制表单样式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>参考：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML" target="_blank" rel="noopener noreffer">MDN html教程</a>
+</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/Forms" target="_blank" rel="noopener noreffer">MDN web表单教程</a>
+</li>
+</ul>
+<h2 id="1基本概念">1、基本概念</h2>
+<ul>
+<li>元素：开始标签、内容、结束标签。例如：<code>&lt;p&gt;你好&lt;/p&gt;</code></li>
+<li>属性：例如：<code>&lt;p class=&quot;c1&quot;&gt;你好&lt;/p&gt;</code>。<strong>属性值最好加上引号</strong>。属性值可以有多个，用空格分隔，例如<code>class=&quot;c1 c2 c3&quot;</code></li>
+<li>布尔属性：属性值和属性名一致（通常会省略属性值），例如：<code>&lt;input type=&quot;text&quot; disabled=&quot;disabled&quot;&gt;</code></li>
+<li>块级元素：自己占一行</li>
+<li>内联元素：内联元素不会导致换行</li>
+<li>空元素：只有开始标签，例如：<code>&lt;img src=&quot;xxx&quot;&gt;</code></li>
+</ul>
+<p>html文档示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- 开头这么写就行，别的写法已经过时了 --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span> 
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>我的测试站点<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;shortcut icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;favicon.ico&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;image/x-icon&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>这是我的页面<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如何打印html中的特殊字符</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;</td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td>&quot;</td>
+<td><code>&amp;quot;</code></td>
+</tr>
+<tr>
+<td>'</td>
+<td><code>&amp;apos;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td><code>&amp;amp;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2head标签">2、<code>&lt;head&gt;</code>标签</h2>
+<p><code>&lt;title&gt;</code>元素：文档标题</p>
+<p>title元素会被显示在浏览器标签页上、作为默认的书签名、显示在搜索引擎的搜索结果中等。</p>
+<p><code>&lt;meta&gt;</code>元素（元数据）：</p>
+<ul>
+<li>
+<p>许多<code>&lt;meta&gt;</code>元素包含了name和content属性，例如<code>&lt;meta name=&quot;description&quot; content=&quot;xxx&quot;&gt;</code></p>
+</li>
+<li>
+<p>如果页面使用了Facebook提供的元数据协议Open Graph Data，当在Facebook上链接了此页面时，这个链接就会显示成一个图像、标题和描述的组合，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:image&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;https://developer.mozilla.org/static/img/opengraph-logo.png&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:description&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;xxxxx&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:title&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;Mozilla Developer Network&#34;</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>网页的自定义图标</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span> 
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    ...
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;shortcut icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;favicon.ico&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;image/x-icon&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!-- 一些其他类型的图标 --&gt;</span>
+<span class="c">&lt;!-- third-generation iPad with high-resolution Retina display: --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;apple-touch-icon-precomposed&#34;</span> <span class="na">sizes</span><span class="o">=</span><span class="s">&#34;144x144&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- iPhone with high-resolution Retina display: --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;apple-touch-icon-precomposed&#34;</span> <span class="na">sizes</span><span class="o">=</span><span class="s">&#34;114x114&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- first- and second-generation iPad: --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;apple-touch-icon-precomposed&#34;</span> <span class="na">sizes</span><span class="o">=</span><span class="s">&#34;72x72&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;apple-touch-icon-precomposed&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- basic favicon --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;shortcut icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>为文档设置主语言</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- 可以给文档设置主语言 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;zh-CN&#34;</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!-- 当然也可以为文档其他部分单独设置语言 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>日语实例: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;jp&#34;</span><span class="p">&gt;</span>ご飯が熱い。<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3文档结构">3、文档结构</h2>
+<h3 id="文本结构">文本结构</h3>
+<ol>
+<li>标题和段落
+<ul>
+<li>标题：<code>&lt;h1&gt;</code>、<code>&lt;h2&gt;</code>、<code>&lt;h3&gt;</code>、<code>&lt;h4&gt;</code>、<code>&lt;h5&gt;</code>、<code>&lt;h6&gt;</code></li>
+<li>段落：<code>&lt;p&gt;</code></li>
+</ul>
+</li>
+<li>列表
+<ul>
+<li>无序列表和有序列表：<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code></li>
+<li>列表项：<code>&lt;li&gt;</code></li>
+</ul>
+</li>
+<li>强调
+<ul>
+<li><code>&lt;em&gt;</code>：默认是斜体风格</li>
+<li><code>&lt;strong&gt;</code>：默认是粗体风格</li>
+</ul>
+</li>
+<li>表象元素（presentational elements）：不具备语义，仅用于改变文本样式。斜体<code>&lt;i&gt;</code>、粗体<code>&lt;b&gt;</code>、下划线<code>&lt;u&gt;</code>。不推荐使用这些元素，应该使用css代替。</li>
+</ol>
+<h3 id="超链接">超链接</h3>
+<ul>
+<li>
+<p>超链接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://www.mozilla.org/zh-CN/&#34;</span> <span class="p">&gt;</span>Mozilla 主页<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>将图片作为链接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://www.mozilla.org/zh-CN/&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;mozilla-image.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;链接至 Mozilla 主页的 Mozilla 标志&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>跳转到页内的某个位置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- 为跳转位置指定一个id --&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;Mailing_address&#34;</span><span class="p">&gt;</span>地址<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!-- 通过#跳转 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;xxx.html#Mailing_address&#34;</span><span class="p">&gt;</span>跳转到某页的指定位置<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#Mailing_address&#34;</span><span class="p">&gt;</span>页内跳转<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>其他属性</p>
+<ul>
+<li>title：鼠标悬停在链接上时，title会作为提示信息出现</li>
+<li>download：当链接到一个可下载的资源时，download属性提供一个文件名。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文字排版">文字排版</h3>
+<ul>
+<li>
+<p>描述列表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">dl</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>内心独白<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>戏剧中，某个角色对自己的内心活动或感受进行念白表演，这些台词只面向观众，而其他角色不会听到。<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+  ...
+<span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>引用</p>
+<ul>
+<li>块引用：<code>&lt;blockquote cite=&quot;urlxxx&quot;&gt;...&lt;/blockquote&gt;</code></li>
+<li>行内引用：<code>&lt;q cite=&quot;urlxxx&quot;&gt;...&lt;/q&gt;</code>。浏览器默认会将行内引用的文本放入引号中。</li>
+<li>引文：<code>&lt;cite&gt;...&lt;/cite&gt;</code>。浏览器默认不显示cite元素中的内容，如果为其附上链接（即将其放在<code>&lt;a&gt;&lt;/a&gt;</code>内部），就会被显示出来，默认斜体。</li>
+</ul>
+</li>
+<li>
+<p>缩略语：<code>&lt;abbr title=&quot;xxx&quot;&gt;HTML&lt;/abbr&gt;</code></p>
+</li>
+<li>
+<p>联系方式：<code>&lt;address&gt;...&lt;/address&gt;</code>，仅仅为了标记联系方式</p>
+</li>
+<li>
+<p>上下标：下标<code>&lt;sub&gt;&lt;/sub&gt;</code>、上标<code>&lt;sup&gt;&lt;/sup&gt;</code></p>
+</li>
+<li>
+<p>代码</p>
+<ul>
+<li><code>&lt;code&gt;</code>：用于标记代码</li>
+<li><code>&lt;pre&gt;</code>：用于保留空白符</li>
+<li><code>&lt;var&gt;</code>：用于标记变量</li>
+<li><code>&lt;kbd&gt;</code>：用于标记键盘输入</li>
+<li><code>&lt;samp&gt;</code>：用于标记输出</li>
+</ul>
+</li>
+<li>
+<p>时间和日期：<code>&lt;time datetime=&quot;2016-01-20&quot;&gt;2016年1月20日&lt;/time&gt;</code>。datetime支持各种各样的日期格式</p>
+</li>
+</ul>
+<h3 id="文档布局元素">文档布局元素</h3>
+<ul>
+<li><code>&lt;header&gt;</code>：页眉。</li>
+<li><code>&lt;nav&gt;</code>：导航栏。</li>
+<li><code>&lt;main&gt;</code>：主内容，只能有一个。</li>
+<li><code>&lt;aside&gt;</code>：侧边栏。</li>
+<li><code>&lt;footer&gt;</code>：页脚。</li>
+<li><code>&lt;article&gt;</code>、<code>section</code>：文章和节</li>
+<li><code>div</code>和<code>span</code>：无语义元素，div是块级的，span是内联的</li>
+<li><code>br</code>、<code>hr</code>：换行和水平分割线</li>
+</ul>
+<h2 id="4多媒体">4、多媒体</h2>
+<h3 id="图片">图片</h3>
+<p>（图片和css属性background-image不同，background-image只是装饰性的图片）</p>
+<p><code>&lt;img src=&quot;xxx.jpg&quot;&gt;</code></p>
+<p>属性：</p>
+<ul>
+<li>alt属性：对图片的描述，当图片没有被加载出来时，显示这些文字</li>
+<li>width和height：定义图片的宽高</li>
+<li>title：鼠标悬停在图片上时显示title</li>
+</ul>
+<p>两种图片搭配文字的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;figure&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/dinosaur_small.jpg&#34;</span>
+     <span class="na">alt</span><span class="o">=</span><span class="s">&#34;一只恐龙头部和躯干的骨架，它有一个巨大的头，长着锋利的牙齿。&#34;</span>
+     <span class="na">width</span><span class="o">=</span><span class="s">&#34;400&#34;</span>
+     <span class="na">height</span><span class="o">=</span><span class="s">&#34;341&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>曼彻斯特大学博物馆展出的一只霸王龙的化石<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!-- html5，figure中可以是几张图片、一段代码、音视频、方程、表格或别的 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg&#34;</span>
+     <span class="na">alt</span><span class="o">=</span><span class="s">&#34;一只恐龙头部和躯干的骨架，它有一个巨大的头，长着锋利的牙齿。&#34;</span>
+     <span class="na">width</span><span class="o">=</span><span class="s">&#34;400&#34;</span>
+     <span class="na">height</span><span class="o">=</span><span class="s">&#34;341&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>曼彻斯特大学博物馆展出的一只霸王龙的化石<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="音视频">音视频</h3>
+<p><code>&lt;video&gt;</code>和<code>&lt;audio&gt;</code>参考<a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content" target="_blank" rel="noopener noreffer">https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content</a>
+</p>
+<h3 id="其他嵌入类型">其他嵌入类型</h3>
+<ul>
+<li><code>&lt;iframe&gt;</code>：用于嵌入其他网页，参考<a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies" target="_blank" rel="noopener noreffer">https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies</a>
+</li>
+<li><code>&lt;embed&gt;</code>和<code>&lt;object&gt;</code>：用于嵌入java applet、flash、pdf等奇怪的内容，一般不会用到</li>
+</ul>
+<h3 id="svg图">SVG图</h3>
+<p>略</p>
+<h3 id="响应式图片自适应图片">响应式图片（自适应图片）</h3>
+<p>略</p>
+<h2 id="5表格">5、表格</h2>
+<h3 id="基本">基本</h3>
+<ul>
+<li><code>tr</code>：行</li>
+<li><code>th</code>：表头单元格</li>
+<li><code>td</code>：普通单元格</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Ella<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Juan<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Breed<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Jack Russell<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用colspan和rowspan属性合并单元格。colspan表示单元格占几列，rowspan表示单元格占几行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">colspan</span><span class="o">=</span><span class="s">&#34;2&#34;</span><span class="p">&gt;</span>Animals<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">colspan</span><span class="o">=</span><span class="s">&#34;2&#34;</span><span class="p">&gt;</span>Hippopotamus<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">rowspan</span><span class="o">=</span><span class="s">&#34;2&#34;</span><span class="p">&gt;</span>Horse<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Mare<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Stallion<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用<code>&lt;colgroup&gt;</code>和<code>&lt;col&gt;</code>指定某列的样式，每个col按顺序对应表格的一列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">colgroup</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">col</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">col</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;background-color: yellow&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">colgroup</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    ...
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="其他">其他</h3>
+<ul>
+<li>表格标题：<code>&lt;table&gt; &lt;caption&gt; xxx &lt;/caption&gt; &lt;/table&gt;</code></li>
+<li>表格结构：<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>、<code>&lt;tbody&gt;</code>，分别对应表格的第一行，最后一行和中间的部分。（用来代替<code>&lt;tr&gt;</code>）</li>
+<li>嵌套表格：可以在<code>&lt;td&gt;</code>中嵌套另外一个表格</li>
+<li>scope属性：区分不同类型的表头单元格</li>
+<li>scope的替代方法：使用id和headers建立表头和单元格的联系</li>
+</ul>
+<h2 id="6表单form">6、表单（form）</h2>
+<h3 id="基础">基础</h3>
+<p><code>&lt;form&gt;&lt;/form&gt;</code>：所有html表单都定义在form标签内部</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- action定义了发送数据的uri --&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/my-handling-form-page&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span><span class="p">&gt;</span>
+    ...
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>&lt;label&gt;</code>：文本标签</li>
+<li><code>&lt;input&gt;</code>：单行文本输入框</li>
+<li><code>&lt;textarea&gt;</code>：多行文本输入框</li>
+<li><code>&lt;button&gt;</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- label、input、textarea、button --&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- for属性：将标签链接到表单小部件，for的值对应小部件的id --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="p">&gt;</span>Name:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--  type属性：定义输入类型 --&gt;</span>
+    <span class="c">&lt;!-- name属性：定义字段名，用于向服务器发送数据 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;name&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;user_name&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;mail&#34;</span><span class="p">&gt;</span>E-mail:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;email&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;mail&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;user_email&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;msg&#34;</span><span class="p">&gt;</span>Message:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;msg&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;user_message&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- type属性：submit、reset、button --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>Send your message<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!-- input和textarea的默认值 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;by default this element is filled with this text&#34;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">textarea</span><span class="p">&gt;</span>by default this element is filled with this text<span class="p">&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>&lt;fieldset&gt;</code>：可以在里面放一组元素</li>
+<li><code>&lt;legend&gt;</code>：给fieldset打标签</li>
+<li><code>&lt;radio&gt;</code>：单选按钮</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;</span>Fruit juice size<span class="p">&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;size&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;size_1&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;small&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;size_1&#34;</span><span class="p">&gt;</span>Small<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;size&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;size_2&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;medium&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;size_2&#34;</span><span class="p">&gt;</span>Medium<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;size&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;size_3&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;large&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;size_3&#34;</span><span class="p">&gt;</span>Large<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="表单部件">表单部件</h3>
+<p>通用属性：</p>
+<ul>
+<li>autofocus：默认值（false），元素自动具有输入焦点，文档中只能有一个表单元素可以指定这个属性。</li>
+<li>disabled：默认值（false）</li>
+<li>form</li>
+<li>name：提交数据时的字段名</li>
+<li>value：初始值</li>
+</ul>
+<p>单行文本输入框<code>&lt;input&gt;</code>：</p>
+<ul>
+<li><code>&lt;input&gt;</code>是个空元素</li>
+<li>约束：如果输入多行文本，发送数据前浏览器会删掉换行符</li>
+<li>可以被标记为readonly、disabled</li>
+<li>可以有placeholder</li>
+<li>size指定框的尺寸，maxlength指定可输入的最大字符数</li>
+<li>type属性默认值为text，可以指定为其他type，浏览器会帮助做输入校验
+<ul>
+<li>email（可配合mutiple属性）、password、search、tel、url</li>
+</ul>
+</li>
+</ul>
+<p>多行文本输入框<code>&lt;textarea&gt;</code>：</p>
+<ul>
+<li><code>&lt;textarea cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;</code></li>
+<li>属性
+<ul>
+<li>cols和rows：行数和列数</li>
+<li>resize：允许通过拖放调整文本框大小，值为none时关闭该功能。</li>
+<li>wrap：soft/hard，是否自动换行显示</li>
+</ul>
+</li>
+</ul>
+<p>选择框<code>&lt;select&gt;</code></p>
+<ul>
+<li>一个<code>&lt;option&gt;</code>子元素定义一个选项。
+<ul>
+<li>selected属性，指定选择框默认值</li>
+<li>value属性，指定该option对应的数据，如果没有value属性，将option的内容作为数据</li>
+</ul>
+</li>
+<li><code>&lt;optgroup&gt;</code>子元素定义一个选项组，<code>&lt;option&gt;</code>元素作为其子元素
+<ul>
+<li>label属性：选项组的名称</li>
+</ul>
+</li>
+<li><code>&lt;select&gt;</code>
+<ul>
+<li>mutiple属性，允许用户利用操作系统提供的默认机制选择多个值，例如按下ctrl/cmd后点击多个值</li>
+</ul>
+</li>
+</ul>
+<p>自动补全输入框，需要<code>&lt;input&gt;</code>和<code>&lt;datalist&gt;</code>配合实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">list</span><span class="o">=</span><span class="s">&#34;mySuggestion&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">datalist</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;mySuggestion&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>Apple<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>Banana<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">datalist</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可选择项（前面或后面有个能点的小框框）</p>
+<ul>
+<li>复选框
+<ul>
+<li>type属性值为checkbox的<code>&lt;input&gt;</code>元素</li>
+</ul>
+</li>
+<li>单选框
+<ul>
+<li>type属性值为radio的<code>&lt;input&gt;</code>元素</li>
+</ul>
+</li>
+<li>checked属性：指示该部件的默认状态，&ldquo;选中&quot;或&quot;未选中&rdquo;</li>
+<li>value属性：默认为&quot;on&quot;值</li>
+</ul>
+<p>按钮</p>
+<ul>
+<li>有三种类型的按钮
+<ul>
+<li>submit：不带type属性的button默认为submit类型</li>
+<li>reset：将所有表单部件重置为默认值，type值为reset</li>
+<li>Anonymous：没有任何功能，type属性为button</li>
+</ul>
+</li>
+<li>使用<code>&lt;button&gt;</code>元素或者<code>&lt;input&gt;</code>元素来创建一个按钮，type属性的值指定显示什么类型的按钮。
+<ul>
+<li>区别：<code>&lt;input&gt;</code>是个空元素，只能用value属性指定纯文本标签，而<code>&lt;button&gt;</code>内部可以有子元素，可以相应地样式化</li>
+</ul>
+</li>
+</ul>
+<p>其他</p>
+<ul>
+<li>数字
+<ul>
+<li><code>&lt;input type=&quot;number&quot; name=&quot;age&quot; id=&quot;age&quot; min=&quot;1&quot; max=&quot;10&quot; step=&quot;2&quot;&gt;</code></li>
+<li>将<code>input</code>的type属性设置为number</li>
+<li>只允许浮点数</li>
+<li>min、max和step属性设置最大值、最小值和增加或减小的步进值</li>
+</ul>
+</li>
+<li>滑块
+<ul>
+<li><code>&lt;input type=&quot;range&quot; name=&quot;beans&quot; id=&quot;beans&quot; min=&quot;0&quot; max=&quot;500&quot; step=&quot;10&quot;&gt;</code></li>
+</ul>
+</li>
+<li>收集日期和时间
+<ul>
+<li>本地日期时间（年月日时分、没有时区）
+<ul>
+<li><code>&lt;input type=&quot;datetime-local&quot; name=&quot;datetime&quot; id=&quot;datetime&quot;&gt;</code></li>
+</ul>
+</li>
+<li>日期：type为date</li>
+<li>月：type为month</li>
+<li>时间：type为time</li>
+<li>星期：type为week</li>
+<li>所有日期和时间控制都可以使用min和max属性来约束，例如<code>&lt;input type=&quot;date&quot; name=&quot;myDate&quot; min=&quot;2013-06-01&quot; max=&quot;2013-08-31&quot; id=&quot;myDate&quot;&gt;</code></li>
+</ul>
+</li>
+<li>拾色器
+<ul>
+<li><code>&lt;input type=&quot;color&quot; name=&quot;color&quot; id=&quot;color&quot;&gt;</code></li>
+</ul>
+</li>
+<li>文件选择器
+<ul>
+<li><code>&lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot; accept=&quot;image/*&quot; multiple&gt;</code></li>
+<li>accept属性约束文件类型</li>
+<li>mutiple属性允许用户选择多个文件</li>
+</ul>
+</li>
+<li>隐藏表单
+<ul>
+<li>type值为hidden</li>
+</ul>
+</li>
+<li>图像按钮
+<ul>
+<li><code>&lt;input type=&quot;image&quot; alt=&quot;Click me!&quot; src=&quot;my-img.png&quot; width=&quot;80&quot; height=&quot;30&quot; /&gt;</code></li>
+<li>支持所有<code>&lt;img&gt;</code>和按钮的属性</li>
+<li>提交数据时提交的是点击位置的坐标（左上角坐标为0,0），数据为两个键值对，它们的key分别为name属性拼上.x和.y</li>
+</ul>
+</li>
+<li>仪表和进度条
+<ul>
+<li>进度条
+<ul>
+<li><code>&lt;progress max=&quot;100&quot; value=&quot;75&quot;&gt;75/100&lt;/progress&gt;</code></li>
+</ul>
+</li>
+<li>仪表
+<ul>
+<li><code>&lt;meter min=&quot;0&quot; max=&quot;100&quot; value=&quot;75&quot; low=&quot;33&quot; high=&quot;66&quot; optimum=&quot;50&quot;&gt;75&lt;/meter&gt;</code></li>
+<li>min和max指定了最大值和最小值，low和high是两个阈值，仪表的颜色根据optimum的值所在区间变化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>html5中<code>&lt;input&gt;</code>元素类型：email、search、tel、url、number、range、datetime-local、date、month、time、week、color</p>
+<h3 id="发送表单数据">发送表单数据</h3>
+<p><code>&lt;form&gt;</code>元素定义如何发送数据</p>
+<ul>
+<li>action属性
+<ul>
+<li>值可以是绝对url，相对url</li>
+<li>值为“”、“#”或没有该属性时，数据被发送到当前页面</li>
+</ul>
+</li>
+<li>method属性
+<ul>
+<li>get：使用get方法时，数据会被作为参数拼到url后面</li>
+<li>post：使用post方法时，数据会被放在请求体中</li>
+</ul>
+</li>
+<li>enctype属性，设置http头的Content-Type
+<ul>
+<li>发送文件时要将该值设置为multipart/form-data。数据将被分成多个部分，每个文件单独占用一个部分，表单正文中包含的文本数据占用一个部分（文件被视为二进制数据，其他数据都被视为文本数据）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>安全问题</strong>：</p>
+<ul>
+<li>XSS和CSRF
+<ul>
+<li>XSS
+<ul>
+<li>跨站脚本攻击(Cross Site Scripting)。攻击者在服务端返回给用户的数据中混入恶意脚本，用户执行以后就会收到攻击。XSS根据混入恶意脚本的手段分为不同的攻击类型。</li>
+<li>XSS攻击的是用户，利用的是用户对web服务的信任。</li>
+<li>XSS一般是由于服务端对用户数据不做处理造成</li>
+</ul>
+</li>
+<li>CSRF：
+<ul>
+<li>跨站请求伪造（Cross Site Request Forgery）。攻击者上传数据时混入恶意脚本，用来获取服务端权限。</li>
+<li>CSRF攻击的是服务，利用的是服务对用户的信任。</li>
+<li>CSRF一般是由于服务器不对用户身份和数据做严格的校验造成</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SQL注入</li>
+<li>HTTP头注入和电子邮件注入（不太懂）</li>
+</ul>
+<p><strong>永远要严格检查用户的身份，对用户上传的数据做必要的限制和严格的校验</strong>。</p>
+<h3 id="校验表单数据">校验表单数据</h3>
+<p>1、html5表单校验属性</p>
+<ul>
+<li>required：必填项</li>
+<li>pattern：正则表达式
+<ul>
+<li>textarea不支持pattern</li>
+<li>有些input类型不需要pattern，例如email</li>
+</ul>
+</li>
+<li>minlength和maxlength：限制输入的长度</li>
+<li>min和max：限制数字的大小（例如type=number时）</li>
+</ul>
+<p>当一个元素校验通过时，该元素将可以通过CSS伪类<code>:valid</code>进行样式化；如果一个元素未校验通过，该元素将可以通过CSS伪类<code>:invalid</code>进行样式化。</p>
+<p>2、可以对以下元素调用<strong>约束校验API（constraint validation API）</strong>，使用js校验数据，</p>
+<ul>
+<li>input、button、fieldset、output、select、textarea</li>
+</ul>
+<p>3、js校验</p>
+<p>有一些库可以做这件事：</p>
+<ul>
+<li>独立的库（原生 Javascript 实现）：
+<ul>
+<li>Validate.js</li>
+</ul>
+</li>
+<li>jQuery 插件:
+<ul>
+<li>Validation</li>
+<li>Valid8</li>
+</ul>
+</li>
+</ul>
+<p>表单校验不需要复杂的JavaScript，但它需要对用户的仔细考虑。一定要记住帮助用户更正他提供的数据。为此，请务必：</p>
+<ul>
+<li>显示明确的错误消息。</li>
+<li>放宽输入格式限制。</li>
+<li>指出错误发生的位置（特别是在大型表单中）。</li>
+</ul>
+<h3 id="自定义表单控件">自定义表单控件</h3>
+<p>略</p>
+<h3 id="用js发送表单">用js发送表单</h3>
+<p>使用form直接发送数据会去加载请求页面。Ajax可以在或重新加载页面的情况下完成和服务端的数据交换。</p>
+<ol>
+<li>XMLHttpRequest+手动处理表单数据</li>
+<li><strong>XMLHttpRequest+FormData对象</strong>（推荐）
+<ol>
+<li>获取表单元素</li>
+<li>接管submit事件，禁用默认处理操作</li>
+<li>使用FormData获取表单数据</li>
+</ol>
+</li>
+<li>使用FileReader API手动处理数据</li>
+</ol>
+<h3 id="使用css定制表单样式">使用css定制表单样式</h3>
+<p>略</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/17.html-mdn-tutorial/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>,&nbsp;<a href="/tags/html/">html</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/16.interview-bagu-golang/" class="prev" rel="prev" title="面试八股-golang"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>面试八股-golang</a>
+            <a href="/18.webpage-print/" class="next" rel="next" title="打印html页面">打印html页面<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

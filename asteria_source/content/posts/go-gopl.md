@@ -1,7 +1,7 @@
 +++
 title = "golang入门笔记"
 date = 2022-04-26T11:18:48+08:00
-lastmod = 2022-04-26T11:18:48+08:00
+
 tags = ["golang"]
 categories = ["编程"]
 draft = false

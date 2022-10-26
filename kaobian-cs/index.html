@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/kaobian-cs/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-21T19:21:16+08:00" />
-<meta property="article:modified_time" content="2022-09-05T17:25:27+08:00" />
+<meta property="article:modified_time" content="2022-10-19T23:18:50+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
@@ -33,8 +33,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","wordcount":  11734 ,
-        "url": "http:\/\/blog.shiwj.top\/kaobian-cs\/","datePublished": "2022-06-21T19:21:16+08:00","dateModified": "2022-09-05T17:25:27+08:00","publisher": {
+                        }],"genre": "posts","wordcount":  11918 ,
+        "url": "http:\/\/blog.shiwj.top\/kaobian-cs\/","datePublished": "2022-06-21T19:21:16+08:00","dateModified": "2022-10-19T23:18:50+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -82,7 +82,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">事业编计算机知识</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%80%83%E7%BC%96/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>考编</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11734 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11918 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;24 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -134,6 +134,7 @@
     <li><a href="#操作系统">操作系统</a>
       <ul>
         <li><a href="#死锁">死锁</a></li>
+        <li><a href="#进程调度">进程调度</a></li>
       </ul>
     </li>
     <li><a href="#软件工程">软件工程</a>
@@ -417,6 +418,15 @@
 <li>资源可剥夺，当进程新的资源未得到满足时，释放已有的资源；</li>
 <li>资源有序分配，对所有资源编号，进程请求资源时按资源递增顺序请求，释放则相反，破坏了环路等待条件。</li>
 <li>一个著名死锁避免算法，银行家算法</li>
+</ol>
+<h3 id="进程调度">进程调度</h3>
+<ol>
+<li>先来先服务，对长作业有利，但是对短作业不利</li>
+<li>最短作业优先，会发生饥饿现象</li>
+<li>高响应比优先，同时将要求服务时间和等待时间算入优先级，照顾到了长进程</li>
+<li>时间片轮转</li>
+<li>最高优先级调度，静态优先级和动态优先级（Linux的nice值和pr值）</li>
+<li>多级反馈队列调度，多个队列，队列优先级从高到低，高优队列时间片最短，低优队列时间片最长，新进程先进入高优队列，如果在时间片内没执行完，就进入</li>
 </ol>
 <h2 id="软件工程">软件工程</h2>
 <p>项目管理三角形：范围、时间、成本</p>
@@ -1194,8 +1204,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-09-05&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/3f6c8c25671564179d3bfac348af8d555088384b" target="_blank" title="commit by shiwenjie(swj6086085@163.com) 3f6c8c25671564179d3bfac348af8d555088384b: kaobian &amp;&amp; go">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>3f6c8c2</a></span>
+                <span>Updated on 2022-10-19&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/0d6381c7e2d604ef705796ab13fe1e5c318ee533" target="_blank" title="commit by swj(905622665@qq.com) 0d6381c7e2d604ef705796ab13fe1e5c318ee533: looking for jobs">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>0d6381c</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

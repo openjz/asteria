@@ -1,7 +1,7 @@
 +++
 title = "数据库事务"
 date = 2022-04-20T11:57:47+08:00
-lastmod = 2022-04-20T11:57:47+08:00
+
 tags = ["数据库"]
 categories = ["编程"]
 draft = false
