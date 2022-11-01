@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 30 Oct 2022 15:01:00 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 01 Nov 2022 02:35:00 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>有栈协程和无栈协程</title>
+    <link>http://blog.shiwj.top/30.coroutine-stack/</link>
+    <pubDate>Tue, 01 Nov 2022 02:35:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
+    <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
+</item>
+<item>
     <title>关于C&#43;&#43;前向声明</title>
     <link>http://blog.shiwj.top/29.cpp-forward-declaration/</link>
     <pubDate>Sun, 30 Oct 2022 15:01:00 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/21.makefile-tutorial/</guid>
     <description><![CDATA[参考 跟我一起写 Makefile系列 GNU make官方文档 Makefile 中:= ?= += =的区别 Four Dollar signs in Makefile 概述 makefile可以理解成是专门用来在unix下编译工]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;标准库算法概览</title>
-    <link>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</link>
-    <pubDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</guid>
-    <description><![CDATA[参考 《C++ Primer 第5版》 cppreference.com 说明 本节内容包括：5类迭代器、算法形参模式、算法命名规范、特定容器算法。 5类迭代器 算法所要求的迭代器操作可以分为5个]]></description>
 </item>
 </channel>
 </rss>
