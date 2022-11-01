@@ -1,0 +1,80 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>c/c&#43;&#43; - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/c/c&#43;&#43;/</link>
+        <description>c/c&#43;&#43; - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>关于C&#43;&#43;前向声明</title>
+    <link>http://blog.shiwj.top/29.cpp-forward-declaration/</link>
+    <pubDate>Sun, 30 Oct 2022 15:01:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/29.cpp-forward-declaration/</guid>
+    <description><![CDATA[如果有两个类相互之间发生了引用，可能会产生一些问题。《C++ primer 第5版》中12.1.1节和12.1.6节给出的例子就出现了这种情况。在这两节中]]></description>
+</item>
+<item>
+    <title>关于C&#43;&#43; inline关键字</title>
+    <link>http://blog.shiwj.top/28.cpp-inline/</link>
+    <pubDate>Sun, 30 Oct 2022 11:38:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/28.cpp-inline/</guid>
+    <description><![CDATA[inline，内联，早期inline关键字是给编译器的内联建议，编译器会视情况将函数在调用处展开。 但是现在没有编译器会听从用户的建议。 inl]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;中的const</title>
+    <link>http://blog.shiwj.top/27.cpp-const/</link>
+    <pubDate>Sat, 29 Oct 2022 10:16:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/27.cpp-const/</guid>
+    <description><![CDATA[const 引用参数 函数的 const 引用参数有两个作用 对调用者承诺不会修改变量 允许调用者传一个右值作为参数，例如常量、字面量、临时对象、匿名对象 例如 1 2 3 4 5]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;中的拷贝和移动语义</title>
+    <link>http://blog.shiwj.top/26.cpp-copy-move/</link>
+    <pubDate>Fri, 28 Oct 2022 15:19:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/26.cpp-copy-move/</guid>
+    <description><![CDATA[拷贝语义 拷贝语义分为拷贝构造和拷贝赋值 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 class ClassA{ public: // 拷贝构造 ClassA(ClassA &amp; b):e(new int(*(b.e))){} // 拷贝赋值 &amp;ClassA operator=(ClassA &amp; b) { //检测自赋值 if(this != &amp;b){]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;中符号重定义问题</title>
+    <link>http://blog.shiwj.top/25.cpp-dup-symbols/</link>
+    <pubDate>Fri, 28 Oct 2022 14:35:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/25.cpp-dup-symbols/</guid>
+    <description><![CDATA[在开发比较大的项目时，有时候会出现多动态库之间定义了重复名字的情况，或者动态库和主程序之间定义了重复名字的情况。 在gcc上验证 编译器版本是g]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;中的static</title>
+    <link>http://blog.shiwj.top/24.cpp-static/</link>
+    <pubDate>Fri, 28 Oct 2022 12:52:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/24.cpp-static/</guid>
+    <description><![CDATA[static static 变量的生命周期从初始化起一直持续到程序执行结束 static 变量存放在数据区，分为已初始化的全局变量区（data 段）和未初始化的全局变量区（bss 段]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;中new和malloc的区别</title>
+    <link>http://blog.shiwj.top/23.cpp-new-malloc/</link>
+    <pubDate>Fri, 28 Oct 2022 10:43:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/23.cpp-new-malloc/</guid>
+    <description><![CDATA[malloc函数只负责分配一块堆内存，并不负责构造对象。malloc返回一个void *指针，使用时要将这个指针转换成对象的类型。 new关键字]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;标准库算法概览</title>
+    <link>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</link>
+    <pubDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</guid>
+    <description><![CDATA[参考 《C++ Primer 第5版》 cppreference.com 说明 本节内容包括：5类迭代器、算法形参模式、算法命名规范、特定容器算法。 5类迭代器 算法所要求的迭代器操作可以分为5个]]></description>
+</item>
+<item>
+    <title>面试八股-c&#43;&#43;</title>
+    <link>http://blog.shiwj.top/19.interview-bagu-cpp/</link>
+    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/19.interview-bagu-cpp/</guid>
+    <description><![CDATA[threadlocal volatile c++11中的新特性 我们通常把c++11之后的c++称为现代c++，以下是一些常见新特性 语法 列表初始化 可以使用initializer_l]]></description>
+</item>
+</channel>
+</rss>

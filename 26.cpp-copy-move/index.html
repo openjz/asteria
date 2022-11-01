@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>c&#43;&#43;中的拷贝和移动语义 - 星</title><meta name="Description" content=""><meta property="og:title" content="c&#43;&#43;中的拷贝和移动语义" />
+<meta property="og:description" content="拷贝语义 拷贝语义分为拷贝构造和拷贝赋值 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 class ClassA{ public: // 拷贝构造 ClassA(ClassA &amp; b):e(new int(*(b.e))){} // 拷贝赋值 &amp;ClassA operator=(ClassA &amp; b) { //检测自赋值 if(this != &amp;b){" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/26.cpp-copy-move/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-28T15:19:00+08:00" />
+<meta property="article:modified_time" content="2022-10-28T15:19:00+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="c&#43;&#43;中的拷贝和移动语义"/>
+<meta name="twitter:description" content="拷贝语义 拷贝语义分为拷贝构造和拷贝赋值 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 class ClassA{ public: // 拷贝构造 ClassA(ClassA &amp; b):e(new int(*(b.e))){} // 拷贝赋值 &amp;ClassA operator=(ClassA &amp; b) { //检测自赋值 if(this != &amp;b){"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/26.cpp-copy-move/" /><link rel="prev" href="http://blog.shiwj.top/25.cpp-dup-symbols/" /><link rel="next" href="http://blog.shiwj.top/27.cpp-const/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "c++中的拷贝和移动语义",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/26.cpp-copy-move\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2504 ,
+        "url": "http:\/\/blog.shiwj.top\/26.cpp-copy-move\/","datePublished": "2022-10-28T15:19:00+08:00","dateModified": "2022-10-28T15:19:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">c&#43;&#43;中的拷贝和移动语义</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2504 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#拷贝语义">拷贝语义</a></li>
+    <li><a href="#移动move语义">移动（move）语义</a>
+      <ul>
+        <li><a href="#c中的值类型">C++中的值类型</a></li>
+        <li><a href="#右值引用">右值引用</a></li>
+        <li><a href="#如何实现移动语义">如何实现移动语义</a></li>
+        <li><a href="#stdmove">std::move</a></li>
+      </ul>
+    </li>
+    <li><a href="#其他">其他</a>
+      <ul>
+        <li><a href="#成员函数限定符-和-">成员函数限定符 &amp;和 &amp;&amp;</a></li>
+        <li><a href="#copy-elision">Copy Elision</a></li>
+        <li><a href="#swap">swap</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="拷贝语义">拷贝语义</h2>
+<p>拷贝语义分为拷贝构造和拷贝赋值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">
+<span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">// 拷贝构造
+</span><span class="c1"></span>    <span class="n">ClassA</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">))){}</span>
+    <span class="c1">// 拷贝赋值
+</span><span class="c1"></span>    <span class="o">&amp;</span><span class="n">ClassA</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//检测自赋值
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="n">newe</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">));</span>
+            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">newe</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="移动move语义">移动（move）语义</h2>
+<p>C++11 中提出了移动（move）语义，移动语义是相对于拷贝语义的，目的是想减少对临时值的拷贝，改为直接接管临时值的资源。</p>
+<p>移动语义只是一个语义，具体的移动操作需要用户自己配合右值引用来实现。</p>
+<p>为了说明移动语义的作用，首先介绍一下 C++中的值类型。</p>
+<h3 id="c中的值类型">C++中的值类型</h3>
+<p>参考</p>
+<ul>
+<li><a href="https://www.cnblogs.com/Philip-Tell-Truth/p/6370019.html" target="_blank" rel="noopener noreffer">C++ lvalue，prvalue，xvalue，glvalue 和 rvalue 详解（from cppreference）</a>
+</li>
+<li><a href="https://cloud.tencent.com/developer/article/1493839" target="_blank" rel="noopener noreffer">什么是 lvalue, rvalue, xvalue</a>
+</li>
+<li><a href="https://en.cppreference.com/w/cpp/language/value_category" target="_blank" rel="noopener noreffer">cppreference.com-Value categories</a>
+</li>
+</ul>
+<p>现代 C++中的值分为 5 类，这里对这五类值做一个简单介绍。</p>
+<p>lvalue：<strong>左值</strong>，就是传统意义上的左值。<br>
+prvalue：纯右值，是传统右值的一部分，纯右值是表达式产生的中间值。<br>
+xvalue：消亡值，只能通过右值引用产生。<br>
+glvalue：泛左值。glvalue = lvalue + xvalue<br>
+rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prvalue + xvalue</p>
+<p>一个最简单的理解是，左值是持久的可以取地址并修改的变量，右值是一个临时的不可以修改的值。比如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//左值
+</span><span class="c1"></span><span class="n">i</span> <span class="o">*</span> <span class="mi">45</span><span class="p">;</span> <span class="c1">//右值
+</span></code></pre></td></tr></table>
+</div>
+</div><p><strong>通常属于右值的有，常量、字面量、临时变量/对象、匿名对象</strong></p>
+<h3 id="右值引用">右值引用</h3>
+<p>右值引用只能绑定到右值上（通常是一个临时对象），因此右值引用可以保证</p>
+<ol>
+<li>所引用的对象即将被销毁。</li>
+<li>该对象没有其他用户。</li>
+</ol>
+<p>这两个特性意味着：使用右值引用的代码可以自由地接管所引用对象的资源。</p>
+<p>我们通过<code>“&amp;&amp;”</code>来获得右值引用，例如，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">42</span><span class="p">;</span>    <span class="c1">//r是一个右值引用
+</span></code></pre></td></tr></table>
+</div>
+</div><p>通过一个例子看左值引用和右值引用的区别</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">&amp;&amp;</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>  <span class="c1">//正确
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;&amp;</span><span class="n">k</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>  <span class="c1">//错误，++i返回的是一个左值
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">m</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>   <span class="c1">//错误，i++返回的是一个右值
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">l</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>   <span class="c1">//正确
+</span><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>报错：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">algo.cpp: 在函数‘int main()’中:
+algo.cpp:20:17: 错误：无法将左值‘int’绑定到‘int&amp;&amp;’
+     int &amp;&amp;k = ++i;
+                 ^
+algo.cpp:21:15: 错误：用类型为‘int’的右值初始化类型为‘int&amp;’的非常量引用无效
+     int &amp;m = i++;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现移动语义">如何实现移动语义</h3>
+<p>移动语义包括两部分，移动构造函数和移动赋值运算符</p>
+<p>移动构造函数和移动赋值运算符正是利用了上面所提到的右值引用的特性。</p>
+<p>移动构造函数和移动赋值运算符需要一个右值引用作为参数。这就意味值，如果参数类型有析构方法，这个参数随后就会被析构。</p>
+<p>很多资料会告诉我们，移动构造函数或移动赋值运算符会接管资源而不是拷贝资源。这种表述非常令人迷惑，实际上，接管资源并不是这两个函数本身的功能————它们本身什么功能都没有，只是给接口定义了移动语义。接管资源这一功能是通过程序员自己在移动构造函数中写代码来实现的。</p>
+<p>实现一个移动操作要保证以下几点：</p>
+<ul>
+<li>参数必须是右值引用（这样才能定义移动语义）</li>
+<li>不分配新内存，不进行内存拷贝，而是通过修改指针来接管资源</li>
+<li>确保源对象的析构操作不会影响目标对象</li>
+<li>不抛出异常，并显式声明（使用 noexcept 关键字），防止编译器认为移动操作不安全从而不使用移动构造</li>
+</ul>
+<p>下面是移动操作的例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">
+<span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">// 移动构造
+</span><span class="c1"></span>    <span class="n">ClassA</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="c1">//参数是右值引用
+</span><span class="c1"></span>    <span class="o">:</span> <span class="n">e</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//接管资源
+</span><span class="c1"></span>        <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>  <span class="c1">//确保b析构是安全的
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="c1">// 移动赋值
+</span><span class="c1"></span>    <span class="o">&amp;</span><span class="n">ClassA</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="c1">//参数是右值引用
+</span><span class="c1"></span>        <span class="c1">//检测自赋值
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>     <span class="c1">//释放已有元素
+</span><span class="c1"></span>            <span class="n">e</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">;</span>    <span class="c1">//接管资源
+</span><span class="c1"></span>            <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="stdmove">std::move</h3>
+<p>标准库函数<code>std::move()</code>可以获取一个左值的右值引用。对一个源对象调用这个函数后必须保证后续对源对象只做赋值或销毁操作，但是不去使用它。</p>
+<h2 id="其他">其他</h2>
+<h3 id="成员函数限定符-和-">成员函数限定符 &amp;和 &amp;&amp;</h3>
+<p>和给类的成员函数加上 const 限定符类似，也可以把<code>&amp;</code>和<code>&amp;&amp;</code>作为成员函数限定符，表示只有左值或右值才能调用这个函数。</p>
+<p>&amp;、&amp;&amp;可以和const一起使用，const必须写在前面。</p>
+<h3 id="copy-elision">Copy Elision</h3>
+<p>Copy Elison 是 C++的一项编译器优化，意思是在某些情形下，构造对象时会忽略该对象的拷贝/移动构造函数，直接将对象构造出来。有一种情形是这样的，用一个临时对象去构造一个相同类型的对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="n">T</span> <span class="nf">obj</span><span class="p">(</span><span class="n">T</span><span class="p">(</span><span class="n">arg</span><span class="p">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这种情况下，对象<code>obj</code>不会去调用他的移动构造函数，而是直接被构造出来。</p>
+<p>如果程序是用 gcc 的 C++14 或 C++11 标准编译的，我们可以通过加上<code>-fno-elide-constructors</code>这一编译选项来阻止编译器进行此项优化。</p>
+<p>一个会触发 Copy Elision 的典型场景是这样的（如下面的代码所示） ，假如一个类同时定义了一个隐式的类类型转换和一个拷贝构造/移动构造函数时，如果构造对象时同时用到了这两个函数，就会触发 Copy Elison，即只会进行直接构造（隐式的类类型转换），而不会进行之后的拷贝构造。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//类代码
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">String</span><span class="p">{</span>
+<span class="p">...</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">String</span><span class="p">();</span>
+    <span class="n">String</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">);</span>  <span class="c1">//c风格字符串,隐式的类类型转换规则
+</span><span class="c1"></span>    <span class="c1">//拷贝控制
+</span><span class="c1"></span>    <span class="n">String</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="p">);</span> <span class="c1">//拷贝构造
+</span><span class="c1"></span>
+<span class="p">...</span>
+<span class="p">};</span>
+<span class="c1">//测试代码
+</span><span class="c1"></span><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hello world!&#34;</span><span class="p">;</span> <span class="c1">//这里会触发copy elision
+</span></code></pre></td></tr></table>
+</div>
+</div><p>然而在 C++17 中，情况有所改变，上述情形不再属于 Copy Elision。C++17 规定，用 prvalue（即纯右值）构造相同类型的对象时，不调用其移动/拷贝构造函数。<code>T(arg)</code>是一个 prvalue，因此构造<code>obj</code>时是不会去调用它的移动/拷贝构造函数的。也就是说 C++17 把对上述情形的优化直接放到了 C++语言标准里，不再属于编译器优化。这就意味着在 C++17 标准下，即使加上编译器选项<code>-fno-elide-constructors</code>也不能阻止上述情形被优化。</p>
+<p>当然 C++17 中仍然有 Copy Elision，只是上述情况不再属于 Copy Elision。</p>
+<p>参考</p>
+<p><a href="https://segmentfault.com/q/1010000020484320/a-1020000020488364" target="_blank" rel="noopener noreffer">在 C++11 中，使用匿名类构造一个对象时会发生什么？</a>
+<br>
+<a href="https://www.cnblogs.com/Philip-Tell-Truth/p/6370019.html" target="_blank" rel="noopener noreffer">C++ lvalue，prvalue，xvalue，glvalue 和 rvalue 详解（from cppreference）</a>
+</p>
+<p><a href="https://en.cppreference.com/w/cpp/language/copy_elision" target="_blank" rel="noopener noreffer">cppreference.com-Copy elision</a>
+<br>
+<a href="https://en.cppreference.com/w/cpp/language/value_category" target="_blank" rel="noopener noreffer">cppreference.com-Value categories</a>
+</p>
+<h3 id="swap">swap</h3>
+<p>swap 用来交换两个对象的数据，swap 的实现分为用户自定义 swap 和 std::swap()</p>
+<p>以下是用户自定义 swap 的例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span><span class="p">,</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kr">inline</span>
+<span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="n">Class</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>    <span class="c1">//这个声明并不是为了让下面调用std::swap，而是当下面被交换的值没有自定义swap函数时，给它们调用std::swap的机会
+</span><span class="c1"></span>    <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">e</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">);</span> <span class="c1">//这里优先匹配参数类型自己定义的swap，如果匹配不到才调用std::swap
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/26.cpp-copy-move/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/25.cpp-dup-symbols/" class="prev" rel="prev" title="c&#43;&#43;中符号重定义问题"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>c&#43;&#43;中符号重定义问题</a>
+            <a href="/27.cpp-const/" class="next" rel="next" title="c&#43;&#43;中的const">c&#43;&#43;中的const<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/</link>
         <description>面试 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+    <title>面试八股-c&#43;&#43;</title>
+    <link>http://blog.shiwj.top/19.interview-bagu-cpp/</link>
+    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/19.interview-bagu-cpp/</guid>
+    <description><![CDATA[threadlocal volatile c++11中的新特性 我们通常把c++11之后的c++称为现代c++，以下是一些常见新特性 语法 列表初始化 可以使用initializer_l]]></description>
+</item>
+<item>
     <title>面试八股-golang</title>
     <link>http://blog.shiwj.top/16.interview-bagu-golang/</link>
     <pubDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</pubDate>

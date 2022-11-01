@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>scl-rhel/centos软件运行环境 - 星</title><meta name="Description" content=""><meta property="og:title" content="scl-rhel/centos软件运行环境" />
+<meta property="og:description" content="scl(Software Collections)给 RHEL/CentOS 用户提供一种同时使用多个软件版本的运行环境，避免以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/22.scl/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-28T10:28:00+08:00" />
+<meta property="article:modified_time" content="2022-10-28T10:28:00+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="scl-rhel/centos软件运行环境"/>
+<meta name="twitter:description" content="scl(Software Collections)给 RHEL/CentOS 用户提供一种同时使用多个软件版本的运行环境，避免以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/22.scl/" /><link rel="prev" href="http://blog.shiwj.top/21.makefile-tutorial/" /><link rel="next" href="http://blog.shiwj.top/23.cpp-new-malloc/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "scl-rhel/centos软件运行环境",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/22.scl\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "linux","wordcount":  478 ,
+        "url": "http:\/\/blog.shiwj.top\/22.scl\/","datePublished": "2022-10-28T10:28:00+08:00","dateModified": "2022-10-28T10:28:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">scl-rhel/centos软件运行环境</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;478 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#查看yum中所有的源">查看yum中所有的源</a></li>
+    <li><a href="#查看scl源中的包">查看scl源中的包</a></li>
+    <li><a href="#安装scl源中的包">安装scl源中的包</a></li>
+    <li><a href="#查看安装的scl包">查看安装的scl包</a></li>
+    <li><a href="#进入新的环境工作">进入新的环境工作</a></li>
+    <li><a href="#从环境中退出">从环境中退出</a></li>
+    <li><a href="#安装nodejs-12">安装node.js 12</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>scl(Software Collections)给 RHEL/CentOS 用户提供一种同时使用多个软件版本的运行环境，避免以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是更新的）版本的方式，同时避免把系统搞乱。</p>
+<p>可以用来安装高版本的gcc</p>
+<h2 id="安装">安装</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum install -y centos-release-scl  
+$ sudo yum install -y scl-utils-build  
+$ sudo yum install -y scl-utils
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="查看yum中所有的源">查看yum中所有的源</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ yum repolist
+
+执行结果：
+repo id                     repo name
+!base/7/x86_64              CentOS-7 - Base - 163.com !centos-sclo-rh/x86_64      CentOS-7 - SCLo rh
+!centos-sclo-sclo/x86_64    CentOS-7 - SCLo sclo
+!extras/7/x86_64            CentOS-7 - Extras - 163.com
+!updates/7/x86_64           CentOS-7 - Updates - 163.com
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到yum中新增了两个scl源</p>
+<h2 id="查看scl源中的包">查看scl源中的包</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;centos-sclo-rh&#39;</span> list available
+$ yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;centos-sclo-sclo&#39;</span> list available
+$ yum --disablerepo<span class="o">=</span><span class="s2">&#34;*&#34;</span> --enablerepo<span class="o">=</span><span class="s2">&#34;centos-sclo-rh&#34;</span> search devtoolset
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="安装scl源中的包">安装scl源中的包</h2>
+<ul>
+<li>先用上面两条命令搜索包名</li>
+<li>然后直接用yum安装</li>
+</ul>
+<p>例如安装9.x版本的gcc和gdb</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum install -y devtoolset-9-gcc.x86_64 devtoolset-9-gcc-c++.x86_64 devtoolset-9-gcc-gdb-plugin.x86_64 devtoolset-9-gdb.x86_64
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="查看安装的scl包">查看安装的scl包</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ scl --list
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="进入新的环境工作">进入新的环境工作</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ scl <span class="nb">enable</span> devtoolset-9 bash
+$ gcc --version
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="从环境中退出">从环境中退出</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">exit</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="安装nodejs-12">安装node.js 12</h2>
+<p>参考<a href="https://www.softwarecollections.org/en/scls/jstanek/rh-nodejs12/" target="_blank" rel="noopener noreffer">https://www.softwarecollections.org/en/scls/jstanek/rh-nodejs12/</a>
+</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 1. Install a package with repository for your system:</span>
+<span class="c1"># On CentOS, install package centos-release-scl available in CentOS repository:</span>
+$ sudo yum install centos-release-scl-rh
+
+<span class="c1"># On RHEL, enable RHSCL repository for you system:</span>
+$ sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
+
+<span class="c1"># 2. Install the collection:</span>
+$ sudo yum install rh-nodejs12
+
+<span class="c1"># 3. Start using software collections:</span>
+$ scl <span class="nb">enable</span> rh-nodejs12 bash   
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/22.scl/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/21.makefile-tutorial/" class="prev" rel="prev" title="makefile笔记"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>makefile笔记</a>
+            <a href="/23.cpp-new-malloc/" class="next" rel="next" title="c&#43;&#43;中new和malloc的区别">c&#43;&#43;中new和malloc的区别<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
