@@ -1,6 +1,36 @@
 # c++中的拷贝和移动语义
 
 
+## demo
+
+```cpp
+class A{
+public:
+    A(const A& b):e(new int(*(b.e))){}
+    A & operator=(const A & b){
+        if(this != *b){
+            int * c = new int(*(b.e));
+            delete e;
+            e = c;
+        }
+        return *this;
+    }
+    A(A &&b) noexcept :e(b.e){
+        b.e = nullptr;
+    }
+    A & operator=(A && b) noexcept{
+        if(this!=*b){
+            delete e;
+            e = b.e;
+            b.e = nullptr;
+        }
+        return *this;
+    }
+private:
+    int *e;
+};
+```
+
 ## 拷贝语义
 
 拷贝语义分为拷贝构造和拷贝赋值
@@ -10,9 +40,9 @@
 class ClassA{
 public:
     // 拷贝构造
-    ClassA(ClassA & b):e(new int(*(b.e))){}
+    ClassA(const ClassA & b):e(new int(*(b.e))){}
     // 拷贝赋值
-    &ClassA operator=(ClassA & b) {
+    ClassA & operator=(const ClassA & b) {
         //检测自赋值
         if(this != &b){
             int newe = new int(*(b.e));

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>cs基础 - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/cs%E5%9F%BA%E7%A1%80/</link>
+        <description>cs基础 - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 20 Sep 2022 12:35:41 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/cs%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>取余和取模的区别</title>
+    <link>http://blog.shiwj.top/15.remainder-and-modulo/</link>
+    <pubDate>Tue, 20 Sep 2022 12:35:41 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/15.remainder-and-modulo/</guid>
+    <description><![CDATA[注：以下使用 a % b 表示取余和取模运算 如果a和b都是正数，取余和取模没区别 例如，对于2 % 7，取余和取模的结果都是2，对于9 % 7，取余和取模的结]]></description>
+</item>
+</channel>
+</rss>

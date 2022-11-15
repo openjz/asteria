@@ -42,7 +42,7 @@
     <pubDate>Fri, 28 Oct 2022 15:19:00 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/26.cpp-copy-move/</guid>
-    <description><![CDATA[拷贝语义 拷贝语义分为拷贝构造和拷贝赋值 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 class ClassA{ public: // 拷贝构造 ClassA(ClassA &amp; b):e(new int(*(b.e))){} // 拷贝赋值 &amp;ClassA operator=(ClassA &amp; b) { //检测自赋值 if(this != &amp;b){]]></description>
+    <description><![CDATA[demo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 class A{ public: A(const A&amp; b):e(new int(*(b.e))){} A &amp; operator=(const A &amp; b){ if(this != *b){ int * c = new int(*(b.e)); delete e; e = c; } return *this; } A(A &amp;&amp;b) noexcept :e(b.e){ b.e = nullptr; } A &amp; operator=(A &amp;&amp; b)]]></description>
 </item>
 <item>
     <title>c&#43;&#43;中符号重定义问题</title>
