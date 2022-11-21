@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>线性代数的几何意义 - 星</title><meta name="Description" content=""><meta property="og:title" content="线性代数的几何意义" />
-<meta property="og:description" content="参考 b 站 3Blue1Brown-线性代数的本质 https://github.com/3b1b/manim 向量 向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标 $$ \vec{a}=" />
+<meta property="og:description" content="参考 b 站 3Blue1Brown-线性代数的本质 https://github.com/3b1b/manim 向量 向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标 $$\vec{a}= \begin{bmatrix}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/31.linear-algebra-3b1b/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-16T09:12:00+08:00" />
-<meta property="article:modified_time" content="2022-11-16T09:12:00+08:00" />
+<meta property="article:modified_time" content="2022-11-21T23:11:52+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="线性代数的几何意义"/>
-<meta name="twitter:description" content="参考 b 站 3Blue1Brown-线性代数的本质 https://github.com/3b1b/manim 向量 向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标 $$ \vec{a}="/>
+<meta name="twitter:description" content="参考 b 站 3Blue1Brown-线性代数的本质 https://github.com/3b1b/manim 向量 向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标 $$\vec{a}= \begin{bmatrix}"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,8 +33,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "线性代数","wordcount":  5700 ,
-        "url": "http:\/\/blog.shiwj.top\/31.linear-algebra-3b1b\/","datePublished": "2022-11-16T09:12:00+08:00","dateModified": "2022-11-16T09:12:00+08:00","publisher": {
+                        }],"genre": "posts","keywords": "线性代数","wordcount":  5623 ,
+        "url": "http:\/\/blog.shiwj.top\/31.linear-algebra-3b1b\/","datePublished": "2022-11-16T09:12:00+08:00","dateModified": "2022-11-21T23:11:52+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -82,7 +82,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">线性代数的几何意义</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-16">2022-11-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5700 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-16">2022-11-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5623 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -103,26 +103,11 @@
     <li><a href="#线性方程组">线性方程组</a></li>
     <li><a href="#秩">秩</a></li>
     <li><a href="#非方阵">非方阵</a></li>
-  </ul>
-
-  <ul>
     <li><a href="#向量的点积">向量的点积</a></li>
-  </ul>
-
-  <ul>
     <li><a href="#向量的叉积">向量的叉积</a></li>
-  </ul>
-
-  <ul>
     <li><a href="#基变换">基变换</a></li>
-  </ul>
-
-  <ul>
     <li><a href="#特征向量和特征值">特征向量和特征值</a></li>
     <li><a href="#矩阵的相似对角化">矩阵的相似对角化</a></li>
-  </ul>
-
-  <ul>
     <li><a href="#抽象向量空间">抽象向量空间</a></li>
   </ul>
 </nav></div>
@@ -135,15 +120,12 @@
 </ul>
 <h2 id="向量">向量</h2>
 <p>向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标</p>
-<p>$$
-\vec{a}=
-\left[
-\begin{matrix}
-1\
-2\
-3\
-\end{matrix}
-\right]
+<p>$$\vec{a}=
+\begin{bmatrix}
+1\cr
+2\cr
+3\cr
+\end{bmatrix}
 $$</p>
 <p>一个向量可以理解为</p>
 <ul>
@@ -162,15 +144,14 @@ $$</p>
 <li>$\vec{c} =3 \vec{a} + 4\vec{b}$</li>
 </ul>
 <p>我们把 c 称为 a 和 b 的线性组合（linear combination）</p>
-<p>任何一个向量都可以表示为另一些向量的线性组合，例如在一个二维坐标系中如果有 $\vec{a}=\left[\begin{matrix}2\3\\end{matrix}\right]$</p>
+<p>任何一个向量都可以表示为另一些向量的线性组合，例如在一个二维坐标系中如果有 $\vec{a}=\begin{bmatrix}2 \cr3 \end{bmatrix}$</p>
 <p>那么我们可以将 a 表示为</p>
-<p>$$
-\vec{a}=
-2\left[\begin{matrix}1\0\\end{matrix}\right]
+<p>$$\vec{a}=
+2\begin{bmatrix}1\cr0\cr\end{bmatrix}
 +
-3\left[\begin{matrix}0\1\\end{matrix}\right]
+3\begin{bmatrix}0\cr1\cr\end{bmatrix}
 $$</p>
-<p>其中 $\left[\begin{matrix}1\0\\end{matrix}\right]$ 和 $\left[\begin{matrix}0\1\\end{matrix}\right]$ 是两个特殊的向量，我们称它们为单位向量，一般表示为 $\vec{i}=\left[\begin{matrix}1\0\\end{matrix}\right]$ 和 $\vec{j}=\left[\begin{matrix}1\0\\end{matrix}\right]$，因此，上面的 a 向量就可以表示为</p>
+<p>其中 $\begin{bmatrix}1\cr0\cr\end{bmatrix}$ 和 $\begin{bmatrix}0\cr1\cr\end{bmatrix}$ 是两个特殊的向量，我们称它们为单位向量，一般表示为 $\vec{i}=\begin{bmatrix}1\cr0\cr\end{bmatrix}$ 和 $\vec{j}=\begin{bmatrix}1\cr0\cr\end{bmatrix}$，因此，上面的 a 向量就可以表示为</p>
 <p>$$
 \vec{a} = 2\vec{i}+3\vec{j}
 $$</p>
@@ -179,7 +160,7 @@ $$</p>
 <p>如果 i 和 j 是同方向的向量，例如，$\vec{i} = 5\vec{j}$，那么由 i 和 j 构成的所有向量就无法张开成一个平面，只能汇聚在一条直线上，此时的线性空间就是一条直线。</p>
 <h2 id="基">基</h2>
 <p>我们把能张开一个线性空间的一组向量称为线性空间的一组基（basis vectors）</p>
-<p>上面的 i 和 j 向量就构成了一组基（构成一组基的也可以是别的向量）。对于一个向量 $\vec{a}=\left[\begin{matrix}x\y\\end{matrix}\right]$，我们默认它所在线性空间的基是 i 和 j 向量。</p>
+<p>上面的 i 和 j 向量就构成了一组基（构成一组基的也可以是别的向量）。对于一个向量 $\vec{a}=\begin{bmatrix}x\cr y\cr\end{bmatrix}$，我们默认它所在线性空间的基是 i 和 j 向量。</p>
 <h2 id="线性相关和线性无关">线性相关和线性无关</h2>
 <p>如果一个向量 a 能够表示为另外一些向量的线性组合，那么 a 一定在另外那些向量张成的空间内，此时我们称 a 和另外一些向量是线性相关的（linearly dependent），否则是线性无关的（linearly independent）。</p>
 <p>那么显然，如果基中有两个线性无关的向量，它们张成的线性空间就是一个二维平面，如果只有一个线性无关的向量，它们张成的线性空间只能是一条一维的直线，如果有三个线性无关的向量，那么它们张成的线性空间就是一个三维的空间</p>
@@ -223,48 +204,39 @@ $$</p>
 <p>对于一个 m&gt;n 的矩阵，例如</p>
 <p>$$
 A =
-\left[
-\begin{matrix}
-1 &amp;&amp; 3 \
-2 &amp;&amp; 2\
-3 &amp;&amp; 1\
-\end{matrix}
-\right]
+\begin{bmatrix}
+1 &amp; 3 \cr
+2 &amp; 2\cr
+3 &amp; 1\cr
+\end{bmatrix}
 $$</p>
 <p>它的作用是将一个 2 维向量映射到三维空间，其实很容易理解，把矩阵的两列看作是线性空间的基向量，由于只有两个基向量，它们只能张开一个二维的线性空间，但它们本身是三维的，因此它们在一个三维坐标系中张开了一个二维线性空间（是一个平面，有可能是斜着的平面）。矩阵有两列意味着原空间是二维的，矩阵有三行意味着新空间位于一个三维坐标系中。矩阵 A 仍然是个满秩矩阵。</p>
 <p>类似的，对于一个 m&lt;n 的矩阵，例如</p>
-<p>$$
-B =
-\left[
-\begin{matrix}
-1 &amp;&amp; 2 &amp;&amp; -1 \
-2 &amp;&amp; 3 &amp;&amp; 1\
-\end{matrix}
-\right]
+<p>$$B =
+\begin{bmatrix}
+1 &amp; 2 &amp; -1 \cr
+2 &amp; 3 &amp; 1\cr
+\end{bmatrix}
 $$</p>
 <p>它的作用是将一个三维向量映射到一个二维线性空间中去，也很容易理解，矩阵有三列意味着原空间是三维的，矩阵有两行意味着新空间位于一个二维坐标系中，同时也将线性空间压缩到了二维（换句话说，矩阵 B 必然不满秩）</p>
 <p>更极端一点，我们可以把几个一维向量映射到四维坐标系中，即</p>
-<h1 id="leftbeginmatrix1--2--3endmatrixright">$$
-\left[\begin{matrix}1\0\0\0\end{matrix}\right]
-\left[\begin{matrix}1 &amp;&amp; 2 &amp;&amp; 3\end{matrix}\right]</h1>
-<p>\left[
-\begin{matrix}
-1 &amp;&amp; 2 &amp;&amp; 3\
-0 &amp;&amp; 0 &amp;&amp; 0\
-0 &amp;&amp; 0 &amp;&amp; 0\
-0 &amp;&amp; 0 &amp;&amp; 0\
-\end{matrix}
-\right]
+<p>$$
+\begin{bmatrix}1\cr0\cr0\cr0\end{bmatrix}
+\begin{bmatrix}1 &amp; 2 &amp; 3\end{bmatrix}=
+\begin{bmatrix}
+1 &amp; 2 &amp; 3\cr
+0 &amp; 0 &amp; 0\cr
+0 &amp; 0 &amp; 0\cr
+0 &amp; 0 &amp; 0\cr
+\end{bmatrix}
 $$</p>
 <p>或者，把一个四维向量映射到一维空间中去，即</p>
-<h1 id="leftbeginmatrix1234endmatrixright">$$
-\left[\begin{matrix}1 &amp;&amp; 2 &amp;&amp; 3 &amp;&amp; 4\end{matrix}\right]
-\left[\begin{matrix}1\2\3\4\end{matrix}\right]</h1>
-<p>\left[
-\begin{matrix}
-30\
-\end{matrix}
-\right]
+<p>$$
+\begin{bmatrix}1 &amp; 2 &amp; 3 &amp; 4\end{bmatrix}
+\begin{bmatrix}1\cr2\cr3\cr4\end{bmatrix}=
+\begin{bmatrix}
+30\cr
+\end{bmatrix}
 $$</p>
 <h2 id="向量的点积">向量的点积</h2>
 <p>点积（dot products）是对两个相同维度向量的各维度分别求积，然后将各个积相加。</p>
@@ -273,9 +245,9 @@ $$</p>
 <p>点积可以理解为向量 a 向向量 b 投影，并用 a 投影后的长度乘以 b 的长度。</p>
 <p>向量的点积实际上可以表示为一个 1×n 的矩阵和一个 n×1 的矩阵乘法，前面我们讲过，这个乘法实际上是做了一个从 n 维线性空间到 1 维线性空间的压缩操作，并将一个 n 维向量映射为 1 维向量，左边的 1×n 的矩阵定义了映射规则。</p>
 <p>那么，上述的两个操作——向量投影和空间压缩，为什么会等价，即，为什么会存在下述等式？</p>
-<h1 id="vecatopvecb">$$
-\vec{a}^\top\vec{b}</h1>
-<p>\left|\vec{a}\right|·
+<p>$$
+\vec{a}^\top\vec{b}=
+\left|\vec{a}\right|·
 \left|\vec{b}\right|·
 cosθ
 $$</p>
@@ -295,51 +267,47 @@ $$</p>
 <p>$$\vec{v}×\vec{w}= \vec{u}$$</p>
 <p>向量 u 的方向满足右手定则，食指指向向量 v，中指指向向量 w，此时大拇指指向的就是向量 u 的方向。</p>
 <p>同样可以将叉积表示为求行列式</p>
-<h1 id="leftbeginmatrixw_1w_2w_3endmatrixright">$$
-\left[\begin{matrix}v_1\v_2\v_3\end{matrix}\right]
-\left[\begin{matrix}w_1\w_2\w_3\end{matrix}\right]</h1>
-<p>det\left(
-\left[
-\begin{matrix}
-\vec{i} &amp;&amp; v_1 &amp;&amp; w_1\
-\vec{j} &amp;&amp; v_2 &amp;&amp; w_2\
-\vec{k} &amp;&amp; v_3 &amp;&amp; w_3\
-\end{matrix}
-\right]
-\right)\
+<p>$$
+\begin{bmatrix}v_1\cr v_2\cr v_3\end{bmatrix}
+\begin{bmatrix}w_1\cr w_2\cr w_3\end{bmatrix}=
+det\left(
+\begin{bmatrix}
+\vec{i} &amp; v_1 &amp; w_1\cr
+\vec{j} &amp; v_2 &amp; w_2\cr
+\vec{k} &amp; v_3 &amp; w_3\cr
+\end{bmatrix}
+\right)
 =\vec{i}(v_2w_3-v_3w_2)+\vec{j}(v_3w_1-v_1w_3)+\vec{k}(v_1w_2-v_2w_1)
 $$</p>
 <p>把基向量写到行列式里，结果正好是个向量，这是个符号上的技巧。</p>
 <p>如果要从几何的角度理解这个等式，可以这样理解，向量 u 是这样一个向量，任何一个向量 $[x,y,z]$ 和 u 做点积，结果都是 $[x,y,z]$ 和 v、w 围成的平行六面体的体积。所以，只有和 v、w 垂直，且长度等于 v、w 围成平行四边形的向量才能满足要求（由于 u 和 v、w 垂直，向量 $[x,y,z]$ 投影到 u 上后就是六面体的高，u 的长度又是六面体的底面积，因此 u 和 $[x,y,z]$ 做点积刚好是六面体的体积）。可以将 u 和 v、w 的关系描述成</p>
-<h1 id="leftbeginmatrixxyzendmatrixright">$$
-\left[\begin{matrix}u_1\u_2\u_3\end{matrix}\right]
+<p>$$
+\begin{bmatrix}u_1\cr u_2\cr u_3\end{bmatrix}
 ·
-\left[\begin{matrix}x\y\z\end{matrix}\right]</h1>
-<p>det\left(
-\left[
-\begin{matrix}
-x &amp;&amp; v_1 &amp;&amp; w_1\
-y &amp;&amp; v_2 &amp;&amp; w_2\
-z &amp;&amp; v_3 &amp;&amp; w_3\
-\end{matrix}
-\right]
+\begin{bmatrix}x\cr y\cr z\end{bmatrix}=
+det\left(
+\begin{bmatrix}
+x &amp; v_1 &amp; w_1\cr
+y &amp; v_2 &amp; w_2\cr
+z &amp; v_3 &amp; w_3\cr
+\end{bmatrix}
 \right)
 $$</p>
 <p>按这个理解，把行列式中的第一列换成 i、j、k 后就刚好能表示成所求的 u</p>
 <h2 id="基变换">基变换</h2>
 <p>基变换其实就是线性变换，只不过基变换强调的是不同基坐标系下的语义转换。例如</p>
-<h1 id="leftbeginmatrix-1--2endmatrixright">$$
-\left[\begin{matrix}2 &amp;&amp; -1\1 &amp;&amp; 1\end{matrix}\right]
-\left[\begin{matrix}-1 \ 2\end{matrix}\right]</h1>
-<p>\left[\begin{matrix}-4 \ 1\end{matrix}\right]
+<p>$$
+\begin{bmatrix}2 &amp; -1\cr 1 &amp; 1\end{bmatrix}
+\begin{bmatrix}-1 \cr 2\end{bmatrix}=
+\begin{bmatrix}-4 \cr 1\end{bmatrix}
 $$</p>
 <p>假如Jennifer定义了她自己的基向量，那么向量 $[2,1]$ 和 $[-1,1]$ 代表Jennifer的基向量在我们标准坐标系下的表示，那么上面这个转换是把Jennifer坐标系下的 $[-1,2]$ 转换为我们标准坐标系下的向量。</p>
 <p>如果我们标准坐标系下的线性变换转换为Jennifer坐标系下的表示，可以这么做，先做一个基变换（从Jennifer坐标系转换为标准坐标系），然后做一个线性变换，最后使用基变换的逆变换将其转回Jennifer坐标系。例如，如果我们想把一个标准坐标系下的左旋转90度的操作表示为Jennifer坐标系下的表示，那么最终是这样的形式</p>
-<h1 id="leftbeginmatrix2---11--1endmatrixright">$$
-\left[\begin{matrix}2 &amp;&amp; -1\1 &amp;&amp; 1\end{matrix}\right]^{-1}
-\left[\begin{matrix}0 &amp;&amp; -1\1 &amp;&amp; 0\end{matrix}\right]
-\left[\begin{matrix}2 &amp;&amp; -1\1 &amp;&amp; 1\end{matrix}\right]</h1>
-<p>\left[\begin{matrix}1/3 &amp;&amp; -2/3 \ 5/3 &amp;&amp; -1/3\end{matrix}\right]
+<p>$$
+\begin{bmatrix}2 &amp; -1\cr1 &amp; 1\end{bmatrix}^{-1}
+\begin{bmatrix}0 &amp; -1\cr1 &amp; 0\end{bmatrix}
+\begin{bmatrix}2 &amp; -1\cr1 &amp; 1\end{bmatrix}=
+\begin{bmatrix}1/3 &amp; -2/3 \cr 5/3 &amp; -1/3\end{bmatrix}
 $$</p>
 <p>注意，等式右边的变换对Jennifer来说并不是左旋90度，可能是一个什么奇怪变换，只是它最终的效果是实现了标准坐标系下的左旋90度。</p>
 <p>可以将其表示为一个通用的形式，其中M是标准坐标系下的线性变换，A是从目标坐标系到标准坐标系的基变换。</p>
@@ -355,18 +323,18 @@ $$</p>
 <ol>
 <li>不存在特征向量，例如二维平面上的左旋90度操作，只会得到一个值为复数的特征值。</li>
 <li>只有一个特征值，但是特征向量不止在一条直线上。比如一个把所有向量长度延长一倍的线性变换，所有向量都是特征向量。</li>
-<li>有多个特征值，每个特征值对应不同的直线。例如线性变换 $\left[\begin{matrix}3 &amp;&amp; 0\0 &amp;&amp; 2\end{matrix}\right]$，x和y轴方向的向量在变换后不会改变方向，x轴方向的特征向量对应的特征值为3，y轴方向的特征向量对应的特征值是2。</li>
+<li>有多个特征值，每个特征值对应不同的直线。例如线性变换 $\begin{bmatrix}3 &amp; 0\cr0 &amp; 2\end{bmatrix}$，x和y轴方向的向量在变换后不会改变方向，x轴方向的特征向量对应的特征值为3，y轴方向的特征向量对应的特征值是2。</li>
 <li>不会出现一个直线对应多个特征值的情况，很容易理解，我们不可能把一个向量同时放大1倍或2倍。</li>
 </ol>
 <h2 id="矩阵的相似对角化">矩阵的相似对角化</h2>
 <p>对于一个线性变换，如果它有多个特征向量，并且多到能用特征向量组成一组基，那么我们可以把这个线性变换和基变换相结合，得到它在新基下的表示。由于线性变换只会对特征向量产生放缩效果，那么以特征向量作为基后表示出的线性变换必然是一个对角矩阵。这会简化很多矩阵计算。</p>
 <p>这组由特征向量构成的基向量称为特征基（eigenbasis）</p>
-<p>例如，现在有一个线性变换 $A=\left[\begin{matrix}3 &amp;&amp; 1\0 &amp;&amp; 2\end{matrix}\right]$，它的特征值为2和3，由此可以得到两个特征向量，特征值为2时，对应的特征向量为 $\left[\begin{matrix}-1\1\end{matrix}\right]$，特征值为3时，对应的特征向量为 $\left[\begin{matrix}1\0\end{matrix}\right]$，那么我们这个线性变换转换为特征基下的表示，结果恰好为一个对角矩阵。</p>
-<h1 id="leftbeginmatrix-1--11--0endmatrixright">$$
-\left[\begin{matrix}-1 &amp;&amp; 1\1 &amp;&amp; 0\end{matrix}\right]^{-1}
-\left[\begin{matrix}3 &amp;&amp; 1\0 &amp;&amp; 2\end{matrix}\right]
-\left[\begin{matrix}-1 &amp;&amp; 1\1 &amp;&amp; 0\end{matrix}\right]</h1>
-<p>\left[\begin{matrix}2 &amp;&amp; 0 \ 0 &amp;&amp; 3\end{matrix}\right]
+<p>例如，现在有一个线性变换 $A=\begin{bmatrix}3 &amp; 1\cr0 &amp; 2\end{bmatrix}$，它的特征值为2和3，由此可以得到两个特征向量，特征值为2时，对应的特征向量为 $\begin{bmatrix}-1\cr1\end{bmatrix}$，特征值为3时，对应的特征向量为 $\begin{bmatrix}1\cr0\end{bmatrix}$，那么我们这个线性变换转换为特征基下的表示，结果恰好为一个对角矩阵。</p>
+<p>$$
+\begin{bmatrix}-1 &amp; 1\cr1 &amp; 0\end{bmatrix}^{-1}
+\begin{bmatrix}3 &amp; 1\cr0 &amp; 2\end{bmatrix}
+\begin{bmatrix}-1 &amp; 1\cr1 &amp; 0\end{bmatrix}=
+\begin{bmatrix}2 &amp; 0 \cr 0 &amp; 3\end{bmatrix}
 $$</p>
 <p>只有当特征向量的个数足够多，能够构成一个基的时候，才能做这种变换。</p>
 <h2 id="抽象向量空间">抽象向量空间</h2>
@@ -378,13 +346,13 @@ $$L(\vec{v}+\vec{w}) = L(\vec{v}) + L(\vec{w})$$</p>
 <p>例如，我们可以把一个多项式函数表示为向量，由于多项式函数总是表示成x的幂的线性组合的形式，因此可以将基函数定义为$$1,x,x^2,x^3&hellip;$$</p>
 <p>此时，我们可以将多项式求导操作表示成一个线性变换</p>
 <p>$$
-\left[\begin{matrix}
-0 &amp;&amp; 1 &amp;&amp; 0 &amp;&amp; 0 &amp;&amp; &hellip;\
-0 &amp;&amp; 0 &amp;&amp; 2 &amp;&amp; 0 &amp;&amp; &hellip;\
-0 &amp;&amp; 0 &amp;&amp; 0 &amp;&amp; 3 &amp;&amp; &hellip;\
-0 &amp;&amp; 0 &amp;&amp; 0 &amp;&amp; 0 &amp;&amp; &hellip;\
-&hellip; &amp;&amp; &hellip; &amp;&amp; &hellip; &amp;&amp; &hellip; &amp;&amp; &hellip;
-\end{matrix}\right]
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; &hellip;\cr
+0 &amp; 0 &amp; 2 &amp; 0 &amp; &hellip;\cr
+0 &amp; 0 &amp; 0 &amp; 3 &amp; &hellip;\cr
+0 &amp; 0 &amp; 0 &amp; 0 &amp; &hellip;\cr
+&hellip; &amp; &hellip; &amp; &hellip; &amp; &hellip; &amp; &hellip;
+\end{bmatrix}
 $$</p>
 <p>其实很容易求，还是利用线性代数的思维，把矩阵的每一列看作是一个新的基函数，因此，只要对原来的每个基函数求导，就能得到新的基函数</p>
 <p>线性代数和函数的对应关系</p>
@@ -425,7 +393,8 @@ $$</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-11-16</span>
+                <span>Updated on 2022-11-21&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/83a854d0d9c38929492a60b9b7ba6373cd01416d" target="_blank" title="commit by swj(905622665@qq.com) 83a854d0d9c38929492a60b9b7ba6373cd01416d: linear algebra">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>83a854d</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
