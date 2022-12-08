@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 16 Nov 2022 09:12:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>如何部署unity生成的WebGL包</title>
+    <link>http://blog.shiwj.top/32.unity-webgl-deploy/</link>
+    <pubDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/32.unity-webgl-deploy/</guid>
+    <description><![CDATA[使用IIS作为web服务器。 IIS的全称是Internet Information Services，是windows自带的web服务器。 第一步，打包 File -&gt; Build Settings&hellip; -&gt; WebGL -&gt;]]></description>
+</item>
+<item>
     <title>线性代数的几何意义</title>
     <link>http://blog.shiwj.top/31.linear-algebra-3b1b/</link>
     <pubDate>Wed, 16 Nov 2022 09:12:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/23.cpp-new-malloc/</guid>
     <description><![CDATA[malloc函数只负责分配一块堆内存，并不负责构造对象。malloc返回一个void *指针，使用时要将这个指针转换成对象的类型。 new关键字]]></description>
-</item>
-<item>
-    <title>scl-rhel/centos软件运行环境</title>
-    <link>http://blog.shiwj.top/22.scl/</link>
-    <pubDate>Fri, 28 Oct 2022 10:28:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/22.scl/</guid>
-    <description><![CDATA[scl(Software Collections)给 RHEL/CentOS 用户提供一种同时使用多个软件版本的运行环境，避免以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是]]></description>
 </item>
 </channel>
 </rss>

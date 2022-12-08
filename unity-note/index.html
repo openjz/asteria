@@ -33,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "unity","wordcount":  1830 ,
+                        }],"genre": "posts","keywords": "unity","wordcount":  1857 ,
         "url": "http:\/\/blog.shiwj.top\/unity-note\/","datePublished": "2022-06-26T10:48:30+08:00","dateModified": "2022-10-06T20:16:46+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,7 +82,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Unity入门笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B8%B8%E6%88%8F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>游戏</a>&nbsp;<a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1830 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1857 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -164,7 +164,7 @@
 </li>
 <li>Directional Light（方向光），给游戏对象打光
 <ul>
-<li>方向光可以旋转，但不能移动和放缩</li>
+<li>方向光可以旋转，但不能移动（改变transform不会产生效果）和放缩</li>
 <li>可以修改方向光的颜色</li>
 <li>除方向光以外，unity 中还有很多种光，例如 Point Light、Spot Light 等.</li>
 </ul>
@@ -199,7 +199,7 @@
 <li>点击Albedo属性前面的圆圈选择图片</li>
 <li>有时我们希望选取图片的一部分作为纹理，或者让图片呈现平铺效果，这时就需要使用offset和tiling参数
 <ul>
-<li><strong>图片的左下角为原点，并且对offset和tiling参数来说，原图平铺在整个平面上的</strong></li>
+<li><strong>对offset和tiling参数来说，原图平铺在平面上，图片的左下角为原点，图片在整个平面上无限重复</strong></li>
 <li>offset，指定选取图像的起始位置，取值范围为0~1（表示相对于原图的比例）</li>
 <li>tiling，指定选取图片的范围，以offset为起点，取值正负均可，可以大于1。（取值同样表示相对原图的比例）</li>
 </ul>

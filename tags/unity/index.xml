@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/unity/</link>
         <description>unity - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 26 Jun 2022 10:48:30 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/unity/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/unity/" rel="self" type="application/rss+xml" /><item>
+    <title>如何部署unity生成的WebGL包</title>
+    <link>http://blog.shiwj.top/32.unity-webgl-deploy/</link>
+    <pubDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/32.unity-webgl-deploy/</guid>
+    <description><![CDATA[使用IIS作为web服务器。 IIS的全称是Internet Information Services，是windows自带的web服务器。 第一步，打包 File -&gt; Build Settings&hellip; -&gt; WebGL -&gt;]]></description>
+</item>
+<item>
     <title>Unity入门笔记</title>
     <link>http://blog.shiwj.top/unity-note/</link>
     <pubDate>Sun, 26 Jun 2022 10:48:30 &#43;0800</pubDate>

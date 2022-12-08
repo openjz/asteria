@@ -1,0 +1,26 @@
+# 如何部署unity生成的WebGL包
+
+
+使用IIS作为web服务器。
+
+IIS的全称是Internet Information Services，是windows自带的web服务器。
+
+## 第一步，打包
+
+File -> Build Settings... -> WebGL -> Player Settings... -> Player -> Publishing Settings -> Compression Format -> Disabled
+
+这里选择不压缩的原因是压缩后路由的时候会有问题。
+
+## 第二步，启用IIS
+
+控制面板 -> 启用或关闭windows功能 -> Internet Information Services
+
+安装URL Rewrite工具，[https://www.iis.net/downloads/microsoft/url-rewrite](https://www.iis.net/downloads/microsoft/url-rewrite)。（装好后电脑上会出现一个叫做Microsoft Web Platform Installer的工具，可以用来安装各种windows的web工具）
+
+## 第三步，创建网站
+
+计算机管理 -> 服务和应用程序 -> Internet Information Services(IIS)管理器 -> 网站 -> 右键添加网站
+
+## 第四步，编写路由配置
+
+参考unity官方给的demo，[https://docs.unity3d.com/2020.3/Documentation/Manual/webgl-server-configuration-code-samples.html](https://docs.unity3d.com/2020.3/Documentation/Manual/webgl-server-configuration-code-samples.html)，注意选对unity的版本，里面给出了好几种web服务器的配置，这里使用`Server configuration for uncompressed WebGL builds (IIS)`这个配置。（和上面的不压缩对应）
