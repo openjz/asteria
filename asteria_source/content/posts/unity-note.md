@@ -101,3 +101,23 @@ Gizmos 是 unity 场景视图中的辅助图标，比如选中移动工具以后
   - 创建变体，将一个修改过的prefab实例拖到project中时，选择“create prefab variant”
 - nested prefab（表示prefab之间的组合关系）
   - 在prefab编辑模式下可以创建prefab组合
+
+## 脚本
+
+- 给一个对象创建一个scripts组件，脚本文件会创建在assests窗口中。
+- 脚本中包含一个类，继承自`MonoBehaviour`类，包含两个方法，`Start()`和`Update()`，`Start()`在游戏启动时调用一次，`Update()`每帧调用一次。
+- 类中的变量会出现在unity editor中的脚本组件里面。
+- 在unity editor中打开控制台窗口，Ctrl+Shift+C (Windows) or Cmd+Shift+C (Mac)。
+- 在窗口中选择collapse可以对重复的日志只打印一条，右侧显示其计数。
+
+## 音频
+
+- 3D声源：unity除了能模拟真实环境中物体之间的交互，还能模拟真实环境中的声波，玩家听到的声音大小取决于玩家和声源的距离、玩家和声源之间材质的特性等。
+- 3D声源的声音接收者称为Audio Listener，一个场景里只能有一个Audio Listener，默认和main camera绑定。
+- 声音组件是Audio Source
+  - AudioClip属性选择声音
+  - Loop属性让声音循环播放
+  - Spatial Blend属性将声音变为3D声源
+  - 3D Sound Settings -> xxx Rolloff可以调整声音衰减
+    - Min Distance设置的是能听到最大音量的距离，在这个距离之内就能听到最大音量，超过这个距离声音就会衰减。
+    - Max Distince设置的是能听到声音的最远距离，超过这个距离就无法听到声音。

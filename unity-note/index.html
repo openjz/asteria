@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/unity-note/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-26T10:48:30+08:00" />
-<meta property="article:modified_time" content="2022-10-06T20:16:46+08:00" />
+<meta property="article:modified_time" content="2022-12-08T20:51:05+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
@@ -33,8 +33,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "unity","wordcount":  1857 ,
-        "url": "http:\/\/blog.shiwj.top\/unity-note\/","datePublished": "2022-06-26T10:48:30+08:00","dateModified": "2022-10-06T20:16:46+08:00","publisher": {
+                        }],"genre": "posts","keywords": "unity","wordcount":  2399 ,
+        "url": "http:\/\/blog.shiwj.top\/unity-note\/","datePublished": "2022-06-26T10:48:30+08:00","dateModified": "2022-12-08T20:51:05+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -82,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Unity入门笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B8%B8%E6%88%8F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>游戏</a>&nbsp;<a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1857 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2399 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -107,6 +107,8 @@
         <li><a href="#prefab预制物">prefab（预制物）</a></li>
       </ul>
     </li>
+    <li><a href="#脚本">脚本</a></li>
+    <li><a href="#音频">音频</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="参考">参考</h2>
@@ -230,12 +232,38 @@
 </ul>
 </li>
 </ul>
+<h2 id="脚本">脚本</h2>
+<ul>
+<li>给一个对象创建一个scripts组件，脚本文件会创建在assests窗口中。</li>
+<li>脚本中包含一个类，继承自<code>MonoBehaviour</code>类，包含两个方法，<code>Start()</code>和<code>Update()</code>，<code>Start()</code>在游戏启动时调用一次，<code>Update()</code>每帧调用一次。</li>
+<li>类中的变量会出现在unity editor中的脚本组件里面。</li>
+<li>在unity editor中打开控制台窗口，Ctrl+Shift+C (Windows) or Cmd+Shift+C (Mac)。</li>
+<li>在窗口中选择collapse可以对重复的日志只打印一条，右侧显示其计数。</li>
+</ul>
+<h2 id="音频">音频</h2>
+<ul>
+<li>3D声源：unity除了能模拟真实环境中物体之间的交互，还能模拟真实环境中的声波，玩家听到的声音大小取决于玩家和声源的距离、玩家和声源之间材质的特性等。</li>
+<li>3D声源的声音接收者称为Audio Listener，一个场景里只能有一个Audio Listener，默认和main camera绑定。</li>
+<li>声音组件是Audio Source
+<ul>
+<li>AudioClip属性选择声音</li>
+<li>Loop属性让声音循环播放</li>
+<li>Spatial Blend属性将声音变为3D声源</li>
+<li>3D Sound Settings -&gt; xxx Rolloff可以调整声音衰减
+<ul>
+<li>Min Distance设置的是能听到最大音量的距离，在这个距离之内就能听到最大音量，超过这个距离声音就会衰减。</li>
+<li>Max Distince设置的是能听到声音的最远距离，超过这个距离就无法听到声音。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-10-06&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/e386abe86a226c7a792fca5892b1d9ca57933c9c" target="_blank" title="commit by shiwenjie(swj6086085@163.com) e386abe86a226c7a792fca5892b1d9ca57933c9c: unity">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e386abe</a></span>
+                <span>Updated on 2022-12-08&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/1b5fc8968b0a38510d643fe8f9e818959c075edb" target="_blank" title="commit by shiwenjie(swj6086085@163.com) 1b5fc8968b0a38510d643fe8f9e818959c075edb: unity">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>1b5fc89</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
