@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>渲染管线介绍</title>
+    <link>http://blog.shiwj.top/33.rendering-pipeline/</link>
+    <pubDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/33.rendering-pipeline/</guid>
+    <description><![CDATA[什么是渲染 广义上的渲染过程，既包括CPU参与部分，也包括GPU参与部分。通过图形API来调用GPU渲染管线， 广义的渲染分为六个步骤 应用阶段 顶]]></description>
+</item>
+<item>
     <title>如何部署unity生成的WebGL包</title>
     <link>http://blog.shiwj.top/32.unity-webgl-deploy/</link>
     <pubDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/24.cpp-static/</guid>
     <description><![CDATA[static static 变量的生命周期从初始化起一直持续到程序执行结束 static 变量存放在数据区，分为已初始化的全局变量区（data 段）和未初始化的全局变量区（bss 段]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中new和malloc的区别</title>
-    <link>http://blog.shiwj.top/23.cpp-new-malloc/</link>
-    <pubDate>Fri, 28 Oct 2022 10:43:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/23.cpp-new-malloc/</guid>
-    <description><![CDATA[malloc函数只负责分配一块堆内存，并不负责构造对象。malloc返回一个void *指针，使用时要将这个指针转换成对象的类型。 new关键字]]></description>
 </item>
 </channel>
 </rss>

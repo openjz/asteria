@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/</link>
         <description>游戏 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E6%B8%B8%E6%88%8F/" rel="self" type="application/rss+xml" /><item>
+    <title>渲染管线介绍</title>
+    <link>http://blog.shiwj.top/33.rendering-pipeline/</link>
+    <pubDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/33.rendering-pipeline/</guid>
+    <description><![CDATA[什么是渲染 广义上的渲染过程，既包括CPU参与部分，也包括GPU参与部分。通过图形API来调用GPU渲染管线， 广义的渲染分为六个步骤 应用阶段 顶]]></description>
+</item>
+<item>
     <title>如何部署unity生成的WebGL包</title>
     <link>http://blog.shiwj.top/32.unity-webgl-deploy/</link>
     <pubDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</pubDate>
