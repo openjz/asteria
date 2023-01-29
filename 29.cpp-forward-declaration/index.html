@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://blog.shiwj.top/29.cpp-forward-declaration/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-30T15:01:00+08:00" />
 <meta property="article:modified_time" content="2022-11-01T10:05:27+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -125,18 +124,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//A.h
-</span><span class="c1"></span><span class="cp">#pragma once
-</span><span class="cp">#include</span> <span class="cpf">&#34;B.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">A</span><span class="p">{...};</span>
-
-<span class="c1">//B.h
-</span><span class="c1"></span><span class="cp">#pragma once
-</span><span class="cp">#include</span> <span class="cpf">&#34;A&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">B</span><span class="p">{...};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">//A.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#pragma once
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;B.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">{...};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//B.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#pragma once
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;A&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">{...};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样的代码是无法通过编译的，因为头文件发生了循环包含。当编译器正在编译A.h时，发现A.h中包含了B.h，编译器就去编译B.h，然而B.h中包含了A.h，编译器会认为A.h已经编译过了，但是实际情况是A.h并没有编译完成，因此编译类B中的代码时就会发生错误。</p>
 <h2 id="前置声明forward-declaration">前置声明（Forward Declaration）</h2>
@@ -147,9 +146,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="k">class</span> <span class="nc">B</span><span class="p">;</span>    <span class="c1">//前置声明
-</span><span class="c1"></span><span class="k">class</span> <span class="nc">A</span><span class="p">{...};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">;</span>    <span class="c1">//前置声明
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">A</span><span class="p">{...};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用前置声明可以解决循环包含的问题。在上面的例子中，我们可以在头文件A.h中包含B.h，然后在B.h中只给出A的前置声明，而不用包含A.h。</p>
 <div class="highlight"><div class="chroma">
@@ -167,18 +166,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//A.h
-</span><span class="c1"></span><span class="cp">#pragma once
-</span><span class="cp">#include</span> <span class="cpf">&#34;B.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">A</span><span class="p">{...};</span>
-
-<span class="c1">//B.h
-</span><span class="c1"></span><span class="cp">#pragma once
-</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">A</span><span class="p">;</span>
-<span class="k">class</span> <span class="nc">B</span><span class="p">{...};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">//A.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#pragma once
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;B.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">{...};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//B.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#pragma once
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">{...};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="前置声明的问题">前置声明的问题</h2>
 <p>前置声明的问题在于，它只是个类名。在上面的例子中，如果类B中只是出现了类A的引用、指针、友元声明等（即只用到了类B的名字），利用前置声明取代#include是可以的。</p>
@@ -218,7 +217,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">津ICP备2020010292号-1</span></div>
         </div>
     </footer></div>

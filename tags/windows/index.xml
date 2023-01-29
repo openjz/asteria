@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>windows - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/windows/</link>
+        <description>windows - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 29 Jan 2023 07:33:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
+    <title>windows设备管理</title>
+    <link>http://blog.shiwj.top/35.windows-devices-manage/</link>
+    <pubDate>Sun, 29 Jan 2023 07:33:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/35.windows-devices-manage/</guid>
+    <description><![CDATA[win32 蓝牙 api win32 api对 ble 的支持似乎比较简陋 参考 win32蓝牙api介绍，https://learn.microsoft.com/en-us/wi]]></description>
+</item>
+</channel>
+</rss>

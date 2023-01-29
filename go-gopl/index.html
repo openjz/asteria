@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://blog.shiwj.top/go-gopl/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-26T11:18:48+08:00" />
 <meta property="article:modified_time" content="2022-10-26T11:14:32+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -239,11 +238,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="s">&#34;世界&#34;</span>
-<span class="s">&#34;\xe4\xb8\x96\xe7\x95\x8c&#34;</span>
-<span class="s">&#34;\u4e16\u754c&#34;</span>
-<span class="s">&#34;\U00004e16\U0000754c&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="s">&#34;世界&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;\xe4\xb8\x96\xe7\x95\x8c&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;\u4e16\u754c&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;\U00004e16\U0000754c&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>utf-8 编码规则（只有&quot;xxx&quot;部分才是 unicode 码点信息）
@@ -255,11 +254,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">0xxxxxxx
-110xxxxx 10xxxxxx
-1110xxxx 10xxxxxx 10xxxxxx
-11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0xxxxxxx
+</span></span><span class="line"><span class="cl">110xxxxx 10xxxxxx
+</span></span><span class="line"><span class="cl">1110xxxx 10xxxxxx 10xxxxxx
+</span></span><span class="line"><span class="cl">11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>使用函数<code>utf8.RuneCountInString(s)</code>计算字符串中的字符数量</li>
@@ -353,10 +352,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">a</span> <span class="kd">struct</span><span class="p">{</span>
-    <span class="nx">Year</span> <span class="kt">int</span> <span class="s">`json:&#34;released&#34;`</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">a</span> <span class="kd">struct</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Year</span> <span class="kt">int</span> <span class="s">`json:&#34;released&#34;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>（成员标签由一组空格分割的 key:&ldquo;value&quot;组成）</li>
 </ul>
@@ -394,12 +393,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nx">d</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">int</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span>
-<span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">d</span><span class="p">())</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">d</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">x</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">d</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>当匿名函数需要递归时，必须先按照上面这样把函数赋值给一个变量</li>
@@ -418,11 +417,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nf">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="c1">//或
-</span><span class="c1"></span><span class="nx">values</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
-<span class="nf">sum</span><span class="p">(</span><span class="nx">values</span><span class="o">...</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//或
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">values</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nx">values</span><span class="o">...</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -441,10 +440,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">var</span> <span class="nx">buf</span> <span class="p">[</span><span class="mi">4096</span><span class="p">]</span><span class="kt">byte</span>
-<span class="nx">n</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nf">Stack</span><span class="p">(</span><span class="nx">buf</span><span class="p">[:],</span><span class="kc">false</span><span class="p">)</span>
-<span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">buf</span><span class="p">[:</span><span class="nx">n</span><span class="p">])</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">buf</span> <span class="p">[</span><span class="mi">4096</span><span class="p">]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl"><span class="nx">n</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nf">Stack</span><span class="p">(</span><span class="nx">buf</span><span class="p">[:],</span><span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">buf</span><span class="p">[:</span><span class="nx">n</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>从 panic 中恢复，如果在发生 panic 的函数的 defer 语句中调用 recover 函数，panic 发生时程序就不会异常退出，而是将 panic 消息作为 recover 的返回值，如果没有 panic，recover 就返回 nil（<strong>可以在 defer 函数中修改函数返回值！</strong>），例如
@@ -459,14 +458,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">Parse</span><span class="p">()</span> <span class="nx">err</span> <span class="kt">error</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
-        <span class="k">if</span> <span class="nx">p</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">p</span><span class="o">!=</span><span class="kc">nil</span><span class="p">{</span>
-            <span class="nx">err</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;%v&#34;</span><span class="p">,</span><span class="nx">p</span><span class="p">)</span> <span class="c1">//可以在recover时修改函数返回值
-</span><span class="c1"></span>        <span class="p">}</span>
-    <span class="p">}()</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Parse</span><span class="p">()</span> <span class="nx">err</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">p</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">p</span><span class="o">!=</span><span class="kc">nil</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">err</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;%v&#34;</span><span class="p">,</span><span class="nx">p</span><span class="p">)</span> <span class="c1">//可以在recover时修改函数返回值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>处理 panic 的一般原则是，不应该去恢复从另一个包发生的 panic，也不应该去恢复不是你维护的代码发生的 panic</li>
@@ -490,22 +489,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">bailout</span> <span class="kd">struct</span><span class="p">{}</span>
-<span class="o">...</span>
-<span class="nb">panic</span><span class="p">(</span><span class="nx">bailout</span><span class="p">{})</span>    <span class="c1">//在某个地方发生了panic
-</span><span class="c1"></span><span class="o">...</span>
-<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="nx">p</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">p</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
-        <span class="c1">// no panic
-</span><span class="c1"></span>    <span class="k">case</span> <span class="nx">bailout</span><span class="p">{}:</span>
-        <span class="c1">// &#34;expected&#34; panic
-</span><span class="c1"></span>        <span class="nx">err</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;multiple title elements&#34;</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="c1">// unexpected panic; carry on panicking
-</span><span class="c1"></span>    <span class="p">}</span>
-<span class="p">}()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">bailout</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="nb">panic</span><span class="p">(</span><span class="nx">bailout</span><span class="p">{})</span>    <span class="c1">//在某个地方发生了panic
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="nx">p</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// no panic
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">case</span> <span class="nx">bailout</span><span class="p">{}:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// &#34;expected&#34; panic
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">err</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;multiple title elements&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="c1">// unexpected panic; carry on panicking
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -527,9 +526,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">P</span> <span class="o">*</span><span class="kt">int</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">P</span><span class="p">)</span> <span class="nf">f</span><span class="p">(){</span><span class="o">...</span><span class="p">}</span>  <span class="c1">//不允许这样
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">P</span> <span class="o">*</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">P</span><span class="p">)</span> <span class="nf">f</span><span class="p">(){</span><span class="o">...</span><span class="p">}</span>  <span class="c1">//不允许这样
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>接收者是指针类型时，可以使用变量本身调用方法，编译器会对变量隐式转换为指针。反过来也是一样的。</li>
@@ -551,12 +550,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">Point</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">X</span><span class="p">,</span><span class="nx">Y</span> <span class="kt">float</span> <span class="p">}</span>
-<span class="kd">type</span> <span class="nx">ColorPoint</span> <span class="kd">struct</span><span class="p">{</span>
-    <span class="nx">Point</span>
-    <span class="nx">Color</span> <span class="nx">color</span><span class="p">.</span><span class="nx">RGBA</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Point</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">X</span><span class="p">,</span><span class="nx">Y</span> <span class="kt">float</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">ColorPoint</span> <span class="kd">struct</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Point</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Color</span> <span class="nx">color</span><span class="p">.</span><span class="nx">RGBA</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以直接通过 ColorPoint 调用 Point 的方法</p>
 </li>
@@ -568,9 +567,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nx">dis</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Distance</span>   <span class="c1">//方法变量
-</span><span class="c1"></span><span class="nf">dis</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">dis</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Distance</span>   <span class="c1">//方法变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">dis</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -581,9 +580,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nx">dis</span> <span class="o">:=</span> <span class="nx">Point</span><span class="p">.</span><span class="nx">Distance</span>   <span class="c1">//方法表达式
-</span><span class="c1"></span><span class="nf">dis</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">dis</span> <span class="o">:=</span> <span class="nx">Point</span><span class="p">.</span><span class="nx">Distance</span>   <span class="c1">//方法表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">dis</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -695,20 +694,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="k">switch</span> <span class="nx">x</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
-   <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
-   <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
-   <span class="k">default</span><span class="p">:</span>
-<span class="p">}</span>
-<span class="c1">//扩展写法，在这种写法中，x被赋予的是接口的动态值而不是类型，可以把这个值拿到case块中去使用
-</span><span class="c1"></span><span class="k">switch</span> <span class="nx">x</span><span class="o">:=</span><span class="nx">x</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
-   <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
-   <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
-   <span class="k">default</span><span class="p">:</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="k">switch</span> <span class="nx">x</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//扩展写法，在这种写法中，x被赋予的是接口的动态值而不是类型，可以把这个值拿到case块中去使用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">switch</span> <span class="nx">x</span><span class="o">:=</span><span class="nx">x</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -755,10 +754,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="k">for</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ch</span> <span class="p">{</span>
-   <span class="o">...</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>close 操作不是必须的，只是一种同步手段而已（不像文件，打开后一定要关闭）</li>
@@ -804,27 +803,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nx">r</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-<span class="c1">//主协程，从一个channel获取数据处理，因此事先不知道到底要创建多少协程
-</span><span class="c1"></span><span class="k">for</span> <span class="nx">m</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ch</span> <span class="p">{</span>
-   <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">//创建协程前计数+1
-</span><span class="c1"></span>   <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">m</span> <span class="kt">string</span><span class="p">){</span>
-      <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>  <span class="c1">//在defer中对计数-1，确保一定能-1
-</span><span class="c1"></span>      <span class="nx">r</span> <span class="o">&lt;-</span> <span class="mi">1</span>
-   <span class="p">}(</span><span class="nx">m</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">//等待协程结束必须单独起一个协程，如果把等待操作放在主协程，放在下面这个循环之前，由于channel r是一个无缓冲channel，channel中的数据得不到处理，会导致所有协程都结束不了，如果放在循环后面，由于没人关闭channel r，循环结束不了，所以执行不到等待操作。（由于我们事先不知道到底有多少协程，因此也没办法使用缓冲channel）
-</span><span class="c1"></span><span class="k">go</span> <span class="kd">func</span><span class="p">(){</span>
-   <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>   <span class="c1">//等待所有协程结束
-</span><span class="c1"></span>   <span class="nb">close</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
-<span class="p">}()</span>
-<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
-<span class="c1">//等r被关闭后才能结束循环
-</span><span class="c1"></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">r</span> <span class="p">{</span>
-   <span class="nx">total</span> <span class="o">+=</span> <span class="nx">i</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">r</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//主协程，从一个channel获取数据处理，因此事先不知道到底要创建多少协程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">m</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">//创建协程前计数+1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">m</span> <span class="kt">string</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>  <span class="c1">//在defer中对计数-1，确保一定能-1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">r</span> <span class="o">&lt;-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}(</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//等待协程结束必须单独起一个协程，如果把等待操作放在主协程，放在下面这个循环之前，由于channel r是一个无缓冲channel，channel中的数据得不到处理，会导致所有协程都结束不了，如果放在循环后面，由于没人关闭channel r，循环结束不了，所以执行不到等待操作。（由于我们事先不知道到底有多少协程，因此也没办法使用缓冲channel）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">go</span> <span class="kd">func</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>   <span class="c1">//等待所有协程结束
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nb">close</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//等r被关闭后才能结束循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">r</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">total</span> <span class="o">+=</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -840,14 +839,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">//设定并发数为20
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">tokens</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{},</span> <span class="mi">20</span><span class="p">)</span>
-<span class="c1">//获取一个token
-</span><span class="c1"></span><span class="nx">token</span> <span class="o">&lt;-</span> <span class="kd">struct</span><span class="p">{}{}</span>
-<span class="c1">//协程处理...
-</span><span class="c1">//处理完成后释放token
-</span><span class="c1"></span><span class="o">&lt;-</span> <span class="nx">token</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//设定并发数为20
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">tokens</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{},</span> <span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//获取一个token
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">token</span> <span class="o">&lt;-</span> <span class="kd">struct</span><span class="p">{}{}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//协程处理...
+</span></span></span><span class="line"><span class="cl"><span class="c1">//处理完成后释放token
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&lt;-</span> <span class="nx">token</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -862,13 +861,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="k">select</span> <span class="p">{</span>
-<span class="k">case</span> <span class="o">&lt;-</span> <span class="nx">ch1</span><span class="p">:</span>
-<span class="k">case</span> <span class="nx">x</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch2</span><span class="p">:</span>
-<span class="k">case</span> <span class="nx">ch3</span> <span class="o">&lt;-</span> <span class="nx">y</span><span class="p">:</span>
-<span class="k">default</span><span class="p">:</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="o">&lt;-</span> <span class="nx">ch1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="nx">x</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="nx">ch3</span> <span class="o">&lt;-</span> <span class="nx">y</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当我们不想在一个通道还没准备好的情况下被阻塞时，可以使用 select 多路复用</p>
 </li>
@@ -898,16 +897,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nx">loop</span><span class="p">:</span>
-   <span class="k">for</span><span class="p">{</span>
-      <span class="k">select</span><span class="p">{</span>
-      <span class="k">case</span> <span class="nx">_</span><span class="p">,</span><span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">ch</span> <span class="p">:</span>
-         <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
-            <span class="k">break</span> <span class="nx">loop</span>
-         <span class="p">}</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">loop</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">for</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">select</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="nx">_</span><span class="p">,</span><span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">ch</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span> <span class="nx">loop</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>continue 同理，可以跳出多层</li>
@@ -950,11 +949,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">var</span> <span class="nx">mu</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
-<span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
-<span class="c1">//...临界区域
-</span><span class="c1"></span><span class="nx">mu</span><span class="p">.</span><span class="nf">UnLock</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">mu</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+</span></span><span class="line"><span class="cl"><span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//...临界区域
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">mu</span><span class="p">.</span><span class="nf">UnLock</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>为了确保释放锁，unlock 操作经常放在 defer 里</li>
@@ -977,10 +976,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">var</span> <span class="nx">loadonce</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
-<span class="nx">loadonce</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">initfunc</span><span class="p">)</span>   <span class="c1">//initfunc用于初始化变量
-</span><span class="c1">//...访问操作
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">loadonce</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
+</span></span><span class="line"><span class="cl"><span class="nx">loadonce</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">initfunc</span><span class="p">)</span>   <span class="c1">//initfunc用于初始化变量
+</span></span></span><span class="line"><span class="cl"><span class="c1">//...访问操作
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>sync.Once 内部包含一个互斥量和一个 bool 变量，bool 变量用于标记共享变量是否已完成初始化</li>
@@ -1072,10 +1071,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">go <span class="nb">test</span> -cpuprofile<span class="o">=</span>cpu.out
-go <span class="nb">test</span> -blockprofile<span class="o">=</span>block.out
-go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">go <span class="nb">test</span> -cpuprofile<span class="o">=</span>cpu.out
+</span></span><span class="line"><span class="cl">go <span class="nb">test</span> -blockprofile<span class="o">=</span>block.out
+</span></span><span class="line"><span class="cl">go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>一般都是针对基准测试进行性能分析
@@ -1084,8 +1083,8 @@ go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">go <span class="nb">test</span> -run<span class="o">=</span>NONE -bench<span class="o">=</span>xxx -cpuprofile<span class="o">=</span>cpu.out
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">go <span class="nb">test</span> -run<span class="o">=</span>NONE -bench<span class="o">=</span>xxx -cpuprofile<span class="o">=</span>cpu.out
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>使用 pprof 工具生成性能分析报告
@@ -1094,8 +1093,8 @@ go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">go tool pprof ...各种参数 cpu.out
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">go tool pprof ...各种参数 cpu.out
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1112,11 +1111,11 @@ go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">// Output: 或 Unordered Output:
-</span><span class="c1">// Ava
-</span><span class="c1">// Jess
-</span><span class="c1">// [Jess Sarah Zoe]
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Output: 或 Unordered Output:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Ava
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Jess
+</span></span></span><span class="line"><span class="cl"><span class="c1">// [Jess Sarah Zoe]
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1154,15 +1153,15 @@ go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="nx">x</span> <span class="o">:=</span> <span class="mi">2</span>
-<span class="c1">//获取一个可寻址的x
-</span><span class="c1"></span><span class="nx">d</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nf">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">).</span><span class="nf">Elem</span><span class="p">()</span>
-<span class="c1">//方法1，通过指针修改x的值
-</span><span class="c1"></span><span class="nx">px</span> <span class="o">:=</span> <span class="nx">d</span><span class="p">.</span><span class="nf">Addr</span><span class="p">().</span><span class="nf">Interface</span><span class="p">().(</span><span class="o">*</span><span class="kt">int</span><span class="p">)</span>
-<span class="o">*</span><span class="nx">px</span> <span class="p">=</span> <span class="mi">3</span>
-<span class="c1">//方法2，通过set方法修改d
-</span><span class="c1"></span><span class="nx">d</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nf">ValueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">x</span> <span class="o">:=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//获取一个可寻址的x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">d</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nf">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">).</span><span class="nf">Elem</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//方法1，通过指针修改x的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">px</span> <span class="o">:=</span> <span class="nx">d</span><span class="p">.</span><span class="nf">Addr</span><span class="p">().</span><span class="nf">Interface</span><span class="p">().(</span><span class="o">*</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span><span class="nx">px</span> <span class="p">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//方法2，通过set方法修改d
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">d</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nf">ValueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>在不可寻址的 reflect.Value 上调用 Set 会崩溃
@@ -1218,7 +1217,7 @@ go <span class="nb">test</span> -memprofile<span class="o">=</span>mem.out
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">津ICP备2020010292号-1</span></div>
         </div>
     </footer></div>

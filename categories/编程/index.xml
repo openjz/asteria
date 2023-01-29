@@ -4,7 +4,23 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 29 Jan 2023 07:33:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>windows设备管理</title>
+    <link>http://blog.shiwj.top/35.windows-devices-manage/</link>
+    <pubDate>Sun, 29 Jan 2023 07:33:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/35.windows-devices-manage/</guid>
+    <description><![CDATA[win32 蓝牙 api win32 api对 ble 的支持似乎比较简陋 参考 win32蓝牙api介绍，https://learn.microsoft.com/en-us/wi]]></description>
+</item>
+<item>
+    <title>蓝牙规范介绍</title>
+    <link>http://blog.shiwj.top/34.bluetooth-specification-introduction/</link>
+    <pubDate>Sun, 29 Jan 2023 05:27:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/34.bluetooth-specification-introduction/</guid>
+    <description><![CDATA[蓝牙技术 蓝牙是一种无线通讯技术，蓝牙到目前为止一共发展了多代规范。从蓝牙4.0开始提出了BLE技术（Bluetooth Low Energy，蓝牙低]]></description>
+</item>
+<item>
     <title>渲染管线介绍</title>
     <link>http://blog.shiwj.top/33.rendering-pipeline/</link>
     <pubDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</pubDate>
@@ -67,22 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/25.cpp-dup-symbols/</guid>
     <description><![CDATA[在开发比较大的项目时，有时候会出现多动态库之间定义了重复名字的情况，或者动态库和主程序之间定义了重复名字的情况。 在gcc上验证 编译器版本是g]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中的static</title>
-    <link>http://blog.shiwj.top/24.cpp-static/</link>
-    <pubDate>Fri, 28 Oct 2022 12:52:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/24.cpp-static/</guid>
-    <description><![CDATA[static static 变量的生命周期从初始化起一直持续到程序执行结束 static 变量存放在数据区，分为已初始化的全局变量区（data 段）和未初始化的全局变量区（bss 段]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中new和malloc的区别</title>
-    <link>http://blog.shiwj.top/23.cpp-new-malloc/</link>
-    <pubDate>Fri, 28 Oct 2022 10:43:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/23.cpp-new-malloc/</guid>
-    <description><![CDATA[malloc函数只负责分配一块堆内存，并不负责构造对象。malloc返回一个void *指针，使用时要将这个指针转换成对象的类型。 new关键字]]></description>
 </item>
 </channel>
 </rss>
