@@ -10,6 +10,7 @@
 <meta property="og:url" content="http://blog.shiwj.top/26.cpp-copy-move/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-28T15:19:00+08:00" />
 <meta property="article:modified_time" content="2022-11-15T10:40:48+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2594 ,
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2595 ,
         "url": "http:\/\/blog.shiwj.top\/26.cpp-copy-move\/","datePublished": "2022-10-28T15:19:00+08:00","dateModified": "2022-11-15T10:40:48+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +82,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">c&#43;&#43;中的拷贝和移动语义</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2594 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2595 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -139,32 +140,32 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">))){}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">*</span><span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">e</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">A</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;&amp;</span><span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="o">!=*</span><span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">e</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">A</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">))){}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">*</span><span class="n">b</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">));</span>
+            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;&amp;</span><span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">){</span>
+        <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="o">!=*</span><span class="n">b</span><span class="p">){</span>
+            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">;</span>
+            <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="拷贝语义">拷贝语义</h2>
 <p>拷贝语义分为拷贝构造和拷贝赋值</p>
@@ -188,27 +189,29 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 拷贝构造
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ClassA</span><span class="p">(</span><span class="k">const</span> <span class="n">ClassA</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">))){}</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 拷贝赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ClassA</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ClassA</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//检测自赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">newe</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">e</span> <span class="o">=</span> <span class="n">newe</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">
+<span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">// 拷贝构造
+</span><span class="c1"></span>    <span class="n">ClassA</span><span class="p">(</span><span class="k">const</span> <span class="n">ClassA</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span><span class="n">e</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">))){}</span>
+    <span class="c1">// 拷贝赋值
+</span><span class="c1"></span>    <span class="n">ClassA</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ClassA</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//检测自赋值
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="n">newe</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">));</span>
+            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">newe</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="移动move语义">移动（move）语义</h2>
 <p>C++11 中提出了移动（move）语义，移动语义是相对于拷贝语义的，目的是想减少对临时值的拷贝，改为直接接管临时值的资源。</p>
@@ -237,9 +240,9 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//左值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">i</span> <span class="o">*</span> <span class="mi">45</span><span class="p">;</span> <span class="c1">//右值
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//左值
+</span><span class="c1"></span><span class="n">i</span> <span class="o">*</span> <span class="mi">45</span><span class="p">;</span> <span class="c1">//右值
+</span></code></pre></td></tr></table>
 </div>
 </div><p><strong>通常属于右值的有，常量、字面量、临时变量/对象、匿名对象</strong></p>
 <h3 id="右值引用">右值引用</h3>
@@ -256,9 +259,9 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">42</span><span class="p">;</span>    <span class="c1">//r是一个右值引用
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">42</span><span class="p">;</span>    <span class="c1">//r是一个右值引用
+</span></code></pre></td></tr></table>
 </div>
 </div><p>通过一个例子看左值引用和右值引用的区别</p>
 <div class="highlight"><div class="chroma">
@@ -274,16 +277,16 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">&amp;&amp;</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>  <span class="c1">//正确
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;&amp;</span><span class="n">k</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>  <span class="c1">//错误，++i返回的是一个左值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">m</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>   <span class="c1">//错误，i++返回的是一个右值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">l</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>   <span class="c1">//正确
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">&amp;&amp;</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>  <span class="c1">//正确
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;&amp;</span><span class="n">k</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>  <span class="c1">//错误，++i返回的是一个左值
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">m</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>   <span class="c1">//错误，i++返回的是一个右值
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">l</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>   <span class="c1">//正确
+</span><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>报错：</p>
 <div class="highlight"><div class="chroma">
@@ -296,13 +299,13 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">algo.cpp: 在函数‘int main()’中:
-</span></span><span class="line"><span class="cl">algo.cpp:20:17: 错误：无法将左值‘int’绑定到‘int&amp;&amp;’
-</span></span><span class="line"><span class="cl">     int &amp;&amp;k = ++i;
-</span></span><span class="line"><span class="cl">                 ^
-</span></span><span class="line"><span class="cl">algo.cpp:21:15: 错误：用类型为‘int’的右值初始化类型为‘int&amp;’的非常量引用无效
-</span></span><span class="line"><span class="cl">     int &amp;m = i++;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">algo.cpp: 在函数‘int main()’中:
+algo.cpp:20:17: 错误：无法将左值‘int’绑定到‘int&amp;&amp;’
+     int &amp;&amp;k = ++i;
+                 ^
+algo.cpp:21:15: 错误：用类型为‘int’的右值初始化类型为‘int&amp;’的非常量引用无效
+     int &amp;m = i++;
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="如何实现移动语义">如何实现移动语义</h3>
 <p>移动语义包括两部分，移动构造函数和移动赋值运算符</p>
@@ -342,28 +345,28 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 移动构造
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ClassA</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="c1">//参数是右值引用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">:</span> <span class="n">e</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//接管资源
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>  <span class="c1">//确保b析构是安全的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 移动赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">&amp;</span><span class="n">ClassA</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="c1">//参数是右值引用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//检测自赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>     <span class="c1">//释放已有元素
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">e</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">;</span>    <span class="c1">//接管资源
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">
+<span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">// 移动构造
+</span><span class="c1"></span>    <span class="n">ClassA</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="c1">//参数是右值引用
+</span><span class="c1"></span>    <span class="o">:</span> <span class="n">e</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//接管资源
+</span><span class="c1"></span>        <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>  <span class="c1">//确保b析构是安全的
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="c1">// 移动赋值
+</span><span class="c1"></span>    <span class="o">&amp;</span><span class="n">ClassA</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="c1">//参数是右值引用
+</span><span class="c1"></span>        <span class="c1">//检测自赋值
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+            <span class="k">delete</span> <span class="n">e</span><span class="p">;</span>     <span class="c1">//释放已有元素
+</span><span class="c1"></span>            <span class="n">e</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">;</span>    <span class="c1">//接管资源
+</span><span class="c1"></span>            <span class="n">b</span><span class="p">.</span><span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="stdmove">std::move</h3>
 <p>标准库函数<code>std::move()</code>可以获取一个左值的右值引用。对一个源对象调用这个函数后必须保证后续对源对象只做赋值或销毁操作，但是不去使用它。</p>
@@ -378,8 +381,8 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">T</span> <span class="nf">obj</span><span class="p">(</span><span class="n">T</span><span class="p">(</span><span class="n">arg</span><span class="p">));</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="n">T</span> <span class="nf">obj</span><span class="p">(</span><span class="n">T</span><span class="p">(</span><span class="n">arg</span><span class="p">));</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>在这种情况下，对象<code>obj</code>不会去调用他的移动构造函数，而是直接被构造出来。</p>
 <p>如果程序是用 gcc 的 C++14 或 C++11 标准编译的，我们可以通过加上<code>-fno-elide-constructors</code>这一编译选项来阻止编译器进行此项优化。</p>
@@ -401,20 +404,20 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">//类代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">String</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="p">...</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">String</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">String</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">);</span>  <span class="c1">//c风格字符串,隐式的类类型转换规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//拷贝控制
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">String</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="p">);</span> <span class="c1">//拷贝构造
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="p">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//测试代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hello world!&#34;</span><span class="p">;</span> <span class="c1">//这里会触发copy elision
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//类代码
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">String</span><span class="p">{</span>
+<span class="p">...</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">String</span><span class="p">();</span>
+    <span class="n">String</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">);</span>  <span class="c1">//c风格字符串,隐式的类类型转换规则
+</span><span class="c1"></span>    <span class="c1">//拷贝控制
+</span><span class="c1"></span>    <span class="n">String</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="p">);</span> <span class="c1">//拷贝构造
+</span><span class="c1"></span>
+<span class="p">...</span>
+<span class="p">};</span>
+<span class="c1">//测试代码
+</span><span class="c1"></span><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hello world!&#34;</span><span class="p">;</span> <span class="c1">//这里会触发copy elision
+</span></code></pre></td></tr></table>
 </div>
 </div><p>然而在 C++17 中，情况有所改变，上述情形不再属于 Copy Elision。C++17 规定，用 prvalue（即纯右值）构造相同类型的对象时，不调用其移动/拷贝构造函数。<code>T(arg)</code>是一个 prvalue，因此构造<code>obj</code>时是不会去调用它的移动/拷贝构造函数的。也就是说 C++17 把对上述情形的优化直接放到了 C++语言标准里，不再属于编译器优化。这就意味着在 C++17 标准下，即使加上编译器选项<code>-fno-elide-constructors</code>也不能阻止上述情形被优化。</p>
 <p>当然 C++17 中仍然有 Copy Elision，只是上述情况不再属于 Copy Elision。</p>
@@ -444,17 +447,17 @@ rvalue：<strong>右值</strong>，就是传统意义上的右值。ravlue= prva
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span><span class="p">,</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="kr">inline</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="n">Class</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>    <span class="c1">//这个声明并不是为了让下面调用std::swap，而是当下面被交换的值没有自定义swap函数时，给它们调用std::swap的机会
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">e</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">);</span> <span class="c1">//这里优先匹配参数类型自己定义的swap，如果匹配不到才调用std::swap
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">ClassA</span><span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span><span class="p">,</span><span class="n">Class</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kr">inline</span>
+<span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">ClassA</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="n">Class</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>    <span class="c1">//这个声明并不是为了让下面调用std::swap，而是当下面被交换的值没有自定义swap函数时，给它们调用std::swap的机会
+</span><span class="c1"></span>    <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">e</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">e</span><span class="p">);</span> <span class="c1">//这里优先匹配参数类型自己定义的swap，如果匹配不到才调用std::swap
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">

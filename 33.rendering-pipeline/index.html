@@ -10,6 +10,7 @@
 <meta property="og:url" content="http://blog.shiwj.top/33.rendering-pipeline/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-26T15:43:00+08:00" />
 <meta property="article:modified_time" content="2022-12-27T00:43:20+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "图形","wordcount":  886 ,
+                        }],"genre": "posts","keywords": "图形","wordcount":  2076 ,
         "url": "http:\/\/blog.shiwj.top\/33.rendering-pipeline\/","datePublished": "2022-12-26T15:43:00+08:00","dateModified": "2022-12-27T00:43:20+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +82,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">渲染管线介绍</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B8%B8%E6%88%8F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>游戏</a>&nbsp;<a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-26">2022-12-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;886 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-26">2022-12-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2076 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -93,6 +94,10 @@
     <li><a href="#什么是渲染">什么是渲染</a></li>
     <li><a href="#应用阶段">应用阶段</a></li>
     <li><a href="#顶点处理">顶点处理</a></li>
+    <li><a href="#三角形处理">三角形处理</a></li>
+    <li><a href="#光栅化阶段">光栅化阶段</a></li>
+    <li><a href="#片元处理阶段">片元处理阶段</a></li>
+    <li><a href="#帧缓冲区操作">帧缓冲区操作</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="什么是渲染">什么是渲染</h2>
@@ -110,18 +115,37 @@
 <p>CPU主导，开发者完全可控，任务是输出需要渲染的图元，图元是绘制到屏幕上的最小几何体，例如点、线、三角形等。</p>
 <p>模型信息通过mesh传给GPU，mesh数据存储在顶点上。</p>
 <h2 id="顶点处理">顶点处理</h2>
-<p>顶点数据包括坐标、UV、颜色、法线等等。</p>
+<p>顶点数据包括坐标、UV（贴图坐标）、颜色、法线等等。</p>
 <p>顶点处理节点把顶点空间上的数据转换为屏幕空间上的数据，3D模型转换为2D图像。</p>
 <p>顶点处理阶段有一种可编程渲染管线，叫vertex shader。</p>
 <p>shader是指一段用来操作GPU的程序。</p>
+<p>以下是vertex shader的处理过程</p>
 <p>local space（本地空间） -&gt; world space（世界空间） -&gt; view space（视图空间） -&gt; clip space（裁剪空间）</p>
 <p>这三个过程分别叫modeling transformation、viewing transformation、projection transformation</p>
 <p>每个顶点都会调用一次vertex shader。</p>
 <p>视图空间指的是相机的视锥空间，从视图空间到裁剪空间，会做一个投影，将视锥挤压成一个立方体，裁减掉立方体之外的东西。vertex shader输出的还是3D数据，这一整个变换也叫MVP变换。</p>
 <p>在vertex shader中，我们通常可以做一些顶点操作，比如修改顶点位置（修改模型形状）、逐顶点光照、改变顶点着色等等。</p>
 <p>GPU接着会将裁剪空间转换为NDC坐标（标准设备空间坐标），这个过程是一种归一化处理（perspective divide），将坐标变为-1到1之间，然后再将NDC坐标映射到屏幕上（视口映射，viewport mapping）</p>
-<p>只有x、y值发生变化，z值不变。（注意，z轴是指向屏幕里面的坐标轴，不是朝上的坐标轴，y轴是朝上的，x轴是左右方向的，z轴是朝屏幕里面的，指的是深度值。）</p>
+<p>顶点处理阶段只有x、y值发生变化，z值不变。（注意，z轴是指向屏幕里面的坐标轴，不是朝上的坐标轴，y轴是朝上的，x轴是左右方向的，z轴是朝屏幕里面的，指的是深度值。）</p>
 <p>这就完成了整个顶点处理阶段。</p>
+<h2 id="三角形处理">三角形处理</h2>
+<p>三角形处理阶段把顶点组装成面，顶点通过图元装配（primitive assembly）组成三角形，接着进行面的剔除工作（face culling），比如保留正面剔除背面（back culling），或者反过来（front culling），或者不剔除（none），这些都可以自行设置</p>
+<h2 id="光栅化阶段">光栅化阶段</h2>
+<p>光栅化是生成像素的过程，利用三角形的顶点数据，通过插值得到三角形边上的点数据，就可以生成三角形的像素（判断像素点中心是否被三角形覆盖）</p>
+<h2 id="片元处理阶段">片元处理阶段</h2>
+<p>片元就是像素，direct3d中称为pixel（像素），opengl中称为fragment（片元）</p>
+<p>片元处理阶段也有一种可编程渲染管线，fragment shader，进行逐片元的着色（per-pixel shading），片元着色也是通过插值进行的（插值就是在两个值中间均匀地插入值），先通过插值得到边上像素的颜色，然后再通过插值得到中间像素的颜色。</p>
+<p>fragment shader除了逐片元着色，还有纹理采样（texture sampling）、光照计算（lighting）、多纹理混合（multi-texture blending）、refelction、fogging等等。</p>
+<p>每个片元都会执行一次fragment shader</p>
+<h2 id="帧缓冲区操作">帧缓冲区操作</h2>
+<p>对着色的像素进行输出合并，每个像素都要经过一系列测试，裁剪测试（scissor test）、模板测试（stencil test）、深度测试（depth test），来确定它能否在屏幕上显示，通过所有测试的像素，会和已经写入帧缓冲区的像素混合（blending），然后再写入帧缓冲区中。</p>
+<p>通过模板测试后写入模板缓冲区（stencil buffer），通过深度测试后写入深度缓冲区（depth buffer），通过混合后写入颜色缓冲区（color buffer）。这些缓冲区统称为帧缓冲区。帧缓冲区存储的就是我们在屏幕中看到的图像。</p>
+<p>只要有一个测试没通过，像素就会被舍弃。</p>
+<p>裁剪测试在游戏中使用较少，它允许开发者设置一个裁剪框，裁剪框内的像素通过测试，裁剪框外的像素被剔除。</p>
+<p>还有一种透明度测试，给定一个透明度阈值，像素的alpha值符合阈值范围，通过测试，反之被剔除。</p>
+<p>深度测试，深度测试就是要保证物体的绘制顺序，没有深度测试的时候，需要程序员对物体的绘制顺序排序排序。离摄像机越近的像素深度值越小，反之深度值越大。深度测试就是像素之间的比较，留下深度值小的，丢掉深度值大的。常用的深度值是0~1之间的值。</p>
+<p>模板测试，绘制模型时会产生重复绘制，模板测试让同一个位置的像素只接受第一次绘制，模板值是0~255的数字，初始为0。模板测试就是设置一个模板值，然后让像素的模板值和设置值比较，只有比较结果符合预期时才会绘制，绘制完成后将设置值更新为像素的模板值。</p>
+<p>混合是把两个不同颜色的像素通过某种规则叠加。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
