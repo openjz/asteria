@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://blog.shiwj.top/13.mysql-complex-sql/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-28T16:05:37+08:00" />
 <meta property="article:modified_time" content="2022-10-26T11:14:32+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -33,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  2601 ,
+                        }],"genre": "posts","keywords": "mysql, 数据库, sql","wordcount":  2537 ,
         "url": "http:\/\/blog.shiwj.top\/13.mysql-complex-sql\/","datePublished": "2022-07-28T16:05:37+08:00","dateModified": "2022-10-26T11:14:32+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -82,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">mysql中的复杂查询</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2601 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2537 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -148,17 +147,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 简单写法（把窗口函数返回的行序号作为新的一列new_col）
-</span><span class="c1"></span><span class="k">select</span><span class="w">
-</span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c1">-- 上面也可以把分组条件拆成单独的window语句
-</span><span class="c1"></span><span class="w">
-</span><span class="w"></span><span class="k">select</span><span class="w">
-</span><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w">
-</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
-</span><span class="w"></span><span class="n">window</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 简单写法（把窗口函数返回的行序号作为新的一列new_col）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 上面也可以把分组条件拆成单独的window语句
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">window_function</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">new_col</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">xxx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">window</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">xxx</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>窗口函数的完整语法如下</p>
 <div class="highlight"><div class="chroma">
@@ -171,13 +170,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">window_function_name</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span><span class="w">        </span><span class="p">[</span><span class="n">partition_defintion</span><span class="p">]</span><span class="w">
-</span><span class="w">        </span><span class="p">[</span><span class="n">order_definition</span><span class="p">]</span><span class="w">
-</span><span class="w">        </span><span class="p">[</span><span class="n">frame_definition</span><span class="p">]</span><span class="w">
-</span><span class="w">    </span><span class="p">)</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">window_function_name</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">[</span><span class="n">partition_defintion</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">[</span><span class="n">order_definition</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">[</span><span class="n">frame_definition</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>window_function_name(expression) </code>是窗口函数，<code>over()</code>为窗口函数指定了分组规则，如果里面什么都不写就是在整个表上运行窗口函数</p>
 <p><code>partition</code>子句定义了按哪些列分组，<code>order by</code>子句定义了按哪些列排序，<code>frame</code>子句定义了一个滑动窗口，分为按行定义和按范围定义</p>
@@ -205,31 +204,29 @@
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
-</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- frame_units是窗口类型，frame_extent是窗口范围
-</span><span class="c1"></span><span class="n">frame_units</span><span class="w"> </span><span class="n">frame_extent</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c1">-- frame_units有两种，ROWS和RANGE，分别是按行的位置指定范围（行的位置就是指“第几行”）和按行的值指定范围（对RANGE模式不太理解，大概是值相同的行在统计上算作同一行）
-</span><span class="c1"></span><span class="n">frame_units</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="err">{</span><span class="k">ROWS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RANGE</span><span class="err">}</span><span class="w">
-</span><span class="w"></span><span class="c1">-- frame_extent也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
-</span><span class="c1"></span><span class="n">frame_extent</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="err">{</span><span class="n">frame_start</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">frame_between</span><span class="err">}</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">frame_between</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">frame_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">frame_end</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">frame_start</span><span class="p">,</span><span class="w"> </span><span class="n">frame_end</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w">
-</span><span class="w">    </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span><span class="w">  </span><span class="c1">-- 当前行
-</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="c1">-- 分组第一行
-</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w"> </span><span class="c1">-- 分组最后一行
-</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="c1">-- 当前行之前的expr行，例如10 PRECEDING的意思是当前行之前的10行
-</span><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w"> </span><span class="c1">-- 当前行之后的expr行
-</span><span class="c1"></span><span class="err">}</span><span class="w">
-</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- frame_units是窗口类型，frame_extent是窗口范围
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">frame_units</span><span class="w"> </span><span class="n">frame_extent</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- frame_units有两种，ROWS和RANGE，分别是按行的位置指定范围（行的位置就是指“第几行”）和按行的值指定范围（对RANGE模式不太理解，大概是值相同的行在统计上算作同一行）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">frame_units</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="err">{</span><span class="k">ROWS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RANGE</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- frame_extent也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">frame_extent</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="err">{</span><span class="n">frame_start</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">frame_between</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">frame_between</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">frame_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">frame_end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">frame_start</span><span class="p">,</span><span class="w"> </span><span class="n">frame_end</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span><span class="w">  </span><span class="c1">-- 当前行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="c1">-- 分组第一行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w"> </span><span class="c1">-- 分组最后一行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="c1">-- 当前行之前的expr行，例如10 PRECEDING的意思是当前行之前的10行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w"> </span><span class="c1">-- 当前行之后的expr行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="常用窗口函数">常用窗口函数</h3>
 <p>可以当作窗口函数的聚合函数：sum、min、max、avg、count</p>
@@ -294,20 +291,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+------+------------+------+------------+
-| val  | row_number | rank | dense_rank |
-+------+------------+------+------------+
-|    1 |          1 |    1 |          1 |
-|    1 |          2 |    1 |          1 |
-|    2 |          3 |    3 |          2 |
-|    3 |          4 |    4 |          3 |
-|    3 |          5 |    4 |          3 |
-|    3 |          6 |    4 |          3 |
-|    4 |          7 |    7 |          4 |
-|    4 |          8 |    7 |          4 |
-|    5 |          9 |    9 |          5 |
-+------+------------+------+------------+
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+------+------------+------+------------+
+</span></span><span class="line"><span class="cl">| val  | row_number | rank | dense_rank |
+</span></span><span class="line"><span class="cl">+------+------------+------+------------+
+</span></span><span class="line"><span class="cl">|    1 |          1 |    1 |          1 |
+</span></span><span class="line"><span class="cl">|    1 |          2 |    1 |          1 |
+</span></span><span class="line"><span class="cl">|    2 |          3 |    3 |          2 |
+</span></span><span class="line"><span class="cl">|    3 |          4 |    4 |          3 |
+</span></span><span class="line"><span class="cl">|    3 |          5 |    4 |          3 |
+</span></span><span class="line"><span class="cl">|    3 |          6 |    4 |          3 |
+</span></span><span class="line"><span class="cl">|    4 |          7 |    7 |          4 |
+</span></span><span class="line"><span class="cl">|    4 |          8 |    7 |          4 |
+</span></span><span class="line"><span class="cl">|    5 |          9 |    9 |          5 |
+</span></span><span class="line"><span class="cl">+------+------------+------+------------+
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="其他">其他</h2>
 <h3 id="if函数">if函数</h3>
@@ -325,13 +322,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">case</span><span class="w">
-</span><span class="w"></span><span class="k">when</span><span class="w"> </span><span class="n">age</span><span class="o">&gt;=</span><span class="mi">25</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s2">&#34;25岁及以上&#34;</span><span class="w">
-</span><span class="w"></span><span class="k">else</span><span class="w"> </span><span class="s2">&#34;25岁以下&#34;</span><span class="w">
-</span><span class="w"></span><span class="k">end</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">age_cut</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">number</span><span class="w">
-</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">user_profile</span><span class="w">
-</span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">age_cut</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="k">case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">when</span><span class="w"> </span><span class="n">age</span><span class="o">&gt;=</span><span class="mi">25</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s2">&#34;25岁及以上&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">else</span><span class="w"> </span><span class="s2">&#34;25岁以下&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">end</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">age_cut</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">number</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">user_profile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">age_cut</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个 sql 返回的结果如下所示</p>
 <div class="highlight"><div class="chroma">
@@ -341,10 +338,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">age_cut,number
-25岁以下,4
-25岁及以上,3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">age_cut,number
+</span></span><span class="line"><span class="cl">25岁以下,4
+</span></span><span class="line"><span class="cl">25岁及以上,3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>case 函数有两种写法，第一种，</p>
 <div class="highlight"><div class="chroma">
@@ -357,13 +354,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CASE</span><span class="w">  </span><span class="o">&lt;</span><span class="err">表达式</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">   </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">值</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">   </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">值</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">   </span><span class="p">...</span><span class="w">
-</span><span class="w">   </span><span class="k">ELSE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
-</span><span class="w"></span><span class="k">END</span><span class="w"> </span><span class="k">CASE</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CASE</span><span class="w">  </span><span class="o">&lt;</span><span class="err">表达式</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">值</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">值</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">ELSE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">END</span><span class="w"> </span><span class="k">CASE</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>第二种（有点类似于 golang 的 switch 语句），</p>
 <div class="highlight"><div class="chroma">
@@ -376,13 +373,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CASE</span><span class="w">
-</span><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">条件</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">条件</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">    </span><span class="p">...</span><span class="w">
-</span><span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
-</span><span class="w"></span><span class="k">END</span><span class="w"> </span><span class="k">CASE</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">条件</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">条件</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">操作</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">END</span><span class="w"> </span><span class="k">CASE</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
