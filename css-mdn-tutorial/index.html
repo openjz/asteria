@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://blog.shiwj.top/css-mdn-tutorial/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-11-14T10:09:46+08:00" />
 <meta property="article:modified_time" content="2022-10-26T11:14:32+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -128,8 +127,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;styles.css&#34;</span> <span class="p">/&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;styles.css&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2、内部样式</p>
 <p>使用 style 元素</p>
@@ -155,25 +154,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My CSS experiment<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-      <span class="nt">h1</span> <span class="p">{</span>
-        <span class="k">color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
-        <span class="k">background-color</span><span class="p">:</span> <span class="kc">yellow</span><span class="p">;</span>
-        <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span>
-      <span class="p">}</span>
-
-      <span class="nt">p</span> <span class="p">{</span>
-        <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-  ...
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My CSS experiment<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">h1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">background-color</span><span class="p">:</span> <span class="kc">yellow</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>3、内联样式</p>
 <p>使用 style 属性</p>
@@ -184,10 +183,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;</span><span class="p">&gt;</span>
-  Hello World!
-<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: blue;background-color: yellow;border: 1px solid black;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  Hello World!
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="语法">语法</h2>
 <p>1、选择器+大括号，属性:值;</p>
@@ -199,11 +198,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">h1</span> <span class="p">{</span>
-  <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
-  <span class="k">font-size</span><span class="p">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">h1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2、函数</p>
 <p><code>width: calc(90% - 30px);</code></p>
@@ -227,18 +226,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">padding</span><span class="o">:</span> <span class="nt">10px</span> <span class="nt">15px</span> <span class="nt">15px</span> <span class="nt">5px</span><span class="o">;</span>
-<span class="c">/* 等价于 */</span>
-<span class="nt">padding-top</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
-<span class="nt">padding-right</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
-<span class="nt">padding-bottom</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
-<span class="nt">padding-left</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
-
-<span class="nt">background</span><span class="o">:</span> <span class="nt">red</span> <span class="nt">url</span><span class="o">(</span><span class="nt">bg-graphic</span><span class="p">.</span><span class="nc">png</span><span class="o">)</span>
-<span class="c">/* 等价于 */</span>
-<span class="nt">background-color</span><span class="o">:</span> <span class="nt">red</span><span class="o">;</span>
-<span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="nt">bg-graphic</span><span class="p">.</span><span class="nc">png</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">padding</span><span class="o">:</span> <span class="nt">10px</span> <span class="nt">15px</span> <span class="nt">15px</span> <span class="nt">5px</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="c">/* 等价于 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">padding-top</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">padding-right</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">padding-bottom</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">padding-left</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">background</span><span class="o">:</span> <span class="nt">red</span> <span class="nt">url</span><span class="o">(</span><span class="nt">bg-graphic</span><span class="p">.</span><span class="nc">png</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c">/* 等价于 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">background-color</span><span class="o">:</span> <span class="nt">red</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="nt">bg-graphic</span><span class="p">.</span><span class="nc">png</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="选择器和选择符">选择器和选择符</h2>
 <table>
@@ -321,10 +320,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">my-class-1</span> <span class="nt">a</span> <span class="p">{</span>
-  <span class="k">color</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">my-class-1</span> <span class="nt">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>属性 all 可以用来代表所有属性</p>
 <h2 id="层叠">层叠</h2>
@@ -336,7 +335,7 @@
 <li>百位：id 选择器得一分</li>
 <li>十位：类选择器、属性选择器、伪类选择器得一分</li>
 <li>个位：元素选择器、伪元素选择器得一份</li>
-<li>通用选择器 (*)，组合符 (+, &gt;, ~, ' &lsquo;)，和否定伪类 (:not) 不会影响优先级。</li>
+<li>通用选择器 (*)，组合符 (+, &gt;, ~, &rsquo; &lsquo;)，和否定伪类 (:not) 不会影响优先级。</li>
 <li>计算时不允许进位，无论多少个低位选择器的权重叠加，都不会超过一个高位选择器。</li>
 <li>!important：优先级高于其他所有</li>
 </ul>
@@ -502,11 +501,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">font-face</span> <span class="p">{</span>
-  <span class="nt">font-family</span><span class="o">:</span> <span class="s2">&#34;myFont&#34;</span><span class="o">;</span>
-  <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&#34;myFont.ttf&#34;</span><span class="o">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">font-face</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">font-family</span><span class="o">:</span> <span class="s2">&#34;myFont&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&#34;myFont.ttf&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意：</p>
 <ol>
@@ -587,13 +586,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
-  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="o">-</span><span class="kc">fill</span><span class="p">,</span> <span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span> <span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
-  <span class="k">grid-auto-rows</span><span class="p">:</span> <span class="nf">minmax</span><span class="p">(</span><span class="mi">100</span><span class="kt">px</span><span class="p">,</span> <span class="kc">auto</span><span class="p">);</span>
-  <span class="k">grid-gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="o">-</span><span class="kc">fill</span><span class="p">,</span> <span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span> <span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-auto-rows</span><span class="p">:</span> <span class="nf">minmax</span><span class="p">(</span><span class="mi">100</span><span class="kt">px</span><span class="p">,</span> <span class="kc">auto</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -639,32 +638,32 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
-  <span class="k">grid-template-areas</span><span class="p">:</span>
-      <span class="s2">&#34;header header&#34;</span>
-      <span class="s2">&#34;sidebar content&#34;</span>
-      <span class="s2">&#34;footer footer&#34;</span><span class="p">;</span>
-  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">1</span><span class="n">fr</span> <span class="mi">3</span><span class="n">fr</span><span class="p">;</span>
-  <span class="k">grid-gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">header</span> <span class="p">{</span>
-  <span class="k">grid-area</span><span class="p">:</span> <span class="n">header</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">article</span> <span class="p">{</span>
-  <span class="k">grid-area</span><span class="p">:</span> <span class="k">content</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">aside</span> <span class="p">{</span>
-  <span class="k">grid-area</span><span class="p">:</span> <span class="n">sidebar</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">footer</span> <span class="p">{</span>
-  <span class="k">grid-area</span><span class="p">:</span> <span class="n">footer</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-areas</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;header header&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;sidebar content&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;footer footer&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">1</span><span class="n">fr</span> <span class="mi">3</span><span class="n">fr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">header</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="n">header</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="k">content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">aside</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="n">sidebar</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">footer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="n">footer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="浮动float">浮动（float）</h3>
 <p>略</p>
@@ -700,17 +699,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="c">/*让一个固定定位元素顶部居中*/</span>
-<span class="nt">h1</span> <span class="p">{</span>
-  <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
-  <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/*使用auto居中*/</span>
-
-  <span class="k">width</span><span class="p">:</span> <span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
-  <span class="k">background</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
-  <span class="k">padding</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/*让一个固定定位元素顶部居中*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/*使用auto居中*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">width</span><span class="p">:</span> <span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">padding</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -737,12 +736,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">800px</span><span class="o">)</span> <span class="p">{</span>
-  <span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-    <span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">800px</span><span class="o">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>断点：媒体查询，以及样式改变时的点，被叫做断点（breakpoints），通常是一个阈值。</p>
 <p>现代布局方式，多栏布局，弹性盒子和网格默认是响应式的。</p>
@@ -770,10 +769,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">media</span> <span class="nt">media-type</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">media-feature-rule</span><span class="o">)</span> <span class="p">{</span>
-  <span class="c">/* CSS rules go here */</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">media-type</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">media-feature-rule</span><span class="o">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* CSS rules go here */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>它由以下部分组成：</p>
 <ul>
