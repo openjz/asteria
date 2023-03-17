@@ -561,7 +561,7 @@ rename table xxx to xxx2; --重命名表
 
 视图操作：
 
-- create view <视图名> AS <SELECT语句>，例如`create view as select * form students;`
+- create view <视图名> AS <SELECT语句>，例如`create view a as select * form students;`
 - drop view, create or replace view
 - show create view xxx, 查看创建视图的语句
 - 在视图中查询数据和在表中查询数据一样都用select语句，只是把表名换成了视图名
