@@ -9,8 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/kaobian-cs/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-21T19:21:16+08:00" />
-<meta property="article:modified_time" content="2023-02-22T18:26:03+08:00" />
-
+<meta property="article:modified_time" content="2023-03-18T00:08:21+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -33,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","wordcount":  11963 ,
-        "url": "http:\/\/blog.shiwj.top\/kaobian-cs\/","datePublished": "2022-06-21T19:21:16+08:00","dateModified": "2023-02-22T18:26:03+08:00","publisher": {
+                        }],"genre": "posts","wordcount":  11965 ,
+        "url": "http:\/\/blog.shiwj.top\/kaobian-cs\/","datePublished": "2022-06-21T19:21:16+08:00","dateModified": "2023-03-18T00:08:21+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -82,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">事业编计算机知识</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%80%83%E7%BC%96/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>考编</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11963 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-21">2022-06-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11965 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;24 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -851,87 +850,85 @@
 </span><span class="lnt">74
 </span><span class="lnt">75
 </span><span class="lnt">76
-</span><span class="lnt">77
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span><span class="cpf">&lt;math.h&gt;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="cp">#define mydef 0
-</span><span class="cp"></span>
-<span class="k">struct</span> <span class="n">mystruct</span> <span class="p">{</span>
-  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
-  <span class="kt">char</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="c1">// 标准输入输出
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
-<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
-<span class="c1">// 按行
-</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span> <span class="n">in</span> <span class="o">=</span> <span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-<span class="kt">char</span> <span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="s">&#34;123&#34;</span><span class="p">;</span>
-<span class="kt">char</span> <span class="o">*</span> <span class="n">res</span> <span class="o">=</span> <span class="n">gets</span><span class="p">(</span><span class="n">in</span><span class="p">);</span> <span class="c1">//返回字符串或NULL
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">puts</span><span class="p">(</span><span class="n">out</span><span class="p">);</span> <span class="c1">//返回长度或EOF
-</span><span class="c1">//按字符
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span> <span class="c1">//返回字符或EOF
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">putchar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="c1">//返回字符或EOF
-</span><span class="c1"></span>
-<span class="c1">// 文件操作
-</span><span class="c1">// 打开关闭文件
-</span><span class="c1"></span><span class="n">FILE</span> <span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;/data/input&#34;</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">)</span> <span class="c1">//r读，w写，a追加
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="c1">// 读写字符
-</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span> <span class="n">in</span> <span class="o">=</span> <span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-<span class="kt">char</span> <span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="s">&#34;123&#34;</span><span class="p">;</span>
-<span class="kt">char</span> <span class="o">*</span> <span class="n">res</span> <span class="o">=</span> <span class="n">fgets</span><span class="p">(</span><span class="n">in</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">f</span><span class="p">);</span> <span class="c1">//返回字符串或NULL
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">fputs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="n">f</span><span class="p">);</span> <span class="c1">//返回长度或EOF
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">fputc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">f</span><span class="p">);</span>
-<span class="c1">// 读写块
-</span><span class="c1"></span><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
-<span class="kt">char</span> <span class="n">c</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;This is w3schools&#34;</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="c1">//参数：buffer，块大小，块个数，文件，返回读取长度
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">fwrite</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="c1">//参数：buffer，块大小，块个数，文件，返回写入长度
-</span><span class="c1"></span>
-<span class="c1">//初始化结构体
-</span><span class="c1"></span><span class="k">struct</span> <span class="n">mystruct</span> <span class="n">mst</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">NULL</span><span class="p">};</span>
-<span class="c1">//数组
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
-<span class="c1">//指针
-</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
-<span class="n">free</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="c1">//字符串/内存操作
-</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="s">&#34;123&#34;</span><span class="p">;</span>
-<span class="kt">char</span> <span class="o">*</span><span class="n">s2</span> <span class="o">=</span> <span class="s">&#34;234&#34;</span><span class="p">;</span>
-<span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">strcat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">);</span> <span class="c1">//s2拼接到s1的末尾
-</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">strncat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">n</span><span class="p">);</span> <span class="c1">//把s2的前n个字符拼接到s1的末尾
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">);</span>  <span class="c1">//s1&gt;s2，返回大于0，s1&lt;s2，返回小于0，s1=s2，返回等于0，
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">strncmp</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">n</span><span class="p">);</span> <span class="c1">//比较前n个字符
-</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="nf">strcpy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">);</span>
-<span class="kt">char</span> <span class="o">*</span><span class="nf">strncpy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">n</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">memcmp</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">str1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">str2</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">n</span><span class="p">)</span>
-<span class="kt">void</span> <span class="o">*</span><span class="n">memcpy</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">n</span><span class="p">)</span>
-<span class="kt">void</span> <span class="o">*</span><span class="n">memmove</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">n</span><span class="p">)</span>
-<span class="kt">void</span> <span class="o">*</span><span class="n">memset</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">n</span><span class="p">)</span>
-<span class="c1">// math，操作数都是double
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//e^x
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>  <span class="c1">//x^y
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">//平方根
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//自然对数，基数为e
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">log10</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//基数为10
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">fabs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">//绝对值
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">//向上取整
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//向下取整
-</span><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">sin</span><span class="o">/</span><span class="n">cos</span><span class="o">/</span><span class="n">tan</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//三角函数
-</span><span class="c1"></span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;math.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define mydef 0
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">mystruct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 标准输入输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 按行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="o">*</span> <span class="n">in</span> <span class="o">=</span> <span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="s">&#34;123&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">gets</span><span class="p">(</span><span class="n">in</span><span class="p">);</span> <span class="c1">//返回字符串或NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">puts</span><span class="p">(</span><span class="n">out</span><span class="p">);</span> <span class="c1">//返回长度或EOF
+</span></span></span><span class="line"><span class="cl"><span class="c1">//按字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">getchar</span><span class="p">();</span> <span class="c1">//返回字符或EOF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">putchar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="c1">//返回字符或EOF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 文件操作
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 打开关闭文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FILE</span> <span class="o">*</span> <span class="n">f</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="s">&#34;/data/input&#34;</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">)</span> <span class="c1">//r读，w写，a追加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="nf">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 读写字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="o">*</span> <span class="n">in</span> <span class="o">=</span> <span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="s">&#34;123&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">fgets</span><span class="p">(</span><span class="n">in</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">f</span><span class="p">);</span> <span class="c1">//返回字符串或NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">fputs</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="n">f</span><span class="p">);</span> <span class="c1">//返回长度或EOF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">fgetc</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">fputc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 读写块
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">c</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;This is w3schools&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">fread</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="c1">//参数：buffer，块大小，块个数，文件，返回读取长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">fwrite</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="c1">//参数：buffer，块大小，块个数，文件，返回写入长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//初始化结构体
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="n">mystruct</span> <span class="n">mst</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">NULL</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="nf">realloc</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">free</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//字符串/内存操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="s">&#34;123&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">s2</span> <span class="o">=</span> <span class="s">&#34;234&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="nf">strcat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">);</span> <span class="c1">//s2拼接到s1的末尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="nf">strncat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">n</span><span class="p">);</span> <span class="c1">//把s2的前n个字符拼接到s1的末尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">strcmp</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">);</span>  <span class="c1">//s1&gt;s2，返回大于0，s1&lt;s2，返回小于0，s1=s2，返回等于0，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="nf">strncmp</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">n</span><span class="p">);</span> <span class="c1">//比较前n个字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="nf">strcpy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="nf">strncpy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">memcmp</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">str1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">str2</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">memcpy</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">memmove</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">memset</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// math，操作数都是double
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//e^x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>  <span class="c1">//x^y
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">//平方根
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//自然对数，基数为e
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">log10</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//基数为10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">fabs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">//绝对值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">ceil</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">//向上取整
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="nf">floor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//向下取整
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">b</span> <span class="o">=</span> <span class="n">sin</span><span class="o">/</span><span class="n">cos</span><span class="o">/</span><span class="nf">tan</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">//三角函数
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="java-程序基本结构">java 程序基本结构</h2>
 <div class="highlight"><div class="chroma">
@@ -1068,144 +1065,144 @@
 </span><span class="lnt">130
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span><span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span><span class="n">args</span><span class="o">){</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hello World&#34;</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">//import
-</span><span class="c1"></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.String</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.Integer</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.Double</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="c1">//标准输入输出
-</span><span class="c1"></span><span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-<span class="k">if</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>     <span class="c1">//按单词输入
-</span><span class="c1"></span>  <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-<span class="k">if</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">()){</span>   <span class="c1">//按行输入
-</span><span class="c1"></span>    <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hello World&#34;</span><span class="o">);</span>
-
-<span class="c1">//类型转换
-</span><span class="c1"></span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">xxx</span><span class="o">)</span> <span class="c1">//万物转String
-</span><span class="c1">//int和String互转
-</span><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">xxx</span><span class="o">)</span> <span class="c1">//int、Integer转String
-</span><span class="c1"></span><span class="n">Integer</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">(</span><span class="n">5</span><span class="o">)</span>
-<span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">xxx</span><span class="o">)</span> <span class="c1">//Integer转String
-</span><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">)</span>  <span class="c1">//String转Integer
-</span><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="na">intValue</span><span class="o">()</span>  <span class="c1">//String转int
-</span><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">)</span>  <span class="c1">//String转int
-</span><span class="c1">//其他类型和String互转大同小异
-</span><span class="c1"></span>
-<span class="c1">//异常处理（捕获全部异常）
-</span><span class="c1"></span><span class="k">try</span><span class="o">{}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
-   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exception thrown  :&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="c1">//序列化到文件
-</span><span class="c1"></span><span class="k">try</span><span class="o">{</span>
-    <span class="n">FileOutputStream</span> <span class="n">fileOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;data/out&#34;</span><span class="o">);</span>
-    <span class="n">ObjectOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">fileOut</span><span class="o">);</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="n">fileOut</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">){</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="c1">//从文件反序列化
-</span><span class="c1"></span><span class="n">Employee</span> <span class="n">e</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="k">try</span><span class="o">{</span>
-    <span class="n">FileInputStream</span> <span class="n">fileIn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;/tmp/employee.ser&#34;</span><span class="o">);</span>
-    <span class="n">ObjectInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="o">(</span><span class="n">fileIn</span><span class="o">);</span>
-    <span class="n">e</span> <span class="o">=</span> <span class="o">(</span><span class="n">Employee</span><span class="o">)</span> <span class="n">in</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
-    <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="n">fileIn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">i</span><span class="o">){</span>
-    <span class="n">i</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="k">return</span><span class="o">;</span>
-<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">c</span><span class="o">){</span>
-    <span class="n">c</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-    <span class="k">return</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="c1">//读写文件
-</span><span class="c1">//写（FileWriter）
-</span><span class="c1"></span><span class="k">try</span> <span class="o">{</span>
-  <span class="n">FileWriter</span> <span class="n">myWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="s">&#34;filename.txt&#34;</span><span class="o">);</span>
-  <span class="n">myWriter</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;Files in Java might be tricky, but it is fun enough!&#34;</span><span class="o">);</span>
-  <span class="n">myWriter</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-  <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="c1">//读（Scanner）
-</span><span class="c1"></span><span class="k">try</span> <span class="o">{</span>
-  <span class="n">File</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;filename.txt&#34;</span><span class="o">);</span>
-  <span class="n">Scanner</span> <span class="n">myReader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">myObj</span><span class="o">);</span>
-  <span class="k">while</span> <span class="o">(</span><span class="n">myReader</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">())</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="n">myReader</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="n">myReader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-  <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="c1">//arraylist
-</span><span class="c1"></span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">myNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
-<span class="n">myNumbers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">33</span><span class="o">);</span>
-<span class="n">myNumbers</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>  <span class="c1">//按下标删
-</span><span class="c1"></span><span class="n">myNumbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span> <span class="c1">//按下标获取
-</span><span class="c1"></span><span class="n">myNumbers</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="c1">//获取大小
-</span><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">myNumbers</span><span class="o">.</span><span class="na">size</span><span class="o">();++</span><span class="n">i</span><span class="o">){</span>
-  <span class="n">myNumbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="c1">//hashmap
-</span><span class="c1"></span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">mymap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">mymap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span><span class="s">&#34;11&#34;</span><span class="o">)</span>
-<span class="n">mymap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">3</span><span class="o">)</span>
-<span class="n">mymap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">3</span><span class="o">)</span>
-<span class="n">mymap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">mapKey</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
-    <span class="n">String</span> <span class="n">mapValue</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">mapKey</span> <span class="o">+</span> <span class="s">&#34;：&#34;</span> <span class="o">+</span> <span class="n">mapValue</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">value</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="c1">//String操作
-</span><span class="c1"></span><span class="n">String</span> <span class="n">s2</span>  <span class="o">=</span> <span class="s">&#34;Hello&#34;</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">4</span><span class="o">);</span> <span class="c1">// 开始和结束索引
-</span><span class="c1"></span><span class="n">String</span><span class="o">[]</span> <span class="n">parts</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">);</span>  <span class="c1">//切分
-</span><span class="c1"></span><span class="n">String</span> <span class="n">res</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">,</span><span class="n">parts</span><span class="o">);</span>  <span class="c1">//拼接
-</span><span class="c1"></span><span class="n">s2</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>  <span class="c1">//获取字符串长度
-</span><span class="c1">//math
-</span><span class="c1"></span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">exp</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">log10</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-<span class="n">Math</span><span class="o">.</span><span class="na">sin</span><span class="o">/</span><span class="n">cos</span><span class="o">/</span><span class="n">tan</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="o">[]</span><span class="n">args</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hello World&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//import
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.lang.String</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.lang.Integer</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.lang.Double</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//标准输入输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>     <span class="c1">//按单词输入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">()){</span>   <span class="c1">//按行输入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hello World&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//类型转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">xxx</span><span class="o">)</span> <span class="c1">//万物转String
+</span></span></span><span class="line"><span class="cl"><span class="c1">//int和String互转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">xxx</span><span class="o">)</span> <span class="c1">//int、Integer转String
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Integer</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">xxx</span><span class="o">)</span> <span class="c1">//Integer转String
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">)</span>  <span class="c1">//String转Integer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="na">intValue</span><span class="o">()</span>  <span class="c1">//String转int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">)</span>  <span class="c1">//String转int
+</span></span></span><span class="line"><span class="cl"><span class="c1">//其他类型和String互转大同小异
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//异常处理（捕获全部异常）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">try</span><span class="o">{}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Exception thrown  :&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//序列化到文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">FileOutputStream</span> <span class="n">fileOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;data/out&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ObjectOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">fileOut</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">out</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileOut</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//从文件反序列化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Employee</span> <span class="n">e</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">FileInputStream</span> <span class="n">fileIn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;/tmp/employee.ser&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ObjectInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="o">(</span><span class="n">fileIn</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span> <span class="o">=</span> <span class="o">(</span><span class="n">Employee</span><span class="o">)</span> <span class="n">in</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileIn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">IOException</span> <span class="n">i</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">c</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//读写文件
+</span></span></span><span class="line"><span class="cl"><span class="c1">//写（FileWriter）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">FileWriter</span> <span class="n">myWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="s">&#34;filename.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">myWriter</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;Files in Java might be tricky, but it is fun enough!&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">myWriter</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//读（Scanner）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">File</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;filename.txt&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Scanner</span> <span class="n">myReader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">myObj</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="o">(</span><span class="n">myReader</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="n">myReader</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">myReader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//arraylist
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">myNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">myNumbers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">33</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">myNumbers</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>  <span class="c1">//按下标删
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">myNumbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">//按下标获取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">myNumbers</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="c1">//获取大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">myNumbers</span><span class="o">.</span><span class="na">size</span><span class="o">();++</span><span class="n">i</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">myNumbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//hashmap
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">mymap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">mymap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span><span class="s">&#34;11&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mymap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mymap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mymap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">mapKey</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">mapValue</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">mapKey</span> <span class="o">+</span> <span class="s">&#34;：&#34;</span> <span class="o">+</span> <span class="n">mapValue</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">value</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//String操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">s2</span>  <span class="o">=</span> <span class="s">&#34;Hello&#34;</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span> <span class="c1">// 开始和结束索引
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span><span class="o">[]</span> <span class="n">parts</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">);</span>  <span class="c1">//切分
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">res</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">,</span><span class="n">parts</span><span class="o">);</span>  <span class="c1">//拼接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">s2</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>  <span class="c1">//获取字符串长度
+</span></span></span><span class="line"><span class="cl"><span class="c1">//math
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">exp</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">log10</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Math</span><span class="o">.</span><span class="na">sin</span><span class="o">/</span><span class="n">cos</span><span class="o">/</span><span class="n">tan</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-02-22&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/20d3369fbcc7da173a50d6af7016d7e6e7feb0eb" target="_blank" title="commit by shiwj(shiwj7@lenovo.com) 20d3369fbcc7da173a50d6af7016d7e6e7feb0eb: windows devices &amp; bluetooth &amp; kaobian">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>20d3369</a></span>
+                <span>Updated on 2023-03-18&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/5f492f0db39cab69225865822a3bbbc2d6327f58" target="_blank" title="commit by shiwenjie(swj6086085@163.com) 5f492f0db39cab69225865822a3bbbc2d6327f58: kaobian">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>5f492f0</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

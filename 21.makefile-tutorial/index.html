@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://blog.shiwj.top/21.makefile-tutorial/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-27T13:41:00+08:00" />
 <meta property="article:modified_time" content="2022-11-01T10:05:27+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -231,10 +230,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">target ... </span><span class="o">:</span> <span class="n">prerequisites</span> ...
-        <span class="nb">command</span>
-        ...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">target ... </span><span class="o">:</span> <span class="n">prerequisites</span> ...
+</span></span><span class="line"><span class="cl">        <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>target是makefile中的一个目标文件，可以是Object File，也可以是可执行文件，还可以是一个标签（伪目标）。prerequisites表示的是要生成那个target所需要的文件或目标。command也就是make需要执行的命令。（可以是任意的Shell命令）</p>
 <p>这是一个文件的依赖关系。也就是说，target这个目标文件依赖于prerequisites中的文件，其生成规则定义在command中。也就是说，prerequisites中如果有一个以上的文件比target文件更新，command所定义的命令就会被执行。这就是Makefile的规则，也是Makefile中最核心的内容。</p>
@@ -268,31 +267,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">edit </span><span class="o">:</span> <span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
-        <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
-        cc -o edit main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>                    insert.o search.o files.o utils.o
-
-<span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
-        cc -c main.c
-<span class="nf">kbd.o </span><span class="o">:</span> <span class="n">kbd</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-        cc -c kbd.c
-<span class="nf">command.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-        cc -c command.c
-<span class="nf">display.o </span><span class="o">:</span> <span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-        cc -c display.c
-<span class="nf">insert.o </span><span class="o">:</span> <span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-        cc -c insert.c
-<span class="nf">search.o </span><span class="o">:</span> <span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-        cc -c search.c
-<span class="nf">files.o </span><span class="o">:</span> <span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-        cc -c files.c
-<span class="nf">utils.o </span><span class="o">:</span> <span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
-        cc -c utils.c
-<span class="nf">clean </span><span class="o">:</span>
-        rm edit main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>            insert.o search.o files.o utils.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">edit </span><span class="o">:</span> <span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
+</span></span><span class="line"><span class="cl">        <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        cc -o edit main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                    insert.o search.o files.o utils.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c main.c
+</span></span><span class="line"><span class="cl"><span class="nf">kbd.o </span><span class="o">:</span> <span class="n">kbd</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c kbd.c
+</span></span><span class="line"><span class="cl"><span class="nf">command.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c command.c
+</span></span><span class="line"><span class="cl"><span class="nf">display.o </span><span class="o">:</span> <span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c display.c
+</span></span><span class="line"><span class="cl"><span class="nf">insert.o </span><span class="o">:</span> <span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c insert.c
+</span></span><span class="line"><span class="cl"><span class="nf">search.o </span><span class="o">:</span> <span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c search.c
+</span></span><span class="line"><span class="cl"><span class="nf">files.o </span><span class="o">:</span> <span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c files.c
+</span></span><span class="line"><span class="cl"><span class="nf">utils.o </span><span class="o">:</span> <span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c utils.c
+</span></span><span class="line"><span class="cl"><span class="nf">clean </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm edit main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>            insert.o search.o files.o utils.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>反斜杠（\）是命令换行。这样使Makefile更易读。我们可以把这个内容保存在名为“Makefile”或“makefile”的文件中，然后在该目录下直接输入命令“make”就可以生成可执行文件edit。如果要删除执行文件和所有的中间目标文件，那么，只要简单地执行一下“make clean”就可以了。</p>
 <p>在这个makefile中，目标文件（target）包括可执行文件edit和所有.o文件，依赖文件（prerequisites）就是冒号后面的那些.c文件和.h文件。每一个.o文件都有一组依赖文件，而这些.o文件又是可执行文件edit的依赖文件。依赖关系实质上就是指目标文件是由哪些文件生成的。</p>
@@ -319,11 +318,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">edit </span><span class="o">:</span> <span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
-            <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
-    cc -o edit main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>                insert.o search.o files.o utils.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">edit </span><span class="o">:</span> <span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
+</span></span><span class="line"><span class="cl">            <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">    cc -o edit main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                insert.o search.o files.o utils.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们可以看到.o文件被重复了两次，如果我们的工程需要加入一个新的.o文件，那么我们需要在两个地方添加（应该是三个地方，还有一个地方在clean中）。如果makefile变得复杂，那么我们就有可能会忘掉一个需要加入的地方，而导致编译失败。为了使makefile更容易维护，在makefile中我们可以使用变量。</p>
 <p>比如，我们要声明一个变量，我们在makefile一开始这样定义：</p>
@@ -333,9 +332,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>        insert.o search.o files.o utils.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        insert.o search.o files.o utils.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>接下来，我们可以很方便地在我们的makefile中以<code>$(objects)</code>的方式来使用这个变量，于是我们的改良版makefile就变成下面这个样子：</p>
 <div class="highlight"><div class="chroma">
@@ -365,30 +364,30 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>            insert.o search.o files.o utils.o
-
-<span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-        cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
-<span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
-        cc -c main.c
-<span class="nf">kbd.o </span><span class="o">:</span> <span class="n">kbd</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-        cc -c kbd.c
-<span class="nf">command.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-        cc -c command.c
-<span class="nf">display.o </span><span class="o">:</span> <span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-        cc -c display.c
-<span class="nf">insert.o </span><span class="o">:</span> <span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-        cc -c insert.c
-<span class="nf">search.o </span><span class="o">:</span> <span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-        cc -c search.c
-<span class="nf">files.o </span><span class="o">:</span> <span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-        cc -c files.c
-<span class="nf">utils.o </span><span class="o">:</span> <span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
-        cc -c utils.c
-<span class="nf">clean </span><span class="o">:</span>
-        rm edit <span class="k">$(</span>objects<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>            insert.o search.o files.o utils.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">        cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c main.c
+</span></span><span class="line"><span class="cl"><span class="nf">kbd.o </span><span class="o">:</span> <span class="n">kbd</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c kbd.c
+</span></span><span class="line"><span class="cl"><span class="nf">command.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c command.c
+</span></span><span class="line"><span class="cl"><span class="nf">display.o </span><span class="o">:</span> <span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c display.c
+</span></span><span class="line"><span class="cl"><span class="nf">insert.o </span><span class="o">:</span> <span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c insert.c
+</span></span><span class="line"><span class="cl"><span class="nf">search.o </span><span class="o">:</span> <span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c search.c
+</span></span><span class="line"><span class="cl"><span class="nf">files.o </span><span class="o">:</span> <span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c files.c
+</span></span><span class="line"><span class="cl"><span class="nf">utils.o </span><span class="o">:</span> <span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        cc -c utils.c
+</span></span><span class="line"><span class="cl"><span class="nf">clean </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果有新的.o文件加入，我们只需简单地修改一下 objects 变量就可以了。</p>
 <p><strong>有四种定义变量/为变量赋值的方法</strong>：(参考<a href="https://www.cnblogs.com/wanqieddy/archive/2011/09/21/2184257.html" target="_blank" rel="noopener noreffer">Makefile 中:= ?= += =的区别</a>
@@ -409,10 +408,10 @@ make会将整个makefile展开后，再决定变量的值。也就是说，变�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">x</span> <span class="o">=</span> foo
-<span class="nv">y</span> <span class="o">=</span> <span class="k">$(</span>x<span class="k">)</span> bar
-<span class="nv">x</span> <span class="o">=</span> xyz
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">=</span> foo
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">=</span> <span class="k">$(</span>x<span class="k">)</span> bar
+</span></span><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">=</span> xyz
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上例中，y的值将会是 xyz bar ，而不是 foo bar 。</p>
 <p>2、“:=”<br>
@@ -424,10 +423,10 @@ make会将整个makefile展开后，再决定变量的值。也就是说，变�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">x</span> <span class="o">:=</span> foo
-<span class="nv">y</span> <span class="o">:=</span> <span class="k">$(</span>x<span class="k">)</span> bar
-<span class="nv">x</span> <span class="o">:=</span> xyz
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">:=</span> foo
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">:=</span> <span class="k">$(</span>x<span class="k">)</span> bar
+</span></span><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">:=</span> xyz
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上例中，y的值将会是 foo bar ，而不是 xyz bar。</p>
 <h3 id="五make自动推导">五、make自动推导</h3>
@@ -455,25 +454,25 @@ make会将整个makefile展开后，再决定变量的值。也就是说，变�
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>            insert.o search.o files.o utils.o
-
-<span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-        cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
-
-<span class="nf">main.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
-<span class="nf">kbd.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-<span class="nf">command.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-<span class="nf">display.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-<span class="nf">insert.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-<span class="nf">search.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
-<span class="nf">files.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
-<span class="nf">utils.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
-
-<span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
-<span class="nf">clean </span><span class="o">:</span>
-        rm edit <span class="k">$(</span>objects<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>            insert.o search.o files.o utils.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">        cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">main.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">kbd.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">command.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">display.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">insert.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">search.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">files.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">utils.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clean </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这就是make的“隐晦规则”。上面文件内容中，“.PHONY”表示，clean是个伪目标文件。</p>
 <h3 id="六多个目标文件依赖相同的文件">六、多个目标文件依赖相同的文件</h3>
@@ -494,20 +493,20 @@ make会将整个makefile展开后，再决定变量的值。也就是说，变�
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
-</span><span class="se"></span>            insert.o search.o files.o utils.o
-
-<span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-        cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
-
-<span class="nf">$(objects) </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
-<span class="nf">kbd.o command.o files.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">h</span>
-<span class="nf">display.o insert.o search.o files.o </span><span class="o">:</span> <span class="n">buffer</span>.<span class="n">h</span>
-
-<span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
-<span class="nf">clean </span><span class="o">:</span>
-        rm edit <span class="k">$(</span>objects<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>            insert.o search.o files.o utils.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">        cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(objects) </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">kbd.o command.o files.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="nf">display.o insert.o search.o files.o </span><span class="o">:</span> <span class="n">buffer</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clean </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="七清空目标文件的规则clean">七、清空目标文件的规则（clean）</h3>
 <p>每个Makefile中都应该写一个清空目标文件（.o和执行文件）的规则，这不仅便于重编译，也利于保持文件的清洁。一般的风格都是：</p>
@@ -517,9 +516,9 @@ make会将整个makefile展开后，再决定变量的值。也就是说，变�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">clean</span><span class="o">:</span>
-    rm edit <span class="k">$(</span>objects<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>更为稳健的做法是：</p>
 <div class="highlight"><div class="chroma">
@@ -529,10 +528,10 @@ make会将整个makefile展开后，再决定变量的值。也就是说，变�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
-<span class="nf">clean </span><span class="o">:</span>
-    -rm edit <span class="k">$(</span>objects<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clean </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    -rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>前面说过，.PHONY表示clean是一个“伪目标”。</p>
 <p>在rm命令前面加了一个小减号的意思就是，如果这条命令执行出错了，则忽略这个错误，继续执行后面的命令。当然，clean的规则不要放在文件的开头，不然，这就会变成make的默认目标。不成文的规矩是——“clean从来都是放在文件的最后”。</p>
@@ -588,10 +587,10 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">targets </span><span class="o">:</span> <span class="n">prerequisites</span>
-        <span class="nb">command</span>
-        ...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">targets </span><span class="o">:</span> <span class="n">prerequisites</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>或是这样：</p>
 <div class="highlight"><div class="chroma">
@@ -601,10 +600,10 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">targets </span><span class="o">:</span> <span class="n">prerequisites</span> ; <span class="n">command</span>
-        <span class="nb">command</span>
-        ...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">targets </span><span class="o">:</span> <span class="n">prerequisites</span> ; <span class="n">command</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>command是命令行，如果其不与“target:prerequisites”在一行，那么必须以Tab键开头，如果和prerequisites在一行，那么可以用分号做为分隔。这两种写法的含义是不同的。</p>
 <h3 id="三在规则中使用通配符">三、在规则中使用通配符</h3>
@@ -617,9 +616,9 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">clean</span><span class="o">:</span>
-        rm -f *.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm -f *.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面这个例子是在命令中的通配符。</p>
 <div class="highlight"><div class="chroma">
@@ -629,10 +628,10 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">print</span><span class="o">:</span> *.<span class="n">c</span>
-        lpr -p <span class="nv">$?</span>
-        touch print
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">print</span><span class="o">:</span> *.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        lpr -p <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl">        touch print
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面这个例子说明了通配符也可以用在规则中，目标print依赖于所有的.c文件。其中的“<code>$?</code>”是一个自动化变量（会列出所有比目标新的依赖文件（可以理解成只列出更新过的依赖）），我们会在后面讨论。</p>
 <p>如果将通配符用在变量中，例如<code>objects = *.o</code>。<code>*.o</code>并不会展开，objects的值就是“<code>*.o</code>”！Makefile中的变量类似于C/C++中的宏。如果你要让通配符在变量中展开，也就是让objects的值是所有.o文件的集合，那么可以这样：</p>
@@ -662,10 +661,10 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">vpath</span> <span class="err">%.c</span> <span class="err">foo</span>
-<span class="err">vpath</span> <span class="err">%</span> <span class="err">blish</span>
-<span class="err">vpath</span> <span class="err">%.c</span> <span class="err">bar</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">vpath</span> <span class="err">%.c</span> <span class="err">foo</span>
+</span></span><span class="line"><span class="cl"><span class="err">vpath</span> <span class="err">%</span> <span class="err">blish</span>
+</span></span><span class="line"><span class="cl"><span class="err">vpath</span> <span class="err">%.c</span> <span class="err">bar</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其表示“.c”结尾的文件，先在“foo”目录搜索，然后是“blish”，最后是“bar”目录。</p>
 <div class="highlight"><div class="chroma">
@@ -674,9 +673,9 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">vpath %.c foo</span><span class="o">:</span><span class="n">bar</span>
-<span class="err">vpath</span> <span class="err">%</span>   <span class="err">blish</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">vpath %.c foo</span><span class="o">:</span><span class="n">bar</span>
+</span></span><span class="line"><span class="cl"><span class="err">vpath</span> <span class="err">%</span>   <span class="err">blish</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的语句表示“.c”结尾的文件，先在“foo”目录搜索，然后是“bar”目录，最后才是“blish”目录。</p>
 <h3 id="五伪目标">五、伪目标</h3>
@@ -687,9 +686,9 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">clean</span><span class="o">:</span>
-        rm *.o temp
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm *.o temp
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>“伪目标”并不是一个文件，只是一个标签，所以make无法生成它的依赖关系和决定它是否要执行。我们只有通过显示地指明这个“目标”才能让其生效。“伪目标”的取名不能和文件名重名，不然就失去了“伪目标”的意义了。</p>
 <p>为了避免和文件重名的这种情况，我们可以使用一个特殊的标记“.PHONY”来显示地指明一个目标是“伪目标”，向make说明，不管是否有这个文件，这个目标就是“伪目标”。</p>
@@ -701,10 +700,10 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
-<span class="nf">clean</span><span class="o">:</span>
-        rm *.o temp
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm *.o temp
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们也可以为伪目标指定所依赖的文件。伪目标同样可以作为“默认目标”，只要将其放在第一个。一个例子就是，如果你的Makefile需要一口气生成若干个可执行文件，但你只想简单地敲一个make完事，并且所有的目标文件都写在一个Makefile中，那么你可以使用“伪目标”这个特性：</p>
 <div class="highlight"><div class="chroma">
@@ -722,18 +721,18 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">all </span><span class="o">:</span> <span class="n">prog</span>1 <span class="n">prog</span>2 <span class="n">prog</span>3
-<span class="nf">.PHONY </span><span class="o">:</span> <span class="n">all</span>
-
-<span class="nf">prog1 </span><span class="o">:</span> <span class="n">prog</span>1.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
-        cc -o prog1 prog1.o utils.o
-
-<span class="nf">prog2 </span><span class="o">:</span> <span class="n">prog</span>2.<span class="n">o</span>
-        cc -o prog2 prog2.o
-
-<span class="nf">prog3 </span><span class="o">:</span> <span class="n">prog</span>3.<span class="n">o</span> <span class="n">sort</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
-        cc -o prog3 prog3.o sort.o utils.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">all </span><span class="o">:</span> <span class="n">prog</span>1 <span class="n">prog</span>2 <span class="n">prog</span>3
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">all</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">prog1 </span><span class="o">:</span> <span class="n">prog</span>1.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        cc -o prog1 prog1.o utils.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">prog2 </span><span class="o">:</span> <span class="n">prog</span>2.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        cc -o prog2 prog2.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">prog3 </span><span class="o">:</span> <span class="n">prog</span>3.<span class="n">o</span> <span class="n">sort</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        cc -o prog3 prog3.o sort.o utils.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>伪目标同样也可成为依赖。看下面的例子：</p>
 <div class="highlight"><div class="chroma">
@@ -750,17 +749,17 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">cleanall</span> <span class="n">cleanobj</span> <span class="n">cleandiff</span>
-
-<span class="nf">cleanall </span><span class="o">:</span> <span class="n">cleanobj</span> <span class="n">cleandiff</span>
-        rm program
-
-<span class="nf">cleanobj </span><span class="o">:</span>
-        rm *.o
-
-<span class="nf">cleandiff </span><span class="o">:</span>
-        rm *.diff
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">cleanall</span> <span class="n">cleanobj</span> <span class="n">cleandiff</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">cleanall </span><span class="o">:</span> <span class="n">cleanobj</span> <span class="n">cleandiff</span>
+</span></span><span class="line"><span class="cl">        rm program
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">cleanobj </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm *.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">cleandiff </span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        rm *.diff
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>“make cleanall”将清除所有要被清除的文件。我们可以输入“make cleanall”和“make cleanobj”和“make cleandiff”命令来达到清除不同种类文件的目的。</p>
 <h3 id="六多个目标依赖相同的文件">六、多个目标依赖相同的文件</h3>
@@ -772,9 +771,9 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">bigoutput littleoutput </span><span class="o">:</span> <span class="n">text</span>.<span class="n">g</span>
-        generate text.g -<span class="k">$(</span>subst output,,<span class="nv">$@</span><span class="k">)</span> &gt; <span class="nv">$@</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">bigoutput littleoutput </span><span class="o">:</span> <span class="n">text</span>.<span class="n">g</span>
+</span></span><span class="line"><span class="cl">        generate text.g -<span class="k">$(</span>subst output,,<span class="nv">$@</span><span class="k">)</span> &gt; <span class="nv">$@</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述规则等价于：</p>
 <div class="highlight"><div class="chroma">
@@ -785,11 +784,11 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">bigoutput </span><span class="o">:</span> <span class="n">text</span>.<span class="n">g</span>
-        generate text.g -big &gt; bigoutput
-<span class="nf">littleoutput </span><span class="o">:</span> <span class="n">text</span>.<span class="n">g</span>
-        generate text.g -little &gt; littleoutput
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">bigoutput </span><span class="o">:</span> <span class="n">text</span>.<span class="n">g</span>
+</span></span><span class="line"><span class="cl">        generate text.g -big &gt; bigoutput
+</span></span><span class="line"><span class="cl"><span class="nf">littleoutput </span><span class="o">:</span> <span class="n">text</span>.<span class="n">g</span>
+</span></span><span class="line"><span class="cl">        generate text.g -little &gt; littleoutput
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中，<code>-$(subst output,,$@)</code>中的第一个“<code>$</code>”表示执行一个Makefile的函数，函数名为subst，后面的为参数。关于函数，将在后面讲述。subst这个函数的功能是替换字符串（将参数3中包含的参数1替换为参数2），“<code>$@</code>”表示目标的集合，就像一个数组，“<code>$@</code>”依次取出目标，并执于命令。</p>
 <h3 id="七多目标的静态模式">七、多目标的静态模式</h3>
@@ -801,10 +800,10 @@ include前面可以有一些空字符，但绝不能以Tab键开始。include和
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">{targets ...}</span><span class="o">:</span> {<span class="n">target</span>-<span class="n">pattern</span>}: {<span class="n">prereq</span>-<span class="n">patterns</span> ...}
-        <span class="o">{</span>commands<span class="o">}</span>
-        ...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">{targets ...}</span><span class="o">:</span> {<span class="n">target</span>-<span class="n">pattern</span>}: {<span class="n">prereq</span>-<span class="n">patterns</span> ...}
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>commands<span class="o">}</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>targets定义了一系列目标文件，可以有通配符，是目标的一个集合。<br>
 target-parrtern指明了targets的模式，也就是目标集模式。<br>
@@ -821,13 +820,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> foo.o bar.o
-
-<span class="nf">all</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-
-<span class="nf">$(objects)</span><span class="o">:</span> %.<span class="n">o</span>: %.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> foo.o bar.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">all</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(objects)</span><span class="o">:</span> %.<span class="n">o</span>: %.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的例子中，指明了目标从$object中获取，目标模式“%.o”表明要所有以“.o”结尾的目标，也就是“foo.o bar.o”。依赖模式“%.c”取模式“%.o”的“%”，也就是“foo bar”，并为其加下“.c”的后缀，于是我们的依赖目标就是“foo.c bar.c”。</p>
 <p>命令中的“<code>$&lt;</code>”和“<code>$@</code>”是自动化变量，（<code>$&lt;</code>表示依赖目标中的第一个目标名字。如果依赖目标是以模式（即 % ）定义的，那么 <code>$&lt;</code> 将是符合模式的一系列的文件集。注意，其是一个一个取出来的。，“<code>$@</code>”表示目标集，也是一个一个取出来的）。于是，上面的规则展开后等价于下面的规则：</p>
@@ -839,11 +838,11 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">foo.o </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> foo.c -o foo.o
-<span class="nf">bar.o </span><span class="o">:</span> <span class="n">bar</span>.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> bar.c -o bar.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">foo.o </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> foo.c -o foo.o
+</span></span><span class="line"><span class="cl"><span class="nf">bar.o </span><span class="o">:</span> <span class="n">bar</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> bar.c -o bar.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>“静态模式规则”的用法很灵活，如果用得好，那会一个很强大的功能。再看一个例子：</p>
 <div class="highlight"><div class="chroma">
@@ -856,13 +855,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">files</span> <span class="o">=</span> foo.elc bar.o lose.o
-
-<span class="nf">$(filter %.o,$(files))</span><span class="o">:</span> %.<span class="n">o</span>: %.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
-<span class="nf">$(filter %.elc,$(files))</span><span class="o">:</span> %.<span class="n">elc</span>: %.<span class="n">el</span>
-        emacs -f batch-byte-compile $&lt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">files</span> <span class="o">=</span> foo.elc bar.o lose.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(filter %.o,$(files))</span><span class="o">:</span> %.<span class="n">o</span>: %.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</span></span><span class="line"><span class="cl"><span class="nf">$(filter %.elc,$(files))</span><span class="o">:</span> %.<span class="n">elc</span>: %.<span class="n">el</span>
+</span></span><span class="line"><span class="cl">        emacs -f batch-byte-compile $&lt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>$(filter %.o,$(files))</code>表示调用Makefile的filter函数，过滤“<code>$files</code>”集，只要其中模式为“%.o”的内容。这个例子展示了Makefile中更大的弹性。</p>
 <h3 id="八自动生成头文件依赖">八、自动生成头文件依赖</h3>
@@ -887,16 +886,16 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">main.o</span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> /<span class="n">usr</span>/<span class="n">include</span>/<span class="n">stdio</span>.<span class="n">h</span> /<span class="n">usr</span>/<span class="n">include</span>/<span class="n">features</span>.<span class="n">h</span> /
-        /usr/include/sys/cdefs.h /usr/include/gnu/stubs.h /
-        /usr/lib/gcc-lib/i486-suse-linux/2.95.3/include/stddef.h /
-        /usr/include/bits/types.h /usr/include/bits/pthreadtypes.h /
-        /usr/include/bits/sched.h /usr/include/libio.h /
-        /usr/include/_G_config.h /usr/include/wchar.h /
-        /usr/include/bits/wchar.h /usr/include/gconv.h /
-        /usr/lib/gcc-lib/i486-suse-linux/2.95.3/include/stdarg.h /
-        /usr/include/bits/stdio_lim.h
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">main.o</span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> /<span class="n">usr</span>/<span class="n">include</span>/<span class="n">stdio</span>.<span class="n">h</span> /<span class="n">usr</span>/<span class="n">include</span>/<span class="n">features</span>.<span class="n">h</span> /
+</span></span><span class="line"><span class="cl">        /usr/include/sys/cdefs.h /usr/include/gnu/stubs.h /
+</span></span><span class="line"><span class="cl">        /usr/lib/gcc-lib/i486-suse-linux/2.95.3/include/stddef.h /
+</span></span><span class="line"><span class="cl">        /usr/include/bits/types.h /usr/include/bits/pthreadtypes.h /
+</span></span><span class="line"><span class="cl">        /usr/include/bits/sched.h /usr/include/libio.h /
+</span></span><span class="line"><span class="cl">        /usr/include/_G_config.h /usr/include/wchar.h /
+</span></span><span class="line"><span class="cl">        /usr/include/bits/wchar.h /usr/include/gconv.h /
+</span></span><span class="line"><span class="cl">        /usr/lib/gcc-lib/i486-suse-linux/2.95.3/include/stdarg.h /
+</span></span><span class="line"><span class="cl">        /usr/include/bits/stdio_lim.h
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>而<code>gcc -MM main.c</code>的输出则是：</p>
 <p><code>main.o: main.c defs.h</code></p>
@@ -912,12 +911,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"> %.d: %.c
-    @set -e<span class="p">;</span> rm -f <span class="nv">$@</span><span class="p">;</span> <span class="se">\
-</span><span class="se"></span>     <span class="k">$(</span>CC<span class="k">)</span> -M <span class="k">$(</span>CPPFLAGS<span class="k">)</span> $&lt; &gt; <span class="nv">$@</span>.<span class="nv">$$$$</span><span class="p">;</span> <span class="se">\
-</span><span class="se"></span>     sed ’s,<span class="se">\(</span><span class="nv">$*</span><span class="se">\)\.</span>o<span class="o">[</span> :<span class="o">]</span>*,<span class="se">\1</span>.o <span class="nv">$@</span> : ,g’ &lt; <span class="nv">$@</span>.<span class="nv">$$$$</span> &gt; <span class="nv">$@</span><span class="p">;</span> <span class="se">\
-</span><span class="se"></span>     rm -f <span class="nv">$@</span>.<span class="nv">$$$$</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"> %.d: %.c
+</span></span><span class="line"><span class="cl">    @set -e<span class="p">;</span> rm -f <span class="nv">$@</span><span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     <span class="k">$(</span>CC<span class="k">)</span> -M <span class="k">$(</span>CPPFLAGS<span class="k">)</span> $&lt; &gt; <span class="nv">$@</span>.<span class="nv">$$$$</span><span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     sed ’s,<span class="se">\(</span><span class="nv">$*</span><span class="se">\)\.</span>o<span class="o">[</span> :<span class="o">]</span>*,<span class="se">\1</span>.o <span class="nv">$@</span> : ,g’ &lt; <span class="nv">$@</span>.<span class="nv">$$$$</span> &gt; <span class="nv">$@</span><span class="p">;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     rm -f <span class="nv">$@</span>.<span class="nv">$$$$</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个规则的意思是，所有的.d文件依赖于.c文件，<code>rm -f $@</code>的意思是删除所有的目标，也就是.d文件。第二行的意思是，为每个依赖文件“<code>$&lt;</code>”（也就是.c文件）生成目标文件的依赖，“<code>$@</code>”表示模式“%.d”文件，如果有一个.c文件是name.c，那么“%”就是“name”，<code>“$$$$”</code>生成一个随机编号，第二行生成的文件有可能是“name.d.12345”。第三行使用sed命令做了一个替换，关于sed命令的用法请参看相关的使用文档。第四行就是删除临时文件。</p>
 <p>这里解释一下<code>$</code>这个字符。在makefile中，用<code>$</code>来展开变量或调用函数等等。makefile中有一个开启二级扩展（Enable secondary expansion）的功能，当二级扩展未开启时，连续的两个<code>$</code>，即<code>$$</code>，用来表示<code>$</code>这个字符，类似于在前面加了一个转义字符。当二级扩展开启后，<code>$$</code>这种写法不再有转义字符的含义，如果这时再想使用<code>$</code>这个字符，需要写四个<code>$</code>，即<code>$$$$</code>。</p>
@@ -935,9 +934,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">sources</span> <span class="o">=</span> foo.c bar.c
-<span class="nf">include $(sources</span><span class="o">:</span>.<span class="n">c</span>=.<span class="n">d</span>)
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">sources</span> <span class="o">=</span> foo.c bar.c
+</span></span><span class="line"><span class="cl"><span class="nf">include $(sources</span><span class="o">:</span>.<span class="n">c</span>=.<span class="n">d</span>)
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述语句中的<code>“$(sources:.c=.d)”</code>中的“.c=.d”的意思是做一个替换，把变量<code>$(sources)</code>中所有.c字串都替换成.d。当然，你得注意次序，因为include是按次来载入文件，最先载入的.d文件中的目标会成为默认目标。</p>
 <h2 id="书写命令">书写命令</h2>
@@ -953,9 +952,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">echo 正在编译XXX模块......`
-正在编译XXX模块......
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo 正在编译XXX模块......`
+</span></span><span class="line"><span class="cl">正在编译XXX模块......
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果make执行时，带入make参数“-n”或“&ndash;just-print”，那么make只是显示命令，但不会执行命令。这个功能有利于我们调试Makefile，看看我们书写的命令是以什么顺序执行的。</p>
 <p>而make参数“-s”或“&ndash;slient”则是全面禁止命令的显示。</p>
@@ -969,10 +968,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">exec</span><span class="o">:</span>
-        <span class="nb">cd</span> /home/hchen
-        <span class="nb">pwd</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">exec</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">cd</span> /home/hchen
+</span></span><span class="line"><span class="cl">        <span class="nb">pwd</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例二：</p>
 <div class="highlight"><div class="chroma">
@@ -981,9 +980,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">exec</span><span class="o">:</span>
-        <span class="nb">cd</span> /home/hchen<span class="p">;</span> <span class="nb">pwd</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">exec</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">cd</span> /home/hchen<span class="p">;</span> <span class="nb">pwd</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当我们执行“make exec”时，第一个例子中的cd没有作用，pwd会打印出当前的Makefile目录，而第二个例子中，cd就起作用了，pwd会打印出“/home/hchen”。</p>
 <p>make一般是使用环境变量SHELL中所定义的系统Shell来执行命令，默认情况下使用UNIX的标准Shell——/bin/sh来执行命令。但在MS-DOS下有点特殊，因为MS-DOS下没有SHELL环境变量，当然你也可以指定。如果你指定了UNIX风格的目录形式，首先，make会在SHELL所指定的路径中找寻命令解释器，如果找不到，其会在当前盘符中的当前目录中寻找，如果再找不到，其会在PATH环境变量中所定义的所有路径中寻找。MS-DOS中，如果你定义的命令解释器没有找到，会给你的命令解释器加上诸如“.exe”、“.com”、“.bat”、“.sh”等后缀。</p>
@@ -997,9 +996,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">clean</span><span class="o">:</span>
-        -rm -f *.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        -rm -f *.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>还有一个全局的办法是，给make加上“-i”或是“&ndash;ignore-errors”参数，那么，Makefile中所有命令都会忽略错误。而如果一个规则是以“.IGNORE”作为目标的，那么这个规则中的所有命令将会忽略错误。这些是不同级别的防止命令出错的方法，你可以根据你的不同喜欢设置。</p>
 <p>还要提一下make的参数“-k”或“&ndash;keep-going”，这两个参数表示，如果规则中的命令出错了，那么就终止该规则的执行，继续执行其它规则。</p>
@@ -1012,9 +1011,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">subsystem</span><span class="o">:</span>
-        <span class="nb">cd</span> subdir <span class="o">&amp;&amp;</span> <span class="k">$(</span>MAKE<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">subsystem</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">cd</span> subdir <span class="o">&amp;&amp;</span> <span class="k">$(</span>MAKE<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其等价于：</p>
 <div class="highlight"><div class="chroma">
@@ -1023,9 +1022,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">subsystem</span><span class="o">:</span>
-        <span class="k">$(</span>MAKE<span class="k">)</span> -C subdir
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">subsystem</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>MAKE<span class="k">)</span> -C subdir
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>定义<code>$(MAKE)</code>宏变量的意思是，也许我们的make需要一些参数，所以定义成一个变量比较利于维护。这两个例子的意思都是先进入“subdir”目录，然后执行make命令。</p>
 <p>我们把这个Makefile叫做“总控Makefile”，总控Makefile的变量可以传递到下级的Makefile中（通过显示的声明），但是不会覆盖下层的Makefile中所定义的变量，除非指定了“-e”参数。</p>
@@ -1051,19 +1050,19 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="k">export </span><span class="nv">variable</span> <span class="o">=</span> value
-
-<span class="err">等价于：</span>
-<span class="nv">variable</span> <span class="o">=</span> value
-<span class="k">export</span> <span class="nv">variable</span>
-
-<span class="err">等价于：</span>
-<span class="k">export </span><span class="nv">variable</span> <span class="o">:=</span> value
-
-<span class="err">等价于：</span>
-<span class="nv">variable</span> <span class="o">:=</span> value
-<span class="k">export</span> <span class="nv">variable</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="k">export </span><span class="nv">variable</span> <span class="o">=</span> value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">等价于：</span>
+</span></span><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">=</span> value
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="nv">variable</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">等价于：</span>
+</span></span><span class="line"><span class="cl"><span class="k">export </span><span class="nv">variable</span> <span class="o">:=</span> value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">等价于：</span>
+</span></span><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">:=</span> value
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="nv">variable</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例二：</p>
 <div class="highlight"><div class="chroma">
@@ -1076,13 +1075,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="k">export </span><span class="nv">variable</span> <span class="o">+=</span> value
-
-<span class="err">等价于：</span>
-
-<span class="nv">variable</span> <span class="o">+=</span> value
-<span class="k">export</span> <span class="nv">variable</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="k">export </span><span class="nv">variable</span> <span class="o">+=</span> value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">等价于：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">+=</span> value
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="nv">variable</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果你要传递所有的变量，那么只要一个export就行了，后面什么也不用跟。</p>
 <p>需要注意的是，有两个变量，一个是SHELL，一个是MAKEFLAGS，这两个变量不管你是否export，其总是要传递到下层Makefile中，特别是MAKEFILES变量，其中包含了make的参数信息，如果我们执行“总控Makefile”时有make参数或是在上层Makefile中定义了这个变量，那么MAKEFILES变量将会是这些参数，并会传递到下层Makefile中，这是一个系统级的环境变量。</p>
@@ -1093,9 +1092,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">subsystem</span><span class="o">:</span>
-        <span class="nb">cd</span> subdir <span class="o">&amp;&amp;</span> <span class="k">$(</span>MAKE<span class="k">)</span> <span class="nv">MAKEFLAGS</span><span class="o">=</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">subsystem</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">cd</span> subdir <span class="o">&amp;&amp;</span> <span class="k">$(</span>MAKE<span class="k">)</span> <span class="nv">MAKEFLAGS</span><span class="o">=</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果你定义了环境变量MAKEFLAGS，那么你得确信其中的选项是大家都会用到的，如果其中有“-t”,“-n”,和“-q”参数，那么make时可能会得到让人意想不到的结果。</p>
 <p>还有一个在“嵌套执行”中比较有用的参数，“-w”或是“&ndash;print-directory”会在make的过程中输出一些信息，让你看到目前的工作目录。比如，如果我们的下级make目录是“/home/hchen/gnu/make”，如果我们使用“make -w”来执行，那么当进入该目录时，我们会看到：</p>
@@ -1113,11 +1112,11 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">define</span> <span class="err">run-yacc</span>
-<span class="err">yacc</span> <span class="k">$(</span><span class="nv">firstword</span> <span class="k">$</span>^<span class="k">)</span>
-<span class="err">mv</span> <span class="err">y.tab.c</span> <span class="k">$@</span>
-<span class="err">endef</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">define</span> <span class="err">run-yacc</span>
+</span></span><span class="line"><span class="cl"><span class="err">yacc</span> <span class="k">$(</span><span class="nv">firstword</span> <span class="k">$</span>^<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">mv</span> <span class="err">y.tab.c</span> <span class="k">$@</span>
+</span></span><span class="line"><span class="cl"><span class="err">endef</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>“run-yacc”是这个命令包的名字。命令包的名字不能和Makefile中的变量重名。在“define”和“endef”之间的两行就是命令序列。这个命令包中的第一个命令是运行yacc程序，因为yacc程序总是生成“y.tab.c”的文件，所以第二行的命令就是把这个文件改改名字。下面是一个命令包的使用示例：</p>
 <div class="highlight"><div class="chroma">
@@ -1126,9 +1125,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">foo.c </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">y</span>
-        <span class="k">$(</span>run-yacc<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">foo.c </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">y</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>run-yacc<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到，使用命令包就好像使用变量一样。在这个例子中，命令包“run-yacc”中的“<code>$^</code>”就是“foo.y”，“<code>$@</code>”就是“foo.c”（有关这种以“<code>$</code>”开头的特殊变量，我们会在后面介绍），make在执行命令包时，命令包中的每个命令会被依次独立执行。</p>
 <h2 id="使用变量">使用变量</h2>
@@ -1150,12 +1149,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> program.o foo.o utils.o
-<span class="nf">program </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-        cc -o program <span class="k">$(</span>objects<span class="k">)</span>
-
-<span class="nf">$(objects) </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> program.o foo.o utils.o
+</span></span><span class="line"><span class="cl"><span class="nf">program </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">        cc -o program <span class="k">$(</span>objects<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(objects) </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>另外，给变量加上括号完全是为了更加安全地使用这个变量，在上面的例子中，如果你不想给变量加上括号，那也可以，但我还是强烈建议你给变量加上括号。</p>
 <h3 id="二变量中的变量">二、变量中的变量</h3>
@@ -1171,13 +1170,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>bar<span class="k">)</span>
-<span class="nv">bar</span> <span class="o">=</span> <span class="k">$(</span>ugh<span class="k">)</span>
-<span class="nv">ugh</span> <span class="o">=</span> Huh?
-
-<span class="nf">all</span><span class="o">:</span>
-        <span class="nb">echo</span> <span class="k">$(</span>foo<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>bar<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">bar</span> <span class="o">=</span> <span class="k">$(</span>ugh<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ugh</span> <span class="o">=</span> Huh?
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">all</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="k">$(</span>foo<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们执行“make all”将会打出变量<code>$(foo)</code>的值是“Huh?”（ <code>$(foo)</code>的值是<code>$(bar)</code>，<code>$(bar)</code>的值是<code>$(ugh)</code>，<code>$(ugh)</code>的值是“Huh?”）可见，用“=”定义的变量是可以使用后面定义的变量来定义的。</p>
 <p>这种形式有不好的地方，那就是递归定义，例如：</p>
@@ -1191,13 +1190,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">CFLAGS</span> <span class="o">=</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -O
-
-<span class="err">或：</span>
-
-<span class="nv">A</span> <span class="o">=</span> <span class="k">$(</span>B<span class="k">)</span>
-<span class="nv">B</span> <span class="o">=</span> <span class="k">$(</span>A<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">CFLAGS</span> <span class="o">=</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -O
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">或：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">A</span> <span class="o">=</span> <span class="k">$(</span>B<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">B</span> <span class="o">=</span> <span class="k">$(</span>A<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这会让make陷入无限的变量展开过程中去。当然，我们的make是有能力检测这样的定义，并会报错。还有就是如果在变量中使用函数，那么，这种方式会让我们的make运行时非常慢，更糟糕的是，他会使用得两个make的函数“wildcard”和“shell”发生不可预知的错误。因为你不会知道这两个函数会被调用多少次。</p>
 <p>为了避免上述问题，我们可以使用make中另一种方法定义变量。这种方法使用的是“:=”操作符，如：</p>
@@ -1213,15 +1212,15 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">x</span> <span class="o">:=</span> foo
-<span class="nv">y</span> <span class="o">:=</span> <span class="k">$(</span>x<span class="k">)</span> bar
-<span class="nv">x</span> <span class="o">:=</span> later
-
-<span class="err">其等价于：</span>
-
-<span class="nv">y</span> <span class="o">:=</span> foo bar
-<span class="nv">x</span> <span class="o">:=</span> later
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">:=</span> foo
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">:=</span> <span class="k">$(</span>x<span class="k">)</span> bar
+</span></span><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">:=</span> later
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">其等价于：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">:=</span> foo bar
+</span></span><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">:=</span> later
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>值得一提的是，这种方法，前面的变量不能使用后面的变量，只能使用前面已定义好了的变量。如果是这样：</p>
 <div class="highlight"><div class="chroma">
@@ -1230,9 +1229,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">y</span> <span class="o">:=</span> <span class="k">$(</span>x<span class="k">)</span> bar
-<span class="nv">x</span> <span class="o">:=</span> foo
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">:=</span> <span class="k">$(</span>x<span class="k">)</span> bar
+</span></span><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">:=</span> foo
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>那么，y的值是“bar”，而不是“foo bar”。</p>
 <p>上面都是一些简单的变量使用，让我们来看一个复杂的例子。这个例子中包括了make的函数、条件表达式和一个系统变量“MAKELEVEL”的使用：</p>
@@ -1246,13 +1245,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifeq</span> <span class="err">(0,${MAKELEVEL})</span>
-<span class="nv">cur-dir</span>   <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
-<span class="nv">whoami</span>    <span class="o">:=</span> <span class="k">$(</span>shell whoami<span class="k">)</span>
-<span class="nv">host-type</span> <span class="o">:=</span> <span class="k">$(</span>shell arch<span class="k">)</span>
-<span class="nv">MAKE</span> <span class="o">:=</span> <span class="si">${</span><span class="nv">MAKE</span><span class="si">}</span> host-type<span class="o">=</span><span class="si">${</span><span class="nv">host</span><span class="p">-type</span><span class="si">}</span> <span class="nv">whoami</span><span class="o">=</span><span class="si">${</span><span class="nv">whoami</span><span class="si">}</span>
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="err">(0,${MAKELEVEL})</span>
+</span></span><span class="line"><span class="cl"><span class="nv">cur-dir</span>   <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">whoami</span>    <span class="o">:=</span> <span class="k">$(</span>shell whoami<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">host-type</span> <span class="o">:=</span> <span class="k">$(</span>shell arch<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MAKE</span> <span class="o">:=</span> <span class="si">${</span><span class="nv">MAKE</span><span class="si">}</span> host-type<span class="o">=</span><span class="si">${</span><span class="nv">host</span><span class="p">-type</span><span class="si">}</span> <span class="nv">whoami</span><span class="o">=</span><span class="si">${</span><span class="nv">whoami</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>关于条件表达式和函数，我们在后面再说。对于系统变量“MAKELEVEL”，其意思是，如果我们的make有一个嵌套执行的动作（参见前面的“嵌套使用make”），那么，这个变量会记录了我们的当前Makefile的调用层数。</p>
 <p>下面再介绍两个定义变量时我们需要知道的，请先看一个例子，如果我们要定义一个变量，其值是一个空格，那么我们可以这样定义：</p>
@@ -1266,13 +1265,13 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">nullstring</span> <span class="o">:=</span>
-<span class="nv">space</span> <span class="o">:=</span> <span class="k">$(</span>nullstring<span class="k">)</span>  <span class="c1">#end of the line</span>
-
-<span class="err">或者：</span>
-<span class="nv">nullstring</span> <span class="o">:=</span>
-<span class="nv">space</span> <span class="o">:=</span> <span class="k">$(</span>nullstring<span class="k">)</span> <span class="k">$(</span>nullstring<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">nullstring</span> <span class="o">:=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">space</span> <span class="o">:=</span> <span class="k">$(</span>nullstring<span class="k">)</span>  <span class="c1">#end of the line</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">或者：</span>
+</span></span><span class="line"><span class="cl"><span class="nv">nullstring</span> <span class="o">:=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">space</span> <span class="o">:=</span> <span class="k">$(</span>nullstring<span class="k">)</span> <span class="k">$(</span>nullstring<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>nullstring是一个空变量，其中什么也没有，而我们的space的值是一个空格。在操作符的右边是很难描述一个空格的，但这里采用的技术很管用。先用一个空变量标明变量的值开始了，后面采用“#”注释符来表示变量定义的终止。这样，我们可以定义出值是一个空格的变量。请注意这里关于“#”的使用，注释符“#”的这种特性值得我们注意，如果我们这样定义一个变量：</p>
 <p><code>dir :=/foo/bar    #directory to put the frobs in</code></p>
@@ -1285,10 +1284,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">origin</span> <span class="nv">FOO</span><span class="k">)</span><span class="err">,</span> <span class="err">undefined)</span>
-    <span class="nv">FOO</span> <span class="o">=</span> bar
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">origin</span> <span class="nv">FOO</span><span class="k">)</span><span class="err">,</span> <span class="err">undefined)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">FOO</span> <span class="o">=</span> bar
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="三变量高级用法">三、变量高级用法</h3>
 <p>这里介绍两种变量的高级使用方法。第一种方法是变量值的替换，格式是<code>“$(var:a=b)”</code>或是<code>“${var:a=b}”</code>，意思是，把变量“var”中所有以“a”结尾的字符串替换成“b”字符串。这里的“结尾”意思是后面是“空格”或“结束符”。</p>
@@ -1299,9 +1298,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">foo</span> <span class="o">:=</span> a.o b.o c.o
-<span class="nv">bar</span> <span class="o">:=</span> <span class="k">$(</span>foo:.o<span class="o">=</span>.c<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">:=</span> a.o b.o c.o
+</span></span><span class="line"><span class="cl"><span class="nv">bar</span> <span class="o">:=</span> <span class="k">$(</span>foo:.o<span class="o">=</span>.c<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个示例中，我们先定义了一个<code>“$(foo)”</code>变量，第二行是把<code>“$(foo)”</code>中结尾的“.o”全部替换成“.c”，所以我们的<code>“$(bar)”</code>的值就是“a.c b.c c.c”。</p>
 <p>另外一种变量替换的技术是以“静态模式”（参见前面章节）定义的，如：</p>
@@ -1311,9 +1310,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">foo</span> <span class="o">:=</span> a.o b.o c.o
-<span class="nv">bar</span> <span class="o">:=</span> <span class="k">$(</span>foo:%.o<span class="o">=</span>%.c<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">:=</span> a.o b.o c.o
+</span></span><span class="line"><span class="cl"><span class="nv">bar</span> <span class="o">:=</span> <span class="k">$(</span>foo:%.o<span class="o">=</span>%.c<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这依赖于被替换字串中的有相同的模式，模式中必须包含一个“%”字符，这个例子同样让<code>$(bar)</code>变量的值为“a.c b.c c.c”。</p>
 <p>第二种高级用法是——“把变量的值再当成变量”。例如：</p>
@@ -1324,10 +1323,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">x</span> <span class="o">=</span> y
-<span class="nv">y</span> <span class="o">=</span> z
-<span class="nv">a</span> <span class="o">:=</span> <span class="k">$($(</span>x<span class="k">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">=</span> y
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">=</span> z
+</span></span><span class="line"><span class="cl"><span class="nv">a</span> <span class="o">:=</span> <span class="k">$($(</span>x<span class="k">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个例子中，<code>$(x)</code>的值是“y”，所以<code>$($(x))</code>就是<code>$(y)</code>，于是<code>$(a)</code>的值就是“z”。（注意，是“x=y”，而不是<code>“x=$(y)”</code>）</p>
 <p>还可以使用更多的层次：</p>
@@ -1339,11 +1338,11 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">x</span> <span class="o">=</span> y
-<span class="nv">y</span> <span class="o">=</span> z
-<span class="nv">z</span> <span class="o">=</span> u
-<span class="nv">a</span> <span class="o">:=</span> <span class="k">$($($(</span>x<span class="k">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">=</span> y
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">=</span> z
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> u
+</span></span><span class="line"><span class="cl"><span class="nv">a</span> <span class="o">:=</span> <span class="k">$($($(</span>x<span class="k">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>再复杂一点，我们在变量定义中加上函数：</p>
 <div class="highlight"><div class="chroma">
@@ -1355,12 +1354,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">x</span> <span class="o">=</span> variable1
-<span class="nv">variable2</span> <span class="o">:=</span> Hello
-<span class="nv">y</span> <span class="o">=</span> <span class="k">$(</span>subst 1,2,<span class="k">$(</span>x<span class="k">))</span>
-<span class="nv">z</span> <span class="o">=</span> y
-<span class="nv">a</span> <span class="o">:=</span> <span class="k">$($($(</span>z<span class="k">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">x</span> <span class="o">=</span> variable1
+</span></span><span class="line"><span class="cl"><span class="nv">variable2</span> <span class="o">:=</span> Hello
+</span></span><span class="line"><span class="cl"><span class="nv">y</span> <span class="o">=</span> <span class="k">$(</span>subst 1,2,<span class="k">$(</span>x<span class="k">))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> y
+</span></span><span class="line"><span class="cl"><span class="nv">a</span> <span class="o">:=</span> <span class="k">$($($(</span>z<span class="k">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个例子中，<code>$($($(z)))</code>扩展为<code>$($(y))</code>，而其再次被扩展为<code>$($(subst 1,2,$(x)))</code>。<code>$(x)</code>的值是<code>variable1</code>，<code>subst</code>函数把<code>variable1</code>中的所有<code>1</code>字串替换成<code>2</code>字串，于是，<code>variable1</code>变成<code>variable2</code>，再取其值，所以，最终，<code>$(a)</code>的值就是<code>$(variable2)</code>的值——<code>Hello</code>。（喔，好不容易）</p>
 <p><strong>也可以使用多个变量来组成一个变量的名字，然后再取其值：</strong></p>
@@ -1372,11 +1371,11 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">first_second</span> <span class="o">=</span> Hello
-<span class="nv">a</span> <span class="o">=</span> first
-<span class="nv">b</span> <span class="o">=</span> second
-<span class="nv">all</span> <span class="o">=</span> <span class="k">$(</span><span class="nv">$a_$b</span><span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">first_second</span> <span class="o">=</span> Hello
+</span></span><span class="line"><span class="cl"><span class="nv">a</span> <span class="o">=</span> first
+</span></span><span class="line"><span class="cl"><span class="nv">b</span> <span class="o">=</span> second
+</span></span><span class="line"><span class="cl"><span class="nv">all</span> <span class="o">=</span> <span class="k">$(</span><span class="nv">$a_$b</span><span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里的<code>“$a_$b”</code>组成了“first_second”，于是，<code>$(all)</code>的值就是“Hello”。</p>
 <p>再来看一个变量、函数与条件语句一同使用的例子：</p>
@@ -1392,15 +1391,15 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifdef</span> <span class="err">do_sort</span>
-<span class="nv">func</span> <span class="o">:=</span> sort
-<span class="err">else</span>
-<span class="nv">func</span> <span class="o">:=</span> strip
-<span class="err">endif</span>
-
-<span class="nv">bar</span> <span class="o">:=</span> a d b g q c
-<span class="nv">foo</span> <span class="o">:=</span> <span class="k">$($(</span>func<span class="k">)</span> <span class="k">$(</span>bar<span class="k">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifdef</span> <span class="err">do_sort</span>
+</span></span><span class="line"><span class="cl"><span class="nv">func</span> <span class="o">:=</span> sort
+</span></span><span class="line"><span class="cl"><span class="err">else</span>
+</span></span><span class="line"><span class="cl"><span class="nv">func</span> <span class="o">:=</span> strip
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">bar</span> <span class="o">:=</span> a d b g q c
+</span></span><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">:=</span> <span class="k">$($(</span>func<span class="k">)</span> <span class="k">$(</span>bar<span class="k">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个示例中，如果定义了“do_sort”，那么<code>foo := $(sort a d b g q c)</code>，于是<code>$(foo)</code>的值就是“a b c d g q”，而如果没有定义“do_sort”，那么<code>foo := $(sort a d b g q c)</code>调用的就是strip函数。</p>
 <p><strong>“把变量的值再当成变量”这种用法，同样可以用在操作符的左边：</strong></p>
@@ -1413,12 +1412,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">dir</span> <span class="o">=</span> foo
-<span class="nv">$(dir)_sources</span> <span class="o">:=</span> <span class="k">$(</span>wildcard <span class="k">$(</span>dir<span class="k">)</span>/*.c<span class="k">)</span>
-<span class="err">define</span> <span class="k">$(</span><span class="nv">dir</span><span class="k">)</span><span class="err">_print</span>
-<span class="err">lpr</span> <span class="k">$($(</span><span class="nv">dir</span><span class="k">)</span><span class="nv">_sources</span><span class="k">)</span>
-<span class="err">endef</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">dir</span> <span class="o">=</span> foo
+</span></span><span class="line"><span class="cl"><span class="nv">$(dir)_sources</span> <span class="o">:=</span> <span class="k">$(</span>wildcard <span class="k">$(</span>dir<span class="k">)</span>/*.c<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">define</span> <span class="k">$(</span><span class="nv">dir</span><span class="k">)</span><span class="err">_print</span>
+</span></span><span class="line"><span class="cl"><span class="err">lpr</span> <span class="k">$($(</span><span class="nv">dir</span><span class="k">)</span><span class="nv">_sources</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">endef</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个例子中定义了三个变量：“dir”，“foo_sources”和“foo_print”。</p>
 <h3 id="四追加变量值">四、追加变量值</h3>
@@ -1429,9 +1428,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> main.o foo.o bar.o utils.o
-<span class="nv">objects</span> <span class="o">+=</span> another.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> main.o foo.o bar.o utils.o
+</span></span><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">+=</span> another.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>于是，我们的<code>$(objects)</code>值变成了“main.o foo.o bar.o utils.o another.o”（another.o被追加进去了）。</p>
 <p>上面这个例子等价于下面这种写法：</p>
@@ -1441,9 +1440,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span> <span class="o">=</span> main.o foo.o bar.o utils.o
-<span class="nv">objects</span> <span class="o">:=</span> <span class="k">$(</span>objects<span class="k">)</span> another.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">=</span> main.o foo.o bar.o utils.o
+</span></span><span class="line"><span class="cl"><span class="nv">objects</span> <span class="o">:=</span> <span class="k">$(</span>objects<span class="k">)</span> another.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>所不同的是，使用“+=”更为简洁。</p>
 <p>如果变量之前没有定义过，那么，“+=”会自动变成“=”，如果前面有变量定义，那么“+=”会继承于前次操作的赋值符。如果前一次的是“:=”，那么“+=”会以“:=”作为其赋值符，如：</p>
@@ -1453,9 +1452,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">variable</span> <span class="o">:=</span> value
-<span class="nv">variable</span> <span class="o">+=</span> more
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">:=</span> value
+</span></span><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">+=</span> more
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>等价于：</p>
 <div class="highlight"><div class="chroma">
@@ -1464,9 +1463,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">variable</span> <span class="o">:=</span> value
-<span class="nv">variable</span> <span class="o">:=</span> <span class="k">$(</span>variable<span class="k">)</span> more
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">:=</span> value
+</span></span><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">:=</span> <span class="k">$(</span>variable<span class="k">)</span> more
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>但如果是这种情况：</p>
 <div class="highlight"><div class="chroma">
@@ -1475,9 +1474,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">variable</span> <span class="o">=</span> value
-<span class="nv">variable</span> <span class="o">+=</span> more
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">=</span> value
+</span></span><span class="line"><span class="cl"><span class="nv">variable</span> <span class="o">+=</span> more
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于前次的赋值符是“=”，所以“+=”也会以“=”来做为赋值，那么岂不会发生变量的递补归定义吗，这是我们不希望看到的，所幸make会为我们解决这个问题。</p>
 <h3 id="五override指示符">五、override指示符</h3>
@@ -1495,10 +1494,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">override</span> <span class="err">define</span> <span class="err">foo</span>
-<span class="err">bar</span>
-<span class="err">endef</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">override</span> <span class="err">define</span> <span class="err">foo</span>
+</span></span><span class="line"><span class="cl"><span class="err">bar</span>
+</span></span><span class="line"><span class="cl"><span class="err">endef</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="六多行变量">六、多行变量</h3>
 <p>还有一种设置变量值的方法是使用define关键字。使用define关键字设置变量的值可以有换行，这有利于定义一系列的命令（前面我们讲过“命令包”的技术就是利用define实现的）。</p>
@@ -1512,11 +1511,11 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">define</span> <span class="err">two-lines</span>
-<span class="err">echo</span> <span class="err">foo</span>
-<span class="err">echo</span> <span class="k">$(</span><span class="nv">bar</span><span class="k">)</span>
-<span class="err">endef</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">define</span> <span class="err">two-lines</span>
+</span></span><span class="line"><span class="cl"><span class="err">echo</span> <span class="err">foo</span>
+</span></span><span class="line"><span class="cl"><span class="err">echo</span> <span class="k">$(</span><span class="nv">bar</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">endef</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="七环境变量">七、环境变量</h3>
 <p><strong>make运行时的系统环境变量可以在make开始运行时被载入到Makefile文件中，但是如果Makefile中已定义了这个变量，或是这个变量由make命令行带入，那么系统的环境变量的值将被覆盖。</strong>（如果make指定了“-e”参数，那么，系统环境变量将覆盖Makefile中定义的变量）</p>
@@ -1533,10 +1532,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">{target ...} </span><span class="o">:</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
-<span class="err">或</span>
-<span class="nf">{target ...} </span><span class="o">:</span> <span class="n">override</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">{target ...} </span><span class="o">:</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
+</span></span><span class="line"><span class="cl"><span class="err">或</span>
+</span></span><span class="line"><span class="cl"><span class="nf">{target ...} </span><span class="o">:</span> <span class="n">override</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>{variable-assignment}可以是前面讲过的各种赋值表达式，如“=”、“:=”、“+=”和“？=”。第二个语法是针对于make命令行带入的变量，或是系统环境变量。</p>
 <p>这个特性非常的有用，当我们设置了这样一个变量，这个变量会作用到由这个目标所引发的所有的规则中去。如：</p>
@@ -1556,19 +1555,19 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">prog </span><span class="o">:</span> <span class="n">CFLAGS</span> = -<span class="n">g</span>
-<span class="nf">prog </span><span class="o">:</span> <span class="n">prog</span>.<span class="n">o</span> <span class="n">foo</span>.<span class="n">o</span> <span class="n">bar</span>.<span class="n">o</span>
-        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> prog.o foo.o bar.o
-
-<span class="nf">prog.o </span><span class="o">:</span> <span class="n">prog</span>.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> prog.c
-
-<span class="nf">foo.o </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> foo.c
-
-<span class="nf">bar.o </span><span class="o">:</span> <span class="n">bar</span>.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> bar.c
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">prog </span><span class="o">:</span> <span class="n">CFLAGS</span> = -<span class="n">g</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prog </span><span class="o">:</span> <span class="n">prog</span>.<span class="n">o</span> <span class="n">foo</span>.<span class="n">o</span> <span class="n">bar</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> prog.o foo.o bar.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">prog.o </span><span class="o">:</span> <span class="n">prog</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> prog.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">foo.o </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> foo.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">bar.o </span><span class="o">:</span> <span class="n">bar</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> bar.c
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个示例中，不管全局的<code>$(CFLAGS)</code>的值是什么，<strong>在prog目标，以及其所引发的所有规则中（prog.o foo.o bar.o的规则），<code>$(CFLAGS)</code>的值都是“-g”。</strong></p>
 <h3 id="九模式变量">九、模式变量</h3>
@@ -1583,10 +1582,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">{pattern ...} </span><span class="o">:</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
-<span class="err">或</span>
-<span class="nf">{pattern ...} </span><span class="o">:</span> <span class="n">override</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">{pattern ...} </span><span class="o">:</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
+</span></span><span class="line"><span class="cl"><span class="err">或</span>
+</span></span><span class="line"><span class="cl"><span class="nf">{pattern ...} </span><span class="o">:</span> <span class="n">override</span> {<span class="n">variable</span>-<span class="n">assignment</span>}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="使用条件判断">使用条件判断</h2>
 <p>使用条件判断，可以让make根据运行时的不同情况选择不同的执行分支。条件表达式可以是比较变量的值，或者是比较变量和常量的值。</p>
@@ -1605,16 +1604,16 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">libs_for_gcc</span> <span class="o">=</span> -lgnu
-<span class="nv">normal_libs</span> <span class="o">=</span>
-<span class="c">#在规则中使用条件语句
-</span><span class="c"></span><span class="nf">foo</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-<span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">CC</span><span class="k">)</span><span class="err">,gcc)</span>
-        <span class="k">$(</span><span class="nv">CC</span><span class="k">)</span> <span class="err">-o</span> <span class="err">foo</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span> <span class="k">$(</span><span class="nv">libs_for_gcc</span><span class="k">)</span>
-<span class="err">else</span>
-        <span class="k">$(</span><span class="nv">CC</span><span class="k">)</span> <span class="err">-o</span> <span class="err">foo</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span> <span class="k">$(</span><span class="nv">normal_libs</span><span class="k">)</span>
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">libs_for_gcc</span> <span class="o">=</span> -lgnu
+</span></span><span class="line"><span class="cl"><span class="nv">normal_libs</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="c">#在规则中使用条件语句
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nf">foo</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">CC</span><span class="k">)</span><span class="err">,gcc)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span><span class="nv">CC</span><span class="k">)</span> <span class="err">-o</span> <span class="err">foo</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span> <span class="k">$(</span><span class="nv">libs_for_gcc</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span><span class="nv">CC</span><span class="k">)</span> <span class="err">-o</span> <span class="err">foo</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span> <span class="k">$(</span><span class="nv">normal_libs</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的这个例子中，目标“foo”可以根据变量<code>“$(CC)”</code>值来选取不同的函数库来编译程序。</p>
 <p>我们可以从上面的示例中看到三个关键字：ifeq、else和endif。ifeq表示条件语句的开始，并指定一个条件表达式。表达式包含两个参数，以逗号分隔，表达式以圆括号括起。else表示条件表达式为假的情况。endif表示一个条件语句的结束。</p>
@@ -1635,19 +1634,19 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">libs_for_gcc</span> <span class="o">=</span> -lgnu
-<span class="nv">normal_libs</span> <span class="o">=</span>
-
-<span class="c">#在规则外使用条件语句
-</span><span class="c"></span><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">CC</span><span class="k">)</span><span class="err">,gcc)</span>
-    <span class="nv">libs</span><span class="o">=</span><span class="k">$(</span>libs_for_gcc<span class="k">)</span>
-<span class="err">else</span>
-    <span class="nv">libs</span><span class="o">=</span><span class="k">$(</span>normal_libs<span class="k">)</span>
-<span class="err">endif</span>
-
-<span class="nf">foo</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -o foo <span class="k">$(</span>objects<span class="k">)</span> <span class="k">$(</span>libs<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">libs_for_gcc</span> <span class="o">=</span> -lgnu
+</span></span><span class="line"><span class="cl"><span class="nv">normal_libs</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#在规则外使用条件语句
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">CC</span><span class="k">)</span><span class="err">,gcc)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">libs</span><span class="o">=</span><span class="k">$(</span>libs_for_gcc<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">libs</span><span class="o">=</span><span class="k">$(</span>normal_libs<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">foo</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -o foo <span class="k">$(</span>objects<span class="k">)</span> <span class="k">$(</span>libs<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="二语法">二、语法</h3>
 <p>条件表达式的语法为：</p>
@@ -1666,18 +1665,18 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">{conditional-directive}</span>
-<span class="err">{text-if-true}</span>
-<span class="err">endif</span>
-
-<span class="err">以及：</span>
-
-<span class="err">{conditional-directive}</span>
-<span class="err">{text-if-true}</span>
-<span class="err">else</span>
-<span class="err">{text-if-false}</span>
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">{conditional-directive}</span>
+</span></span><span class="line"><span class="cl"><span class="err">{text-if-true}</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">以及：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">{conditional-directive}</span>
+</span></span><span class="line"><span class="cl"><span class="err">{text-if-true}</span>
+</span></span><span class="line"><span class="cl"><span class="err">else</span>
+</span></span><span class="line"><span class="cl"><span class="err">{text-if-false}</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中{conditional-directive}表示条件语句。条件语句有四个关键字。</p>
 <p>第一个是“ifeq”，比较参数“arg1”和“arg2”的值是否相同。</p>
@@ -1690,12 +1689,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifeq</span> <span class="err">({arg1},</span> <span class="err">{arg2})</span>
-<span class="err">ifeq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s1">&#39;{arg2}&#39;</span>
-<span class="err">ifeq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s2">&#34;{arg2}&#34;</span>
-<span class="err">ifeq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s1">&#39;{arg2}&#39;</span>
-<span class="err">ifeq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s2">&#34;{arg2}&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="err">({arg1},</span> <span class="err">{arg2})</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s1">&#39;{arg2}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s2">&#34;{arg2}&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s1">&#39;{arg2}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s2">&#34;{arg2}&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们还可以在参数中使用make的函数。如：</p>
 <div class="highlight"><div class="chroma">
@@ -1705,10 +1704,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">strip</span> <span class="k">$(</span><span class="nv">foo</span><span class="k">))</span><span class="err">,)</span>
-<span class="err">{text-if-empty}</span>
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="err">(</span><span class="k">$(</span><span class="nv">strip</span> <span class="k">$(</span><span class="nv">foo</span><span class="k">))</span><span class="err">,)</span>
+</span></span><span class="line"><span class="cl"><span class="err">{text-if-empty}</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个示例中使用了“strip”函数，如果这个函数的返回值是空，那么{text-if-empty}就生效。</p>
 <p>第二个条件关键字是“ifneq”，和“ifeq”是相反的。语法是：</p>
@@ -1721,12 +1720,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifneq</span> <span class="err">({arg1},</span> <span class="err">{arg2})</span>
-<span class="err">ifneq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s1">&#39;{arg2}&#39;</span>
-<span class="err">ifneq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s2">&#34;{arg2}&#34;</span>
-<span class="err">ifneq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s1">&#39;{arg2}&#39;</span>
-<span class="err">ifneq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s2">&#34;{arg2}&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifneq</span> <span class="err">({arg1},</span> <span class="err">{arg2})</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifneq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s1">&#39;{arg2}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifneq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s2">&#34;{arg2}&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifneq</span> <span class="s2">&#34;{arg1}&#34;</span> <span class="s1">&#39;{arg2}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifneq</span> <span class="s1">&#39;{arg1}&#39;</span> <span class="s2">&#34;{arg2}&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第三个条件关键字是“ifdef”。语法是：</p>
 <p><code>ifdef {variable-name}</code></p>
@@ -1751,23 +1750,23 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="c">#示例一：
-</span><span class="c"></span><span class="nv">bar</span> <span class="o">=</span>
-<span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>bar<span class="k">)</span>
-<span class="err">ifdef</span> <span class="err">foo</span>
-<span class="nv">frobozz</span> <span class="o">=</span> yes
-<span class="err">else</span>
-<span class="nv">frobozz</span> <span class="o">=</span> no
-<span class="err">endif</span>
-
-<span class="c">#示例二：
-</span><span class="c"></span><span class="nv">foo</span> <span class="o">=</span>
-<span class="err">ifdef</span> <span class="err">foo</span>
-<span class="nv">frobozz</span> <span class="o">=</span> yes
-<span class="err">else</span>
-<span class="nv">frobozz</span> <span class="o">=</span> no
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="c">#示例一：
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nv">bar</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>bar<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifdef</span> <span class="err">foo</span>
+</span></span><span class="line"><span class="cl"><span class="nv">frobozz</span> <span class="o">=</span> yes
+</span></span><span class="line"><span class="cl"><span class="err">else</span>
+</span></span><span class="line"><span class="cl"><span class="nv">frobozz</span> <span class="o">=</span> no
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#示例二：
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nv">foo</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifdef</span> <span class="err">foo</span>
+</span></span><span class="line"><span class="cl"><span class="nv">frobozz</span> <span class="o">=</span> yes
+</span></span><span class="line"><span class="cl"><span class="err">else</span>
+</span></span><span class="line"><span class="cl"><span class="nv">frobozz</span> <span class="o">=</span> no
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>第一个例子中，“<code>$(frobozz)</code>”值是“yes”，第二个则是“no”。</strong></p>
 <p>第四个条件关键字是“ifndef”，和“ifdef”是相反的。语法是：</p>
@@ -1792,12 +1791,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">comma</span><span class="o">:=</span> ,
-<span class="nv">empty</span><span class="o">:=</span>
-<span class="nv">space</span><span class="o">:=</span> <span class="k">$(</span>empty<span class="k">)</span> <span class="k">$(</span>empty<span class="k">)</span>
-<span class="nv">foo</span><span class="o">:=</span> a b c
-<span class="nv">bar</span><span class="o">:=</span> <span class="k">$(</span>subst <span class="k">$(</span>space<span class="k">)</span>,<span class="k">$(</span>comma<span class="k">)</span>,<span class="k">$(</span>foo<span class="k">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">comma</span><span class="o">:=</span> ,
+</span></span><span class="line"><span class="cl"><span class="nv">empty</span><span class="o">:=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">space</span><span class="o">:=</span> <span class="k">$(</span>empty<span class="k">)</span> <span class="k">$(</span>empty<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">foo</span><span class="o">:=</span> a b c
+</span></span><span class="line"><span class="cl"><span class="nv">bar</span><span class="o">:=</span> <span class="k">$(</span>subst <span class="k">$(</span>space<span class="k">)</span>,<span class="k">$(</span>comma<span class="k">)</span>,<span class="k">$(</span>foo<span class="k">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个示例中，<code>$(comma)</code>的值是一个逗号。<code>$(space)</code>使用了<code>$(empty)</code>定义了一个空格，<code>$(foo)</code>的值是“a b c”，<code>$(bar)</code>的定义用，调用了函数“subst”，这是一个替换函数，这个函数有三个参数，第一个参数是被替换字串，第二个参数是替换字串，第三个参数是替换操作作用的字串。这个函数也就是把<code>$(foo)</code>中的空格替换成逗号，所以<code>$(bar)</code>的值是“a,b,c”。</p>
 <h3 id="二字符串处理函数">二、字符串处理函数</h3>
@@ -1832,14 +1831,14 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">“$(var</span><span class="o">:</span>{<span class="n">pattern</span>}={<span class="n">replacement</span>})”
-<span class="c">#相当于
-</span><span class="c"></span><span class="err">“</span><span class="k">$(</span><span class="nv">patsubst</span> {<span class="nv">pattern</span>},{<span class="nv">replacement</span>},<span class="k">$(</span><span class="nv">var</span><span class="k">))</span><span class="err">”，</span>
-
-<span class="nf">“$(var</span><span class="o">:</span> {<span class="n">suffix</span>}={<span class="n">replacement</span>})”
-<span class="c">#相当于
-</span><span class="c"></span><span class="err">“</span><span class="k">$(</span><span class="nv">patsubst</span> %{<span class="nv">suffix</span>},%{<span class="nv">replacement</span>},<span class="k">$(</span><span class="nv">var</span><span class="k">))</span><span class="err">”。</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">“$(var</span><span class="o">:</span>{<span class="n">pattern</span>}={<span class="n">replacement</span>})”
+</span></span><span class="line"><span class="cl"><span class="c">#相当于
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="err">“</span><span class="k">$(</span><span class="nv">patsubst</span> {<span class="nv">pattern</span>},{<span class="nv">replacement</span>},<span class="k">$(</span><span class="nv">var</span><span class="k">))</span><span class="err">”，</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">“$(var</span><span class="o">:</span> {<span class="n">suffix</span>}={<span class="n">replacement</span>})”
+</span></span><span class="line"><span class="cl"><span class="c">#相当于
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="err">“</span><span class="k">$(</span><span class="nv">patsubst</span> %{<span class="nv">suffix</span>},%{<span class="nv">replacement</span>},<span class="k">$(</span><span class="nv">var</span><span class="k">))</span><span class="err">”。</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1874,10 +1873,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">sources</span> <span class="o">:=</span> foo.c bar.c baz.s ugh.h
-<span class="nf">foo</span><span class="o">:</span> <span class="k">$(</span><span class="nv">sources</span><span class="k">)</span>
-        cc <span class="k">$(</span>filter %.c %.s,<span class="k">$(</span>sources<span class="k">))</span> -o foo
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">sources</span> <span class="o">:=</span> foo.c bar.c baz.s ugh.h
+</span></span><span class="line"><span class="cl"><span class="nf">foo</span><span class="o">:</span> <span class="k">$(</span><span class="nv">sources</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">        cc <span class="k">$(</span>filter %.c %.s,<span class="k">$(</span>sources<span class="k">))</span> -o foo
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>$(filter %.c %.s,$(sources))返回的值是“foo.c bar.c baz.s”。</p>
 </li>
@@ -1896,12 +1895,12 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">objects</span><span class="o">=</span>main1.o foo.o main2.o bar.o
-<span class="nv">mains</span><span class="o">=</span>main1.o main2.o
-
-<span class="k">$(</span><span class="nv">filter</span>-<span class="nv">out</span> <span class="k">$(</span><span class="nv">mains</span><span class="k">)</span>,<span class="k">$(</span><span class="nv">objects</span><span class="k">))</span>
-<span class="c">#返回值是“foo.o bar.o”。
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">objects</span><span class="o">=</span>main1.o foo.o main2.o bar.o
+</span></span><span class="line"><span class="cl"><span class="nv">mains</span><span class="o">=</span>main1.o main2.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">$(</span><span class="nv">filter</span>-<span class="nv">out</span> <span class="k">$(</span><span class="nv">mains</span><span class="k">)</span>,<span class="k">$(</span><span class="nv">objects</span><span class="k">))</span>
+</span></span><span class="line"><span class="cl"><span class="c">#返回值是“foo.o bar.o”。
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -2010,10 +2009,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">names</span> <span class="o">:=</span> a b c d
-
-<span class="nv">files</span> <span class="o">:=</span> <span class="k">$(</span>foreach n,<span class="k">$(</span>names<span class="k">)</span>,<span class="k">$(</span>n<span class="k">)</span>.o<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">names</span> <span class="o">:=</span> a b c d
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">files</span> <span class="o">:=</span> <span class="k">$(</span>foreach n,<span class="k">$(</span>names<span class="k">)</span>,<span class="k">$(</span>n<span class="k">)</span>.o<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的例子中，$(name)中的单词会被挨个取出，并存到变量“n”中，“$(n).o”每次根据“$(n)”计算出一个值，这些值以空格分隔，最后作为foreach函数的返回，所以，$(files)的值是“a.o b.o c.o d.o”。</p>
 <p>注意，foreach中的{var}参数是一个临时的局部变量。foreach函数执行完后，参数{var}的变量将不再起作用，其作用域只在foreach函数当中。</p>
@@ -2034,9 +2033,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">reverse</span> <span class="o">=</span>  <span class="k">$(</span>1<span class="k">)</span> <span class="k">$(</span>2<span class="k">)</span>
-<span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>call reverse,a,b<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">reverse</span> <span class="o">=</span>  <span class="k">$(</span>1<span class="k">)</span> <span class="k">$(</span>2<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>call reverse,a,b<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>foo的值就是“a b”。参数的次序是可以自定义的，不一定是顺序的，如：</p>
 <div class="highlight"><div class="chroma">
@@ -2045,9 +2044,9 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">reverse</span> <span class="o">=</span>  <span class="k">$(</span>2<span class="k">)</span> <span class="k">$(</span>1<span class="k">)</span>
-<span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>call reverse,a,b<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">reverse</span> <span class="o">=</span>  <span class="k">$(</span>2<span class="k">)</span> <span class="k">$(</span>1<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">foo</span> <span class="o">=</span> <span class="k">$(</span>call reverse,a,b<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时的foo的值就是“b a”。</p>
 <h3 id="七origin函数">七、origin函数</h3>
@@ -2079,11 +2078,11 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifdef</span> <span class="err">bletch</span>
-<span class="err">ifeq</span> <span class="s2">&#34;$(origin bletch)&#34;</span> <span class="s2">&#34;environment&#34;</span>
-<span class="nv">bletch</span> <span class="o">=</span> barf, gag, etc.
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifdef</span> <span class="err">bletch</span>
+</span></span><span class="line"><span class="cl"><span class="err">ifeq</span> <span class="s2">&#34;$(origin bletch)&#34;</span> <span class="s2">&#34;environment&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">bletch</span> <span class="o">=</span> barf, gag, etc.
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当然，你也许会说，使用override关键字不就可以重新定义环境中的变量了吗？为什么需要使用这样的步骤？是的，我们用override是可以达到这样的效果，可是<strong>override过于粗暴，它同时会把从命令行定义的变量也覆盖了，而我们只想重新定义环境传来的，而不想重新定义命令行传来的</strong>。</p>
 <h3 id="八shell函数">八、shell函数</h3>
@@ -2105,10 +2104,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">ifdef</span> <span class="err">ERROR_001</span>
-<span class="k">$(</span><span class="nv">error</span> <span class="nv">error</span> <span class="nv">is</span> <span class="k">$(</span><span class="nv">ERROR_</span>001<span class="k">))</span>
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">ifdef</span> <span class="err">ERROR_001</span>
+</span></span><span class="line"><span class="cl"><span class="k">$(</span><span class="nv">error</span> <span class="nv">error</span> <span class="nv">is</span> <span class="k">$(</span><span class="nv">ERROR_</span>001<span class="k">))</span>
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例二：</p>
 <div class="highlight"><div class="chroma">
@@ -2118,10 +2117,10 @@ prereq-parrterns是目标的依赖模式，它用target-parrtern进行依赖的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">ERR</span> <span class="o">=</span> <span class="k">$(</span>error found an error!<span class="k">)</span>
-<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">err</span>
-<span class="nf">err</span><span class="o">:</span> ; <span class="k">$(</span><span class="nv">ERR</span><span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">ERR</span> <span class="o">=</span> <span class="k">$(</span>error found an error!<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">err</span>
+</span></span><span class="line"><span class="cl"><span class="nf">err</span><span class="o">:</span> ; <span class="k">$(</span><span class="nv">ERR</span><span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例一会在变量ERROR_001定义了后产生error调用，而示例二则在目标err被执行时才发生error调用。</p>
 </li>
@@ -2160,11 +2159,11 @@ wildcard函数用来展开通配符。</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nv">sources</span> <span class="o">=</span> foo.c bar.c
-<span class="err">ifneq</span> <span class="err">(</span> <span class="k">$(</span><span class="nv">MAKECMDGOALS</span><span class="k">)</span><span class="err">,clean)</span>
-<span class="nf">include $(sources</span><span class="o">:</span>.<span class="n">c</span>=.<span class="n">d</span>)
-<span class="err">endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">sources</span> <span class="o">=</span> foo.c bar.c
+</span></span><span class="line"><span class="cl"><span class="err">ifneq</span> <span class="err">(</span> <span class="k">$(</span><span class="nv">MAKECMDGOALS</span><span class="k">)</span><span class="err">,clean)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">include $(sources</span><span class="o">:</span>.<span class="n">c</span>=.<span class="n">d</span>)
+</span></span><span class="line"><span class="cl"><span class="err">endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>基于上面的这个例子，只要我们输入的命令不是“make clean”，那么makefile会自动包含“foo.d”和“bar.d”这两个makefile。</p>
 <p>使用指定最终目标的方法可以很方便地让我们编译我们的程序，例如下面这个例子：</p>
@@ -2174,9 +2173,9 @@ wildcard函数用来展开通配符。</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">all</span>
-<span class="nf">all</span><span class="o">:</span> <span class="n">prog</span>1 <span class="n">prog</span>2 <span class="n">prog</span>3 <span class="n">prog</span>4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">all</span>
+</span></span><span class="line"><span class="cl"><span class="nf">all</span><span class="o">:</span> <span class="n">prog</span>1 <span class="n">prog</span>2 <span class="n">prog</span>3 <span class="n">prog</span>4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面这个例子中，我们可以使用“make all”命令来编译所有的目标（如果把all置成第一个目标，那么只需执行“make”），我们也可以使用“make prog2”来单独编译目标“prog2”。</p>
 <p>在Unix软件发布时，特别是GNU这种开源软件发布时，其makefile都包含了编译、安装、打包等功能。以下是一些约定俗成的伪目标：</p>
@@ -2393,9 +2392,9 @@ wildcard函数用来展开通配符。</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">foo </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">o</span> <span class="n">bar</span>.<span class="n">o</span>
-        cc –o foo foo.o bar.o <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>LDFLAGS<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">foo </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">o</span> <span class="n">bar</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        cc –o foo foo.o bar.o <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>LDFLAGS<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个Makefile中并没有写下生成foo.o和bar.o这两个目标的规则，make的“隐含规则”功能会自动为我们自动去推导这两个目标的依赖和命令。</p>
 <p>make会在自己的“隐含规则”库中寻找可以用的规则，如果找到，就会使用。如果找不到，就会报错。在上面的例子中，make调用的隐含规则是，把.o目标的依赖设置成.c，并使用C的编译命令<code>“cc –c $(CFLAGS) .c”</code>来生成.o。</p>
@@ -2440,14 +2439,14 @@ wildcard函数用来展开通配符。</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile">    cc -c x.c -o x.o
-    cc -c y.c -o y.o
-    cc -c z.c -o z.o
-    cc x.o y.o z.o -o x
-    rm -f x.o
-    rm -f y.o
-    rm -f z.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl">    cc -c x.c -o x.o
+</span></span><span class="line"><span class="cl">    cc -c y.c -o y.o
+</span></span><span class="line"><span class="cl">    cc -c z.c -o z.o
+</span></span><span class="line"><span class="cl">    cc x.o y.o z.o -o x
+</span></span><span class="line"><span class="cl">    rm -f x.o
+</span></span><span class="line"><span class="cl">    rm -f y.o
+</span></span><span class="line"><span class="cl">    rm -f z.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果没有一个源文件（如上例中的x.c）和你的目标名字（如上例中的x）相关联，那么，你最好写出自己的生成规则，不然，隐含规则会报错的。</p>
 <p>9、Yacc C程序时的隐含规则。<br>
@@ -2541,13 +2540,13 @@ YFLAGS<br>
 <p>在“隐含规则链”中，禁止同一个目标出现两次或两次以上，这样一来，就可防止在make自动推导时出现无限递归的情况。</p>
 <p>Make会优化一些特殊的隐含规则，而不生成中间文件。如，从文件“foo.c”生成目标程序“foo”，按道理，make会编译生成中间文件“foo.o”，然后链接成“foo”，但在实际情况下，这一动作可以被一条“cc”的命令完成（cc –o foo foo.c），于是优化过的规则就不会生成中间文件。</p>
 <h3 id="五定义模式规则">五、定义模式规则</h3>
-<p>你可以使用模式规则来定义一个隐含规则。在模式规则中，目标的定义需要有&quot;%&ldquo;字符。&quot;%&ldquo;的意思是表示一个或多个任意字符。在依赖中同样可以使用&rdquo;%&quot;，只是依赖中的&rdquo;%&ldquo;的取值取决于其目标。</p>
-<p>有一点需要注意的是，&quot;%&ldquo;的展开发生在变量和函数的展开之后，变量和函数的展开发生在make载入Makefile时，而模式规则中的&rdquo;%&ldquo;则发生在运行时。</p>
+<p>你可以使用模式规则来定义一个隐含规则。在模式规则中，目标的定义需要有&quot;%&ldquo;字符。&rdquo;%&ldquo;的意思是表示一个或多个任意字符。在依赖中同样可以使用&rdquo;%&quot;，只是依赖中的&quot;%&ldquo;的取值取决于其目标。</p>
+<p>有一点需要注意的是，&rdquo;%&ldquo;的展开发生在变量和函数的展开之后，变量和函数的展开发生在make载入Makefile时，而模式规则中的&rdquo;%&ldquo;则发生在运行时。</p>
 <p>1、模式规则介绍</p>
-<p>模式规则中，至少在规则的目标定义中要包含&rdquo;%&quot;，否则就是一般的规则。目标中的&rdquo;%&ldquo;定义表示对文件名的匹配，&quot;%&ldquo;表示长度任意的非空字符串。例如：&quot;%.c&quot;表示以&rdquo;.c&quot;结尾的文件名（文件名的长度至少为3），而&quot;s.%.c&quot;则表示以&quot;s.&ldquo;开头，&quot;.c&quot;结尾的文件名（文件名的长度至少为5）。</p>
+<p>模式规则中，至少在规则的目标定义中要包含&rdquo;%&quot;，否则就是一般的规则。目标中的&quot;%&ldquo;定义表示对文件名的匹配，&rdquo;%&ldquo;表示长度任意的非空字符串。例如：&rdquo;%.c&quot;表示以&quot;.c&quot;结尾的文件名（文件名的长度至少为3），而&quot;s.%.c&quot;则表示以&quot;s.&ldquo;开头，&quot;.c&quot;结尾的文件名（文件名的长度至少为5）。</p>
 <p>如果&rdquo;%&ldquo;定义在目标中，那么，目标中的&rdquo;%&ldquo;的值决定了依赖中的&rdquo;%&ldquo;的值。例如有一个模式规则如下：</p>
 <p><code>%.o : %.c ; {command ......}</code></p>
-<p>这个模式规则指出了怎么从所有的.c文件生成相应的.o文件的规则。如果要生成的目标是&quot;a.o b.o&rdquo;，那么&rdquo;%c&quot;就是&quot;a.c b.c&quot;。</p>
+<p>这个模式规则指出了怎么从所有的.c文件生成相应的.o文件的规则。如果要生成的目标是&quot;a.o b.o&rdquo;，那么&quot;%c&quot;就是&quot;a.c b.c&quot;。</p>
 <p>一旦依赖目标中的&quot;%&ldquo;模式被确定，make就会被要求去匹配当前目录下所有的文件名，一旦找到，make就会执行规则下的命令。所以在模式规则中，目标可能会有多个。</p>
 <p>2、模式规则示例</p>
 <p>下面这个例子表示了,把所有的.c文件都编译成.o文件.</p>
@@ -2557,9 +2556,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中，<code>&quot;$@&quot;</code>和<code>&quot;$&lt;&quot;</code>是&quot;自动化变量&rdquo;，后面会详细讲述。</p>
 <p>下面的这个例子中有两个模式目标：</p>
@@ -2569,9 +2568,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">%.tab.c %.tab.h</span><span class="o">:</span> %.<span class="n">y</span>
-        bison -d $&lt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">%.tab.c %.tab.h</span><span class="o">:</span> %.<span class="n">y</span>
+</span></span><span class="line"><span class="cl">        bison -d $&lt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这条规则告诉make把所有的.y]文件都以&quot;bison -d {n}.y&quot;执行，然后生成&quot;{n}.tab.c&quot;和&quot;{n}.tab.h&quot;文件。假设我们的执行程序&quot;foo&quot;依赖于文件&quot;parse.tab.o&quot;和&quot;scan.o&quot;，并且文件&quot;scan.o&quot;依赖于文件&quot;parse.tab.h&quot;，如果&quot;parse.y&quot;文件被更新了，那么根据上述的规则，&ldquo;bison -d parse.y&quot;就会被执行一次，于是&quot;parse.tab.o&quot;和&quot;scan.o&quot;的依赖文件就齐了。（假设&quot;parse.tab.o&quot;由&quot;parse.tab.c&quot;生成，并且&quot;scan.o&quot;由&quot;scan.c&quot;生成，而&quot;foo&quot;由&quot;parse.tab.o&quot;和&quot;scan.o&quot;链接生成，而且foo和.o文件的依赖关系也写好，那么所有的目标都会得到满足。）</p>
 <p>3、自动化变量</p>
@@ -2599,9 +2598,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">lib </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">o</span> <span class="n">bar</span>.<span class="n">o</span> <span class="n">lose</span>.<span class="n">o</span> <span class="n">win</span>.<span class="n">o</span>
-        ar r lib <span class="nv">$?</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">lib </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">o</span> <span class="n">bar</span>.<span class="n">o</span> <span class="n">lose</span>.<span class="n">o</span> <span class="n">win</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        ar r lib <span class="nv">$?</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上述所列出来的自动量变量中，<code>$@</code>、<code>$&lt;</code>、<code>$%</code>和<code>$*</code>在扩展时只会有一个文件，而另三个的值是一个文件列表。这七个自动化变量还可以取得文件的目录名或是在当前目录下的符合模式的文件名，只需要搭配上&quot;D&quot;或&quot;F&quot;字样。这是GNU make中老版本的特性，在新版本中，我们使用函数&quot;dir&quot;或&quot;notdir&quot;就可以做到了。&ldquo;D&quot;的含义就是Directory，就是目录，&ldquo;F&quot;的含义就是File，就是文件。</p>
 <p>下面是对于上面的七个变量分别加上&quot;D&quot;或是&quot;F&quot;的含义：</p>
@@ -2640,9 +2639,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">c</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -D<span class="k">$(</span>date<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CPPFLAGS<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -D<span class="k">$(</span>date<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>也可以取消内建的隐含规则，只要不在后面写命令就行。如：</p>
 <div class="highlight"><div class="chroma">
@@ -2650,8 +2649,8 @@ YFLAGS<br>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">s</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">s</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同样，你也可以重新定义一个全新的隐含规则，其在隐含规则中的位置取决于你在哪里写下这个规则。朝前的位置就靠前。</p>
 <h3 id="六老式的后缀规则">六、老式的&quot;后缀规则&rdquo;</h3>
@@ -2664,9 +2663,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.c.o</span><span class="o">:</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.c.o</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>后缀规则不允许任何的依赖文件，如果有依赖文件的话，那就不是后缀规则，那些后缀统统被认为是文件名，如：</p>
 <div class="highlight"><div class="chroma">
@@ -2675,9 +2674,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.c.o</span><span class="o">:</span> <span class="n">foo</span>.<span class="n">h</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.c.o</span><span class="o">:</span> <span class="n">foo</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个例子，就是说，文件&quot;.c.o&quot;依赖于文件&quot;foo.h&quot;，而不是我们想要的这样：</p>
 <div class="highlight"><div class="chroma">
@@ -2686,9 +2685,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">%.o</span><span class="o">:</span> %.<span class="n">c</span> <span class="n">foo</span>.<span class="n">h</span>
-        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">%.o</span><span class="o">:</span> %.<span class="n">c</span> <span class="n">foo</span>.<span class="n">h</span>
+</span></span><span class="line"><span class="cl">        <span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>后缀规则中，如果没有命令，那是毫无意义的。make不会用一个没有命令的后缀规则覆盖内建的隐含规则。</p>
 <p>而要让make知道一些特定的后缀，我们可以使用伪目标&quot;.SUFFIXES&quot;来定义或是删除，如：</p>
@@ -2697,8 +2696,8 @@ YFLAGS<br>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.SUFFIXES</span><span class="o">:</span> .<span class="n">hack</span> .<span class="n">win</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.SUFFIXES</span><span class="o">:</span> .<span class="n">hack</span> .<span class="n">win</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>把后缀.hack和.win加入后缀列表中的末尾。</p>
 <div class="highlight"><div class="chroma">
@@ -2707,9 +2706,9 @@ YFLAGS<br>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">.SUFFIXES</span><span class="o">:</span>              <span class="c">#删除默认的后缀
-</span><span class="c"></span><span class="nf">.SUFFIXES</span><span class="o">:</span> .<span class="n">c</span> .<span class="n">o</span> .<span class="n">h</span>   <span class="c">#定义自己的后缀
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.SUFFIXES</span><span class="o">:</span>              <span class="c">#删除默认的后缀
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nf">.SUFFIXES</span><span class="o">:</span> .<span class="n">c</span> .<span class="n">o</span> .<span class="n">h</span>   <span class="c">#定义自己的后缀
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>先清除默认后缀，后定义自己的后缀列表。</p>
 <p>注意：你可以用&quot;.SUFFIXES&quot;来改变后缀列表，但请不要改变变量&quot;SUFFIXE&quot;的值。</p>
@@ -2755,19 +2754,19 @@ YFLAGS<br>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="nf">foolib(hack.o) </span><span class="o">:</span> <span class="n">hack</span>.<span class="n">o</span>
-        ar cr foolib hack.o
-
-<span class="c">#如果要指定多个member，那就以空格分开，如：
-</span><span class="c"></span><span class="err">foolib(hack.o</span> <span class="err">kludge.o)</span>
-
-<span class="c">#等价于：
-</span><span class="c"></span><span class="err">foolib(hack.o)</span> <span class="err">foolib(kludge.o)</span>
-
-<span class="c">#你还可以使用Shell的文件通配符来定义，如：
-</span><span class="c"></span>
-<span class="err">foolib(*.o)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">foolib(hack.o) </span><span class="o">:</span> <span class="n">hack</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="cl">        ar cr foolib hack.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#如果要指定多个member，那就以空格分开，如：
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="err">foolib(hack.o</span> <span class="err">kludge.o)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#等价于：
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="err">foolib(hack.o)</span> <span class="err">foolib(kludge.o)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#你还可以使用Shell的文件通配符来定义，如：
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="err">foolib(*.o)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="二函数库成员的隐含规则">二、函数库成员的隐含规则</h3>
 <p>当make搜索一个目标的隐含规则时，一个特殊的特性是，如果这个目标是&quot;a(m)&ldquo;形式的，其会把目标变成&rdquo;(m)&quot;。于是，如果我们的成员是&quot;%.o&quot;的模式定义，并且如果我们使用&quot;make foo.a(bar.o)&ldquo;的形式调用Makefile时，隐含规则会去找&quot;bar.o&quot;的规则，如果没有定义bar.o的规则，那么内建隐含规则生效，make会去找bar.c文件来生成bar.o，如果找得到的话，make执行的命令大致如下：</p>
@@ -2778,10 +2777,10 @@ YFLAGS<br>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="err">cc</span> <span class="err">-c</span> <span class="err">bar.c</span> <span class="err">-o</span> <span class="err">bar.o</span>
-<span class="err">ar</span> <span class="err">r</span> <span class="err">foo.a</span> <span class="err">bar.o</span>
-<span class="err">rm</span> <span class="err">-f</span> <span class="err">bar.o</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="err">cc</span> <span class="err">-c</span> <span class="err">bar.c</span> <span class="err">-o</span> <span class="err">bar.o</span>
+</span></span><span class="line"><span class="cl"><span class="err">ar</span> <span class="err">r</span> <span class="err">foo.a</span> <span class="err">bar.o</span>
+</span></span><span class="line"><span class="cl"><span class="err">rm</span> <span class="err">-f</span> <span class="err">bar.o</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>还有一个变量要注意的是<code>&quot;$%&quot;</code>，这是专属函数库文件的自动化变量，有关其说明请参见&quot;自动化变量&quot;一节。</p>
 <h3 id="三函数库文件的后缀规则">三、函数库文件的后缀规则</h3>
@@ -2800,17 +2799,17 @@ YFLAGS<br>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile">    .c.a:
-            <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -c $&lt; -o <span class="nv">$*</span>.o
-            <span class="k">$(</span>AR<span class="k">)</span> r <span class="nv">$@</span> <span class="nv">$*</span>.o
-            <span class="k">$(</span>RM<span class="k">)</span> <span class="nv">$*</span>.o
-
-<span class="err">等价于：</span>
-    <span class="nf">(%.o) </span><span class="o">:</span> %.<span class="n">c</span>
-            <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -c $&lt; -o <span class="nv">$*</span>.o
-            <span class="k">$(</span>AR<span class="k">)</span> r <span class="nv">$@</span> <span class="nv">$*</span>.o
-            <span class="k">$(</span>RM<span class="k">)</span> <span class="nv">$*</span>.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl">    .c.a:
+</span></span><span class="line"><span class="cl">            <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -c $&lt; -o <span class="nv">$*</span>.o
+</span></span><span class="line"><span class="cl">            <span class="k">$(</span>AR<span class="k">)</span> r <span class="nv">$@</span> <span class="nv">$*</span>.o
+</span></span><span class="line"><span class="cl">            <span class="k">$(</span>RM<span class="k">)</span> <span class="nv">$*</span>.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">等价于：</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">(%.o) </span><span class="o">:</span> %.<span class="n">c</span>
+</span></span><span class="line"><span class="cl">            <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>CPPFLAGS<span class="k">)</span> -c $&lt; -o <span class="nv">$*</span>.o
+</span></span><span class="line"><span class="cl">            <span class="k">$(</span>AR<span class="k">)</span> r <span class="nv">$@</span> <span class="nv">$*</span>.o
+</span></span><span class="line"><span class="cl">            <span class="k">$(</span>RM<span class="k">)</span> <span class="nv">$*</span>.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="四注意事项">四、注意事项</h3>
 <p>在进行函数库打包文件生成时，请小心使用make的并行机制（&quot;-j&quot;参数）。如果多个ar命令在同一时间运行在同一个函数库打包文件上，就很有可以损坏这个函数库文件。所以，在make未来的版本中，应该提供一种机制来避免并行操作发生在函数打包文件上。但就目前而言，还是应该尽量不要使用&rdquo;-j&quot;参数。</p>
