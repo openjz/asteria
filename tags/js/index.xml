@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>js - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/js/</link>
+        <description>js - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 05 Nov 2021 10:00:03 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/js/" rel="self" type="application/rss+xml" /><item>
+    <title>js入门笔记</title>
+    <link>http://blog.shiwj.top/10.js-mdn-tutorial/</link>
+    <pubDate>Fri, 05 Nov 2021 10:00:03 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/10.js-mdn-tutorial/</guid>
+    <description><![CDATA[参考MDN js教程 基础知识 1. JS API分为两类 浏览器API DOM API：DOM（Document Object Model，文档对象模型），DOM API能通过创]]></description>
+</item>
+</channel>
+</rss>

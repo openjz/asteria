@@ -22,11 +22,19 @@
 </item>
 <item>
     <title>css入门笔记</title>
-    <link>http://blog.shiwj.top/css-mdn-tutorial/</link>
+    <link>http://blog.shiwj.top/11.css-mdn-tutorial/</link>
     <pubDate>Sun, 14 Nov 2021 10:09:46 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/css-mdn-tutorial/</guid>
+    <guid>http://blog.shiwj.top/11.css-mdn-tutorial/</guid>
     <description><![CDATA[参考MDN css入门教程 导入 css 1、导入外部样式： 1 &lt;link rel=&#34;stylesheet&#34; href=&#34;styles.css&#34; /&gt; 2、内部样式 使用 style 元素 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34; /&gt; &lt;title&gt;My CSS experiment&lt;/title&gt; &lt;style&gt; h1 { color:]]></description>
+</item>
+<item>
+    <title>js入门笔记</title>
+    <link>http://blog.shiwj.top/10.js-mdn-tutorial/</link>
+    <pubDate>Fri, 05 Nov 2021 10:00:03 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/10.js-mdn-tutorial/</guid>
+    <description><![CDATA[参考MDN js教程 基础知识 1. JS API分为两类 浏览器API DOM API：DOM（Document Object Model，文档对象模型），DOM API能通过创]]></description>
 </item>
 </channel>
 </rss>
