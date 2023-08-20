@@ -10,6 +10,7 @@
 <meta property="og:url" content="http://blog.shiwj.top/18.webpage-print/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-23T19:00:00+08:00" />
 <meta property="article:modified_time" content="2022-10-26T11:14:32+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -138,35 +139,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 定义全部变量 */</span>
-</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nd">root</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">--TextSize</span><span class="p">:</span><span class="mf">10.5</span><span class="kt">pt</span><span class="p">;</span>  <span class="c">/*5号字*/</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">--TitleSize</span><span class="p">:</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">--SubTitleSize</span><span class="p">:</span><span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">--PageWidth</span><span class="p">:</span><span class="mi">210</span><span class="kt">mm</span><span class="p">;</span>  <span class="c">/*A4纸的宽度*/</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">--AspectRatio</span><span class="p">:</span><span class="mf">1.414</span><span class="p">;</span><span class="c">/*A4纸的高宽比*/</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">/*指定打印时A4纸的宽高*/</span>
-</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">print</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">html</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">width</span><span class="p">:</span> <span class="mi">210</span><span class="kt">mm</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">height</span><span class="p">:</span> <span class="mi">297</span><span class="kt">mm</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nt">html</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c">/*将root字号调小，字体太大会导致打印时文字挤成一团*/</span>
-</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">TextSize</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="nt">body</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">PageWidth</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="k">height</span><span class="p">:</span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">PageWidth</span><span class="p">)</span><span class="o">*</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">AspectRatio</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="c">/* border-style: solid; */</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="c">/* 定义全部变量 */</span>
+<span class="p">:</span><span class="nd">root</span><span class="p">{</span>
+    <span class="nv">--TextSize</span><span class="p">:</span><span class="mf">10.5</span><span class="kt">pt</span><span class="p">;</span>  <span class="c">/*5号字*/</span>
+    <span class="nv">--TitleSize</span><span class="p">:</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+    <span class="nv">--SubTitleSize</span><span class="p">:</span><span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+    <span class="nv">--PageWidth</span><span class="p">:</span><span class="mi">210</span><span class="kt">mm</span><span class="p">;</span>  <span class="c">/*A4纸的宽度*/</span>
+    <span class="nv">--AspectRatio</span><span class="p">:</span><span class="mf">1.414</span><span class="p">;</span><span class="c">/*A4纸的高宽比*/</span>
+<span class="p">}</span>
+
+<span class="c">/*指定打印时A4纸的宽高*/</span>
+<span class="p">@</span><span class="k">media</span> <span class="nt">print</span><span class="p">{</span>
+    <span class="nt">html</span> <span class="p">{</span>
+        <span class="k">width</span><span class="p">:</span> <span class="mi">210</span><span class="kt">mm</span><span class="p">;</span>
+        <span class="k">height</span><span class="p">:</span> <span class="mi">297</span><span class="kt">mm</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nt">html</span><span class="p">{</span>
+    <span class="c">/*将root字号调小，字体太大会导致打印时文字挤成一团*/</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">TextSize</span><span class="p">);</span> 
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">body</span><span class="p">{</span>
+    <span class="k">width</span><span class="p">:</span> <span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">PageWidth</span><span class="p">));</span>
+    <span class="k">height</span><span class="p">:</span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">PageWidth</span><span class="p">)</span><span class="o">*</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">AspectRatio</span><span class="p">));</span>
+    <span class="c">/* border-style: solid; */</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">

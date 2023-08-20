@@ -10,6 +10,7 @@
 <meta property="og:url" content="http://blog.shiwj.top/22.scl/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-28T10:28:00+08:00" />
 <meta property="article:modified_time" content="2022-11-01T10:05:27+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,7 +33,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "linux","wordcount":  477 ,
+                        }],"genre": "posts","keywords": "linux","wordcount":  478 ,
         "url": "http:\/\/blog.shiwj.top\/22.scl\/","datePublished": "2022-10-28T10:28:00+08:00","dateModified": "2022-11-01T10:05:27+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +82,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">scl-rhel/centos软件运行环境</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;477 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;478 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -110,10 +111,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo yum install -y centos-release-scl  
-</span></span><span class="line"><span class="cl">$ sudo yum install -y scl-utils-build  
-</span></span><span class="line"><span class="cl">$ sudo yum install -y scl-utils
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum install -y centos-release-scl  
+$ sudo yum install -y scl-utils-build  
+$ sudo yum install -y scl-utils
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="查看yum中所有的源">查看yum中所有的源</h2>
 <div class="highlight"><div class="chroma">
@@ -128,15 +129,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yum repolist
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">执行结果：
-</span></span><span class="line"><span class="cl">repo id                     repo name
-</span></span><span class="line"><span class="cl">!base/7/x86_64              CentOS-7 - Base - 163.com !centos-sclo-rh/x86_64      CentOS-7 - SCLo rh
-</span></span><span class="line"><span class="cl">!centos-sclo-sclo/x86_64    CentOS-7 - SCLo sclo
-</span></span><span class="line"><span class="cl">!extras/7/x86_64            CentOS-7 - Extras - 163.com
-</span></span><span class="line"><span class="cl">!updates/7/x86_64           CentOS-7 - Updates - 163.com
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ yum repolist
+
+执行结果：
+repo id                     repo name
+!base/7/x86_64              CentOS-7 - Base - 163.com !centos-sclo-rh/x86_64      CentOS-7 - SCLo rh
+!centos-sclo-sclo/x86_64    CentOS-7 - SCLo sclo
+!extras/7/x86_64            CentOS-7 - Extras - 163.com
+!updates/7/x86_64           CentOS-7 - Updates - 163.com
+</code></pre></td></tr></table>
 </div>
 </div><p>可以看到yum中新增了两个scl源</p>
 <h2 id="查看scl源中的包">查看scl源中的包</h2>
@@ -145,12 +146,14 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;centos-sclo-rh&#39;</span> list available
-</span></span><span class="line"><span class="cl">$ yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;centos-sclo-sclo&#39;</span> list available
-</span></span><span class="line"><span class="cl">$ yum --disablerepo<span class="o">=</span><span class="s2">&#34;*&#34;</span> --enablerepo<span class="o">=</span><span class="s2">&#34;centos-sclo-rh&#34;</span> search devtoolset
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;centos-sclo-rh&#39;</span> list available
+$ yum --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;centos-sclo-sclo&#39;</span> list available
+$ yum --disablerepo<span class="o">=</span><span class="s2">&#34;*&#34;</span> --enablerepo<span class="o">=</span><span class="s2">&#34;centos-sclo-rh&#34;</span> search devtoolset
+
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="安装scl源中的包">安装scl源中的包</h2>
 <ul>
@@ -163,8 +166,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo yum install -y devtoolset-9-gcc.x86_64 devtoolset-9-gcc-c++.x86_64 devtoolset-9-gcc-gdb-plugin.x86_64 devtoolset-9-gdb.x86_64
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum install -y devtoolset-9-gcc.x86_64 devtoolset-9-gcc-c++.x86_64 devtoolset-9-gcc-gdb-plugin.x86_64 devtoolset-9-gdb.x86_64
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="查看安装的scl包">查看安装的scl包</h2>
 <div class="highlight"><div class="chroma">
@@ -172,8 +175,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scl --list
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ scl --list
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="进入新的环境工作">进入新的环境工作</h2>
 <div class="highlight"><div class="chroma">
@@ -182,9 +185,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scl <span class="nb">enable</span> devtoolset-9 bash
-</span></span><span class="line"><span class="cl">$ gcc --version
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ scl <span class="nb">enable</span> devtoolset-9 bash
+$ gcc --version
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="从环境中退出">从环境中退出</h2>
 <div class="highlight"><div class="chroma">
@@ -192,8 +195,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">exit</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">exit</span>
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="安装nodejs-12">安装node.js 12</h2>
 <p>参考<a href="https://www.softwarecollections.org/en/scls/jstanek/rh-nodejs12/" target="_blank" rel="noopener noreffer">https://www.softwarecollections.org/en/scls/jstanek/rh-nodejs12/</a>
@@ -214,19 +217,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. Install a package with repository for your system:</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># On CentOS, install package centos-release-scl available in CentOS repository:</span>
-</span></span><span class="line"><span class="cl">$ sudo yum install centos-release-scl-rh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># On RHEL, enable RHSCL repository for you system:</span>
-</span></span><span class="line"><span class="cl">$ sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 2. Install the collection:</span>
-</span></span><span class="line"><span class="cl">$ sudo yum install rh-nodejs12
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 3. Start using software collections:</span>
-</span></span><span class="line"><span class="cl">$ scl <span class="nb">enable</span> rh-nodejs12 bash   
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 1. Install a package with repository for your system:</span>
+<span class="c1"># On CentOS, install package centos-release-scl available in CentOS repository:</span>
+$ sudo yum install centos-release-scl-rh
+
+<span class="c1"># On RHEL, enable RHSCL repository for you system:</span>
+$ sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
+
+<span class="c1"># 2. Install the collection:</span>
+$ sudo yum install rh-nodejs12
+
+<span class="c1"># 3. Start using software collections:</span>
+$ scl <span class="nb">enable</span> rh-nodejs12 bash   
+</code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
