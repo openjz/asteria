@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://blog.shiwj.top/35.windows-devices-manage/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-01-29T07:33:00+08:00" />
 <meta property="article:modified_time" content="2023-03-31T16:11:12+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -187,59 +186,59 @@
 </span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Copyright and License https://github.com/Microsoft/busiotools/blob/master/LICENSE</span>
-
-<span class="nv">$devices</span> <span class="p">=</span> <span class="nb">Get-PnpDevice</span> <span class="n">-Class</span> <span class="n">Bluetooth</span> <span class="p">|?</span> <span class="n">InstanceId</span> <span class="o">-notlike</span> <span class="s2">&#34;BTH*&#34;</span>
-
-<span class="nv">$radios</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">ArrayList</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$device</span> <span class="k">in</span> <span class="nv">$devices</span><span class="p">)</span> <span class="p">{</span>   
-    <span class="nv">$radio</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">PSObject</span>
-    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;InstanceId&#34;</span> <span class="n">-Value</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span>
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;DEVPKEY_Bluetooth_RadioAddress&#39;</span>
-    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;MAC&#34;</span> <span class="n">-Value</span> <span class="p">$(</span><span class="n">-join</span> <span class="p">(</span><span class="nv">$property</span><span class="p">.</span><span class="n">Data</span> <span class="p">|</span>  <span class="k">foreach</span> <span class="p">{</span> <span class="s2">&#34;{0:X2}&#34;</span> <span class="o">-f</span> <span class="nv">$_</span> <span class="p">}</span> <span class="p">))</span>
-    <span class="nv">$radios</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$radio</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Out-Null</span>
-
-    <span class="c"># Driver Info</span>
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;DEVPKEY_Device_DriverDesc&#39;</span>
-    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;DriverDescription&#34;</span> <span class="n">-Value</span> <span class="nv">$property</span><span class="p">.</span><span class="n">Data</span>
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;DEVPKEY_Device_DriverVersion&#39;</span>
-    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;DriverVersion&#34;</span> <span class="n">-Value</span> <span class="nv">$property</span><span class="p">.</span><span class="n">Data</span>
-
-    <span class="c"># Error Recovery</span>
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 14&#39;</span>
-    <span class="nv">$supportedTypes</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="n">Data</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$supportedTypes</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ErrorRecovery&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;None&#34;</span>
-    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$supportedTypes</span> <span class="o">-band</span> <span class="n">1</span> <span class="n">-shl</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ErrorRecovery&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;FLDR&#34;</span>
-    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$supportedTypes</span> <span class="o">-band</span> <span class="n">1</span> <span class="n">-shl</span> <span class="n">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ErrorRecovery&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;PLDR&#34;</span>
-    <span class="p">}</span>
-    
-    <span class="c"># ScoType</span>
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 21&#39;</span>
-    <span class="k">if</span> <span class="p">((</span><span class="no">[int32]</span><span class="nv">$property</span><span class="p">.</span><span class="n">Type</span><span class="p">)</span> <span class="o">-eq</span>  <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ScoType&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;Unknown&#34;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nv">$scoType</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="n">Data</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$scoType</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ScoType&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;SideBand&#34;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ScoType&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;InBand&#34;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="c">## LMP 和 HCI</span>
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 4&#39;</span>
-    <span class="nv">$LmpVersion</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="n">Data</span>
-    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;LMP/HCI&#34;</span> <span class="n">-Value</span> <span class="nv">$LmpVersion</span>
-
-    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="n">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 6&#39;</span>
-    <span class="nv">$HCIVersion</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="n">Data</span>
-    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;LMP/HCI&#34;</span> <span class="n">-Value</span> <span class="nv">$HCIVersion</span>
-<span class="p">}</span>
-<span class="nv">$radios</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Copyright and License https://github.com/Microsoft/busiotools/blob/master/LICENSE</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$devices</span> <span class="p">=</span> <span class="nb">Get-PnpDevice</span> <span class="n">-Class</span> <span class="n">Bluetooth</span> <span class="p">|?</span> <span class="n">InstanceId</span> <span class="o">-notlike</span> <span class="s2">&#34;BTH*&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$radios</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Collections</span><span class="p">.</span><span class="py">ArrayList</span>
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="nv">$device</span> <span class="k">in</span> <span class="nv">$devices</span><span class="p">)</span> <span class="p">{</span>   
+</span></span><span class="line"><span class="cl">    <span class="nv">$radio</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">PSObject</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;InstanceId&#34;</span> <span class="n">-Value</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;DEVPKEY_Bluetooth_RadioAddress&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;MAC&#34;</span> <span class="n">-Value</span> <span class="vm">$</span><span class="p">(</span><span class="n">-join</span> <span class="p">(</span><span class="nv">$property</span><span class="p">.</span><span class="py">Data</span> <span class="p">|</span>  <span class="k">foreach</span> <span class="p">{</span> <span class="s2">&#34;{0:X2}&#34;</span> <span class="o">-f</span> <span class="nv">$_</span> <span class="p">}</span> <span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$radios</span><span class="p">.</span><span class="py">Add</span><span class="p">(</span><span class="nv">$radio</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># Driver Info</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;DEVPKEY_Device_DriverDesc&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;DriverDescription&#34;</span> <span class="n">-Value</span> <span class="nv">$property</span><span class="p">.</span><span class="py">Data</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;DEVPKEY_Device_DriverVersion&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;DriverVersion&#34;</span> <span class="n">-Value</span> <span class="nv">$property</span><span class="p">.</span><span class="py">Data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c"># Error Recovery</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 14&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$supportedTypes</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="py">Data</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$supportedTypes</span> <span class="o">-eq</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ErrorRecovery&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;None&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$supportedTypes</span> <span class="o">-band</span> <span class="mf">1</span> <span class="n">-shl</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ErrorRecovery&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;FLDR&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$supportedTypes</span> <span class="o">-band</span> <span class="mf">1</span> <span class="n">-shl</span> <span class="mf">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ErrorRecovery&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;PLDR&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c"># ScoType</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 21&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(([</span><span class="no">int32</span><span class="p">]</span><span class="nv">$property</span><span class="p">.</span><span class="n">Type</span><span class="p">)</span> <span class="o">-eq</span>  <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ScoType&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;Unknown&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$scoType</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="py">Data</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$scoType</span> <span class="o">-eq</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ScoType&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;SideBand&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;ScoType&#34;</span> <span class="n">-Value</span> <span class="s2">&#34;InBand&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">## LMP 和 HCI</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 4&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$LmpVersion</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="py">Data</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;LMP/HCI&#34;</span> <span class="n">-Value</span> <span class="nv">$LmpVersion</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$property</span> <span class="p">=</span> <span class="nb">Get-PnpDeviceProperty</span> <span class="n">-InstanceId</span> <span class="nv">$device</span><span class="p">.</span><span class="py">InstanceId</span> <span class="n">-KeyName</span> <span class="s1">&#39;{A92F26CA-EDA7-4B1D-9DB2-27B68AA5A2EB} 6&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$HCIVersion</span> <span class="p">=</span> <span class="nv">$property</span><span class="p">.</span><span class="py">Data</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-Member</span> <span class="n">-InputObject</span> <span class="nv">$radio</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&#34;LMP/HCI&#34;</span> <span class="n">-Value</span> <span class="nv">$HCIVersion</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$radios</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>参考</p>
 <ul>

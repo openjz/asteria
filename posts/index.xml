@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 20 Aug 2023 13:11:39 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>条件变量</title>
+    <link>http://blog.shiwj.top/37.condition-variable/</link>
+    <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/37.condition-variable/</guid>
+    <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
+</item>
+<item>
     <title>高等教育</title>
     <link>http://blog.shiwj.top/36.kaobian-gaojiao/</link>
     <pubDate>Sun, 20 Aug 2023 13:11:39 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/28.cpp-inline/</guid>
     <description><![CDATA[inline，内联，早期inline关键字是给编译器的内联建议，编译器会视情况将函数在调用处展开。 但是现在没有编译器会听从用户的建议。 inl]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中的const</title>
-    <link>http://blog.shiwj.top/27.cpp-const/</link>
-    <pubDate>Sat, 29 Oct 2022 10:16:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/27.cpp-const/</guid>
-    <description><![CDATA[const 引用参数 函数的 const 引用参数有两个作用 对调用者承诺不会修改变量 允许调用者传一个右值作为参数，例如常量、字面量、临时对象、匿名对象 例如 1 2 3 4 5]]></description>
 </item>
 </channel>
 </rss>

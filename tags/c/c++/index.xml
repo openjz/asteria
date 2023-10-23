@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>条件变量</title>
+    <link>http://blog.shiwj.top/37.condition-variable/</link>
+    <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/37.condition-variable/</guid>
+    <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
+</item>
+<item>
     <title>有栈协程和无栈协程</title>
     <link>http://blog.shiwj.top/30.coroutine-stack/</link>
     <pubDate>Tue, 01 Nov 2022 02:35:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</guid>
     <description><![CDATA[参考 《C++ Primer 第5版》 cppreference.com 说明 本节内容包括：5类迭代器、算法形参模式、算法命名规范、特定容器算法。 5类迭代器 算法所要求的迭代器操作可以分为5个]]></description>
-</item>
-<item>
-    <title>面试八股-c&#43;&#43;</title>
-    <link>http://blog.shiwj.top/19.interview-bagu-cpp/</link>
-    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/19.interview-bagu-cpp/</guid>
-    <description><![CDATA[threadlocal volatile c++11中的新特性 我们通常把c++11之后的c++称为现代c++，以下是一些常见新特性 语法 列表初始化 可以使用initializer_l]]></description>
 </item>
 </channel>
 </rss>
