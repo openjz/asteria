@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/%E8%93%9D%E7%89%99/</link>
         <description>蓝牙 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 29 Jan 2023 05:27:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E8%93%9D%E7%89%99/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E8%93%9D%E7%89%99/" rel="self" type="application/rss+xml" /><item>
+    <title>蓝牙调试工具</title>
+    <link>http://blog.shiwj.top/38.bluetooth-tools/</link>
+    <pubDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/38.bluetooth-tools/</guid>
+    <description><![CDATA[参考： https://learn.microsoft.com/zh-cn/windows-hardware/drivers/bluetooth/testing-btp-setup-package?source=recommendations 下载微软BTP软件包 禁用 BitLocker 禁用安全启动（先禁用bitlocker，再禁用安全启动，不然启动的时候会要求你输入bitlocker恢复密]]></description>
+</item>
+<item>
     <title>蓝牙相关知识</title>
     <link>http://blog.shiwj.top/34.bluetooth-specification-introduction/</link>
     <pubDate>Sun, 29 Jan 2023 05:27:00 &#43;0800</pubDate>

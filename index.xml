@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>蓝牙调试工具</title>
+    <link>http://blog.shiwj.top/38.bluetooth-tools/</link>
+    <pubDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/38.bluetooth-tools/</guid>
+    <description><![CDATA[参考： https://learn.microsoft.com/zh-cn/windows-hardware/drivers/bluetooth/testing-btp-setup-package?source=recommendations 下载微软BTP软件包 禁用 BitLocker 禁用安全启动（先禁用bitlocker，再禁用安全启动，不然启动的时候会要求你输入bitlocker恢复密]]></description>
+</item>
+<item>
     <title>条件变量</title>
     <link>http://blog.shiwj.top/37.condition-variable/</link>
     <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/29.cpp-forward-declaration/</guid>
     <description><![CDATA[如果有两个类相互之间发生了引用，可能会产生一些问题。《C++ primer 第5版》中12.1.1节和12.1.6节给出的例子就出现了这种情况。在这两节中]]></description>
-</item>
-<item>
-    <title>关于C&#43;&#43; inline关键字</title>
-    <link>http://blog.shiwj.top/28.cpp-inline/</link>
-    <pubDate>Sun, 30 Oct 2022 11:38:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/28.cpp-inline/</guid>
-    <description><![CDATA[inline，内联，早期inline关键字是给编译器的内联建议，编译器会视情况将函数在调用处展开。 但是现在没有编译器会听从用户的建议。 inl]]></description>
 </item>
 </channel>
 </rss>

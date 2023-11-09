@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>蓝牙调试工具</title>
+    <link>http://blog.shiwj.top/38.bluetooth-tools/</link>
+    <pubDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/38.bluetooth-tools/</guid>
+    <description><![CDATA[参考： https://learn.microsoft.com/zh-cn/windows-hardware/drivers/bluetooth/testing-btp-setup-package?source=recommendations 下载微软BTP软件包 禁用 BitLocker 禁用安全启动（先禁用bitlocker，再禁用安全启动，不然启动的时候会要求你输入bitlocker恢复密]]></description>
+</item>
+<item>
     <title>条件变量</title>
     <link>http://blog.shiwj.top/37.condition-variable/</link>
     <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/27.cpp-const/</guid>
     <description><![CDATA[const 引用参数 函数的 const 引用参数有两个作用 对调用者承诺不会修改变量 允许调用者传一个右值作为参数，例如常量、字面量、临时对象、匿名对象 例如 1 2 3 4 5]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中的拷贝和移动语义</title>
-    <link>http://blog.shiwj.top/26.cpp-copy-move/</link>
-    <pubDate>Fri, 28 Oct 2022 15:19:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/26.cpp-copy-move/</guid>
-    <description><![CDATA[demo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 class A{ public: A(const A&amp; b):e(new int(*(b.e))){} A &amp; operator=(const A &amp; b){ if(this != *b){ int * c = new int(*(b.e)); delete e; e = c; } return *this; } A(A &amp;&amp;b) noexcept :e(b.e){ b.e = nullptr; } A &amp; operator=(A &amp;&amp; b)]]></description>
 </item>
 </channel>
 </rss>
