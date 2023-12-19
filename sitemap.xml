@@ -2,19 +2,18 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://blog.shiwj.top/posts/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/categories/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/%E8%93%9D%E7%89%99/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/38.bluetooth-tools/</loc><lastmod>2023-11-08T02:17:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://blog.shiwj.top/37.condition-variable/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</loc><lastmod>2023-09-03T19:09:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://blog.shiwj.top/36.kaobian-gaojiao/</loc><lastmod>2023-09-03T19:09:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/windows/</loc><lastmod>2023-03-31T16:11:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/posts/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/categories/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/windows/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/39.windows-dump-debug/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</loc><lastmod>2023-12-16T11:13:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/%E8%93%9D%E7%89%99/</loc><lastmod>2023-11-09T11:28:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/38.bluetooth-tools/</loc><lastmod>2023-11-09T11:28:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/37.condition-variable/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/35.windows-devices-manage/</loc><lastmod>2023-03-31T16:11:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/34.bluetooth-specification-introduction/</loc><lastmod>2023-03-13T13:52:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E5%9B%BE%E5%BD%A2/</loc><lastmod>2023-02-05T19:44:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -49,8 +48,9 @@
             <loc>http://blog.shiwj.top/16.interview-bagu-golang/</loc><lastmod>2022-11-07T09:31:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/python/</loc><lastmod>2022-11-21T23:11:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/15.remainder-and-modulo/</loc><lastmod>2022-11-21T23:11:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://blog.shiwj.top/14.threadexit/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://blog.shiwj.top/14.threadexit/</loc><lastmod>2023-10-23T18:42:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/kaobian-cs-jianda/</loc><lastmod>2023-03-18T00:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/categories/%E8%80%83%E7%BC%96/</loc><lastmod>2023-03-18T00:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/mysql/</loc><lastmod>2023-03-18T00:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/13.mysql-complex-sql/</loc><lastmod>2022-10-26T11:14:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/sql/</loc><lastmod>2022-10-26T11:14:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
