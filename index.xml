@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>进程间通信（IPC）模块的设计思路</title>
+    <link>http://blog.shiwj.top/40.ipc_module_design/</link>
+    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/40.ipc_module_design/</guid>
+    <description><![CDATA[多次IPC模块设计工作带来的思考 不要混淆资源释放（resource release）和停止/断开（stop/disconnect）操作，sto]]></description>
+</item>
+<item>
     <title>windows下调试dump文件</title>
     <link>http://blog.shiwj.top/39.windows-dump-debug/</link>
     <pubDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
     <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
-</item>
-<item>
-    <title>关于C&#43;&#43;前向声明</title>
-    <link>http://blog.shiwj.top/29.cpp-forward-declaration/</link>
-    <pubDate>Sun, 30 Oct 2022 15:01:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/29.cpp-forward-declaration/</guid>
-    <description><![CDATA[如果有两个类相互之间发生了引用，可能会产生一些问题。《C++ primer 第5版》中12.1.1节和12.1.6节给出的例子就出现了这种情况。在这两节中]]></description>
 </item>
 </channel>
 </rss>
