@@ -1,7 +1,7 @@
 ---
 title: "事业编计算机简答题"
 date: 2022-08-27T17:16:07+08:00
-draft: false
+draft: true
 
 tags: []
 categories: ["考编"]

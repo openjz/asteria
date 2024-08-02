@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>nginx入门教程 - 星</title><meta name="Description" content=""><meta property="og:title" content="nginx入门教程" />
+<meta property="og:description" content="参考 nginx.org文档 Nginx Plus Admin Guide 安装部署nginx的各种方法（安装、编译、安装动态模块、docker部署） nginx介绍 nginx有一个m" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/48.nginx-getting-started-tutorial/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-04T03:29:00+08:00" />
+<meta property="article:modified_time" content="2020-10-04T03:29:00+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="nginx入门教程"/>
+<meta name="twitter:description" content="参考 nginx.org文档 Nginx Plus Admin Guide 安装部署nginx的各种方法（安装、编译、安装动态模块、docker部署） nginx介绍 nginx有一个m"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/48.nginx-getting-started-tutorial/" /><link rel="prev" href="http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/" /><link rel="next" href="http://blog.shiwj.top/10.js-mdn-tutorial/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "nginx入门教程",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/48.nginx-getting-started-tutorial\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "nginx, 网络, 服务端","wordcount":  7698 ,
+        "url": "http:\/\/blog.shiwj.top\/48.nginx-getting-started-tutorial\/","datePublished": "2020-10-04T03:29:00+08:00","dateModified": "2020-10-04T03:29:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">nginx入门教程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-10-04">2020-10-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7698 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#参考">参考</a></li>
+    <li><a href="#nginx介绍">nginx介绍</a></li>
+    <li><a href="#nginx命令">nginx命令</a></li>
+    <li><a href="#配置文件">配置文件</a></li>
+    <li><a href="#web-server">Web Server</a>
+      <ul>
+        <li><a href="#server">server</a></li>
+        <li><a href="#location">location</a></li>
+        <li><a href="#location匹配规则">location匹配规则</a></li>
+        <li><a href="#location路由规则">location路由规则</a></li>
+        <li><a href="#代理">代理</a></li>
+        <li><a href="#fastcgi代理">FastCGI代理</a></li>
+        <li><a href="#error_page">error_page</a></li>
+        <li><a href="#服务静态内容">服务静态内容</a></li>
+        <li><a href="#buffer">buffer</a></li>
+        <li><a href="#绑定ip">绑定ip</a></li>
+        <li><a href="#压缩和解压">压缩和解压</a></li>
+      </ul>
+    </li>
+    <li><a href="#负载均衡">负载均衡</a>
+      <ul>
+        <li><a href="#http负载均衡">http负载均衡</a></li>
+      </ul>
+    </li>
+    <li><a href="#安全控制">安全控制</a>
+      <ul>
+        <li><a href="#https">https</a></li>
+        <li><a href="#tcp流量也可以配置ssl代理">TCP流量也可以配置ssl代理</a></li>
+        <li><a href="#使用http基本认证做访问控制">使用HTTP基本认证做访问控制</a></li>
+        <li><a href="#nginx访问控制接口">nginx访问控制接口</a></li>
+        <li><a href="#对访问进行限制">对访问进行限制</a></li>
+        <li><a href="#和后端服务建立ssl连接包括http和tcp流量">和后端服务建立ssl连接（包括http和tcp流量）</a></li>
+        <li><a href="#ip地址的动态黑名单">IP地址的动态黑名单</a></li>
+      </ul>
+    </li>
+    <li><a href="#监控和日志">监控和日志</a></li>
+    <li><a href="#代理服务器">代理服务器</a>
+      <ul>
+        <li><a href="#如何让后端server得到真正的客户端ip当存在多层代理或负载均衡时">如何让后端server得到真正的客户端ip（当存在多层代理或负载均衡时）</a></li>
+        <li><a href="#关于代理协议">关于代理协议</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginx变量">nginx变量</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://nginx.org/en/docs/" target="_blank" rel="noopener noreffer">nginx.org文档</a>
+</li>
+<li><a href="https://docs.nginx.com/" target="_blank" rel="noopener noreffer">Nginx Plus Admin Guide</a>
+</li>
+<li><a href="https://docs.nginx.com/nginx/admin-guide/" target="_blank" rel="noopener noreffer">安装部署nginx的各种方法（安装、编译、安装动态模块、docker部署）</a>
+</li>
+</ul>
+<h2 id="nginx介绍">nginx介绍</h2>
+<p>nginx有一个master进程和若干个worker进程。master进程负责读配置文件和维护worker进程，真正负责处理请求的是worker进程。</p>
+<p>access.log和error.log是nginx的日志文件。</p>
+<h2 id="nginx命令">nginx命令</h2>
+<p>直接执行二进制文件sbin/nginx启动nginx</p>
+<p>其他操作要按照<code>nginx -s [信号]</code>的格式来执行，常用信号：</p>
+<ul>
+<li>stop：立即关闭nginx</li>
+<li>quit：等worker进程处理完当前请求再关闭nginx，但是必须由启动nginx的用户执行这条命令。</li>
+<li>reload：重新加载配置文件</li>
+<li>reopen：重新打开日志文件</li>
+</ul>
+<h2 id="配置文件">配置文件</h2>
+<p>配置文件是nginx.conf，文件中的注释以‘#’开头。</p>
+<p>nginx的模块由配置文件中的指令控制。指令分为单指令和块指令，单指令以分号结尾，块指令以一对大括号结尾。</p>
+<p>块指令被看作是一个context，所有context之外被看作为main context。</p>
+<p>四个顶级指令对应四种不同的连接：</p>
+<ul>
+<li>events：通用连接</li>
+<li>http：http连接</li>
+<li>mail：邮件连接</li>
+<li>stream：tcp和udp连接</li>
+</ul>
+<p>其他命令：</p>
+<ul>
+<li>inlcude命令：引入其他配置文件</li>
+</ul>
+<h2 id="web-server">Web Server</h2>
+<h3 id="server">server</h3>
+<p>一个server块可以视为一个逻辑上的服务器。</p>
+<p><strong>每种连接的context内都可以有一个或多个server块，但是连接的类型不同时，server内能够包含的指令也不同</strong>。http块内的server能包含location指令。</p>
+<p>server之间通过监听的端口（listen）和server名（server_name）区分。</p>
+<p>如果nginx没有匹配到任何一个location或者没找到url中的文件，返回404。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">http</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">listen</span> <span class="s">[ip][:port]</span>
+</span></span><span class="line"><span class="cl">        <span class="s">server_name</span> <span class="s">host1</span> <span class="s">host2</span> <span class="s">...</span>
+</span></span><span class="line"><span class="cl">        <span class="s">root</span> <span class="c1">#如果location块中没有root，就使用这个root
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s">...</span>
+</span></span><span class="line"><span class="cl">        <span class="s">location</span>
+</span></span><span class="line"><span class="cl">        <span class="s">location</span>
+</span></span><span class="line"><span class="cl">        <span class="s">...</span>
+</span></span><span class="line"><span class="cl">    <span class="err">}</span>
+</span></span><span class="line"><span class="cl">    <span class="s">server</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>listen指令如果没有端口号，默认使用80端口；如果没有ip，默认监听所有ip</li>
+<li>如果有多个server匹配到了请求，nginx根据请求头的HOST字段和server_name进行匹配，HOST一般是域名
+<ul>
+<li>
+<p>精确匹配、通配符（*）、Perl语法的正则表达式；通配符只能放在开头和结尾，开头和结尾可以同时带通配符；正则表达式前面要加个波浪号（~）</p>
+</li>
+<li>
+<p>如果匹配到了多个server name，nginx根据以下顺序选择server name</p>
+<ul>
+<li>精确的HOST</li>
+<li>最长的通配符（*）开头的HOST，例如<code>*.example.org</code></li>
+<li>最长的通配符（*）结尾的HOSt，例如<code>mail.*</code></li>
+<li>根据在配置文件中出现的顺序，第一个匹配到的正则表达式</li>
+</ul>
+</li>
+<li>
+<p>如果最后还是没匹配到server，nginx会把请求路由到默认的server，即配置文件中的第一个server</p>
+</li>
+<li>
+<p>可以自定义默认的server</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h3 id="location">location</h3>
+<p>location命令定义了一个url的匹配和路由规则，server块内可以有多个location命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">pattern</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">xxx</span>
+</span></span><span class="line"><span class="cl"><span class="err">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>url匹配到一个location后，url的路径会拼在root指定的路径后面，nginx最终会到这个拼起来的路径里去找文件。</p>
+<h3 id="location匹配规则">location匹配规则</h3>
+<p>location命令格式：<code>location [=|~|~*|^~|@...] /url/ {...}</code></p>
+<p><code>location</code>后面的<code>[=|~|~*|^~|@...]</code>指定了Nginx以哪种方式匹配url。常见的有，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>精确匹配</td>
+</tr>
+<tr>
+<td><code>^~</code></td>
+<td>nginx会匹配最长最完整的前缀。如果匹配到的前缀前面带有<code>^~</code>，就停止匹配，否则，先匹配正则表达式，如果没匹配到，才会选择之前匹配到的前缀</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>正则匹配，区分大小写</td>
+</tr>
+<tr>
+<td><code>~*</code></td>
+<td>正则匹配，不区分大小写</td>
+</tr>
+<tr>
+<td>只有一个URL</td>
+<td>普通前缀匹配</td>
+</tr>
+<tr>
+<td>只有一个URL并且只是个<code>/</code></td>
+<td>通用匹配</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>用于内部重定向名，只能被nginx内部配置指令访问，不能被外部client访问</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Nginx的<code>location</code>规则可以写很多个，而且不同的匹配方式存在优先级，一个URL进来以后，Nginx先把这个URL拿去和优先级最高的匹配规则进行匹配，如果匹配到了，则不再进行匹配，如果没匹配到，Nginx会寻找更低优先级的匹配规则和这个URL进行匹配。以下是<strong>优先级顺序</strong>，</p>
+<ol>
+<li>精确匹配 <code>=</code> 优先级最高；</li>
+<li>前缀匹配 <code>^~</code> ；</li>
+<li>正则匹配，正则匹配之间的优先级和配置文件中定义的顺序一致；</li>
+<li>普通前缀匹配；</li>
+<li>通用匹配</li>
+</ol>
+<p>如果所有规则都匹配不到，Nginx会返回404。</p>
+<h3 id="location路由规则">location路由规则</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">...</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span>
+</span></span><span class="line"><span class="cl">    <span class="s">proxy_pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="s">return</span> <span class="mi">404</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">return</span> <span class="mi">301</span> <span class="s">http://www.example.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 替换http响应中的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">sub_filter</span> <span class="s">origin</span> <span class="s">target</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">sub_filter_once</span> <span class="no">on</span><span class="s">/off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>location</code>的路由规则写在<code>{}</code>里，所有规则以<code>;</code>结尾，常见的有这么几项：</p>
+<ul>
+<li>
+<p><code>root</code>：Web根路径，Nginx会在root+URL里的相对路径下找请求的文件。</p>
+</li>
+<li>
+<p><code>alias</code>：无视URL里的相对路径，直接在alias指定的目录下查找文件。(有帖子说alias指定的路径后面必须带上<code>'/'</code>)</p>
+</li>
+<li>
+<p><code>proxy_pass</code>：反向代理指令，将请求转发到proxy_pass指定的地址。（地址末尾带不带<code>'/'</code>有区别）</p>
+</li>
+<li>
+<p><code>rewrite</code>：使用变量、正则表达式和结尾的flag实现URL重写及重定向（在同一域名内）。语法：<code>rewrite regex replacement [flag]</code>。以下是结尾的标志位的含义：</p>
+<ul>
+<li><code>last</code>：可能会有连续的多条rewrite规则，<code>last</code>表示这个<code>rewrite</code>已完成，不再进入后面的rewrite，但由于rewrite后是一个新的URL，所以还是会进入server重走一遍匹配流程。</li>
+<li><code>break</code>：表示这条<code>rewrite</code>已完成，并且nginx不会再匹配重写后的URL。</li>
+<li><code>redirect</code>：返回302临时重定向；</li>
+<li><code>permanent</code>：返回301永久重定向；</li>
+</ul>
+<p>replacement语句里用类似<code>$1</code>、<code>$2</code>的标志，来替换正则表达式里的第几个括号匹配到的内容。</p>
+</li>
+<li>
+<p><code>fastcgi_pass</code>：转发针对php程序的请求，转发到后台的FastCGI服务器。FastCGI监听的方式有两种，一种是通过TCP，一种是通过socket文件（.sock文件）。因此<code>fastcgi_pass</code>可能会吧URL转发到一个.scok文件上。</p>
+</li>
+<li>
+<p><code>fastcgi_index</code>：FastCGI默认的主页资源。</p>
+</li>
+<li>
+<p><code>fastcgi_param</code>：传递给FastCGI服务器的参数。</p>
+</li>
+<li>
+<p><code>include</code>：把一个文件包含到配置文件中来。</p>
+</li>
+</ul>
+<h3 id="代理">代理</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl">    <span class="c1"># 例1：第一个server是第二个server的代理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">location</span> <span class="s">/proxy</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="kn">proxy_pass</span>   <span class="s">http://localhost:8080/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">listen</span> <span class="mi">8080</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">root</span> <span class="s">html2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 例2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">location</span> <span class="s">/some/path/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_pass</span> <span class="s">http://www.example.com/link/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例2中新URL后面带了个请求路径，这种情况下原始请求匹配location参数的部分不会被带入新URL，例如，请求“/some/path/page.html”会被转发到“http://www.example.com/link/page.html”。</p>
+<p>把http请求转发给非http server有以下几种命令：</p>
+<ul>
+<li>fastcgi_pass</li>
+<li>uwsgi_pass</li>
+<li>scgi_pass</li>
+<li>memcached_pass</li>
+</ul>
+<p>转发请求时如何转发请求头：</p>
+<ul>
+<li>
+<p>nginx转发时默认重写两个请求头字段，HOST字段默认设置为<code>proxy_host</code>变量的值，Connection字段默认设置为close。</p>
+</li>
+<li>
+<p>使用<code>proxy_set_header</code>命令设置头字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/some/path/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>nginx转发请求时会去掉值为空的头字段，因此如果不想转发某个头字段，把该字段的值设置为空字符串，例如<code>proxy_set_header Accept-Encoding &quot;&quot;;</code>。</p>
+</li>
+</ul>
+<h3 id="fastcgi代理">FastCGI代理</h3>
+<p>fastcgi_param命令指定了传递给fastcgi服务器的参数，例如<code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</code>这条命令将参数<code>SCRIPT_FILENAME</code>传递给fastcgi服务器，参数的值为<code>$document_root$fastcgi_script_name</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_pass</span>  <span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 脚本名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 请求参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">fastcgi_param</span> <span class="s">QUERY_STRING</span>    <span class="nv">$query_string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="error_page">error_page</h3>
+<p>指定错误页，格式：<code>error_page 错误码 uri</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">error_page</span> <span class="mi">404</span> <span class="s">/404.html</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>替换错误码，格式：<code>error_page 错误码 =新错误码 [参数]</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/old/path.html</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">error_page</span> <span class="mi">404</span> <span class="p">=</span><span class="mi">301</span> <span class="s">http:/example.com/new/path.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果只写了<code>=</code>，没有写新的错误码，返回重定向后的uri返回的错误码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s">location</span> <span class="s">/images/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Set the root directory to search for the file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">root</span> <span class="s">/data/www</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Disable logging of errors related to file existence
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1"># 发生和文件存在相关的错误时，不写日志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">open_file_cache_errors</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Make an internal redirect if the file is not found
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">error_page</span> <span class="mi">404</span> <span class="p">=</span> <span class="s">/fetch</span><span class="nv">$uri</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/fetch/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_pass</span> <span class="s">http://backend/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="服务静态内容">服务静态内容</h3>
+<ul>
+<li>
+<p><code>root</code>可以放到<code>http{}</code>、<code>server{}</code>和<code>location{}</code>里。</p>
+</li>
+<li>
+<p>对于<strong>以斜杠结尾的请求（请求的是一个目录，而不是文件）</strong>，nginx默认会到对应目录下去找index.html，如果没有就返回404；<code>autoindex</code>命令会让nginx返回一个目录页面，列出请求目录下的文件；<code>index</code>命令可以指定多个index页面，nginx返回找到的第一个页面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/images/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.</span><span class="nv">$geo.html</span> <span class="s">index.htm</span> <span class="s">index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>try_files<br>
+检查指定的文件或目录是否存在（try_files后面跟着的几个uri），如果不存在，返回最后一个uri指向的文件（也有可能不是uri，是一个返回码或者location等等）；（<strong>优先于autoindex</strong>）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/www/data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/images/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/images/default.gif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 可以返回状态码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="nv">$uri.html</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 可以转发请求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">@backend</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">location</span> <span class="s">@backend</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_pass</span> <span class="s">http://backend.example.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>性能优化</p>
+<ul>
+<li>sendfile、tcp_nopush、tcp_nodealy</li>
+<li>优化请求队列（backlog queue）</li>
+</ul>
+</li>
+</ul>
+<h3 id="buffer">buffer</h3>
+<p>nginx buffer会暂存后端服务器没发送完的响应，知道nginx完整接收了整个响应，才会把这个响应发送给客户端。好处是如果客户端是以同步方式接受响应，buffer会节省后端服务器的时间，坏处是nginx必须一直缓存整个响应，直到客户端接收完毕。</p>
+<p>相关的命令：</p>
+<ul>
+<li>proxy_buffers</li>
+<li>proxy_buffer_size</li>
+<li>proxy_buffering</li>
+</ul>
+<h3 id="绑定ip">绑定ip</h3>
+<p>如果服务器上有多个ip，可以使用<code>proxy_bind</code>命令将请求通过指定ip转发，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/app1/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_bind</span> <span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_pass</span> <span class="s">http://example.com/app1/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="压缩和解压">压缩和解压</h3>
+<ul>
+<li>
+<p>以下这些压缩和解压指令可以放到<code>http{}</code>、<code>server{}</code>和<code>location{}</code>里。</p>
+</li>
+<li>
+<p>对于一个已经压缩过的响应，nginx不会二次压缩（比如一个来自后端服务器的响应）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">gzip</span> <span class="no">on</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>nginx默认只会对text/html类型做压缩，使用<code>gzip_types</code>指令对其它类型的数据做压缩</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">gzip_types</span> <span class="s">text/plain</span> <span class="s">application/xml</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>gzip_min_length 1000;</code>，设置压缩的最小长度，默认是20个字节。</p>
+</li>
+<li>
+<p><code>gzip_proxied</code>指令用于对后端服务器收到的响应做压缩（即请求是后端服务器发出的）</p>
+</li>
+<li>
+<p>解压指令<code>gunzip on;</code></p>
+</li>
+<li>
+<p><code>gzip_static</code>，nginx会自动返回文件的压缩版。例如，目录下有一个名为test.txt.gz的文件，如果配置了<code>gzip_static on</code>，用户访问test.txt的时候gzip会返回test.txt.gz这个文件，浏览器收到这个文件后会将其解压并打印到屏幕上。（而并不是让浏览器下载这个文件）</p>
+</li>
+</ul>
+<h2 id="负载均衡">负载均衡</h2>
+<h3 id="http负载均衡">http负载均衡</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">http</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">upstream</span> <span class="s">backend</span> <span class="p">{</span>  <span class="c1"># backend是一个负载均衡组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">[负载均衡方法]</span>
+</span></span><span class="line"><span class="cl">        <span class="s">server</span> <span class="s">backend1.example.com</span> <span class="s">weight=5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">server</span> <span class="s">backend2.example.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">server</span> <span class="mi">192</span><span class="s">.0.0.1</span> <span class="s">backup</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kn">proxy_pass</span> <span class="s">http://backend</span><span class="p">;</span>  <span class="c1"># 把请求路由到这个负载均衡组去
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有四种负载均衡方法：</p>
+<ul>
+<li>轮巡（Round Robin）：默认就是这种方法。会考虑server权重（weight）。</li>
+<li>最少连接数（least_conn）：每次把请求转发给连接数最少的server，同时也考虑权重。</li>
+<li>ip_hash：对IPv4地址的前三个字节或者整个IPv6地址进行hash，确保地址相同的请求能被相同server处理。</li>
+<li>通用hash（hash 用户自定义key [consistent]）：用户可以自定义key，并且有一个一致性hash的可选项。</li>
+</ul>
+<p>server后面还可以跟一些选项：</p>
+<ul>
+<li>weight：server的权重，默认是1。</li>
+<li>backup：正常不会服务，只有其他server不可用了才会把请求发送到这个server上。</li>
+<li>down：暂时移除这个server，但是ip_hash还是能映射到这个server上，只不过由排在他后面的server来服务。</li>
+</ul>
+<p>nginx还能实时地检查upstream组内server的状态是否正常。在server后面加上max_fails和fail_timeout选项，fail_timeout是一个时间值，表示server在这个时间内失败一定次数就会被标记为不可用，max_fails规定了失败的次数。</p>
+<p>zone指令：如果一个负载均衡组里有zone指令，那么这个组的配置和状态就会被所有worker进程共享。</p>
+<p>可以用resolver指令实现负载均衡组的域名解析（DNS），（这个属于Nginx Plus的功能）</p>
+<h2 id="安全控制">安全控制</h2>
+<h3 id="https">https</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">http</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 性能优化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_session_cache</span>   <span class="s">shared:SSL:10m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_timeout</span> <span class="mi">10m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">listen</span>              <span class="mi">80</span><span class="p">;</span> <span class="c1">#一个Server能同时进行HTTP和HTTPS服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">listen</span>              <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">server_name</span>         <span class="s">www.example.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">ssl_certificate</span>     <span class="s">www.example.com.crt</span><span class="p">;</span> <span class="c1"># 证书（全链证书）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">ssl_certificate_key</span> <span class="s">www.example.com.key</span><span class="p">;</span> <span class="c1"># 私钥
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1"># 协议和密文
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">ssl_protocols</span>       <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">ssl_ciphers</span>         <span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># OCSP
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">ssl_verify_client</span>       <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">ssl_trusted_certificate</span> <span class="s">/etc/ssl/cachain.pem</span><span class="p">;</span> <span class="c1"># CA证书
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">ssl_ocsp</span>                <span class="no">on</span><span class="p">;</span> <span class="c1"># Enable OCSP validation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="kn">ssl_ocsp_responder</span> <span class="s">http://ocsp.example.com/</span><span class="p">;</span> <span class="c1"># 可选，手动指定ocsp请求地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">ssl_ocsp_cache</span> <span class="s">shared1️⃣10m</span><span class="p">;</span> <span class="c1"># 缓存ocsp请求结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 性能优化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>先建立SSL连接，然后才发送HTTP请求，因此nginx建立SSL连接的时候并不直到客户端要访问哪个服务。</li>
+<li>ocsp请求的结果可以通过变量<code>$ssl_client_verify</code>获得。</li>
+<li>制作证书链：<code>$ cat www.example.com.crt bundle.crt &gt; www.example.com.chained.crt</code>，把客户证书和中间证书拼到一起。
+<ul>
+<li>使用命令<code>$ openssl s_client -connect www.godaddy.com:443</code>验证服务是否能返回证书链。</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcp流量也可以配置ssl代理">TCP流量也可以配置ssl代理</h3>
+<h3 id="使用http基本认证做访问控制">使用HTTP基本认证做访问控制</h3>
+<ul>
+<li>三种认证方式：用户名-密码、IP地址、地理位置</li>
+<li>用户名-密码认证需要一个密码文件，密码文件使用工具生成，apache2-utils (Debian, Ubuntu) 或 httpd-tools (RHEL/CentOS/Oracle Linux)；
+<ul>
+<li><code>yum install -y httpd-tools</code></li>
+<li><code>sudo htpasswd -c 密码文件名 用户名</code>，<code>-c</code>表示创建该文件，可以向这个文件中追加多个用户名和密码。这个文件可以直接用<code>cat</code>打印</li>
+</ul>
+</li>
+</ul>
+<p>以下是<strong>用户名-密码认证</strong>的两个例子，分别打开和关闭用户认证</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/api</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">auth_basic</span>           <span class="s">“Administrator’s</span> <span class="s">Area”</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">auth_basic_user_file</span> <span class="s">/etc/apache2/.htpasswd</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s">auth_basic</span>           <span class="s">&#34;Administrator’s</span> <span class="s">Area&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">auth_basic_user_file</span> <span class="s">conf/htpasswd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/public/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">auth_basic</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以下是<strong>IP地址认证</strong>的两个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/api</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">deny</span>  <span class="mi">192</span><span class="s">.168.1.2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">allow</span> <span class="mi">192</span><span class="s">.168.1.1/24</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">allow</span> <span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">deny</span>  <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用<code>deny</code>和<code>allow</code>指令限制访问，nginx按<code>deny</code>和<code>allow</code>定义的顺序检查客户端的权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/api</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">satisfy</span> <span class="s">all</span><span class="p">;</span>    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">deny</span>  <span class="mi">192</span><span class="s">.168.1.2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">allow</span> <span class="mi">192</span><span class="s">.168.1.1/24</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">allow</span> <span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">deny</span>  <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">auth_basic</span>           <span class="s">&#34;Administrator’s</span> <span class="s">Area&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">auth_basic_user_file</span> <span class="s">conf/htpasswd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>satisfy all</code>表示客户端必须满足定义的所有条件，<code>satisfy any</code>表示满足任意一个条件即可。</p>
+<h3 id="nginx访问控制接口">nginx访问控制接口</h3>
+<p>要想使用这个功能，编译nginx时必须加上<code>--with-http_auth_request_module</code>选项。</p>
+<p>这个功能的用法是这样的，用户向后端服务发起请求时，nginx会首先向用户自定义的访问控制服务（例如LDAP、OAuth等）发一个子请求，如果访问控制服务返回2xx，nginx会放行用户的请求，如果访问控制服务返回401或者403，nginx会拦截用户请求并返回401或403。</p>
+<p>Nginx有对JWT的支持，JWT（Json Web Token）是一套信息传输协议，OAuth2和OpenID的身份验证功能可以使用JWT实现。</p>
+<h3 id="对访问进行限制">对访问进行限制</h3>
+<ul>
+<li>限制http访问<br>
+可以限制访问的连接数、频率、带宽等</li>
+<li>限制TCP访问<br>
+可以限制IP和带宽等。</li>
+<li>按地理位置限制访问</li>
+</ul>
+<h3 id="和后端服务建立ssl连接包括http和tcp流量">和后端服务建立ssl连接（包括http和tcp流量）</h3>
+<h3 id="ip地址的动态黑名单">IP地址的动态黑名单</h3>
+<h2 id="监控和日志">监控和日志</h2>
+<ul>
+<li>配置日志：参考<a href="https://docs.nginx.com/nginx/admin-guide/monitoring/logging/" target="_blank" rel="noopener noreffer">https://docs.nginx.com/nginx/admin-guide/monitoring/logging/</a>
+以及<a href="http://nginx.org/en/docs/syslog.html" target="_blank" rel="noopener noreffer">http://nginx.org/en/docs/syslog.html</a>
+</li>
+</ul>
+<h2 id="代理服务器">代理服务器</h2>
+<p>代理服务器使用<code>proxy_set_header</code>命令对请求头中的字段重新赋值或者在请求头中追加新的字段。
+使用<code>proxy_set_body</code>命令对请求体进行操作。</p>
+<p>格式：<code>proxy_set_header Host $proxy_host;</code></p>
+<h3 id="如何让后端server得到真正的客户端ip当存在多层代理或负载均衡时">如何让后端server得到真正的客户端ip（当存在多层代理或负载均衡时）</h3>
+<ul>
+<li>nginx版本必须大于1.13.11</li>
+<li>编译前，在configure的选项中加上<code>-- with-http_realip_module</code>和<code>-- with-stream_realip_module</code>选项。</li>
+</ul>
+<p>主要涉及到两个选项：</p>
+<ul>
+<li>set_real_ip_from：可信的上游ip，nginx会把这里的ip视为代理服务器</li>
+<li>real_ip_header：请求头中使用的代理协议，常见的有‘X-Forwarded-For’、‘proxy_protocol’等。</li>
+</ul>
+<p>配置好以后，<code>$remote_addr</code>和<code>$remote_port</code>变量里保存的是客户端ip，<code>$realip_remote_addr</code>和<code>$realip_remote_port</code>变量中保存的是上游代理的ip。</p>
+<h3 id="关于代理协议">关于代理协议</h3>
+<ul>
+<li>X-Forwarded-For<br>
+X-Forwarded-For是一个http头扩展字段，HTTP/1.1（RFC 2616）协议并没有对它的定义，它最开始是由 Squid 这个缓存代理软件引入，用来表示 HTTP 请求端真实 IP。如今它已经成为事实上的标准，被各大 HTTP 代理、负载均衡等转发服务广泛使用，并被写入 RFC 7239（Forwarded HTTP Extension）标准之中。<br>
+X-Forwarded-For 请求头格式非常简单，就这样：
+<code>X-Forwarded-For: client, proxy1, proxy2</code><br>
+可以看到，XFF 的内容由「英文逗号 + 空格」隔开的多个部分组成，最开始的是离服务端最远的IP，然后是每一级代理的IP。</li>
+<li>X-Real-IP<br>
+X-Real-IP也是一个http头扩展字段，但没有进入正式的标准。通常X-Real-IP只保存上一跳的IP，因此通常只会在某一级代理设置一下这个字段（否则这个字段会被覆盖好几次）</li>
+<li>proxy protocol<br>
+proxy protocol，是haproxy的作者Willy Tarreau于2010年开发和设计的一个Internet协议，通过为tcp添加一个很小的头信息，来方便的传递客户端信息（协议栈、源IP、目的IP、源端口、目的端口等)，在网络情况复杂又需要获取客户IP时非常有用。
+<ul>
+<li>多层NAT网络</li>
+<li>TCP代理（四层）或多层tcp代理</li>
+<li>https反向代理http(某些情况下由于Keep-alive导致不是每次请求都传递x-forword-for)<br>
+proxy protocol有两个版本，v1仅支持human-readable报头格式（ASCIII码），v2需同时支持human-readable和二进制格式（即需要兼容v1格式）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="nginx变量">nginx变量</h2>
+<p>nginx的内置变量都是模块自带的。大部分变量在ngx_http_core_module这个模块中。<br>
+各模块在它们各自的<a href="http://nginx.org/en/docs/" target="_blank" rel="noopener noreffer">nginx.org</a>
+文档最后面附加了该模块的变量定义。</p>
+<p>还可以自定义变量，使用<a href="https://nginx.org/en/docs/http/ngx_http_rewrite_module.html?&amp;_ga=2.13505527.1914378712.1606226396-1825618331.1601462528#set" target="_blank" rel="noopener noreffer">set</a>
+、<a href="https://nginx.org/en/docs/http/ngx_http_map_module.html?&amp;_ga=2.13505527.1914378712.1606226396-1825618331.1601462528#map" target="_blank" rel="noopener noreffer">map</a>
+和<a href="https://nginx.org/en/docs/http/ngx_http_geo_module.html?&amp;_ga=2.13505527.1914378712.1606226396-1825618331.1601462528#geo" target="_blank" rel="noopener noreffer">geo</a>
+</p>
+<ul>
+<li>remote_addr：请求方IP</li>
+<li>local_time：服务器本地时间，日期+时间+时区</li>
+<li>request：请求方法（GET/POST&hellip;）+请求路径+HTTP协议</li>
+<li>body_bytes_sent：响应体的字节数</li>
+<li>status：响应码</li>
+<li>http_user_agent：用户使用的客户端，一般是浏览器</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-10-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/48.nginx-getting-started-tutorial/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/nginx/">nginx</a>,&nbsp;<a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>,&nbsp;<a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/42.linux-jiu-gai-zhe-me-xue-note/" class="prev" rel="prev" title="《linux就该这么学》笔记"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>《linux就该这么学》笔记</a>
+            <a href="/10.js-mdn-tutorial/" class="next" rel="next" title="js入门笔记">js入门笔记<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

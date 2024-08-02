@@ -1,0 +1,139 @@
+# php安装和配置
+
+
+## 概念
+
+- FastCGI：是一个在HTTP服务器和动态脚本语言间通信的接口。它能够把动态语言和HTTP服务器分离开。目前主流的HTTP服务器都支持FastCGI，包括Apache、Nginx和Lightpd等。FastCGI也被很多脚本语言支持，例如PHP。有了FastCGI，Nginx就可以专注于处理静态请求，将动态请求通通转发到后端的动态语言服务器上。FastCGI监听的方式有两种，一种是通过TCP，一种是通过socket文件（.sock文件）
+
+- php-fpm：php-fpm是FastCGI的一个实现，提供了进程管理的功能。进程包括master进程和worker进程两种。master进程只有一个，负责监听端口，接受来自HTTP服务器的请求；worker进程有多个，每个进程内部都有一个php解释器。
+
+## 编译安装
+
+```bash
+# 准备编译环境（centos）
+yum install -y libxml2 libxml2-devel sqlite-devel bzip2 bzip2-devel libcurl libcurl-devel libpng libpng-devel libwebp-devel libjpeg libjpeg-devel freetype freetype-devel gmp-devel libxslt libxslt-devel
+# 准备编译环境（debian）
+sudo apt-get install -y pkg-config libxml2 libxml2-dev libsqlite3-dev libbz2-dev libcurl4-openssl-dev libpng-dev libwebp-dev libjpeg-dev libfreetype6-dev libgmp-dev libxslt-dev libonig-dev
+# 下载，-c选项用于断点续传
+wget [-c] https://www.php.net/distributions/php-7.4.10.tar.gz
+tar -zxf php-7.4.10.tar.gz
+# 配置
+（./configure --help）
+./configure \
+--prefix=$HOME/web/php-74 \
+--enable-fpm \
+--with-fpm-user=swj \
+--with-fpm-group=swj \
+--with-openssl \
+--with-zlib \
+--enable-bcmath \
+--with-bz2 \
+--enable-calendar \
+--with-curl \
+--enable-ftp \
+--enable-gd \
+--with-webp \
+--with-jpeg \
+--with-freetype \
+--with-gettext \
+--with-gmp \
+--with-mhash \
+--with-mysqli \
+--with-pdo-mysql \
+--enable-soap \
+--enable-sockets \
+--with-xmlrpc \
+--enable-mysqlnd \
+--with-xsl \
+--enable-mbstring
+```
+
+```bash
+make
+make install
+cd ../php-74
+# 将源码目录下的php.ini-production拷贝到安装目录下改名为php.ini
+cp ../php-7.4.10/php.ini-production php.ini
+
+# 将etc/php-fpm.conf.default拷贝一份命名为php-fpm.conf
+cp etc/php-fpm.conf.default etc/php-fpm.conf
+
+# etc/php-fpm.d目录下的www.conf也要拷贝一份
+cp etc/php-fpm.d/www.conf.default etc/php-fpm.d/www.conf
+
+# 修改文件“/etc/php-fpm.d/www.conf”
+# ;将这里的用户和用户组修改为自己的用户/组
+# user = php-fpm
+# group = php-fpm
+
+  
+# 启动php-fpm
+sudo sbin/php-fpm
+# 关闭php-fpm
+sudo pkill php-fpm
+```
+
+## yum安装
+
+```bash
+# 安装epel
+yum install epel-release -y
+
+rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-7.rpm
+
+sudo yum-config-manager --enable remi-php74
+
+sudo yum install -y php  php-cli php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json php-pdo php-xmlrpc
+
+# 启动、停止、重启、开机启动
+systemctl start|stop|restart|enable php-fpm
+```
+
+### 配置文件位置
+
+```bash
+/etc/php-fpm.d/www.conf
+```
+
+## 常见问题
+
+- File not found
+
+  问题描述：
+
+  - 页面上显示“File not found.”；
+  - nginx的error.log里输出“FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream”。
+
+  可能的原因：
+
+  1. url写错了、nginx.conf里root写错了、root下没有这个文件；
+  2. nginx的php配置示例中有一项是这样的：`fastcgi_param  SCRIPT_FILENAME  /script$fastcgi_script_name;`，把`/script`改成`$document_root`
+  3. php-fpm的用户/用户组不对导致没有目录或文件的访问权限。
+     - 查看php-fpm的用户是否是当前用户，`$ ps aux | grep php-fpm`，发现是默认的php-fpm用户，不是我的个人用户。
+     - 修改文件“/etc/php-fpm.d/www.conf”
+
+      ```conf
+      ;将这里的用户和用户组修改为自己的用户/组
+      user = php-fpm
+      group = php-fpm
+      ```
+
+- php.ini中的配置项`cgi.fix_pathinfo`的值为0和1时会对一些php框架的功能产生较大影响
+  - PATHINFO
+    > 常常会见到这种格式的Url：`https://blog.jjonline.cn/index.php/Article/Post/index.html`，这种Url理解有两种方式：
+    >
+    > index.php当做一个目录看待：访问blog.jjonline.cn服务器根目录下的index.php目录下的Article目录下的Post目录下的index.html静态html文本文件
+    >
+    >index.php当做一个PHP脚本看待：访问blog.jjonline.cn服务器根目录下的index.php脚本，由该脚本产生html页面，Url中/Article/Post/index.html这一部分作为index.php脚本中使用的某种类型的参数。
+    >
+    >绝大部分情况下，对这种Url的理解方式是第二种，/Article/Post/index.html被视为PATHINFO，即index.php的传参载体。PATHINFO是CGI 1.1的一个标准。
+    >
+    >参考[https://blog.jjonline.cn/linux/218.html](https://blog.jjonline.cn/linux/218.html)
+
+    有两种解析PATHINFO的方法：
+    - php负责解析：  
+    php.ini中有一个配置项`cgi.fix_pathinfo`，当这项配置被置为`cgi.fix_pathinfo = 1`时，解析功能生效。
+    - nginx负责解析：  
+    使用`fastcgi_split_path_info`命令
+    - 以前php的这个功能有漏洞，例如像a.jpg/b.php这样的uri会被解析成a.jpg+b.php，即脚本名是a.jpg，PATHINFO是b.php，这可能会导致a.jpg的内容被php返回。现在已经不存在这个漏洞了，php-fpm的配置文件www.conf中有一个配置项，`security.limit_extensions = .php .php3 .php4 .php5 .php7`，规定了哪些类型的文件会被php-fpm放行，其他文件会被拒绝。
+    - 个人感觉还是由nginx来解析PATHINFO比较好，因为nginx可以根据url和server来决定是否需要解析PATHINFO，比较灵活。

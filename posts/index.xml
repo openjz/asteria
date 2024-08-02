@@ -10,7 +10,7 @@
     <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/40.ipc_module_design/</guid>
-    <description><![CDATA[多次IPC模块设计工作带来的思考 不要混淆资源释放（resource release）和停止/断开（stop/disconnect）操作，sto]]></description>
+    <description><![CDATA[一些细节问题 不要混淆资源释放（resource release）和停止/断开（stop/disconnect）操作，stop操作是对用户暴露的]]></description>
 </item>
 <item>
     <title>windows下调试dump文件</title>

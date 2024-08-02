@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>《linux就该这么学》笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="《linux就该这么学》笔记" />
+<meta property="og:description" content="参考《Linux就该这么学》，这本书编得挺乱，看完shell脚本就没再看了。 linux的一些约定 命令格式 Linux的命令参数分长格式和短格式" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-04T00:00:00+08:00" />
+<meta property="article:modified_time" content="2020-10-04T00:00:00+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="《linux就该这么学》笔记"/>
+<meta name="twitter:description" content="参考《Linux就该这么学》，这本书编得挺乱，看完shell脚本就没再看了。 linux的一些约定 命令格式 Linux的命令参数分长格式和短格式"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/" /><link rel="prev" href="http://blog.shiwj.top/43.linux-common-command/" /><link rel="next" href="http://blog.shiwj.top/48.nginx-getting-started-tutorial/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "《linux就该这么学》笔记",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/42.linux-jiu-gai-zhe-me-xue-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "linux","wordcount":  5592 ,
+        "url": "http:\/\/blog.shiwj.top\/42.linux-jiu-gai-zhe-me-xue-note\/","datePublished": "2020-10-04T00:00:00+08:00","dateModified": "2020-10-04T00:00:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《linux就该这么学》笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-10-04">2020-10-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5592 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux的一些约定">linux的一些约定</a>
+      <ul>
+        <li><a href="#命令格式">命令格式</a></li>
+        <li><a href="#一些特殊的文件">一些特殊的文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置linux环境">配置Linux环境</a>
+      <ul>
+        <li><a href="#包管理器">包管理器</a></li>
+        <li><a href="#系统初始化进程systemd">系统初始化进程systemd</a></li>
+        <li><a href="#服务管理命令systemctl">服务管理命令systemctl</a></li>
+      </ul>
+    </li>
+    <li><a href="#linux常用命令">Linux常用命令</a>
+      <ul>
+        <li><a href="#man命令">man命令</a></li>
+        <li><a href="#常用命令">常用命令</a></li>
+        <li><a href="#系统状态检测">系统状态检测</a></li>
+        <li><a href="#目录命令">目录命令</a></li>
+        <li><a href="#文件编辑">文件编辑</a></li>
+        <li><a href="#目录管理">目录管理</a></li>
+        <li><a href="#打包和压缩">打包和压缩</a></li>
+        <li><a href="#搜索">搜索</a></li>
+      </ul>
+    </li>
+    <li><a href="#命令">命令</a>
+      <ul>
+        <li><a href="#输入输出重定向">输入输出重定向</a></li>
+        <li><a href="#管道">管道</a></li>
+        <li><a href="#通配符正则">通配符（正则）</a></li>
+        <li><a href="#转义字符">转义字符</a></li>
+        <li><a href="#环境变量">环境变量</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim">Vim</a></li>
+    <li><a href="#shell脚本">shell脚本</a>
+      <ul>
+        <li><a href="#shell中常用命令和变量">shell中常用命令和变量</a></li>
+        <li><a href="#如何执行一个脚本文件">如何执行一个脚本文件</a></li>
+        <li><a href="#用户参数">用户参数</a></li>
+        <li><a href="#逻辑运算符">逻辑运算符</a></li>
+        <li><a href="#和用户交互">和用户交互</a></li>
+        <li><a href="#shell例子">shell例子</a></li>
+        <li><a href="#定时任务">定时任务</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>参考《Linux就该这么学》，这本书编得挺乱，看完shell脚本就没再看了。</p>
+<h2 id="linux的一些约定">linux的一些约定</h2>
+<h3 id="命令格式">命令格式</h3>
+<p>Linux的命令参数分长格式和短格式，例如<code>--help</code>和<code>-h</code>，其中，长格式的参数不能合并，短格式的参数可以合并，例如<code>$ ps -a -u -x</code>可以写成<code>$ ps -aux</code>。</p>
+<h3 id="一些特殊的文件">一些特殊的文件</h3>
+<ul>
+<li>/dev/null</li>
+<li>/dev/zero</li>
+</ul>
+<h2 id="配置linux环境">配置Linux环境</h2>
+<h3 id="包管理器">包管理器</h3>
+<p><strong>RPM和Yum</strong>：</p>
+<p>RPM是RHEL系列发行版（包括RHEL、CentOS等）的包管理器<br>
+Yum是RHEL系列发行版的软件仓库<br>
+yum的软件源配置文件在这里：/etc/yum.repos.d/</p>
+<p>Yum常用命令：</p>
+<ul>
+<li><code>yum install [-y] 软件包名</code> 选项“-y”会使安装过程对所有的询问都选择“yes”</li>
+<li><code>yum update 软件包名</code></li>
+<li><code>yum remove 软件包名</code></li>
+<li><code>yum search 软件包名</code> 在软件仓库中搜索这个软件</li>
+<li><code>yum repolist</code> 查看系统中所有的软件源</li>
+</ul>
+<h3 id="系统初始化进程systemd">系统初始化进程systemd</h3>
+<p>linux的开机过程是这样的，从BIOS开始，然后进入Boot Loader，再加载系统内核，内核初始化，最后启动系统的初始化进程。系统初始化进程是系统启动后的第一个进程，centos7使用systemd代替原来的System V init作为新的系统初始化进程。</p>
+<p>systemd使用target代替了System V inti中的运行级别。</p>
+<p>centos7使用<code>systemctl</code>命令管理服务，原来是用<code>service</code>、<code>chkconfig</code>等命令</p>
+<h3 id="服务管理命令systemctl">服务管理命令systemctl</h3>
+<ul>
+<li><code>system start 服务名</code></li>
+<li><code>system restart 服务名</code></li>
+<li><code>system stop 服务名</code></li>
+<li><code>system status 服务名</code>，查看服务状态</li>
+<li><code>system reload 服务名</code>，重新加载配置文件（不终止服务）</li>
+</ul>
+<h2 id="linux常用命令">Linux常用命令</h2>
+<h3 id="man命令">man命令</h3>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>按键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向下翻页</td>
+<td>Page Down，空格</td>
+</tr>
+<tr>
+<td>向上翻页</td>
+<td>Page Up，b</td>
+</tr>
+<tr>
+<td>回到首页</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>翻到最后一页</td>
+<td>End</td>
+</tr>
+<tr>
+<td>搜索（从上往下）</td>
+<td>/关键字</td>
+</tr>
+<tr>
+<td>搜索（从下往上）</td>
+<td>?关键字</td>
+</tr>
+<tr>
+<td>查看下一个搜到的关键字</td>
+<td>n</td>
+</tr>
+<tr>
+<td>查看上一个搜到的关键字</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用命令">常用命令</h3>
+<table>
+<thead>
+<tr>
+<th>echo</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>在终端打印文本</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ echo [字符串/$变量]</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>字符串可以用成对的单引号或双引号包围起来；变量可以用{}包围起来</td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ echo abc&quot;erf&quot;df</code> 输出 abcerfdf，<code>$ echo abc&quot;e'rf&quot;df</code> 输出 abce&rsquo;rfdf</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>date</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>显示系统时间或日期</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ date [参数] [date字符串/+格式]</code></td>
+</tr>
+<tr>
+<td>参数</td>
+<td><code>-s</code>是设置系统时间；<code>-d</code>是显示date字符串所表示日期的详细信息</td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ date</code>，<code>$ date &quot;+%Y-%m-%d %H:%M:%S&quot;</code>，<code>$ date -d &quot;2020&quot;</code>，<code>$ date -d &quot;now&quot;</code>，<code>date -s &quot;20170901 8:30:00&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>reboot</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>重启系统</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ reboot</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>poweroff</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ poweroff</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>wget</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>通过URL下载文件</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ wget [参数] 下载地址</code></td>
+</tr>
+<tr>
+<td>参数</td>
+<td><code>-b</code>后台下载；<code>-P</code>下载到指定目录；<code>-p</code>下载页面内所有资源；<code>-r</code>递归下载；<code>-O</code>输出文件名</td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ wget -r -p http://www.linuxprobe.com</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>ps</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>查看系统进程</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ ps [参数]</code></td>
+</tr>
+<tr>
+<td>参数</td>
+<td><code>-a</code>列出所有进程（包括其他用户的，包括<strong>root</strong>等用户）；<code>-u</code>显示用户及其他信息；<code>-x</code>列出没有用户终端的进程</td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ ps -axu</code></td>
+</tr>
+<tr>
+<td><code>-u</code>参数输出的字段</td>
+<td>USER：用户、PID：进程ID、%CPU：CPU占用率、%MEM：内存占用率、VSZ：虚拟内存占用（KB）、RSS：常驻内存占用（KB），TTY：所在终端，STAT：进程状态，START：启动时间，TIME：实际的CPU占用时间，COMMAND：命令</td>
+</tr>
+</tbody>
+</table>
+<p>linux进程状态码：</p>
+<ul>
+<li>R：正在运行或可运行（在运行队列中）</li>
+<li>S：可中断的睡眠状态（通常是在等待事件）</li>
+<li>D：不可中断的睡眠状态（通常是在I/O）</li>
+<li>T：暂停（ctrl+z）</li>
+<li>t：被跟踪（debug）</li>
+<li>Z：僵尸进程（程序执行完毕，task_struct还留着，里面保存程序的退出码和其他统计信息）</li>
+<li>X：正在被销毁（非常短暂）</li>
+<li>W：正在换页（2.6内核以后已经弃用了）</li>
+</ul>
+<p>状态描述信息</p>
+<ul>
+<li>&lt;：高优先级</li>
+<li>N：低优先级</li>
+<li>L：有页被锁定在内存中（实时和定指I/O）</li>
+<li>s：session leader</li>
+<li>l：多线程</li>
+<li>+：在前台进程组中</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>top</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>动态地监视进程活动与系统负载等信息</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ top</code></td>
+</tr>
+<tr>
+<td>输出信息</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>开头几行是系统总的信息</li>
+<li>PR：优先级</li>
+<li>VIRT：虚拟内存使用量</li>
+<li>RES：常驻内存大小</li>
+<li>SHR：共享内存大小</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>pidof</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>查看系统进程</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ pidof 进程名</code></td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ pidof wget</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>kill</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>杀死进程</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ kill [参数] 进程ID</code></td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ kill 9821</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>killall</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>终止某个指定名称的服务所对应的全部进程</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ killall [参数] 进程名</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>如果用<code>pidof</code>能查出好多进程ID，就可以用killall杀死这些进程</td>
+</tr>
+</tbody>
+</table>
+<h3 id="系统状态检测">系统状态检测</h3>
+<p><strong>ifconfig</strong></p>
+<table>
+<thead>
+<tr>
+<th>uname</th>
+<th>-</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>查看内核信息</td>
+<td></td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ uname -a</code></td>
+<td>输出全部信息，按以下顺序排列</td>
+</tr>
+<tr>
+<td>内核名</td>
+<td><code>$ uname -s</code></td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>主机名（节点名）</td>
+<td><code>$ uname -n</code></td>
+<td>linuxtest</td>
+</tr>
+<tr>
+<td>内核发行版本</td>
+<td><code>$ uname -r</code></td>
+<td>3.10.0-862.el7.x86_64</td>
+</tr>
+<tr>
+<td>内核版本</td>
+<td><code>$ uname -v</code></td>
+<td>#1 SMP Fri Apr 20 16:44:24 UTC 2018</td>
+</tr>
+<tr>
+<td>机器硬件名</td>
+<td><code>$ uname -m</code></td>
+<td>x86_64</td>
+</tr>
+<tr>
+<td>处理器类型</td>
+<td><code>$ uname -p</code></td>
+<td>x86_64</td>
+</tr>
+<tr>
+<td>硬件平台</td>
+<td><code>$ uname -i</code></td>
+<td>x86_64</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td><code>$ uname -o</code></td>
+<td>GNU/Linux</td>
+</tr>
+</tbody>
+</table>
+<p><strong>查看系统发行版信息</strong></p>
+<ul>
+<li><code>$ lsb_release -a</code></li>
+<li><code>$ cat /etc/redhat-release</code></li>
+</ul>
+<p><strong>uptime：查看系统负载</strong><br>
+显示系统在最近1分钟、5分钟、10分钟内的压力情况，数值越小压力越小<br>
+<strong>free：查看系统内存使用情况</strong><br>
+<strong>who：查看当前登录系统的所有用户</strong><br>
+输出顺序：用户名 终端 登录时间<br>
+<strong>last：查看系统的所有登录记录</strong></p>
+<table>
+<thead>
+<tr>
+<th>history</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>查看用户的历史命令</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ history [-c]</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>参数<code>-c</code>可以清空历史记录，历史记录被保存在用户目录下的.hash_history文件中，/etc/profile中的HISTSIZE变量定义了最多能保存多少条历史命令</td>
+</tr>
+<tr>
+<td><code>$ cat ~/.bash_history</code></td>
+<td>直接查看日志文件，但是这个文件中的日志可能不是最新的，不如history命令靠谱</td>
+</tr>
+<tr>
+<td><code>$ !数字编号</code></td>
+<td>再次执行对应history编号的历史命令</td>
+</tr>
+</tbody>
+</table>
+<h3 id="目录命令">目录命令</h3>
+<p>略</p>
+<h3 id="文件编辑">文件编辑</h3>
+<table>
+<thead>
+<tr>
+<th>cat</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>查看文本文件</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ cat [选项] 文件</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>选项<code>-n</code>表示输出文件时显示行号</td>
+</tr>
+<tr>
+<td><strong>more：查看长文本文件</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>空格键翻页，回车键看下一行</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>head和tail</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>查看文件文件的开头若干行和结尾若干行</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ head -n 20 文件</code>、<code>$ head -10 文件</code>、<code>$ tail -n 5 文件</code>、<code>$ tail -5 文件</code></td>
+</tr>
+<tr>
+<td>用法2</td>
+<td><code>$ tail -f 文件</code>可以实时显示文件的更新</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>tr</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>将字符替换后输出替换后的文本。有两种模式，交互模式和非交互模式</td>
+</tr>
+<tr>
+<td>用法1</td>
+<td><code>$ tr [a-z] [A-Z]</code></td>
+</tr>
+<tr>
+<td>用法2</td>
+<td>`$ echo &ldquo;Hello World&rdquo;</td>
+</tr>
+<tr>
+<td>说明</td>
+<td>用法1会进入交互模式，用户需要输入一行字符，tr会输出一行转换结果。用法2中tr会直接将转换后的字符输出</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>wc</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>统计文本的行数、单词数、字节数</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ wc [选项] [文件]</code></td>
+</tr>
+<tr>
+<td>例如</td>
+<td><code>$ wc -l test.txt</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>选项<code>-l</code>统计文件的行数，选项<code>-w</code>统计文件的单词数，选项<code>-c</code>统计文件的字节数。可以利用<code>-l</code>统计一些系统信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>stat：显示文件详细信息</strong><br>
+输出某个文件详细的信息，包括存储、权限、时间等信息</p>
+<table>
+<thead>
+<tr>
+<th>cut</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>按列提取一个文本文件的内容</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ cut [选项] [文件]</code></td>
+</tr>
+<tr>
+<td>例如</td>
+<td><code>$ cut -f1 -d&quot; &quot; .bash_history</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>用<code>-f</code>指定提取第几列，用<code>-d</code>指定单词分隔符，如果某行文本没有指定的列，就是输出空行</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>diff</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>比较多个文本文件之间的文件内容的差异</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ diff [选项] 文件1 文件2</code></td>
+</tr>
+<tr>
+<td>例如</td>
+<td><code>$ diff --brief txt1 txt2</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>选项<code>--brief</code>仅当两个文件不同时报告给用户，选项<code>-c</code>输出具体的区别，不加选项会输出介于两者之间的信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="目录管理">目录管理</h3>
+<table>
+<thead>
+<tr>
+<th>touch</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>创建文件、修改文件属性</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ touch [选项] [文件名]</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td>没有选项时会创建一个空文件，如果文件已存在则什么都不会发生（会修改文件的时间戳）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>mkdir</strong><br>
+<code>-p</code>选项可以创建多层目录，例如<code>$ mkdir -p test/t1/t2</code>。<br>
+<strong>cp</strong><br>
+使用<code>$ cp -r dir1 dir2</code>这个命令时，如果dir2内存在一个和dir1同名的目录，则dir1会和其合并，此时即使加上<code>-i</code>也没用。<br>
+<strong>mv（不需要-r）</strong><br>
+<strong>rm</strong><br>
+<code>-r</code>删除目录，<code>-f</code>强制删除（系统不会发出确认），并且忽略不存在的文件。<strong><code>$  rm -rf /</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>dd</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>按块大小和块数拷贝文件</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ dd [选项] [文件名]</code></td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ dd if=/dev/zero of=test count=3 bs=120M</code></td>
+</tr>
+<tr>
+<td>说明</td>
+<td><code>if</code>指定了输入文件，<code>of</code>指定了输出文件，<code>count</code>指定了块个数，<code>bs</code>指定了块大小；<code>/dev/zero</code>是一个特殊的文件，这个文件不占存储空间，但是可以作为数据输入，源源不断地提供数据（有点和<code>/dev/null</code>相对的意思）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>file：查看文件类型</strong><br>
+常见的有，“data”、“UTF-8 Unicode text”、“ASCII text”、“block special”、“character special”等等。</p>
+<h3 id="打包和压缩">打包和压缩</h3>
+<table>
+<thead>
+<tr>
+<th>tar</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>打包和压缩文件，tar通常用来生成.tar、.tar.gz和.tar.bz2格式的文件，.tar是仅打包，.tar.gz和.tar.bz2是压缩后再打包</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ tar [选项] [文件名]</code></td>
+</tr>
+<tr>
+<td>选项说明</td>
+<td><code>-c</code>/<code>-x</code>：压缩/解压，<code>-z</code>：用gzip压缩/解压，<code>-j</code>：用bzip2压缩/解压，<code>-v</code>：显示输出，<strong><code>-f</code>：指定目标文件名</strong>，<code>-t</code>：查看包内有哪些文件，<code>-p</code>：保留原始的权限和属性，<code>-P</code>：文件名使用绝对路径，<code>-C</code>：解压到指定目录</td>
+</tr>
+<tr>
+<td>例如</td>
+<td>压缩一个文件：<code>$ tar -zcf test.tar.gz test</code>，解压一个文件：<code>$ tar -zxvf test.tar.gz</code>或<code>$ tar -zxvf test.tar.gz -C /home/swj</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="搜索">搜索</h3>
+<table>
+<thead>
+<tr>
+<th>grep</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>搜索文本</td>
+</tr>
+<tr>
+<td>用法1</td>
+<td><code>$ grep [选项] 字符串 文件名</code></td>
+</tr>
+<tr>
+<td>用法2</td>
+<td>`$ 输出</td>
+</tr>
+<tr>
+<td>选项说明</td>
+<td><code>-b</code>：将二进制文件当文本文件搜索，<code>-c</code>：仅显示找到的行数，<strong><code>-n</code>：显示行号，<code>-i</code>：忽略大小写，<code>-v</code>：反向搜索（搜索不包含指定字符串的行）</strong></td>
+</tr>
+<tr>
+<td>例子</td>
+<td>查看不允许登录的用户：<code>$ grep /sbin/nologin /etc/passwd</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>find</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>搜索文件</td>
+</tr>
+<tr>
+<td>用法</td>
+<td><code>$ find [查找路径] 查找条件 操作</code></td>
+</tr>
+<tr>
+<td>例子</td>
+<td><code>$ find /etc -name *host* [-print]</code></td>
+</tr>
+<tr>
+<td>选项说明</td>
+<td><code>-exec [命令] {} \;</code>这个操作值得一提，<code>{}</code>指代find命令搜索出来的每个文件，例如<code>find /etc -name &quot;host*&quot; -exec ls -l {} \;</code>这个命令会将搜出来的文件的详细信息打印到屏幕上，注意，<code>-exec</code>操作的结尾是<code>\;</code>，一定要带上分号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="命令">命令</h2>
+<p>重定向、管道、通配符、转义字符、环境变量</p>
+<h3 id="输入输出重定向">输入输出重定向</h3>
+<p>输入输出重定向是指把输入输出定向到其他文件。</p>
+<p>linux标准输入出输出：</p>
+<ul>
+<li>标准输入：STDIN，文件描述符0，/dev/stdin</li>
+<li>标准输出：STDOUT，文件描述符1，/dev/stdout</li>
+<li>标准错误输出：STDERR，文件描述符2，/dev/stderr</li>
+</ul>
+<p>写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 输入重定向</span>
+</span></span><span class="line"><span class="cl">wc -l &lt;test.txt
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出重定向</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> hello &gt;test.txt <span class="c1"># 覆盖</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> hello &gt;&gt;test.txt <span class="c1"># 追加</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> hello 2&gt;test.txt <span class="c1"># 重定向错误输出时必须加上文件描述符</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> hello 2&gt;&gt;test.txt
+</span></span><span class="line"><span class="cl"><span class="c1"># 同时重定向多种输入输出</span>
+</span></span><span class="line"><span class="cl">命令 &lt;文件1 &gt;文件2
+</span></span><span class="line"><span class="cl">命令 &gt;&gt;文件1 2&gt;文件2
+</span></span><span class="line"><span class="cl"><span class="c1"># 合并标准输出和标准错误</span>
+</span></span><span class="line"><span class="cl">命令 &gt;文件 2&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">命令 <span class="p">&amp;</span>&gt;文件
+</span></span><span class="line"><span class="cl">命令 <span class="p">&amp;</span>&gt;&gt;文件
+</span></span><span class="line"><span class="cl"><span class="c1"># 从标准输入读取两个tag之间的内容，第二个tag必须另起一行顶格写，tag可以是个字符串。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 例如：下面这个例子中123是一个tag</span>
+</span></span><span class="line"><span class="cl">wc -l <span class="s">&lt;&lt; 123
+</span></span></span><span class="line"><span class="cl"><span class="s">  &gt; Hello
+</span></span></span><span class="line"><span class="cl"><span class="s">  &gt; world!
+</span></span></span><span class="line"><span class="cl"><span class="s">  &gt; 123</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="管道">管道</h3>
+<p>管道符<code>'|'</code>将上一个命令的输出作为下一个命令的输入。</p>
+<p>用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 把一大堆输出拼在more命令后面，翻页查看</span>
+</span></span><span class="line"><span class="cl">ls -la / <span class="p">|</span> more
+</span></span><span class="line"><span class="cl"><span class="c1"># 非交互式修改用户密码</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;123456&#39;</span> <span class="p">|</span> passwd --stdin user002  <span class="c1"># 不适用于ubuntu/debian</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;user003:123456&#39;</span> <span class="p">|</span> chpasswd
+</span></span><span class="line"><span class="cl"><span class="c1"># 给sudo传递密码，sudo的-S选项支持从标准输入读取密码（-S等同于--stdin）</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="sb">`</span>password<span class="sb">`</span> <span class="p">|</span> sudo -S cmd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="通配符正则">通配符（正则）</h3>
+<p>（通配符实际上和shell正则表达式有关）以下是常用通配符</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配0个或多个字符</td>
+<td></td>
+</tr>
+<tr>
+<td>？</td>
+<td>匹配1个字符</td>
+<td></td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配指定字符范围内的任意单个字符</td>
+<td>[abc]</td>
+</tr>
+<tr>
+<td>[0-9]、[a-z]、[A-Z]</td>
+<td>匹配范围内的任意单个字符</td>
+<td></td>
+</tr>
+<tr>
+<td>[a-Z]</td>
+<td>所有大小写字母</td>
+<td></td>
+</tr>
+<tr>
+<td>!或^</td>
+<td>匹配范围外的字符</td>
+<td>[!0-9]、[^abc]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="转义字符">转义字符</h3>
+<p>常用转义字符</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>将一个特殊字符转为普通字符</td>
+</tr>
+<tr>
+<td>&rsquo; '</td>
+<td>单引号包围的内容都被视为普通字符</td>
+</tr>
+<tr>
+<td>&quot; &quot;</td>
+<td>双引号包围的内容大部分是普通字符，少数字符保留了特殊含义，如$、\、`等</td>
+</tr>
+<tr>
+<td>` `</td>
+<td>反引号包围的内容是一个命令，其功能是获取命令执行后得到的输出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="环境变量">环境变量</h3>
+<ul>
+<li>alias命令：查看和设置命令的别名
+<ul>
+<li><code>alias</code>：查看所有别名</li>
+<li><code>alias 名字</code>：查看这个名字是否是其他命令的别名</li>
+<li><code>alias 名字=命令</code>：给命令设置别名</li>
+</ul>
+</li>
+<li>type命令：查看命令的类型，例如<code>type cd</code></li>
+<li>env命令：查看系统中所有环境变量</li>
+</ul>
+<p>linux命令执行分四步：</p>
+<ol>
+<li>如果命令前面带路径，直接执行这个命令</li>
+<li>检查这个命令是否是别名</li>
+<li>检查这个命令是shell内建命令还是外部命令，如果是内建命令，直接执行</li>
+<li>到PATH变量里查找命令的位置</li>
+</ol>
+<h2 id="vim">Vim</h2>
+<p>远离vim</p>
+<h2 id="shell脚本">shell脚本</h2>
+<h3 id="shell中常用命令和变量">shell中常用命令和变量</h3>
+<ul>
+<li><code>read -p 'info' val</code></li>
+<li><code>seq 1 10</code></li>
+<li><code>expr 10+10</code>、<code>expr length 'This is a test'</code></li>
+<li><code>let i+=8</code></li>
+<li><code>id user</code></li>
+<li><code>$RANDOM</code></li>
+<li><code>$USER</code></li>
+</ul>
+<h3 id="如何执行一个脚本文件">如何执行一个脚本文件</h3>
+<ul>
+<li><code>bash 脚本.sh</code>或<code>sh 脚本.sh</code></li>
+<li>给脚本加上执行权限，输入路径执行</li>
+</ul>
+<h3 id="用户参数">用户参数</h3>
+<ul>
+<li><code>$#</code>：参数总数</li>
+<li><code>$0</code>：脚本名</li>
+<li><code>$*</code>：所有参数值</li>
+<li><code>$1</code>、<code>$2</code>、<code>$3</code>&hellip;：对应位置的参数</li>
+<li><code>$?</code>：上一个命令的退出码（数字）</li>
+</ul>
+<h3 id="逻辑运算符">逻辑运算符</h3>
+<ul>
+<li><code>命令1 &amp;&amp; 命令2</code>：命令1执行<strong>成功</strong>才会执行命令2</li>
+<li><code>命令1 || 命令2</code>：命令1执行<strong>失败</strong>才会执行命令2</li>
+<li><code>[! xxx] &amp;&amp; 命令1</code>：对条件表达式的值取反</li>
+</ul>
+<h3 id="和用户交互">和用户交互</h3>
+<ul>
+<li>read命令，例如，<code>read -p &quot;Enter your score：&quot; GRADE</code>，读取用户输入并保存到GRADE变量中，-p选项用于向用户显示提示信息。</li>
+</ul>
+<h3 id="shell例子">shell例子</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">$(</span>命令<span class="k">)</span> <span class="c1"># 取命令的执行结果，类似于转义字符``</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 条件表达式两边一定要有空格，条件为真返回0，否则返回非0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 文件判断</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -e /data/test <span class="o">]</span> <span class="c1"># 判断文件或目录是否存在</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -f /data/test <span class="o">]</span> <span class="c1"># 判断是否为文件</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -d /data/test <span class="o">]</span> <span class="c1"># 判断是否为目录</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -r /data/test <span class="o">]</span> <span class="c1"># 判断当前用户对文件是否有读权限</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -w /data/test <span class="o">]</span> <span class="c1"># 判断写权限</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -x /data/test <span class="o">]</span> <span class="c1"># 判断执行权限</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 整数比较</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="m">10</span> -eq <span class="m">10</span> <span class="o">]</span> <span class="c1"># 等于</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="m">10</span> -ne <span class="m">10</span> <span class="o">]</span> <span class="c1"># 不等于</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="m">10</span> -gt <span class="m">10</span> <span class="o">]</span> <span class="c1"># 大于</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="m">10</span> -lt <span class="m">10</span> <span class="o">]</span> <span class="c1"># 小于</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="m">10</span> -ge <span class="m">10</span> <span class="o">]</span> <span class="c1"># 大于等于</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="m">10</span> -le <span class="m">10</span> <span class="o">]</span> <span class="c1"># 小于等于</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 字符串</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -z <span class="nv">$String</span> <span class="o">]</span> <span class="c1"># 字符串是否为空</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="nv">str1</span> <span class="o">=</span> str2 <span class="o">]</span> <span class="c1"># 相同</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> str1 !<span class="o">=</span> str2 <span class="o">]</span> <span class="c1"># 不相同</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># if</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> xxx <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> xxx <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 分号用于在单行内分隔代码块</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> xxx <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> xxx <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># for循环</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> 变量名 in 取值列表
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 几种for循环的例子</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> val in <span class="sb">`</span>cat test.txt<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 10<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="o">{</span>1..10<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>1<span class="p">;</span>i&lt;<span class="o">=</span>10<span class="p">;</span>i++<span class="o">))</span>  
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="nv">$*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># while循环</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> 条件
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># while例子</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># case</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> 变量 in
+</span></span><span class="line"><span class="cl">模式1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">  <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">模式2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">  <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">*
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="定时任务">定时任务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 创建和编辑定时任务</span>
+</span></span><span class="line"><span class="cl">crontab -e
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看定时任务</span>
+</span></span><span class="line"><span class="cl">crontab -l
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除定时任务</span>
+</span></span><span class="line"><span class="cl">crontab -r
+</span></span><span class="line"><span class="cl"><span class="c1"># 编辑其他人的定时任务（管理员）</span>
+</span></span><span class="line"><span class="cl">crontab <span class="o">[</span>-u user<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 定时任务格式</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 分 时 日 月 星期 命令，没有设置的字段用*占位，可以用逗号提供多个时间点，用横杠表示一段时间</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 每个时间点后面跟一个斜杠+数字可以定义频率</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 命令必须使用绝对路径</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 每个定时任务占一行</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 例子</span>
+</span></span><span class="line"><span class="cl"><span class="m">25</span> <span class="m">3</span> * * 1,3,5 /usr/bin/tar -czvf backup.tar.gz /home/wwwroot
+</span></span><span class="line"><span class="cl"><span class="m">25</span> <span class="m">3</span> 12-15 * * /usr/bin/tar -czvf backup.tar.gz /home/wwwroot
+</span></span><span class="line"><span class="cl"><span class="m">25</span> */3 * * * /usr/bin/tar -czvf backup.tar.gz /home/wwwroot <span class="c1"># 每隔3小时执行一次</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-10-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/42.linux-jiu-gai-zhe-me-xue-note/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/43.linux-common-command/" class="prev" rel="prev" title="linux常用命令"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>linux常用命令</a>
+            <a href="/48.nginx-getting-started-tutorial/" class="next" rel="next" title="nginx入门教程">nginx入门教程<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>面试八股-操作系统 - 星</title><meta name="Description" content=""><meta property="og:title" content="面试八股-操作系统" />
+<meta property="og:description" content="常见进程调度算法 先来先服务（FCFS）：非抢占式 时间片轮转 短作业优先 最高响应比优先：综合考虑执行时间和等待时间 按照优先级划分多个队列 抢占式和" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/52.interview-bagu-system/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-25T15:46:32+08:00" />
+<meta property="article:modified_time" content="2022-10-25T15:46:32+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="面试八股-操作系统"/>
+<meta name="twitter:description" content="常见进程调度算法 先来先服务（FCFS）：非抢占式 时间片轮转 短作业优先 最高响应比优先：综合考虑执行时间和等待时间 按照优先级划分多个队列 抢占式和"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/52.interview-bagu-system/" /><link rel="prev" href="http://blog.shiwj.top/53.interview-bagu-network/" /><link rel="next" href="http://blog.shiwj.top/19.interview-bagu-cpp/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "面试八股-操作系统",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/52.interview-bagu-system\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "面试, 操作系统","wordcount":  4239 ,
+        "url": "http:\/\/blog.shiwj.top\/52.interview-bagu-system\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2022-10-25T15:46:32+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-操作系统</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4239 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#常见进程调度算法">常见进程调度算法</a></li>
+    <li><a href="#进程和线程的区别">进程和线程的区别</a></li>
+    <li><a href="#linux进程及线程间通信方式">linux进程及线程间通信方式</a></li>
+    <li><a href="#linux-io模型同步异步阻塞非阻塞">linux I/O模型（同步/异步、阻塞/非阻塞）</a></li>
+    <li><a href="#linux-io复用接口">linux I/O复用接口</a></li>
+    <li><a href="#epoll">epoll</a></li>
+    <li><a href="#死锁的四个条件">死锁的四个条件</a></li>
+    <li><a href="#段页式内存管理">段页式内存管理</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="常见进程调度算法">常见进程调度算法</h2>
+<ul>
+<li>先来先服务（FCFS）：非抢占式</li>
+<li>时间片轮转</li>
+<li>短作业优先</li>
+<li>最高响应比优先：综合考虑执行时间和等待时间</li>
+<li>按照优先级划分多个队列</li>
+</ul>
+<p>抢占式和非抢占式：高优先级、执行时间短、人机交互任务会进行抢占</p>
+<h2 id="进程和线程的区别">进程和线程的区别</h2>
+<ul>
+<li>进程
+<ul>
+<li>进程是资源分配的基本单位，相互之间是隔离的；</li>
+<li>进程实现了程序级的并发；</li>
+<li>创建和撤销进程的开销大；进程切换的开销大；</li>
+<li>进程间通信较为困难；</li>
+<li>进程的隔离性确保了相互之间不会影响；</li>
+</ul>
+</li>
+<li>线程
+<ul>
+<li>线程是调度的基本单位，一个线程占用一个逻辑CPU核；</li>
+<li>可以看作是进程的子任务，一个进程内可以有多个线程，线程实现了进程内的并发；</li>
+<li>线程共享进程的内存资源，代码区、常量区、静态区和堆区是共享的；但栈区不共享，每个线程各自拥有一个栈区；</li>
+<li>线程创建和撤销的开销小；线程切换的开销小；</li>
+<li>线程间同步和通信比较容易；</li>
+<li>一个线程挂掉了很有可能整个进程就挂掉了；</li>
+</ul>
+</li>
+</ul>
+<h2 id="linux进程及线程间通信方式">linux进程及线程间通信方式</h2>
+<ol>
+<li>linux进程间通信方式
+<ul>
+<li>管道（pipe）
+<ul>
+<li>允许一个进程和另一个与它有共同祖先的进程之间进行通信</li>
+<li>父子进程，fork，pipe(),write()，read()</li>
+<li>其本质是一个伪文件(实为内核缓冲区)</li>
+<li>由两个文件描述符引用，一个表示读端，一个表示写端。</li>
+<li>规定数据从管道的写端流入管道，从读端流出。</li>
+<li>管道的原理: 管道实为内核使用环形队列机制，借助内核缓冲区(4k)实现。</li>
+<li>管道的局限性：
+<ul>
+<li>数据自己读不能自己写。</li>
+<li>数据一旦被读走，便不在管道中存在，不可反复读取。</li>
+<li>由于管道采用半双工通信方式。因此，数据只能在一个方向上流动。</li>
+<li>只能在有公共祖先的进程间使用管道。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>命名管道（FIFO）<br>
+类似于管道，但是它可以用于任何两个进程之间的通信，命名管道在文件系统中有对应的文件名。命名管道通过命令mkfifo或系统调用mkfifo来创建；FIFO以文件形式存在于文件系统中，对管道及FIFO的读总是从开始处返回数据，对它们的写则把数据添加到末尾（一个文件）</li>
+<li>信号（signal）
+<ul>
+<li>信号是比较复杂的通信方式，用于通知接收进程有某种事情发生，除了用于进程间通信外，进程还可以发送信号给进程本身；Linux除了支持UNIX早期信号语义函数signal外，还支持语义符合POSIX.1标准的信号函数sigaction(实际上，该函数是基于BSD的，BSD既能实现可靠信号机制，又能够统一对外接口，用sigaction函数重新实现了signal函数的功能);</li>
+<li>软中断（ctrl+c终止程序）</li>
+</ul>
+</li>
+<li>内存映射（mapped memory）<br>
+内存映射允许任何多个进程间通信，每一个使用该机制的进程通过把一个共享的文件映射到自己的进程地址空间来实现它；每个进程都有4G的虚拟地址空间，其中3G用户空间，1G内核空间（linux），每个进程共享内核空间，独立的用户空间</li>
+<li>消息队列（message queue）：消息队列是消息的连接表，包括POSIX消息对和System V消息队列。有足够权限的进程可以向队列中添加消息，被赋予读权限的进程则可以读走队列中的消息。消息队列克服了信号承载信息量少，管道只能传输无格式字节流以及缓冲区大小受限等缺点
+每个数据块都被认为含有一个类型</li>
+<li>信号量（semaphore）：信号量主要作为进程间以及同进程不同线程之间的同步手段；</li>
+<li>共享内存 （shared memory）：它使得多个进程可以访问同一块内存空间，是最快的可用IPC形式。这是针对其他通信机制运行效率较低而设计的。它往往与其他通信机制，如信号量结合使用，以达到进程间的同步及互斥；</li>
+<li>套接字（Socket）：它是更为通用的进程间通信机制，可用于不同机器之间的进程间通信。起初是由UNIX系统的BSD分支开发出来的，但现在一般可以移植到其他类UNIX系统上：Linux和System V的变种都支持套接字；</li>
+</ul>
+</li>
+<li>linux线程间通信方式
+<ul>
+<li>由于线程之间本身是共享资源的，因此线程通信主要关注线程安全（即线程同步）</li>
+<li>互斥量（mutex）
+<ul>
+<li>本质上是一个锁；</li>
+<li>互斥量有两个动作：（1）使用资源时加锁，（2）释放资源时解锁；</li>
+</ul>
+</li>
+<li>条件变量
+<ul>
+<li>条件变量通常和互斥量一起使用；</li>
+<li>条件变量有两个动作：（1）一个线程因等待&quot;条件变量的条件成立&quot;而阻塞；<code>pthread_cond_wait()</code>（2）另一个线程使&quot;条件成立&quot;（给出条件成立信号）<code>pthread_cond_broadcast()</code>或<code>pthread_cond_signal</code>;</li>
+<li>条件变量分为两部分: 条件和变量。条件本身是由互斥量保护的，线程在改变条件状态前先要锁住互斥量。具体过程是这样的：线程进入wait前，加锁mutex，线程进入wait后，就释放mutex，保证wait过程是原子操作；唤醒也一样，唤醒前先加锁，唤醒后解锁；</li>
+</ul>
+</li>
+<li>读写锁</li>
+<li>信号量
+<ul>
+<li>信号量实际上是一个非负的整数计数器，用于资源计数；</li>
+</ul>
+</li>
+<li>自旋锁
+<ul>
+<li>自旋锁不是让线程阻塞，而是让线程一直处于忙等待的状态；（可以理解为线程始终占用CPU核）</li>
+</ul>
+</li>
+<li>屏障</li>
+</ul>
+</li>
+</ol>
+<h2 id="linux-io模型同步异步阻塞非阻塞">linux I/O模型（同步/异步、阻塞/非阻塞）</h2>
+<p><strong>阻塞和非阻塞关注的是等待调用结果时的状态，同步异步关注的是消息通信机制</strong>。</p>
+<ul>
+<li>阻塞：等待返回结果时线程阻塞；</li>
+<li>非阻塞：等待返回结果时线程不阻塞，一直占用系统资源</li>
+<li>同步：调用发起后直到调用执行完毕才返回结果</li>
+<li>异步：调用发起后立即返回结果，执行完毕后再用消息通信的方式通知调用方</li>
+</ul>
+<p>一般情况下，非阻塞同步和阻塞异步这两种组合没什么用</p>
+<h2 id="linux-io复用接口">linux I/O复用接口</h2>
+<p>I/O复用本质上都是同步I/O，不同于多线程或多进程</p>
+<ul>
+<li>select
+<ul>
+<li>轮询方式</li>
+<li>select能监控的文件描述符个数由内核中的<strong>FD_SETSIZE</strong>限制，仅为1024，</li>
+<li>遍历所有的文件描述符直到找到目标，I/O结束后接着上次遍历的位置继续遍历</li>
+</ul>
+</li>
+<li>poll
+<ul>
+<li>还是轮询的方式</li>
+<li>换了一个描述结构，改用<strong>pollfd</strong>存文件描述符，突破了1024的限制</li>
+</ul>
+</li>
+<li>epoll
+<ul>
+<li>有活跃Socket时，内核访问该Socket的callback，不需要轮询。</li>
+<li>但当所有的Socket都活跃的时候，所有的callback都被唤醒，会导致资源的竞争。此时遍历是最简单最有效的实现方式。</li>
+<li>epoll通过共享内存实现内核和用户的数据交互。</li>
+</ul>
+</li>
+</ul>
+<h2 id="epoll">epoll</h2>
+<ul>
+<li>socket创建之后，会构造一个等待队列，只想所有等待这个socket数据的进程。</li>
+<li>一旦某个进程调用了recv，等待这个socket的数据，系统就会把这个进程挂起，并把进程指针放到socket的等待队列里。</li>
+<li>网卡接收到数据之后，像系统发起一个硬中断，系统的中断处理过程主要包括:
+<ul>
+<li>把数据读到socket的缓冲区中</li>
+<li>从socket的等待队列中唤醒一个进程加入到执行队列中去</li>
+<li>系统可以根据port找到对应的socket；系统中可以维护一个从port到socket映射的索引，以便快速找到这个socket</li>
+</ul>
+</li>
+<li>I/O复用<br>
+<strong>进程可能会想同时监控多个socket，这就需要使用Linux的I/O复用的方法。</strong>
+<ul>
+<li><strong>select</strong>：
+<ul>
+<li>准备一个数组，把多个socket放进去，作为参数传递给select，<strong>每次调用，系统都要把数组从用户态拷贝到内核态</strong>。如果所有socket都没数据，select就会阻塞，一旦接收到数据，select就会唤醒进程（<strong>在此之前select要轮询所有i/o设备</strong>），<strong>这时数组又会从内核态拷贝到用户态</strong>，用户可以遍历数据，通过FD_ISSET判断是哪个socket有数据进来。</li>
+<li>select可以这么实现：把进程加入到每个被监控socket的等待队列，一旦某个socket有数据进来，进程被唤醒，从所有等待队列中移除该进程。</li>
+<li><strong>缺点</strong>：（1）用户通常会写一个死循环，反复调用select，每次调用select，系统会把进程重新放到所有socket的等待队列中，由于需要频繁地将进程加入和移除等待队列，出于效率的考量，系统限制了select的最大复用数量（1024个I/O接口）；（2）进程被唤醒后用户还要遍历一次所有的socket才能知道哪些socket来了数据。（3）<strong>select只定义了一个接口，用户只能调用这个接口，导致不停地在内核态和用户态之间拷贝数据</strong>。</li>
+</ul>
+</li>
+<li><strong>epoll</strong>
+<ul>
+<li>由于进程监听的socket相对固定，因此没必要频繁地把进程加入和移除socket的等待队列。所以epoll改进了这个做法，使用epoll时是在进入死循环前先把需要监听的socket加入到epoll对象中。epoll把维护等待队列和阻塞-唤醒进程这两个工作分开了。</li>
+<li>epoll的实现：（1）epoll对象把进程监听的所有socket都放到对象中去，因此epoll不再添加和删除进程，而是<strong>维护一个socket的监控列表</strong>；（2）epoll<strong>维护一个就绪列表</strong>，把接收到数据的socket放进去，这样进程被唤醒后就不需要去遍历所有socket。（3）当用户调用epoll_wait时，进程阻塞，此时也不再将进程加到socket的等待队列中，而是<strong>将进程放入epoll的等待队列</strong>中，一旦有socket接收到数据，epoll会将socket添加到就绪列表中，此时再去从等待队列中唤醒进程。（4）系统为epoll定义了三个接口：创建epoll、注册事件类型、等待；注册时把socket一次性拷贝到内核，不会反复拷贝，<strong>epoll</strong>给监控列表的每个socket指定了回调函数，一旦有数据进来，该socket就调用回调函数把这个socket放入就绪列表，<strong>epoll的实际工作就是隔一会儿查看就序列表中是否有就绪的i/o设备</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>epoll的惊群效应<br>
+可能会有多个进程或线程同时通过epoll_wait监听同一个socket，当有数据进来时，系统通常会将多个进程或线程同时唤醒，但只有一个进程或线程能成功accept并建立连接，剩下的进程或线程会返回错误码，这种情况被称为epoll的惊群效应。<strong>显然，惊群效应会造成资源的浪费，影响系统的整体性能，资源主要浪费在同时唤醒多个进程或线程时带来的调度开销</strong>。
+<ul>
+<li>多线程环境下的解决办法：只让一个线程调用epoll_wait和accept。</li>
+<li>多进程环境下的解决办法：lighttpd选择不解决惊群效应；nginx用一个全局的pthread_mutex_t给epoll_wait接口上锁，保证同时只有一个子进程调用epoll_wait。</li>
+</ul>
+</li>
+</ul>
+<h2 id="死锁的四个条件">死锁的四个条件</h2>
+<ul>
+<li>互斥条件：一个资源只能被一个进程使用，其他进程要等待</li>
+<li>不可剥夺：资源只能由进程主动释放</li>
+<li>请求与保持：进程持有一个资源，又申请新的资源，申请不到，原来的又不释放</li>
+<li>循环等待：存在多个上述进程互相请求资源，构成了一个环</li>
+</ul>
+<h2 id="段页式内存管理">段页式内存管理</h2>
+<p>一个内存地址有三部分组成：页地址、段地址、段内地址；每个部分都可以看作是后面那个部分的索引。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/52.interview-bagu-system/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>,&nbsp;<a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/53.interview-bagu-network/" class="prev" rel="prev" title="面试八股-网络"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>面试八股-网络</a>
+            <a href="/19.interview-bagu-cpp/" class="next" rel="next" title="面试八股-c&#43;&#43;">面试八股-c&#43;&#43;<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

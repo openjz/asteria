@@ -12,5 +12,69 @@
     <guid>http://blog.shiwj.top/22.scl/</guid>
     <description><![CDATA[scl(Software Collections)给 RHEL/CentOS 用户提供一种同时使用多个软件版本的运行环境，避免以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是]]></description>
 </item>
+<item>
+    <title>makefile笔记</title>
+    <link>http://blog.shiwj.top/21.makefile-tutorial/</link>
+    <pubDate>Thu, 27 Oct 2022 13:41:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/21.makefile-tutorial/</guid>
+    <description><![CDATA[参考 跟我一起写 Makefile系列 GNU make官方文档 Makefile 中:= ?= += =的区别 Four Dollar signs in Makefile 概述 makefile可以理解成是专门用来在unix下编译工]]></description>
+</item>
+<item>
+    <title>ssh登陆脚本</title>
+    <link>http://blog.shiwj.top/46.ssh-login-script/</link>
+    <pubDate>Wed, 15 Dec 2021 16:18:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/46.ssh-login-script/</guid>
+    <description><![CDATA[ssh长连接 在~/.ssh/config中添加如下配置（该配置的含义是和同一个目的主机的连接使用长连接，避免多次输入密码） 1 2 3 4 5 Host * ControlMaster auto]]></description>
+</item>
+<item>
+    <title>《linux就该这么学》笔记</title>
+    <link>http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/</link>
+    <pubDate>Sun, 04 Oct 2020 00:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/</guid>
+    <description><![CDATA[参考《Linux就该这么学》，这本书编得挺乱，看完shell脚本就没再看了。 linux的一些约定 命令格式 Linux的命令参数分长格式和短格式]]></description>
+</item>
+<item>
+    <title>linux常用命令</title>
+    <link>http://blog.shiwj.top/43.linux-common-command/</link>
+    <pubDate>Thu, 17 Sep 2020 04:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/43.linux-common-command/</guid>
+    <description><![CDATA[创建用户和用户组 $groupadd 用户组名 $useradd -s /bin/bash -g 用户组 -m 用户名，-m选项是自动创建用户home目录 $passwd 用户名 $visudo，visudo默认使用nano编辑]]></description>
+</item>
+<item>
+    <title>linux常用配置</title>
+    <link>http://blog.shiwj.top/44.linux-common-configuration/</link>
+    <pubDate>Thu, 17 Sep 2020 04:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/44.linux-common-configuration/</guid>
+    <description><![CDATA[ssh多路复用 ssh多路复用是OpenSSH提供的功能，是指同一个用户到同一服务器的多个ssh连接共享同一个socket长连接，因此，只要电]]></description>
+</item>
+<item>
+    <title>linux网络配置</title>
+    <link>http://blog.shiwj.top/45.linux-net-configuration/</link>
+    <pubDate>Thu, 17 Sep 2020 04:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/45.linux-net-configuration/</guid>
+    <description><![CDATA[配置网络 $ cd /etc/sysconfig/network-scripts/ $ sudo vi 第一个文件（通常是ifcfg-xxx） 修改文件内容 1 2 3 4 5 6 7 8 9 BOOTPROTO=dhcp # 是否自动获取IP（none、static、dhc]]></description>
+</item>
+<item>
+    <title>linux多线程编程</title>
+    <link>http://blog.shiwj.top/47.linux-muti-thread-programming/</link>
+    <pubDate>Fri, 24 Jul 2020 05:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/47.linux-muti-thread-programming/</guid>
+    <description><![CDATA[基本知识 每个线程的自有数据： 线程id 一组寄存器值 栈 调度优先级和策略 信号屏蔽字 errno变量（Linux的一个全局变量，用于保存Linux AP]]></description>
+</item>
+<item>
+    <title>linux 动态库so文件 动态加载</title>
+    <link>http://blog.shiwj.top/41.linux-so-dynamic-load/</link>
+    <pubDate>Tue, 21 Jul 2020 00:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/41.linux-so-dynamic-load/</guid>
+    <description><![CDATA[概念 首先要明确几个概念： 静态链接：链接.a库 动态链接：编译后立即链接.so，主程序启动时即加载.so 动态加载：编译后不立即链接.so，主程序]]></description>
+</item>
 </channel>
 </rss>

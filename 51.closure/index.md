@@ -1,0 +1,95 @@
+# 闭包
+
+
+闭包是指带有状态的函数。如果一个函数能和一个静态数据绑定，那么这个函数就是闭包。
+
+## js闭包
+
+```js
+//例一
+function closureFunc() {
+    var counter = 0;
+    function addFunc() {return counter += 1;}
+    return addFunc;
+}
+let add = closurefunc();
+//在例一中，add就是一个闭包，它和counter绑定了，如果不想让外部访问到counter，可以将函数改为匿名函数，即写成如下的形式
+
+let add = (function () {
+    var counter = 0;
+    return function () {return counter += 1;}
+})();
+
+//例二
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+//在例二中，add5和add10都是闭包
+
+//例三，用闭包模拟私有方法
+var Counter = (function() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  }
+})();
+
+console.log(Counter.value()); /* logs 0 */
+Counter.increment();
+Counter.increment();
+console.log(Counter.value()); /* logs 2 */
+Counter.decrement();
+console.log(Counter.value()); /* logs 1 */
+```
+
+## C闭包
+
+```c
+/*callee就是一个闭包*/
+#include <stdio.h>
+void* caller() {
+    int cnt = 0;
+    void callee() {
+        cnt++;
+        printf("%d\n", cnt);
+    }
+    return callee;
+}
+int main()
+{
+    void(*callee)(void) = caller();
+    callee();
+    return 0;
+}
+```
+
+## C++闭包
+
+```cpp
+//使用lambda实现闭包
+float round = 0.5;
+auto f = [round](float f) { return f + round; }
+
+//使用函数适配器bind实现闭包
+int boost_func(float f, float round)
+{ return f + round; }
+float round = 0.5;
+boost::function<int(float)> f = boost::bind(boost_func, _1, round);
+```
+

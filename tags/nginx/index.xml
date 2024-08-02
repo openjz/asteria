@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>nginx - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/nginx/</link>
+        <description>nginx - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 04 Oct 2020 03:29:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+    <title>nginx入门教程</title>
+    <link>http://blog.shiwj.top/48.nginx-getting-started-tutorial/</link>
+    <pubDate>Sun, 04 Oct 2020 03:29:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/48.nginx-getting-started-tutorial/</guid>
+    <description><![CDATA[参考 nginx.org文档 Nginx Plus Admin Guide 安装部署nginx的各种方法（安装、编译、安装动态模块、docker部署） nginx介绍 nginx有一个m]]></description>
+</item>
+<item>
+    <title>nginx安装和配置</title>
+    <link>http://blog.shiwj.top/49.nginx-install-configuration/</link>
+    <pubDate>Wed, 16 Sep 2020 16:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/49.nginx-install-configuration/</guid>
+    <description><![CDATA[yum安装 参考：nginx官方文档 1 2 3 4 yum install -y nginx systemctl start nginx nginx -s reload #重新加载nginx配置文件（不会停止nginx服务） 配置文件：/etc/ng]]></description>
+</item>
+</channel>
+</rss>

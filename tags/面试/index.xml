@@ -10,7 +10,23 @@
     <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/19.interview-bagu-cpp/</guid>
-    <description><![CDATA[threadlocal volatile c++11中的新特性 我们通常把c++11之后的c++称为现代c++，以下是一些常见新特性 语法 列表初始化 可以使用initializer_l]]></description>
+    <description><![CDATA[threadlocal volatile static关键字的作用 全局静态变量 将全局变量声明为static可以使得全局变量只在当前文件内有效； 实际上，对于全局变量，static修]]></description>
+</item>
+<item>
+    <title>面试八股-操作系统</title>
+    <link>http://blog.shiwj.top/52.interview-bagu-system/</link>
+    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/52.interview-bagu-system/</guid>
+    <description><![CDATA[常见进程调度算法 先来先服务（FCFS）：非抢占式 时间片轮转 短作业优先 最高响应比优先：综合考虑执行时间和等待时间 按照优先级划分多个队列 抢占式和]]></description>
+</item>
+<item>
+    <title>面试八股-网络</title>
+    <link>http://blog.shiwj.top/53.interview-bagu-network/</link>
+    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/53.interview-bagu-network/</guid>
+    <description><![CDATA[网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理]]></description>
 </item>
 <item>
     <title>面试八股-golang</title>
@@ -19,6 +35,14 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/16.interview-bagu-golang/</guid>
     <description><![CDATA[golang 部分内容参考《go 程序员面试笔试宝典》 go 有什么特点 特性 协程 静态编译，编译出的可执行文件体积小 有 runtime、垃圾回收、反射 指针 和其他语言]]></description>
+</item>
+<item>
+    <title>数据库事务</title>
+    <link>http://blog.shiwj.top/db-transaction/</link>
+    <pubDate>Wed, 20 Apr 2022 11:57:47 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/db-transaction/</guid>
+    <description><![CDATA[事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事务未提交的]]></description>
 </item>
 </channel>
 </rss>

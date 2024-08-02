@@ -1,6 +1,7 @@
 ---
 title: "事业编计算机知识"
 date: 2022-06-21T19:21:16+08:00
+draft: true
 tags:
 categories:
   - "考编"

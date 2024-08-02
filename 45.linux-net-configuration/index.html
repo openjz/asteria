@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>linux网络配置 - 星</title><meta name="Description" content=""><meta property="og:title" content="linux网络配置" />
+<meta property="og:description" content="配置网络 $ cd /etc/sysconfig/network-scripts/ $ sudo vi 第一个文件（通常是ifcfg-xxx） 修改文件内容 1 2 3 4 5 6 7 8 9 BOOTPROTO=dhcp # 是否自动获取IP（none、static、dhc" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/45.linux-net-configuration/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-09-17T04:30:00+08:00" />
+<meta property="article:modified_time" content="2020-09-17T04:30:00+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="linux网络配置"/>
+<meta name="twitter:description" content="配置网络 $ cd /etc/sysconfig/network-scripts/ $ sudo vi 第一个文件（通常是ifcfg-xxx） 修改文件内容 1 2 3 4 5 6 7 8 9 BOOTPROTO=dhcp # 是否自动获取IP（none、static、dhc"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/45.linux-net-configuration/" /><link rel="prev" href="http://blog.shiwj.top/49.nginx-install-configuration/" /><link rel="next" href="http://blog.shiwj.top/44.linux-common-configuration/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "linux网络配置",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/45.linux-net-configuration\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "linux","wordcount":  940 ,
+        "url": "http:\/\/blog.shiwj.top\/45.linux-net-configuration\/","datePublished": "2020-09-17T04:30:00+08:00","dateModified": "2020-09-17T04:30:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">linux网络配置</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-09-17">2020-09-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;940 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置网络">配置网络</a></li>
+    <li><a href="#修改主机名">修改主机名</a></li>
+    <li><a href="#修改dns映射host文件">修改DNS映射（host文件）</a></li>
+    <li><a href="#克隆出的虚拟机网卡号一样怎么办">克隆出的虚拟机网卡号一样怎么办</a></li>
+    <li><a href="#防火墙">防火墙</a>
+      <ul>
+        <li><a href="#firewalld">firewalld</a></li>
+        <li><a href="#ufw">UFW</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="配置网络">配置网络</h2>
+<p><code>$ cd /etc/sysconfig/network-scripts/</code><br>
+<code>$ sudo vi 第一个文件（通常是ifcfg-xxx）</code></p>
+<p>修改文件内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BOOTPROTO=dhcp # 是否自动获取IP（none、static、dhcp）
+</span></span><span class="line"><span class="cl">ONBOOT=yes  #开启自动启用网络连接
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># BOOTPROTO设置为static时
+</span></span><span class="line"><span class="cl">IPADDR=192.168.127.3  #设置IP地址
+</span></span><span class="line"><span class="cl">NETMASK=255.255.255.0  #设置子网掩码
+</span></span><span class="line"><span class="cl">GATEWAY=192.168.127.2  #设置网关
+</span></span><span class="line"><span class="cl">DNS1=8.8.8.8  #设置主DNS
+</span></span><span class="line"><span class="cl">DNS2=8.8.4.4  #设置备DNS
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启网络<code>$ systemctl restart network</code></p>
+<h2 id="修改主机名">修改主机名</h2>
+<p>查看主机名<code>$ hostname</code>，<code>$ cat /cat/hostname</code><br>
+修改主机名<code>$ hostnamectl set-hostname 主机名</code></p>
+<h2 id="修改dns映射host文件">修改DNS映射（host文件）</h2>
+<p><code>$ vi /etc/hosts</code><br>
+在里面添加新的映射</p>
+<h2 id="克隆出的虚拟机网卡号一样怎么办">克隆出的虚拟机网卡号一样怎么办</h2>
+<p>把网卡配置文件里的 UUID 和 HWADDR 项删掉。如果虚拟机上有多个网卡和网络连接，HWADDR 不能删。</p>
+<h2 id="防火墙">防火墙</h2>
+<p>iptables、nftables属于防火墙内核</p>
+<p>firewalld、ufw属于防火墙内核的配置工具（相当于对防火墙内核做了封装）</p>
+<h3 id="firewalld">firewalld</h3>
+<p>firewalld是红帽开发的开源防火墙软件，centos默认防火墙是firewalld</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 开启、关闭、开机启动防火墙</span>
+</span></span><span class="line"><span class="cl">systemctl start<span class="p">|</span>stop<span class="p">|</span><span class="nb">enable</span> firewalld
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看防火墙有哪些开放的端口</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --list-port
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看某个端口是否开启</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --query-port<span class="o">=</span>80/tcp
+</span></span><span class="line"><span class="cl"><span class="c1"># 开启端口</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>80/tcp --permanent
+</span></span><span class="line"><span class="cl"><span class="c1"># 关闭端口</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --remove-port<span class="o">=</span>80/tcp --permanent
+</span></span><span class="line"><span class="cl"><span class="c1"># 重新加载防火墙配置</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="ufw">UFW</h3>
+<p>ubuntu的默认防火墙是ufw。本文作者使用的是debian 10，默认没有防火墙软件，要想使用ufw必须提前安装。ufw使用起来要比firewalld简单一些。</p>
+<p>参考: <a href="https://cloud.tencent.com/developer/article/1626614" target="_blank" rel="noopener noreffer">如何在 Debian 10 上使用 UFW 来设置防火墙</a>
+</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">sudo apt install ufw
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看状态和所有规则</span>
+</span></span><span class="line"><span class="cl">sudo ufw status
+</span></span><span class="line"><span class="cl">sudo ufw status verbose <span class="c1"># 显示详细信息</span>
+</span></span><span class="line"><span class="cl">sudo ufw status numbered <span class="c1"># 显示序号，删除规则时要用到</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 默认策略定义在 /etc/default/ufw 文件中</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动前一定要先允许ssh连接</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow OpenSSH
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动ufw</span>
+</span></span><span class="line"><span class="cl">sudo ufw <span class="nb">enable</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 关闭</span>
+</span></span><span class="line"><span class="cl">sudo ufw disable
+</span></span><span class="line"><span class="cl"><span class="c1"># 重置所有规则，重置的同时会关闭ufw</span>
+</span></span><span class="line"><span class="cl">sudo ufw reset
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 开放端口</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow http 
+</span></span><span class="line"><span class="cl">sudo ufw allow https
+</span></span><span class="line"><span class="cl"><span class="c1"># 也可以用这种写法</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow 80/tcp
+</span></span><span class="line"><span class="cl">sudo ufw allow 443/tcp
+</span></span><span class="line"><span class="cl"><span class="c1"># 开放范围内端口</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow 7100:7200/tcp
+</span></span><span class="line"><span class="cl">sudo ufw allow 7100:7200/udp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 允许指定 IP 地址</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow from 64.63.62.61
+</span></span><span class="line"><span class="cl"><span class="c1"># 允许指定 IP 地址访问指定端口</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow from 64.63.62.61 to any port <span class="m">22</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 允许子网</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow from 192.168.1.0/24 to any port <span class="m">3306</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 允许指定网络接口的连接</span>
+</span></span><span class="line"><span class="cl">sudo ufw allow in on eth2 to any port <span class="m">3306</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 禁止连接，编写禁止规则和编写允许规则是一样的。只需要将allow替换成deny。</span>
+</span></span><span class="line"><span class="cl">sudo ufw deny from 23.24.25.0/24
+</span></span><span class="line"><span class="cl">sudo ufw deny from 23.24.25.0/24 to any port <span class="m">80</span>
+</span></span><span class="line"><span class="cl">sudo ufw deny from 23.24.25.0/24 to any port <span class="m">443</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除 UFW 规则</span>
+</span></span><span class="line"><span class="cl">sudo ufw delete <span class="m">3</span> <span class="c1"># 按序号删</span>
+</span></span><span class="line"><span class="cl">sudo ufw delete allow <span class="m">8069</span> <span class="c1"># 按规则删</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-09-17</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/45.linux-net-configuration/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/49.nginx-install-configuration/" class="prev" rel="prev" title="nginx安装和配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>nginx安装和配置</a>
+            <a href="/44.linux-common-configuration/" class="next" rel="next" title="linux常用配置">linux常用配置<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

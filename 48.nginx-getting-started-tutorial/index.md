@@ -1,0 +1,556 @@
+# nginx入门教程
+
+
+## 参考
+
+- [nginx.org文档](http://nginx.org/en/docs/)
+- [Nginx Plus Admin Guide](https://docs.nginx.com/)
+- [安装部署nginx的各种方法（安装、编译、安装动态模块、docker部署）](https://docs.nginx.com/nginx/admin-guide/)
+
+## nginx介绍
+
+nginx有一个master进程和若干个worker进程。master进程负责读配置文件和维护worker进程，真正负责处理请求的是worker进程。
+
+access.log和error.log是nginx的日志文件。
+
+## nginx命令
+
+直接执行二进制文件sbin/nginx启动nginx
+
+其他操作要按照`nginx -s [信号]`的格式来执行，常用信号：
+
+- stop：立即关闭nginx
+- quit：等worker进程处理完当前请求再关闭nginx，但是必须由启动nginx的用户执行这条命令。
+- reload：重新加载配置文件
+- reopen：重新打开日志文件
+
+## 配置文件
+
+配置文件是nginx.conf，文件中的注释以‘#’开头。
+
+nginx的模块由配置文件中的指令控制。指令分为单指令和块指令，单指令以分号结尾，块指令以一对大括号结尾。  
+
+块指令被看作是一个context，所有context之外被看作为main context。  
+
+四个顶级指令对应四种不同的连接：
+
+- events：通用连接
+- http：http连接
+- mail：邮件连接
+- stream：tcp和udp连接
+
+其他命令：
+
+- inlcude命令：引入其他配置文件
+
+## Web Server
+
+### server
+
+一个server块可以视为一个逻辑上的服务器。
+
+**每种连接的context内都可以有一个或多个server块，但是连接的类型不同时，server内能够包含的指令也不同**。http块内的server能包含location指令。
+
+server之间通过监听的端口（listen）和server名（server_name）区分。
+
+如果nginx没有匹配到任何一个location或者没找到url中的文件，返回404。
+
+```nginx
+http {
+    server {
+        listen [ip][:port]
+        server_name host1 host2 ...
+        root #如果location块中没有root，就使用这个root
+        ...
+        location
+        location
+        ...
+    }
+    server {}
+}
+```
+
+- listen指令如果没有端口号，默认使用80端口；如果没有ip，默认监听所有ip
+- 如果有多个server匹配到了请求，nginx根据请求头的HOST字段和server_name进行匹配，HOST一般是域名
+  - 精确匹配、通配符（*）、Perl语法的正则表达式；通配符只能放在开头和结尾，开头和结尾可以同时带通配符；正则表达式前面要加个波浪号（~）
+  - 如果匹配到了多个server name，nginx根据以下顺序选择server name
+    - 精确的HOST
+    - 最长的通配符（*）开头的HOST，例如`*.example.org`
+    - 最长的通配符（*）结尾的HOSt，例如`mail.*`
+    - 根据在配置文件中出现的顺序，第一个匹配到的正则表达式
+  - 如果最后还是没匹配到server，nginx会把请求路由到默认的server，即配置文件中的第一个server
+  - 可以自定义默认的server
+  
+    ```nginx
+    server {
+        listen 80 default_server;
+    }
+    ```
+
+### location
+
+location命令定义了一个url的匹配和路由规则，server块内可以有多个location命令。
+
+```nginx
+location pattern {
+    root xxx
+}
+```
+
+url匹配到一个location后，url的路径会拼在root指定的路径后面，nginx最终会到这个拼起来的路径里去找文件。
+
+### location匹配规则
+
+location命令格式：`location [=|~|~*|^~|@...] /url/ {...}`
+
+`location`后面的`[=|~|~*|^~|@...]`指定了Nginx以哪种方式匹配url。常见的有，
+|||
+|---|---|
+|`=`|精确匹配|
+|`^~`|nginx会匹配最长最完整的前缀。如果匹配到的前缀前面带有`^~`，就停止匹配，否则，先匹配正则表达式，如果没匹配到，才会选择之前匹配到的前缀|
+|`~`|正则匹配，区分大小写|
+|`~*`|正则匹配，不区分大小写|
+|只有一个URL|普通前缀匹配|
+|只有一个URL并且只是个`/`|通用匹配|
+|`@`|用于内部重定向名，只能被nginx内部配置指令访问，不能被外部client访问|
+|||
+
+Nginx的`location`规则可以写很多个，而且不同的匹配方式存在优先级，一个URL进来以后，Nginx先把这个URL拿去和优先级最高的匹配规则进行匹配，如果匹配到了，则不再进行匹配，如果没匹配到，Nginx会寻找更低优先级的匹配规则和这个URL进行匹配。以下是**优先级顺序**，
+
+1. 精确匹配 `=` 优先级最高；
+2. 前缀匹配 `^~` ；
+3. 正则匹配，正则匹配之间的优先级和配置文件中定义的顺序一致；
+4. 普通前缀匹配；
+5. 通用匹配
+
+如果所有规则都匹配不到，Nginx会返回404。
+
+### location路由规则
+
+```nginx
+location ... {
+    root
+    proxy_pass
+
+    return 404;
+    return 301 http://www.example.com;
+
+    # 替换http响应中的内容
+    sub_filter origin target;
+    sub_filter_once on/off;
+}
+```
+
+`location`的路由规则写在`{}`里，所有规则以`;`结尾，常见的有这么几项：
+
+- `root`：Web根路径，Nginx会在root+URL里的相对路径下找请求的文件。
+- `alias`：无视URL里的相对路径，直接在alias指定的目录下查找文件。(有帖子说alias指定的路径后面必须带上`'/'`)
+- `proxy_pass`：反向代理指令，将请求转发到proxy_pass指定的地址。（地址末尾带不带`'/'`有区别）
+- `rewrite`：使用变量、正则表达式和结尾的flag实现URL重写及重定向（在同一域名内）。语法：`rewrite regex replacement [flag]`。以下是结尾的标志位的含义：
+  - `last`：可能会有连续的多条rewrite规则，`last`表示这个`rewrite`已完成，不再进入后面的rewrite，但由于rewrite后是一个新的URL，所以还是会进入server重走一遍匹配流程。
+  - `break`：表示这条`rewrite`已完成，并且nginx不会再匹配重写后的URL。
+  - `redirect`：返回302临时重定向；
+  - `permanent`：返回301永久重定向；  
+
+  replacement语句里用类似`$1`、`$2`的标志，来替换正则表达式里的第几个括号匹配到的内容。
+- `fastcgi_pass`：转发针对php程序的请求，转发到后台的FastCGI服务器。FastCGI监听的方式有两种，一种是通过TCP，一种是通过socket文件（.sock文件）。因此`fastcgi_pass`可能会吧URL转发到一个.scok文件上。
+- `fastcgi_index`：FastCGI默认的主页资源。
+- `fastcgi_param`：传递给FastCGI服务器的参数。
+- `include`：把一个文件包含到配置文件中来。
+
+### 代理
+
+```nginx
+    # 例1：第一个server是第二个server的代理
+    server {
+        location /proxy {
+           proxy_pass   http://localhost:8080/;
+        }
+    }
+    server {
+        listen 8080;
+        root html2;
+
+        location / {
+        }
+    }
+
+    # 例2
+    location /some/path/ {
+        proxy_pass http://www.example.com/link/;
+    }
+```
+
+例2中新URL后面带了个请求路径，这种情况下原始请求匹配location参数的部分不会被带入新URL，例如，请求“/some/path/page.html”会被转发到“http://www.example.com/link/page.html”。
+
+把http请求转发给非http server有以下几种命令：
+
+- fastcgi_pass
+- uwsgi_pass
+- scgi_pass
+- memcached_pass
+
+转发请求时如何转发请求头：
+
+- nginx转发时默认重写两个请求头字段，HOST字段默认设置为`proxy_host`变量的值，Connection字段默认设置为close。
+- 使用`proxy_set_header`命令设置头字段
+
+    ```nginx
+    location /some/path/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://localhost:8000;
+    }
+    ```
+
+- nginx转发请求时会去掉值为空的头字段，因此如果不想转发某个头字段，把该字段的值设置为空字符串，例如`proxy_set_header Accept-Encoding "";`。
+
+### FastCGI代理
+
+fastcgi_param命令指定了传递给fastcgi服务器的参数，例如`fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;`这条命令将参数`SCRIPT_FILENAME`传递给fastcgi服务器，参数的值为`$document_root$fastcgi_script_name`。
+
+```nginx
+server {
+    location / {
+        fastcgi_pass  localhost:9000;
+        # 脚本名
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        # 请求参数
+        fastcgi_param QUERY_STRING    $query_string;
+    }
+}
+```
+
+### error_page
+
+指定错误页，格式：`error_page 错误码 uri`
+
+```nginx
+error_page 404 /404.html;
+```
+
+替换错误码，格式：`error_page 错误码 =新错误码 [参数]`
+
+```nginx
+location /old/path.html {
+    error_page 404 =301 http:/example.com/new/path.html;
+}
+```
+
+如果只写了`=`，没有写新的错误码，返回重定向后的uri返回的错误码
+
+```nginx
+server {
+    ...
+    location /images/ {
+        # Set the root directory to search for the file
+        root /data/www;
+
+        # Disable logging of errors related to file existence
+        # 发生和文件存在相关的错误时，不写日志
+        open_file_cache_errors off;
+
+        # Make an internal redirect if the file is not found
+        error_page 404 = /fetch$uri;
+    }
+
+    location /fetch/ {
+        proxy_pass http://backend/;
+    }
+}
+```
+
+### 服务静态内容
+
+- `root`可以放到`http{}`、`server{}`和`location{}`里。
+- 对于**以斜杠结尾的请求（请求的是一个目录，而不是文件）**，nginx默认会到对应目录下去找index.html，如果没有就返回404；`autoindex`命令会让nginx返回一个目录页面，列出请求目录下的文件；`index`命令可以指定多个index页面，nginx返回找到的第一个页面。
+  
+    ```nginx
+    location /images/ {
+        autoindex on;
+    }
+
+    location / {
+        index index.$geo.html index.htm index.html;
+    }
+    ```
+
+- try_files  
+检查指定的文件或目录是否存在（try_files后面跟着的几个uri），如果不存在，返回最后一个uri指向的文件（也有可能不是uri，是一个返回码或者location等等）；（**优先于autoindex**）
+
+    ```nginx
+    server {
+        root /www/data;
+
+        location /images/ {
+            try_files $uri /images/default.gif;
+        }
+    }
+    # 可以返回状态码
+    location / {
+        try_files $uri $uri/ $uri.html =404;
+    }
+    # 可以转发请求
+    location / {
+        try_files $uri $uri/ @backend;
+    }
+    location @backend {
+        proxy_pass http://backend.example.com;
+    }
+    ```
+
+- 性能优化
+  - sendfile、tcp_nopush、tcp_nodealy
+  - 优化请求队列（backlog queue）
+
+### buffer
+
+nginx buffer会暂存后端服务器没发送完的响应，知道nginx完整接收了整个响应，才会把这个响应发送给客户端。好处是如果客户端是以同步方式接受响应，buffer会节省后端服务器的时间，坏处是nginx必须一直缓存整个响应，直到客户端接收完毕。
+
+相关的命令：
+
+- proxy_buffers
+- proxy_buffer_size
+- proxy_buffering
+
+### 绑定ip
+
+如果服务器上有多个ip，可以使用`proxy_bind`命令将请求通过指定ip转发，例如：
+
+```nginx
+location /app1/ {
+    proxy_bind 127.0.0.1;
+    proxy_pass http://example.com/app1/;
+}
+```
+
+### 压缩和解压
+
+- 以下这些压缩和解压指令可以放到`http{}`、`server{}`和`location{}`里。
+- 对于一个已经压缩过的响应，nginx不会二次压缩（比如一个来自后端服务器的响应）。
+
+    ```nginx
+    gzip on;
+    ```
+
+- nginx默认只会对text/html类型做压缩，使用`gzip_types`指令对其它类型的数据做压缩
+
+    ```nginx
+    gzip_types text/plain application/xml;
+    ```
+
+- `gzip_min_length 1000;`，设置压缩的最小长度，默认是20个字节。
+- `gzip_proxied`指令用于对后端服务器收到的响应做压缩（即请求是后端服务器发出的）
+- 解压指令`gunzip on;`
+- `gzip_static`，nginx会自动返回文件的压缩版。例如，目录下有一个名为test.txt.gz的文件，如果配置了`gzip_static on`，用户访问test.txt的时候gzip会返回test.txt.gz这个文件，浏览器收到这个文件后会将其解压并打印到屏幕上。（而并不是让浏览器下载这个文件）
+
+## 负载均衡
+
+### http负载均衡
+
+```nginx
+http {
+    upstream backend {  # backend是一个负载均衡组
+        [负载均衡方法]
+        server backend1.example.com weight=5;
+        server backend2.example.com;
+        server 192.0.0.1 backup;
+    }
+    server {
+        location / {
+            proxy_pass http://backend;  # 把请求路由到这个负载均衡组去
+        }
+    }
+}
+```
+
+有四种负载均衡方法：
+
+- 轮巡（Round Robin）：默认就是这种方法。会考虑server权重（weight）。
+- 最少连接数（least_conn）：每次把请求转发给连接数最少的server，同时也考虑权重。
+- ip_hash：对IPv4地址的前三个字节或者整个IPv6地址进行hash，确保地址相同的请求能被相同server处理。
+- 通用hash（hash 用户自定义key [consistent]）：用户可以自定义key，并且有一个一致性hash的可选项。
+
+server后面还可以跟一些选项：
+
+- weight：server的权重，默认是1。
+- backup：正常不会服务，只有其他server不可用了才会把请求发送到这个server上。
+- down：暂时移除这个server，但是ip_hash还是能映射到这个server上，只不过由排在他后面的server来服务。
+
+nginx还能实时地检查upstream组内server的状态是否正常。在server后面加上max_fails和fail_timeout选项，fail_timeout是一个时间值，表示server在这个时间内失败一定次数就会被标记为不可用，max_fails规定了失败的次数。
+
+zone指令：如果一个负载均衡组里有zone指令，那么这个组的配置和状态就会被所有worker进程共享。
+
+可以用resolver指令实现负载均衡组的域名解析（DNS），（这个属于Nginx Plus的功能）
+
+## 安全控制
+
+### https
+
+```nginx
+http {
+    # 性能优化
+    ssl_session_cache   shared:SSL:10m;
+    ssl_session_timeout 10m;
+    server {
+        listen              80; #一个Server能同时进行HTTP和HTTPS服务
+        listen              443 ssl;
+        server_name         www.example.com;
+        ssl_certificate     www.example.com.crt; # 证书（全链证书）
+        ssl_certificate_key www.example.com.key; # 私钥
+        # 协议和密文
+        ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers         HIGH:!aNULL:!MD5;
+        # OCSP
+        ssl_verify_client       on;
+        ssl_trusted_certificate /etc/ssl/cachain.pem; # CA证书
+        ssl_ocsp                on; # Enable OCSP validation
+
+        ssl_ocsp_responder http://ocsp.example.com/; # 可选，手动指定ocsp请求地址
+        ssl_ocsp_cache shared:one:10m; # 缓存ocsp请求结果
+
+        # 性能优化
+
+        #...
+    }
+}
+```
+
+- 先建立SSL连接，然后才发送HTTP请求，因此nginx建立SSL连接的时候并不直到客户端要访问哪个服务。
+- ocsp请求的结果可以通过变量`$ssl_client_verify`获得。
+- 制作证书链：`$ cat www.example.com.crt bundle.crt > www.example.com.chained.crt`，把客户证书和中间证书拼到一起。
+  - 使用命令`$ openssl s_client -connect www.godaddy.com:443`验证服务是否能返回证书链。
+
+### TCP流量也可以配置ssl代理
+
+### 使用HTTP基本认证做访问控制
+
+- 三种认证方式：用户名-密码、IP地址、地理位置
+- 用户名-密码认证需要一个密码文件，密码文件使用工具生成，apache2-utils (Debian, Ubuntu) 或 httpd-tools (RHEL/CentOS/Oracle Linux)；
+  - `yum install -y httpd-tools`
+  - `sudo htpasswd -c 密码文件名 用户名`，`-c`表示创建该文件，可以向这个文件中追加多个用户名和密码。这个文件可以直接用`cat`打印
+
+以下是**用户名-密码认证**的两个例子，分别打开和关闭用户认证
+
+```nginx
+location /api {
+    auth_basic           “Administrator’s Area”;
+    auth_basic_user_file /etc/apache2/.htpasswd; 
+}
+```
+
+```nginx
+server {
+    ...
+    auth_basic           "Administrator’s Area";
+    auth_basic_user_file conf/htpasswd;
+
+    location /public/ {
+        auth_basic off;
+    }
+}
+```
+
+以下是**IP地址认证**的两个例子：
+
+```nginx
+location /api {
+    #...
+    deny  192.168.1.2;
+    allow 192.168.1.1/24;
+    allow 127.0.0.1;
+    deny  all;
+}
+```
+
+用`deny`和`allow`指令限制访问，nginx按`deny`和`allow`定义的顺序检查客户端的权限。
+
+```nginx
+location /api {
+    #...
+    satisfy all;    
+
+    deny  192.168.1.2;
+    allow 192.168.1.1/24;
+    allow 127.0.0.1;
+    deny  all;
+
+    auth_basic           "Administrator’s Area";
+    auth_basic_user_file conf/htpasswd;
+}
+```
+
+`satisfy all`表示客户端必须满足定义的所有条件，`satisfy any`表示满足任意一个条件即可。
+
+### nginx访问控制接口
+
+要想使用这个功能，编译nginx时必须加上`--with-http_auth_request_module`选项。
+
+这个功能的用法是这样的，用户向后端服务发起请求时，nginx会首先向用户自定义的访问控制服务（例如LDAP、OAuth等）发一个子请求，如果访问控制服务返回2xx，nginx会放行用户的请求，如果访问控制服务返回401或者403，nginx会拦截用户请求并返回401或403。
+
+Nginx有对JWT的支持，JWT（Json Web Token）是一套信息传输协议，OAuth2和OpenID的身份验证功能可以使用JWT实现。
+
+### 对访问进行限制
+
+- 限制http访问  
+  可以限制访问的连接数、频率、带宽等
+- 限制TCP访问  
+  可以限制IP和带宽等。
+- 按地理位置限制访问
+
+### 和后端服务建立ssl连接（包括http和tcp流量）
+
+### IP地址的动态黑名单
+
+## 监控和日志
+
+- 配置日志：参考[https://docs.nginx.com/nginx/admin-guide/monitoring/logging/](https://docs.nginx.com/nginx/admin-guide/monitoring/logging/)以及[http://nginx.org/en/docs/syslog.html](http://nginx.org/en/docs/syslog.html)
+
+## 代理服务器
+
+代理服务器使用`proxy_set_header`命令对请求头中的字段重新赋值或者在请求头中追加新的字段。
+使用`proxy_set_body`命令对请求体进行操作。
+
+格式：`proxy_set_header Host $proxy_host;`
+
+### 如何让后端server得到真正的客户端ip（当存在多层代理或负载均衡时）
+
+- nginx版本必须大于1.13.11
+- 编译前，在configure的选项中加上`-- with-http_realip_module`和`-- with-stream_realip_module`选项。
+
+主要涉及到两个选项：
+
+- set_real_ip_from：可信的上游ip，nginx会把这里的ip视为代理服务器
+- real_ip_header：请求头中使用的代理协议，常见的有‘X-Forwarded-For’、‘proxy_protocol’等。
+
+配置好以后，`$remote_addr`和`$remote_port`变量里保存的是客户端ip，`$realip_remote_addr`和`$realip_remote_port`变量中保存的是上游代理的ip。
+
+### 关于代理协议
+
+- X-Forwarded-For  
+  X-Forwarded-For是一个http头扩展字段，HTTP/1.1（RFC 2616）协议并没有对它的定义，它最开始是由 Squid 这个缓存代理软件引入，用来表示 HTTP 请求端真实 IP。如今它已经成为事实上的标准，被各大 HTTP 代理、负载均衡等转发服务广泛使用，并被写入 RFC 7239（Forwarded HTTP Extension）标准之中。  
+  X-Forwarded-For 请求头格式非常简单，就这样：
+  `X-Forwarded-For: client, proxy1, proxy2`  
+可以看到，XFF 的内容由「英文逗号 + 空格」隔开的多个部分组成，最开始的是离服务端最远的IP，然后是每一级代理的IP。
+- X-Real-IP  
+  X-Real-IP也是一个http头扩展字段，但没有进入正式的标准。通常X-Real-IP只保存上一跳的IP，因此通常只会在某一级代理设置一下这个字段（否则这个字段会被覆盖好几次）
+- proxy protocol  
+  proxy protocol，是haproxy的作者Willy Tarreau于2010年开发和设计的一个Internet协议，通过为tcp添加一个很小的头信息，来方便的传递客户端信息（协议栈、源IP、目的IP、源端口、目的端口等)，在网络情况复杂又需要获取客户IP时非常有用。
+  - 多层NAT网络
+  - TCP代理（四层）或多层tcp代理
+  - https反向代理http(某些情况下由于Keep-alive导致不是每次请求都传递x-forword-for)  
+  proxy protocol有两个版本，v1仅支持human-readable报头格式（ASCIII码），v2需同时支持human-readable和二进制格式（即需要兼容v1格式）。
+
+## nginx变量
+
+nginx的内置变量都是模块自带的。大部分变量在ngx_http_core_module这个模块中。  
+各模块在它们各自的[nginx.org](http://nginx.org/en/docs/)文档最后面附加了该模块的变量定义。
+
+还可以自定义变量，使用[set](https://nginx.org/en/docs/http/ngx_http_rewrite_module.html?&_ga=2.13505527.1914378712.1606226396-1825618331.1601462528#set)、[map](https://nginx.org/en/docs/http/ngx_http_map_module.html?&_ga=2.13505527.1914378712.1606226396-1825618331.1601462528#map)和[geo](https://nginx.org/en/docs/http/ngx_http_geo_module.html?&_ga=2.13505527.1914378712.1606226396-1825618331.1601462528#geo)
+
+- remote_addr：请求方IP
+- local_time：服务器本地时间，日期+时间+时区
+- request：请求方法（GET/POST...）+请求路径+HTTP协议
+- body_bytes_sent：响应体的字节数
+- status：响应码
+- http_user_agent：用户使用的客户端，一般是浏览器

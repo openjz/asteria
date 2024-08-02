@@ -4,13 +4,13 @@
         <link>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 06 Jul 2022 11:37:09 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
-    <title>算法题</title>
-    <link>http://blog.shiwj.top/algorithm-problem/</link>
-    <pubDate>Wed, 06 Jul 2022 11:37:09 &#43;0800</pubDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43;标准库算法概览</title>
+    <link>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</link>
+    <pubDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/algorithm-problem/</guid>
-    <description><![CDATA[常用方法 常用方法： 动态规划，把问题转化为子问题的求解，在子问题求解完成的基础上即可得到问题的解，重点在于（1）问题的建模，（2）求出正确的递]]></description>
+    <guid>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</guid>
+    <description><![CDATA[参考 《C++ Primer 第5版》 cppreference.com 说明 本节内容包括：5类迭代器、算法形参模式、算法命名规范、特定容器算法。 5类迭代器 算法所要求的迭代器操作可以分为5个]]></description>
 </item>
 </channel>
 </rss>

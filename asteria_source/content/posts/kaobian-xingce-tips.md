@@ -1,7 +1,7 @@
 ---
 title: "行测技巧"
 date: 2022-06-15T14:24:30+08:00
-draft: false
+draft: true
 tags:
   - "行测"
 categories:
