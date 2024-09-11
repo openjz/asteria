@@ -4,36 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>linux常用命令 - 星</title><meta name="Description" content=""><meta property="og:title" content="linux常用命令" />
-<meta property="og:description" content="创建用户和用户组 $groupadd 用户组名 $useradd -s /bin/bash -g 用户组 -m 用户名，-m选项是自动创建用户home目录 $passwd 用户名 $visudo，visudo默认使用nano编辑" />
+        <title>一些开发过程中遇到的奇怪问题 - 星</title><meta name="Description" content=""><meta property="og:title" content="一些开发过程中遇到的奇怪问题" />
+<meta property="og:description" content="ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/43.linux-common-command/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-09-17T04:30:00+08:00" />
-<meta property="article:modified_time" content="2024-08-02T18:54:32+08:00" />
+<meta property="og:url" content="http://blog.shiwj.top/40.bug-record/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-23T09:11:34+08:00" />
+<meta property="article:modified_time" content="2024-07-23T09:11:34+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
-<meta name="twitter:title" content="linux常用命令"/>
-<meta name="twitter:description" content="创建用户和用户组 $groupadd 用户组名 $useradd -s /bin/bash -g 用户组 -m 用户名，-m选项是自动创建用户home目录 $passwd 用户名 $visudo，visudo默认使用nano编辑"/>
+<meta name="twitter:title" content="一些开发过程中遇到的奇怪问题"/>
+<meta name="twitter:description" content="ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/43.linux-common-command/" /><link rel="prev" href="http://blog.shiwj.top/44.linux-common-configuration/" /><link rel="next" href="http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/40.bug-record/" /><link rel="prev" href="http://blog.shiwj.top/39.windows-dump-debug/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "linux常用命令",
+        "headline": "一些开发过程中遇到的奇怪问题",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/blog.shiwj.top\/43.linux-common-command\/"
+            "@id": "http:\/\/blog.shiwj.top\/40.bug-record\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "linux","wordcount":  491 ,
-        "url": "http:\/\/blog.shiwj.top\/43.linux-common-command\/","datePublished": "2020-09-17T04:30:00+08:00","dateModified": "2024-08-02T18:54:32+08:00","publisher": {
+                        }],"genre": "posts","keywords": "问题记录","wordcount":  683 ,
+        "url": "http:\/\/blog.shiwj.top\/40.bug-record\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-07-23T09:11:34+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -78,11 +78,11 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">linux常用命令</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">一些开发过程中遇到的奇怪问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-09-17">2020-09-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;491 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;683 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -90,74 +90,28 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#创建用户和用户组">创建用户和用户组</a></li>
-    <li><a href="#远程登陆和远程文件传输">远程登陆和远程文件传输</a></li>
-    <li><a href="#移动文件和目录">移动文件和目录</a></li>
+    <li><a href="#ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</a></li>
+    <li><a href="#编译环境从win10-sdk降级到win-8sdk后进程一启动就卡死">编译环境从win10 sdk降级到win 8sdk后，进程一启动就卡死</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="创建用户和用户组">创建用户和用户组</h2>
-<ul>
-<li><code>$groupadd 用户组名</code></li>
-<li><code>$useradd -s /bin/bash -g 用户组 -m 用户名</code>，<code>-m</code>选项是自动创建用户home目录</li>
-<li><code>$passwd 用户名</code></li>
-<li><code>$visudo</code>，visudo默认使用nano编辑，非常难用，不如直接编辑/etc/sudoers</li>
-<li><code>$userdel -r 用户名</code>，<code>-r</code>选项是把用户的所有相关数据全部删除</li>
-</ul>
-<h2 id="远程登陆和远程文件传输">远程登陆和远程文件传输</h2>
-<ul>
-<li>
-<p><code>ssh</code>，远程登陆命令。</p>
-<blockquote>
-<p>用法：<code>$ssh [-p port] [user@]hostname</code><br>
-例如：<code>$ssh -p 9038 swj@222.30.51.68</code></p>
-</blockquote>
-</li>
-<li>
-<p><code>scp</code>，远程文件传输命令，基于ssh协议。</p>
-<blockquote>
-<p>用法：<code>$scp [-r] [-P port] [[user@]host1:]file1 [[user@]host2:]file2</code><br>
-例如：<code>$scp -r -P 9038 /mnt/e/dir1 swj@222.30.51.68:/home/swj/dir2</code></p>
-</blockquote>
-<p>参数说明：</p>
-<ul>
-<li><code>-r</code>：递归复制整个目录</li>
-<li><code>-P</code>：指定host2的端口号</li>
-</ul>
-</li>
-<li>
-<p><code>sftp</code>文件传输命令。</p>
-<blockquote>
-<p>用法和ssh类似，要先登录：<code>$sftp [-P port] [user@]hostname</code>
-例如：<code>$sftp -P 9038 swj@222.30.51.68</code></p>
-</blockquote>
-<p>登陆后shell提示符变成了<code>sftp&gt;</code></p>
-<blockquote>
-<p>sftp常用命令:<br>
-<code>ls</code>，<code>cd</code>，<code>pwd</code>；<code>lls</code>，<code>lcd</code>，<code>lpwd</code>；<code>put</code>，<code>get</code>；<br>
-其中，前面不带<code>l</code>的命令是在服务器上进行操作，带<code>l</code>的命令是在本地上进行操作，<code>put</code>是上传文件，<code>get</code>是下载文件；<br>
-<code>$ get filename</code> 或 <code>$ get filename</code></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="移动文件和目录">移动文件和目录</h2>
-<ul>
-<li><code>mv</code>，移动目录命令。
-<blockquote>
-<p>用法：<code>$mv file1 file2</code><br>
-移动目录：<code>$mv dir1 dir2</code>，如果dir2存在，移动后的结果是dir2/dir1；如果dir2不存在，dir1改名为dir2。</p>
-</blockquote>
-</li>
-</ul>
+            </div><div class="content" id="content"><h2 id="ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</h2>
+<p>需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件共享</p>
+<p>ssl/tls层是用openssl库实现的，测试过程中遇到了一个问题，在传输大文件的时候（几十MB以上），传输过程总是会卡住，百思不得其解</p>
+<p>仔细分析日志后发现传输过程卡在了ssl socket提供的peek函数上，查看openssl文档后发现，openssl的ssl socket不是流式传输，是以包为单位的传输，一个包最大16KB，openssl内部的read buffer中的数据量一旦达到了16KB，如果不把这些数据读走是peek不到更多数据的</p>
+<p>后来对peek操作做了一个二次封装，在代码中维护了一个临时的buffer，把peek到的数据先读到buffer里，这样就不会导致程序卡在peek上了</p>
+<h2 id="编译环境从win10-sdk降级到win-8sdk后进程一启动就卡死">编译环境从win10 sdk降级到win 8sdk后，进程一启动就卡死</h2>
+<p>项目最开始的开发环境是win10 sdk，vs2022(v143)工具集，程序工作一切正常，后来要将项目作为插件集成到另外一个平台，为了兼容将项目的开发环境降级到win8 sdk，vs2015(v140)工具集，降级后发现进程一启动就卡死</p>
+<p>在调试模式下运行发现，总是卡在创建一个线程的地方，这个创建线程的位置比较特殊，是写在了一个dll的全局对象的构造函数里，这意味着dll被加载的时候会触发线程创建的操作</p>
+<p>经过查阅资料得知，在windows sdk的早期版本中，是不允许在dll加载的时候创建线程的，会造成dll加载死锁，然后我们把创建线程改为由上层调用函数触发，解决了问题</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-08-02&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/2274968203f83d9857167c3320b195e99c45aaba" target="_blank" title="commit by shiwj7(shiwj7@motorola.com) 2274968203f83d9857167c3320b195e99c45aaba: update">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>2274968</a></span>
+                <span>Updated on 2024-07-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/43.linux-common-command/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/40.bug-record/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -166,14 +120,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">问题记录</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/44.linux-common-configuration/" class="prev" rel="prev" title="linux常用配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>linux常用配置</a>
-            <a href="/42.linux-jiu-gai-zhe-me-xue-note/" class="next" rel="next" title="《linux就该这么学》笔记">《linux就该这么学》笔记<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/39.windows-dump-debug/" class="prev" rel="prev" title="windows下调试dump文件"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>windows下调试dump文件</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -5,12 +5,12 @@
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>进程间通信（IPC）模块的设计思路</title>
-    <link>http://blog.shiwj.top/40.ipc_module_design/</link>
+    <title>一些开发过程中遇到的奇怪问题</title>
+    <link>http://blog.shiwj.top/40.bug-record/</link>
     <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/40.ipc_module_design/</guid>
-    <description><![CDATA[一些细节问题 不要混淆资源释放（resource release）和停止/断开（stop/disconnect）操作，stop操作是对用户暴露的]]></description>
+    <guid>http://blog.shiwj.top/40.bug-record/</guid>
+    <description><![CDATA[ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件]]></description>
 </item>
 <item>
     <title>windows下调试dump文件</title>

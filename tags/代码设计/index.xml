@@ -4,15 +4,7 @@
         <link>http://blog.shiwj.top/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/</link>
         <description>代码设计 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/" rel="self" type="application/rss+xml" /><item>
-    <title>进程间通信（IPC）模块的设计思路</title>
-    <link>http://blog.shiwj.top/40.ipc_module_design/</link>
-    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/40.ipc_module_design/</guid>
-    <description><![CDATA[一些细节问题 不要混淆资源释放（resource release）和停止/断开（stop/disconnect）操作，stop操作是对用户暴露的]]></description>
-</item>
-<item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 08 Nov 2021 14:02:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/" rel="self" type="application/rss+xml" /><item>
     <title>闭包</title>
     <link>http://blog.shiwj.top/51.closure/</link>
     <pubDate>Mon, 08 Nov 2021 14:02:00 &#43;0800</pubDate>
