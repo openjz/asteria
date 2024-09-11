@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/40.bug-record/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-23T09:11:34+08:00" />
-<meta property="article:modified_time" content="2024-07-23T09:11:34+08:00" />
+<meta property="article:modified_time" content="2024-09-11T11:34:19+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "问题记录","wordcount":  683 ,
-        "url": "http:\/\/blog.shiwj.top\/40.bug-record\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-07-23T09:11:34+08:00","publisher": {
+                        }],"genre": "posts","keywords": "问题记录","wordcount":  1348 ,
+        "url": "http:\/\/blog.shiwj.top\/40.bug-record\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-09-11T11:34:19+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">一些开发过程中遇到的奇怪问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;683 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1348 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -92,6 +92,7 @@
   <ul>
     <li><a href="#ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</a></li>
     <li><a href="#编译环境从win10-sdk降级到win-8sdk后进程一启动就卡死">编译环境从win10 sdk降级到win 8sdk后，进程一启动就卡死</a></li>
+    <li><a href="#进程被多次拉起">进程被多次拉起</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</h2>
@@ -99,15 +100,20 @@
 <p>ssl/tls层是用openssl库实现的，测试过程中遇到了一个问题，在传输大文件的时候（几十MB以上），传输过程总是会卡住，百思不得其解</p>
 <p>仔细分析日志后发现传输过程卡在了ssl socket提供的peek函数上，查看openssl文档后发现，openssl的ssl socket不是流式传输，是以包为单位的传输，一个包最大16KB，openssl内部的read buffer中的数据量一旦达到了16KB，如果不把这些数据读走是peek不到更多数据的</p>
 <p>后来对peek操作做了一个二次封装，在代码中维护了一个临时的buffer，把peek到的数据先读到buffer里，这样就不会导致程序卡在peek上了</p>
+<p>问题分析过程非常坎坷，首先很难打断点调试，因为需要同时调试两个进程，而且两个进程之间存在网络通信，为了测试真实的网络通信环境，这两个进程分别跑在两台不同的pc上，如果在一个进程里打断点，另外一个进程很可能出错或者崩溃，所以只能通过打日志分析，然而原本的日志库是同步的，及其影响性能，我花了很多时间先把日志库改成异步输出日志，这才顺利地完成了问题定位</p>
 <h2 id="编译环境从win10-sdk降级到win-8sdk后进程一启动就卡死">编译环境从win10 sdk降级到win 8sdk后，进程一启动就卡死</h2>
 <p>项目最开始的开发环境是win10 sdk，vs2022(v143)工具集，程序工作一切正常，后来要将项目作为插件集成到另外一个平台，为了兼容将项目的开发环境降级到win8 sdk，vs2015(v140)工具集，降级后发现进程一启动就卡死</p>
 <p>在调试模式下运行发现，总是卡在创建一个线程的地方，这个创建线程的位置比较特殊，是写在了一个dll的全局对象的构造函数里，这意味着dll被加载的时候会触发线程创建的操作</p>
 <p>经过查阅资料得知，在windows sdk的早期版本中，是不允许在dll加载的时候创建线程的，会造成dll加载死锁，然后我们把创建线程改为由上层调用函数触发，解决了问题</p>
+<h2 id="进程被多次拉起">进程被多次拉起</h2>
+<p>主进程会通过shell拉起多个另外一个进程（之所以要用shell拉起，是为了使被拉起的进程以管理员权限启动），然而在某些特殊的情况下，拉起进程时会有一个额外的进程启动，启动参数还不符合预期，我作为进程管理模块的开发者，很清楚这个额外的进程一定不是由进程管理模块拉起的，一定是有什么第三方的进程在拉起这个进程</p>
+<p>又是坎坷的找证据过程，首先，进程拉起的数量和日志中的日志中的拉起进程次数并不对应，并且日志中的进程启动参数都是正确的，然而其他同事并不相信日志，于是我是用sysinternal套件中的procmon工具查看进程树，发现额外拉起的进程并不是由任何一个已知进程拉起的，而日志中对应的那个正常拉起的进程，在进程树上存在一个已知的父进程，这时同事们还是不相信进程是由第三方拉起的，于是我使用windows的ifeo机制将进程管理模块劫持到windbg，直接对进程进行内核调试，对windows的CreateProcess api打断点，发现问题复现时，只能命中一次断点，至此结果已经很清楚了，虽然我们还是不清楚额外的进程是由谁拉起来的，但是显然不是由我的进程管理模块拉起的</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-07-23</span>
+                <span>Updated on 2024-09-11&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/eba18259debe4aeb13e1c6b59052b3955907cbf2" target="_blank" title="commit by shiwj7(shiwj7@motorola.com) eba18259debe4aeb13e1c6b59052b3955907cbf2: add post">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eba1825</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
