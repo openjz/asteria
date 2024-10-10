@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/40.bug-record/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-23T09:11:34+08:00" />
-<meta property="article:modified_time" content="2024-09-11T11:34:19+08:00" />
+<meta property="article:modified_time" content="2024-09-11T19:40:39+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "问题记录","wordcount":  1348 ,
-        "url": "http:\/\/blog.shiwj.top\/40.bug-record\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-09-11T11:34:19+08:00","publisher": {
+                        }],"genre": "posts","keywords": "问题记录","wordcount":  1863 ,
+        "url": "http:\/\/blog.shiwj.top\/40.bug-record\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-09-11T19:40:39+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">一些开发过程中遇到的奇怪问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1348 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1863 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -93,6 +93,8 @@
     <li><a href="#ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</a></li>
     <li><a href="#编译环境从win10-sdk降级到win-8sdk后进程一启动就卡死">编译环境从win10 sdk降级到win 8sdk后，进程一启动就卡死</a></li>
     <li><a href="#进程被多次拉起">进程被多次拉起</a></li>
+    <li><a href="#使用ffmpeg的gpu编解码器处理视频时卡死">使用ffmpeg的GPU编解码器处理视频时卡死</a></li>
+    <li><a href="#使用ffmpeg叠加两个视频时无法正确识别前景视频的透明通道">使用ffmpeg叠加两个视频时，无法正确识别前景视频的透明通道</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</h2>
@@ -108,12 +110,20 @@
 <h2 id="进程被多次拉起">进程被多次拉起</h2>
 <p>主进程会通过shell拉起多个另外一个进程（之所以要用shell拉起，是为了使被拉起的进程以管理员权限启动），然而在某些特殊的情况下，拉起进程时会有一个额外的进程启动，启动参数还不符合预期，我作为进程管理模块的开发者，很清楚这个额外的进程一定不是由进程管理模块拉起的，一定是有什么第三方的进程在拉起这个进程</p>
 <p>又是坎坷的找证据过程，首先，进程拉起的数量和日志中的日志中的拉起进程次数并不对应，并且日志中的进程启动参数都是正确的，然而其他同事并不相信日志，于是我是用sysinternal套件中的procmon工具查看进程树，发现额外拉起的进程并不是由任何一个已知进程拉起的，而日志中对应的那个正常拉起的进程，在进程树上存在一个已知的父进程，这时同事们还是不相信进程是由第三方拉起的，于是我使用windows的ifeo机制将进程管理模块劫持到windbg，直接对进程进行内核调试，对windows的CreateProcess api打断点，发现问题复现时，只能命中一次断点，至此结果已经很清楚了，虽然我们还是不清楚额外的进程是由谁拉起来的，但是显然不是由我的进程管理模块拉起的</p>
+<h2 id="使用ffmpeg的gpu编解码器处理视频时卡死">使用ffmpeg的GPU编解码器处理视频时卡死</h2>
+<p>原因是出错时ffmpeg不会退出，而是不停地输出error信息，而我们的程序逻辑是先等ffmpeg退出，再去检索ffmpeg的错误信息中是否有error，将程序逻辑修改为在ffmpeg运行时实时检测error信息，而不是等ffmpeg退出时再去检查error</p>
+<p>ffmpeg进程卡死，第一反应是直接在命令行执行一下这句ffmpeg命令，通过这种方法排查到了问题</p>
+<p>至于为什么ffmpeg会出现这种情况，原因是nvdia的gpu解码器h264_cuvid不支持yuv444p像素格式，参考<a href="https://forums.developer.nvidia.com/t/yuv444p-video-decoding-with-ffmpeg-error-cuda-error-not-supported-operation-not-supported/213308" target="_blank" rel="noopener noreffer">https://forums.developer.nvidia.com/t/yuv444p-video-decoding-with-ffmpeg-error-cuda-error-not-supported-operation-not-supported/213308</a>
+</p>
+<h2 id="使用ffmpeg叠加两个视频时无法正确识别前景视频的透明通道">使用ffmpeg叠加两个视频时，无法正确识别前景视频的透明通道</h2>
+<p>原因是前景视频的编码方式是vp9编码（webm封装格式），而ffmpeg无法自动检测出视频的vp9编码，需要手动指定libvpx-vp9解码器</p>
+<p>查stackoverflow查到的</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-09-11&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/eba18259debe4aeb13e1c6b59052b3955907cbf2" target="_blank" title="commit by shiwj7(shiwj7@motorola.com) eba18259debe4aeb13e1c6b59052b3955907cbf2: add post">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eba1825</a></span>
+                <span>Updated on 2024-09-11&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/b0626902e19a37f222e7278d05cd3df3205bc6b1" target="_blank" title="commit by shiwj7(shiwj7@motorola.com) b0626902e19a37f222e7278d05cd3df3205bc6b1: update post">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>b062690</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

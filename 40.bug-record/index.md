@@ -26,3 +26,17 @@ ssl/tls层是用openssl库实现的，测试过程中遇到了一个问题，在
 主进程会通过shell拉起多个另外一个进程（之所以要用shell拉起，是为了使被拉起的进程以管理员权限启动），然而在某些特殊的情况下，拉起进程时会有一个额外的进程启动，启动参数还不符合预期，我作为进程管理模块的开发者，很清楚这个额外的进程一定不是由进程管理模块拉起的，一定是有什么第三方的进程在拉起这个进程
 
 又是坎坷的找证据过程，首先，进程拉起的数量和日志中的日志中的拉起进程次数并不对应，并且日志中的进程启动参数都是正确的，然而其他同事并不相信日志，于是我是用sysinternal套件中的procmon工具查看进程树，发现额外拉起的进程并不是由任何一个已知进程拉起的，而日志中对应的那个正常拉起的进程，在进程树上存在一个已知的父进程，这时同事们还是不相信进程是由第三方拉起的，于是我使用windows的ifeo机制将进程管理模块劫持到windbg，直接对进程进行内核调试，对windows的CreateProcess api打断点，发现问题复现时，只能命中一次断点，至此结果已经很清楚了，虽然我们还是不清楚额外的进程是由谁拉起来的，但是显然不是由我的进程管理模块拉起的
+
+## 使用ffmpeg的GPU编解码器处理视频时卡死
+
+原因是出错时ffmpeg不会退出，而是不停地输出error信息，而我们的程序逻辑是先等ffmpeg退出，再去检索ffmpeg的错误信息中是否有error，将程序逻辑修改为在ffmpeg运行时实时检测error信息，而不是等ffmpeg退出时再去检查error
+
+ffmpeg进程卡死，第一反应是直接在命令行执行一下这句ffmpeg命令，通过这种方法排查到了问题
+
+至于为什么ffmpeg会出现这种情况，原因是nvdia的gpu解码器h264_cuvid不支持yuv444p像素格式，参考[https://forums.developer.nvidia.com/t/yuv444p-video-decoding-with-ffmpeg-error-cuda-error-not-supported-operation-not-supported/213308](https://forums.developer.nvidia.com/t/yuv444p-video-decoding-with-ffmpeg-error-cuda-error-not-supported-operation-not-supported/213308)
+
+## 使用ffmpeg叠加两个视频时，无法正确识别前景视频的透明通道
+
+原因是前景视频的编码方式是vp9编码（webm封装格式），而ffmpeg无法自动检测出视频的vp9编码，需要手动指定libvpx-vp9解码器
+
+查stackoverflow查到的
