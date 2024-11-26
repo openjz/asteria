@@ -13,6 +13,14 @@
     <description><![CDATA[ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件]]></description>
 </item>
 <item>
+    <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试</title>
+    <link>http://blog.shiwj.top/54.windows_ifeo_windbg/</link>
+    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/54.windows_ifeo_windbg/</guid>
+    <description><![CDATA[修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic]]></description>
+</item>
+<item>
     <title>windows下调试dump文件</title>
     <link>http://blog.shiwj.top/39.windows-dump-debug/</link>
     <pubDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/31.linear-algebra-3b1b/</guid>
     <description><![CDATA[参考 b 站 3Blue1Brown-线性代数的本质 https://github.com/3b1b/manim 向量 向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标 $$\vec{a}= \begin{bmatrix}]]></description>
-</item>
-<item>
-    <title>有栈协程和无栈协程</title>
-    <link>http://blog.shiwj.top/30.coroutine-stack/</link>
-    <pubDate>Tue, 01 Nov 2022 02:35:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
-    <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
 </item>
 </channel>
 </rss>

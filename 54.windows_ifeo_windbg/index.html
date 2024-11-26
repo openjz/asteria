@@ -4,36 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>windows下调试dump文件 - 星</title><meta name="Description" content=""><meta property="og:title" content="windows下调试dump文件" />
-<meta property="og:description" content="开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows" />
+        <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试 - 星</title><meta name="Description" content=""><meta property="og:title" content="使用IFEO映像劫持&#43;windbg在进程运行过程中调试" />
+<meta property="og:description" content="修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/39.windows-dump-debug/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-12-16T11:13:49+08:00" />
-<meta property="article:modified_time" content="2023-12-19T10:49:37+08:00" />
+<meta property="og:url" content="http://blog.shiwj.top/54.windows_ifeo_windbg/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-23T09:11:34+08:00" />
+<meta property="article:modified_time" content="2024-07-23T09:11:34+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
-<meta name="twitter:title" content="windows下调试dump文件"/>
-<meta name="twitter:description" content="开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows"/>
+<meta name="twitter:title" content="使用IFEO映像劫持&#43;windbg在进程运行过程中调试"/>
+<meta name="twitter:description" content="修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/39.windows-dump-debug/" /><link rel="prev" href="http://blog.shiwj.top/38.bluetooth-tools/" /><link rel="next" href="http://blog.shiwj.top/54.windows_ifeo_windbg/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/54.windows_ifeo_windbg/" /><link rel="prev" href="http://blog.shiwj.top/39.windows-dump-debug/" /><link rel="next" href="http://blog.shiwj.top/40.bug-record/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "windows下调试dump文件",
+        "headline": "使用IFEO映像劫持+windbg在进程运行过程中调试",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/blog.shiwj.top\/39.windows-dump-debug\/"
+            "@id": "http:\/\/blog.shiwj.top\/54.windows_ifeo_windbg\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "windows, c\/c\u002b\u002b","wordcount":  154 ,
-        "url": "http:\/\/blog.shiwj.top\/39.windows-dump-debug\/","datePublished": "2023-12-16T11:13:49+08:00","dateModified": "2023-12-19T10:49:37+08:00","publisher": {
+                        }],"genre": "posts","keywords": "windows","wordcount":  351 ,
+        "url": "http:\/\/blog.shiwj.top\/54.windows_ifeo_windbg\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-07-23T09:11:34+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -78,10 +78,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">windows下调试dump文件</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">使用IFEO映像劫持&#43;windbg在进程运行过程中调试</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-16">2023-12-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;154 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;351 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -90,57 +90,38 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#开启dump">开启dump</a></li>
-    <li><a href="#调试dump文件">调试dump文件</a></li>
+    <li><a href="#修改注册表">修改注册表</a></li>
+    <li><a href="#调试">调试</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="开启dump">开启dump</h2>
-<p>执行以下bat脚本</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="p">@</span><span class="k">echo</span> off
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> 正在启用Dump...
-</span></span><span class="line"><span class="cl">reg add <span class="s2">&#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34;</span>
-</span></span><span class="line"><span class="cl">reg add <span class="s2">&#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34;</span> /v DumpFolder /t REG_EXPAND_SZ /d <span class="s2">&#34;C:\CrashDumps&#34;</span> /f
-</span></span><span class="line"><span class="cl">reg add <span class="s2">&#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34;</span> /v DumpType /t REG_DWORD /d 2 /f
-</span></span><span class="line"><span class="cl">reg add <span class="s2">&#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34;</span> /v DumpCount /t REG_DWORD /d 10 /f
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> Dump已经启用
-</span></span><span class="line"><span class="cl"><span class="k">pause</span>
-</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">echo</span> on
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>各注册表项的含义：</p>
-<ul>
-<li><code>DumpFolder</code>: dump文件的生成目录</li>
-<li><code>DumpType</code>: dump文件类型 0:custom 1:mini 2:full</li>
-<li><code>DumpCount</code>: 最多生成几个dump文件</li>
-</ul>
-<h2 id="调试dump文件">调试dump文件</h2>
-<ul>
-<li>windbg</li>
-<li>vs自带的调试器</li>
-</ul>
+            </div><div class="content" id="content"><h2 id="修改注册表">修改注册表</h2>
+<p>在以下路径创建一个子key，以被调试的进程名作为名字</p>
+<p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options</code></p>
+<p>例如:<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SmartEngineHost64.exe</code></p>
+<p>创建好后，在这个key下创建一个value，名字是debugger，值为windbg的路径</p>
+<h2 id="调试">调试</h2>
+<p>常用命令：
+搜索windows内核接口 x ker*!CreateProcess*
+设置断点：bp 内核接口的全名
+查看断点：bl
+清除所有断点：bc *
+清除某个断点：bc 1或bc 2等， 1和2是序号</p>
+<p>继续执行：g
+退出：q</p>
+<p>到断点处发生中断时：
+查看调用栈：kb
+查看参入的参数：方法是直接查看内存，比如x64架构下的参数通常存放在几个寄存器内，rcx  rdx，r8，r9等
+如果是字符串参数，可以用dc查看，比如 dc rcx
+如果字符串很长，可以给rcx加上偏移量：rcx+50，或者rcx后面带上地址 rcx 00000224`e2d110e0</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-12-19&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/302731c9e43c35aeb74fbb578689f85011a3dbc7" target="_blank" title="commit by shiwj(shiwj7@motorola.com) 302731c9e43c35aeb74fbb578689f85011a3dbc7: 新增笔记，windows下调式dump文件">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>302731c</a></span>
+                <span>Updated on 2024-07-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/39.windows-dump-debug/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/54.windows_ifeo_windbg/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -149,14 +130,14 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/windows/">windows</a>,&nbsp;<a href="/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/windows/">windows</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/38.bluetooth-tools/" class="prev" rel="prev" title="蓝牙调试工具"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>蓝牙调试工具</a>
-            <a href="/54.windows_ifeo_windbg/" class="next" rel="next" title="使用IFEO映像劫持&#43;windbg在进程运行过程中调试">使用IFEO映像劫持&#43;windbg在进程运行过程中调试<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/39.windows-dump-debug/" class="prev" rel="prev" title="windows下调试dump文件"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>windows下调试dump文件</a>
+            <a href="/40.bug-record/" class="next" rel="next" title="一些开发过程中遇到的奇怪问题">一些开发过程中遇到的奇怪问题<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

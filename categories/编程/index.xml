@@ -13,6 +13,14 @@
     <description><![CDATA[ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件]]></description>
 </item>
 <item>
+    <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试</title>
+    <link>http://blog.shiwj.top/54.windows_ifeo_windbg/</link>
+    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/54.windows_ifeo_windbg/</guid>
+    <description><![CDATA[修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic]]></description>
+</item>
+<item>
     <title>windows下调试dump文件</title>
     <link>http://blog.shiwj.top/39.windows-dump-debug/</link>
     <pubDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
     <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
-</item>
-<item>
-    <title>关于C&#43;&#43;前向声明</title>
-    <link>http://blog.shiwj.top/29.cpp-forward-declaration/</link>
-    <pubDate>Sun, 30 Oct 2022 15:01:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/29.cpp-forward-declaration/</guid>
-    <description><![CDATA[如果有两个类相互之间发生了引用，可能会产生一些问题。《C++ primer 第5版》中12.1.1节和12.1.6节给出的例子就出现了这种情况。在这两节中]]></description>
 </item>
 </channel>
 </rss>
