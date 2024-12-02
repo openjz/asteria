@@ -4,10 +4,10 @@
         <link>http://blog.shiwj.top/tags/windows/</link>
         <description>windows - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
     <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试</title>
     <link>http://blog.shiwj.top/54.windows_ifeo_windbg/</link>
-    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
+    <pubDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/54.windows_ifeo_windbg/</guid>
     <description><![CDATA[修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic]]></description>
