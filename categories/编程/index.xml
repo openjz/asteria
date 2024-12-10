@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>一些和windows开发相关的小知识</title>
+    <link>http://blog.shiwj.top/55.winodws_develop_knowledge/</link>
+    <pubDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/55.winodws_develop_knowledge/</guid>
+    <description><![CDATA[WinMain函数的参数 WinMain函数的参数hPrevInstance原本是为了获取程序的进程示例，可以用来判断程序是否有其他进程已经启]]></description>
+</item>
+<item>
     <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试</title>
     <link>http://blog.shiwj.top/54.windows_ifeo_windbg/</link>
     <pubDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/32.unity-webgl-deploy/</guid>
     <description><![CDATA[使用IIS作为web服务器。 IIS的全称是Internet Information Services，是windows自带的web服务器。 第一步，打包 File -&gt; Build Settings&hellip; -&gt; WebGL -&gt;]]></description>
-</item>
-<item>
-    <title>有栈协程和无栈协程</title>
-    <link>http://blog.shiwj.top/30.coroutine-stack/</link>
-    <pubDate>Tue, 01 Nov 2022 02:35:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
-    <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
 </item>
 </channel>
 </rss>

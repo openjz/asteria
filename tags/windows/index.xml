@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/windows/</link>
         <description>windows - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
+    <title>一些和windows开发相关的小知识</title>
+    <link>http://blog.shiwj.top/55.winodws_develop_knowledge/</link>
+    <pubDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/55.winodws_develop_knowledge/</guid>
+    <description><![CDATA[WinMain函数的参数 WinMain函数的参数hPrevInstance原本是为了获取程序的进程示例，可以用来判断程序是否有其他进程已经启]]></description>
+</item>
+<item>
     <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试</title>
     <link>http://blog.shiwj.top/54.windows_ifeo_windbg/</link>
     <pubDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</pubDate>

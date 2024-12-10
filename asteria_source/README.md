@@ -2,6 +2,10 @@
 
 This is my personal web site.
 
+## hugo
+
+hugo_bin目录下有一个hugo.exe
+
 ## hugo命令
 
 生成网站：`hugo`
