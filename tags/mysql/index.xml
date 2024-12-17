@@ -14,10 +14,10 @@
 </item>
 <item>
     <title>mysql入门笔记</title>
-    <link>http://blog.shiwj.top/mysql-crash-course/</link>
+    <link>http://blog.shiwj.top/11.z1.mysql-crash-course/</link>
     <pubDate>Fri, 10 Dec 2021 10:09:46 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/mysql-crash-course/</guid>
+    <guid>http://blog.shiwj.top/11.z1.mysql-crash-course/</guid>
     <description><![CDATA[参考《mysql必知必会》 一、基本概念 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包]]></description>
 </item>
 </channel>

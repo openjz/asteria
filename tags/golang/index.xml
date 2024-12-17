@@ -30,10 +30,10 @@
 </item>
 <item>
     <title>golang入门笔记</title>
-    <link>http://blog.shiwj.top/go-gopl/</link>
+    <link>http://blog.shiwj.top/11.z2.go-gopl/</link>
     <pubDate>Tue, 26 Apr 2022 11:18:48 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/go-gopl/</guid>
+    <guid>http://blog.shiwj.top/11.z2.go-gopl/</guid>
     <description><![CDATA[参考《Go 程序设计语言》 看本文前最好先看 google 的a tour of go 一、程序结构 go 程序使用驼峰式命名风格 零值，变量的初始值。数字是 0，字符串是&quot;&]]></description>
 </item>
 </channel>

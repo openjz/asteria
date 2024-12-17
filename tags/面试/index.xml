@@ -36,13 +36,5 @@
     <guid>http://blog.shiwj.top/16.interview-bagu-golang/</guid>
     <description><![CDATA[golang 部分内容参考《go 程序员面试笔试宝典》 go 有什么特点 特性 协程 静态编译，编译出的可执行文件体积小 有 runtime、垃圾回收、反射 指针 和其他语言]]></description>
 </item>
-<item>
-    <title>数据库事务</title>
-    <link>http://blog.shiwj.top/db-transaction/</link>
-    <pubDate>Wed, 20 Apr 2022 11:57:47 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/db-transaction/</guid>
-    <description><![CDATA[事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事务未提交的]]></description>
-</item>
 </channel>
 </rss>

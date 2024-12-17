@@ -13,19 +13,11 @@
     <description><![CDATA[group by&hellip;having 和 where 的区别 mysql 先对数据按照 where 子句过滤，然后在对返回的结果分组，最后对分组后的数据按照 having 子句过滤。 where 是对行过滤，而 having 是对分组过滤，所以可以在]]></description>
 </item>
 <item>
-    <title>数据库事务</title>
-    <link>http://blog.shiwj.top/db-transaction/</link>
-    <pubDate>Wed, 20 Apr 2022 11:57:47 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/db-transaction/</guid>
-    <description><![CDATA[事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚 事务的并发问题 脏读：当前事务可以读取到其他事务未提交的]]></description>
-</item>
-<item>
     <title>mysql入门笔记</title>
-    <link>http://blog.shiwj.top/mysql-crash-course/</link>
+    <link>http://blog.shiwj.top/11.z1.mysql-crash-course/</link>
     <pubDate>Fri, 10 Dec 2021 10:09:46 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/mysql-crash-course/</guid>
+    <guid>http://blog.shiwj.top/11.z1.mysql-crash-course/</guid>
     <description><![CDATA[参考《mysql必知必会》 一、基本概念 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包]]></description>
 </item>
 </channel>

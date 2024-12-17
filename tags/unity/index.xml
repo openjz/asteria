@@ -12,13 +12,5 @@
     <guid>http://blog.shiwj.top/32.unity-webgl-deploy/</guid>
     <description><![CDATA[使用IIS作为web服务器。 IIS的全称是Internet Information Services，是windows自带的web服务器。 第一步，打包 File -&gt; Build Settings&hellip; -&gt; WebGL -&gt;]]></description>
 </item>
-<item>
-    <title>Unity入门笔记</title>
-    <link>http://blog.shiwj.top/unity-notes/</link>
-    <pubDate>Sun, 26 Jun 2022 10:48:30 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/unity-notes/</guid>
-    <description><![CDATA[参考 unity manual unity-essentials 系列教程 编辑器操作 场景视图导航 pan（移动视图）：使用“手”工具，按住鼠标左键拖动视图 zoom（放缩）：使用鼠标滚轮或按住 alt 和鼠标]]></description>
-</item>
 </channel>
 </rss>

@@ -12,13 +12,5 @@
     <guid>http://blog.shiwj.top/15.remainder-and-modulo/</guid>
     <description><![CDATA[注：以下使用 a % b 表示取余和取模运算 如果a和b都是正数，取余和取模没区别 例如，对于2 % 7，取余和取模的结果都是2，对于9 % 7，取余和取模的结]]></description>
 </item>
-<item>
-    <title>Python 基础</title>
-    <link>http://blog.shiwj.top/python-basic/</link>
-    <pubDate>Fri, 08 Jul 2022 12:23:09 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/python-basic/</guid>
-    <description><![CDATA[格式化输入输出 参考https://docs.python.org/zh-cn/3/tutorial/inputoutput.html#for]]></description>
-</item>
 </channel>
 </rss>
