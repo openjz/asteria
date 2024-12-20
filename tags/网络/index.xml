@@ -21,6 +21,14 @@
     <description><![CDATA[IP地址的发展 最开始将IP地址分为ABCDE五类地址，后来为了不浪费IP地址资源提出了划分子网，发明了子网掩码，再后来又（在可变长子网掩码V]]></description>
 </item>
 <item>
+    <title>数字签名, 数字证书以及加密传输</title>
+    <link>http://blog.shiwj.top/12.digital-signatures-certificates/</link>
+    <pubDate>Sat, 18 Jun 2022 14:28:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/12.digital-signatures-certificates/</guid>
+    <description><![CDATA[预备概念 对称加密：加密和解密使用同一个密钥 非对称加密：又称公钥加密，加密和解密使用不同的密钥，分别称为公钥和私钥，公钥公开，私钥保密，使用公]]></description>
+</item>
+<item>
     <title>nginx入门教程</title>
     <link>http://blog.shiwj.top/48.nginx-getting-started-tutorial/</link>
     <pubDate>Sun, 04 Oct 2020 03:29:00 &#43;0800</pubDate>

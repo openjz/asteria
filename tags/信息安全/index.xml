@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>信息安全 - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
+        <description>信息安全 - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 18 Jun 2022 14:28:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" rel="self" type="application/rss+xml" /><item>
+    <title>数字签名, 数字证书以及加密传输</title>
+    <link>http://blog.shiwj.top/12.digital-signatures-certificates/</link>
+    <pubDate>Sat, 18 Jun 2022 14:28:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/12.digital-signatures-certificates/</guid>
+    <description><![CDATA[预备概念 对称加密：加密和解密使用同一个密钥 非对称加密：又称公钥加密，加密和解密使用不同的密钥，分别称为公钥和私钥，公钥公开，私钥保密，使用公]]></description>
+</item>
+</channel>
+</rss>
