@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>char和wchar_t在windows上如何正确使用</title>
+    <link>http://blog.shiwj.top/56.char-wchar-on-windows/</link>
+    <pubDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/56.char-wchar-on-windows/</guid>
+    <description><![CDATA[一、预备知识 unicode unicode是一套字符编码标准，它为世界上几乎所有的字符都分别分配了一个唯一的编码，但unicode并没有规定这些编码在计算]]></description>
+</item>
+<item>
     <title>一些和windows开发相关的小知识</title>
     <link>http://blog.shiwj.top/55.winodws_develop_knowledge/</link>
     <pubDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/33.rendering-pipeline/</guid>
     <description><![CDATA[什么是渲染 广义上的渲染过程，既包括CPU参与部分，也包括GPU参与部分。通过图形API来调用GPU渲染管线， 广义的渲染分为六个步骤 应用阶段 顶]]></description>
-</item>
-<item>
-    <title>如何部署unity生成的WebGL包</title>
-    <link>http://blog.shiwj.top/32.unity-webgl-deploy/</link>
-    <pubDate>Thu, 08 Dec 2022 12:29:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/32.unity-webgl-deploy/</guid>
-    <description><![CDATA[使用IIS作为web服务器。 IIS的全称是Internet Information Services，是windows自带的web服务器。 第一步，打包 File -&gt; Build Settings&hellip; -&gt; WebGL -&gt;]]></description>
 </item>
 </channel>
 </rss>

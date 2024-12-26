@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "问题记录","wordcount":  1863 ,
+                        }],"genre": "posts","keywords": "问题记录","wordcount":  2049 ,
         "url": "http:\/\/blog.shiwj.top\/40.bug-record\/","datePublished": "2024-07-23T09:11:34+08:00","dateModified": "2024-12-17T15:02:27+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">一些开发过程中遇到的奇怪问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1863 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2049 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -95,6 +95,7 @@
     <li><a href="#进程被多次拉起">进程被多次拉起</a></li>
     <li><a href="#使用ffmpeg的gpu编解码器处理视频时卡死">使用ffmpeg的GPU编解码器处理视频时卡死</a></li>
     <li><a href="#使用ffmpeg叠加两个视频时无法正确识别前景视频的透明通道">使用ffmpeg叠加两个视频时，无法正确识别前景视频的透明通道</a></li>
+    <li><a href="#读取到的文件名总是乱码">读取到的文件名总是乱码</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="ssl-socket读数据总是会卡住">ssl socket读数据总是会卡住</h2>
@@ -118,6 +119,9 @@
 <h2 id="使用ffmpeg叠加两个视频时无法正确识别前景视频的透明通道">使用ffmpeg叠加两个视频时，无法正确识别前景视频的透明通道</h2>
 <p>原因是前景视频的编码方式是vp9编码（webm封装格式），而ffmpeg无法自动检测出视频的vp9编码，需要手动指定libvpx-vp9解码器</p>
 <p>查stackoverflow查到的</p>
+<h2 id="读取到的文件名总是乱码">读取到的文件名总是乱码</h2>
+<p>原因是文件名中包含中文字符，而系统locale设置的是美国，保存文件名使用的是char类型字符串，char类型字符串默认使用的是ANSI编码，而美国对应的ANSI编码字符集是不支持中文的，所以char类型字符串总是乱码。</p>
+<p>解决方法是使用宽字符版本的api获取文件名，宽字符版本的api使用的是utf-16编码，无论locale是什么，都可以正确识别中文</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
