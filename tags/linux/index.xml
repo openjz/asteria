@@ -29,6 +29,14 @@
     <description><![CDATA[ssh长连接 在~/.ssh/config中添加如下配置（该配置的含义是和同一个目的主机的连接使用长连接，避免多次输入密码） 1 2 3 4 5 Host * ControlMaster auto]]></description>
 </item>
 <item>
+    <title>linux core dump配置</title>
+    <link>http://blog.shiwj.top/9.linux-core-config/</link>
+    <pubDate>Fri, 05 Nov 2021 10:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/9.linux-core-config/</guid>
+    <description><![CDATA[linux下core dump配置命令 1. 查看core dump状态 ulimit -c 若结果为0，则表示关闭了core dump输出，不会生成core dump文件]]></description>
+</item>
+<item>
     <title>《linux就该这么学》笔记</title>
     <link>http://blog.shiwj.top/42.linux-jiu-gai-zhe-me-xue-note/</link>
     <pubDate>Sun, 04 Oct 2020 00:00:00 &#43;0800</pubDate>
