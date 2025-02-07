@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>《effective C&#43;&#43;》阅读笔记</title>
+    <link>http://blog.shiwj.top/57.effective-cpp/</link>
+    <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/57.effective-cpp/</guid>
+    <description><![CDATA[第二条：少用#define，用const, enum, inline代替#define #define定义的名字会被预处理器替换为它的值，这回导致定位问题]]></description>
+</item>
+<item>
     <title>char和wchar_t在windows上如何正确使用</title>
     <link>http://blog.shiwj.top/56.char-wchar-on-windows/</link>
     <pubDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/25.cpp-dup-symbols/</guid>
     <description><![CDATA[在开发比较大的项目时，有时候会出现多动态库之间定义了重复名字的情况，或者动态库和主程序之间定义了重复名字的情况。 在gcc上验证 编译器版本是g]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中的static</title>
-    <link>http://blog.shiwj.top/24.cpp-static/</link>
-    <pubDate>Fri, 28 Oct 2022 12:52:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/24.cpp-static/</guid>
-    <description><![CDATA[static static 变量的生命周期从初始化起一直持续到程序执行结束 static 变量存放在数据区，分为已初始化的全局变量区（data 段）和未初始化的全局变量区（bss 段]]></description>
 </item>
 </channel>
 </rss>

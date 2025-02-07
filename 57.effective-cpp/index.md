@@ -1,11 +1,5 @@
----
-title: "《effective C++》阅读笔记"
-date: 2025-02-08T16:03:06+08:00
-draft: false
+# 《effective C++》阅读笔记
 
-tags: ["c/c++"]
-categories: ["编程"]
----
 
 ## 第二条：少用#define，用const, enum, inline代替#define
 
@@ -73,5 +67,6 @@ const对象只能调用const成员函数
 我们在编写const函数时，最好是基于logical constness的原则，因为这更符合人类的思维
 
 当同一个成员函数要同时定义const和非const两个版本时，为了避免代码重复，最好让非const版去调用const版，而不要反过来，因为那会打破const函数不修改任何东西的承诺（而且还需要引入类似`const_cast`这样的特性，这不是个好兆头）
+
 
 

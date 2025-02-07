@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>《effective C&#43;&#43;》阅读笔记</title>
+    <link>http://blog.shiwj.top/57.effective-cpp/</link>
+    <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/57.effective-cpp/</guid>
+    <description><![CDATA[第二条：少用#define，用const, enum, inline代替#define #define定义的名字会被预处理器替换为它的值，这回导致定位问题]]></description>
+</item>
+<item>
     <title>char和wchar_t在windows上如何正确使用</title>
     <link>http://blog.shiwj.top/56.char-wchar-on-windows/</link>
     <pubDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/34.bluetooth-specification-introduction/</guid>
     <description><![CDATA[蓝牙技术 蓝牙是一种无线通讯技术，蓝牙到目前为止一共发展了多代规范。从蓝牙4.0开始提出了BLE技术（Bluetooth Low Energy，蓝牙低]]></description>
-</item>
-<item>
-    <title>渲染管线介绍</title>
-    <link>http://blog.shiwj.top/33.rendering-pipeline/</link>
-    <pubDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/33.rendering-pipeline/</guid>
-    <description><![CDATA[什么是渲染 广义上的渲染过程，既包括CPU参与部分，也包括GPU参与部分。通过图形API来调用GPU渲染管线， 广义的渲染分为六个步骤 应用阶段 顶]]></description>
 </item>
 </channel>
 </rss>
