@@ -94,5 +94,57 @@ const对象只能调用const成员函数
 
 原因也很好理解，构造时，基类成员先于派生类成员构造，如果基类去调用派生类的虚函数，那就有可能出问题，反过来，析构时也是同样的道理。
 
+## 第九、十条：拷贝赋值operator=的正确写法
+
+写法一：
+
+```c++
+class Widget
+{
+...
+private:
+	Bitmap* pb;
+}
+
+//1. 返回Widget引用是标准写法，方便链式调用
+Widget & Widget::operator=(const Widget& rhs)
+{
+	//2. 自赋值判断
+	if(this == &rhs)
+	{
+		return *this;
+	}
+
+	//3. 先把原来的内存保存下载，等新内存分配成功了，再释放原来的内存
+	// 如果先释放原来的内存，一旦新内存分配失败，原来的对象也没有了
+	// 这样可以保护原对象，并且天然具有自赋值判断的功能
+	Bitmap* pOrig = pb;
+	pb = new Bitmap(*rhs.pb);
+	delete pOrig;
+	return *this;
+}
+```
+
+为什么要做自赋值判断，一是因为赋值操作可能要把原来的内存释放掉，重新申请内存后再赋值，如果先去释放内存，自赋值时就会将自身破坏掉，为了防止这种情况，需要进行自赋值判断，二是出于执行效率考虑，也应该进行自赋值判断
+
+写法二：
+
+```c++
+class Widget
+{
+...
+private:
+	Bitmap* pb;
+}
+
+Widget & Widget::operator=(const Widget& rhs)
+{
+	Widget temp(rhs);
+	swap(temp);
+	return *this;
+}
+```
+
+这种写法和上面的效果是一样的，都会产生一次对象构造，而且具备自赋值检查功能
 
 
