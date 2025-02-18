@@ -147,4 +147,15 @@ Widget & Widget::operator=(const Widget& rhs)
 
 这种写法和上面的效果是一样的，都会产生一次对象构造，而且具备自赋值检查功能
 
+## 第十三条：RAII
+
+RAII(Resource Acquisition Is Initialization)
+
+1. 获取到资源后立即放入对象管理
+2. 靠对象析构释放资源
+
+常见的标准库RAII类：`std::shared_ptr`，`std::lock_guard`
+
+## 第二十条：参数类型尽量用const T& 代替 T
+
 
