@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/57.effective-cpp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-02-07T16:03:06+08:00" />
-<meta property="article:modified_time" content="2025-02-18T00:02:17+08:00" />
+<meta property="article:modified_time" content="2025-02-18T23:28:19+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2604 ,
-        "url": "http:\/\/blog.shiwj.top\/57.effective-cpp\/","datePublished": "2025-02-07T16:03:06+08:00","dateModified": "2025-02-18T00:02:17+08:00","publisher": {
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2636 ,
+        "url": "http:\/\/blog.shiwj.top\/57.effective-cpp\/","datePublished": "2025-02-07T16:03:06+08:00","dateModified": "2025-02-18T23:28:19+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《effective C&#43;&#43;》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-07">2025-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2604 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-07">2025-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2636 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -104,6 +104,7 @@
     <li><a href="#第九十条拷贝赋值operator的正确写法">第九、十条：拷贝赋值operator=的正确写法</a></li>
     <li><a href="#第十三条raii">第十三条：RAII</a></li>
     <li><a href="#第二十条参数类型尽量用const-t-代替-t">第二十条：参数类型尽量用const T&amp; 代替 T</a></li>
+    <li><a href="#第二十五条定义一个swap函数">第二十五条：定义一个swap函数</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="第二条少用define用const-enum-inline代替define">第二条：少用#define，用const, enum, inline代替#define</h2>
@@ -298,12 +299,14 @@
 </ol>
 <p>常见的标准库RAII类：<code>std::shared_ptr</code>，<code>std::lock_guard</code></p>
 <h2 id="第二十条参数类型尽量用const-t-代替-t">第二十条：参数类型尽量用const T&amp; 代替 T</h2>
+<h2 id="第二十五条定义一个swap函数">第二十五条：定义一个swap函数</h2>
+<p>书里罗列了好几条复杂的原则，略过</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-02-18&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/d1a3368045738117e17ffc7bf29b4c9899297256" target="_blank" title="commit by shiwj(swj6086085@163.com) d1a3368045738117e17ffc7bf29b4c9899297256: update post 57">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>d1a3368</a></span>
+                <span>Updated on 2025-02-18&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/e8cab0e32808fb380e55c3d02db7da59ca81ed08" target="_blank" title="commit by shiwj(swj6086085@163.com) e8cab0e32808fb380e55c3d02db7da59ca81ed08: update post 57">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e8cab0e</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

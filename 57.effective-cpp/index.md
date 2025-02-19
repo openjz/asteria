@@ -158,4 +158,8 @@ RAII(Resource Acquisition Is Initialization)
 
 ## 第二十条：参数类型尽量用const T& 代替 T
 
+## 第二十五条：定义一个swap函数
+
+书里罗列了好几条复杂的原则，略过
+
 
