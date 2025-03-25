@@ -196,3 +196,98 @@ copy and swap：修改对象内数据时，先修改它的副本，这样即使�
 ## 第三十二条：继承是一种“is-a”关系
 
 另外两种关系是“has-a” 和 “is-implemented-in-terms-of”
+
+## 第三十三条：不要遮掩继承来的名字
+
+派生类中的名字会把基类中相同的名字覆盖掉，有点类似于局部作用域把全局作用域的名字覆盖掉
+
+有问题的写法：
+
+```cpp
+class Base
+{
+public:
+	virtual void mf1() = 0;
+	virtual void mf1(int) {}
+	virtual void mf2() {}
+	void mf3() {}
+	void mf3(double) {}
+
+private:
+	int x = 0;
+};
+
+class Derived:public Base
+{
+public:
+	virtual void mf1() {}
+	void mf3() {}
+	void mf4() {}
+private:
+};
+
+int main()
+{
+	Derived d;
+	d.mf1();	//调用 Derived::mf1
+	d.mf1(2);	//错误：编译器提示找不到这个函数
+	d.mf2();	//调用 Base::mf2
+	d.mf3();	//调用 Derived::mf3
+	d.mf3(2);	//错误：编译器提示找不到这个函数
+	return 0;
+}
+```
+
+正确写法：
+
+```cpp
+class Base
+{
+public:
+	virtual void mf1() = 0;
+	virtual void mf1(int) {}
+	virtual void mf2() {}
+	void mf3() {}
+	void mf3(double) {}
+
+private:
+	int x = 0;
+};
+
+class Derived:public Base
+{
+public:
+	using Base::mf1;	//使基类的所有mf1可见
+	using Base::mf3;	//使基类的所有mf3可见
+
+	virtual void mf1() {}
+	void mf3() {}
+	void mf4() {}
+private:
+};
+
+int main()
+{
+	Derived d;
+	d.mf1();
+	d.mf1(2);
+	d.mf2();
+	d.mf3();
+	d.mf3(2);
+	return 0;
+}
+```
+
+或者
+
+```cpp
+//...
+class Derived:public Base
+{
+public:
+	//...
+	virtual void mf1() {
+		Base::mf1();	//显示调用基类函数
+	}
+};
+```
