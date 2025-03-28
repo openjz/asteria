@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>编译obs</title>
+    <link>http://blog.shiwj.top/58.build_obs/</link>
+    <pubDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/58.build_obs/</guid>
+    <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
+</item>
+<item>
     <title>《effective C&#43;&#43; 第三版》阅读笔记</title>
     <link>http://blog.shiwj.top/57.effective-cpp/</link>
     <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/35.windows-devices-manage/</guid>
     <description><![CDATA[蓝牙 win32 api win32 蓝牙 api 介绍，https://learn.microsoft.com/en-us/windows/win32/bluetooth/b]]></description>
-</item>
-<item>
-    <title>蓝牙相关知识</title>
-    <link>http://blog.shiwj.top/34.bluetooth-specification-introduction/</link>
-    <pubDate>Sun, 29 Jan 2023 05:27:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/34.bluetooth-specification-introduction/</guid>
-    <description><![CDATA[蓝牙技术 蓝牙是一种无线通讯技术，蓝牙到目前为止一共发展了多代规范。从蓝牙4.0开始提出了BLE技术（Bluetooth Low Energy，蓝牙低]]></description>
 </item>
 </channel>
 </rss>

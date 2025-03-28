@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>音视频 - Tag - 星</title>
+        <link>http://blog.shiwj.top/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/</link>
+        <description>音视频 - Tag - 星</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="self" type="application/rss+xml" /><item>
+    <title>编译obs</title>
+    <link>http://blog.shiwj.top/58.build_obs/</link>
+    <pubDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/58.build_obs/</guid>
+    <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
+</item>
+</channel>
+</rss>

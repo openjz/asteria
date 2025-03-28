@@ -1,0 +1,20 @@
+# 编译obs
+
+
+## 参考
+
+[https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows](https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows)
+
+## windows下编译步骤
+
+1. 安装cmake，git，vs2022（下载必要的组件）
+1. `git clone --recursive https://github.com/obsproject/obs-studio.git`  
+这一步有一些git submodule可能会下载失败，手动下载到.gitmodules文件中的指定目录
+2. Set current directory to obs-studio
+3. Check available CMake presets: `cmake --list-presets`
+4. Select the windows-x64 preset: `cmake --preset windows-x64`  
+这一步中会下载很多pre-built zip，如果下载失败，手动下载后放到.deps目录（怎么知道是这个目录的？下载失败后我使用everything搜这个zip，发现在.deps目录下有一个0kb的zip文件，判断出.deps是临时下载目录），然后重新执行`cmake --preset windows-x64`
+5. 打开vs解决方案 "build_x64\obs-studio.sln"，编译  
+编译过程中，aja和aja-output-ui这两个项目编译失败，在解决方案配置设置默认不生成这两个项目
+
+
