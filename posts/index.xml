@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 30 Mar 2025 15:00:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>ffmpeg命令行例子</title>
+    <link>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</link>
+    <pubDate>Sun, 30 Mar 2025 15:00:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</guid>
+    <description><![CDATA[ffprobe 查看音视频流信息，ffprobe -show_streams &quot;xxx.mp4&quot; 查看视频比特率，ffprobe -v error -select_streams v:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 &quot;xxx.mp4&quot; 查看帧类型，.\ffprobe.exe -v error -show_frames .\normal.mp4 | findstr pict_type &gt;]]></description>
+</item>
+<item>
     <title>编译obs</title>
     <link>http://blog.shiwj.top/58.build_obs/</link>
     <pubDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/37.condition-variable/</guid>
     <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
-</item>
-<item>
-    <title>windows设备管理</title>
-    <link>http://blog.shiwj.top/35.windows-devices-manage/</link>
-    <pubDate>Sun, 29 Jan 2023 07:33:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/35.windows-devices-manage/</guid>
-    <description><![CDATA[蓝牙 win32 api win32 蓝牙 api 介绍，https://learn.microsoft.com/en-us/windows/win32/bluetooth/b]]></description>
 </item>
 </channel>
 </rss>
