@@ -13,11 +13,17 @@
 
 ## ffmpeg查询参数支持
 
-查看编码器支持的参数，`ffmpeg -h encoder=h264`，例如h264恒定质量参数, libx264:`-crf`, h264_nvenc:`-cq`
+查看编码器支持的参数，`ffmpeg -h encoder=h264`
 
 查看支持的编解码器， `ffmpeg -codecs`，`ffmpeg -encoders`，`ffmpeg -decoders`
 
 查看支持的硬件加速方案，`ffmpeg -hwaccels`
+
+## h264质量恒定参数
+
+- libx264: `-crf`
+- h264_nvenc: `-cq`
+- h264_qsv: `-global_quality`
 
 ## ffmpeg 命令示例
 
