@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  3877 ,
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  4114 ,
         "url": "http:\/\/blog.shiwj.top\/57.effective-cpp\/","datePublished": "2025-02-07T16:03:06+08:00","dateModified": "2025-03-27T23:45:24+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《effective C&#43;&#43; 第三版》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-07">2025-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3877 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-07">2025-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4114 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -112,6 +112,8 @@
     <li><a href="#第三十四条接口继承和实现继承">第三十四条：接口继承和实现继承</a></li>
     <li><a href="#第三十六条不要override基类的non-virtual函数">第三十六条：不要override基类的non-virtual函数</a></li>
     <li><a href="#第三十七条虚函数是动态绑定的而虚函数的默认参数却不是">第三十七条：虚函数是动态绑定的，而虚函数的默认参数却不是</a></li>
+    <li><a href="#第三十八条组合composition是一种has-a关系">第三十八条：组合（composition）是一种“has-a”关系</a></li>
+    <li><a href="#第四十条多重继承的问题">第四十条：多重继承的问题</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="第二条少用define用const-enum-inline代替define">第二条：少用#define，用const, enum, inline代替#define</h2>
@@ -519,6 +521,16 @@
 <p>当然这么做在语法上是行得通的</p>
 <h2 id="第三十七条虚函数是动态绑定的而虚函数的默认参数却不是">第三十七条：虚函数是动态绑定的，而虚函数的默认参数却不是</h2>
 <p>也就是说，如果基类的虚函数声明了默认参数，即使子类的虚函数声明了不同的默认参数，从基类的指针调用虚函数时，使用的还是基类声明的默认参数</p>
+<h2 id="第三十八条组合composition是一种has-a关系">第三十八条：组合（composition）是一种“has-a”关系</h2>
+<p>参考第三十二条</p>
+<h2 id="第四十条多重继承的问题">第四十条：多重继承的问题</h2>
+<p>尽量不要使用多重继承</p>
+<p>使用多重继承时，你的类继承关系可能会形成一个菱形结构，例如，类B,C都继承了类A，类D多重继承自类B,C，这会导致两个问题：</p>
+<ol>
+<li>从类D调用类A中的函数时会产生歧义，编译器不知道该调用从哪个分支继承过来的函数，解决办法是明确指定函数的类名</li>
+<li>类A的实例会存在两份，解决办法是使用虚继承，而虚继承的性能较差，并且虚基类的初始化规则也很复杂</li>
+</ol>
+<p>所以尽量不要使用多重继承</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
