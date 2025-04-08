@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 30 Mar 2025 15:00:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 08 Apr 2025 08:30:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>vscode continue AI插件配置</title>
+    <link>http://blog.shiwj.top/60.vscode-continue-config/</link>
+    <pubDate>Tue, 08 Apr 2025 08:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/60.vscode-continue-config/</guid>
+    <description><![CDATA[deepseek 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 name: Local Assistant version: 1.0.0 schema: v1 models: - name: DeepSeek Chat provider: deepseek apiBase: https://api.deepseek.com/beta model: deepseek-chat apiKey: sk-f6001c81996a4fdeb1a660d14f7ef9de roles: - chat - edit - apply]]></description>
+</item>
+<item>
     <title>ffmpeg命令行例子</title>
     <link>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</link>
     <pubDate>Sun, 30 Mar 2025 15:00:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/38.bluetooth-tools/</guid>
     <description><![CDATA[参考： https://learn.microsoft.com/zh-cn/windows-hardware/drivers/bluetooth/testing-btp-setup-package?source=recommendations 下载微软BTP软件包 禁用 BitLocker 禁用安全启动（先禁用bitlocker，再禁用安全启动，不然启动的时候会要求你输入bitlocker恢复密]]></description>
-</item>
-<item>
-    <title>条件变量</title>
-    <link>http://blog.shiwj.top/37.condition-variable/</link>
-    <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/37.condition-variable/</guid>
-    <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
 </item>
 </channel>
 </rss>

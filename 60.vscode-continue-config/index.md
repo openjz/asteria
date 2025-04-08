@@ -1,0 +1,50 @@
+# vscode continue AI插件配置
+
+
+## deepseek
+
+```yaml
+name: Local Assistant
+version: 1.0.0
+schema: v1
+models:
+  - name: DeepSeek Chat
+    provider: deepseek
+    apiBase: https://api.deepseek.com/beta
+    model: deepseek-chat
+    apiKey: sk-f6001c81996a4fdeb1a660d14f7ef9de
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: DeepSeek Chat Reasoner
+    provider: deepseek
+    apiBase: https://api.deepseek.com/beta
+    model: deepseek-reasoner
+    apiKey: sk-f6001c81996a4fdeb1a660d14f7ef9de
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: DeepSeek Coder
+    provider: deepseek
+    model: deepseek-coder
+    apiKey: sk-f6001c81996a4fdeb1a660d14f7ef9de
+    roles:
+      - autocomplete
+defaultCompletionOptions:
+  maxTokens: 256
+  temperature: 0
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
+  - provider: currentFile
+  - provider: open
+  - provider: search
+
+```
