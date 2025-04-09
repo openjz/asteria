@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 08 Apr 2025 08:30:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 09 Apr 2025 06:54:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Scientific Toolworks Understand 7.0.x 破解机使用方法</title>
+    <link>http://blog.shiwj.top/61.understand-scitools-keygen/</link>
+    <pubDate>Wed, 09 Apr 2025 06:54:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/61.understand-scitools-keygen/</guid>
+    <description><![CDATA[安装understand 阻止understand访问网络 给understand加两个hosts规则 1 2 0.0.0.0 licensing.scitools.com 0.0.0.0 stats.scitools.com 启动understand，创建]]></description>
+</item>
+<item>
     <title>vscode continue AI插件配置</title>
     <link>http://blog.shiwj.top/60.vscode-continue-config/</link>
     <pubDate>Tue, 08 Apr 2025 08:30:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/39.windows-dump-debug/</guid>
     <description><![CDATA[开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows]]></description>
-</item>
-<item>
-    <title>蓝牙调试工具</title>
-    <link>http://blog.shiwj.top/38.bluetooth-tools/</link>
-    <pubDate>Wed, 08 Nov 2023 02:17:14 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/38.bluetooth-tools/</guid>
-    <description><![CDATA[参考： https://learn.microsoft.com/zh-cn/windows-hardware/drivers/bluetooth/testing-btp-setup-package?source=recommendations 下载微软BTP软件包 禁用 BitLocker 禁用安全启动（先禁用bitlocker，再禁用安全启动，不然启动的时候会要求你输入bitlocker恢复密]]></description>
 </item>
 </channel>
 </rss>
