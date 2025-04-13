@@ -1,4 +1,4 @@
-# 《effective C++ 第三版》阅读笔记
+# 《Effective C++ 第三版》阅读笔记
 
 
 ## 第二条：少用#define，用const, enum, inline代替#define

@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 09 Apr 2025 06:54:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>《Effective Modern C&#43;&#43;》阅读笔记</title>
+    <link>http://blog.shiwj.top/62.effective-modern-cpp/</link>
+    <pubDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/62.effective-modern-cpp/</guid>
+    <description><![CDATA[条款一：理解模板类型推导 c++模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType]]></description>
+</item>
+<item>
     <title>Scientific Toolworks Understand 7.0.x 破解机使用方法</title>
     <link>http://blog.shiwj.top/61.understand-scitools-keygen/</link>
     <pubDate>Wed, 09 Apr 2025 06:54:00 &#43;0800</pubDate>
@@ -37,7 +45,7 @@
     <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
 </item>
 <item>
-    <title>《effective C&#43;&#43; 第三版》阅读笔记</title>
+    <title>《Effective C&#43;&#43; 第三版》阅读笔记</title>
     <link>http://blog.shiwj.top/57.effective-cpp/</link>
     <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
     <author>shiwj</author>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/40.bug-record/</guid>
     <description><![CDATA[ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件]]></description>
-</item>
-<item>
-    <title>windows下调试dump文件</title>
-    <link>http://blog.shiwj.top/39.windows-dump-debug/</link>
-    <pubDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/39.windows-dump-debug/</guid>
-    <description><![CDATA[开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows]]></description>
 </item>
 </channel>
 </rss>

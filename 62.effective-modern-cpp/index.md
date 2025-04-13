@@ -1,0 +1,140 @@
+# 《Effective Modern C++》阅读笔记
+
+
+## 条款一：理解模板类型推导
+
+c++模板类型推导经常用在模板函数类型推导，和auto类型推导
+
+函数模板一般是以下形式
+
+```cpp
+template<typename T> 
+void f(ParamType param); 
+```
+
+ParamType和T的区别是ParamType会包含一些限定词，例如const，引用符&等
+
+T的推导结果要分三种情况讨论：
+
+### 1.ParamType是指针或引用，但不是万能引用
+
+这种情况下，T中会包含ParamType中没有的限定词，例如
+
+```cpp
+template<typename T>
+void f(const T& param);         //param现在是reference-to-const
+
+int x=27;                       //x是int
+const int cx=x;                 //cx是const int
+const int& rx=x;                //rx是指向作为const int的x的引用
+
+f(x);                           //T是int，param的类型是const int&
+f(cx);                          //T是int，param的类型是const int&
+f(rx);                          //T是int，param的类型是const int&
+```
+
+### 2.ParamType是万能引用
+
+什么是万能引用？右值引用入参+模板类型推导就是万能引用，例如：
+
+```cpp
+template<typename T> 
+void f(T && param);
+```
+
+此时模板类型推导的规则如下所示
+
+```cpp
+template<typename T>
+void f(T&& param);              //param现在是一个万能引用类型
+        
+int x=27;                       //如之前一样
+const int cx=x;                 //如之前一样
+const int & rx=cx;              //如之前一样
+
+f(x);                           //x是左值，所以T是int&，
+                                //param类型也是int&
+
+f(cx);                          //cx是左值，所以T是const int&，
+                                //param类型也是const int&
+
+f(rx);                          //rx是左值，所以T是const int&，
+                                //param类型也是const int&
+
+f(27);                          //27是右值，所以T是int，
+                                //param类型就是int&&
+```
+
+这也是为什么这种形式的声明叫做万能引用，当函数入参是右值时，param的类型是右值引用，当函数入参是左值时，param的类型就是左值引用
+
+### 3.ParamType既非引用也非指针
+
+这种情况也就是按值传递参数，类型推导时会忽略传入参数的引用符号&、const和volatile，如果传入参数是个指针，会忽略顶层const，但不会忽略底层const
+
+```cpp
+template<typename T>
+void f(T param);                //以传值的方式处理param
+
+int x=27;                       //如之前一样
+const int cx=x;                 //如之前一样
+const int & rx=cx;              //如之前一样
+
+f(x);                           //T和param的类型都是int
+f(cx);                          //T和param的类型都是int
+f(rx);                          //T和param的类型都是int
+```
+
+为什么要忽略const，因为c++认为，既然是按值传递，传入参数不能修改不意味着副本不能修改
+
+### 数组实参推导
+
+```cpp
+const char name[] = "J. P. Briggs";     //name的类型是const char[13]
+
+template<typename T>
+void f(T param);                        //传值形参的模板
+
+f(name);                                //T被推导为const char*
+```
+
+```cpp
+const char name[] = "J. P. Briggs";     //name的类型是const char[13]
+
+template<typename T>
+void f(T &param);                        //传值形参的模板
+
+f(name);                                //T被推导为const char (&)[13]
+```
+
+当模板函数的参数是按值传递时，数组入参会退化为指针，当模板函数的参数是按引用传递时，数组入参会按数组的引用传递
+
+**这一特性可以用来实现一个利用模板获取数组大小的功能**
+
+```cpp
+template<typename T, std::size_t N>
+constexpr std::size_t arraySize(T (&)[N]) noexcept
+{                                                       
+    return N;
+}
+```
+
+## 函数实参推导
+
+```cpp
+void someFunc(int, double);         //someFunc是一个函数，
+                                    //类型是void(int, double)
+
+template<typename T>
+void f1(T param);                   //传值给f1
+
+template<typename T>
+void f2(T & param);                 //传引用给f2
+
+f1(someFunc);                       //param被推导为指向函数的指针，
+                                    //类型是void(*)(int, double)
+f2(someFunc);                       //param被推导为指向函数的引用，
+                                    //类型是void(&)(int, double)
+
+```
+
+和数组实参类型推导类似，函数实参的推导取决于模板形参的类型，模板形参为按值传递时，函数类型会退化为函数指针吗，模板形参为按引用传递时，函数入参会按照函数引用传递
