@@ -35,7 +35,7 @@ f(rx);                          //T是int，param的类型是const int&
 
 ### 2.ParamType是万能引用
 
-什么是万能引用？右值引用入参+模板类型推导就是万能引用，例如：
+什么是万能引用？右值引用形参+模板类型推导就是万能引用，例如：
 
 ```cpp
 template<typename T> 
