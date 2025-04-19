@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E6%95%B0%E5%AD%A6/</link>
         <description>数学 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 16 Nov 2022 09:12:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 19 Apr 2025 07:54:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+    <title>理解仿射变换</title>
+    <link>http://blog.shiwj.top/63.affine-transformation/</link>
+    <pubDate>Sat, 19 Apr 2025 07:54:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/63.affine-transformation/</guid>
+    <description><![CDATA[参考 如何通俗地讲解「仿射变换」？ - 马同学的回答 - 知乎 前言 最近看了一些unity shader相关的教程，发现unity中的变换矩阵全部都用的是]]></description>
+</item>
+<item>
     <title>线性代数的几何意义</title>
     <link>http://blog.shiwj.top/31.linear-algebra-3b1b/</link>
     <pubDate>Wed, 16 Nov 2022 09:12:00 &#43;0800</pubDate>

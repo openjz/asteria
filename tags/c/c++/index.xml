@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>理解仿射变换</title>
+    <link>http://blog.shiwj.top/63.affine-transformation/</link>
+    <pubDate>Sat, 19 Apr 2025 07:54:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/63.affine-transformation/</guid>
+    <description><![CDATA[参考 如何通俗地讲解「仿射变换」？ - 马同学的回答 - 知乎 前言 最近看了一些unity shader相关的教程，发现unity中的变换矩阵全部都用的是]]></description>
+</item>
+<item>
     <title>《Effective Modern C&#43;&#43;》阅读笔记</title>
     <link>http://blog.shiwj.top/62.effective-modern-cpp/</link>
     <pubDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/28.cpp-inline/</guid>
     <description><![CDATA[inline，内联，早期inline关键字是给编译器的内联建议，编译器会视情况将函数在调用处展开。 但是现在没有编译器会听从用户的建议。 inl]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;中的const</title>
-    <link>http://blog.shiwj.top/27.cpp-const/</link>
-    <pubDate>Sat, 29 Oct 2022 10:16:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/27.cpp-const/</guid>
-    <description><![CDATA[const 引用参数 函数的 const 引用参数有两个作用 对调用者承诺不会修改变量 允许调用者传一个右值作为参数，例如常量、字面量、临时对象、匿名对象 例如 1 2 3 4 5]]></description>
 </item>
 </channel>
 </rss>

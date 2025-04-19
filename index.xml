@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 19 Apr 2025 07:54:00 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>理解仿射变换</title>
+    <link>http://blog.shiwj.top/63.affine-transformation/</link>
+    <pubDate>Sat, 19 Apr 2025 07:54:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/63.affine-transformation/</guid>
+    <description><![CDATA[参考 如何通俗地讲解「仿射变换」？ - 马同学的回答 - 知乎 前言 最近看了一些unity shader相关的教程，发现unity中的变换矩阵全部都用的是]]></description>
+</item>
+<item>
     <title>《Effective Modern C&#43;&#43;》阅读笔记</title>
     <link>http://blog.shiwj.top/62.effective-modern-cpp/</link>
     <pubDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/54.windows_ifeo_windbg/</guid>
     <description><![CDATA[修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic]]></description>
-</item>
-<item>
-    <title>一些开发过程中遇到的奇怪问题</title>
-    <link>http://blog.shiwj.top/40.bug-record/</link>
-    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/40.bug-record/</guid>
-    <description><![CDATA[ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件]]></description>
 </item>
 </channel>
 </rss>
