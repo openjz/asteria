@@ -18,7 +18,7 @@
     <pubDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/62.effective-modern-cpp/</guid>
-    <description><![CDATA[条款一：理解模板类型推导 c++模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType]]></description>
+    <description><![CDATA[条款一：模板类型推导 c++模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType和T]]></description>
 </item>
 <item>
     <title>编译obs</title>

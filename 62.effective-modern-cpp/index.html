@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>《Effective Modern C&#43;&#43;》阅读笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="《Effective Modern C&#43;&#43;》阅读笔记" />
-<meta property="og:description" content="条款一：理解模板类型推导 c&#43;&#43;模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType" />
+<meta property="og:description" content="条款一：模板类型推导 c&#43;&#43;模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType和T" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/62.effective-modern-cpp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-04-09T16:22:06+08:00" />
@@ -14,7 +14,7 @@
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="《Effective Modern C&#43;&#43;》阅读笔记"/>
-<meta name="twitter:description" content="条款一：理解模板类型推导 c&#43;&#43;模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType"/>
+<meta name="twitter:description" content="条款一：模板类型推导 c&#43;&#43;模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType和T"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  1446 ,
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2639 ,
         "url": "http:\/\/blog.shiwj.top\/62.effective-modern-cpp\/","datePublished": "2025-04-09T16:22:06+08:00","dateModified": "2025-04-15T00:18:30+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《Effective Modern C&#43;&#43;》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1446 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2639 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -90,18 +90,25 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#条款一理解模板类型推导">条款一：理解模板类型推导</a>
+    <li><a href="#条款一模板类型推导">条款一：模板类型推导</a>
       <ul>
         <li><a href="#1paramtype是指针或引用但不是万能引用">1.ParamType是指针或引用，但不是万能引用</a></li>
         <li><a href="#2paramtype是万能引用">2.ParamType是万能引用</a></li>
         <li><a href="#3paramtype既非引用也非指针">3.ParamType既非引用也非指针</a></li>
-        <li><a href="#数组实参推导">数组实参推导</a></li>
+        <li><a href="#数组和函数实参推导">数组和函数实参推导</a>
+          <ul>
+            <li><a href="#数组实参推导">数组实参推导</a></li>
+            <li><a href="#函数实参推导">函数实参推导</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#函数实参推导">函数实参推导</a></li>
+    <li><a href="#条款二auto类型推导">条款二：auto类型推导</a></li>
+    <li><a href="#条款三decltype">条款三：decltype</a></li>
+    <li><a href="#条款四如何查看类型推导结果">条款四：如何查看类型推导结果</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="条款一理解模板类型推导">条款一：理解模板类型推导</h2>
+            </div><div class="content" id="content"><h2 id="条款一模板类型推导">条款一：模板类型推导</h2>
 <p>c++模板类型推导经常用在模板函数类型推导，和auto类型推导</p>
 <p>函数模板一般是以下形式</p>
 <div class="highlight"><div class="chroma">
@@ -114,10 +121,10 @@
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="n">ParamType</span> <span class="n">param</span><span class="p">);</span> 
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>ParamType和T的区别是ParamType会包含一些限定词，例如const，引用符&amp;等</p>
+</div><p>ParamType和T的区别是ParamType会包含一些饰词，例如const，引用符&amp;等</p>
 <p>T的推导结果要分三种情况讨论：</p>
 <h3 id="1paramtype是指针或引用但不是万能引用">1.ParamType是指针或引用，但不是万能引用</h3>
-<p>这种情况下，T中会包含ParamType中没有的限定词，例如</p>
+<p>这种情况下，T中只会包含ParamType中没有的饰词，ParamType中已经有的饰词会被忽略，例如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -145,7 +152,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2paramtype是万能引用">2.ParamType是万能引用</h3>
-<p>什么是万能引用？右值引用形参+模板类型推导就是万能引用，例如：</p>
+<p>什么是万能引用？右值引用形参+模板类型推导就是万能引用（不在模板中使用右值引用就不能叫万能引用），例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -229,7 +236,9 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>为什么要忽略const，因为c++认为，既然是按值传递，传入参数不能修改不意味着副本不能修改</p>
-<h3 id="数组实参推导">数组实参推导</h3>
+<h3 id="数组和函数实参推导">数组和函数实参推导</h3>
+<p>简单来说，ParamType中的类型饰词非引用时，数组和函数类型都会退化为指针</p>
+<h4 id="数组实参推导">数组实参推导</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -284,7 +293,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="函数实参推导">函数实参推导</h2>
+</div><h4 id="函数实参推导">函数实参推导</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -318,6 +327,110 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>和数组实参类型推导类似，函数实参的推导取决于模板形参的类型，模板形参为按值传递时，函数类型会退化为函数指针吗，模板形参为按引用传递时，函数入参会按照函数引用传递</p>
+<h2 id="条款二auto类型推导">条款二：auto类型推导</h2>
+<p>C++11 新增了auto类型声明</p>
+<p>auto类型推导和模板类型推导类似，像<code>auto x = f(2);</code>这样一个变量定义，auto对应的是模板类型推导中的ParamType，即类型T+饰词。</p>
+<p>也分三种情况：</p>
+<ol>
+<li>类型饰词是指针或引用，但不是万能引用。</li>
+<li>类型饰词是万能引用。</li>
+<li>类型饰词既非指针也非引用。</li>
+</ol>
+<p>和模板类型推导结果是相同的。</p>
+<p>类型饰词非引用的情况下，数组和函数类型也会退化成指针。</p>
+<p><strong>auto推导和模板推导唯一不同之处，是对于大括号初始化表达式的处理方式</strong>，如果一个auto变量以这种方式声明，<code>auto x={27};</code>，x会被推导为<code>std:: initializer_ list</code>类型，如果大括号里的值类型不一，则类型推导失败，代码通不过编译，例如<code>auto xs = { 1, 2, 3.0 };</code>，而<strong>模板推导不了<code>{27}</code>这种形式的入参</strong>。</p>
+<p>C++14中，函数返回值可以声明为auto，lambda表达式中的函数形参也可以声明为auto，这两种auto推导实际上是模板推导</p>
+<h2 id="条款三decltype">条款三：decltype</h2>
+<p>decltype可以在编辑器计算表达式的类型，可以这么用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Container</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Index</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">authAndAccess</span><span class="p">(</span><span class="n">Container</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">,</span> <span class="n">Index</span> <span class="n">i</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="k">decltype</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">authenticateUser</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里使用了C++尾置返回值（trailing return type），尾置返回值的好处是可以使用形参列表中的变量</p>
+<p><strong>decltype会返回给定名字或表达式的确切类型，不会忽略或转换任何东西，这一点和模板推导和auto推导不同</strong>，这有个好处，如果auto返回值声明不符合预期，<strong>可以使用<code>decltype(auto) </code>让auto的推导采用decltype的规则</strong>，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Container</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Index</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">authAndAccess</span><span class="p">(</span><span class="n">Container</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">,</span> <span class="n">Index</span> <span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">authenticateUser</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面这段代码中，如果不使用decltype(auto)，只使用auto，按模板推导的规则，返回类型会将引用去掉，实际返回的是值类型</p>
+<p><strong>decltype有一些比较复杂的情况</strong>，例如，对于这种用法，<code>decltype(Expr)</code>（Expr是个左值表达式），如果Expr只是个名字，那这个名字对应的类型是啥，decltype返回的就是啥，如果Expr稍微复杂一点，decltype就会返回引用类型，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">decltype</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>    <span class="c1">//返回int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">decltype</span><span class="p">((</span><span class="n">x</span><span class="p">));</span>  <span class="c1">//返回int &amp;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="条款四如何查看类型推导结果">条款四：如何查看类型推导结果</h2>
+<p>构造一个空模板，利用编译错误输出模板推导结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//比方说，想知道x和y的推导结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">theAnswer</span><span class="p">;</span> <span class="mi">42</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">x</span> <span class="o">=</span> <span class="n">theAnswer</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">y</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">theAnswer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//声明一个模板，不实现
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TD</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//只要试图实例化该模板，就会诱发一个错误消息，编译器输出的错误信息就会把x和y的类型打印出来
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">TD</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">xType</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="n">TD</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">yType</span><span class="p">;</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>还可以使用<code>typeid(x).name()</code>在运行时打印类型信息，但是这种方法打印出来的不一定准</p>
+<p>IDE中显示的类型也不一定准。</p>
+<p>boost库的<code>Boost.Typelndex</code>是准的。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

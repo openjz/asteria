@@ -1,7 +1,7 @@
 # 《Effective Modern C++》阅读笔记
 
 
-## 条款一：理解模板类型推导
+## 条款一：模板类型推导
 
 c++模板类型推导经常用在模板函数类型推导，和auto类型推导
 
@@ -12,13 +12,13 @@ template<typename T>
 void f(ParamType param); 
 ```
 
-ParamType和T的区别是ParamType会包含一些限定词，例如const，引用符&等
+ParamType和T的区别是ParamType会包含一些饰词，例如const，引用符&等
 
 T的推导结果要分三种情况讨论：
 
 ### 1.ParamType是指针或引用，但不是万能引用
 
-这种情况下，T中会包含ParamType中没有的限定词，例如
+这种情况下，T中只会包含ParamType中没有的饰词，ParamType中已经有的饰词会被忽略，例如
 
 ```cpp
 template<typename T>
@@ -35,7 +35,7 @@ f(rx);                          //T是int，param的类型是const int&
 
 ### 2.ParamType是万能引用
 
-什么是万能引用？右值引用形参+模板类型推导就是万能引用，例如：
+什么是万能引用？右值引用形参+模板类型推导就是万能引用（不在模板中使用右值引用就不能叫万能引用），例如：
 
 ```cpp
 template<typename T> 
@@ -86,7 +86,11 @@ f(rx);                          //T和param的类型都是int
 
 为什么要忽略const，因为c++认为，既然是按值传递，传入参数不能修改不意味着副本不能修改
 
-### 数组实参推导
+### 数组和函数实参推导
+
+简单来说，ParamType中的类型饰词非引用时，数组和函数类型都会退化为指针
+
+#### 数组实参推导
 
 ```cpp
 const char name[] = "J. P. Briggs";     //name的类型是const char[13]
@@ -118,7 +122,7 @@ constexpr std::size_t arraySize(T (&)[N]) noexcept
 }
 ```
 
-## 函数实参推导
+#### 函数实参推导
 
 ```cpp
 void someFunc(int, double);         //someFunc是一个函数，
@@ -138,3 +142,86 @@ f2(someFunc);                       //param被推导为指向函数的引用，
 ```
 
 和数组实参类型推导类似，函数实参的推导取决于模板形参的类型，模板形参为按值传递时，函数类型会退化为函数指针吗，模板形参为按引用传递时，函数入参会按照函数引用传递
+
+## 条款二：auto类型推导
+
+C++11 新增了auto类型声明
+
+auto类型推导和模板类型推导类似，像`auto x = f(2);`这样一个变量定义，auto对应的是模板类型推导中的ParamType，即类型T+饰词。
+
+也分三种情况：
+
+1. 类型饰词是指针或引用，但不是万能引用。
+2. 类型饰词是万能引用。
+3. 类型饰词既非指针也非引用。
+
+和模板类型推导结果是相同的。
+
+类型饰词非引用的情况下，数组和函数类型也会退化成指针。
+
+**auto推导和模板推导唯一不同之处，是对于大括号初始化表达式的处理方式**，如果一个auto变量以这种方式声明，`auto x={27};`，x会被推导为`std:: initializer_ list`类型，如果大括号里的值类型不一，则类型推导失败，代码通不过编译，例如`auto xs = { 1, 2, 3.0 };`，而**模板推导不了`{27}`这种形式的入参**。
+
+C++14中，函数返回值可以声明为auto，lambda表达式中的函数形参也可以声明为auto，这两种auto推导实际上是模板推导
+
+## 条款三：decltype
+
+decltype可以在编辑器计算表达式的类型，可以这么用
+
+```cpp
+template<typename Container, typename Index> 
+auto authAndAccess(Container& c, Index i ) -> decltype(c[i])
+{
+    authenticateUser(); 
+    return c[i]; 
+} 
+```
+
+这里使用了C++尾置返回值（trailing return type），尾置返回值的好处是可以使用形参列表中的变量
+
+**decltype会返回给定名字或表达式的确切类型，不会忽略或转换任何东西，这一点和模板推导和auto推导不同**，这有个好处，如果auto返回值声明不符合预期，**可以使用`decltype(auto) `让auto的推导采用decltype的规则**，例如：
+
+```cpp
+ template<typename Container, typename Index> 
+decltype(auto) 
+authAndAccess(Container& c, Index i)
+{
+    authenticateUser(); 
+    return c[i]; 
+}
+```
+
+上面这段代码中，如果不使用decltype(auto)，只使用auto，按模板推导的规则，返回类型会将引用去掉，实际返回的是值类型
+
+**decltype有一些比较复杂的情况**，例如，对于这种用法，`decltype(Expr)`（Expr是个左值表达式），如果Expr只是个名字，那这个名字对应的类型是啥，decltype返回的就是啥，如果Expr稍微复杂一点，decltype就会返回引用类型，例如：
+
+```cpp
+int x = 5;
+decltype(x);    //返回int
+decltype((x));  //返回int &
+```
+
+## 条款四：如何查看类型推导结果
+
+构造一个空模板，利用编译错误输出模板推导结果
+
+```cpp
+//比方说，想知道x和y的推导结果
+const int theAnswer; 42; 
+auto x = theAnswer; 
+auto y = &theAnswer;
+
+//声明一个模板，不实现
+template<typename T> 
+class TD; 
+
+//只要试图实例化该模板，就会诱发一个错误消息，编译器输出的错误信息就会把x和y的类型打印出来
+TD<decltype(x)> xType; 
+TD<decltype(y)> yType; 
+```
+
+还可以使用`typeid(x).name()`在运行时打印类型信息，但是这种方法打印出来的不一定准
+
+IDE中显示的类型也不一定准。
+
+boost库的`Boost.Typelndex`是准的。
+
