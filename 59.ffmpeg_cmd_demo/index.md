@@ -263,3 +263,11 @@ ffmpeg -f mpegts -i "concat:temp1|temp2" -c copy -bsf:a aac_adtstoasc output.mp4
 ffmpeg -ss 2 -t 5 -to 10 -i input.mp4 -c copy output.mp4
 ```
 """
+
+## 控制解码速度
+
+`readrate n`，n为浮点数，代表每秒读取原始多少秒的输入，如果要按原始帧率去读取，n设置为1即可
+
+```bash
+.\ffmpeg -hwaccel cuda -c:v h264 -readrate 0.5 -i D:\test\4k_30min.mp4 -c:v h264_nvenc -cq 20 -y D:\test\gpu_encode.mp4
+```
