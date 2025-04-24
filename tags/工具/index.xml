@@ -20,5 +20,13 @@
     <guid>http://blog.shiwj.top/60.vscode-continue-config/</guid>
     <description><![CDATA[deepseek 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 name: Local Assistant version: 1.0.0 schema: v1 models: - name: DeepSeek Chat provider: deepseek apiBase: https://api.deepseek.com/beta model: deepseek-chat apiKey: sk-f6001c81996a4fdeb1a660d14f7ef9de roles: - chat - edit - apply]]></description>
 </item>
+<item>
+    <title>ssh登陆脚本</title>
+    <link>http://blog.shiwj.top/46.ssh-login-script/</link>
+    <pubDate>Wed, 15 Dec 2021 16:18:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/46.ssh-login-script/</guid>
+    <description><![CDATA[ssh长连接 在~/.ssh/config中添加如下配置（该配置的含义是和同一个目的主机的连接使用长连接，避免多次输入密码） 1 2 3 4 5 Host * ControlMaster auto]]></description>
+</item>
 </channel>
 </rss>
