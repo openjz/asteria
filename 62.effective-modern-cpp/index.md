@@ -1,7 +1,7 @@
 # 《Effective Modern C++》阅读笔记
 
 
-## 条款一：模板类型推导
+## 条款1：模板类型推导
 
 c++模板类型推导经常用在模板函数类型推导，和auto类型推导
 
@@ -143,7 +143,7 @@ f2(someFunc);                       //param被推导为指向函数的引用，
 
 和数组实参类型推导类似，函数实参的推导取决于模板形参的类型，模板形参为按值传递时，函数类型会退化为函数指针吗，模板形参为按引用传递时，函数入参会按照函数引用传递
 
-## 条款二：auto类型推导
+## 条款2：auto类型推导
 
 C++11 新增了auto类型声明
 
@@ -163,7 +163,7 @@ auto类型推导和模板类型推导类似，像`auto x = f(2);`这样一个变
 
 C++14中，函数返回值可以声明为auto，lambda表达式中的函数形参也可以声明为auto，这两种auto推导实际上是模板推导
 
-## 条款三：decltype
+## 条款3：decltype
 
 decltype可以在编辑器计算表达式的类型，可以这么用
 
@@ -200,7 +200,7 @@ decltype(x);    //返回int
 decltype((x));  //返回int &
 ```
 
-## 条款四：如何查看类型推导结果
+## 条款4：如何查看类型推导结果
 
 构造一个空模板，利用编译错误输出模板推导结果
 
@@ -224,4 +224,50 @@ TD<decltype(y)> yType;
 IDE中显示的类型也不一定准。
 
 boost库的`Boost.Typelndex`是准的。
+
+## 条款8：nullptr
+
+nullptr比起NULL，有利于模板类型推导，有利于消除重载函数调用的二义性，原因是NULL实际上是个int类型
+
+## 条款9：using 和 typedef
+
+尽量使用using，using可以模板化
+
+```cpp
+template<typename T>
+using MyAllocList = std:: list<T, MyAlloc<T>>;
+
+MyAllocList<Widget> lw; //用户代码
+```
+
+如果用typedef，必须新定义一个struct，然后写在struct内部
+
+```cpp
+template<typename T>                            //MyAllocList<T>是
+struct MyAllocList {                            //std::list<T, MyAlloc<T>>
+    typedef std::list<T, MyAlloc<T>> type;      //的同义词  
+};
+
+MyAllocList<Widget>::type lw;                   //用户代码
+```
+
+用户代码要加个`::type`
+
+如果要在模板内部使用这个typedef定义
+
+```cpp
+template<typename T>
+class Widget {                              //Widget<T>含有一个
+private:                                    //MyAllocLIst<T>对象
+    typename MyAllocList<T>::type list;     //作为数据成员
+    …
+}; 
+```
+
+前面要加`typename`，后面要加`::type`
+
+## 条款10：优先使用 enum class 而不是 enum
+
+## 条款11：优先使用 `= delete` 而不是 private声明
+
 
