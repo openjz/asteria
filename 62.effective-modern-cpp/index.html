@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/62.effective-modern-cpp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-04-09T16:22:06+08:00" />
-<meta property="article:modified_time" content="2025-04-27T17:38:11+08:00" />
+<meta property="article:modified_time" content="2025-04-27T23:39:02+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  3271 ,
-        "url": "http:\/\/blog.shiwj.top\/62.effective-modern-cpp\/","datePublished": "2025-04-09T16:22:06+08:00","dateModified": "2025-04-27T17:38:11+08:00","publisher": {
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  4087 ,
+        "url": "http:\/\/blog.shiwj.top\/62.effective-modern-cpp\/","datePublished": "2025-04-09T16:22:06+08:00","dateModified": "2025-04-27T23:39:02+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《Effective Modern C&#43;&#43;》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3271 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4087 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -111,6 +111,8 @@
     <li><a href="#条款10优先使用-enum-class-而不是-enum">条款10：优先使用 enum class 而不是 enum</a></li>
     <li><a href="#条款11优先使用--delete-而不是-private声明">条款11：优先使用 <code>= delete</code> 而不是 private声明</a></li>
     <li><a href="#条款17特殊成员函数的生成规则">条款17：特殊成员函数的生成规则</a></li>
+    <li><a href="#条款18unique_ptr">条款18：unique_ptr</a></li>
+    <li><a href="#条款19shared_ptr">条款19：shared_ptr</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="条款1模板类型推导">条款1：模板类型推导</h2>
@@ -517,12 +519,111 @@
 </ul>
 </li>
 </ol>
-</div><div class="post-footer" id="post-footer">
+<h2 id="条款18unique_ptr">条款18：unique_ptr</h2>
+<p>指针所有权只能转移，不能共享</p>
+<p>默认情况下，销毁将通过<code>delete</code>进行，也可以自定义删除器</p>
+<p><code>unique_ptr</code>可以直接类型转换为<code>shared_ptr</code></p>
+<p>自定义删除器的写法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">delInvmt</span> <span class="o">=</span> <span class="p">[](</span><span class="n">Investment</span><span class="o">*</span> <span class="n">pInvestment</span><span class="p">)</span>         <span class="c1">//自定义删除器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="p">{</span>                                   <span class="c1">//（lambda表达式）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">makeLogEntry</span><span class="p">(</span><span class="n">pInvestment</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">delete</span> <span class="n">pInvestment</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">                <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Investment</span><span class="p">,</span> <span class="k">decltype</span><span class="p">(</span><span class="n">delInvmt</span><span class="p">)</span><span class="o">&gt;</span> <span class="c1">//应返回的指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">pInv</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">delInvmt</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="条款19shared_ptr">条款19：shared_ptr</h2>
+<p><code>std::shared_ptr</code>使用引用计数（reference count）确定有多少个对原始指针的引用</p>
+<p>引用计数的性能问题</p>
+<ol>
+<li>引用计数必须动态分配，<code>make_shared</code>比直接用shared_ptr构造开销要小一些，它将控制块的构造和对象的构造过程合并了</li>
+<li>引用计数的增减是原子的，因此，对shared_ptr进行移动构造比拷贝构造快，移动构造不需要增减引用计数</li>
+</ol>
+<p>shared_ptr自定义删除器时，和unique_ptr不同，删除器不是类型的一部分</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">loggingDel</span> <span class="o">=</span> <span class="p">[](</span><span class="n">Widget</span> <span class="o">*</span><span class="n">pw</span><span class="p">)</span>        <span class="c1">//自定义删除器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                  <span class="p">{</span>                     <span class="c1">//（和条款18一样）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                      <span class="n">makeLogEntry</span><span class="p">(</span><span class="n">pw</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                      <span class="k">delete</span> <span class="n">pw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span>                        <span class="c1">//删除器类型是
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Widget</span><span class="p">,</span> <span class="k">decltype</span><span class="p">(</span><span class="n">loggingDel</span><span class="p">)</span>        <span class="c1">//指针类型的一部分
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">&gt;</span> <span class="n">upw</span><span class="p">(</span><span class="k">new</span> <span class="n">Widget</span><span class="p">,</span> <span class="n">loggingDel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span>                 <span class="c1">//删除器类型不是
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">spw</span><span class="p">(</span><span class="k">new</span> <span class="n">Widget</span><span class="p">,</span> <span class="n">loggingDel</span><span class="p">);</span>        <span class="c1">//指针类型的一部分
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>shared_ptr会为管理的对象建立一个控制块，控制块中包含引用计数，自定义删除器的拷贝等，多个shared_ptr会利用指针共享这个控制块</p>
+<p>shared_ptr提供了<code>std::enable_shared_from_this</code>和<code>shared_from_this</code>这两个设施，对象可以用这两个东西获取到指向自身的shared_ptr，保证对象在处理一些异步操作时被错误释放掉，<code>shared_from_this</code>要求对象外必须已经有一个shared_ptr指向对象了，如果没有会抛出异常（很合理，如果<code>shared_from_this</code>是创建一个新的shared_ptr，这个shared_ptr一旦被释放，对象也跟着被释放了），用法如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Widget</span><span class="o">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_shared_from_this</span><span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">process</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Widget</span><span class="o">::</span><span class="n">process</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">thisPtr</span> <span class="o">=</span> <span class="n">shared_from_this</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-04-27&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/b45797ab8aad87fe38fd6886248121f9ac1b366c" target="_blank" title="commit by shiwj(swj6086085@163.com) b45797ab8aad87fe38fd6886248121f9ac1b366c: update post 62">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>b45797a</a></span>
+                <span>Updated on 2025-04-27&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/58e56c0294464fa155d48dd731e61d413db13077" target="_blank" title="commit by shiwj(swj6086085@163.com) 58e56c0294464fa155d48dd731e61d413db13077: update post 62">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>58e56c0</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
