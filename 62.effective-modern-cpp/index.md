@@ -349,4 +349,35 @@ void Widget::process()
 }
 ```
 
+## 条款20：weak_ptr
+
+weak_ptr不是独立的智能指针，是对shared_ptr的增强，它不能解引用，也不能判空（和nullptr比较）
+
+std::weak_ptr通常从std::shared_ptr上创建，但它不会影响shared_ptr的引用计数
+
+weak_ptr有两个用处，检查资源是否有效，解决shared_ptr循环引用问题
+
+### 检查资源有效性
+
+检查所指对象是否有效：
+
+```cpp
+if (wpw.expired()) …  
+```
+
+检查并访问对象：
+
+```cpp
+std::shared_ptr<Widget> spw1 = wpw.lock();  //如果wpw过期，spw1就为空
+```
+
+### 循环引用问题
+
+有两个shared_ptr分别指向A和B，同时对象A和B各自持有对方的shared_ptr，这种情况下，释放智能指针实际上是释放不了A和B的
+
+可以通过将A或B内部持有的shared_ptr换成weak_ptr来解决
+
+### weak_ptr的使用原则
+
+**weak_ptr和shared_ptr的最主要区别是weak_ptr不会获得资源的所有权，想要正确使用weak_ptr，要牢记这一点**
 
