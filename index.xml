@@ -4,9 +4,25 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 02 May 2025 01:36:05 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 05 May 2025 14:39:26 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>c&#43;&#43; STL使用技巧</title>
+    <link>http://blog.shiwj.top/66.cpp-stl-tricks/</link>
+    <pubDate>Mon, 05 May 2025 14:39:26 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/66.cpp-stl-tricks/</guid>
+    <description><![CDATA[参考 《C++ Primer 第5版》 1. 容器类型 顺序容器 连续内存 vector deque：双端队列 array：固定大小 string 链表 list：双向链表 forward_list：]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;模板使用技巧</title>
+    <link>http://blog.shiwj.top/65.cpp-template-tricks/</link>
+    <pubDate>Sun, 04 May 2025 02:20:30 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/65.cpp-template-tricks/</guid>
+    <description><![CDATA[参考 《C++ Primer 第5版》 《Effective Modern C++》 0. 模板类型推导规则 参考 62.effective-modern-cpp 1. 非类型参数 例如，利用模板推导数组长度 1 2 3 4 5 template&lt;typename T, std::size_t N&gt; constexpr std::size_t ArraySize(T(&amp;)[N]) noexcept]]></description>
+</item>
+<item>
     <title>微积分学习笔记</title>
     <link>http://blog.shiwj.top/64.calculus/</link>
     <pubDate>Fri, 02 May 2025 01:36:05 &#43;0800</pubDate>
@@ -69,22 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/57.effective-cpp/</guid>
     <description><![CDATA[第二条：少用#define，用const, enum, inline代替#define #define定义的名字会被预处理器替换为它的值，这回导致定位问题]]></description>
-</item>
-<item>
-    <title>char和wchar_t在windows上如何正确使用</title>
-    <link>http://blog.shiwj.top/56.char-wchar-on-windows/</link>
-    <pubDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/56.char-wchar-on-windows/</guid>
-    <description><![CDATA[一、预备知识 unicode unicode是一套字符编码标准，它为世界上几乎所有的字符都分别分配了一个唯一的编码，但unicode并没有规定这些编码在计算]]></description>
-</item>
-<item>
-    <title>一些和windows开发相关的小知识</title>
-    <link>http://blog.shiwj.top/55.winodws_develop_knowledge/</link>
-    <pubDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/55.winodws_develop_knowledge/</guid>
-    <description><![CDATA[WinMain函数的参数 WinMain函数的参数hPrevInstance原本是为了获取程序的进程示例，可以用来判断程序是否有其他进程已经启]]></description>
 </item>
 </channel>
 </rss>

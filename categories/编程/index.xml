@@ -4,7 +4,23 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 05 May 2025 14:39:26 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43; STL使用技巧</title>
+    <link>http://blog.shiwj.top/66.cpp-stl-tricks/</link>
+    <pubDate>Mon, 05 May 2025 14:39:26 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/66.cpp-stl-tricks/</guid>
+    <description><![CDATA[参考 《C++ Primer 第5版》 1. 容器类型 顺序容器 连续内存 vector deque：双端队列 array：固定大小 string 链表 list：双向链表 forward_list：]]></description>
+</item>
+<item>
+    <title>c&#43;&#43;模板使用技巧</title>
+    <link>http://blog.shiwj.top/65.cpp-template-tricks/</link>
+    <pubDate>Sun, 04 May 2025 02:20:30 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/65.cpp-template-tricks/</guid>
+    <description><![CDATA[参考 《C++ Primer 第5版》 《Effective Modern C++》 0. 模板类型推导规则 参考 62.effective-modern-cpp 1. 非类型参数 例如，利用模板推导数组长度 1 2 3 4 5 template&lt;typename T, std::size_t N&gt; constexpr std::size_t ArraySize(T(&amp;)[N]) noexcept]]></description>
+</item>
+<item>
     <title>《Effective Modern C&#43;&#43;》阅读笔记</title>
     <link>http://blog.shiwj.top/62.effective-modern-cpp/</link>
     <pubDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</pubDate>
@@ -67,22 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/55.winodws_develop_knowledge/</guid>
     <description><![CDATA[WinMain函数的参数 WinMain函数的参数hPrevInstance原本是为了获取程序的进程示例，可以用来判断程序是否有其他进程已经启]]></description>
-</item>
-<item>
-    <title>使用IFEO映像劫持&#43;windbg在进程运行过程中调试</title>
-    <link>http://blog.shiwj.top/54.windows_ifeo_windbg/</link>
-    <pubDate>Mon, 02 Dec 2024 09:11:34 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/54.windows_ifeo_windbg/</guid>
-    <description><![CDATA[修改注册表 在以下路径创建一个子key，以被调试的进程名作为名字 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options 例如:HKEY_LOCAL_MACHINE\SOFTWARE\Mic]]></description>
-</item>
-<item>
-    <title>一些开发过程中遇到的奇怪问题</title>
-    <link>http://blog.shiwj.top/40.bug-record/</link>
-    <pubDate>Tue, 23 Jul 2024 09:11:34 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/40.bug-record/</guid>
-    <description><![CDATA[ssl socket读数据总是会卡住 需求是要给一个开源库中的socket通信加入ssl/tls层，这个第三方库实现了一套nfs协议，用于局域网文件]]></description>
 </item>
 </channel>
 </rss>
