@@ -271,3 +271,7 @@ ffmpeg -ss 2 -t 5 -to 10 -i input.mp4 -c copy output.mp4
 ```bash
 .\ffmpeg -hwaccel cuda -c:v h264 -readrate 0.5 -i D:\test\4k_30min.mp4 -c:v h264_nvenc -cq 20 -y D:\test\gpu_encode.mp4
 ```
+
+## 录屏并生成视频
+
+`ffmpeg -f gdigrab -framerate 30 -i desktop -c:v libx264 -pix_fmt yuv420p output.mp4`
