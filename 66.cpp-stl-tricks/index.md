@@ -64,7 +64,13 @@ auto g = bind(f, a, b, _2, c, _1);
 
 名字 `_n` 定义在 `std::placeholders` 中，例如 `std::placeholders::_1`
 
-## 7. 几种特殊迭代器
+## 7. 获取数组的迭代器
+
+可以通过`std::begin()`, `std::end()`,`std::rbegin()`, `std::rend()`等操作获取数组的迭代器，获取到的实际上就是指向数组元素的指针
+
+容器的迭代器也能用这几个函数获取
+
+## 8. 几种特殊迭代器
 
 ### 插入迭代器
 
@@ -100,8 +106,9 @@ std::copy(va.cbegin(), va.cend(), itb);
 
 绑定到输入输出流上，用来遍历io流
 
-- `istream_iterator`：使用`>>`读取流
-- `ostream_iterator`
+- `istream_iterator<T>`：使用`T`的`>>`操作符读取流
+- `ostream_iterator<T>`：使用`T`的`<<`操作符读取流  
+    和插入迭代器类似，`*it`,`it++`,`++it`这些操作虽然存在，但是什么都不会做，直接返回`it`
 
 `istream_iterators`使用例子
 
@@ -148,25 +155,55 @@ std::vector<T> StringSplitBySpace2(const char* str)
 }
 ```
 
-- 反向迭代器：倒序遍历
-- 移动迭代器：移动，而不是拷贝元素
+`ostream_iterators`使用例子
 
-## 8. 五类迭代器
+```cpp
+//例一
+//参数"\n"代表为每个输出的值后面拼接一个换行符
+std::ostream_iterator<int> osIt(std::cout, "\n");
+*osIt = 1;
+*osIt = 2;
 
-算法要求的迭代器分为5类，每个算法都会对各迭代器参数指明迭代器类型。
+//例二
+std::ostream_iterator<int> osIt(std::cout, "\n");
+std::vector<int> va{ 1,2,3 };
+std::copy(va.begin(), va.end(), osIt);
+```
+### 反向迭代器
 
+用来倒序遍历
 
+```cpp
+std::vector<int>::reverse_iterator it = va.rbegin();
+```
+
+### 移动迭代器
+
+移动，而不是拷贝元素
+
+使用`make_move_iterator`讲一个普通迭代器转换为移动迭代器，例如
+
+```cpp
+std::vector<int> va{ 1,2,3 };
+std::make_move_iterator(va.begin());
+```
+
+对移动迭代器解引用会得到他的右值引用
+
+`std::uninitialized_copy`可以将一系列对象拷贝到未初始化的内存上去，如果把移动迭代器作用于`std::uninitialized_copy`，则通过移动操作构造对象
+
+## 9. 五类迭代器
+
+算法要求的迭代器分为5类，每个算法都会要求具体的迭代器类型。
 
 * **输入迭代器**：只读，不写；单遍扫描，只能递增。  
 例如，`istream_iterator`是一种输入迭代器。
 * **输出迭代器**：只写，不读；单遍扫描，只能递增。  
-例如：`ostream_iterator`是一种输出迭代器。
+例如：`ostream_iterator`和 插入迭代器都是输出迭代器。
 * **前向迭代器**：可读写，多遍扫描，只能递增。  
 `forward_list`上的迭代器是前向迭代器。
 * **双向迭代器**：可读写，多遍扫描，可递增递减。  
-除了`forward_list`外，其他标准库都提供双向迭代器。
+除了`forward_list`外，其他标准库容器都提供双向迭代器。
 * **随机访问迭代器**：可读写，多遍扫描，支持全部迭代器运算。  
 `array`、`deque`、`string`、`vector`的迭代器都是随机访问迭代器。  
 注意：只有顺序容器才有随机访问迭代器，只有顺序容器才能用下标访问元素。顺序容器本身和顺序容器的迭代器都有下标运算符`"[]"`。（见书中第310页和第367页）
-
-**一个高层类别的迭代器支持低层类别迭代器的所有操作**。C++标准指明了泛型和数值算法的每个迭代器参数的最小类别。
