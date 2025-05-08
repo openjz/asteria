@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/66.cpp-stl-tricks/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-05-05T14:39:26+08:00" />
-<meta property="article:modified_time" content="2025-05-08T00:52:42+08:00" />
+<meta property="article:modified_time" content="2025-05-08T21:14:07+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  1850 ,
-        "url": "http:\/\/blog.shiwj.top\/66.cpp-stl-tricks\/","datePublished": "2025-05-05T14:39:26+08:00","dateModified": "2025-05-08T00:52:42+08:00","publisher": {
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2644 ,
+        "url": "http:\/\/blog.shiwj.top\/66.cpp-stl-tricks\/","datePublished": "2025-05-05T14:39:26+08:00","dateModified": "2025-05-08T21:14:07+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">c&#43;&#43; STL使用技巧</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-05">2025-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1850 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-05">2025-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2644 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -107,6 +107,18 @@
       </ul>
     </li>
     <li><a href="#9-五类迭代器">9. 五类迭代器</a></li>
+    <li><a href="#10-map和set">10. map和set</a>
+      <ul>
+        <li><a href="#key类型">key类型</a></li>
+        <li><a href="#下标操作">下标操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-无序容器">11. 无序容器</a>
+      <ul>
+        <li><a href="#hash策略">hash策略</a></li>
+        <li><a href="#key类型-1">key类型</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="参考">参考</h2>
@@ -135,7 +147,7 @@
 <ul>
 <li>stack</li>
 <li>queue</li>
-<li>priority_queue：堆</li>
+<li>priority_queue：堆，默认使用<code>&lt;</code>运算符确定优先级，默认是个最大堆</li>
 </ul>
 </li>
 </ul>
@@ -394,12 +406,36 @@
 <code>array</code>、<code>deque</code>、<code>string</code>、<code>vector</code>的迭代器都是随机访问迭代器。<br>
 注意：只有顺序容器才有随机访问迭代器，只有顺序容器才能用下标访问元素。顺序容器本身和顺序容器的迭代器都有下标运算符<code>&quot;[]&quot;</code>。（见书中第310页和第367页）</li>
 </ul>
+<h2 id="10-map和set">10. map和set</h2>
+<h3 id="key类型">key类型</h3>
+<p>map默认使用key的<code>&lt;</code>运算符比大小</p>
+<h3 id="下标操作">下标操作</h3>
+<p>假设c是一个map:</p>
+<ul>
+<li><code>c[k]</code>：返回key为k的元素的引用，如果k不存在，则添加一个key为k的元素，并对其值进行值初始化（Value-initialization）</li>
+<li><code>c.at(k)</code>：返回key为k的元素的引用，如果k不存在，抛出一个out_of_range异常</li>
+</ul>
+<p>关于值初始化，参考<a href="https://en.cppreference.com/w/cpp/language/value_initialization" target="_blank" rel="noopener noreffer">https://en.cppreference.com/w/cpp/language/value_initialization</a>
+</p>
+<p>C++中有各种类型的初始化，值初始化，简而言之，对于内置类型（int, double等），会给一个初始值，而默认初始化（Default-initialization）是不会给内置类型初始值的。</p>
+<h2 id="11-无序容器">11. 无序容器</h2>
+<p><code>unordered_map</code>和<code>unordered_set</code>属于无序容器，使用hash表存储，使用“桶”解决hash冲突</p>
+<h3 id="hash策略">hash策略</h3>
+<ul>
+<li>load_factor，负载因子，表示每个桶的平均元素数量，是个float值，可以用<code>c.load_factor()</code>获取</li>
+<li>max_load_factor，最大负载因子，表示每个桶的最大元素数量，也是个float值，可以用<code>c.max_load_factor()</code>获取，map会根据需要增加桶的数量，使得load_factor ≤ max_load_factor</li>
+<li><code>rehash(n)</code>，重组存储，使 bucket_count ≥ n，并且保证 bucket_count ≥ size/max_load_factor，即保证负载因子不超过最大负载因子</li>
+<li><code>reserve(n)</code>, 重组存储，使map可以保存n个元素且不需要rehash，也就是说，只要元素数不超过n，就不会rehash，迭代器就不会失效</li>
+</ul>
+<h3 id="key类型-1">key类型</h3>
+<p>无序容器默认使用<code>==</code>运算符比较元素，并且用<code>hash&lt;T&gt;</code>计算元素的hash值</p>
+<p>可以通过在std命名空间特化一个hash模板来让自定义类型做key</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-05-08&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/d7f962bb21a1d1d2d0bb611adef80232bfe7d432" target="_blank" title="commit by shiwj(swj6086085@163.com) d7f962bb21a1d1d2d0bb611adef80232bfe7d432: update post 66">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>d7f962b</a></span>
+                <span>Updated on 2025-05-08&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/d6c6e662aa1e4f8d5dba11a1300b3bed57ab2d82" target="_blank" title="commit by shiwj(swj6086085@163.com) d6c6e662aa1e4f8d5dba11a1300b3bed57ab2d82: update post 66 20">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>d6c6e66</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

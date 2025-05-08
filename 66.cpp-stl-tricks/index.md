@@ -19,7 +19,7 @@
     - 顺序容器适配器
         - stack
         - queue
-        - priority_queue：堆
+        - priority_queue：堆，默认使用`<`运算符确定优先级，默认是个最大堆
 
 ## 2. 和容器大小有关的操作
 
@@ -207,3 +207,37 @@ std::make_move_iterator(va.begin());
 * **随机访问迭代器**：可读写，多遍扫描，支持全部迭代器运算。  
 `array`、`deque`、`string`、`vector`的迭代器都是随机访问迭代器。  
 注意：只有顺序容器才有随机访问迭代器，只有顺序容器才能用下标访问元素。顺序容器本身和顺序容器的迭代器都有下标运算符`"[]"`。（见书中第310页和第367页）
+
+## 10. map和set
+
+### key类型
+
+map默认使用key的`<`运算符比大小
+
+### 下标操作
+
+假设c是一个map:
+
+- `c[k]`：返回key为k的元素的引用，如果k不存在，则添加一个key为k的元素，并对其值进行值初始化（Value-initialization）
+- `c.at(k)`：返回key为k的元素的引用，如果k不存在，抛出一个out_of_range异常
+
+关于值初始化，参考[https://en.cppreference.com/w/cpp/language/value_initialization](https://en.cppreference.com/w/cpp/language/value_initialization)
+
+C++中有各种类型的初始化，值初始化，简而言之，对于内置类型（int, double等），会给一个初始值，而默认初始化（Default-initialization）是不会给内置类型初始值的。
+
+## 11. 无序容器
+
+`unordered_map`和`unordered_set`属于无序容器，使用hash表存储，使用“桶”解决hash冲突
+
+### hash策略
+
+- load_factor，负载因子，表示每个桶的平均元素数量，是个float值，可以用`c.load_factor()`获取
+- max_load_factor，最大负载因子，表示每个桶的最大元素数量，也是个float值，可以用`c.max_load_factor()`获取，map会根据需要增加桶的数量，使得load_factor ≤ max_load_factor
+- `rehash(n)`，重组存储，使 bucket_count ≥ n，并且保证 bucket_count ≥ size/max_load_factor，即保证负载因子不超过最大负载因子
+- `reserve(n)`, 重组存储，使map可以保存n个元素且不需要rehash，也就是说，只要元素数不超过n，就不会rehash，迭代器就不会失效
+
+### key类型
+
+无序容器默认使用`==`运算符比较元素，并且用`hash<T>`计算元素的hash值
+
+可以通过在std命名空间特化一个hash模板来让自定义类型做key
