@@ -52,15 +52,15 @@ vector预先分配的容量（capacity）会比size大一些，当capacity不足
 
 在下面这个例子中，g是一个可调用对象，f是被适配的函数
 
+```cpp
+auto g = bind(f, a, b, _2, c, _1);
+```
+
 _1和_2代表g只有两个参数，_1对应g的第一个参数，_2对应g的第二个参数
 
 a,b,_2,c,_1分别对应函数f的第一、二、三、四、五个参数
 
 即，调用 `g(_1,_2)` 会转换为 `f(a, b, _2, c, _1)`
-
-```cpp
-auto g = bind(f, a, b, _2, c, _1);
-```
 
 名字 `_n` 定义在 `std::placeholders` 中，例如 `std::placeholders::_1`
 

@@ -1,0 +1,129 @@
+# c++ 运算符重载使用技巧
+
+
+## 1. 基本概念
+
+只有一元和二元运算符能被重载，三元运算符不能重载
+
+对于二元运算符， 重载运算符函数的第一个参数对应左侧运算对象，如果是成员函数重载，只有一个参数，左侧运算对象对应`*this`
+
+![operators-can-be-overloaded.png](/posts/67.cpp-operator-overloading-tricks/operators-can-be-overloaded.png)
+
+不推荐重载的运算符：
+- 逻辑或、逻辑与：重载后无法保证求值顺序，无法保留短路求值属性
+- 逗号和取地址运算符也不宜重载
+
+`=`，`+=`等运算符，应当返回左侧运算对象的引用
+
+具有对称性的运算符应该是非成员的，包括算术、关系和位运算符
+
+## 2. 输入输出运算符重载
+
+```cpp
+//必须是非成员函数
+ostream & operator<<(ostream & os, const Foo& foo)
+{
+    ...
+    return os;
+}
+```
+
+输出运算符应尽量不要做格式化操作，比如输出换行符，输出运算符的主要职责是输出而不是格式控制
+
+## 3. 区分前置和后置运算符
+
+```cpp
+Foo operator++(int)
+{
+    ...
+}
+```
+
+后置运算符接受一个额外的int参数，这个参数没用，只是为了区分前置和后置运算符
+
+## 4. 解引用运算符和箭头运算符
+
+解引用运算符`*`要返回引用
+
+箭头运算符`->`要返回指针
+
+## 5. 函数对象
+
+重载了函数调用运算符后，该类的对象就变成了函数对象
+
+```cpp
+void operator()(const char* arg)
+{
+    ...
+}
+```
+
+lambda是函数对象
+
+标准库定义的函数对象，可以在泛型算法中使用
+
+![std-function-objects.png](/posts/67.cpp-operator-overloading-tricks/std-function-objects.png)
+
+通用function类型：`std::function<int(int,int)>`
+
+## 6. 类型转换运算符
+
+类的类型转换由两种函数触发：构造函数和类型转换运算符
+
+类型转换运算符的一般写法
+
+```cpp
+//没有返回值，没有形参，必须是成员函数
+operator type() const
+{
+
+}
+```
+
+### 显式类型转换
+
+```cpp
+//和显式构造函数类似
+explicit operator type() const
+{
+
+}
+```
+
+但如果表达式被用作条件，explicit会失效
+
+**除了explicit的bool类型转换，其他转换尽量不要去定义，一方面容易让用户感到意外，另一方面有可能会产生二义性**
+
+## 7. 关于`.*`和`->*`运算符
+
+`.*`和`->*`是类成员指针操作符，参考《C++ Primer 第5版》19.4节
+
+数据成员指针：
+
+```cpp
+//不针对某个特定对象，有点类似一个类型别名
+const std::string Screen::* pData = &Screen::contents;
+
+Screen myScreen;
+Screen * pScreen = &myScreen;
+//使用成员指针
+auto s = myScreen.*pData;
+s = pScreen->*pData;
+```
+
+成员函数指针：
+
+```cpp
+char (Screen::*pmf2)(Screen::pos, Screen::pos) const;
+pmf2 = &Screen::get; 
+
+Screen myScreen;
+Screen * pScreen = &myScreen;
+//使用函数指针
+myScreen.*pmf2(0 ,0);
+pScreen->*pmf2(0 ,0);
+```
+
+可以使用mem_fn或bind为成员函数指针生成一个可调用对象
+
+

@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43; 运算符重载使用技巧</title>
+    <link>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</link>
+    <pubDate>Sun, 11 May 2025 08:59:23 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</guid>
+    <description><![CDATA[1. 基本概念 只有一元和二元运算符能被重载，三元运算符不能重载 对于二元运算符， 重载运算符函数的第一个参数对应左侧运算对象，如果是成员函数重载，只]]></description>
+</item>
+<item>
     <title>c&#43;&#43; STL使用技巧</title>
     <link>http://blog.shiwj.top/66.cpp-stl-tricks/</link>
     <pubDate>Mon, 05 May 2025 14:39:26 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
     <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
-</item>
-<item>
-    <title>关于C&#43;&#43;前向声明</title>
-    <link>http://blog.shiwj.top/29.cpp-forward-declaration/</link>
-    <pubDate>Sun, 30 Oct 2022 15:01:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/29.cpp-forward-declaration/</guid>
-    <description><![CDATA[如果有两个类相互之间发生了引用，可能会产生一些问题。《C++ primer 第5版》中12.1.1节和12.1.6节给出的例子就出现了这种情况。在这两节中]]></description>
 </item>
 </channel>
 </rss>

@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 05 May 2025 14:39:26 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 11 May 2025 08:59:23 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>c&#43;&#43; 运算符重载使用技巧</title>
+    <link>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</link>
+    <pubDate>Sun, 11 May 2025 08:59:23 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</guid>
+    <description><![CDATA[1. 基本概念 只有一元和二元运算符能被重载，三元运算符不能重载 对于二元运算符， 重载运算符函数的第一个参数对应左侧运算对象，如果是成员函数重载，只]]></description>
+</item>
+<item>
     <title>c&#43;&#43; STL使用技巧</title>
     <link>http://blog.shiwj.top/66.cpp-stl-tricks/</link>
     <pubDate>Mon, 05 May 2025 14:39:26 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/58.build_obs/</guid>
     <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
-</item>
-<item>
-    <title>《Effective C&#43;&#43; 第三版》阅读笔记</title>
-    <link>http://blog.shiwj.top/57.effective-cpp/</link>
-    <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/57.effective-cpp/</guid>
-    <description><![CDATA[第二条：少用#define，用const, enum, inline代替#define #define定义的名字会被预处理器替换为它的值，这回导致定位问题]]></description>
 </item>
 </channel>
 </rss>

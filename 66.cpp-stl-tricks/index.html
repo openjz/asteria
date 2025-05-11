@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/66.cpp-stl-tricks/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-05-05T14:39:26+08:00" />
-<meta property="article:modified_time" content="2025-05-08T21:14:07+08:00" />
+<meta property="article:modified_time" content="2025-05-09T00:46:24+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -18,7 +18,7 @@
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/66.cpp-stl-tricks/" /><link rel="prev" href="http://blog.shiwj.top/65.cpp-template-tricks/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/66.cpp-stl-tricks/" /><link rel="prev" href="http://blog.shiwj.top/65.cpp-template-tricks/" /><link rel="next" href="http://blog.shiwj.top/67.cpp-operator-overloading-tricks/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,7 +33,7 @@
                             "width":  3200 ,
                             "height":  2048 
                         }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2644 ,
-        "url": "http:\/\/blog.shiwj.top\/66.cpp-stl-tricks\/","datePublished": "2025-05-05T14:39:26+08:00","dateModified": "2025-05-08T21:14:07+08:00","publisher": {
+        "url": "http:\/\/blog.shiwj.top\/66.cpp-stl-tricks\/","datePublished": "2025-05-05T14:39:26+08:00","dateModified": "2025-05-09T00:46:24+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -183,9 +183,6 @@
 <p>vector预先分配的容量（capacity）会比size大一些，当capacity不足时，会发生扩容</p>
 <h2 id="6-函数适配器bind">6. 函数适配器bind</h2>
 <p>在下面这个例子中，g是一个可调用对象，f是被适配的函数</p>
-<p>_1和_2代表g只有两个参数，_1对应g的第一个参数，_2对应g的第二个参数</p>
-<p>a,b,_2,c,_1分别对应函数f的第一、二、三、四、五个参数</p>
-<p>即，调用 <code>g(_1,_2)</code> 会转换为 <code>f(a, b, _2, c, _1)</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -194,7 +191,10 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">g</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">_2</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">_1</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>名字 <code>_n</code> 定义在 <code>std::placeholders</code> 中，例如 <code>std::placeholders::_1</code></p>
+</div><p>_1和_2代表g只有两个参数，_1对应g的第一个参数，_2对应g的第二个参数</p>
+<p>a,b,_2,c,_1分别对应函数f的第一、二、三、四、五个参数</p>
+<p>即，调用 <code>g(_1,_2)</code> 会转换为 <code>f(a, b, _2, c, _1)</code></p>
+<p>名字 <code>_n</code> 定义在 <code>std::placeholders</code> 中，例如 <code>std::placeholders::_1</code></p>
 <h2 id="7-获取数组的迭代器">7. 获取数组的迭代器</h2>
 <p>可以通过<code>std::begin()</code>, <code>std::end()</code>,<code>std::rbegin()</code>, <code>std::rend()</code>等操作获取数组的迭代器，获取到的实际上就是指向数组元素的指针</p>
 <p>容器的迭代器也能用这几个函数获取</p>
@@ -434,8 +434,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-05-08&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/d6c6e662aa1e4f8d5dba11a1300b3bed57ab2d82" target="_blank" title="commit by shiwj(swj6086085@163.com) d6c6e662aa1e4f8d5dba11a1300b3bed57ab2d82: update post 66 20">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>d6c6e66</a></span>
+                <span>Updated on 2025-05-09&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/cef29f895c0c0e509250fdc0ce192fc8276afaba" target="_blank" title="commit by shiwj(swj6086085@163.com) cef29f895c0c0e509250fdc0ce192fc8276afaba: update post 66">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>cef29f8</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
@@ -454,7 +454,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/65.cpp-template-tricks/" class="prev" rel="prev" title="c&#43;&#43;模板使用技巧"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>c&#43;&#43;模板使用技巧</a></div>
+    <div class="post-nav"><a href="/65.cpp-template-tricks/" class="prev" rel="prev" title="c&#43;&#43;模板使用技巧"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>c&#43;&#43;模板使用技巧</a>
+            <a href="/67.cpp-operator-overloading-tricks/" class="next" rel="next" title="c&#43;&#43; 运算符重载使用技巧">c&#43;&#43; 运算符重载使用技巧<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

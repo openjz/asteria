@@ -93,3 +93,6 @@ float round = 0.5;
 boost::function<int(float)> f = boost::bind(boost_func, _1, round);
 ```
 
+上面这两个闭包有缺陷，其内部的状态不可改变
+
+真正的闭包，可以用c++中的函数对象来实现

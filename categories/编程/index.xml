@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 05 May 2025 14:39:26 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 11 May 2025 08:59:23 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43; 运算符重载使用技巧</title>
+    <link>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</link>
+    <pubDate>Sun, 11 May 2025 08:59:23 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</guid>
+    <description><![CDATA[1. 基本概念 只有一元和二元运算符能被重载，三元运算符不能重载 对于二元运算符， 重载运算符函数的第一个参数对应左侧运算对象，如果是成员函数重载，只]]></description>
+</item>
+<item>
     <title>c&#43;&#43; STL使用技巧</title>
     <link>http://blog.shiwj.top/66.cpp-stl-tricks/</link>
     <pubDate>Mon, 05 May 2025 14:39:26 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/56.char-wchar-on-windows/</guid>
     <description><![CDATA[一、预备知识 unicode unicode是一套字符编码标准，它为世界上几乎所有的字符都分别分配了一个唯一的编码，但unicode并没有规定这些编码在计算]]></description>
-</item>
-<item>
-    <title>一些和windows开发相关的小知识</title>
-    <link>http://blog.shiwj.top/55.winodws_develop_knowledge/</link>
-    <pubDate>Tue, 10 Dec 2024 15:15:17 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/55.winodws_develop_knowledge/</guid>
-    <description><![CDATA[WinMain函数的参数 WinMain函数的参数hPrevInstance原本是为了获取程序的进程示例，可以用来判断程序是否有其他进程已经启]]></description>
 </item>
 </channel>
 </rss>
