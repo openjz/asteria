@@ -409,4 +409,89 @@ std::string value(std::move(text));
 
 std::forward会将传入的右值引用参数强行转换为右值引用，这句话看起来很奇怪，是因为函数形参在函数内部使用时始终是个左值表达式，如果想保留传入参数的右值引用属性，就需要std::forward强转，std::forward一般配合模板的万能引用参数（T &&）来使用
 
+## 条款24：区分右值引用和万能引用
+
+涉及到模板类型推导的就是万能引用
+
+例如，以下写法都是万能引用
+
+```cpp
+auto&& var2 = var1;
+
+template<typename T>
+void f(T&& param);
+```
+
+万能引用必须是`T&&`这种形式
+
+像以下这种不涉及类型推导的模板，也不是万能引用
+
+```cpp
+template<class T, class Allocator = allocator<T>>
+class vector
+{
+public:
+    void push_back(T&& x);  //不是万能引用
+    …
+}
+```
+
+作为对比，以下属于万能引用
+
+```cpp
+template<class T, class Allocator = allocator<T>>   //依旧来自C++标准
+class vector {
+public:
+    template <class... Args>
+    void emplace_back(Args&&... args);
+    …
+};
+```
+
+一种完美转发函数调用的写法
+
+```cpp
+auto AnyFuncWrapper =
+	[](auto&& func, auto&&... params)           //C++14
+	{
+		std::cout << "func in" << std::endl;
+		std::forward<decltype(func)>(func)(     //对params调用func
+			std::forward<decltype(params)>(params)...
+			);
+		std::cout << "func out" << std::endl;
+	};
+```
+
+万能引用实际上涉及到一个叫引用折叠（reference collapse）的概念
+
+## 条款25：对右值引用用std::move，对万能引用用std::forward
+
+如题所示
+
+另外一个知识点是关于C++的返回值优化（return value optimization，RVO）的
+
+什么是RVO呢？即对于下面这种代码，
+
+```cpp
+Widget makeWidget()
+{
+    Widget w;
+    ...
+    return w;
+}
+```
+
+编译器会考虑是否为返回值做拷贝消除（copy elision）优化，即直接把w构造到返回值对象上，而不是返回时拷贝一次，有点类似于下面的代码，
+
+```cpp
+Widget makeWidget()
+{
+    Widget w;
+    ...
+    return std::move(w);
+}
+```
+
+**所以，一般不推荐手动编写上面这种代码，有可能会对编译器的优化形成干扰，做出负优化**
+
 关于noexcept
