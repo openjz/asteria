@@ -28,5 +28,13 @@
     <guid>http://blog.shiwj.top/46.ssh-login-script/</guid>
     <description><![CDATA[ssh长连接 在~/.ssh/config中添加如下配置（该配置的含义是和同一个目的主机的连接使用长连接，避免多次输入密码） 1 2 3 4 5 Host * ControlMaster auto]]></description>
 </item>
+<item>
+    <title>c&#43;&#43;内存分析：ASan</title>
+    <link>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</guid>
+    <description><![CDATA[AddressSanitizer（ASan）是一款广泛使用的c++内存分析工具，能够检测代码中的各种内存问题（内存越界、访问野指针、非法访问]]></description>
+</item>
 </channel>
 </rss>
