@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 11 May 2025 08:59:23 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 13 May 2025 15:45:47 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43;内存分析：ASan</title>
+    <link>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</link>
+    <pubDate>Tue, 13 May 2025 15:45:47 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</guid>
+    <description><![CDATA[AddressSanitizer（ASan）是一款广泛使用的c++内存分析工具，能够检测代码中的各种内存问题（内存越界、访问野指针、非法访问]]></description>
+</item>
+<item>
     <title>c&#43;&#43; 运算符重载使用技巧</title>
     <link>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</link>
     <pubDate>Sun, 11 May 2025 08:59:23 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/57.effective-cpp/</guid>
     <description><![CDATA[第二条：少用#define，用const, enum, inline代替#define #define定义的名字会被预处理器替换为它的值，这回导致定位问题]]></description>
-</item>
-<item>
-    <title>char和wchar_t在windows上如何正确使用</title>
-    <link>http://blog.shiwj.top/56.char-wchar-on-windows/</link>
-    <pubDate>Thu, 26 Dec 2024 06:00:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/56.char-wchar-on-windows/</guid>
-    <description><![CDATA[一、预备知识 unicode unicode是一套字符编码标准，它为世界上几乎所有的字符都分别分配了一个唯一的编码，但unicode并没有规定这些编码在计算]]></description>
 </item>
 </channel>
 </rss>

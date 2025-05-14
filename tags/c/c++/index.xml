@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43;内存分析：ASan</title>
+    <link>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</link>
+    <pubDate>Tue, 13 May 2025 15:45:47 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</guid>
+    <description><![CDATA[AddressSanitizer（ASan）是一款广泛使用的c++内存分析工具，能够检测代码中的各种内存问题（内存越界、访问野指针、非法访问]]></description>
+</item>
+<item>
     <title>c&#43;&#43; 运算符重载使用技巧</title>
     <link>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</link>
     <pubDate>Sun, 11 May 2025 08:59:23 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/37.condition-variable/</guid>
     <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
-</item>
-<item>
-    <title>有栈协程和无栈协程</title>
-    <link>http://blog.shiwj.top/30.coroutine-stack/</link>
-    <pubDate>Tue, 01 Nov 2022 02:35:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/30.coroutine-stack/</guid>
-    <description><![CDATA[有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系]]></description>
 </item>
 </channel>
 </rss>
