@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  5706 ,
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  6610 ,
         "url": "http:\/\/blog.shiwj.top\/62.effective-modern-cpp\/","datePublished": "2025-04-09T16:22:06+08:00","dateModified": "2025-05-13T00:30:11+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《Effective Modern C&#43;&#43;》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5706 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6610 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -110,6 +110,7 @@
     <li><a href="#条款9using-和-typedef">条款9：using 和 typedef</a></li>
     <li><a href="#条款10优先使用-enum-class-而不是-enum">条款10：优先使用 enum class 而不是 enum</a></li>
     <li><a href="#条款11优先使用--delete-而不是-private声明">条款11：优先使用 <code>= delete</code> 而不是 private声明</a></li>
+    <li><a href="#条款14不抛出异常的函数尽量声明为noexcept的">条款14：不抛出异常的函数，尽量声明为noexcept的</a></li>
     <li><a href="#条款17特殊成员函数的生成规则">条款17：特殊成员函数的生成规则</a></li>
     <li><a href="#条款18unique_ptr">条款18：unique_ptr</a></li>
     <li><a href="#条款19shared_ptr">条款19：shared_ptr</a></li>
@@ -124,6 +125,11 @@
     <li><a href="#条款23stdmove-和-stdforward">条款23：std::move 和 std::forward</a></li>
     <li><a href="#条款24区分右值引用和万能引用">条款24：区分右值引用和万能引用</a></li>
     <li><a href="#条款25对右值引用用stdmove对万能引用用stdforward">条款25：对右值引用用std::move，对万能引用用std::forward</a></li>
+    <li><a href="#条款26避免用万能引用重载函数">条款26：避免用万能引用重载函数</a></li>
+    <li><a href="#条款27条款26的替代方案">条款27：条款26的替代方案</a></li>
+    <li><a href="#条款28理解引用折叠">条款28：理解引用折叠</a></li>
+    <li><a href="#条款29移动语义不好用的场景">条款29：移动语义不好用的场景</a></li>
+    <li><a href="#条款30-熟悉完美转发的失败情形">条款30: 熟悉完美转发的失败情形</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="条款1模板类型推导">条款1：模板类型推导</h2>
@@ -509,6 +515,9 @@
 </div><p>前面要加<code>typename</code>，后面要加<code>::type</code></p>
 <h2 id="条款10优先使用-enum-class-而不是-enum">条款10：优先使用 enum class 而不是 enum</h2>
 <h2 id="条款11优先使用--delete-而不是-private声明">条款11：优先使用 <code>= delete</code> 而不是 private声明</h2>
+<h2 id="条款14不抛出异常的函数尽量声明为noexcept的">条款14：不抛出异常的函数，尽量声明为noexcept的</h2>
+<p>stl容器采用移动操作的前提是，移动操作声明为noexcept的，这样stl容器才能在满足异常安全保证的前提下使用移动操作</p>
+<p>其他略</p>
 <h2 id="条款17特殊成员函数的生成规则">条款17：特殊成员函数的生成规则</h2>
 <ol>
 <li>默认构造函数：用户没有定义任何构造函数的时候，编译器才会去生成默认构造函数</li>
@@ -812,7 +821,112 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>所以，一般不推荐手动编写上面这种代码，有可能会对编译器的优化形成干扰，做出负优化</strong></p>
-<p>关于noexcept</p>
+<h2 id="条款26避免用万能引用重载函数">条款26：避免用万能引用重载函数</h2>
+<p><strong>万能引用几乎能和所有类型产生精确匹配，很容易造成误匹配</strong></p>
+<p>重载函数匹配一旦和模板实例化、继承等结合起来，规则会非常复杂，很容易出现让人意想不到的行为</p>
+<h2 id="条款27条款26的替代方案">条款27：条款26的替代方案</h2>
+<ol>
+<li>
+<p>放弃重载</p>
+</li>
+<li>
+<p>使用<code>const T&amp;</code>形参代替万能引用</p>
+</li>
+<li>
+<p>传值，而不是传引用</p>
+</li>
+<li>
+<p>将真正需要重载的功能委托给万能引用，判断传入参数类型，例如使用<code>is_integral&lt;T&gt;()</code>判断参数类型是否为整型</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_reference</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完整写法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//1. 判断参数类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">logAndAdd</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;&amp;</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logAndAddImpl</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_reference</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//2. 编译期区分调用哪个函数
+</span></span></span><span class="line"><span class="cl"><span class="c1">//std::false_type 和 std::true_type 是两个不同的类型，分别对应 true 和 false
+</span></span></span><span class="line"><span class="cl"><span class="c1">//它们主要是为了作为一个标签，能让程序在编译器决定调用哪个重载函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">logAndAddImpl</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">false_type</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">now</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">log</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="s">&#34;logAndAdd&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">names</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">nameFromIdx</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">logAndAddImpl</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">true_type</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logAndAdd</span><span class="p">(</span><span class="n">nameFromIdx</span><span class="p">(</span><span class="n">idx</span><span class="p">));</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用<code>enable_if</code>在条件满足时禁用模板（过于复杂，略过）</p>
+</li>
+</ol>
+<h2 id="条款28理解引用折叠">条款28：理解引用折叠</h2>
+<p>万能引用的工作原理是引用折叠，具体工作过程如下：</p>
+<ol>
+<li>对于<code>T &amp;&amp;</code>这个参数，如果传入左值，T会推导为左值引用，如果是右值，则推导为非引用</li>
+<li>对于左值参数，推导后的结果就变成了<code>type &amp; &amp;&amp;</code></li>
+<li>此时触发引用折叠机制，将双重引用变为单引用，规则是：任意一个引用为左值引用，则最终折叠为左值引用，否则，折叠为右值引用</li>
+<li>完美转发<code>std::forward</code>也依赖引用折叠工作（原理略过，书里写了一大堆，懒得看了）</li>
+</ol>
+<h2 id="条款29移动语义不好用的场景">条款29：移动语义不好用的场景</h2>
+<ol>
+<li>对象没有提供移动操作</li>
+<li>对象的移动实现很慢，比如<code>std::array</code>，因为<code>std::array</code>本质上就是一个支持stl操作的内建数组，用的是栈内存</li>
+<li>要求移动操作不发生异常的情况下，移动操作未架上<code>noexcept</code></li>
+</ol>
+<h2 id="条款30-熟悉完美转发的失败情形">条款30: 熟悉完美转发的失败情形</h2>
+<p>完美转发的失败情形，源于模板类型推导失败，或推导结果错误</p>
+<p>会导致完美转发失败的实参种类有大括号初始化物、 以值0或NULL表达的空指针、仅有声明的整型 static const 成员变量、模板或重载的函数名字，以及位域</p>
+<p>下一个：lambda表达式</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
