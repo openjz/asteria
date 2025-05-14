@@ -74,6 +74,12 @@
 <a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw" aria-hidden="true"></i></a>
 </div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/30.coroutine-stack/">有栈协程和无栈协程</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-01">2022-11-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div><div class="content">有栈协程 有栈协程是指给每个协程开辟一个单独的栈空间，需要一套调度机制来对协程进行调度，类似线程调度。 有栈协程之间是相互独立的，不存在调用关系</div><div class="post-footer">
+        <a href="/30.coroutine-stack/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>,&nbsp;<a href="/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a>,&nbsp;<a href="/tags/golang/">golang</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/29.cpp-forward-declaration/">关于C&#43;&#43;前向声明</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-30">2022-10-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div><div class="content">如果有两个类相互之间发生了引用，可能会产生一些问题。《C++ primer 第5版》中12.1.1节和12.1.6节给出的例子就出现了这种情况。在这两节中</div><div class="post-footer">
@@ -96,12 +102,6 @@
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-28">2022-10-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div><div class="content">demo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 class A{ public: A(const A&amp; b):e(new int(*(b.e))){} A &amp; operator=(const A &amp; b){ if(this != *b){ int * c = new int(*(b.e)); delete e; e = c; } return *this; } A(A &amp;&amp;b) noexcept :e(b.e){ b.e = nullptr; } A &amp; operator=(A &amp;&amp; b)</div><div class="post-footer">
         <a href="/26.cpp-copy-move/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/25.cpp-dup-symbols/">c&#43;&#43;中符号重定义问题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
-</span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-28">2022-10-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div><div class="content">在开发比较大的项目时，有时候会出现多动态库之间定义了重复名字的情况，或者动态库和主程序之间定义了重复名字的情况。 在gcc上验证 编译器版本是g</div><div class="post-footer">
-        <a href="/25.cpp-dup-symbols/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

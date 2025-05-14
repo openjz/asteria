@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 13 May 2025 15:45:47 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 14 May 2025 10:56:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43;内存分析：VLD</title>
+    <link>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</link>
+    <pubDate>Wed, 14 May 2025 10:56:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</guid>
+    <description><![CDATA[参考 https://www.cnblogs.com/yapingxin/p/18258139/use_vld_in_vs2022 介绍 Visual Leak Detector（VLD）是windows平台上的一款广泛使用的c++内存泄漏分析工具 VLD官方的版本目前停留在2.5.1，发]]></description>
+</item>
+<item>
     <title>c&#43;&#43;内存分析：ASan</title>
     <link>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</link>
     <pubDate>Tue, 13 May 2025 15:45:47 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/58.build_obs/</guid>
     <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
-</item>
-<item>
-    <title>《Effective C&#43;&#43; 第三版》阅读笔记</title>
-    <link>http://blog.shiwj.top/57.effective-cpp/</link>
-    <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/57.effective-cpp/</guid>
-    <description><![CDATA[第二条：少用#define，用const, enum, inline代替#define #define定义的名字会被预处理器替换为它的值，这回导致定位问题]]></description>
 </item>
 </channel>
 </rss>

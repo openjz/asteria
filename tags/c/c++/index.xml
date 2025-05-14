@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43;内存分析：VLD</title>
+    <link>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</link>
+    <pubDate>Wed, 14 May 2025 10:56:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</guid>
+    <description><![CDATA[参考 https://www.cnblogs.com/yapingxin/p/18258139/use_vld_in_vs2022 介绍 Visual Leak Detector（VLD）是windows平台上的一款广泛使用的c++内存泄漏分析工具 VLD官方的版本目前停留在2.5.1，发]]></description>
+</item>
+<item>
     <title>c&#43;&#43;内存分析：ASan</title>
     <link>http://blog.shiwj.top/68.cpp-memory-analysis-asan/</link>
     <pubDate>Tue, 13 May 2025 15:45:47 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/39.windows-dump-debug/</guid>
     <description><![CDATA[开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows]]></description>
-</item>
-<item>
-    <title>条件变量</title>
-    <link>http://blog.shiwj.top/37.condition-variable/</link>
-    <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/37.condition-variable/</guid>
-    <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
 </item>
 </channel>
 </rss>
