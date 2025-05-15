@@ -569,4 +569,64 @@ Widget makeWidget()
 
 会导致完美转发失败的实参种类有大括号初始化物、 以值0或NULL表达的空指针、仅有声明的整型 static const 成员变量、模板或重载的函数名字，以及位域
 
-下一个：lambda表达式
+## 条款32：lambda表达式初始化捕获
+
+可以在捕获列表中写初始化表达式，可以实现移动捕获
+
+```cpp
+auto func = [pw = std::move(pw)]        //使用std::move(pw)初始化闭包数据成员
+            { return pw->isValidated()
+                     && pw->isArchived(); };
+```
+
+## 条款33：lambda表达式万能引用
+
+lambda可以模板化，例如 `auto f = [](auto x){ return func(normalize(x)); };`
+
+万能引用+完美转发的写法
+
+```cpp
+auto f =
+    [](auto&& param)
+    {
+        return
+            func(normalize(std::forward<decltype(param)>(param)));
+    };
+```
+
+```cpp
+auto f =
+    [](auto&&... params)
+    {
+        return
+            func(normalize(std::forward<decltype(params)>(params)...));
+    };
+```
+
+## 条款34：lambda表达式全面优于std::bind
+
+lambda 式比起使用 std::bind 而言，可读性更好、表达力更强，可能运行效率也更高
+
+## 条款35：基于任务的程序设计
+
+从条款35开始介绍现代c++的并发api
+
+```cpp
+int doAsyncWork();
+
+//基于线程的写法
+std::thread t(doAsyncWork);
+
+//基于任务的写法
+auto fut = std::async(doAsyncWork);
+```
+
+std::thread的缺陷：
+
+- 无法获取函数返回值
+- 无法在线程外部捕获线程抛出的异常
+- 无法控制线程数量
+- 多线程时存在频繁的线程上下文切换  
+    线程上下文切换成本高，而且线程调度会降低线程的缓存命中率
+
+简单来说，基于任务的api提供了更高级的抽象，使开发者不必关心线程管理的问题
