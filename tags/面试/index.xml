@@ -10,7 +10,7 @@
     <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/19.interview-bagu-cpp/</guid>
-    <description><![CDATA[threadlocal volatile static关键字的作用 全局静态变量 将全局变量声明为static可以使得全局变量只在当前文件内有效； 实际上，对于全局变量，static修]]></description>
+    <description><![CDATA[threadlocal volatile：当对象的值可能在程序的控制之外被改变时，将对象声明为volatile，比如程序内包含一个由系统时钟定时更新的变量时。vo]]></description>
 </item>
 <item>
     <title>面试八股-操作系统</title>
