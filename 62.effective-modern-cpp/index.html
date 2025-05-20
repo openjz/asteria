@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/62.effective-modern-cpp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-04-09T16:22:06+08:00" />
-<meta property="article:modified_time" content="2025-05-15T21:32:57+08:00" />
+<meta property="article:modified_time" content="2025-05-16T00:20:35+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  7448 ,
-        "url": "http:\/\/blog.shiwj.top\/62.effective-modern-cpp\/","datePublished": "2025-04-09T16:22:06+08:00","dateModified": "2025-05-15T21:32:57+08:00","publisher": {
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  8265 ,
+        "url": "http:\/\/blog.shiwj.top\/62.effective-modern-cpp\/","datePublished": "2025-04-09T16:22:06+08:00","dateModified": "2025-05-16T00:20:35+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《Effective Modern C&#43;&#43;》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7448 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-09">2025-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;8265 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -135,6 +135,13 @@
     <li><a href="#条款34lambda表达式全面优于stdbind">条款34：lambda表达式全面优于std::bind</a></li>
     <li><a href="#条款35基于任务的程序设计">条款35：基于任务的程序设计</a></li>
     <li><a href="#条款36stdasync的启动模式">条款36：std::async的启动模式</a></li>
+    <li><a href="#条款37thread-join和detach">条款37：thread join和detach</a></li>
+    <li><a href="#条款38stdfuture的析构">条款38：std::future的析构</a>
+      <ul>
+        <li><a href="#什么是future和promise">什么是future和promise？</a></li>
+        <li><a href="#future的析构规则">future的析构规则</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="条款1模板类型推导">条款1：模板类型推导</h2>
@@ -1093,12 +1100,98 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="条款37thread-join和detach">条款37：thread join和detach</h2>
+<p>thread析构之前，要么join，要么detach，否则崩溃</p>
+<h2 id="条款38stdfuture的析构">条款38：std::future的析构</h2>
+<p><code>std::future</code>，<code>std::promise</code>，<code>std::shared_future</code></p>
+<h3 id="什么是future和promise">什么是future和promise？</h3>
+<p>future和promise是线程间异步通信的一种手段，一个线程持有promise，另一个线程持有future，持有promise的线程set数据，持有future的线程get数据</p>
+<p>创建promise的时候，他会同时创建一个future和他绑定，通过<code>promise.get_future()</code>能获取到future，必须通过这个future获取到promise的值</p>
+<p>future和promise在底层实现上，他们之间还有一个称为“共享状态的buffer”，用于保存promise set的数据</p>
+<p>shared_future允许多个线程同时访问共享状态，每个shared_future都能访问到相同的结果</p>
+<p>future是独占的，不能拷贝，只能移动，shared_future可以拷贝</p>
+<p>用法示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">func</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">promise</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hello world.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">promise</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="s">&#34;Hi, I&#39;m Alice&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">testAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">promise</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future</span> <span class="o">=</span> <span class="n">promise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">auto</span> <span class="n">fuRet</span> <span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">async</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">launch</span><span class="o">::</span><span class="n">async</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">promise</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fuRet</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>shared_future用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//用法1，通过独占future的share成员函数获得
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future</span> <span class="o">=</span> <span class="n">promise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future1</span><span class="o">=</span> <span class="n">future</span><span class="p">.</span><span class="n">share</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future2</span> <span class="o">=</span> <span class="n">future1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//用法2，把promise绑定的future直接转换成shared_future，然后拷贝
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">shared_future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future</span> <span class="o">=</span> <span class="n">promise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future1</span> <span class="o">=</span> <span class="n">future</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_future</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">future2</span> <span class="o">=</span> <span class="n">future</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意，第一种写法中，调用<code>future.share()</code>之后，<code>future</code>本身会失效</strong>，所以创建<code>shared_future</code>最好采用第二种写法，不会出错</p>
+<h3 id="future的析构规则">future的析构规则</h3>
+<ul>
+<li>future的正常析构行为就是销毁future本身</li>
+<li>有多个共享future时，最后一个future的析构函数会阻塞住，直到任务完成，相当于一个隐式的join操作。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-05-15&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/7648ea46413ac2c7cf0d8d3c217e54ead0dee292" target="_blank" title="commit by shiwj(swj6086085@163.com) 7648ea46413ac2c7cf0d8d3c217e54ead0dee292: update post 62">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>7648ea4</a></span>
+                <span>Updated on 2025-05-16&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/f6e8d372703c11f27b854f1474e77a1ab2d87b62" target="_blank" title="commit by shiwj(swj6086085@163.com) f6e8d372703c11f27b854f1474e77a1ab2d87b62: update post 62">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>f6e8d37</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
