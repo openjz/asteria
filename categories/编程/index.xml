@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 14 May 2025 10:56:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 30 May 2025 15:22:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>《设计模式》</title>
+    <link>http://blog.shiwj.top/70.design-patterns/</link>
+    <pubDate>Fri, 30 May 2025 15:22:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/70.design-patterns/</guid>
+    <description><![CDATA[参考《设计模式——可复用面向对象软件的基础》 设计模式空间 设计模式的UML图表示法]]></description>
+</item>
+<item>
     <title>c&#43;&#43;内存分析：VLD</title>
     <link>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</link>
     <pubDate>Wed, 14 May 2025 10:56:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</guid>
     <description><![CDATA[ffprobe 查看音视频流信息，ffprobe -show_streams &quot;xxx.mp4&quot; 查看视频比特率，ffprobe -v error -select_streams v:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 &quot;xxx.mp4&quot; 查看帧类型，.\ffprobe.exe -v error -show_frames .\normal.mp4 | findstr pict_type &gt;]]></description>
-</item>
-<item>
-    <title>编译obs</title>
-    <link>http://blog.shiwj.top/58.build_obs/</link>
-    <pubDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/58.build_obs/</guid>
-    <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
 </item>
 </channel>
 </rss>
