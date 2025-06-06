@@ -43,4 +43,16 @@
 
 ![uml-aggregation.png](/posts/70.design-patterns/uml-aggregation.png)
 
+## 抽象工厂模式（Abstract Factory）
 
+![abstract-factory.png](/posts/70.design-patterns/abstract-factory.png)
+
+如果我们有多个产品线（或多套产品配置），每个产品线内含的功能模块和对外接口都是相同的，只是功能模块的内部实现不同，这时可以使用抽象工厂模式对产品线进行隔离。
+
+抽象工厂模式由以下两个部分组成：
+1. 一个抽象工厂类， 多个具体工厂类
+2. 多个抽象产品类， 每个抽象产品类又根据产品线的数量对应多个具体产品类
+
+每个具体工厂负责创建对应产品线的所有产品
+
+如此便可以为不同产品线定义统一的功能接口，并通过工厂隔离不同的产品线，实现了接口和业务的解耦
