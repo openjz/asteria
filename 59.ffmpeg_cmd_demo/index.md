@@ -275,3 +275,10 @@ ffmpeg -ss 2 -t 5 -to 10 -i input.mp4 -c copy output.mp4
 ## 录屏并生成视频
 
 `ffmpeg -f gdigrab -framerate 30 -i desktop -c:v libx264 -pix_fmt yuv420p output.mp4`
+
+## 查看视频帧类型（I、P、B）和视频帧PTS、DTS
+
+`.\ffprobe.exe -v error -show_frames .\normal.mp4 | findstr pict_type > nmormal-type.json
+`
+
+`.\ffprobe.exe -i .\normal.mp4 -select_streams v -show_packets -print_format json > normal-out.json`

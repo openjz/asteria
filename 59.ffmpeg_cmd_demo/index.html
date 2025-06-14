@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "音视频","wordcount":  3740 ,
+                        }],"genre": "posts","keywords": "音视频","wordcount":  3785 ,
         "url": "http:\/\/blog.shiwj.top\/59.ffmpeg_cmd_demo\/","datePublished": "2025-03-30T15:00:00+08:00","dateModified": "2025-05-06T09:35:16+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">ffmpeg命令行例子</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-30">2025-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3740 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-30">2025-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3785 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -124,6 +124,7 @@
     <li><a href="#剪切视频">剪切视频</a></li>
     <li><a href="#控制解码速度">控制解码速度</a></li>
     <li><a href="#录屏并生成视频">录屏并生成视频</a></li>
+    <li><a href="#查看视频帧类型ipb和视频帧ptsdts">查看视频帧类型（I、P、B）和视频帧PTS、DTS</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="ffprobe">ffprobe</h2>
@@ -417,6 +418,9 @@
 </div>
 </div><h2 id="录屏并生成视频">录屏并生成视频</h2>
 <p><code>ffmpeg -f gdigrab -framerate 30 -i desktop -c:v libx264 -pix_fmt yuv420p output.mp4</code></p>
+<h2 id="查看视频帧类型ipb和视频帧ptsdts">查看视频帧类型（I、P、B）和视频帧PTS、DTS</h2>
+<p><code>.\ffprobe.exe -v error -show_frames .\normal.mp4 | findstr pict_type &gt; nmormal-type.json </code></p>
+<p><code>.\ffprobe.exe -i .\normal.mp4 -select_streams v -show_packets -print_format json &gt; normal-out.json</code></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
