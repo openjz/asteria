@@ -155,3 +155,16 @@
 为其他对象提供代理，代理的目的包括访问控制、按需创建、引用计数等等
 
 ![proxy.png](/posts/70.design-patterns/proxy.png)
+
+## 责任链模式（Chain of Responsibility）
+
+请求链式传递，链上的每个对象都有机会处理请求，请求者并不知道请求最终会被哪个对象处理
+
+![chain-of-responsibility.png](/posts/70.design-patterns/chain-of-responsibility.png)
+
+## 命令模式（Command）
+
+命令模式将请求封装为一个command对象，将请求发起方和请求接收方解耦。
+
+![command.png](/posts/70.design-patterns/command.png)
+
