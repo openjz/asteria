@@ -214,8 +214,17 @@
 
 ![observer.png](/posts/70.design-patterns/observer.png)
 
+## 状态模式（State）
 
+对象内部状态发生改变时，对象的行为也会随之改变，就好像修改了它的类一样，这种模式称为状态模式。
 
+状态模式的侧重点在于，当保持对象的接口不变时，如何根据对象的状态改变对象的行为。
+
+状态模式通常与状态机相结合，例如，下面是一个TCPConnection类的状态模式示例：
+
+![state.png](/posts/70.design-patterns/state.png)
+
+TCPConnection对象处于不同的状态时，它的接口会执行不同的动作，返回不同的结果。
 
 
 
