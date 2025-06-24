@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/70.design-patterns/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-05-30T15:22:00+08:00" />
-<meta property="article:modified_time" content="2025-06-24T00:56:13+08:00" />
+<meta property="article:modified_time" content="2025-06-25T00:43:39+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "代码设计","wordcount":  3922 ,
-        "url": "http:\/\/blog.shiwj.top\/70.design-patterns\/","datePublished": "2025-05-30T15:22:00+08:00","dateModified": "2025-06-24T00:56:13+08:00","publisher": {
+                        }],"genre": "posts","keywords": "代码设计","wordcount":  3913 ,
+        "url": "http:\/\/blog.shiwj.top\/70.design-patterns\/","datePublished": "2025-05-30T15:22:00+08:00","dateModified": "2025-06-25T00:43:39+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《设计模式》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-30">2025-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3922 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-30">2025-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3913 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -90,7 +90,13 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#前述">前述</a></li>
+    <li><a href="#前述">前述</a>
+      <ul>
+        <li><a href="#创建型模式">创建型模式</a></li>
+        <li><a href="#结构型模式">结构型模式</a></li>
+        <li><a href="#行为型模式">行为型模式</a></li>
+      </ul>
+    </li>
     <li><a href="#设计模式空间">设计模式空间</a></li>
     <li><a href="#设计模式的uml图表示法">设计模式的UML图表示法</a>
       <ul>
@@ -133,26 +139,27 @@
 <p>基本的思想是灵活运用组合将调用者和被调用者解耦，避免直接的继承关系，尽量使用接口和抽象类来定义通用的功能接口。</p>
 <p>书中共提到23种设计模式，很多模式在工程实践中已经自然而然地被大量使用了，例如桥接模式、适配器模式、状态模式、策略模式等等，这些模式几乎是无可争议的最佳实践，不需要特别说明，就可以自然而然地应用在代码中。</p>
 <p>需要特别注意的模式有如下12种：</p>
-<ul>
-<li>创建型模式
+<h3 id="创建型模式">创建型模式</h3>
 <ol>
 <li>工厂方法模式和抽象工厂模式：侧重于隐藏对象创建的细节。</li>
 <li>原型模式：这个比较有意思，主要是为了避免重复创建对象，直接克隆一个已有的对象。</li>
 <li>单例模式：确保一个类只有一个实例，并提供全局访问点。</li>
 </ol>
-</li>
-<li>结构型模式
-4. 外观模式：同时提供使用较为简单的上层接口和较为复杂的底层接口，供不同层次的用户使用。（基本所有大型基础库的导出接口都遵循这个模式，例如openssl、ffmpeg、各系统api）
-5. 享元模式：共享可复用的对象，减少内存占用和提高性能。（排版系统的设计模式）</li>
-<li>行为型模式
-6. 责任链模式：请求链式传递，链上的每个对象都有机会处理请求。（golang的gin框架的中间件机制就是一个典型的责任链模式）
-7. 命令模式：将请求封装为一个命令对象，将请求发起方和请求接收方解耦。（ui层的设计模式）
-8. 解释器模式：编译器语法分析专用模式
-9. 备忘录：为对象不同时刻的状态记录检查点，以便实现撤销操作（适合用于编辑器的设计）。
-10. 观察者：发布-订阅模式。（C#的委托就是一种观察者模式）
-11. 模板方法模式：其实没什么特别的，它最大的特点是它是设计模式里面唯一的一个纯面向对象模式。
-12. 访问者模式：一种将数据和操作分离的模式，例如树状结构的遍历处理，挺有意思。</li>
-</ul>
+<h3 id="结构型模式">结构型模式</h3>
+<ol start="4">
+<li>外观模式：同时提供使用较为简单的上层接口和较为复杂的底层接口，供不同层次的用户使用。（基本所有大型基础库的导出接口都遵循这个模式，例如openssl、ffmpeg、各系统api）</li>
+<li>享元模式：共享可复用的对象，减少内存占用和提高性能。（排版系统的设计模式）</li>
+</ol>
+<h3 id="行为型模式">行为型模式</h3>
+<ol start="6">
+<li>责任链模式：请求链式传递，链上的每个对象都有机会处理请求。（golang的gin框架的中间件机制就是一个典型的责任链模式）</li>
+<li>命令模式：将请求封装为一个命令对象，将请求发起方和请求接收方解耦。（ui层的设计模式）</li>
+<li>解释器模式：编译器语法分析专用模式</li>
+<li>备忘录：为对象不同时刻的状态记录检查点，以便实现撤销操作（适合用于编辑器的设计）。</li>
+<li>观察者：发布-订阅模式。（C#的委托就是一种观察者模式）</li>
+<li>模板方法模式：其实没什么特别的，它最大的特点是它是设计模式里面唯一的一个纯面向对象模式。</li>
+<li>访问者模式：一种将数据和操作分离的模式，例如树状结构的遍历处理，挺有意思。</li>
+</ol>
 <h2 id="设计模式空间">设计模式空间</h2>
 <p><img
         class="lazyload"
@@ -523,8 +530,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-06-24&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/b9c134cd694804a682c5966a97fa59134bc8bcee" target="_blank" title="commit by shiwj(swj6086085@163.com) b9c134cd694804a682c5966a97fa59134bc8bcee: update post 70">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>b9c134c</a></span>
+                <span>Updated on 2025-06-25&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/cadef9e64c7becd6e839fda3cf84edab6d74e94d" target="_blank" title="commit by shiwj(swj6086085@163.com) cadef9e64c7becd6e839fda3cf84edab6d74e94d: update post 70">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>cadef9e</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
