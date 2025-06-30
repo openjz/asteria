@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b, 并发编程, 操作系统","wordcount":  1999 ,
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b, 并发编程, 操作系统","wordcount":  2616 ,
         "url": "http:\/\/blog.shiwj.top\/37.condition-variable\/","datePublished": "2023-10-23T08:38:11+08:00","dateModified": "2024-12-17T15:02:27+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">条件变量</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-10-23">2023-10-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1999 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-10-23">2023-10-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2616 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -211,7 +211,36 @@ notes部分</p>
 <li>锁定 -&gt; 更改条件 -&gt; （解锁 -&gt; notify/notify -&gt; 解锁）</li>
 </ol>
 <p>wait操作内部整合了<code>检查条件 -&gt; wait -&gt; 解锁+阻塞等待</code>以及<code>wait唤醒 -&gt; 锁定</code>，其他的锁定和解锁动作需要用户自己去完成。</p>
-<p>一个例子</p>
+<p>c++条件变量标准写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">muCond</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span> <span class="n">cond</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//线程A...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">ul</span><span class="p">(</span><span class="n">muCond</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cond</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">ul</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//线程B..
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">ul</span><span class="p">(</span><span class="n">muCond</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cond</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>C++的condition_variable不会缓存信号状态，换句话说，<strong>如果线程A先notify，线程B后wait，线程B就会错过notify，wait会永远阻塞</strong>。</p>
+<p>与之相比，windows原生的event就能缓存信号状态，event分两种模式，自动重置和手动重置，自动重置模式的行为基本和C++的condition_variable一致，而手动重置模式下，set event之后，信号状态会保持，即使wait在set event之后被调用，仍能获取到event的set状态，用户如果想要重置event的状态，需要显式再次调用set event去重置event的状态。</p>
+<p>如何让C++的condition_variable也能保存状态？这需要用户自定义一个状态，例如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -225,22 +254,56 @@ notes部分</p>
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">muCond</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span> <span class="n">cond</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">t</span><span class="p">([</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cond</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">//用户自定义状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//线程A...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">ul</span><span class="p">(</span><span class="n">muCond</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//调用wait带谓词版，在谓词中检查条件是否满足并重置状态
+</span></span></span><span class="line"><span class="cl"><span class="c1">//wait会先检查条件是否满足，如果不满足，则阻塞等待
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cond</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">ul</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="o">&amp;</span><span class="n">flag</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">bool</span> 
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">ul</span><span class="p">(</span><span class="n">muCond</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cond</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">ul</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">ulCond</span><span class="p">(</span><span class="n">muCond</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">cond</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//线程B..
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">ul</span><span class="p">(</span><span class="n">muCond</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>    <span class="c1">//设置状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cond</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><p>带谓词的wait调用本身是为了解决虚假唤醒的问题，当condition_variable被意外唤醒时，wait会先检查谓词是否满足条件，如果不满足，则继续block等待，它的实现等同于</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">pred</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wait</span><span class="p">(</span><span class="n">lock</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>它会先检查条件，然后再wait，这样恰好也能解决notify丢失的问题</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

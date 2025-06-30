@@ -112,19 +112,57 @@ condition_variable提供了几种操作：
 
 wait操作内部整合了`检查条件 -> wait -> 解锁+阻塞等待`以及`wait唤醒 -> 锁定`，其他的锁定和解锁动作需要用户自己去完成。
 
-一个例子
+c++条件变量标准写法：
 
 ```cpp
 std::mutex muCond;
 std::condition_variable cond;
 
-std::thread t([&mutex, &cond]()->void
-    {
-        std::unique_lock<std::mutex> ul(muCond);
-        cond.wait(ul);
-    });
+//线程A...
+std::unique_lock<std::mutex> ul(muCond);
+cond.wait(ul);
 
-std::unique_lock<std::mutex> ulCond(muCond);
+//线程B..
+std::unique_lock<std::mutex> ul(muCond);
 cond.notify_all();
 ```
 
+C++的condition_variable不会缓存信号状态，换句话说，**如果线程A先notify，线程B后wait，线程B就会错过notify，wait会永远阻塞**。
+
+与之相比，windows原生的event就能缓存信号状态，event分两种模式，自动重置和手动重置，自动重置模式的行为基本和C++的condition_variable一致，而手动重置模式下，set event之后，信号状态会保持，即使wait在set event之后被调用，仍能获取到event的set状态，用户如果想要重置event的状态，需要显式再次调用set event去重置event的状态。
+
+如何让C++的condition_variable也能保存状态？这需要用户自定义一个状态，例如
+
+```cpp
+std::mutex muCond;
+std::condition_variable cond;
+bool flag = false;  //用户自定义状态
+
+//线程A...
+std::unique_lock<std::mutex> ul(muCond);
+//调用wait带谓词版，在谓词中检查条件是否满足并重置状态
+//wait会先检查条件是否满足，如果不满足，则阻塞等待
+cond.wait(ul, 
+    [&flag]()->bool 
+    {
+        if (flag) {
+            flag = false;
+            return true;
+        }
+        return false;
+    });
+
+//线程B..
+std::unique_lock<std::mutex> ul(muCond);
+flag = true;    //设置状态
+cond.notify_all();
+```
+
+带谓词的wait调用本身是为了解决虚假唤醒的问题，当condition_variable被意外唤醒时，wait会先检查谓词是否满足条件，如果不满足，则继续block等待，它的实现等同于
+
+```cpp
+while (!pred())
+    wait(lock);
+```
+
+它会先检查条件，然后再wait，这样恰好也能解决notify丢失的问题
