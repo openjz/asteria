@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, golang","wordcount":  26945 ,
+                        }],"genre": "posts","keywords": "面试, golang","wordcount":  27151 ,
         "url": "http:\/\/blog.shiwj.top\/16.interview-bagu-golang\/","datePublished": "2022-10-07T18:41:32+08:00","dateModified": "2024-12-17T15:02:27+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-golang</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;26945 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;54 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;27151 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;55 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -1421,7 +1421,8 @@
 </li>
 <li>单列索引和组合索引
 <ul>
-<li>组合索引是在多列上构建的索引，查询条件（1）包含组合索引列的前缀并且（2）用 and 连接时才会触发组合索引</li>
+<li>组合索引是在多列上构建的索引，查询条件必须满足两个条件：（1）符合组合索引的最左前缀原则（2）用 and 连接时才会触发组合索引</li>
+<li>什么是最左前缀原则呢？就是查询时，必须按创建索引时字段的顺序去用and连接，比如对三个字段创建了一个组合索引，<code>Index index1 (name,age,city)</code>，查询的时候只能以<code>name=&quot;swj&quot; and age=30</code> 或者 <code>name=&quot;swj&quot; and age=30 and city='tianjin'</code>这两种方式去查询，不能跳过age，直接以name和city去查询，相当于创建了两个索引<code>(name,age)</code>和<code>(name,age,city)</code></li>
 </ul>
 </li>
 <li>全文索引
