@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</link>
         <description>编程 - Category - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 30 May 2025 15:22:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>无锁环形buffer</title>
+    <link>http://blog.shiwj.top/71.lockfree-ringbuffer/</link>
+    <pubDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/71.lockfree-ringbuffer/</guid>
+    <description><![CDATA[无锁环形队列介绍 无锁环形队列提高并发效率主要依赖以下两点： 环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件 采用CAS]]></description>
+</item>
+<item>
     <title>《设计模式》阅读笔记</title>
     <link>http://blog.shiwj.top/70.design-patterns/</link>
     <pubDate>Fri, 30 May 2025 15:22:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/60.vscode-continue-config/</guid>
     <description><![CDATA[deepseek 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 name: Local Assistant version: 1.0.0 schema: v1 models: - name: DeepSeek Chat provider: deepseek apiBase: https://api.deepseek.com/beta model: deepseek-chat apiKey: sk-f6001c81996a4fdeb1a660d14f7ef9de roles: - chat - edit - apply]]></description>
-</item>
-<item>
-    <title>ffmpeg命令行例子</title>
-    <link>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</link>
-    <pubDate>Sun, 30 Mar 2025 15:00:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</guid>
-    <description><![CDATA[ffprobe 查看音视频流信息，ffprobe -show_streams &quot;xxx.mp4&quot; 查看视频比特率，ffprobe -v error -select_streams v:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 &quot;xxx.mp4&quot; 查看帧类型，.\ffprobe.exe -v error -show_frames .\normal.mp4 | findstr pict_type &gt;]]></description>
 </item>
 </channel>
 </rss>

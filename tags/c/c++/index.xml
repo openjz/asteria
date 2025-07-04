@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
             <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><atom:link href="http://blog.shiwj.top/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>无锁环形buffer</title>
+    <link>http://blog.shiwj.top/71.lockfree-ringbuffer/</link>
+    <pubDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/71.lockfree-ringbuffer/</guid>
+    <description><![CDATA[无锁环形队列介绍 无锁环形队列提高并发效率主要依赖以下两点： 环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件 采用CAS]]></description>
+</item>
+<item>
     <title>c&#43;&#43;内存分析：VLD</title>
     <link>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</link>
     <pubDate>Wed, 14 May 2025 10:56:00 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/56.char-wchar-on-windows/</guid>
     <description><![CDATA[一、预备知识 unicode unicode是一套字符编码标准，它为世界上几乎所有的字符都分别分配了一个唯一的编码，但unicode并没有规定这些编码在计算]]></description>
-</item>
-<item>
-    <title>windows下调试dump文件</title>
-    <link>http://blog.shiwj.top/39.windows-dump-debug/</link>
-    <pubDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/39.windows-dump-debug/</guid>
-    <description><![CDATA[开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows]]></description>
 </item>
 </channel>
 </rss>
