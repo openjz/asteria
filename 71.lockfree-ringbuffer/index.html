@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>无锁环形buffer - 星</title><meta name="Description" content=""><meta property="og:title" content="无锁环形buffer" />
+<meta property="og:description" content="无锁环形队列介绍 无锁环形队列提高并发效率主要依赖以下两点： 环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件 采用CAS" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.shiwj.top/71.lockfree-ringbuffer/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
+
+<meta name="twitter:title" content="无锁环形buffer"/>
+<meta name="twitter:description" content="无锁环形队列介绍 无锁环形队列提高并发效率主要依赖以下两点： 环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件 采用CAS"/>
+<meta name="application-name" content="星">
+<meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/71.lockfree-ringbuffer/" /><link rel="next" href="http://blog.shiwj.top/41.linux-so-dynamic-load/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "无锁环形buffer",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.shiwj.top\/71.lockfree-ringbuffer\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  1282 ,
+        "url": "http:\/\/blog.shiwj.top\/71.lockfree-ringbuffer\/","publisher": {
+            "@type": "Organization",
+            "name": "shiwj","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/blog.shiwj.top\/images\/avatar.png",
+                    "width":  690 ,
+                    "height":  690 
+                }},"author": {
+                "@type": "Person",
+                "name": "shiwj"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="星"><span class="header-title-pre"><i class='far fa-star-half-alt fa-fw' aria-hidden='true'></i></span>星</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">全部</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/openjz" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">无锁环形buffer</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1282 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#无锁环形队列介绍">无锁环形队列介绍</a></li>
+    <li><a href="#简单的无锁环形队列实现">简单的无锁环形队列实现</a></li>
+    <li><a href="#一种特殊场景下的共享内存实现">一种特殊场景下的共享内存实现</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="无锁环形队列介绍">无锁环形队列介绍</h2>
+<p>无锁环形队列提高并发效率主要依赖以下两点：</p>
+<ol>
+<li>环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件</li>
+<li>采用CAS（Compare And Swap）避免锁竞争带来的线程阻塞</li>
+</ol>
+<p>CAS本质是将检查条件和写入新数据封装为了原子操作</p>
+<p>CAS的特点：</p>
+<ul>
+<li>CAS本身是一种乐观锁机制，加锁粒度比较小</li>
+<li>CAS依赖硬件原子指令保证数据一致性，CAS指令通常是非阻塞的，有点类似spin lock，避免线程阻塞带来的上下文切换成本</li>
+</ul>
+<p>C++提供了一种CAS机制：即<code>atomic</code>的两个CAS操作，<code>compare_exchange_weak</code>和<code>compare_exchange_strong</code>，但<code>atomic</code>不保证跨进程原子性，因此无法在共享内存中使用</p>
+<p>windows同样提供了CAS机制：<code>InterlockedCompareExchange</code>，这个可以在共享内存中跨进程使用</p>
+<h2 id="简单的无锁环形队列实现">简单的无锁环形队列实现</h2>
+<p>一写一读实现（可以使用发布订阅模式实现一写多读）</p>
+<p>每个buffer都有一个状态字段，有四个值：empty, filled, writting, reading，分别代表无数据，已写入数据，正在写，正在读</p>
+<p>环形队列有两个读写指针，分别代表当前可读和可写的位置</p>
+<p>只有更新状态会涉及到cas操作，读写指针更新不需要cas（因为只有一个生产者和一个消费者）</p>
+<p>读取时的cas操作：</p>
+<ol>
+<li>loop
+<ul>
+<li>获取tail数据状态，如果不为filled，则loop重试</li>
+<li>将当前 (状态) 作为预期值</li>
+<li>cas操作，如果状态没变 则更新为 reading</li>
+</ul>
+</li>
+<li>读取数据</li>
+<li>状态原子更新为 empty</li>
+<li>tail+1：只有读端会更新tail指针，直接更新即可</li>
+</ol>
+<p>写入时的cas操作：</p>
+<ol>
+<li>loop
+<ul>
+<li>获取head数据状态，如果不为 empty，则loop重试</li>
+<li>将当前 (状态) 作为预期值</li>
+<li>cas操作，如果状态没变 则更新为 writting</li>
+</ul>
+</li>
+<li>写入数据</li>
+<li>状态原子更新为 filled</li>
+<li>head+1，只有写端会更新head指针，直接更新即可</li>
+</ol>
+<h2 id="一种特殊场景下的共享内存实现">一种特殊场景下的共享内存实现</h2>
+<ol>
+<li>一写多读</li>
+<li>数据块比较大（8MB），单次memcpy的耗时是500~1000us</li>
+<li>读取方希望每次读取都尽量读取最新的数据</li>
+<li>不怕丢掉旧数据</li>
+</ol>
+<p>方案：</p>
+<ol>
+<li>不需要读写指针，只需要一个写指针head</li>
+<li>写入端每次尝试往head端写入数据，读取端每次尝试读取head前一个buffer中的数据</li>
+<li>读取方不需要考虑删除数据的问题，因为读取方永远尝试读取最新buffer，写入时覆盖写即可</li>
+</ol>
+<p>在写快读慢的极端场景，可能会出现以下情况，环形队列两端都被read占据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">      read1                read2                无                 read3
+</span></span><span class="line"><span class="cl">        ↓                    ↓                  ↓                    ↓
+</span></span><span class="line"><span class="cl">+-------------------+-------------------+-------------------+-------------------+
+</span></span><span class="line"><span class="cl">|    Buffer_1(tail) |     Buffer_2      |    Buffer_3       |   Buffer_4(head)  |
+</span></span><span class="line"><span class="cl">+-------------------+-------------------+-------------------+-------------------+
+</span></span><span class="line"><span class="cl">        ↑
+</span></span><span class="line"><span class="cl">   write block
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每个buffer都有一个状态值：empty, filled</p>
+<p>每个buffer都有一个读写计数：-1：写，0：未占用，&gt;0: 读</p>
+<p>读取时的cas操作：</p>
+<ol>
+<li>loop
+<ul>
+<li>获取head-1节点读写计数和状态，如果为empty和-1，loop重试</li>
+<li>将当前 (状态，读写计数) 作为预期值</li>
+<li>cas操作，比较并更新为（状态, 读写计数+1），不修改状态，只修改读写计数</li>
+</ul>
+</li>
+<li>读取数据</li>
+<li>读写计数原子-1</li>
+</ol>
+<p>写入时的cas操作：</p>
+<ol>
+<li>loop
+<ul>
+<li>获取head读写计数，如果不为0，直接loop重试</li>
+<li>将当前 (状态，读写计数) 作为预期值</li>
+<li>cas操作，比较并更新为（状态, 读写计数为-1）</li>
+</ul>
+</li>
+<li>写入数据</li>
+<li>状态和读写计数原子更新为 （filled, 0）</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/71.lockfree-ringbuffer/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c/c&#43;&#43;/">c/c&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/41.linux-so-dynamic-load/" class="next" rel="next" title="linux 动态库so文件 动态加载">linux 动态库so文件 动态加载<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2020 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/openjz" target="_blank">shiwj</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">津ICP备2020010292号-1</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
