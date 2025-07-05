@@ -29,6 +29,14 @@
     <description><![CDATA[网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理]]></description>
 </item>
 <item>
+    <title>面试八股-通用</title>
+    <link>http://blog.shiwj.top/16.z1.interview-bagu-general/</link>
+    <pubDate>Fri, 07 Oct 2022 18:41:33 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/16.z1.interview-bagu-general/</guid>
+    <description><![CDATA[系统 基础 什么是协程 进程和线程的区别 进程是资源分配的基本单位，线程是调度的基本单位 线程属于进程，一个进程包含多个线程 进程间相互隔离，不共享资源]]></description>
+</item>
+<item>
     <title>面试八股-golang</title>
     <link>http://blog.shiwj.top/16.interview-bagu-golang/</link>
     <pubDate>Fri, 07 Oct 2022 18:41:32 &#43;0800</pubDate>
