@@ -34,7 +34,7 @@
     <pubDate>Fri, 07 Oct 2022 18:41:33 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/16.z1.interview-bagu-general/</guid>
-    <description><![CDATA[系统 基础 什么是协程 进程和线程的区别 进程是资源分配的基本单位，线程是调度的基本单位 线程属于进程，一个进程包含多个线程 进程间相互隔离，不共享资源]]></description>
+    <description><![CDATA[系统 基础 什么是协程 协程是一种运行在用户态的并发机制，类似于一种轻量级的用户态线程，协程一般运行在内核态线程之上（例如，可以按照n:m模型调度]]></description>
 </item>
 <item>
     <title>面试八股-golang</title>

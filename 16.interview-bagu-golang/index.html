@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/16.interview-bagu-golang/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-07T18:41:32+08:00" />
-<meta property="article:modified_time" content="2025-07-04T17:19:23+08:00" />
+<meta property="article:modified_time" content="2025-07-05T15:26:54+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, golang","wordcount":  4025 ,
-        "url": "http:\/\/blog.shiwj.top\/16.interview-bagu-golang\/","datePublished": "2022-10-07T18:41:32+08:00","dateModified": "2025-07-04T17:19:23+08:00","publisher": {
+                        }],"genre": "posts","keywords": "面试, golang","wordcount":  5104 ,
+        "url": "http:\/\/blog.shiwj.top\/16.interview-bagu-golang\/","datePublished": "2022-10-07T18:41:32+08:00","dateModified": "2025-07-05T15:26:54+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-golang</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4025 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5104 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -109,6 +109,7 @@
         <li><a href="#go-工具">go 工具</a></li>
       </ul>
     </li>
+    <li><a href="#gin框架">gin框架</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="golang">golang</h2>
@@ -414,12 +415,51 @@
 </ul>
 </li>
 </ul>
+<h2 id="gin框架">gin框架</h2>
+<ul>
+<li>主要概念
+<ul>
+<li>engine、handelr、router、conetxt、bind</li>
+</ul>
+</li>
+<li>engine，是一个gin框架的全局实例，RouterGroup（定义了一个路由组，保存了该路由组的中间件和请求路径）、Trees（包含所有路由前缀树，查找路由，根据请求方法对树分类。并保存了每个路由对应的handler）</li>
+<li>context
+-是handler会传入一个gin context指针，一般命名为c
+<ul>
+<li>gin context实现了go的Context接口的四个函数，Done、Value、Deadline、Err，所以gin context也是一个context</li>
+<li>gin context定义了一个key map，调用Value时首先去这个key map里面找，还带了一个读写锁用来保护这个key map，可以并发读写key map（go原生的valuectx不能并发，只能被一个goroutine操作，除非你自己给它上锁）</li>
+<li>gin context定义了一个copy函数，启动新goroutine的时候可以拷贝</li>
+</ul>
+</li>
+<li>request body和一个struct绑定以后会被清空，不能再次使用
+<ul>
+<li>多次绑定可以使用ShouldBindBodyWith</li>
+</ul>
+</li>
+<li>http server
+<ul>
+<li>不要直接调用r.Run()，而是把r作为handler传入一个http.Server变量，调用http.Server的ListenAndServe()启动服务</li>
+<li>如果想自定义端口、超时等配置，给http.Server的对应成员赋值即可</li>
+<li>利用goroutine、信号、和http.Server的Shutdown()函数实现优雅退出</li>
+</ul>
+</li>
+<li>gin handler（gin 中间件）
+<ul>
+<li>一个gin handler就是一个处理函数，gin在请求处理的某个阶段调用这些handler，handler相当于是请求处理的钩子函数</li>
+<li>handler负责打日志、鉴权、异常恢复等工作</li>
+<li>（请求处理函数本身其实也是个handler）</li>
+<li>handler分局部和全局的，局部handler对一个路由生效，全局handler对所有路由生效</li>
+<li>handler可以在请求处理函数之前执行，也可以在请求处理函数之后执行</li>
+<li>在handler中调用next方法的作用是，调用next之前的代码在请求处理之前执行（前置），调用next之后的代码在请求处理之后执行（后置）。（这个不难理解，next的作用是执行其他handler，如果其中一个handler中没有调用next，那它整个是前置的，如果其中一个handler也调了next，就继续递归处理其他handler，最后一个handler是请求处理函数，请求处理函数执行完毕后，递归调用返回时，触发所有handler的后置部分）</li>
+</ul>
+</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-04&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/3f3f5317f0c5989412cf5dc84ecb59c5b38e1352" target="_blank" title="commit by shiwj(shiwj7@lenovo.com) 3f3f5317f0c5989412cf5dc84ecb59c5b38e1352: add post 71">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>3f3f531</a></span>
+                <span>Updated on 2025-07-05&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/105c13dbdee67ce52df42658df5bcc76019bcfd1" target="_blank" title="commit by shiwj(swj6086085@163.com) 105c13dbdee67ce52df42658df5bcc76019bcfd1: add post 16.z1">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>105c13d</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
