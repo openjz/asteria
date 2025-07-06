@@ -4,10 +4,18 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 06 Jul 2025 17:00:50 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>无锁环形buffer</title>
+    <title>霍纳规则——一种高效求解多项式的算法</title>
+    <link>http://blog.shiwj.top/72.horner-rule/</link>
+    <pubDate>Sun, 06 Jul 2025 17:00:50 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/72.horner-rule/</guid>
+    <description><![CDATA[霍纳规则简介 霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的]]></description>
+</item>
+<item>
+    <title>无锁环形Buffer</title>
     <link>http://blog.shiwj.top/71.lockfree-ringbuffer/</link>
     <pubDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</pubDate>
     <author>shiwj</author>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/63.affine-transformation/</guid>
     <description><![CDATA[参考 如何通俗地讲解「仿射变换」？ - 马同学的回答 - 知乎 前言 最近看了一些unity shader相关的教程，发现unity中的变换矩阵全部都用的是]]></description>
-</item>
-<item>
-    <title>《Effective Modern C&#43;&#43;》阅读笔记</title>
-    <link>http://blog.shiwj.top/62.effective-modern-cpp/</link>
-    <pubDate>Wed, 09 Apr 2025 16:22:06 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/62.effective-modern-cpp/</guid>
-    <description><![CDATA[条款1：模板类型推导 c++模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType和T]]></description>
 </item>
 </channel>
 </rss>

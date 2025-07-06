@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 06 Jul 2025 17:00:50 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>霍纳规则——一种高效求解多项式的算法</title>
+    <link>http://blog.shiwj.top/72.horner-rule/</link>
+    <pubDate>Sun, 06 Jul 2025 17:00:50 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/72.horner-rule/</guid>
+    <description><![CDATA[霍纳规则简介 霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的]]></description>
+</item>
+<item>
     <title>c&#43;&#43;标准库算法概览</title>
     <link>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</link>
     <pubDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</pubDate>
