@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试","wordcount":  25521 ,
+                        }],"genre": "posts","keywords": "面试","wordcount":  25841 ,
         "url": "http:\/\/blog.shiwj.top\/16.z1.interview-bagu-general\/","datePublished": "2022-10-07T18:41:33+08:00","dateModified": "2025-07-06T20:56:06+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-通用</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;25521 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;51 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;25841 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;52 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -225,6 +225,26 @@
 <li>内核将执行结果返回给用户程序，CPU从内核态切换回用户态，应用程序继续运行。</li>
 </ol>
 <p>软中断是中断的软件实现，和硬中断相对，软中断可以让cpu从用户态切换到内核态，主要用于实现系统调用和内核任务调度等。</p>
+<p>进程控制块（PCB, Process Control Block）和线程控制块（TCB, Thread Control Block）是操作系统用来管理进程和线程的核心数据结构。它们分别保存如下内容：</p>
+<p><strong>进程控制块（PCB）主要内容：</strong></p>
+<ul>
+<li>进程标识信息：进程ID（PID）、父进程ID、用户ID等</li>
+<li>进程状态：就绪、运行、阻塞等</li>
+<li>程序计数器（PC）：指向下一条将要执行的指令地址</li>
+<li>CPU寄存器内容：上下文切换时保存/恢复</li>
+<li>其它内容</li>
+</ul>
+<p><strong>线程控制块（TCB）主要内容：</strong></p>
+<ul>
+<li>线程标识信息：线程ID、所属进程ID</li>
+<li>线程状态：就绪、运行、阻塞等</li>
+<li>程序计数器（PC）：线程当前执行位置</li>
+<li>CPU寄存器内容：线程上下文</li>
+<li>栈指针和栈空间信息：每个线程有独立的栈</li>
+<li>线程调度信息：优先级、调度队列指针等</li>
+<li>线程局部存储（TLS）信息</li>
+<li>其他：如信号掩码、线程私有数据等</li>
+</ul>
 <h3 id="内存管理">内存管理</h3>
 <p><strong>虚拟内存和物理内存</strong></p>
 <p>虚拟内存是操作系统为每个进程提供的、看起来连续且独立的内存空间，又称逻辑内存空间。每个进程都认为自己拥有完整的、独立的内存，不会与其他进程冲突。虚拟内存的大小通常大于实际物理内存，依赖于磁盘空间（如交换分区或页面文件）进行扩展。</p>

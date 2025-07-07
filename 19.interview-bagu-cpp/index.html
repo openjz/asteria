@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  5688 ,
+                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  7093 ,
         "url": "http:\/\/blog.shiwj.top\/19.interview-bagu-cpp\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2025-05-21T00:55:37+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-c&#43;&#43;</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5688 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7093 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -121,6 +121,10 @@
     <li><a href="#socket开发">socket开发</a></li>
     <li><a href="#boost">boost</a></li>
     <li><a href="#grpc--brotobuf">grpc + brotobuf</a></li>
+    <li><a href="#函数调用约定">函数调用约定</a></li>
+    <li><a href="#函数是如何调用的">函数是如何调用的</a></li>
+    <li><a href="#局部变量的入栈顺序">局部变量的入栈顺序</a></li>
+    <li><a href="#为啥函数栈被写坏了函数返回时被崩溃">为啥函数栈被写坏了，函数返回时被崩溃</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><ul>
@@ -606,6 +610,104 @@ nullptr、NULL、0</li>
 <li>grpc底层是tcp epoll模型</li>
 <li>上层的通信协议是http + protobuf</li>
 </ul>
+<h2 id="函数调用约定">函数调用约定</h2>
+<p>stdcall、cdecl、fastcall三者的区别</p>
+<p>stdcall、cdecl、fastcall三种函数调用约定的区别如下：</p>
+<ol>
+<li>
+<p><strong>cdecl（C Declaration）</strong></p>
+<ul>
+<li>参数从右到左入栈。</li>
+<li>由<strong>调用者</strong>负责清理堆栈。</li>
+<li>支持可变参数（如printf）。</li>
+<li>是C默认的调用约定。</li>
+</ul>
+</li>
+<li>
+<p><strong>stdcall（Standard Call）</strong></p>
+<ul>
+<li>参数从右到左入栈。</li>
+<li>由**被调用者（函数本身）**负责清理堆栈。</li>
+<li>是C++标准调用约定。</li>
+</ul>
+</li>
+<li>
+<p><strong>fastcall</strong></p>
+<ul>
+<li>前两个参数通过寄存器（如ECX、EDX）传递，其余参数从右到左入栈。</li>
+<li>由<strong>被调用者</strong>负责清理堆栈。</li>
+<li>速度较快，减少了对栈的操作。</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结：</strong></p>
+<ul>
+<li>cdecl：调用者清理栈，支持可变参数，默认约定。</li>
+<li>stdcall：被调用者清理栈，不支持可变参数，常用于WinAPI。</li>
+<li>fastcall：部分参数用寄存器传递，被调用者清理栈，效率</li>
+</ul>
+<h2 id="函数是如何调用的">函数是如何调用的</h2>
+<p>单个函数调用操作所使用的栈部分被称为栈帧（stack frame）结构</p>
+<p>存放所有函数调用链的内存区域称为“栈”，栈上的每个函数调用成为“帧”</p>
+<p>栈的地址是从高地址向低地址增长的，栈顶的地址最低</p>
+<p>这里涉及到两个指针，“栈指针”和“帧指针”，栈指针是栈上的一个全局指针，始终指向栈顶，帧指针是指向当前函数栈帧的指针</p>
+<p>┌──────────────────────────────┐
+│    &hellip;（上一个函数的栈帧）     │
+├──────────────────────────────┤
+│   参数n（最右边的参数）        │  ← esp（刚进入函数时）
+│   &hellip;                        │
+│   参数2                      │
+│   参数1（最左边的参数）        │
+├──────────────────────────────┤
+│   返回地址（ret address）     │  ← call指令压入
+├──────────────────────────────┤
+│   上一个ebp（栈帧指针）        │  ← push ebp
+├──────────────────────────────┤
+│   局部变量                    │  ← sub esp, size
+│   &hellip;                        │
+└──────────────────────────────┘</p>
+<p>函数调用和返回的过程主要依赖于栈（调用栈）来管理参数、返回地址和局部变量。以常见的 x86 平台为例，过程如下：</p>
+<ol>
+<li>
+<p><strong>调用前准备</strong></p>
+<ul>
+<li>调用者将函数参数按调用约定（如从右到左）依次压入栈中。</li>
+<li>调用者执行 <code>call</code> 指令，<code>call</code> 会将**下一条指令的地址（返回地址）**压入栈，然后跳转到被调用函数的入口。</li>
+</ul>
+</li>
+<li>
+<p><strong>进入函数</strong></p>
+<ul>
+<li>被调用函数通常会保存当前的栈帧指针（即上一个函数的帧指针），并为局部变量分配空间。</li>
+<li>此时，栈上依次存放：参数、返回地址、上一个栈帧指针、局部变量。</li>
+</ul>
+</li>
+<li>
+<p><strong>函数执行</strong></p>
+<ul>
+<li>函数体内可以通过栈帧指针访问参数和局部变量。</li>
+</ul>
+</li>
+<li>
+<p><strong>函数返回</strong></p>
+<ul>
+<li>函数将返回值放到约定的寄存器。</li>
+<li>恢复上一个栈帧指针。</li>
+<li>执行 <code>ret</code> 指令，从栈顶弹出返回地址，跳转回调用者。</li>
+</ul>
+</li>
+<li>
+<p><strong>调用者收尾</strong></p>
+<ul>
+<li>调用者根据调用约定，自己或被调用者负责清理参数。</li>
+<li>继续执行后续代码。</li>
+</ul>
+</li>
+</ol>
+<h2 id="局部变量的入栈顺序">局部变量的入栈顺序</h2>
+<p>局部变量的入栈顺序是否和源码中的声明顺序一致，取决于是否有栈溢出保护机制，如果有栈溢出保护机制，局部变量在源码中的声明顺序和入栈顺序是相反的，即后声明的变量先入栈，这种情况下，先声明的变量位于栈上的低地址，后声明的变量位于栈上的高地址（栈地址是从高到低增长的）</p>
+<h2 id="为啥函数栈被写坏了函数返回时被崩溃">为啥函数栈被写坏了，函数返回时被崩溃</h2>
+<p>有一种场景是，函数栈写超了，由于写入时是往高地址写入的，而上一个函数的帧地址和返回地址恰好在函数局部数据内存区域的高地址处，函数栈写超了后会破坏掉上一个函数的帧地址和返回地址，导致函数返回时崩溃。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
