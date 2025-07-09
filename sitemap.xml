@@ -2,16 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://blog.shiwj.top/posts/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/categories/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/posts/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/categories/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E7%AE%97%E6%B3%95/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/categories/%E7%BC%96%E7%A8%8B/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/72.horner-rule/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/71.lockfree-ringbuffer/</loc><lastmod>2025-07-07T01:14:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/70.design-patterns/</loc><lastmod>2025-06-25T00:46:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/</loc><lastmod>2025-06-25T00:46:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://blog.shiwj.top/70.design-patterns/</loc><lastmod>2025-06-25T00:46:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/</loc><lastmod>2025-06-25T00:46:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://blog.shiwj.top/69.cpp-memory-analysis-vld/</loc><lastmod>2025-05-14T20:08:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E5%B7%A5%E5%85%B7/</loc><lastmod>2025-05-14T20:08:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</loc><lastmod>2025-05-14T20:08:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -30,7 +30,7 @@
             <loc>http://blog.shiwj.top/59.ffmpeg_cmd_demo/</loc><lastmod>2025-06-15T01:51:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/</loc><lastmod>2025-06-15T01:51:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://blog.shiwj.top/58.build_obs/</loc><lastmod>2025-04-09T20:37:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://blog.shiwj.top/57.effective-cpp/</loc><lastmod>2025-04-13T22:49:59&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/57.effective-cpp/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/56.char-wchar-on-windows/</loc><lastmod>2024-12-26T15:59:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/windows/</loc><lastmod>2024-12-26T15:59:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2024-12-26T15:59:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -67,8 +67,8 @@
             <loc>http://blog.shiwj.top/tags/%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</loc><lastmod>2025-05-08T21:14:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/%E7%BD%91%E7%BB%9C/</loc><lastmod>2024-12-23T10:17:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/</loc><lastmod>2025-07-06T20:56:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://blog.shiwj.top/19.interview-bagu-cpp/</loc><lastmod>2025-05-21T00:55:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/19.interview-bagu-cpp/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/52.interview-bagu-system/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/53.interview-bagu-network/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/tags/css/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -76,7 +76,7 @@
             <loc>http://blog.shiwj.top/tags/%E5%89%8D%E7%AB%AF/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/18.webpage-print/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/17.html-mdn-tutorial/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://blog.shiwj.top/16.z1.interview-bagu-general/</loc><lastmod>2025-07-06T20:56:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://blog.shiwj.top/16.z1.interview-bagu-general/</loc><lastmod>2025-07-07T23:44:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/16.interview-bagu-golang/</loc><lastmod>2025-07-06T20:56:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://blog.shiwj.top/tags/python/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://blog.shiwj.top/15.remainder-and-modulo/</loc><lastmod>2024-12-17T15:02:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

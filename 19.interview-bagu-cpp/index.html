@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/19.interview-bagu-cpp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-25T15:46:32+08:00" />
-<meta property="article:modified_time" content="2025-05-21T00:55:37+08:00" />
+<meta property="article:modified_time" content="2025-07-07T23:44:47+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  7093 ,
-        "url": "http:\/\/blog.shiwj.top\/19.interview-bagu-cpp\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2025-05-21T00:55:37+08:00","publisher": {
+                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  7532 ,
+        "url": "http:\/\/blog.shiwj.top\/19.interview-bagu-cpp\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2025-07-07T23:44:47+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-c&#43;&#43;</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7093 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7532 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -125,6 +125,8 @@
     <li><a href="#函数是如何调用的">函数是如何调用的</a></li>
     <li><a href="#局部变量的入栈顺序">局部变量的入栈顺序</a></li>
     <li><a href="#为啥函数栈被写坏了函数返回时被崩溃">为啥函数栈被写坏了，函数返回时被崩溃</a></li>
+    <li><a href="#顶层const和底层const的写法">顶层const和底层const的写法</a></li>
+    <li><a href="#cc程序的编译过程">C/C++程序的编译过程</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><ul>
@@ -708,12 +710,66 @@ nullptr、NULL、0</li>
 <p>局部变量的入栈顺序是否和源码中的声明顺序一致，取决于是否有栈溢出保护机制，如果有栈溢出保护机制，局部变量在源码中的声明顺序和入栈顺序是相反的，即后声明的变量先入栈，这种情况下，先声明的变量位于栈上的低地址，后声明的变量位于栈上的高地址（栈地址是从高到低增长的）</p>
 <h2 id="为啥函数栈被写坏了函数返回时被崩溃">为啥函数栈被写坏了，函数返回时被崩溃</h2>
 <p>有一种场景是，函数栈写超了，由于写入时是往高地址写入的，而上一个函数的帧地址和返回地址恰好在函数局部数据内存区域的高地址处，函数栈写超了后会破坏掉上一个函数的帧地址和返回地址，导致函数返回时崩溃。</p>
+<h2 id="顶层const和底层const的写法">顶层const和底层const的写法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//底层const
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="k">const</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//顶层const
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//指针本身是常量，不能改变指向
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意，底层const写在<code>*</code>的左边，顶层const写在<code>*</code>的右边</strong>。</p>
+<h2 id="cc程序的编译过程">C/C++程序的编译过程</h2>
+<p>C/C++ 程序的编译过程一般分为四个主要阶段：<strong>预处理、编译、汇编、链接</strong>。</p>
+<ol>
+<li>
+<p><strong>预处理（Preprocessing）</strong></p>
+<ul>
+<li>处理 <code>#include</code>、<code>#define</code>、<code>#ifdef</code> 等预处理指令，展开头文件、宏、条件编译，去除注释。</li>
+<li>生成扩展名为 <code>.i</code> 的预处理文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>编译（Compilation）</strong></p>
+<ul>
+<li>将预处理后的代码翻译为汇编代码，进行语法分析、语义分析和优化。</li>
+<li>生成扩展名为 <code>.s</code> 的汇编文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>汇编（Assembly）</strong></p>
+<ul>
+<li>将汇编代码翻译为机器指令，生成目标文件（object file），扩展名为 <code>.o</code> 或 <code>.obj</code>。</li>
+<li>每个源文件对应一个目标文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>链接（Linking）</strong></p>
+<ul>
+<li>将多个目标文件和库文件合并，解决符号引用，分配内存地址，生成可执行文件或库文件（如 <code>.exe</code>、<code>.so</code>、<code>.dll</code>）。</li>
+<li>由链接器（如 <code>ld</code>）完成。</li>
+</ul>
+</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-05-21&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/f7e40d0d17233e65f4daebf474ef9baaf1988301" target="_blank" title="commit by shiwj(swj6086085@163.com) f7e40d0d17233e65f4daebf474ef9baaf1988301: update post 19">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>f7e40d0</a></span>
+                <span>Updated on 2025-07-07&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/1ce2143867e01f4dc72a5e483117838fa6004455" target="_blank" title="commit by shiwj(swj6086085@163.com) 1ce2143867e01f4dc72a5e483117838fa6004455: update interview">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>1ce2143</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
