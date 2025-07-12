@@ -13,6 +13,14 @@
     <description><![CDATA[霍纳规则简介 霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的]]></description>
 </item>
 <item>
+    <title>无锁环形Buffer</title>
+    <link>http://blog.shiwj.top/71.lockfree-ringbuffer/</link>
+    <pubDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/71.lockfree-ringbuffer/</guid>
+    <description><![CDATA[无锁环形队列介绍 无锁环形队列提高并发效率主要依赖以下两点： 环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件 采用CAS]]></description>
+</item>
+<item>
     <title>c&#43;&#43;标准库算法概览</title>
     <link>http://blog.shiwj.top/20.cpp-stl-algorithm-overview/</link>
     <pubDate>Wed, 26 Oct 2022 15:46:32 &#43;0800</pubDate>

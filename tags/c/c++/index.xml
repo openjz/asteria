@@ -61,14 +61,6 @@
     <description><![CDATA[条款1：模板类型推导 c++模板类型推导经常用在模板函数类型推导，和auto类型推导 函数模板一般是以下形式 1 2 template&lt;typename T&gt; void f(ParamType param); ParamType和T]]></description>
 </item>
 <item>
-    <title>编译obs</title>
-    <link>http://blog.shiwj.top/58.build_obs/</link>
-    <pubDate>Fri, 28 Mar 2025 14:15:00 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/58.build_obs/</guid>
-    <description><![CDATA[参考 https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows windows下编译步骤 安装cmake，git，vs2022（下载必要的组件） git clone --recursive https://github.com/obsproject/obs-studio.git 这一步有一些git submodule可能会下载失]]></description>
-</item>
-<item>
     <title>《Effective C&#43;&#43; 第三版》阅读笔记</title>
     <link>http://blog.shiwj.top/57.effective-cpp/</link>
     <pubDate>Fri, 07 Feb 2025 16:03:06 &#43;0800</pubDate>
@@ -83,6 +75,14 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/56.char-wchar-on-windows/</guid>
     <description><![CDATA[一、预备知识 unicode unicode是一套字符编码标准，它为世界上几乎所有的字符都分别分配了一个唯一的编码，但unicode并没有规定这些编码在计算]]></description>
+</item>
+<item>
+    <title>windows下调试dump文件</title>
+    <link>http://blog.shiwj.top/39.windows-dump-debug/</link>
+    <pubDate>Sat, 16 Dec 2023 11:13:49 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/39.windows-dump-debug/</guid>
+    <description><![CDATA[开启dump 执行以下bat脚本 1 2 3 4 5 6 7 8 9 @echo off echo 正在启用Dump... reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpFolder /t REG_EXPAND_SZ /d &#34;C:\CrashDumps&#34; /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&#34; /v DumpType /t REG_DWORD /d 2 /f reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows]]></description>
 </item>
 </channel>
 </rss>

@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/</link>
         <description>面试 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 12 Jul 2025 09:23:22 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E9%9D%A2%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+    <title>面试八股-分布式系统</title>
+    <link>http://blog.shiwj.top/53.interview-bagu-distribute-system/</link>
+    <pubDate>Sat, 12 Jul 2025 09:23:22 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/53.interview-bagu-distribute-system/</guid>
+    <description><![CDATA[网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理]]></description>
+</item>
+<item>
     <title>面试八股-c&#43;&#43;</title>
     <link>http://blog.shiwj.top/19.interview-bagu-cpp/</link>
     <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
@@ -13,27 +21,11 @@
     <description><![CDATA[threadlocal volatile：当对象的值可能在程序的控制之外被改变时，将对象声明为volatile，比如程序内包含一个由系统时钟定时更新的变量时。vo]]></description>
 </item>
 <item>
-    <title>面试八股-操作系统</title>
-    <link>http://blog.shiwj.top/52.interview-bagu-system/</link>
-    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/52.interview-bagu-system/</guid>
-    <description><![CDATA[常见进程调度算法 先来先服务（FCFS）：非抢占式 时间片轮转 短作业优先 最高响应比优先：综合考虑执行时间和等待时间 按照优先级划分多个队列 抢占式和]]></description>
-</item>
-<item>
-    <title>面试八股-网络</title>
-    <link>http://blog.shiwj.top/53.interview-bagu-network/</link>
-    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/53.interview-bagu-network/</guid>
-    <description><![CDATA[网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理]]></description>
-</item>
-<item>
     <title>面试八股-通用</title>
-    <link>http://blog.shiwj.top/16.z1.interview-bagu-general/</link>
+    <link>http://blog.shiwj.top/52.interview-bagu-general/</link>
     <pubDate>Fri, 07 Oct 2022 18:41:33 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/16.z1.interview-bagu-general/</guid>
+    <guid>http://blog.shiwj.top/52.interview-bagu-general/</guid>
     <description><![CDATA[系统 基础 什么是协程 协程是一种运行在用户态的并发机制，类似于一种轻量级的用户态线程，协程一般运行在内核态线程之上（例如，可以按照n:m模型调度]]></description>
 </item>
 <item>

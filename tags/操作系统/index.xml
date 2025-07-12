@@ -4,23 +4,7 @@
         <link>http://blog.shiwj.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
         <description>操作系统 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
-    <title>条件变量</title>
-    <link>http://blog.shiwj.top/37.condition-variable/</link>
-    <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/37.condition-variable/</guid>
-    <description><![CDATA[条件变量是一种线程同步手段，一般由三个部分组成：信号，条件和互斥量，他们的作用是这样的： 信号的作用是线程间同步，一般会提供两个基本操作，wa]]></description>
-</item>
-<item>
-    <title>面试八股-操作系统</title>
-    <link>http://blog.shiwj.top/52.interview-bagu-system/</link>
-    <pubDate>Tue, 25 Oct 2022 15:46:32 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/52.interview-bagu-system/</guid>
-    <description><![CDATA[常见进程调度算法 先来先服务（FCFS）：非抢占式 时间片轮转 短作业优先 最高响应比优先：综合考虑执行时间和等待时间 按照优先级划分多个队列 抢占式和]]></description>
-</item>
-<item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 16 Sep 2022 08:34:03 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
     <title>线程什么时候终止</title>
     <link>http://blog.shiwj.top/14.threadexit/</link>
     <pubDate>Fri, 16 Sep 2022 08:34:03 &#43;0800</pubDate>

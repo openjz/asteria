@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</link>
         <description>并发编程 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>无锁环形Buffer</title>
+    <link>http://blog.shiwj.top/71.lockfree-ringbuffer/</link>
+    <pubDate>Fri, 04 Jul 2025 08:49:36 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/71.lockfree-ringbuffer/</guid>
+    <description><![CDATA[无锁环形队列介绍 无锁环形队列提高并发效率主要依赖以下两点： 环形队列本身是个缓冲区，可以将生产者和消费者解耦，天然具备并发读写的条件 采用CAS]]></description>
+</item>
+<item>
     <title>条件变量</title>
     <link>http://blog.shiwj.top/37.condition-variable/</link>
     <pubDate>Mon, 23 Oct 2023 08:38:11 &#43;0800</pubDate>

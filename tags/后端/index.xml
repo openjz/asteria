@@ -20,5 +20,29 @@
     <guid>http://blog.shiwj.top/11.z1.mysql-crash-course/</guid>
     <description><![CDATA[参考《mysql必知必会》 一、基本概念 模式（schema）：这个概念比较模糊，一个比较常见的定义是，schema是指数据库对象的集合，其中包]]></description>
 </item>
+<item>
+    <title>nginx入门教程</title>
+    <link>http://blog.shiwj.top/48.nginx-getting-started-tutorial/</link>
+    <pubDate>Sun, 04 Oct 2020 03:29:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/48.nginx-getting-started-tutorial/</guid>
+    <description><![CDATA[参考 nginx.org文档 Nginx Plus Admin Guide 安装部署nginx的各种方法（安装、编译、安装动态模块、docker部署） nginx介绍 nginx有一个m]]></description>
+</item>
+<item>
+    <title>nginx安装和配置</title>
+    <link>http://blog.shiwj.top/49.nginx-install-configuration/</link>
+    <pubDate>Wed, 16 Sep 2020 16:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/49.nginx-install-configuration/</guid>
+    <description><![CDATA[yum安装 参考：nginx官方文档 1 2 3 4 yum install -y nginx systemctl start nginx nginx -s reload #重新加载nginx配置文件（不会停止nginx服务） 配置文件：/etc/ng]]></description>
+</item>
+<item>
+    <title>php安装和配置</title>
+    <link>http://blog.shiwj.top/50.php-install-configuration/</link>
+    <pubDate>Wed, 16 Sep 2020 16:30:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/50.php-install-configuration/</guid>
+    <description><![CDATA[概念 FastCGI：是一个在HTTP服务器和动态脚本语言间通信的接口。它能够把动态语言和HTTP服务器分离开。目前主流的HTTP服务器都支持]]></description>
+</item>
 </channel>
 </rss>
