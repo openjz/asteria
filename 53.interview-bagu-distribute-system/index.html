@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>面试八股-分布式系统 - 星</title><meta name="Description" content=""><meta property="og:title" content="面试八股-分布式系统" />
-<meta property="og:description" content="网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理" />
+<meta property="og:description" content="mysql 索引 什么是索引 索引是一种能实现对表中某一列或多列的值快速查找的数据结构，常见的是 B&#43;树 B&#43;树是一种多叉搜索树，叶节点是数据节点，存放着指向" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/53.interview-bagu-distribute-system/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-07-12T09:23:22+08:00" />
-<meta property="article:modified_time" content="2025-07-12T09:23:22+08:00" />
+<meta property="article:modified_time" content="2025-07-12T17:57:24+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="面试八股-分布式系统"/>
-<meta name="twitter:description" content="网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理"/>
+<meta name="twitter:description" content="mysql 索引 什么是索引 索引是一种能实现对表中某一列或多列的值快速查找的数据结构，常见的是 B&#43;树 B&#43;树是一种多叉搜索树，叶节点是数据节点，存放着指向"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, 分布式系统","wordcount":  3418 ,
-        "url": "http:\/\/blog.shiwj.top\/53.interview-bagu-distribute-system\/","datePublished": "2025-07-12T09:23:22+08:00","dateModified": "2025-07-12T09:23:22+08:00","publisher": {
+                        }],"genre": "posts","keywords": "面试, 分布式系统","wordcount":  11882 ,
+        "url": "http:\/\/blog.shiwj.top\/53.interview-bagu-distribute-system\/","datePublished": "2025-07-12T09:23:22+08:00","dateModified": "2025-07-12T17:57:24+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-分布式系统</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-12">2025-07-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3418 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-12">2025-07-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11882 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;24 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -90,238 +90,894 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#网络模型">网络模型</a></li>
-    <li><a href="#传输层">传输层</a>
+    <li><a href="#mysql">mysql</a>
       <ul>
-        <li><a href="#常见端口号">常见端口号</a></li>
-        <li><a href="#tcp如何保证可靠传输">TCP如何保证可靠传输</a></li>
-        <li><a href="#tcp流量控制">TCP流量控制</a></li>
-        <li><a href="#tcp拥塞控制">TCP拥塞控制</a></li>
-        <li><a href="#tcp三次握手四次挥手">TCP三次握手、四次挥手</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#2kw-是数据量上限这个说法从何而来">2kw 是数据量上限这个说法从何而来</a></li>
+        <li><a href="#事务">事务</a></li>
+        <li><a href="#事务的并发问题">事务的并发问题</a></li>
+        <li><a href="#innodb-的锁">InnoDB 的锁</a></li>
+        <li><a href="#如何加锁">如何加锁</a></li>
+        <li><a href="#innodb-mvcc">InnoDB MVCC</a></li>
+        <li><a href="#mysql的隔离级别">MySQL的隔离级别</a></li>
+        <li><a href="#优化">优化</a></li>
+        <li><a href="#log">log</a></li>
+        <li><a href="#其他">其他</a></li>
       </ul>
     </li>
-    <li><a href="#http">HTTP</a>
+    <li><a href="#redis">redis</a>
       <ul>
-        <li><a href="#http和https的区别">HTTP和HTTPS的区别</a></li>
-        <li><a href="#http无状态">HTTP无状态</a></li>
-        <li><a href="#http请求方法">HTTP请求方法</a></li>
-        <li><a href="#http报文结构">HTTP报文结构</a></li>
-        <li><a href="#http状态码">HTTP状态码</a></li>
-        <li><a href="#session和cookie">session和cookie</a></li>
+        <li><a href="#redis的功能">redis的功能</a></li>
+        <li><a href="#redis的缓存淘汰策略">redis的缓存淘汰策略</a></li>
       </ul>
     </li>
-    <li><a href="#网络层">网络层</a></li>
-    <li><a href="#其他">其他</a></li>
+    <li><a href="#kafka">kafka</a>
+      <ul>
+        <li><a href="#kafka的特点">kafka的特点</a></li>
+        <li><a href="#kafka原理">kafka原理</a></li>
+        <li><a href="#kafka如何保证顺序消费">kafka如何保证顺序消费</a></li>
+        <li><a href="#kafka如何防止消息丢失">kafka如何防止消息丢失</a></li>
+        <li><a href="#kafka如何防止消息重复">kafka如何防止消息重复</a></li>
+      </ul>
+    </li>
+    <li><a href="#分布式系统">分布式系统</a>
+      <ul>
+        <li><a href="#概念">概念</a></li>
+        <li><a href="#raft算法和paxos算法">RAFT算法和Paxos算法</a></li>
+        <li><a href="#分布式锁">分布式锁</a></li>
+        <li><a href="#分布式id">分布式id</a></li>
+        <li><a href="#缓存击穿穿透雪崩问题">缓存击穿、穿透、雪崩问题</a></li>
+        <li><a href="#缓存和数据库一致性问题">缓存和数据库一致性问题</a></li>
+        <li><a href="#如何实现接口的幂等性">如何实现接口的幂等性</a></li>
+      </ul>
+    </li>
+    <li><a href="#高并发">高并发</a>
+      <ul>
+        <li><a href="#系统并发量和什么因素有关">系统并发量和什么因素有关</a></li>
+        <li><a href="#如何提高并发量">如何提高并发量</a></li>
+        <li><a href="#如何排查并发问题">如何排查并发问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#并发编程机制">并发编程机制</a>
+      <ul>
+        <li><a href="#悲观锁和乐观锁">悲观锁和乐观锁</a></li>
+        <li><a href="#cowcopy-on-write">COW(Copy On Write)</a></li>
+        <li><a href="#rcuread-copy-update读-复制-更新">RCU（Read Copy Update，读-复制-更新）</a></li>
+      </ul>
+    </li>
+    <li><a href="#brpc-高性能rpc框架">brpc-高性能rpc框架</a></li>
+    <li><a href="#docker和k8s">docker和k8s</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="网络模型">网络模型</h2>
+            </div><div class="content" id="content"><h2 id="mysql">mysql</h2>
+<h3 id="索引">索引</h3>
 <ul>
-<li>OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层；</li>
-<li>简化的5层模型：应用层、传输层、网络层、数据链路层、物理层；</li>
-<li>TCP/IP的四层模型：应用层、传输层（TCP/UDP）、IP层、网络接口层；</li>
-</ul>
-<h2 id="传输层">传输层</h2>
-<h3 id="常见端口号">常见端口号</h3>
-<p>http：80端口<br>
-https：443端口</p>
-<h3 id="tcp如何保证可靠传输">TCP如何保证可靠传输</h3>
+<li>什么是索引
 <ul>
-<li>滑动窗口（序列号）、超时重传、选择确认（SACK）
-<ul>
-<li>以字节为单位的滑动窗口
-<ul>
-<li>每个字节对应一个编号；（为了能重传和能判断字节序）</li>
-<li>发送窗口和接收窗口
-<ul>
-<li>发送窗口中是允许发送的字节，发送窗口前部是已发送并得到确认的字节，发送窗口后部是不允许发送的字节；</li>
-<li>接收窗口中是允许接收的字节，接收窗口前部是已经收到并确认过的字节，接收窗口后部是不允许接收的字节；</li>
-<li>发送窗口是发送方的发送缓存的一部分；接收窗口是接收方的接收缓存的一部分；</li>
+<li>索引是一种能实现对表中某一列或多列的值快速查找的数据结构，常见的是 B+树</li>
+<li>B+树是一种多叉搜索树，叶节点是数据节点，存放着指向行数据的指针，叶节点之间顺序链接</li>
+<li>没有索引的时候，数据的物理存储是按插入顺序存储的，查找数据时要逐行查找</li>
 </ul>
 </li>
-<li>发送方和接收方
+<li>索引的优缺点
 <ul>
-<li>B会将自己的接收窗口大小发送给A，因此发送窗口一定不会大于接收窗口；</li>
-<li><strong>发送方发送的数据需要得到接收方的确认</strong>，如果发送方发送结束后迟迟没有收到确认，则会触发<strong>超时重传</strong>，直到收到确认为止；</li>
-<li>每一方都有自己的发送窗口和接收窗口；因此A的发送窗口和B的接收窗口是一对，反之是另外一对，<strong>序号各是各的</strong>；</li>
+<li>优点：
+<ul>
+<li>加快查询速度</li>
+<li>缩小锁的范围（比如 gap lock 和 next key lock）</li>
 </ul>
 </li>
-<li><strong>选择超时重传时间</strong>
-<ul>
-<li>TCP记录了一个加权平均往返时间RTT<sub>S</sub>，其中RTT是报文往返时间；再加上RTT偏差的加权平均值RTT<sub>D</sub>，最终得出了一个RTO，RTO就是超时重传时间。（并且，只要报文发生了重传，发送方就不将其计入RTT<sub>S</sub>的计算，因为发送方无法辨认接收方发来的确认是对第一次发的报文的确认还是重传的报文的确认，如果判断错了，这会导致RTT偏大）。</li>
+<li>缺点：维护索引要耗费时间和空间，会降低写入速度</li>
 </ul>
 </li>
-<li>选择确认（SACK）
+<li>mysql 索引分类
 <ul>
-<li>场景：接收方收到了一些数据，但另一些数据没有收到（或未按序到达），接收方希望发送方有选择地重传，而不是重传整个窗口的数据。</li>
-<li>建立TCP连接时，在TCP首部加上&quot;允许SACK&quot;的选项，然后在TCP报文中加入需要重传的字节段的边界序号；</li>
+<li>普通索引、唯一索引、主键索引
+<ul>
+<li>普通索引允许重复值和空值</li>
+<li>唯一索引不允许重复值，但允许空值</li>
+<li>主键索引既不允许重复值，又不允许空值</li>
 </ul>
 </li>
+<li>单列索引和组合索引
+<ul>
+<li>组合索引是在多列上构建的索引，查询条件必须满足两个条件：（1）符合组合索引的最左前缀原则（2）用 and 连接时才会触发组合索引</li>
+<li>什么是最左前缀原则呢？就是查询时，必须按创建索引时字段的顺序去用and连接，比如对三个字段创建了一个组合索引，<code>Index index1 (name,age,city)</code>，查询的时候只能以<code>name=&quot;swj&quot; and age=30</code> 或者 <code>name=&quot;swj&quot; and age=30 and city='tianjin'</code>这两种方式去查询，不能跳过age，直接以name和city去查询，相当于创建了两个索引<code>(name,age)</code>和<code>(name,age,city)</code></li>
+</ul>
+</li>
+<li>全文索引
+<ul>
+<li>可以在列上进行全文搜索</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="tcp流量控制">TCP流量控制</h3>
+<li>怎么判断要不要加索引
 <ul>
-<li>流量控制是指让客户端发送不要太快，让接收方来得及接收；</li>
-<li>利用滑动窗口控制流量；当接收方感觉发送速率过快时，减小窗口值，并将窗口值发送给发送方；</li>
-<li>零窗口时（接收窗口降为0时），发送方启动一个计时器，每隔一段时间发送一个探测报文，去获得当前最新的窗口值；防止接收方发出的窗口值更新报文滞留在网络中。</li>
-</ul>
-<h3 id="tcp拥塞控制">TCP拥塞控制</h3>
+<li>加
 <ul>
-<li>拥塞控制的目的是防止大量的报文进入网络中，把负载控制在网络可承受的范围内；</li>
-<li>四种方法：（1）慢开始，（2）拥塞避免，（3）快重传，（4）快恢复
-<ul>
-<li><strong>拥塞窗口</strong>，发送方让自己的发送窗口等于拥塞窗口；</li>
-<li>发送方通过是否发生确认超时来判断是否发生了拥塞，以此来调整拥塞窗口的大小；</li>
-<li>慢开始：
-<ul>
-<li>发送方逐渐增加拥塞窗口，而不是一下子增大拥塞窗口；</li>
-<li>发送方每收到一个确认，就把拥塞窗口增大一些；（这里要注意，<strong>拥塞窗口的的增大速度并不慢（乘法增大）</strong>，因为拥塞窗口增大后，发送能发出更多的报文，能收到更多的确认，拥塞窗口会增加得越来越快）</li>
+<li>在频繁进行条件判断、分组、排序的列上创建索引</li>
+<li>多读少写或者对读操作耗时要求高时加索引</li>
 </ul>
 </li>
-<li>拥塞避免：
+<li>不加
 <ul>
-<li>把拥塞窗口的<strong>乘法增大改为加法增大</strong></li>
-<li>慢开始和拥塞避免这两个过程之间有一个<strong>门限值ssthresh</strong>，拥塞窗口过了这个门限值以后切换拥塞控制算法；</li>
-<li><strong>发生超时时，把门限值设为当前拥塞窗口的一半，重新开始执行慢开始</strong>。</li>
-</ul>
-</li>
-<li>快重传
-<ul>
-<li>快重传是为了避免发送方误以为网络发生了拥塞从而降低传输效率；</li>
-<li>接收方在未正确收到一个数据时，应立即重复确认上一个正确收到的数据，发送方一旦收到连续三个重复确认，就马上重传数据，而不会进入超时等待；</li>
-</ul>
-</li>
-<li>快恢复
-<ul>
-<li>发送方现在知道了只是<strong>丢失了个别字段</strong>，因此重传的时候不执行慢开始，把发送窗口增大到门限值后<strong>直接进入拥塞避免</strong>算法；</li>
+<li>写多读少时不要加所索引</li>
+<li>不做条件判断的列不要加索引</li>
+<li>数据大量重复时也不应该加索引</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="tcp三次握手四次挥手">TCP三次握手、四次挥手</h3>
+<li>索引命中和失效
 <ul>
-<li>三次握手：客户端主动建立连接，服务端被动建立连接
-<ul>
-<li>客户端三种状态：closed、syn-sent、establish-listened</li>
-<li>服务端四种状态：closed、listened、syn-received、establish-listened</li>
-<li>客户端发送<strong>SYN</strong>=1，seq=x;closed&ndash;&gt;syn-sent</li>
-<li>服务端发送SYN=1，<strong>ACK</strong>=1,ack=y,seq=x+1；listened&ndash;&gt;syn-received</li>
-<li>客户端发送ACK=1，ack=y+1，seq=x+1；syn-received&ndash;&gt;established-listened</li>
-<li>服务端接收，syn-received&ndash;&gt;established-listened</li>
+<li>不符合左前缀原则会导致组合索引失效</li>
+<li>where 条件不用 and 连接会导致组合索引失效</li>
+<li>在索引列上做计算、函数调用、不等于比较会导致索引失效</li>
+<li>可以用 explain 语句查看是否命中索引，explain 语句是用来查看 sql 执行计划的</li>
 </ul>
 </li>
-<li>四次挥手：
+<li>索引实现上分为聚集索引和非聚集索引
 <ul>
-<li>客户端五种状态：establish-listened, FIN-WAIT1, FIN-WAIT2, TIME-WAIT, closed
-多了两个等待FIN-WAIT2, TIME-WAIT的状态，第一次等服务器把剩下的数据发送完，第二次等一会儿关闭连接</li>
-<li>服务端四种状态: establish-listened, close-wait, last-ack,closed</li>
-<li>信号种类：<strong>FIN</strong>=1，<strong>ACK</strong>=1</li>
-<li>为什么客户端最后要等待2MSL，如果服务器没有收到最后一个ACK报文，服务器会重传&quot;FIN，ACK&quot;报文，等待2MSL是为了能收到这个重传的报文，并重启2MSL计时器</li>
-</ul>
+<li>一个表只能有一个聚集索引，之所以叫聚集索引，是因为数据的物理存储顺序就是按聚集索引的排序存储的，也是因为这个原因，一个表只能有一个聚集索引。InnoDB 的聚集索引叶节点存储完整的数据记录。</li>
+<li>其他索引都属于非聚集索引，非聚集索引也叫二级索引或者辅助索引，非聚集索引有两种情况
+<ol>
+<li>数据节点不是直接指向数据记录，而是保存一个聚集索引的 key，每次对非聚集索引的查找都要到聚集索引上查一次数据，这叫“<strong>回表</strong>”。（mysql 的 InnoDB 引擎）</li>
+<li>叶节点直接指向对应的数据块。（mysql 的 MyISAM）</li>
+</ol>
 </li>
-</ul>
-<h2 id="http">HTTP</h2>
-<h3 id="http和https的区别">HTTP和HTTPS的区别</h3>
-<ul>
-<li>HTTPS利用SSL/TLS建立全信道，SSL是TLS的前身，SSL（Secure Socket Layer，安全套接字层）,TLS（Transport Layer Security），HTTPS对传输的数据加密，需要CA颁发的SSL证书。</li>
-<li>HTTP的端口是80，HTTPS的端口号是443</li>
-</ul>
-<h3 id="http无状态">HTTP无状态</h3>
-<ul>
-<li>HTTP服务端并不知道这一次和上一次的客户是不是同一个。</li>
-<li>如何解决这个问题：客户端使用cookie、服务端使用session。</li>
-</ul>
-<h3 id="http请求方法">HTTP请求方法</h3>
-<ul>
-<li>HTTP1.0
-<ul>
-<li>GET</li>
-<li>POST</li>
-<li>HEAD：只能获得响应报文的报头</li>
-</ul>
-</li>
-<li>HTTP1.1
-<ul>
-<li>PUT</li>
-<li>DELETE</li>
-<li>CONNECT</li>
-<li>OPTIONS</li>
-<li>TRACE</li>
-<li>PATCH</li>
-</ul>
-</li>
-<li>GET和POST的区别
-<ul>
-<li>GET的参数放在URL里，POST的参数放在request body里（即HTTP报文的数据部分）；因此，在浏览器后退的时候，GET请求得到的页面不会刷新，而POST页面会再次提交请求 ；GET页面可以放在书签里收藏，POST页面就不行；</li>
+<li>mysql InnoDB 引擎一定会构建一个聚集索引，默认会将主键索引作为聚集索引，如果没有主键索引，会将第一个没有空值的唯一索引作为聚集索引，否则会在一个隐藏的 ROWID 上构建聚集索引，ROWID 是行的唯一标识</li>
+<li>组合索引是以多个列的组合作为 key，例如&quot;(2,3)&quot;</li>
 </ul>
 </li>
 </ul>
-<h3 id="http报文结构">HTTP报文结构</h3>
+<h3 id="2kw-是数据量上限这个说法从何而来">2kw 是数据量上限这个说法从何而来</h3>
 <ul>
-<li>请求行：请求方法，URL，协议名称和版本号</li>
-<li>请求头：字段名和值构成的对
+<li>我们通常认为 B+树超过三层性能会下降</li>
+<li>mysql innodb 一个 B+树节点 16KB，可用空间 15KB</li>
+<li>假设 key 是 bigint 类型（8B），key 加指针（4B）一共 12B</li>
+<li>因此第二层有 1280 个节点，第三层有 1280*1280 个节点</li>
+<li>假设单行数据 1KB，那三层 B+树支持的数据量是 1280*1280*15KB/1KB=24576000，也就是 2kw+</li>
+<li>2kw 只是个参考值，单行数据量如果不是 1KB，数据量上限就不是 2kw 了。机器的硬件配置也会影响 mysql 的性能，比如用 ssd 代替机械硬盘、使用大内存都会提高 mysql 的性能。</li>
+</ul>
+<h3 id="事务">事务</h3>
+<p>事务（transaction）的目的是要保证一连串数据操作的原子性，并能够支持操作回滚</p>
 <ul>
-<li>user-agent</li>
-<li>content-type（响应）</li>
-<li>host（请求）</li>
-<li>content-length（响应）</li>
-<li>connection：是否保持长连接</li>
-<li>cookie：跟一个标识（ID）</li>
+<li>ACID 特性（原子性、一致性、隔离性、持久性）
+<ul>
+<li>原子性：一连串操作要么全完成，要么全不完成</li>
+<li>一致性：事务执行前后，数据处于一致的状态，数据不会被破坏</li>
+<li>隔离性：并发执行的事务之间互不干扰</li>
+<li>持久性：一旦事务提交，数据就会被永久保存到数据库中</li>
+</ul>
+</li>
+<li>InnoDB 如何实现事务的 ACID 特性
+<ul>
+<li>原子性，通过 undo log （回滚日志）回滚，事务执行前会记录操作前的数据到 undo 日志，若事务失败或回滚，可以利用 undo 日志恢复到原始状态。</li>
+<li>一致性</li>
+<li>隔离性
+<ul>
+<li>通过锁保证隔离性，事务在修改数据之前先对数据上锁。锁按照粒度分为表锁和行锁。</li>
+<li>使用 MVCC（多版本并发控制）保证隔离性</li>
+<li>mysql支持四种隔离级别</li>
+</ul>
+</li>
+<li>持久性，数据落盘之前先要放到 buffer pool，buffer pool 的数据会定期刷到磁盘上去，写入 buffer pool 之前先写到 redo log 中，保证数据不会因宕机丢失</li>
 </ul>
 </li>
 </ul>
-<h3 id="http状态码">HTTP状态码</h3>
+<h3 id="事务的并发问题">事务的并发问题</h3>
+<ol>
+<li>脏读：当前事务可以读取到其他事务未提交的数据</li>
+<li>不可重复读：当前事务前后两次使用相同的查询语句查到了不同的数据，原因是在事务执行过程中，有其他事务对这批数据做了<strong>增删改</strong>操作。<strong>如果当前事务的两次读操作分别发生在其他事务开始前和提交后，读到的数据不一致，这就不算脏读，属于不可重复读问题</strong>。</li>
+<li>幻读：事务进行读操作发现数据不存在，试图插入数据，但是插入失败，或者事务发现数据存在，试图更新数据，但更新失败，原因是事务读数据后，有其他事务对数据做了<strong>增删</strong>操作。<strong>即使数据库能够保证不发生脏读和不可重复读,仍有可能发生幻读，现象是每次读数据结果都是不存在，但就是不能插入数据，或者是每次读数据结果都是存在，但就是更新不了。</strong></li>
+</ol>
+<p>不可重复读和幻读是类似的问题，都是由于事务执行过程中其他事务把数据改了造成的。</p>
+<h3 id="innodb-的锁">InnoDB 的锁</h3>
 <ul>
-<li>1xx：协议处理的中间状态</li>
-<li>200：OK（2xx都是成功码）</li>
-<li>404：资源不存在（4xx都是客户端错误）</li>
-<li>301：资源永久重定向</li>
-<li>302：资源暂时重定向</li>
-<li>502：网关错误（5xx都是服务端错误）</li>
-<li>504：网关超时</li>
+<li>InnoDB 的锁按粒度分为
+<ul>
+<li>行锁和表锁</li>
+<li>意向锁和非意向锁</li>
 </ul>
-<h3 id="session和cookie">session和cookie</h3>
-<p>session在服务端，用于标识一个用户
-cookie在客户端，用于记录一些客户的信息</p>
-<h2 id="网络层">网络层</h2>
+</li>
+<li>按并发控制分为共享锁和排他锁
 <ul>
-<li>ARP协议是网络层的协议，但它的工作内容是链路层的。其作用是在局域网内询问MAC地址。</li>
-<li>动态路由协议<br>
-动态路由协议是一种去中心化的路由选择协议，路由器可以自己构建自己的路由表，不需要人工干预；但是要消耗一定的网络资源；
+<li>共享锁：可以对数据上多个共享锁，但不能同时上共享锁和排他锁（有点像并发编程的读锁）</li>
+<li>排他锁：只能对数据上一个排他锁（有点像并发编程的写锁）</li>
+</ul>
+</li>
+<li>意向锁只能是表级，非意向锁可以是表级的也可以是行级的，因此一共有 6 种组合
 <ul>
-<li>OSPF、BGP、ISIS、RIP</li>
-<li>OSPF(Open Shortest Path First开放式最短路径优先）是一个内部网关协议(Interior Gateway Protocol，IGP），用于在单一自治系统（autonomous system,AS）内构建路由；构建邻居关系，建立路由链接，最短路径优先算法建立路由表；</li>
-<li>RIP(Routing Information Protocol,路由信息协议）是一种内部网关协议（IGP），是一种动态路由选择协议；采用距离向量算法；</li>
-<li>BGP（边界网关协议），与IGP相对，但也能用在自治系统内部；它是应用层协议，其传输层使用TCP，默认端口号是179</li>
+<li>表级的排他锁</li>
+<li>表级的共享锁</li>
+<li>行级的排他锁</li>
+<li>行级的共享锁</li>
+<li>表级的排他意向锁</li>
+<li>表级的共享意向锁</li>
+</ul>
+</li>
+<li><strong>申请行级锁之前要先申请表级的意向锁</strong>（意向锁相当于是行锁在表这个级别的代表）</li>
+<li>表级锁互斥性（X-排他锁，S-共享锁，I-意向锁）
+<table>
+<thead>
+<tr>
+<th></th>
+<th>X</th>
+<th>IX</th>
+<th>S</th>
+<th>IS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>IX</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>S</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>IS</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>行锁有三种
+<ul>
+<li>record lock，单行锁</li>
+<li>gap lock，锁住两个索引值之间的空隙（空隙是指还没有插入值），目的是为了防止幻读，注意，如果没有命中索引，gap 锁会锁全表。</li>
+<li>next-key lock，以上两种锁的结合，也是为了防止幻读。</li>
 </ul>
 </li>
 </ul>
-<h2 id="其他">其他</h2>
+<h3 id="如何加锁">如何加锁</h3>
+<p>在 mysql 中，有些SQL语句会自动加锁，有些锁需要手动指定</p>
+<ol>
+<li>修改表会自动加锁</li>
+<li>可以手动为表级操作加表锁，表锁分为读写锁，
+<ul>
+<li>读锁（共享锁）：<code>LOCK TABLES table_name READ</code>，<code>UNLOCK TABLES</code></li>
+<li>写锁（排他锁）：<code>LOCK TABLES table_name WRITE</code>，<code>UNLOCK TABLES</code></li>
+</ul>
+</li>
+<li>写入数据的操作（Insert，Update，Delete）会自动加排他锁</li>
+<li>普通的select语句不会加锁</li>
+<li><code>SELECT ... FOR UPDATE</code> 会加排他锁</li>
+<li><code>SELECT ... LOCK IN SHARE MODE</code> 会加共享锁</li>
+<li>在事务中使用锁，锁定时间会持续到事务结束</li>
+</ol>
+<h3 id="innodb-mvcc">InnoDB MVCC</h3>
+<p>MVCC 的全称是多版本并发控制，目的是提高数据库的并发性能，实现读-写冲突不加锁</p>
+<p>数据库并发场景</p>
+<ul>
+<li>读-读：不需要并发控制</li>
+<li>读-写：存在脏读、不可重复读、幻读问题</li>
+<li>写-写：存在写入脏数据问题</li>
+</ul>
+<p><strong>版本链</strong></p>
+<p>MySQL 为每一行数据维护一个版本链，其中包含了该行数据的多个版本。每个版本都有一个创建时间和一个删除时间</p>
+<p>当一个事务对某行数据进行修改时，数据库系统会创建一个新的版本，并将其插入到版本链中，并记录事务的 ID 和修改时间。</p>
+<p><strong>事务可见性判断</strong></p>
+<p>当一个事务读取某行数据时，数据库系统会根据该事务的开始时间和版本链中的版本信息，确定该事务能够看到的版本</p>
+<p><strong>一致性视图</strong></p>
+<p>在 <code>REPEATABLE READ</code> 和 <code>SERIALIZABLE</code> 隔离级别下，InnoDB 会为每个事务创建一个一致性读视图，确保事务执行期间，多次读操作看到的数据是一致的。</p>
+<h3 id="mysql的隔离级别">MySQL的隔离级别</h3>
+<ol>
+<li>读未提交（Read Uncommitted）：最低级别，不做任何保证，会出现脏读、不可重复读和幻读问题</li>
+<li>读已提交（Read Committed）：解决脏读问题</li>
+<li>可重复读（Repeatable Read）：<strong>默认级别</strong>，通过一致性读视图解决不可重复读问题，但还是会幻读</li>
+<li>串行化（Serializable）：最高级别，通过加锁的方式来保证事务的串行执行，避免了所有的并发问题，但会严重影响数据库的性能。</li>
+</ol>
+<h3 id="优化">优化</h3>
+<ul>
+<li>表优化
+<ul>
+<li>建索引、去掉不该有的索引</li>
+<li>拆分表，拆出频率低的字段，冗余多的字段</li>
+<li>分表分库</li>
+<li>优化字段类型
+<ul>
+<li>用整型代替字符串类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SQL 优化
+<ul>
+<li>不用 select *，减少“回表”，减少网络传输</li>
+<li>修改不命中索引的写法
+<ul>
+<li>explain 命令查看 sql 的执行计划，可以看到是否命中索引</li>
+<li>不等于比较，字段上进行函数调用，对字段做计算，使用like匹配字符串</li>
+<li>组合索引不符合最左前缀原则，使用or连接条件</li>
+</ul>
+</li>
+<li>用联结查询代替子查询</li>
+<li>用命中索引的范围查询代替偏移量非常大的limit语句</li>
+<li>利用慢查询日志查看执行的比较慢的语句</li>
+</ul>
+</li>
+</ul>
+<h3 id="log">log</h3>
+<ul>
+<li>bin log，记录所有对数据的修改操作</li>
+<li>redo log，用于数据的持久化，防止数据因宕机丢失</li>
+<li>undo log，用于回滚数据</li>
+</ul>
+<h3 id="其他">其他</h3>
+<p>mysql 的主从同步，利用主服务的 binlog 和从服务的 relay log 实现</p>
+<h2 id="redis">redis</h2>
+<h3 id="redis的功能">redis的功能</h3>
+<ul>
+<li>redis 是什么
+<ul>
+<li>redis 是一种内存型 kv 数据库，性能高，它的高性能来源于内存存储和 kv 型存储，数据结构简单</li>
+<li>通常用来做缓存</li>
+</ul>
+</li>
+<li>redis 的 5 种主要数据类型
+<ul>
+<li>string，<code>set key value</code>, <code>get key</code>,<code>mget</code>, <code>mset</code></li>
+<li>hash，key对应一个value映射表，适合存储对象，<code>hset hashkey field value</code>,<code>hget hashkey field</code>, <code>hmset</code>, <code>hmget</code>, <code>hgetall</code></li>
+<li>list，支持队列和栈操作，<code>lpush key element1 element2</code>，插入到列表头部</li>
+<li>set，无序集合，支持集合运算（交、并、差），查找时间O(1)</li>
+<li>zset，有序集合，查找时间O(1)，每个元素关联一个分数，靠分数排序</li>
+</ul>
+</li>
+<li>redis的单线程模型
+<ul>
+<li>redis的命令执行是单线程的，不存在并发问题</li>
+<li>redis6.0对网络io引入了多线程，但是核心的命令执行仍然是单线程的</li>
+<li>redis利用队列把网络连接和数据处理做了解耦</li>
+</ul>
+</li>
+<li>redis为什么高性能
+<ul>
+<li>高性能来自内存存储和key-value数据结构</li>
+<li>高并发来自基于epoll的I/O多路复用</li>
+</ul>
+</li>
+</ul>
+<p><strong>redis中的原子性</strong></p>
+<ul>
+<li>redis中经常会提到“原子性”这个词，redis中的原子性是指两条命令之间不会插入其他命令，可以保证严格的前后相邻顺序，但是并不保证全部执行成功，也不会回滚，会出现指令全部执行完毕后，一部分执行成功，另一部分失败</li>
+<li>哪些功能能保证原子性
+<ul>
+<li>单条命令</li>
+<li>事务</li>
+<li>lua脚本</li>
+</ul>
+</li>
+<li>哪些保证不了
+<ul>
+<li>pipeline，pipeline是客户端的行为，对redis是透明的</li>
+</ul>
+</li>
+<li>redis的事务
+<ul>
+<li>redis的事务实际上就是一组顺序执行的命令集合。</li>
+<li>redis保证事务执行的原子性。</li>
+<li>由于redis的单线程模型，redis不存在命令的并发，也不存在隔离级别。</li>
+<li>redis的lua脚本会以事务的方式执行</li>
+</ul>
+</li>
+<li>redis的watch命令
+<ul>
+<li>和事务配合使用</li>
+<li>watch命令用来监控一个或多个指定的key，如果在事务执行之前，被监控的key被修改，则事务取消执行。</li>
+<li>类似一种乐观锁机制，防止多个客户端之间出现并发冲突。</li>
+</ul>
+</li>
+<li>redis的setnx命令
+<ul>
+<li>key不存在时才会写入，写入成功返回0，写入失败返回1</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis的缓存淘汰策略">redis的缓存淘汰策略</h3>
+<ul>
+<li>redis中分为两个数据字典，一个字典存所有的key-value，一个字典存key和对应的expire（称为expire字典，只有配置了过期时间的key才会在这里面）</li>
+<li>redis的缓存淘汰策略
+<ol>
+<li>不淘汰任何键，直接返回错误</li>
+<li>在所有key中随机删除</li>
+<li>在所有key中使用LRU算法删除（最近最少使用）</li>
+<li>在所有key中使用LFU算法删除（使用频率最低）</li>
+<li>在expire字典中随机删除key</li>
+<li>在expire字典中删除马上快过期的</li>
+<li>在expire字典中使用LRU算法删除</li>
+<li>在expire字典中使用LFU算法删除</li>
+</ol>
+</li>
+<li>redis的key过期策略
+<ul>
+<li>惰性删除，当客户访问key的时候判断key是否过期，过期就删除</li>
+<li>定期删除，在expire字典中随机采样，取20个key，删掉里面过期的key，如果过期key占比超过1/4，就重复这个过程</li>
+</ul>
+</li>
+</ul>
+<h2 id="kafka">kafka</h2>
+<p>mq的作用</p>
+<ul>
+<li>削峰填谷</li>
+<li>解耦</li>
+<li>异步</li>
+</ul>
+<h3 id="kafka的特点">kafka的特点</h3>
+<ul>
+<li>高吞吐量</li>
+<li>消息可持久性存储</li>
+<li>分布式，支持横向扩展</li>
+<li>稳定性低，容易丢数据，容易出现数据重复</li>
+</ul>
+<h3 id="kafka原理">kafka原理</h3>
+<ul>
+<li>kafka是pull模型，不是push模型，消费者要主动拉取数据。</li>
+<li>kafka分为queue模式和topic模式
+<ul>
+<li>queue模式，消息是按顺序消费的，消费者主动拉取消息，每个消息只能被一个消费者消费，并且只能消费一次。</li>
+<li>topic模式，发布订阅模式，一个topic分多个partition，消费者组成消费者组，topic由消费者组订阅。
+<ul>
+<li>同一个topic中，同一个partition内的消息是有序的，不同paitition之间的消息是无序的。</li>
+<li>无论消不消费，消息都不会被删除，直到过期。</li>
+<li>一个消费者组订阅一个topic，消息被均衡地送给每个消费者，分配给各消费者的partition互不相同（不存在两个消费者消费同一个partition的情况）。消费者数量大于partition数量时，会有消费者空闲。</li>
+<li>生产者和消费者都可以指定固定的订阅分区</li>
+<li>rebalance，重平衡，消费者组内消费者数量发生变化时，分区会重新分配，这叫rebalance，消费者定期向partition发送心跳来证明自己存活。</li>
+<li>一个topic可以由多个消费者组订阅，并且这些消费者组消费到的消息是完全相同的。如果想让不同的消费者消费同一个partition，就要把它们分到不同的组中。为了支持同一个消息能被多个消费者消费，kafka会记录partition中不同消费者各自的消费位置。</li>
+<li>每个partition又有多个副本，其中一个是leader副本，其余的是follower副本，leader负责收发消息，follower是备份，leader和follower分布在不同的节点上。</li>
+<li>kafka的节点称为broker</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>生产者同步发送和异步发送模式
+<ul>
+<li><code>producer.type</code>参数指定了生产者是同步发送还是异步发送，值为asnyc时为异步发送，值为sync时为同步发送。用户调用<code>send()</code>方法时，kafka会根据producer.type参数决定消息的发送方式，如果是同步发送，就会直接发送消息，如果是异步发送，会先把消息放入一个本地缓存，然后启动一个发送线程，当缓存中的消息满足一定条件时，发送线程批量发送消息。</li>
+<li><strong>不管同步还是异步模式，消息都是按序发送的，只有发送失败时，才可能破坏发送消息的顺序。</strong></li>
+<li>send函数本身的调用方式是异步调用，也就是说，不管发送模式是同步还是异步，send都会立即返回。</li>
+<li><code>send().get()</code>只是将函数的调用方式从异步改成同步，并不会改变producer的发送模式。</li>
+</ul>
+</li>
+<li>kafka如何实现三种消息传递语义
+<ul>
+<li>at most once，最多一次，消息不会重复，但有可能丢
+<ul>
+<li>ack=0就是at most once</li>
+</ul>
+</li>
+<li>at least once，至少一次，消息不会丢，但有可能重复
+<ul>
+<li>ack=1或者ack=all，配合retries</li>
+</ul>
+</li>
+<li>exaclty once，不多不少正好一次
+<ul>
+<li>ack=all配合retries，保证不丢数据</li>
+<li>启用kafka的幂等配置，<code>enable.idempotence</code>，保证重试不会导致消息重复</li>
+<li>消费者处理完消息之后再手动提交offset，保证消费</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消费者自动、同步、异步提交
+<ul>
+<li>消费者可以配置自动提交offset（<code>auto.commit.enable</code>参数），自动提交和消费消息是异步的，消费者会定期向kafka提交offset。自动提交可能会造成消息丢失，即提交成功但是消费失败</li>
+<li>手动同步提交，除了会阻塞，没什么问题</li>
+<li>手动异步提交，异步提交不会发生阻塞，但是kafka没给异步提交提供重试机制（防止重试导致旧的提交覆盖新的提交）。（但是提交失败本身也会导致重复消费）</li>
+</ul>
+</li>
+<li>kafka事务
+<ul>
+<li>事务场景
+<ul>
+<li>发送多条消息到一个topic</li>
+<li>发送到多个topic、多个partition（典型的分布式事务）</li>
+<li>消费-处理-发送</li>
+</ul>
+</li>
+<li>保证多个消息、多个操作的原子性，即同时成功，同时失败，失败会回滚。</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka如何保证顺序消费">kafka如何保证顺序消费</h3>
+<ul>
+<li>topic端，让生产者和消费者指定同一个partition，并且保证分区有足够多的副本，防止partition挂掉。</li>
+<li>生产端，单线程发送消息
+<ul>
+<li>消息丢失会破坏消息顺序，所以要配置ack=1或ack=all并配置重试</li>
+<li>同时发出多次消息时可能会破坏消息的顺序性（异步发送的一批数据算一次），因此，要将<code>max.in.flight.requests.per.connection</code>参数设置为1（这个参数规定了生产者能同时发送多少条未经确认的消息），还要配置ack=1或ack=all能让broker确认消息。</li>
+</ul>
+</li>
+<li>消费端，单线程消费消息</li>
+</ul>
+<h3 id="kafka如何防止消息丢失">kafka如何防止消息丢失</h3>
+<ul>
+<li>生产者丢消息
+<ul>
+<li>kafka客户端支持异步发送消息，生产者丢失消息会发生在这个过程中，可能会由于网络原因或者数据太大等原因发送失败</li>
+<li>解决方法
+<ol>
+<li>配置retries，消息发送失败就重试</li>
+<li>给发送方法加回调函数，消息发送失败时进行特殊处理（例如重试、记录日志并根据日志异步重试）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>broker丢消息
+<ul>
+<li>leader分区每收到一条消息都要同步到follower，如果数据还没落盘或者没等同步完leader就挂了，某一个follower成为了新的leader，就会导致消息丢失。</li>
+<li>解决办法，利用ack机制解决
+<ul>
+<li>ack机制是指kafka接收到消息后会向生产者发送确认，<strong>ack参数影响了kafka的消息持久性</strong>，ack参数有三种（<code>request.required.acks</code>参数）
+<ul>
+<li>ack = 0， 生产者不会等待broker发送ack，这种情况无法保证不丢数据。（生产者的retries参数这时也是失效的）</li>
+<li>ack = 1，leader分区接收到数据后，向生产者返回ack，如果消息没有同步到follower中，就会导致数据丢失。（kafka默认的是ack=1）</li>
+<li>ack = all，等leader向所有follower同步完数据，才会返回ack。</li>
+</ul>
+</li>
+<li>可以利用ack=all配合retries参数让生产者失败重试，保证数据不丢失。（<code>message.send.max.retries</code>参数用来设置发送端重试次数）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消费者丢消息
+<ul>
+<li>消费者可以配置自动提交offset（<code>auto.commit.enable</code>参数），自动提交和消费消息是异步的，消费者会定期向kafka提交offset，如果offset已经提交，而消息消费失败，就会丢失消息</li>
+<li>解决办法，将自动提交offset改为手动提交，消息消费完成后再提交offset</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka如何防止消息重复">kafka如何防止消息重复</h3>
+<ul>
+<li>消息重复的情况
+<ul>
+<li>生产者失败重试导致的消息重复</li>
+<li>消费者未提交offset导致的消息重复
+<ul>
+<li>消息处理完成，消费者突然挂了，未能成功提交offset</li>
+<li>消息正在处理，partition发生了重平衡</li>
+</ul>
+</li>
+<li>上游业务发送了重复的消息</li>
+</ul>
+</li>
+<li>解决办法
+<ul>
+<li>对于第一种情况，启用kafka幂等配置，重试不会导致消息重复</li>
+<li>对于后两种情况，需要在业务层面实现接口的幂等性</li>
+</ul>
+</li>
+</ul>
+<h2 id="分布式系统">分布式系统</h2>
+<h3 id="概念">概念</h3>
+<p><strong>CAP原理</strong></p>
+<p>一致性、可用性、分区容错性三者不可兼得</p>
+<ul>
+<li>一致性（Consistency），是指数据一致性，任何时刻，所有节点的数据都是一致的</li>
+<li>可用性（Availability），是指系统能在有限时间内响应每个请求</li>
+<li>分区容错性（Partition Tolerance），是指系统能在网络分区的情况下，继续提供服务（网络分区是指某些节点之间的网络连接中断，导致系统的网络分成好几个子分区）</li>
+</ul>
+<p><strong>BASE原理</strong></p>
+<p>BASE原理，是在满足分区容错性的前提下，在一致性和可用性之间做的权衡，是指分布式系统可以同时满足基本可用性、软状态和最终一致性。</p>
+<ul>
+<li>基本可用性（Basically Available），系统在出现故障时，允许损失部分可用性（如响应时间延长、部分功能降级），但整体服务仍可用。</li>
+<li>软状态（Soft State），系统中的数据状态可以有一段时间的不一致，允许存在中间状态，数据同步和一致性可以延后。</li>
+<li>最终一致性（Eventual Consistency），系统在经过一段时间后，所有节点的数据会达到一致状态。</li>
+</ul>
+<p><strong>脑裂问题</strong></p>
+<p>分布式系统发生分区错误后，各分区选举出各自新的master导致分布式系统中存在多个master的情况</p>
+<h3 id="raft算法和paxos算法">RAFT算法和Paxos算法</h3>
+<h3 id="分布式锁">分布式锁</h3>
+<p>分布式锁要解决以下问题</p>
+<ol>
+<li>互斥，只有一个实例能获取到锁</li>
+<li>死锁，实例崩溃或者因为网络原因导致没人释放锁，产生死锁</li>
+<li>锁失效
+<ul>
+<li>锁的超时时间过短，锁提前释放，导致其他实例获取到锁</li>
+<li>实例请求处理时间过长，锁提前释放，导致其他实例获取到锁</li>
+<li>锁被其他实例误释放</li>
+<li>网络分区导致多个实例同时获取到锁</li>
+</ul>
+</li>
+<li>可重入问题，同一个实例，要能反复获取同一个锁</li>
+</ol>
+<p>如何解决以上问题</p>
+<ol>
+<li>互斥
+<ul>
+<li>使用一个唯一标识表示锁，例如一个UUID，只要这个锁存在，就表示锁被获取了</li>
+<li>保证加解锁操作的原子性</li>
+</ul>
+</li>
+<li>死锁，设置锁的过期时间，过期后自动释放锁</li>
+<li>锁失效
+<ul>
+<li>设置合理的锁过期时间，过期时间要大于实例处理请求的最大时间</li>
+<li>获取到锁的实例自动续约锁超时时间</li>
+<li>给锁带上实例的唯一标识，确保不会被其他实例误释放</li>
+<li>redlock算法，避免网络分区问题</li>
+</ul>
+</li>
+<li>可重入问题
+<ul>
+<li>给锁带上实例的唯一标识，加锁前先检查当前实例是否已经持有锁，如果持有则直接返回成功</li>
+</ul>
+</li>
+</ol>
+<p><strong>利用redis实现分布式锁</strong></p>
+<p><strong>方案1</strong></p>
+<p>往redis里存一个key，key是锁的标识，value是实例标识，并设置过期时间，当key不存在时，表示可以获取锁，存在时，表示锁正在被其他实例持有。</p>
+<p>设置key value的两种方法</p>
+<ol>
+<li>setnx + expire，用事务或lua脚本保证原子性
+<ul>
+<li>setnx是个命令，含义是“set if not exists”</li>
+<li>lua/事务保证setnx+expire成为原子操作</li>
+</ul>
+</li>
+<li><code>set key value nx ex ...</code>，set命令自带nx和ex，单条命令实现setnx + expire的功能</li>
+</ol>
+<p><strong>方案2</strong></p>
+<p>redlock算法，redis官方提出的分布式锁算法，在redis集群部署的情况下可以保证高稳定性。</p>
+<p>假设redis有n个节点，该算法认为，只要超过一半的节点加锁成功，就认为加锁成功，如果加锁的时间超过了超时时间，认为加锁失败。解锁时对全部节点解锁。</p>
+<h3 id="分布式id">分布式id</h3>
+<p>为一个资源生成一个全局的唯一id</p>
+<p>方法</p>
+<ol>
+<li>利用，数据库自增id，每次创建分布式锁之前，先到数据库生成一个自增id
+<ul>
+<li>优点，简单，容易实现</li>
+<li>缺点，性能低，存在数据库单点问题，数据库访问压力大</li>
+</ul>
+</li>
+<li>UUID、hash
+<ul>
+<li>优点，可以本地生成，无网络消耗</li>
+<li>缺点，无序，无法建立索引</li>
+</ul>
+</li>
+<li>从数据库批量申请自增id，业务服务预先从数据库批量申请一段自增id，缓存在本地使用，不够了再去到数据库申请
+<ul>
+<li>优点，简单，容易实现</li>
+<li>缺点，性能低，存在数据库单点问题，数据库访问压力大</li>
+</ul>
+</li>
+<li>利用redis的incr命令实现id的原子性自增</li>
+<li>雪花算法（snowflake）
+<ul>
+<li>优点，可以本地生成，不需要一个中心化的分布式id服务</li>
+<li>原理其实就是通过一些特定标识的拼接，让生成的id不重复的同时还能做到有序</li>
+</ul>
+</li>
+</ol>
+<h3 id="缓存击穿穿透雪崩问题">缓存击穿、穿透、雪崩问题</h3>
+<ol>
+<li>缓存击穿问题，高并发场景下，缓存过期的一瞬间，大量请求直接落到数据库的问题
+<ul>
+<li>限流，例如，对于一个值，只允许一个请求访问数据库，可以为这个key设置分布式锁，其他获取数据的请求等待锁释放</li>
+<li>设置热点key的缓存时间为一个较长的时间</li>
+</ul>
+</li>
+<li>缓存穿透问题，高并发场景下，大量请求查询一个在数据库和缓存中都不存在的值，导致大量请求不停地落到数据库的问题
+<ul>
+<li>允许数据库存储null值，或者在缓存中存储空值</li>
+</ul>
+</li>
+<li>缓存雪崩问题，高并发下场景下，缓存中很多值在同一时间过期，导致大量请求直接落到数据库的问题
+<ul>
+<li>设置随机过期时间</li>
+</ul>
+</li>
+</ol>
+<h3 id="缓存和数据库一致性问题">缓存和数据库一致性问题</h3>
+<ul>
+<li>分布式系统要保证分区容错性和可用性，就没办法保证数据的强一致性，最多保证最终一致性，甚至是弱一致性。</li>
+<li>方案1：写入命中缓存时，既更新数据库，又更新缓存。
+<ul>
+<li>问题1：其中一个操作失败导致数据不一致</li>
+<li>问题2：不管是先写缓存还是后写缓存，都会存在写并发问题，例如“A写缓存X=1，B写缓存X=2，B写数据库X=2，A写数据库X=1”，造成了数据不一致。</li>
+</ul>
+</li>
+<li>方案2：写入时删除缓存，写数据库。由读请求写缓存。
+<ul>
+<li>问题1：其中一个操作失败导致数据不一致</li>
+<li>问题2：不存在写并发问题，但存在读写并发问题。</li>
+</ul>
+</li>
+<li>方案1和方案2都会遇到操作失败和并发问题，解决方案
+<ul>
+<li>对于并发问题，使用分布式锁</li>
+<li>对于操作失败问题
+<ol>
+<li>重试，缺陷是会占用更多资源，并且即使是无限重试也不一定100%成功</li>
+<li>异步重试，利用消息队列重试，缺陷是会提高系统复杂度，要解决消息队列的失败问题。</li>
+<li>利用数据库的变更日志更新缓存（例如mysql的binlog）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>从整体复杂度来讲，方案2更好一些，对于方案2，还可以采用写DB后延迟一段时间删除缓存的策略，尽量让缓存不会被写回旧数据</li>
+<li>此外，数据不一致还可能由redis和数据库内部数据不同步导致。</li>
+<li>总之，实现数据的强一致性是不可能的，最终一致性也不能百分百保证，因此，最后，引入手动补偿机制，手动修复极端情况下的不一致数据</li>
+</ul>
+<h3 id="如何实现接口的幂等性">如何实现接口的幂等性</h3>
+<ul>
+<li>接口的幂等性是指多次请求同一个资源和只请求一次产生同样的效果</li>
+<li>接口需要满足幂等的原因是很多操作我们只希望发生一次，比如付款、创建订单等等</li>
+<li>读操作天然具备幂等性</li>
+<li>如何实现写幂等性
+<ul>
+<li>插入和删除
+<ul>
+<li>在数据库层面，使用唯一key标识一个资源，避免重复插入同一个key</li>
+</ul>
+</li>
+<li>更新
+<ul>
+<li>为每个资源记录一个状态，根据状态判断是否能执行操作</li>
+<li>使用乐观锁或者悲观锁防止操作时出现的幻读问题</li>
+</ul>
+</li>
+<li>高并发下可以使用分布式锁防止请求直接落到数据库上</li>
+</ul>
+</li>
+</ul>
+<h2 id="高并发">高并发</h2>
+<ul>
+<li>数据库一主多从，读写分离
+<ul>
+<li>降低单台数据库负载</li>
+<li>避免写请求阻塞</li>
+</ul>
+</li>
+<li>提高系统稳定性（高可用）
+<ul>
+<li>冗余（分布式部署，做集群，读写分离）</li>
+<li>超时+重试</li>
+<li>异步</li>
+<li>缓存</li>
+<li>限流</li>
+<li>降级/熔断</li>
+</ul>
+</li>
+<li>qps，每秒请求数</li>
+<li>并发和qps换算：并发数 = qps*latency (单位:s)</li>
+</ul>
+<h3 id="系统并发量和什么因素有关">系统并发量和什么因素有关</h3>
+<ul>
+<li>环境因素
+<ul>
+<li>硬件资源，cpu核心数，内存，网络带宽</li>
+</ul>
+</li>
+<li>请求处理耗时
+<ul>
+<li>请求处理的计算量</li>
+<li>请求的IO量</li>
+<li>下游服务的耗时，包括数据库、缓存、消息队列的耗时以及其他服务的耗时</li>
+<li>网络延迟</li>
+</ul>
+</li>
+<li>负载均衡</li>
+</ul>
+<h3 id="如何提高并发量">如何提高并发量</h3>
+<ul>
+<li>提高硬件资源/服务扩容</li>
+<li>减少请求IO量</li>
+<li>优化请求计算量
+<ul>
+<li>使用高性能的网络通信库</li>
+<li>尽量使用无锁数据结构</li>
+</ul>
+</li>
+<li>优化下游服务的耗时</li>
+<li>减少网络延迟</li>
+<li>优化负载均衡</li>
+</ul>
+<h3 id="如何排查并发问题">如何排查并发问题</h3>
+<ol>
+<li><strong>日志分析</strong>：通过分析系统日志，找出并发请求的执行路径和耗时，定位性能瓶颈。</li>
+<li><strong>性能监控</strong>：利用监控和告警系统，实时监控系统性能，绘制性能指标图表。</li>
+<li><strong>压力测试</strong>：通过压力测试模拟高并发场景，观察系统表现，找出潜在问题。</li>
+<li><strong>性能分析</strong>：使用性能分析工具分析程序的cpu和内存占用等。</li>
+<li><strong>代码审查</strong>：对关键代码进行审查，检查是否存在并发安全问题。</li>
+</ol>
+<h2 id="并发编程机制">并发编程机制</h2>
+<h3 id="悲观锁和乐观锁">悲观锁和乐观锁</h3>
+<p>悲观锁和乐观锁是广泛存在的概念，是两种解决并发冲突问题的策略，不只在数据库领域中存在</p>
+<p>悲观锁是指对数据并发持悲观态度，认为一定会冲突，悲观锁是在操作数据之前对数据上锁</p>
+<p>乐观锁是指对数据并发持乐观态度，认为不一定会冲突，不会提前对数据上锁，乐观锁一般会在更新数据前做一个校验，校验通过了才会更新，否则重试，乐观锁一般会使用版本号机制或 CAS （Compare And Swap）算法实现，<strong>乐观锁适合读多写少的场景，如果写多的话，会导致大量的重试，反而更浪费资源</strong></p>
+<p><strong>版本号机制</strong></p>
+<p>定义一个版本号字段，修改数据前，先查询版本号，更新数据之前检查版本号变没变，如果没变才能更新，如果变了，说明被其他并发任务改了，需要重试。<strong>关键点在于，更新+更新前检查必须是原子操作</strong>，可以使用<code>update xxx where xxx</code>来实现这一操作，这个语句会自动对数据行上排他锁</p>
+<p><strong>CAS</strong></p>
+<p>Compare And Swap，是一种依赖硬件的乐观锁实现，CAS需要三个值参与：</p>
+<ol>
+<li>变量的内存地址</li>
+<li>变量的预期值</li>
+<li>要更新的新值</li>
+</ol>
+<p>CAS会先判断变量内存地址中的值和预期值是否一致，如果变量的值等于预期值，则将变量的值更新为新值，并返回 true</p>
+<p>CAS通过硬件的原子操作来保证更新的原子性，CAS操作是非阻塞的，会避免线程阻塞和上下文切换的开销</p>
+<p>C++中的CAS机制：<code>atomic</code>的两个CAS操作，<code>compare_exchange_weak</code>和<code>compare_exchange_strong</code>，atomic不保证跨进程原子性</p>
+<p>windows的CAS机制：<code>InterlockedCompareExchange</code>，这个可以跨进程使用</p>
+<h3 id="cowcopy-on-write">COW(Copy On Write)</h3>
+<p>COW 是一种延迟拷贝的优化机制，常用于内存管理和资源共享。其核心思想是：<strong>多个进程或线程共享同一份数据，只有在有写操作时才进行真正的拷贝</strong>。</p>
 <ul>
 <li>
-<p>在浏览器中输入www.baidu.com, 一直到返回出网页内容，请描述中间整个网络过程。以下是答题要点：</p>
+<p><strong>原理</strong>：</p>
+<ol>
+<li>初始时，多个对象（如进程、线程）共享同一块内存区域，引用计数+1，内存为只读。</li>
+<li>当有对象需要写入时，操作系统会为该对象单独分配一份新的内存（拷贝原数据），然后写入，其他对象仍然指向原来的内存。</li>
+<li>这样，只有在写操作发生时才会真正分配和拷贝内存，节省了资源，提高了效率。</li>
+</ol>
+</li>
+<li>
+<p><strong>应用场景</strong>：</p>
 <ul>
-<li>DNS过程</li>
-<li>TCP过程（握手，socket，TCP报文）</li>
-<li>内核报文封装（IP报文）</li>
-<li>路由（IP路由 和 链路层路由ARP）</li>
-<li>HTTP请求过程</li>
+<li>Linux 的 fork 系统调用，父子进程初始共享内存，只有写时才分配新页。</li>
+<li>某些高级语言的string实现</li>
+</ul>
+</li>
+</ul>
+<h3 id="rcuread-copy-update读-复制-更新">RCU（Read Copy Update，读-复制-更新）</h3>
+<p>RCU 是一种高效的并发读优化机制，常用于内核、数据库等读多写少的场景。其核心思想是：<strong>读操作无需加锁，写操作通过复制和延迟更新来保证一致性</strong>。</p>
+<ul>
+<li>
+<p><strong>原理</strong>：</p>
+<ol>
+<li>读操作：直接访问共享数据，不加锁，保证极高的并发性能。</li>
+<li>写操作：先复制一份数据，在副本上修改，修改完成后用原子操作将指针切换到新数据。</li>
+<li>旧数据不会立即释放，等所有正在进行的读操作结束后再释放（通过“宽限期”机制判断）。</li>
+</ol>
+</li>
+<li>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>读操作无锁，极大提升读性能。</li>
+<li>写操作不会阻塞读操作，适合读多写少的场景。</li>
 </ul>
 </li>
 <li>
-<p>DDos攻击</p>
+<p><strong>本质上是一种double buffer机制</strong></p>
+</li>
+</ul>
+<h2 id="brpc-高性能rpc框架">brpc-高性能rpc框架</h2>
+<h2 id="docker和k8s">docker和k8s</h2>
 <ul>
-<li>（Distrubuted Denial of Service）分布式拒绝服务攻击，攻击者利用大量分布在不同位置的机器作为&quot;肉鸡&quot;在短时间内向目标服务器提交大量请求，占用目标服务器的大量资源，造成对方服务瘫痪。</li>
+<li>docker是一种容器技术，容器是一种轻量的虚拟化技术，其最大的好处是能让程序在不同平台上有一致的执行环境。</li>
+<li>docker可以用来创建一个容器。容器是根据配置文件将程序依赖的库等各种环境打包在一起，形成一个独立的运行环境。</li>
+<li>docker基于 Linux 内核的 cgroup，namespace，以及 Union FS 技术实现了容器之间的隔离</li>
+<li>docker的三个概念，镜像、容器、仓库
+<ul>
+<li>镜像是基于UnionFS实现的个特殊的文件系统，里面包含了程序所需要的所有环境。</li>
+<li>容器是镜像运行的实体（这个有点像进程和程序的关系），容器的本质就是进程，他有自己的namespace，只能访问自己的命名空间里的文件，靠这个实现了文件系统之间的隔离</li>
+<li>仓库是一个用来分发镜像的系统。</li>
 </ul>
 </li>
-<li>
-<p>SOCK_RAW、SOCK_STREAM 和 SOCK_DGRAM</p>
+<li>k8s
 <ul>
-<li>SOCK_STREAM (TCP)、SOCK_DGRAM (UDP)工作在传输层，SOCK_RAW 工作在网络层。</li>
-<li>SOCK_RAW 可以处理ICMP、IGMP等网络报文、特殊的IPv4报文、可以通过IP_HDRINCL套接字选项由用户构造IP头。</li>
+<li>容器编排服务</li>
+<li>通常称作k8s集群，主要是管理容器生命周期，对服务做扩缩容</li>
 </ul>
 </li>
 </ul>
@@ -329,7 +985,8 @@ cookie在客户端，用于记录一些客户的信息</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-12</span>
+                <span>Updated on 2025-07-12&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/7e7c16e56cfdc6ccb4dce9232c209fa9daee3f59" target="_blank" title="commit by shiwj(swj6086085@163.com) 7e7c16e56cfdc6ccb4dce9232c209fa9daee3f59: reorganize">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>7e7c16e</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

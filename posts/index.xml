@@ -10,7 +10,7 @@
     <pubDate>Sat, 12 Jul 2025 09:23:22 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/53.interview-bagu-distribute-system/</guid>
-    <description><![CDATA[网络模型 OSI七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层； 简化的5层模型：应用层、传输层、网络层、数据链路层、物理]]></description>
+    <description><![CDATA[mysql 索引 什么是索引 索引是一种能实现对表中某一列或多列的值快速查找的数据结构，常见的是 B+树 B+树是一种多叉搜索树，叶节点是数据节点，存放着指向]]></description>
 </item>
 <item>
     <title>霍纳规则——一种高效求解多项式的算法</title>
