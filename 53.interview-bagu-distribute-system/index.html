@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/53.interview-bagu-distribute-system/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-07-12T09:23:22+08:00" />
-<meta property="article:modified_time" content="2025-07-14T01:34:31+08:00" />
+<meta property="article:modified_time" content="2025-07-14T19:13:41+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, 分布式系统","wordcount":  12273 ,
-        "url": "http:\/\/blog.shiwj.top\/53.interview-bagu-distribute-system\/","datePublished": "2025-07-12T09:23:22+08:00","dateModified": "2025-07-14T01:34:31+08:00","publisher": {
+                        }],"genre": "posts","keywords": "面试, 分布式系统","wordcount":  13650 ,
+        "url": "http:\/\/blog.shiwj.top\/53.interview-bagu-distribute-system\/","datePublished": "2025-07-12T09:23:22+08:00","dateModified": "2025-07-14T19:13:41+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-分布式系统</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-12">2025-07-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;12273 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;25 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-12">2025-07-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;13650 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;28 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -146,7 +146,11 @@
         <li><a href="#无锁编程">无锁编程</a></li>
       </ul>
     </li>
-    <li><a href="#brpc-高性能rpc框架">brpc-高性能rpc框架</a></li>
+    <li><a href="#brpc-高性能rpc框架">brpc-高性能rpc框架</a>
+      <ul>
+        <li><a href="#doublybuffereddata">DoublyBufferedData</a></li>
+      </ul>
+    </li>
     <li><a href="#docker和k8s">docker和k8s</a></li>
   </ul>
 </nav></div>
@@ -963,18 +967,85 @@
 </li>
 </ul>
 <h3 id="无锁编程">无锁编程</h3>
-<p>核心思想：</p>
+<p>参考<a href="https://brpc.apache.org/zh/docs/rpc-in-depth/atomic-instructions/" target="_blank" rel="noopener noreffer">https://brpc.apache.org/zh/docs/rpc-in-depth/atomic-instructions/</a>
+</p>
+<p>核心思想是尽量避免竞争</p>
 <ol>
 <li>读写分离，使用多个读写buffer，例如double buffer、triple buffer、环形buffer</li>
-<li>使用原子操作或者线程局部变量避免多线程竞争读写指针</li>
+<li>使用原子操作避免锁带来的线程上下文切换开销</li>
+<li>使用线程局部变量避免多线程竞争，进一步减少原子变量和锁的使用</li>
 </ol>
-<p><strong>多读少写场景</strong></p>
+<p><strong>锁的性能问题</strong></p>
+<p>锁会导致线程进入阻塞状态，导致cpu需要进行线程上下文切换，而上下文切换是微秒级的</p>
+<p>原子操作能避免锁的线程上下文切换开销</p>
+<p><strong>两类内存可见性问题</strong></p>
+<ol>
+<li>乱序执行问题，乱序执行问题是实现原子操作必须要解决的问题</li>
+<li>缓存一致性问题，缓存一致性问题告诉我们，原子操作也是存在性能问题的，如果追求高性能，最好想办法避免线程竞争</li>
+</ol>
+<p><strong>内存可见性问题1——乱序执行问题</strong></p>
+<p>编译器指令重排和cpu乱序执行都会导致多线程的内存操作执行顺序不一致，导致并发竞争问题。</p>
+<p>内存屏障就是为了解决这个问题的。</p>
+<p><strong>内存可见性问题2——缓存一致性问题</strong></p>
+<p>缓存一致性问题是指在现代多核CPU中，一般都采用SMP（Symmetrical Multi-Processing）架构，即每个核心都有自己的缓存，对CPU核心来说，代码中的内存操作其实都是对缓存的操作。</p>
+<p>由于各个核心的缓存数据可能不一致，需要缓存一致性协议来保证各核心的数据一致性，但缓存一致性协议只能保证最终一致性，并不能保证强一致性。</p>
+<p>因此，当多个核心竞争同一个cacheline时，虽然这时读写是原子的，但由于需要等待CPU完成一致性同步，会导致读写变慢（竞争激烈时，可能会使一个写入操作从几ns变成几百ns），这就是原子操作的瓶颈。</p>
+<p><strong>内存屏障</strong></p>
+<p>内存屏障是为了解决 CPU 的乱序执行问题，保证特定操作的执行顺序。</p>
+<p>原子操作一般会使用内存屏障来实现，C++11 的atomic提供了几种内存屏障的语义。</p>
+<table>
+<thead>
+<tr>
+<th>memory order</th>
+<th>作用说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memory_order_relaxed</td>
+<td>没有fencing作用</td>
+</tr>
+<tr>
+<td>memory_order_consume</td>
+<td>后面依赖此原子变量的访存指令勿重排至此条指令之前</td>
+</tr>
+<tr>
+<td>memory_order_acquire</td>
+<td>后面访存指令勿重排至此条指令之前</td>
+</tr>
+<tr>
+<td>memory_order_release</td>
+<td>前面访存指令勿重排至此条指令之后。当此条指令的结果对其他线程可见后，之前的所有指令都可见</td>
+</tr>
+<tr>
+<td>memory_order_acq_rel</td>
+<td>acquire + release语义</td>
+</tr>
+<tr>
+<td>memory_order_seq_cst</td>
+<td>acq_rel语义外加所有使用seq_cst的指令有严格地全序关系</td>
+</tr>
+</tbody>
+</table>
+<p><strong>原子操作</strong></p>
+<p>原子操作的原子性由硬件保证，并且利用内存屏障来保证访存指令的执行顺序。</p>
+<p>原子操作相比锁的好处是不会阻塞线程，避免了线程上下文切换的开销。</p>
+<p>但原子操作仍无法避免竞争问题，如cas操作虽然不会让线程阻塞，但是会让线程原地空转，导致cpu资源浪费。并且原子操作会因为缓存一致性问题导致性能下降。</p>
+<p><strong>读多写少场景</strong></p>
 <p>使用 double buffer，读buffer和写buffer分离</p>
-<p>方案1，使用原子操作保护读写指针，切换读写指针的时候会存在读写竞争
-方案2（brpc方案），每个读线程持有一个局部读写指针，写线程写入完成后会去依次收集所有线程的局部读写指针，</p>
+<p>方案1，使用原子操作保护读写指针，切换读写指针的时候会存在读写竞争</p>
+<p>方案2（brpc方案），每个读线程持有一个局部读写指针，写线程写入完成后会去依次修改所有线程的局部读写指针</p>
+<ul>
+<li>一次只阻塞一个读线程，避免了全局锁的开销。</li>
+<li>写延迟会变高</li>
+<li>读线程会将局部读写指针注册到全局，这样写线程才能依次修改读写指针，注册线程局部变量的成本不高，只发生在线程创建时</li>
+</ul>
+<p>RCU（Read Copy Update）机制就是一种典型的double buffer机制，用于解决读多写少场景下的读写冲突问题。</p>
+<p><strong>写多读少场景</strong></p>
+<p>参考brpc bvar实现，写线程只写自己的线程局部变量，由读线程对线程局部变量做汇总，写操作不会互相阻塞，读线程汇总数据时只会阻塞一个写线程，读线程的读取会变慢一些</p>
 <h2 id="brpc-高性能rpc框架">brpc-高性能rpc框架</h2>
 <ul>
-<li>高性能的无锁数据结构，例如iobuf、bvar等</li>
+<li>高性能的无锁数据结构，例如iobuf、bvar、DoublyBufferedData等</li>
 <li>高效线程模型，bthread用户态线程m:n调度，事件等待、io、请求处理全并发</li>
 <li>负载均衡算法，Locality-aware load balancing， 规避按cpu idle分配流量的悖论，LALB将当前qps也加入了权值计算，形成了一种负反馈机制
 <ul>
@@ -982,6 +1053,9 @@
 </ul>
 </li>
 </ul>
+<h3 id="doublybuffereddata">DoublyBufferedData</h3>
+<p>是一种double buffer实现，适用于读多写少的场景，brpc对读写指针的切换做了优化，利用thread local机制降低了，读写指针切换时对读线程的阻塞</p>
+<p>这个结构使用非常广泛，负载均衡器就采用了这个实现，负载均衡器需要定期更新下游服务的可用节点列表，这是一个典型的多读少写的场景</p>
 <h2 id="docker和k8s">docker和k8s</h2>
 <ul>
 <li>docker是一种容器技术，容器是一种轻量的虚拟化技术，其最大的好处是能让程序在不同平台上有一致的执行环境。</li>
@@ -1005,8 +1079,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-14&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/fcda160d451c753f385965fc5a4e8380a81aaef6" target="_blank" title="commit by shiwj(swj6086085@163.com) fcda160d451c753f385965fc5a4e8380a81aaef6: update posts about interviews">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>fcda160</a></span>
+                <span>Updated on 2025-07-14&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/66bafb708fbc77d2ac9b8fa23183f8087e49394e" target="_blank" title="commit by shiwj(shiwj7@lenovo.com) 66bafb708fbc77d2ac9b8fa23183f8087e49394e: update post 53">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>66bafb7</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
