@@ -650,6 +650,8 @@ RCU（Read Copy Update）机制就是一种典型的double buffer机制，用于
 - 高效线程模型，bthread用户态线程m:n调度，事件等待、io、请求处理全并发
 - 负载均衡算法，Locality-aware load balancing， 规避按cpu idle分配流量的悖论，LALB将当前qps也加入了权值计算，形成了一种负反馈机制
     - W = QPS/L，W为权值，L为请求耗时，综合节点当前QPS和请求处理耗时作为权重
+    - 基于QPS和Latency做权重不需要依赖对下游节点的负载统计
+    - 对流量做分流时，使用加权随机选择算法，用加权前缀树查找权重
 
 ### DoublyBufferedData
 
