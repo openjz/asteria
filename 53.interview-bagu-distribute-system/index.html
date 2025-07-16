@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/53.interview-bagu-distribute-system/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-07-12T09:23:22+08:00" />
-<meta property="article:modified_time" content="2025-07-15T01:22:09+08:00" />
+<meta property="article:modified_time" content="2025-07-16T00:33:23+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, 分布式系统","wordcount":  13710 ,
-        "url": "http:\/\/blog.shiwj.top\/53.interview-bagu-distribute-system\/","datePublished": "2025-07-12T09:23:22+08:00","dateModified": "2025-07-15T01:22:09+08:00","publisher": {
+                        }],"genre": "posts","keywords": "面试, 分布式系统","wordcount":  14735 ,
+        "url": "http:\/\/blog.shiwj.top\/53.interview-bagu-distribute-system\/","datePublished": "2025-07-12T09:23:22+08:00","dateModified": "2025-07-16T00:33:23+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-分布式系统</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-12">2025-07-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;13710 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;28 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-12">2025-07-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;14735 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;30 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -148,7 +148,12 @@
     </li>
     <li><a href="#brpc-高性能rpc框架">brpc-高性能rpc框架</a>
       <ul>
+        <li><a href="#iobuf">iobuf</a></li>
         <li><a href="#doublybuffereddata">DoublyBufferedData</a></li>
+        <li><a href="#bvar">bvar</a></li>
+        <li><a href="#bthread">bthread</a></li>
+        <li><a href="#tlsthread-local-storage">TLS（Thread Local Storage）</a></li>
+        <li><a href="#负载均衡">负载均衡</a></li>
       </ul>
     </li>
     <li><a href="#docker和k8s">docker和k8s</a></li>
@@ -1055,9 +1060,36 @@
 </ul>
 </li>
 </ul>
+<h3 id="iobuf">iobuf</h3>
+<p>iobuf是brpc的一个高性能内存缓冲区实现，主要用于网络通信和数据传输。</p>
+<p>iobuf互操作时可以做到零拷贝，本质上通过预分配内存和引用计数实现</p>
+<p>iobuf分为三层，iobuf、blockRef和block</p>
+<ul>
+<li>iobuf是一个内存缓冲区，包含了一个或多个blockRef</li>
+<li>每个blockRef引用某个block中的一部分内存（blockRef内部会保存所引用block的内存偏移量）</li>
+<li>每个block是一个固定8KB大小的内存块，内部包含一个引用计数，记录有多少blockRef引用自己</li>
+<li>block之间通过next指针连接成一个单向链表</li>
+</ul>
 <h3 id="doublybuffereddata">DoublyBufferedData</h3>
-<p>是一种double buffer实现，适用于读多写少的场景，brpc对读写指针的切换做了优化，利用thread local机制降低了，读写指针切换时对读线程的阻塞</p>
+<p>是一种double buffer实现，适用于读多写少的场景，brpc对读写指针的切换做了优化，利用thread local机制降低了读写指针切换时对读线程的阻塞</p>
 <p>这个结构使用非常广泛，负载均衡器就采用了这个实现，负载均衡器需要定期更新下游服务的可用节点列表，这是一个典型的多读少写的场景</p>
+<h3 id="bvar">bvar</h3>
+<p>用于brpc内部的数据统计，针对数据统计这种多读少写的场景进行了针对性优化，具体来说，是让每个写线程只写自己的线程局部变量，由读线程对线程局部变量做汇总，写操作不会互相阻塞，读线程汇总数据时只会阻塞一个写线程，读线程的读取会变慢一些</p>
+<h3 id="bthread">bthread</h3>
+<p>m:n协程调度模型，类似golang的协程，有独立的协程栈，有work stealing机制</p>
+<p>bthread属于用户态线程，上下文切换开销小</p>
+<p>brpc的线程模型完全基于bthread实现，可以实现event loop、io、请求处理等全并发</p>
+<p>一些传统的rpc框架会使用有限数量的内核线程作为处理线程，把不同的请求散列到这些线程上，一旦出现一个长尾请求，就会将其所在线程上的所有任务全部阻塞，而一个tcp连接对应一个内核线程又不太实际，非常浪费系统资源</p>
+<p>bthread的work stealing机制可以让一个线程从其他线程偷取任务来执行，避免了长尾请求阻塞整个线程的问题</p>
+<h3 id="tlsthread-local-storage">TLS（Thread Local Storage）</h3>
+<p>和C++的thread_local不太一样</p>
+<p>首先，bthread里面不能用thread_local关键字，因为thread_local是C++标准库的特性，运行在内核线程上，而bthread会在不同的内核线程上调度，原生的thread_local值会发生变化</p>
+<p>其次，bthread的TLS支持注册到全局，其他线程也能访问到线程的TLS变量，这给很多性能优化方案提供了可能</p>
+<h3 id="负载均衡">负载均衡</h3>
+<p>Locality-aware load balancing， 规避按cpu idle分配流量的悖论，LALB将当前qps也加入了权值计算，形成了一种负反馈机制
+- W = QPS/L，W为权值，L为请求耗时，综合节点当前QPS和请求处理耗时作为权重
+- 基于QPS和Latency做权重不需要依赖对下游节点的负载统计
+- 对流量做分流时，使用加权随机选择算法，用加权前缀树查找权重</p>
 <h2 id="docker和k8s">docker和k8s</h2>
 <ul>
 <li>docker是一种容器技术，容器是一种轻量的虚拟化技术，其最大的好处是能让程序在不同平台上有一致的执行环境。</li>
@@ -1081,8 +1113,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-15&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/53bbcc9a44fe48f033b2d47cefb550ca531a55af" target="_blank" title="commit by shiwj(swj6086085@163.com) 53bbcc9a44fe48f033b2d47cefb550ca531a55af: update post 53">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>53bbcc9</a></span>
+                <span>Updated on 2025-07-16&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/000487c3badae867d839a5145569cb3e131b1e60" target="_blank" title="commit by shiwj(swj6086085@163.com) 000487c3badae867d839a5145569cb3e131b1e60: update interviews">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>000487c</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

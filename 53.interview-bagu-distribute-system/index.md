@@ -653,11 +653,55 @@ RCU（Read Copy Update）机制就是一种典型的double buffer机制，用于
     - 基于QPS和Latency做权重不需要依赖对下游节点的负载统计
     - 对流量做分流时，使用加权随机选择算法，用加权前缀树查找权重
 
+### iobuf
+
+iobuf是brpc的一个高性能内存缓冲区实现，主要用于网络通信和数据传输。
+
+iobuf互操作时可以做到零拷贝，本质上通过预分配内存和引用计数实现
+
+iobuf分为三层，iobuf、blockRef和block
+
+- iobuf是一个内存缓冲区，包含了一个或多个blockRef
+- 每个blockRef引用某个block中的一部分内存（blockRef内部会保存所引用block的内存偏移量）
+- 每个block是一个固定8KB大小的内存块，内部包含一个引用计数，记录有多少blockRef引用自己
+- block之间通过next指针连接成一个单向链表
+
 ### DoublyBufferedData
 
-是一种double buffer实现，适用于读多写少的场景，brpc对读写指针的切换做了优化，利用thread local机制降低了，读写指针切换时对读线程的阻塞
+是一种double buffer实现，适用于读多写少的场景，brpc对读写指针的切换做了优化，利用thread local机制降低了读写指针切换时对读线程的阻塞
 
 这个结构使用非常广泛，负载均衡器就采用了这个实现，负载均衡器需要定期更新下游服务的可用节点列表，这是一个典型的多读少写的场景
+
+### bvar
+
+用于brpc内部的数据统计，针对数据统计这种多读少写的场景进行了针对性优化，具体来说，是让每个写线程只写自己的线程局部变量，由读线程对线程局部变量做汇总，写操作不会互相阻塞，读线程汇总数据时只会阻塞一个写线程，读线程的读取会变慢一些
+
+### bthread
+
+m:n协程调度模型，类似golang的协程，有独立的协程栈，有work stealing机制
+
+bthread属于用户态线程，上下文切换开销小
+
+brpc的线程模型完全基于bthread实现，可以实现event loop、io、请求处理等全并发
+
+一些传统的rpc框架会使用有限数量的内核线程作为处理线程，把不同的请求散列到这些线程上，一旦出现一个长尾请求，就会将其所在线程上的所有任务全部阻塞，而一个tcp连接对应一个内核线程又不太实际，非常浪费系统资源
+
+bthread的work stealing机制可以让一个线程从其他线程偷取任务来执行，避免了长尾请求阻塞整个线程的问题
+
+### TLS（Thread Local Storage）
+
+和C++的thread_local不太一样
+
+首先，bthread里面不能用thread_local关键字，因为thread_local是C++标准库的特性，运行在内核线程上，而bthread会在不同的内核线程上调度，原生的thread_local值会发生变化
+
+其次，bthread的TLS支持注册到全局，其他线程也能访问到线程的TLS变量，这给很多性能优化方案提供了可能
+
+### 负载均衡
+
+Locality-aware load balancing， 规避按cpu idle分配流量的悖论，LALB将当前qps也加入了权值计算，形成了一种负反馈机制
+    - W = QPS/L，W为权值，L为请求耗时，综合节点当前QPS和请求处理耗时作为权重
+    - 基于QPS和Latency做权重不需要依赖对下游节点的负载统计
+    - 对流量做分流时，使用加权随机选择算法，用加权前缀树查找权重
 
 ## docker和k8s
 
