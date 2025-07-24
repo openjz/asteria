@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/19.interview-bagu-cpp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-25T15:46:32+08:00" />
-<meta property="article:modified_time" content="2025-07-16T00:33:23+08:00" />
+<meta property="article:modified_time" content="2025-07-17T00:08:38+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  8430 ,
-        "url": "http:\/\/blog.shiwj.top\/19.interview-bagu-cpp\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2025-07-16T00:33:23+08:00","publisher": {
+                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  9110 ,
+        "url": "http:\/\/blog.shiwj.top\/19.interview-bagu-cpp\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2025-07-17T00:08:38+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-c&#43;&#43;</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;8430 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9110 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -114,7 +114,12 @@
     </li>
     <li><a href="#面向对象">面向对象</a></li>
     <li><a href="#泛型">泛型</a></li>
-    <li><a href="#stl">stl</a></li>
+    <li><a href="#stl">stl</a>
+      <ul>
+        <li><a href="#vector和array的区别">vector和array的区别</a></li>
+        <li><a href="#vector和deque的区别">vector和deque的区别</a></li>
+      </ul>
+    </li>
     <li><a href="#隐式类型转换">隐式类型转换</a></li>
     <li><a href="#其他">其他</a></li>
     <li><a href="#c20">C++20</a></li>
@@ -184,9 +189,9 @@
 </ul>
 <h2 id="c内存布局">C++内存布局</h2>
 <ul>
-<li>代码区（文本区）</li>
-<li>数据区：已初始化的全局变量、静态变量</li>
-<li>BSS区：未初始化的全局变量区</li>
+<li>代码区</li>
+<li>Data区，已初始化的全局变量区</li>
+<li>BSS区，未初始化的全局变量区，会在程序启动后自动清零，对于double类型。</li>
 <li>堆区</li>
 <li>栈区</li>
 </ul>
@@ -531,6 +536,52 @@ nullptr、NULL、0</li>
 </ul>
 </li>
 </ul>
+<h3 id="vector和array的区别">vector和array的区别</h3>
+<p>C++ STL 中 array 和 vector 的主要区别如下：</p>
+<p>存储方式：</p>
+<ul>
+<li>std::array 是定长数组，大小在编译期确定，内存在线程栈上分配。</li>
+<li>std::vector 是动态数组，大小可变，内存通常在堆上分配。</li>
+</ul>
+<p>大小变化：</p>
+<ul>
+<li>array 大小固定，不能增删元素。</li>
+<li>vector 支持动态增删元素（如 push_back、pop_back）。</li>
+</ul>
+<p>性能：</p>
+<ul>
+<li>array 没有动态分配，访问速度快，适合小型、固定长度数据。</li>
+<li>vector 需要动态分配和扩容，适合大小不确定的数据。</li>
+</ul>
+<p>用法场景：</p>
+<ul>
+<li>array 适合长度已知且不会变化的场景。</li>
+<li>vector 适合长度不确定或需要频繁增删元素的场景。</li>
+</ul>
+<h3 id="vector和deque的区别">vector和deque的区别</h3>
+<p>C++ STL 中 deque 和 vector 的主要区别如下：</p>
+<p>底层结构</p>
+<ul>
+<li>vector：底层是连续的线性内存（动态数组），所有元素在内存中是连续存放的。</li>
+<li>deque：底层是分段的线性内存（通常是指针数组，每个指针指向一块连续的小内存块），整体上表现为双端队列，内存不一定连续。</li>
+</ul>
+<p>插入/删除效率</p>
+<ul>
+<li>vector：支持尾部插入/删除（push_back/pop_back）效率高，头部或中间插入/删除效率低（需要移动大量元素）。</li>
+<li>deque：支持头部和尾部的高效插入/删除（push_front/push_back），中间插入/删除效率与vector类似。</li>
+</ul>
+<p>随机访问</p>
+<p>两者都支持随机访问（operator[]），但vector的访问速度略快，因为内存连续。</p>
+<p>内存分配</p>
+<ul>
+<li>vector：扩容慢，扩容时需要整体搬迁数据到新内存。</li>
+<li>deque：扩容时只需分配新的小块内存，不需要整体搬迁已有元素。</li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li>vector：适合只在尾部插入/删除、需要高效随机访问的场景。</li>
+<li>deque：适合需要在头尾两端频繁插入/删除的场景。</li>
+</ul>
 <h2 id="隐式类型转换">隐式类型转换</h2>
 <ul>
 <li>内置类型的隐式类型转换</li>
@@ -837,8 +888,8 @@ nullptr、NULL、0</li>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-16&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/000487c3badae867d839a5145569cb3e131b1e60" target="_blank" title="commit by shiwj(swj6086085@163.com) 000487c3badae867d839a5145569cb3e131b1e60: update interviews">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>000487c</a></span>
+                <span>Updated on 2025-07-17&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/11d77f5dd44f2438aabbd35bfc5c1c4a61efc482" target="_blank" title="commit by shiwj(swj6086085@163.com) 11d77f5dd44f2438aabbd35bfc5c1c4a61efc482: update interviews">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>11d77f5</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

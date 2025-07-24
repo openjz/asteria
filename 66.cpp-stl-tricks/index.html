@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2644 ,
+                        }],"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  2724 ,
         "url": "http:\/\/blog.shiwj.top\/66.cpp-stl-tricks\/","datePublished": "2025-05-05T14:39:26+08:00","dateModified": "2025-05-12T00:52:36+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">c&#43;&#43; STL使用技巧</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-05">2025-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2644 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-05">2025-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2724 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -173,14 +173,15 @@
 </ul>
 <h2 id="3-内存操作">3. 内存操作</h2>
 <ul>
-<li>assign：内存拷贝</li>
+<li>assign：容器赋值，可以在容器对象构造出来以后仍能使用构造语法给对象赋值，类似于重新构造</li>
 <li>swap：内存交换</li>
 </ul>
+<p>没有专门的copy方法，可以使用拷贝构造，拷贝赋值运算符，和std::copy</p>
 <h2 id="4-添加和删除元素会导致容器迭代器失效">4. 添加和删除元素会导致容器迭代器失效</h2>
 <p>常见面试排错题</p>
 <p>如果在遍历容器的过程中insert和earse，需要在操作完后更新迭代器，保证迭代器的有效性</p>
 <h2 id="5-vector对象是如何增长的">5. vector对象是如何增长的</h2>
-<p>vector预先分配的容量（capacity）会比size大一些，当capacity不足时，会发生扩容</p>
+<p>vector预先分配的容量（capacity）会比size大一些，当capacity不足时，会发生扩容，扩容的大小</p>
 <h2 id="6-函数适配器bind">6. 函数适配器bind</h2>
 <p>在下面这个例子中，g是一个可调用对象，f是被适配的函数</p>
 <div class="highlight"><div class="chroma">

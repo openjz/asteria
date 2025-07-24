@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试","wordcount":  15217 ,
+                        }],"genre": "posts","keywords": "面试","wordcount":  15749 ,
         "url": "http:\/\/blog.shiwj.top\/52.interview-bagu-general\/","datePublished": "2022-10-07T18:41:33+08:00","dateModified": "2025-07-14T01:34:31+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-通用</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;15217 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;31 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-07">2022-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;15749 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;32 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -93,6 +93,7 @@
     <li><a href="#系统">系统</a>
       <ul>
         <li><a href="#基础">基础</a></li>
+        <li><a href="#程序内存布局">程序内存布局</a></li>
         <li><a href="#内存管理">内存管理</a></li>
         <li><a href="#linux使用">linux使用</a></li>
         <li><a href="#linux的五种io模型">linux的五种I/O模型</a></li>
@@ -122,6 +123,7 @@
         <li><a href="#设计模式">设计模式</a></li>
       </ul>
     </li>
+    <li><a href="#性能分析">性能分析</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="系统">系统</h2>
@@ -202,6 +204,21 @@
 <li>线程局部存储（TLS）信息</li>
 <li>其他：如信号掩码、线程私有数据等</li>
 </ul>
+<h3 id="程序内存布局">程序内存布局</h3>
+<p>进程的内存布局大概分为以下5种内存区域</p>
+<ul>
+<li>代码区</li>
+<li>Data区，已初始化的全局变量区</li>
+<li>BSS区，未初始化的全局变量区，会在程序启动后自动清零。</li>
+<li>堆区</li>
+<li>栈区</li>
+</ul>
+<p>data区存放的数据是初始化过的全局变量，即编译期可以确定值的变量</p>
+<p>bss区存放的是未初始化的全局变量，程序启动时会将这块内存区域清0</p>
+<p>程序的内存布局是编译期决定的，编译完成后，内存布局信息就会写入到编出来的二进制文件中</p>
+<p>可以通过一些工具查看可执行文件（exe，dll，so等）的内存布局，windows平台下可以用vs自带的dumpbin或者PE explorer和PE explorer v2查看，linux下可以用readelf查看</p>
+<p>windows和linux的二进制文件格式不一样，windows是pe格式，linux是elf格式</p>
+<p>实际的二进制文件中会有很多内存区域，上面提到的其实是理论上的5类内存区域</p>
 <h3 id="内存管理">内存管理</h3>
 <p><strong>虚拟内存和物理内存</strong></p>
 <p>虚拟内存是操作系统为每个进程提供的、看起来连续且独立的内存空间，又称逻辑内存空间。每个进程都认为自己拥有完整的、独立的内存，不会与其他进程冲突。虚拟内存的大小通常大于实际物理内存，依赖于磁盘空间（如交换分区或页面文件）进行扩展。</p>
@@ -748,15 +765,6 @@
 <li>numa，现代多核cpu通常是numa结构，每个核心都有自己的cache，可访问内存区域等，构成了每个核心的内存访问子系统</li>
 </ul>
 </li>
-<li>进程的内存布局
-<ul>
-<li>代码区</li>
-<li>数据区，已初始化的变量区</li>
-<li>BSS区，未初始化的变量区</li>
-<li>堆区</li>
-<li>栈区</li>
-</ul>
-</li>
 </ul>
 <p>Linux内核的两种内存分配函数kmalloc 和 vmalloc，但只适用于内核模块和驱动模块，不能再用户态程序中使用：</p>
 <h3 id="kmalloc">kmalloc</h3>
@@ -1127,6 +1135,16 @@ TCP报文段包含一个校验和字段，用于检测数据在传输过程中�
 </li>
 <li>模板模式</li>
 </ul>
+<h2 id="性能分析">性能分析</h2>
+<p><strong>监控和告警</strong></p>
+<p>看哪些指标下降，包括机器和服务两种监控</p>
+<p>机器监控主要看机器资源（cpu idle、memory idle，网络带宽情况），服务监控主要看服务状态（稳定性，耗时，流量）</p>
+<p><strong>日志分析</strong></p>
+<p>分析全链路线上日志，按照关注的日志项，使用grep、tail、wc等命令分析请求执行情况</p>
+<p><strong>压力测试+性能分析工具</strong></p>
+<p>gperf + brpc火焰图，分析热点函数</p>
+<p><strong>代码审查</strong></p>
+<p>根据程序架构，找到可能性较大的瓶颈点，分析执行耗时点，内存分配和释放问题</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
