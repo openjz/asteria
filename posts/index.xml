@@ -4,7 +4,15 @@
         <link>http://blog.shiwj.top/posts/</link>
         <description>All Posts | 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sat, 12 Jul 2025 09:23:22 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 27 Jul 2025 16:28:27 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>《汇编语言第4版——王爽》阅读笔记</title>
+    <link>http://blog.shiwj.top/73.asemblly-wangshuang/</link>
+    <pubDate>Sun, 27 Jul 2025 16:28:27 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/73.asemblly-wangshuang/</guid>
+    <description><![CDATA[一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，由编译器识别，在编译期计算 符号 CPU和]]></description>
+</item>
+<item>
     <title>面试八股-分布式系统</title>
     <link>http://blog.shiwj.top/53.interview-bagu-distribute-system/</link>
     <pubDate>Sat, 12 Jul 2025 09:23:22 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/65.cpp-template-tricks/</guid>
     <description><![CDATA[参考 《C++ Primer 第5版》 《Effective Modern C++》 0. 模板类型推导规则 参考 62.effective-modern-cpp 1. 非类型参数 例如，利用模板推导数组长度 1 2 3 4 5 template&lt;typename T, std::size_t N&gt; constexpr std::size_t ArraySize(T(&amp;)[N]) noexcept]]></description>
-</item>
-<item>
-    <title>微积分学习笔记</title>
-    <link>http://blog.shiwj.top/64.calculus/</link>
-    <pubDate>Fri, 02 May 2025 01:36:05 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/64.calculus/</guid>
-    <description><![CDATA[参考《普林斯顿微积分读本》 这篇笔记主要记录微积分中的一些定义、定理和结论。 有理函数：形如$\frac{p(x)}{q(x)}$，其中 $p$ 和 $q$ 为]]></description>
 </item>
 </channel>
 </rss>
