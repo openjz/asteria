@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/73.asemblly-wangshuang/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-07-27T16:28:27+08:00" />
-<meta property="article:modified_time" content="2025-07-27T16:28:27+08:00" />
+<meta property="article:modified_time" content="2025-07-28T01:53:13+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "汇编","wordcount":  693 ,
-        "url": "http:\/\/blog.shiwj.top\/73.asemblly-wangshuang\/","datePublished": "2025-07-27T16:28:27+08:00","dateModified": "2025-07-27T16:28:27+08:00","publisher": {
+                        }],"genre": "posts","keywords": "汇编","wordcount":  1222 ,
+        "url": "http:\/\/blog.shiwj.top\/73.asemblly-wangshuang\/","datePublished": "2025-07-27T16:28:27+08:00","dateModified": "2025-07-28T01:53:13+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《汇编语言第4版——王爽》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-27">2025-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;693 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-27">2025-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1222 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -99,6 +99,18 @@
         <li><a href="#段寄存器">段寄存器</a></li>
         <li><a href="#cs和ip">CS和IP</a></li>
         <li><a href="#修改csip的jmp指令">修改CS、IP的jmp指令</a></li>
+      </ul>
+    </li>
+    <li><a href="#三内存访问">三、内存访问</a>
+      <ul>
+        <li><a href="#cpu的栈机制">CPU的栈机制</a></li>
+      </ul>
+    </li>
+    <li><a href="#四一个汇编程序">四、一个汇编程序</a>
+      <ul>
+        <li><a href="#伪指令">伪指令</a></li>
+        <li><a href="#程序">程序</a></li>
+        <li><a href="#标号">标号</a></li>
       </ul>
     </li>
   </ul>
@@ -147,17 +159,96 @@
 <h3 id="段寄存器">段寄存器</h3>
 <p>段寄存器用于存储内存的段地址，8086 CPU有4个段寄存器：CS、DS、SS、ES</p>
 <h3 id="cs和ip">CS和IP</h3>
-<p>CS（代码段寄存器）和IP（指令指针寄存器）合起来就是CPU当前执行的指令地址。</p>
+<p>CS（代码段寄存器）和**IP（指令指针寄存器）**合起来就是CPU当前执行的指令地址。</p>
 <h3 id="修改csip的jmp指令">修改CS、IP的jmp指令</h3>
 <p><code>jmp 段地址:偏移地址</code></p>
 <p>指令中给出的段地址修改CS寄存器的值，偏移地址修改IP寄存器的值</p>
 <p><code>jmp 某一寄存器</code></p>
 <p>仅修改IP寄存器的值</p>
+<h2 id="三内存访问">三、内存访问</h2>
+<p>数据的访问也遵循段地址+偏移地址的方式</p>
+<p>DS寄存器存储数据的段地址</p>
+<p>以下代码将内存地址10000H(1000:0)中的数据读取到寄存器al中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">bx</span><span class="p">,</span> <span class="mi">1000</span><span class="no">H</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ds</span><span class="p">,</span> <span class="no">bx</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">al</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数据的段地址存放在ds寄存器中，往al中存放数据时只需要提供偏移地址<code>[0]</code>即可</p>
+<p><code>[xxx]</code>表示内存偏移地址</p>
+<p>上面的例子只从内存中读取了一个字节，如果mov指令中给定的是16位寄存器，则会从内存中读取一个16位的字</p>
+<p>sub指令用于减法，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">; 将AX寄存器的值减1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">BX</span><span class="p">,</span> <span class="no">AX</span> <span class="c1">; 用BX寄存器的值减去AX寄存器的值，结果存回BX
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cpu的栈机制">CPU的栈机制</h3>
+<p>栈会占用一段内存地址</p>
+<p>入栈出栈指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">push</span> <span class="no">ax</span> <span class="c1">; 将ax的数据入栈
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">pop</span> <span class="no">ax</span><span class="c1">; 将栈顶数据读入ax中
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>栈顶地址存储在段寄存器SS和<strong>栈顶指针寄存器SP</strong>中，也是段地址+偏移地址的形式</p>
+<p><strong>栈底地址大，栈顶地址小，所以push会使SP变小，pop会使SP变大</strong></p>
+<p>如何将某一部分内存指定为栈内存呢？很简单，将SS和SP设置为栈底地址即可</p>
+<h2 id="四一个汇编程序">四、一个汇编程序</h2>
+<h3 id="伪指令">伪指令</h3>
+<p>伪指令由编译器分析执行，而不是由CPU执行</p>
+<p>代码段定义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">codesg</span> <span class="no">segment</span><span class="c1">; 代码段的名字位codesg
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="na">...</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cosesg</span> <span class="no">ends</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>汇编结束</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="na">...</span> 
+</span></span><span class="line"><span class="cl"><span class="no">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>assume指令能够将段寄存器和某一个代码段关联起来</p>
+<h3 id="程序">程序</h3>
+<p>汇编代码中真正被CPU执行的部分</p>
+<h3 id="标号">标号</h3>
+<p>由程序员自定义的名字</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-27</span>
+                <span>Updated on 2025-07-28&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/7af164ebca4eb64499cab6e4b378b91e8cdfc709" target="_blank" title="commit by shiwj(swj6086085@163.com) 7af164ebca4eb64499cab6e4b378b91e8cdfc709: add post 73">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>7af164e</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
