@@ -10,7 +10,7 @@
     <pubDate>Sun, 27 Jul 2025 16:28:27 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/73.asemblly-wangshuang/</guid>
-    <description><![CDATA[一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，由编译器识别，在编译期计算 符号 CPU和]]></description>
+    <description><![CDATA[本书所讲内容，都基于8086 cpu架构 一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，]]></description>
 </item>
 <item>
     <title>面试八股-分布式系统</title>

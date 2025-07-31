@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>《汇编语言第4版——王爽》阅读笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="《汇编语言第4版——王爽》阅读笔记" />
-<meta property="og:description" content="一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，由编译器识别，在编译期计算 符号 CPU和" />
+<meta property="og:description" content="本书所讲内容，都基于8086 cpu架构 一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.shiwj.top/73.asemblly-wangshuang/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-07-27T16:28:27+08:00" />
-<meta property="article:modified_time" content="2025-07-29T23:50:15+08:00" />
+<meta property="article:modified_time" content="2025-07-31T00:28:43+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
 <meta name="twitter:title" content="《汇编语言第4版——王爽》阅读笔记"/>
-<meta name="twitter:description" content="一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，由编译器识别，在编译期计算 符号 CPU和"/>
+<meta name="twitter:description" content="本书所讲内容，都基于8086 cpu架构 一、基础知识 汇编指令是机器指令便于记忆的书写格式 汇编语言有三类符号： 汇编指令 伪指令，没有对应的机器码，"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,8 +32,8 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "汇编","wordcount":  2651 ,
-        "url": "http:\/\/blog.shiwj.top\/73.asemblly-wangshuang\/","datePublished": "2025-07-27T16:28:27+08:00","dateModified": "2025-07-29T23:50:15+08:00","publisher": {
+                        }],"genre": "posts","keywords": "汇编","wordcount":  5288 ,
+        "url": "http:\/\/blog.shiwj.top\/73.asemblly-wangshuang\/","datePublished": "2025-07-27T16:28:27+08:00","dateModified": "2025-07-31T00:28:43+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -81,8 +81,8 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《汇编语言第4版——王爽》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-27">2025-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2651 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-27">2025-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5288 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -122,9 +122,45 @@
         <li><a href="#将数据代码栈放在不同的段中">将数据、代码、栈放在不同的段中</a></li>
       </ul>
     </li>
+    <li><a href="#七更灵活的定位内存地址的方法">七、更灵活的定位内存地址的方法</a>
+      <ul>
+        <li><a href="#si-和-di-寄存器">SI 和 DI 寄存器</a></li>
+      </ul>
+    </li>
+    <li><a href="#八数据处理的两个基本问题">八、数据处理的两个基本问题</a>
+      <ul>
+        <li><a href="#bxsidibp">bx,si,di,bp</a></li>
+        <li><a href="#汇编中数据位置的表达">汇编中数据位置的表达</a></li>
+        <li><a href="#寻址方式">寻址方式</a></li>
+        <li><a href="#指令要处理的数据有多长">指令要处理的数据有多长</a></li>
+        <li><a href="#div指令">div指令</a></li>
+        <li><a href="#伪指令dd">伪指令dd</a></li>
+        <li><a href="#dup">dup</a></li>
+      </ul>
+    </li>
+    <li><a href="#九转移指令">九、转移指令</a>
+      <ul>
+        <li><a href="#offset操作符">offset操作符</a></li>
+        <li><a href="#各种jmp指令">各种jmp指令</a></li>
+        <li><a href="#jcxz有条件转移指令">jcxz，有条件转移指令</a></li>
+        <li><a href="#loop指令">loop指令</a></li>
+      </ul>
+    </li>
+    <li><a href="#十call-和-ret-指令">十、call 和 ret 指令</a>
+      <ul>
+        <li><a href="#ret-和-retf">ret 和 retf</a></li>
+        <li><a href="#call">call</a></li>
+        <li><a href="#call-和-ret-配合使用实现函数调用">call 和 ret 配合使用实现函数调用</a></li>
+        <li><a href="#乘法指令mul">乘法指令mul</a></li>
+        <li><a href="#参数和结果传递问题">参数和结果传递问题</a></li>
+        <li><a href="#寄存器冲突问题">寄存器冲突问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#标志寄存器">标志寄存器</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="一基础知识">一、基础知识</h2>
+            </div><div class="content" id="content"><p>本书所讲内容，都基于8086 cpu架构</p>
+<h2 id="一基础知识">一、基础知识</h2>
 <p>汇编指令是机器指令便于记忆的书写格式</p>
 <p>汇编语言有三类符号：</p>
 <ol>
@@ -490,7 +526,7 @@
 </div>
 </div><h3 id="将数据代码栈放在不同的段中">将数据、代码、栈放在不同的段中</h3>
 <p>“程序的内存布局分为代码区，数据区，栈区和堆区”是一个经典面试问题，为什么程序的内存布局基本都遵循这个结构？这一节从汇编的角度解释了这个问题</p>
-<p>cpu中有三类分别指向代码、栈和数据的寄存器，指令寄存器<code>[CS]IP</code>、栈顶指针寄存器<code>[SS]SP</code>，和数据段寄存器<code>DS</code>，这么组织程序内存布局天然符合CPU的设计</p>
+<p>cpu中有三类分别指向代码、栈和数据的寄存器，指令寄存器<code>CS:IP</code>、栈顶指针寄存器<code>SS:SP</code>，和数据段寄存器<code>DS:[BX]</code>，这么组织程序内存布局天然符合CPU的设计</p>
 <p>为什么线程栈的地址是从大到小增长的？因为cpu的push和pop指令就是这么设计的，push指令会使栈顶指针寄存器SP减小，pop指令会使SP增大，所以初始栈顶（也就是栈底）必须指向高地址</p>
 <p>以下是一个例子，将数据、代码和栈放在不同的段中，并用各段的起始地址为DS、SS:SP寄存器赋初值，CS:IP由编译器根据程序入口点start的位置设置地址</p>
 <div class="highlight"><div class="chroma">
@@ -585,12 +621,370 @@
 </span></span><span class="line"><span class="cl"><span class="nf">end</span> <span class="no">start</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="七更灵活的定位内存地址的方法">七、更灵活的定位内存地址的方法</h2>
+<p><strong>and 和 or 指令</strong></p>
+<p>and 和 or指令分别是按位与和按位或操作</p>
+<p><strong>db，定义字节型数据</strong></p>
+<p>例如，<code>db 'unIX'</code>，等同于<code>db 75H,6EH,49H,58H</code></p>
+<p><strong><code>[bx+200]</code></strong></p>
+<p>bx存储内存地址，<code>[bx+200]</code>表示访问bx中的地址再偏移200后得到的内存地址</p>
+<p>有几个等价的写法，<code>200[bx]</code>，<code>[bx].200</code></p>
+<h3 id="si-和-di-寄存器">SI 和 DI 寄存器</h3>
+<p>si 和 di的作用和bx类似，但si 和 di 不能拆成两个8位寄存器来使用</p>
+<p>有了si和di，可以使用以下这种更灵活的方式访问内存</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="p">[</span><span class="no">bx</span><span class="err">+</span><span class="mi">200</span><span class="err">+</span><span class="no">si</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="p">[</span><span class="mi">200</span><span class="err">+</span><span class="no">bx</span><span class="err">+</span><span class="no">si</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="mi">200</span> <span class="p">[</span><span class="no">bx</span><span class="p">]</span> <span class="p">[</span><span class="no">si</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="p">[</span><span class="no">bx</span><span class="p">]</span> <span class="no">.200</span> <span class="p">[</span><span class="no">si</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="p">[</span><span class="no">bx</span><span class="p">]</span> <span class="p">[</span><span class="no">si</span><span class="p">].</span><span class="mi">200</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="八数据处理的两个基本问题">八、数据处理的两个基本问题</h2>
+<p>(1)处理的数据在什么地方?
+(2)要处理的数据有多长?</p>
+<h3 id="bxsidibp">bx,si,di,bp</h3>
+<p>8086 cpu中，只有这四个寄存器可以用来访存，即使用<code>[xxx]</code>这种形式的写法</p>
+<h3 id="汇编中数据位置的表达">汇编中数据位置的表达</h3>
+<ol>
+<li>立即数：直接在汇编指令中给出的字面值数据</li>
+<li>寄存器</li>
+<li>段地址和编译地址：<code>[bx]</code>，<code>ds:[bx]</code></li>
+</ol>
+<h3 id="寻址方式">寻址方式</h3>
+<ol>
+<li>直接寻址：<code>[200]</code>，地址以字面值的方式提供</li>
+<li>寄存器间接寻址：<code>[bx]</code></li>
+<li>寄存器相对寻址：<code>[bx+200]</code>，bx加上一个字面值</li>
+<li>基址变址寻址：<code>[bx+si]</code></li>
+<li>相对基址变址寻址：<code>[bx+si+200]</code></li>
+</ol>
+<h3 id="指令要处理的数据有多长">指令要处理的数据有多长</h3>
+<p>汇编处理的基本单位是字节（byte）或字（word）</p>
+<p>通过寄存器名字可以区分字节或字，ax代表字，al和ah代表字节</p>
+<p>例如<code>mov ax ds:[0]</code>是字访存操作，而<code>mov al ds:[0]</code>是一个字节访存操作</p>
+<p>可以使用<code>word ptr</code>或<code>byte ptr</code>明确指定访存单位是字还是字节</p>
+<p>例如,下面的指令中,用word ptr指明了指令访问的内存单元是一个字单元。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">word</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">inc</span> <span class="no">word</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">bx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nf">inc</span> <span class="no">word</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span> <span class="no">word</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">bx</span><span class="p">],</span><span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面的指令中,用byte ptr指明了指令访问的内存单元是一个字节单元。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">inc</span> <span class="no">byte</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">bx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nf">inc</span> <span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span> <span class="no">byte</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">bx</span><span class="p">],</span><span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="div指令">div指令</h3>
+<p>div是除法指令</p>
+<p>现代编译器很少使用除法指令，因其性能比较差</p>
+<p>被除数的长度是除数的两倍，结果分为商和余数</p>
+<h3 id="伪指令dd">伪指令dd</h3>
+<p>dd用来定义双字（dword）</p>
+<h3 id="dup">dup</h3>
+<p>用于批量定义数据，用法如下：</p>
+<p><code>db 3 dup (0,1,2)</code>，定义了9个字节，也就是(0,1,2)重复三次
+<code>db 3 dup ('abc', 'ABC')</code>，定义了18个字节</p>
+<h2 id="九转移指令">九、转移指令</h2>
+<p>能够修改CS和IP的指令称为转移指令</p>
+<p>8086 CPU的转移指令分为以下几类。</p>
+<ol>
+<li>无条件转移指令(如:jmp)</li>
+<li>条件转移指令</li>
+<li>循环指令(如:loop)</li>
+<li>过程</li>
+<li>中断</li>
+</ol>
+<h3 id="offset操作符">offset操作符</h3>
+<p>offset操作符由编译器处理，作用是识别标号的偏移地址</p>
+<p>例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">assume</span> <span class="no">cs</span> <span class="p">:</span> <span class="no">codesg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">codesg</span> <span class="no">segment</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">start:</span><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="no">offset</span> <span class="no">start</span> <span class="c1">;相当于mov ax,0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nl">s:</span><span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="no">offset</span> <span class="no">s</span> <span class="c1">;相当于mov ax,3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">codesg</span> <span class="no">ends</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">end</span> <span class="no">start</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，这里是获取地址，不是去根据地址访存</p>
+<h3 id="各种jmp指令">各种jmp指令</h3>
+<p><strong>jmp短转移和就近转移</strong></p>
+<p><code>jmp short 标号</code> 和 <code>jmp near ptr 标号</code></p>
+<p>这两个指令都是跳转到标号所在指令</p>
+<p><code>jmp short</code>实际上是IP+8位位移，对IP的修改范围为-128~127</p>
+<p><code>jmp near ptr</code>实际上是IP+16位位移</p>
+<p><strong>在实际的机器码中，这两个指令中并没有目的地址，只是给IP增加一个偏移量</strong></p>
+<p><strong>带转移目的地址的jmp指令</strong></p>
+<p><code>jmp far ptr 标号</code>是段间转移指令，也叫远转移，会使用标号所在的地址修改CS:IP寄存器，生成的机器码中会包含目标地址</p>
+<p><strong>转移地址在寄存器中的jmp指令</strong></p>
+<p><code>jmp 寄存器</code>，前面讲的jmp命令就是这种</p>
+<p><strong>转移地址在内存中的jmp指令</strong></p>
+<p><code>jmp word ptr 内存地址</code>，段内转移</p>
+<p><code>jmp dword ptr 内存地址</code>，段间转移</p>
+<h3 id="jcxz有条件转移指令">jcxz，有条件转移指令</h3>
+<p><code>jcxz 标号</code></p>
+<p>jcxz实际上是一个短转移指令</p>
+<p>当cx为0时跳转到标号，否则什么都不做</p>
+<h3 id="loop指令">loop指令</h3>
+<p>loop指令本质上也是个短转移指令</p>
+<h2 id="十call-和-ret-指令">十、call 和 ret 指令</h2>
+<p>这两个指令都是转移指令，会修改cs和ip</p>
+<h3 id="ret-和-retf">ret 和 retf</h3>
+<p>ret 和 retf 一个是近转移，一个是远转移</p>
+<p>他们会利用栈中的数据作为转移地址，并对栈做出栈操作</p>
+<p>ret只会pop一个数据，作为ip的值</p>
+<p>retf会pop两个数据，作为cs:ip的值</p>
+<h3 id="call">call</h3>
+<p>call指令会将当前的ip 或 cs和ip 压栈</p>
+<p><strong>根据位移进行转移的call指令</strong></p>
+<p><code>call 标号</code>，将当前的ip压栈后，跳转到标号处执行</p>
+<p><strong>带目的地址的call指令</strong></p>
+<p><code>call far ptr 标号</code>，将当前的cs和ip压栈，然后转移到标号处</p>
+<p><strong>转移地址在寄存器中的call指令</strong></p>
+<p><code>call 寄存器</code></p>
+<p><strong>转移地址在内存中的call指令</strong></p>
+<p><code>call word ptr 内存地址</code>, 段内转移</p>
+<p><code>call dword ptr 内存地址</code>，段间转移</p>
+<h3 id="call-和-ret-配合使用实现函数调用">call 和 ret 配合使用实现函数调用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">assume</span> <span class="no">cs</span> <span class="p">:</span> <span class="no">code</span>
+</span></span><span class="line"><span class="cl"><span class="nf">code</span> <span class="no">segment</span>
+</span></span><span class="line"><span class="cl"><span class="nl">main:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="na">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">call</span> <span class="no">sub1</span>           <span class="c1">;调用子程序 sub1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mov</span> <span class="no">ax</span><span class="p">,</span> <span class="mi">4</span><span class="no">c00h</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">int</span> <span class="mi">21</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">sub1:</span>                   <span class="c1">;子程序 sub1 开始
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="na">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">call</span> <span class="no">sub2</span>           <span class="c1">;调用子程序 sub2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="na">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ret</span>
+</span></span><span class="line"><span class="cl"><span class="nl">sub2:</span>                   <span class="c1">;子程序 sub1 开始
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="na">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ret</span>
+</span></span><span class="line"><span class="cl"><span class="nf">codes</span> <span class="no">ends</span>
+</span></span><span class="line"><span class="cl"><span class="nf">end</span> <span class="no">main</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="乘法指令mul">乘法指令mul</h3>
+<p>两个相乘的数长度必须一致，要么都是8位，要么都是16位</p>
+<p>如果是8位，一个数默认放在al中，另一个数在其他寄存器或内存中，结果存放在ax中</p>
+<p>如果是16位，一个数默认放在ax中，另一个数在其他寄存器或内存中，结果高位默认放在dx中，低位放在ax中</p>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mul</span> <span class="no">reg</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mul</span> <span class="err">内存单元</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="参数和结果传递问题">参数和结果传递问题</h3>
+<p>参数比较少的情况下，可以用寄存器传递参数，否则，可以用栈传递参数</p>
+<h3 id="寄存器冲突问题">寄存器冲突问题</h3>
+<p>被调用函数和调用函数可能会使用相同的寄存器，如何解决这种冲突？</p>
+<p>在调用函数之前，把当前用到的寄存器保存到栈中</p>
+<p>所以，一个子函数调用的标准框架应该是以下形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">子程序开始:</span>  <span class="err">子程序用到的寄存器入栈</span>
+</span></span><span class="line"><span class="cl">            <span class="err">子程序逻辑</span>
+</span></span><span class="line"><span class="cl">            <span class="err">子程序用到的寄存器出栈</span>
+</span></span><span class="line"><span class="cl">            <span class="err">返回</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="标志寄存器">标志寄存器</h2>
+<p>flag寄存器是按位存储的</p>
+<p>各标志的作用</p>
+<ul>
+<li>
+<p>ZF（零标志位，Zero Flag）：</p>
+<ul>
+<li>当运算结果为0时，ZF=1；否则ZF=0</li>
+<li>例如：执行 <code>sub ax, ax</code> 后，ZF=1</li>
+</ul>
+</li>
+<li>
+<p>PF（奇偶标志位，Parity Flag）：</p>
+<ul>
+<li>当运算结果的低8位中1的个数为偶数时，PF=1；否则PF=0</li>
+<li>例如：结果为00000011B（两个1，偶数），PF=1</li>
+</ul>
+</li>
+<li>
+<p>SF（符号标志位，Sign Flag）：</p>
+<ul>
+<li>当运算结果为负数时，SF=1；否则SF=0</li>
+<li>SF等于运算结果的最高位</li>
+<li>例如：结果为10000001B，最高位为1，SF=1</li>
+</ul>
+</li>
+<li>
+<p>CF（进位标志位，Carry Flag）：</p>
+<ul>
+<li>无符号运算时，当产生进位或借位时，CF=1；否则CF=0</li>
+<li>例如：两个8位数相加产生第9位进位时，CF=1</li>
+</ul>
+</li>
+<li>
+<p>OF（溢出标志位，Overflow Flag）：</p>
+<ul>
+<li>有符号运算时，当结果超出有效范围时，OF=1；否则OF=0</li>
+<li>例如：127+1=128，对于8位有符号数溢出，OF=1</li>
+</ul>
+</li>
+</ul>
+<p><strong>和flag相关指令</strong></p>
+<ul>
+<li>adc：进位加法指令</li>
+<li>sbb：借位减法指令</li>
+<li>cmp：比较指令</li>
+</ul>
+<p><strong>和flag相关的条件转移指令</strong></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>检测的相关标志位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>je</td>
+<td>等于则转移</td>
+<td>zf=1</td>
+</tr>
+<tr>
+<td>jne</td>
+<td>不等于则转移</td>
+<td>zf=0</td>
+</tr>
+<tr>
+<td>jb</td>
+<td>低于则转移</td>
+<td>cf=1</td>
+</tr>
+<tr>
+<td>jnb</td>
+<td>不低于则转移</td>
+<td>cf=0</td>
+</tr>
+<tr>
+<td>ja</td>
+<td>高于则转移</td>
+<td>cf=0 且 zf=0</td>
+</tr>
+<tr>
+<td>jna</td>
+<td>不高于则转移</td>
+<td>cf=1 或 zf=1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DF标志位和串传送指令</strong></p>
+<p>DF是方向标志位，在串处理指令中,控制每次操作后si、di的增减。</p>
+<p><strong>pushf 和 popf</strong></p>
+<p>pushf是把标志寄存器压栈，popf是把标志值出栈并保存到标志寄存器中</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-29&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/26c7561d3389ff3239a5604c9b59126e7dac2568" target="_blank" title="commit by shiwj(swj6086085@163.com) 26c7561d3389ff3239a5604c9b59126e7dac2568: update post 73">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>26c7561</a></span>
+                <span>Updated on 2025-07-31&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/f2b954e410fbe19d6308f48c7b71edd54217be50" target="_blank" title="commit by shiwj(swj6086085@163.com) f2b954e410fbe19d6308f48c7b71edd54217be50: update post 73">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>f2b954e</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  9110 ,
+                        }],"genre": "posts","keywords": "面试, c\/c\u002b\u002b","wordcount":  9311 ,
         "url": "http:\/\/blog.shiwj.top\/19.interview-bagu-cpp\/","datePublished": "2022-10-25T15:46:32+08:00","dateModified": "2025-07-24T17:31:42+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">面试八股-c&#43;&#43;</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9110 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-25">2022-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9311 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -703,12 +703,13 @@ nullptr、NULL、0</li>
 <li>stdcall：被调用者清理栈，不支持可变参数，常用于WinAPI。</li>
 <li>fastcall：部分参数用寄存器传递，被调用者清理栈，效率</li>
 </ul>
+<p>“清栈”指的是清理入栈参数</p>
 <p>以上几种函数调用约定是传统x86架构下的调用约定，x64架构下，windows和unix平台的函数调用约定有所不同。</p>
 <h2 id="函数是如何调用的">函数是如何调用的</h2>
 <p>单个函数调用操作所使用的栈部分被称为栈帧（stack frame）结构</p>
 <p>存放所有函数调用链的内存区域称为“栈”，栈上的每个函数调用成为“帧”</p>
 <p>栈的地址是从高地址向低地址增长的，栈顶的地址最低</p>
-<p>这里涉及到两个指针，“栈指针”和“帧指针”，栈指针是栈上的一个全局指针，始终指向栈顶，帧指针是指向当前函数栈帧的指针</p>
+<p>这里涉及到两个指针，“栈指针（esp）”和“帧指针（ebp）”，栈指针是栈上的一个全局指针，始终指向栈顶，<strong>帧指针是指向当前函数栈底的指针</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -750,6 +751,7 @@ nullptr、NULL、0</li>
 <li>
 <p><strong>调用前准备</strong></p>
 <ul>
+<li>调用者先把当前上下文（即占用的寄存器）入栈保存</li>
 <li>调用者将函数参数按调用约定（如从右到左）依次压入栈中。</li>
 <li>调用者执行 <code>call</code> 指令，<code>call</code> 会将**下一条指令的地址（返回地址）**压入栈，然后跳转到被调用函数的入口。</li>
 </ul>
@@ -757,14 +759,16 @@ nullptr、NULL、0</li>
 <li>
 <p><strong>进入函数</strong></p>
 <ul>
-<li>被调用函数通常会保存当前的栈帧指针（即上一个函数的帧指针），并为局部变量分配空间。</li>
+<li>被调用函数通常会保存当前的栈帧指针（即上一个函数的帧指针），然后将栈顶指针esp设置为自己的帧指针ebp，并为局部变量分配空间。</li>
 <li>此时，栈上依次存放：参数、返回地址、上一个栈帧指针、局部变量。</li>
+<li>这里有一个要点，新的ebp保存的是其实是被调用函数的栈底位置，而栈底位置存放的是上一个函数的ebp，这就构成了栈帧的链式结构，函数调用可以通过ebp一级一级向上回溯</li>
 </ul>
 </li>
 <li>
 <p><strong>函数执行</strong></p>
 <ul>
 <li>函数体内可以通过栈帧指针访问参数和局部变量。</li>
+<li>为了能全局访问到参数，被调用函数不会将参数pop出来，而是通过帧指针访问函数参数</li>
 </ul>
 </li>
 <li>
@@ -779,6 +783,7 @@ nullptr、NULL、0</li>
 <p><strong>调用者收尾</strong></p>
 <ul>
 <li>调用者根据调用约定，自己或被调用者负责清理参数。</li>
+<li>恢复调用前的上下文。</li>
 <li>继续执行后续代码。</li>
 </ul>
 </li>
