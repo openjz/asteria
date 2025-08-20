@@ -4,36 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>霍纳规则——一种高效求解多项式的算法 - 星</title><meta name="Description" content=""><meta property="og:title" content="霍纳规则——一种高效求解多项式的算法" />
-<meta property="og:description" content="霍纳规则简介 霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的" />
+        <title>《深入理解计算机系统第3版》阅读笔记 - 星</title><meta name="Description" content=""><meta property="og:title" content="《深入理解计算机系统第3版》阅读笔记" />
+<meta property="og:description" content="深入理解计算机系统的英文全称是 Computer Systems: A Programmer&rsquo;s Perspective，作者是 Randal E. Bryant 和 David R. O&rsquo;Hallaron。该书被广泛认为是计算机系统" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.shiwj.top/72.horner-rule/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-07-06T17:00:50+08:00" />
-<meta property="article:modified_time" content="2025-07-07T01:14:17+08:00" />
+<meta property="og:url" content="http://blog.shiwj.top/74.csapp/" /><meta property="og:image" content="http://blog.shiwj.top/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-08-20T16:33:08+08:00" />
+<meta property="article:modified_time" content="2025-08-20T16:33:08+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://blog.shiwj.top/logo.png"/>
 
-<meta name="twitter:title" content="霍纳规则——一种高效求解多项式的算法"/>
-<meta name="twitter:description" content="霍纳规则简介 霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的"/>
+<meta name="twitter:title" content="《深入理解计算机系统第3版》阅读笔记"/>
+<meta name="twitter:description" content="深入理解计算机系统的英文全称是 Computer Systems: A Programmer&rsquo;s Perspective，作者是 Randal E. Bryant 和 David R. O&rsquo;Hallaron。该书被广泛认为是计算机系统"/>
 <meta name="application-name" content="星">
 <meta name="apple-mobile-web-app-title" content="星"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/72.horner-rule/" /><link rel="prev" href="http://blog.shiwj.top/71.lockfree-ringbuffer/" /><link rel="next" href="http://blog.shiwj.top/53.interview-bagu-distribute-system/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.shiwj.top/74.csapp/" /><link rel="prev" href="http://blog.shiwj.top/73.asemblly-wangshuang/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "霍纳规则——一种高效求解多项式的算法",
+        "headline": "《深入理解计算机系统第3版》阅读笔记",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/blog.shiwj.top\/72.horner-rule\/"
+            "@id": "http:\/\/blog.shiwj.top\/74.csapp\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "算法","wordcount":  205 ,
-        "url": "http:\/\/blog.shiwj.top\/72.horner-rule\/","datePublished": "2025-07-06T17:00:50+08:00","dateModified": "2025-07-07T01:14:17+08:00","publisher": {
+                        }],"genre": "posts","keywords": "操作系统","wordcount":  633 ,
+        "url": "http:\/\/blog.shiwj.top\/74.csapp\/","datePublished": "2025-08-20T16:33:08+08:00","dateModified": "2025-08-20T16:33:08+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
                     "@type": "ImageObject",
@@ -78,11 +78,11 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">霍纳规则——一种高效求解多项式的算法</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《深入理解计算机系统第3版》阅读笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-06">2025-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;205 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-20">2025-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;633 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -90,40 +90,31 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#霍纳规则简介">霍纳规则简介</a></li>
-    <li><a href="#霍纳规则的伪代码实现">霍纳规则的伪代码实现</a></li>
+    <li><a href="#第1章-计算机系统漫游">第1章 计算机系统漫游</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="霍纳规则简介">霍纳规则简介</h2>
-<p>霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的次数，从而提高了计算效率。</p>
-<p>具体来说，给定一个多项式：</p>
-<p>$$P(x) = \sum_{k=0}^n a_kx^k$$</p>
-<p>利用霍纳规则，可以将其重写为：</p>
-<p>$$P(x) = \sum_{k=0}^n a_kx^k =  a_0 + x(a_1 + x(a_2 + &hellip; + x(a_{n-1} + xa_n)&hellip;))$$</p>
-<p>这种重写形式使得我们可以通过一次遍历来计算多项式的值，而不需要进行很多次重复的幂运算操作。</p>
-<h2 id="霍纳规则的伪代码实现">霍纳规则的伪代码实现</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">y = 0
-</span></span><span class="line"><span class="cl">for i from n to 0:
-</span></span><span class="line"><span class="cl">    y = a[i] + x * y
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><p>深入理解计算机系统的英文全称是 Computer Systems: A Programmer&rsquo;s Perspective，作者是 Randal E. Bryant 和 David R. O&rsquo;Hallaron。该书被广泛认为是计算机系统领域的经典教材之一，旨在帮助读者深入理解计算机系统的工作原理。</p>
+<p>这本书简称 CSAPP，是 Computer Systems: A Programmer&rsquo;s Perspective 的首字母缩写。</p>
+<h2 id="第1章-计算机系统漫游">第1章 计算机系统漫游</h2>
+<p>介绍计算机系统的基本概念，包括 &ldquo;Hello, World!&rdquo; 程序的来历、程序从编写到运行的整个过程、什么是ASCII码、C语言的起源、GNU项目的起源等等。</p>
+<p>1.2节介绍了编译的四个过程：预处理，编译，汇编，链接。</p>
+<p>接着介绍了计算机的硬件组成，其中CPU是关键，CPU的程序计数器PC（Program Counter）用于指示当前正在执行的指令地址。（其实PC和指令寄存器IP是同一个东西，是不同语境下的不同叫法）</p>
+<p>寄存器中的数据会加载到算术/逻辑单元ALU（Arithmetic Logic Unit）中进行计算。</p>
+<p>1.5节介绍了多级高速缓存L1、L2、L3的概念。</p>
+<p>1.6节介绍了存储器的层次结构的概念，主要思想是上一层的存储器作为下一级存储器的高速缓存。即，主存是磁盘的高速缓存，磁盘又是远程存储的高速缓存。</p>
+<p>1.7节介绍了操作系统管理硬件的两个作用：（1）防止硬件被应用程序滥用，（2）对应用程序提供统一的抽象，屏蔽底层硬件细节。</p>
+<p>然后介绍了三种操作系统接口规范，Unix、Posix 和标准Unix规范。</p>
+<p>又介绍了进程、线程和虚拟内存的概念，以及程序的虚拟内存布局（内核虚拟内存、栈、堆、数据、代码）。</p>
+<p>“文件”是对系统各种I/O设备的统一抽象。</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-07-07&nbsp;<a class="git-hash" href="https://github.com/openjz/asteria/commit/2f5992be85c5223e22984ad3425c581efe3e8ee6" target="_blank" title="commit by shiwj(swj6086085@163.com) 2f5992be85c5223e22984ad3425c581efe3e8ee6: add post 72">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>2f5992b</a></span>
+                <span>Updated on 2025-08-20</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/72.horner-rule/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/74.csapp/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -132,14 +123,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/71.lockfree-ringbuffer/" class="prev" rel="prev" title="无锁环形Buffer"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>无锁环形Buffer</a>
-            <a href="/53.interview-bagu-distribute-system/" class="next" rel="next" title="面试八股-分布式系统">面试八股-分布式系统<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/73.asemblly-wangshuang/" class="prev" rel="prev" title="《汇编语言第4版（王爽）》阅读笔记"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>《汇编语言第4版（王爽）》阅读笔记</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

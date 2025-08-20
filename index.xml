@@ -4,10 +4,18 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Sun, 27 Jul 2025 16:28:27 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 20 Aug 2025 16:33:08 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>《汇编语言第4版——王爽》阅读笔记</title>
+    <title>《深入理解计算机系统第3版》阅读笔记</title>
+    <link>http://blog.shiwj.top/74.csapp/</link>
+    <pubDate>Wed, 20 Aug 2025 16:33:08 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/74.csapp/</guid>
+    <description><![CDATA[深入理解计算机系统的英文全称是 Computer Systems: A Programmer&rsquo;s Perspective，作者是 Randal E. Bryant 和 David R. O&rsquo;Hallaron。该书被广泛认为是计算机系统]]></description>
+</item>
+<item>
+    <title>《汇编语言第4版（王爽）》阅读笔记</title>
     <link>http://blog.shiwj.top/73.asemblly-wangshuang/</link>
     <pubDate>Sun, 27 Jul 2025 16:28:27 &#43;0800</pubDate>
     <author>shiwj</author>
@@ -23,12 +31,12 @@
     <description><![CDATA[mysql 索引 什么是索引 索引是一种能实现对表中某一列或多列的值快速查找的数据结构，常见的是 B+树 B+树是一种多叉搜索树，叶节点是数据节点，存放着指向]]></description>
 </item>
 <item>
-    <title>霍纳规则——一种高效求解多项式的算法</title>
-    <link>http://blog.shiwj.top/72.horner-rule/</link>
+    <title>《算法导论第3版》阅读笔记</title>
+    <link>http://blog.shiwj.top/72.clrs/</link>
     <pubDate>Sun, 06 Jul 2025 17:00:50 &#43;0800</pubDate>
     <author>shiwj</author>
-    <guid>http://blog.shiwj.top/72.horner-rule/</guid>
-    <description><![CDATA[霍纳规则简介 霍纳规则（Horner&rsquo;s Rule）是一种高效求解多项式值的算法。它通过将多项式重写为嵌套的形式，减少了乘法和加法的]]></description>
+    <guid>http://blog.shiwj.top/72.clrs/</guid>
+    <description><![CDATA[算法导论的英文全称是 Introduction to Algorithms，作者是Thomas H. Cormen、Charles E. Leiserson、Ronald L. Rives]]></description>
 </item>
 <item>
     <title>无锁环形Buffer</title>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/66.cpp-stl-tricks/</guid>
     <description><![CDATA[参考 《C++ Primer 第5版》 1. 容器类型 顺序容器 连续内存 vector deque：双端队列 array：固定大小 string 链表 list：双向链表 forward_list：]]></description>
-</item>
-<item>
-    <title>c&#43;&#43;模板使用技巧</title>
-    <link>http://blog.shiwj.top/65.cpp-template-tricks/</link>
-    <pubDate>Sun, 04 May 2025 02:20:30 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/65.cpp-template-tricks/</guid>
-    <description><![CDATA[参考 《C++ Primer 第5版》 《Effective Modern C++》 0. 模板类型推导规则 参考 62.effective-modern-cpp 1. 非类型参数 例如，利用模板推导数组长度 1 2 3 4 5 template&lt;typename T, std::size_t N&gt; constexpr std::size_t ArraySize(T(&amp;)[N]) noexcept]]></description>
 </item>
 </channel>
 </rss>
