@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "数学","wordcount":  5623 ,
+                        }],"genre": "posts","keywords": "数学","wordcount":  5828 ,
         "url": "http:\/\/blog.shiwj.top\/31.linear-algebra-3b1b\/","datePublished": "2022-11-16T09:12:00+08:00","dateModified": "2025-07-12T17:57:24+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">线性代数的几何意义</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-16">2022-11-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5623 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-16">2022-11-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5828 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -261,10 +261,11 @@ $$</p>
 </li>
 </ul>
 <h2 id="向量的叉积">向量的叉积</h2>
-<p>在二维空间中，叉积（cross product）是求两个向量围成的平行四边形面积。值和顺序有关，交换两个向量会导致结果取反，可以认为是平行四边形有方向。所以二维叉积就是求行列式的值。</p>
+<p>在二维空间中，严格来讲是求不了的，硬要求的话，叉积（cross product）是求两个向量围成的平行四边形面积。值和顺序有关，交换两个向量会导致结果取反，可以认为是平行四边形有方向。所以二维叉积就是求行列式的值。</p>
 <p>在三维空间中，叉积是从两个向量生成一个和它们垂直的新向量，新向量的长度是两个向量围成的平行四边形面积。新向量的方向取决于两个向量相乘的顺序。例如</p>
 <p>$$\vec{v}×\vec{w}= \vec{u}$$</p>
-<p>向量 u 的方向满足右手定则，食指指向向量 v，中指指向向量 w，此时大拇指指向的就是向量 u 的方向。</p>
+<p>向量 u 的方向满足右手定则（右手定则有两种，一种是将拇指、食指和中指分别指向三个互相垂直的方向，另外一种是右手握拳，伸出大拇指，这里的右手定则指的是第二种），右手握拳时，四指沿从 $\vec{v}$ 至 $\vec{w}$ 的方向握住，此时大拇指指向的就是向量 $\vec{u}$ 的方向。这也意味着，叉积是不满足交换律的，即 $\vec{v}×\vec{w} \neq \vec{w}×\vec{v}$，实际上 $\vec{v}×\vec{w} = -(\vec{w}×\vec{v})$</p>
+<p>（上面关于右手定则的解释是从games 101第2课上学到的）</p>
 <p>同样可以将叉积表示为求行列式</p>
 <p>$$
 \begin{bmatrix}v_1\cr v_2\cr v_3\end{bmatrix}
