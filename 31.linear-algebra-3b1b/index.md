@@ -5,6 +5,7 @@
 
 - [b 站 3Blue1Brown-线性代数的本质](https://space.bilibili.com/88461692/channel/seriesdetail?sid=1528927)
 - [https://github.com/3b1b/manim](https://github.com/3b1b/manim)
+- games 101线性代数基础课程
 
 ## 向量
 
@@ -240,6 +241,19 @@ z & v_3 & w_3\cr
 $$
 
 按这个理解，把行列式中的第一列换成 i、j、k 后就刚好能表示成所求的 u
+
+叉积的一些一般规律
+
+$$
+\begin{align*}
+\vec{x}\times\vec{y}=+\vec{z} &\quad \vec{a}\times\vec{b}=-\vec{b}\times\vec{a} \\
+\vec{y}\times\vec{x}=-\vec{z} &\quad \vec{a}\times\vec{a}=\vec{0} \\
+\vec{y}\times\vec{z}=+\vec{x} &\quad \vec{a}\times(\vec{b}+\vec{c})=\vec{a}\times\vec{b}+\vec{a}\times\vec{c} \\
+\vec{z}\times\vec{y}=-\vec{x} &\quad \vec{a}\times(k\vec{b})=k(\vec{a}\times\vec{b}) \\
+\vec{z}\times\vec{x}=+\vec{y} & \\
+\vec{x}\times\vec{z}=-\vec{y} &
+\end{align*}
+$$
 
 ## 基变换
 
