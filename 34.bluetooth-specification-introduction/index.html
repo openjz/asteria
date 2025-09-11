@@ -32,7 +32,7 @@
                             "url": "http:\/\/blog.shiwj.top\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "蓝牙","wordcount":  2570 ,
+                        }],"genre": "posts","keywords": "蓝牙","wordcount":  2933 ,
         "url": "http:\/\/blog.shiwj.top\/34.bluetooth-specification-introduction\/","datePublished": "2023-01-29T05:27:00+08:00","dateModified": "2024-12-17T15:02:27+08:00","publisher": {
             "@type": "Organization",
             "name": "shiwj","logo": {
@@ -81,7 +81,7 @@
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">蓝牙相关知识</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/openjz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>shiwj</a>
 </span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BC%96%E7%A8%8B/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>编程</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-29">2023-01-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2570 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-29">2023-01-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2933 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -100,7 +100,10 @@
     </li>
     <li><a href="#低功耗蓝牙ble">低功耗蓝牙(BLE)</a>
       <ul>
+        <li><a href="#地址类型">地址类型</a></li>
+        <li><a href="#广播和扫描">广播和扫描</a></li>
         <li><a href="#gattgeneric-attribute-profile">GATT（Generic Attribute Profile）</a></li>
+        <li><a href="#包长度限制">包长度限制</a></li>
       </ul>
     </li>
     <li><a href="#蓝牙配对方案">蓝牙配对方案</a>
@@ -163,6 +166,12 @@
 <h3 id="codclass-of-device设备类型">CoD（Class of Device，设备类型）</h3>
 <p>长度24位（3字节），用来表明设备类型</p>
 <h2 id="低功耗蓝牙ble">低功耗蓝牙(BLE)</h2>
+<h3 id="地址类型">地址类型</h3>
+<p>public地址：和经典蓝牙地址一样，是固定的</p>
+<p>random地址：随机地址，会经常变化（15分钟变一次）</p>
+<h3 id="广播和扫描">广播和扫描</h3>
+<p>广播包发出后，可被其他设备扫描到，扫描分为主动扫描和被动扫描，被动扫描只是单纯地接收广播包，主动扫描会给发广播的设备发送扫描请求包，发送广播的设备会回复扫描响应包</p>
+<p>广播包的payload由一个个data section组成，data section是一种key-value结构，常见的key有0x09（local name），0x16（service uuids）</p>
 <h3 id="gattgeneric-attribute-profile">GATT（Generic Attribute Profile）</h3>
 <p>GATT（Generic Attribute Profile）是一种蓝牙通讯规范，用于在BLE连接上发送和接受短数据段。GATT是一种一对一的通信方式。</p>
 <p>GATT通信的双方是C/S关系。外设作为GATT服务端（Server），维持ATT的查找表以及service和characteristic的定义。中心设备是GATT客户端（Client），负责向Server发起请求。</p>
@@ -171,6 +180,9 @@
 <p>一个Service通常对应一种通信协议。</p>
 <p>Characteristic是GATT的最小通信单位，一个Characteristic包含一个Characteristic declaration，一个Characteristic value和多个Characteristic descriptor。</p>
 <p>GATT基于ATT（attribute protocol）协议进行通信。</p>
+<h3 id="包长度限制">包长度限制</h3>
+<p>ble广播包和扫描响应包长度是31字节，ble 5.0 提出了Extented Advertising机制，即扩展广播机制，可以将广播包数据最大长度提升到255字节</p>
+<p>gatt包长度（MTU）也有限制，通常是512字节，两台设备建立连接之前会进行MTU协商</p>
 <h2 id="蓝牙配对方案">蓝牙配对方案</h2>
 <p>根据蓝牙规范5.3，蓝牙安全架构中有三种配对方案</p>
 <ol>

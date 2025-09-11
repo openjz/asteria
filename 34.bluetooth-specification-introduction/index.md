@@ -37,6 +37,18 @@
 
 ## 低功耗蓝牙(BLE)
 
+### 地址类型
+
+public地址：和经典蓝牙地址一样，是固定的
+
+random地址：随机地址，会经常变化（15分钟变一次）
+
+### 广播和扫描
+
+广播包发出后，可被其他设备扫描到，扫描分为主动扫描和被动扫描，被动扫描只是单纯地接收广播包，主动扫描会给发广播的设备发送扫描请求包，发送广播的设备会回复扫描响应包
+
+广播包的payload由一个个data section组成，data section是一种key-value结构，常见的key有0x09（local name），0x16（service uuids）
+
 ### GATT（Generic Attribute Profile）
 
 GATT（Generic Attribute Profile）是一种蓝牙通讯规范，用于在BLE连接上发送和接受短数据段。GATT是一种一对一的通信方式。
@@ -52,6 +64,12 @@ UUID长度为128位（16个字节），官方预先指定了一些UUID作为通�
 Characteristic是GATT的最小通信单位，一个Characteristic包含一个Characteristic declaration，一个Characteristic value和多个Characteristic descriptor。
 
 GATT基于ATT（attribute protocol）协议进行通信。
+
+### 包长度限制
+
+ble广播包和扫描响应包长度是31字节，ble 5.0 提出了Extented Advertising机制，即扩展广播机制，可以将广播包数据最大长度提升到255字节
+
+gatt包长度（MTU）也有限制，通常是512字节，两台设备建立连接之前会进行MTU协商
 
 ## 蓝牙配对方案
 
