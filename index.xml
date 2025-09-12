@@ -4,9 +4,17 @@
         <link>http://blog.shiwj.top/</link>
         <description>星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Wed, 20 Aug 2025 16:33:08 &#43;0800</lastBuildDate>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 12 Sep 2025 08:47:49 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.shiwj.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>games101笔记</title>
+    <link>http://blog.shiwj.top/75.games101-notes/</link>
+    <pubDate>Fri, 12 Sep 2025 08:47:49 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/75.games101-notes/</guid>
+    <description><![CDATA[变换（Transform） 有几种常见的变换 缩放（Scale） 翻转（Reflection） 切变（Shear） 旋转（Rotate） 切变（Shea]]></description>
+</item>
+<item>
     <title>《深入理解计算机系统第3版》阅读笔记</title>
     <link>http://blog.shiwj.top/74.csapp/</link>
     <pubDate>Wed, 20 Aug 2025 16:33:08 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/67.cpp-operator-overloading-tricks/</guid>
     <description><![CDATA[1. 基本概念 只有一元和二元运算符能被重载，三元运算符不能重载 对于二元运算符， 重载运算符函数的第一个参数对应左侧运算对象，如果是成员函数重载，只]]></description>
-</item>
-<item>
-    <title>c&#43;&#43; STL使用技巧</title>
-    <link>http://blog.shiwj.top/66.cpp-stl-tricks/</link>
-    <pubDate>Mon, 05 May 2025 14:39:26 &#43;0800</pubDate>
-    <author>shiwj</author>
-    <guid>http://blog.shiwj.top/66.cpp-stl-tricks/</guid>
-    <description><![CDATA[参考 《C++ Primer 第5版》 1. 容器类型 顺序容器 连续内存 vector deque：双端队列 array：固定大小 string 链表 list：双向链表 forward_list：]]></description>
 </item>
 </channel>
 </rss>

@@ -4,13 +4,37 @@
         <link>http://blog.shiwj.top/tags/%E5%9B%BE%E5%BD%A2/</link>
         <description>图形 - Tag - 星</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>shiwj1994@foxmail.com (shiwj)</managingEditor>
-            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E5%9B%BE%E5%BD%A2/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>shiwj1994@foxmail.com (shiwj)</webMaster><lastBuildDate>Fri, 12 Sep 2025 08:47:49 &#43;0800</lastBuildDate><atom:link href="http://blog.shiwj.top/tags/%E5%9B%BE%E5%BD%A2/" rel="self" type="application/rss+xml" /><item>
+    <title>games101笔记</title>
+    <link>http://blog.shiwj.top/75.games101-notes/</link>
+    <pubDate>Fri, 12 Sep 2025 08:47:49 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/75.games101-notes/</guid>
+    <description><![CDATA[变换（Transform） 有几种常见的变换 缩放（Scale） 翻转（Reflection） 切变（Shear） 旋转（Rotate） 切变（Shea]]></description>
+</item>
+<item>
+    <title>理解仿射变换</title>
+    <link>http://blog.shiwj.top/63.affine-transformation/</link>
+    <pubDate>Sat, 19 Apr 2025 07:54:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/63.affine-transformation/</guid>
+    <description><![CDATA[参考 如何通俗地讲解「仿射变换」？ - 马同学的回答 - 知乎 前言 最近看了一些unity shader相关的教程，发现unity中的变换矩阵全部都用的是]]></description>
+</item>
+<item>
     <title>渲染管线介绍</title>
     <link>http://blog.shiwj.top/33.rendering-pipeline/</link>
     <pubDate>Mon, 26 Dec 2022 15:43:00 &#43;0800</pubDate>
     <author>shiwj</author>
     <guid>http://blog.shiwj.top/33.rendering-pipeline/</guid>
     <description><![CDATA[什么是渲染 广义上的渲染过程，既包括CPU参与部分，也包括GPU参与部分。通过图形API来调用GPU渲染管线， 广义的渲染分为六个步骤 应用阶段 顶]]></description>
+</item>
+<item>
+    <title>线性代数的几何意义</title>
+    <link>http://blog.shiwj.top/31.linear-algebra-3b1b/</link>
+    <pubDate>Wed, 16 Nov 2022 09:12:00 &#43;0800</pubDate>
+    <author>shiwj</author>
+    <guid>http://blog.shiwj.top/31.linear-algebra-3b1b/</guid>
+    <description><![CDATA[参考 b 站 3Blue1Brown-线性代数的本质 https://github.com/3b1b/manim games 101线性代数基础课程 向量 向量（vector）的起点永远是原点（origin），因此我们将]]></description>
 </item>
 </channel>
 </rss>
