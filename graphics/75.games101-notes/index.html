@@ -1845,6 +1845,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="观测变换（Viewing Transformation）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-camera-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      View / Camera transformation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3237,6 +3252,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="观测变换（Viewing Transformation）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-camera-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      View / Camera transformation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3466,50 +3496,50 @@ z\\
 <p><strong>欧拉角旋转</strong></p>
 <p>将任意一个3维旋转分解为绕x轴、y轴、z轴的旋转的组合</p>
 <div class="arithmatex">\[
-\mathbf{R}_{xyz}(\alpha,\beta,\gamma)
-= \mathbf{R}_x(\alpha)\,\mathbf{R}_y(\beta)\,\mathbf{R}_z(\gamma)
+\vec{R}_{xyz}(\alpha,\beta,\gamma)
+= \vec{R}_x(\alpha)\,\vec{R}_y(\beta)\,\vec{R}_z(\gamma)
 \]</div>
 <p><span class="arithmatex">\(\alpha\)</span>、<span class="arithmatex">\(\beta\)</span>、<span class="arithmatex">\(\gamma\)</span>又称为欧拉角（Euler Angles）</p>
 <p>这三种旋转类似飞机的滚转（Roll）、俯仰（Pitch）、偏航（Yaw）</p>
 <p>欧拉角旋转变换不太方便做插值，四元数变换可以解决这个问题。</p>
 <p><strong>罗德里格斯旋转公式（Rodrigues' rotation formula）</strong></p>
-<p>将绕<strong>任意过原点的轴</strong> <span class="arithmatex">\(\mathbf{n}=(n_x,n_y,n_z)\)</span> 旋转 <span class="arithmatex">\(\alpha\)</span> 角度的旋转矩阵表示为以下形式（其中，<span class="arithmatex">\(\mathbf{I}\)</span> 是单位矩阵）：</p>
+<p>将绕<strong>任意过原点的轴</strong> <span class="arithmatex">\(\vec{n}=(n_x,n_y,n_z)\)</span> 旋转 <span class="arithmatex">\(\alpha\)</span> 角度的旋转矩阵表示为以下形式（其中，<span class="arithmatex">\(\vec{I}\)</span> 是单位矩阵）：</p>
 <div class="arithmatex">\[
-\mathbf{R}(\mathbf{n},\alpha)
-= \cos(\alpha)\,\mathbf{I}
-+ \bigl(1-\cos(\alpha)\bigr)\,\mathbf{n}\,\mathbf{n}^{\mathsf T}
+\vec{R}(\vec{n},\alpha)
+= \cos(\alpha)\,\vec{I}
++ \bigl(1-\cos(\alpha)\bigr)\,\vec{n}\,\vec{n}^{\mathsf T}
 + \sin(\alpha)\,
 \underbrace{\begin{pmatrix}
 0 &amp; -n_z &amp;  n_y\\
 n_z &amp;  0  &amp; -n_x\\
 -n_y &amp; n_x &amp; 0
-\end{pmatrix}}_{\mathbf{N}}
+\end{pmatrix}}_{\vec{N}}
 \]</div>
 <p><strong>四元数旋转</strong></p>
 <p>四元数是一种代数结构，可以用来表示3维空间中的旋转。</p>
-<p>和罗德里格斯公式一样，四元数旋转同样是表示绕<strong>任意过原点的轴</strong> <span class="arithmatex">\(\mathbf{n}=(n_x,n_y,n_z)\)</span> 旋转 <span class="arithmatex">\(\alpha\)</span> 角度。</p>
+<p>和罗德里格斯公式一样，四元数旋转同样是表示绕<strong>任意过原点的轴</strong> <span class="arithmatex">\(\vec{n}=(n_x,n_y,n_z)\)</span> 旋转 <span class="arithmatex">\(\alpha\)</span> 角度。</p>
 <p>这里给出四元数的基本形式:</p>
 <div class="arithmatex">\[
-\mathbf{q} = x i + y j + z k + w
+\vec{q} = x i + y j + z k + w
 \]</div>
 <p>简记为：</p>
 <div class="arithmatex">\[
-\mathbf{q} = (u, w)
+\vec{q} = (u, w)
 \]</div>
 <p><strong>纯四元数是指把一个向量 <span class="arithmatex">\((x, y, z)\)</span> 表示为四元数的形式</strong>：</p>
-<div class="arithmatex">\[\mathbf{v} = (v, 0) = x i + y j + z k + 0\]</div>
+<div class="arithmatex">\[\vec{v} = (v, 0) = x i + y j + z k + 0\]</div>
 <p>这里省略四元数的性质和运算规则。</p>
 <p><strong>以下是四元数旋转的公式</strong>：</p>
 <div class="arithmatex">\[
-R_q(\mathbf{v}) = q\,\mathbf{v}\,q^{-1}
-= q\,\mathbf{v}\,q^{\star}
-= \cos(2\theta)\,\mathbf{v}
-  + \bigl(1-\cos(2\theta)\bigr)\,(\mathbf{n}\!\cdot\!\mathbf{v})\,\mathbf{n}
-  + \sin(2\theta)\,(\mathbf{n}\!\times\!\mathbf{v})
+R_q(\vec{v}) = q\,\vec{v}\,q^{-1}
+= q\,\vec{v}\,q^{\star}
+= \cos(2\theta)\,\vec{v}
+  + \bigl(1-\cos(2\theta)\bigr)\,(\vec{n}\!\cdot\!\vec{v})\,\vec{n}
+  + \sin(2\theta)\,(\vec{n}\!\times\!\vec{v})
 \]</div>
-<p><strong><span class="arithmatex">\(R_q(\mathbf{v})\)</span> 将向量绕轴 <span class="arithmatex">\(\mathbf{n}\)</span> 旋转 <span class="arithmatex">\(2\theta\)</span> 角度</strong>，<span class="arithmatex">\(\mathbf{v}\)</span>是把向量表示为纯四元数的形式（<span class="arithmatex">\(q^{\star}\)</span> 是四元数 <span class="arithmatex">\(q\)</span> 的共轭四元数。<span class="arithmatex">\(q^{-1}\)</span> 是四元数 <span class="arithmatex">\(q\)</span> 的逆四元数）</p>
+<p><strong><span class="arithmatex">\(R_q(\vec{v})\)</span> 将向量绕轴 <span class="arithmatex">\(\vec{n}\)</span> 旋转 <span class="arithmatex">\(2\theta\)</span> 角度</strong>，<span class="arithmatex">\(\vec{v}\)</span>是把向量表示为纯四元数的形式（<span class="arithmatex">\(q^{\star}\)</span> 是四元数 <span class="arithmatex">\(q\)</span> 的共轭四元数。<span class="arithmatex">\(q^{-1}\)</span> 是四元数 <span class="arithmatex">\(q\)</span> 的逆四元数）</p>
 <p>为了最终旋转的角度是 <span class="arithmatex">\(\theta\)</span>，我们需要将四元数定义为：</p>
-<div class="arithmatex">\[q = \left(\sin(\theta/2)\mathbf{n}, \cos(\theta/2)\right)\]</div>
+<div class="arithmatex">\[q = \left(\sin(\theta/2)\vec{n}, \cos(\theta/2)\right)\]</div>
 <p>计算结果也是个纯四元数，等价于向量</p>
 <h3 id="_1">欧拉角</h3>
 <p>欧拉角是一种三维姿态的描述方法，它表示的是按某种固定顺序的三次旋转动作。</p>
@@ -3525,12 +3555,70 @@ R_q(\mathbf{v}) = q\,\mathbf{v}\,q^{-1}
 <p>对于经典欧拉角（Proper Euler Angle），例如，以z-x-z 外旋为例，当绕x轴旋转0度或180度后，这时绕z轴旋转和最开始绕z轴的旋转实际上造成的效果是相同的，这也是一种万向节死锁（Gimbal Lock）现象。</p>
 <p><strong>网上有很多拿万向陀螺仪来解释这个问题的文章，毫无疑问，全是错误的</strong>，万向陀螺仪的万向节死锁问题和欧拉角的万向节死锁问题是两个完全不同的概念，万向陀螺仪的万向节死锁问题是因为机械结构的限制而产生的旋转自由度受限问题，而欧拉角的万向节死锁问题是由特殊旋转顺序和角度组合导致的旋转冗余问题。</p>
 <h2 id="viewing-transformation">观测变换（Viewing Transformation）</h2>
+<p>主要内容：</p>
 <ul>
 <li>View (视图) / Camera transformation</li>
 <li>Projection (投影) transformation</li>
 <li>Orthographic (正交) projection</li>
 <li>Perspective (透视) projection</li>
 </ul>
+<p>渲染一个场景总共需要3步</p>
+<ol>
+<li>Model transformation：把场景搭建好</li>
+<li>View transformation：找个拍摄角度，把场景放到摄像机前面</li>
+<li>Projection transformation：拍照！把3D场景投影到2D平面上</li>
+</ol>
+<p>这三步统称 MVP 变换，本课程重点讲解 View 和 Projection 变换</p>
+<h3 id="view-camera-transformation">View / Camera transformation</h3>
+<p>定义相机</p>
+<ol>
+<li>Position <span class="arithmatex">\(\vec{e}\)</span> （摄像机的位置）</li>
+<li>Look-at / gaze direction <span class="arithmatex">\(\hat{g}\)</span>（摄像机的朝向，g是单位向量）</li>
+<li>Up direction <span class="arithmatex">\(\hat{t}\)</span>（摄像机的上方，垂直于g，<span class="arithmatex">\(\hat{g}\)</span> 和 <span class="arithmatex">\(\hat{t}\)</span> 相配合可以确定相机镜头本身的旋转角度）</li>
+</ol>
+<p>几个约定俗称的规则：</p>
+<ul>
+<li>相机的位置永远在原点</li>
+<li>相机永远看向z轴负方向（<span class="arithmatex">\(-\hat{z}\)</span>）</li>
+<li>相机的上方永远是y轴正方向（<span class="arithmatex">\(\hat{y}\)</span>）</li>
+</ul>
+<p><strong>把相机从当前位置移动到原点，并且让它看向z轴负方向，这个过程叫做 View / Camera transformation</strong></p>
+<div class="arithmatex">\[
+M_{\mathrm{view}} = R_{\mathrm{view}}\,T_{\mathrm{view}}
+\]</div>
+<p>其中 $ R_{\mathrm{view}} $ 是旋转矩阵，$ T_{\mathrm{view}} $ 是平移矩阵。</p>
+<p>平移矩阵：把相机从位置 <span class="arithmatex">\(\vec{e}=(x_e,y_e,z_e)\)</span> 移动到原点</p>
+<div class="arithmatex">\[
+T_{\mathrm{view}} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; -x_e \\
+0 &amp; 1 &amp; 0 &amp; -y_e \\
+0 &amp; 0 &amp; 1 &amp; -z_e \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</div>
+<p>旋转矩阵：把相机的朝向 <span class="arithmatex">\(\hat{g}\)</span> 变换到 <span class="arithmatex">\(-\hat{z}\)</span> 方向，把 <span class="arithmatex">\(\hat{t}\)</span> 变换到 <span class="arithmatex">\(\hat{y}\)</span> 方向，把 <span class="arithmatex">\(\hat{r}=\hat{g}\times\hat{t}\)</span> 变换到 <span class="arithmatex">\(\hat{x}\)</span> 方向</p>
+<p>这个旋转矩阵不太好求，它的逆矩阵很容易写出来，可以先求它的逆矩阵 $ R_{\mathrm{view}}^{-1} $，然后再对它求逆</p>
+<div class="arithmatex">\[
+R_{\mathrm{view}}^{-1} =
+\begin{bmatrix}
+x_{\hat{g}\times\hat{t}} &amp; x_{\hat{t}} &amp; x_{-\hat{g}} &amp; 0 \\
+y_{\hat{g}\times\hat{t}} &amp; y_{\hat{t}} &amp; y_{-\hat{g}} &amp; 0 \\
+z_{\hat{g}\times\hat{t}} &amp; z_{\hat{t}} &amp; z_{-\hat{g}} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</div>
+<p>由于旋转矩阵是正交矩阵，所以直接转置后就能得到逆矩阵</p>
+<div class="arithmatex">\[
+R_{\mathrm{view}} =
+\begin{bmatrix}
+x_{\hat{g}\times\hat{t}} &amp; y_{\hat{g}\times\hat{t}} &amp; z_{\hat{g}\times\hat{t}} &amp; 0 \\
+x_{\hat{t}} &amp; y_{\hat{t}} &amp; z_{\hat{t}} &amp; 0 \\
+x_{-\hat{g}} &amp; y_{-\hat{g}} &amp; z_{-\hat{g}} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</div>
+<p><strong>这个过程也叫 Model / View transformation，因为相机和物体之间的关系不能变，场景中所有的物体也要做这个变换</strong>。</p>
 
 
 

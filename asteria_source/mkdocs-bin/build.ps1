@@ -13,7 +13,8 @@ $items = Get-ChildItem -Path $directoryPath
 
 $itemsToRemove = $items | Where-Object { 
     -not ($_.Name -eq "CNAME") -and 
-    -not ($_.PSIsContainer -and $_.Name -eq "asteria_source") 
+    -not ($_.PSIsContainer -and $_.Name -eq "asteria_source") -and
+    -not ($_.PSIsContainer -and $_.Name -eq ".github") 
 }
 
 foreach ($item in $itemsToRemove) {
