@@ -1,0 +1,3862 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://blog.shiwj.com/math/31.linear-algebra-3B1B/">
+      
+      
+        <link rel="prev" href="../15.remainder-and-modulo/">
+      
+      
+        <link rel="next" href="../63.affine-transformation/">
+      
+      
+      <link rel="icon" href="../../img/avatar.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>线性代数的几何意义 - Asteria</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Asteria
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              线性代数的几何意义
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openjz/asteria" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../foundation/11.z2.go-gopl/" class="md-tabs__link">
+          
+  
+  
+  Foundation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
+          
+  
+  
+  Front end
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../graphics/32.unity-webgl-deploy/" class="md-tabs__link">
+          
+  
+  
+  Graphics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interview/16.interview-bagu-golang/" class="md-tabs__link">
+          
+  
+  
+  Interview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
+          
+  
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../15.remainder-and-modulo/" class="md-tabs__link">
+          
+  
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi-media/58.build_obs/" class="md-tabs__link">
+          
+  
+  
+  Multi media
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../others/11.z3.time/" class="md-tabs__link">
+          
+  
+  
+  Others
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/38.bluetooth-tools/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../windows/35.windows-devices-manage/" class="md-tabs__link">
+          
+  
+  
+  Windows
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
+
+    </a>
+    Asteria
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openjz/asteria" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Foundation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Foundation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/11.z2.go-gopl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    golang入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/50.php-install-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    php安装和配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/72.clrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《算法导论第3版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《汇编语言第4版（王爽）》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code design
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Code design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/code-design/51.closure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    闭包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/code-design/70.design-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《设计模式》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Concurrent programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Concurrent programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    有栈协程和无栈协程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    条件变量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    无锁环形Buffer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cpp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Cpp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++标准库算法概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中new和malloc的区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/24.cpp-static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的static
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中符号重定义问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的拷贝和移动语义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/27.cpp-const/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的const
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于C++ inline关键字
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于C++前向声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《Effective C++ 第三版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《Effective Modern C++》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++模板使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++ STL使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++ 运算符重载使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++内存分析：ASan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++内存分析：VLD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mysql入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mysql中的复杂查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/network/12.z1.ip-address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于IP地址的发展
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/os/14.threadexit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    线程什么时候终止
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/os/74.csapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《深入理解计算机系统第3版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Front end
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Front end
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    js入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    css入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    html入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/18.webpage-print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    打印html页面
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Graphics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Graphics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/32.unity-webgl-deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何部署unity生成的WebGL包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/33.rendering-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    渲染管线介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/75.games101-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Interview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Interview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/16.interview-bagu-golang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-golang
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/19.interview-bagu-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-c++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/52.interview-bagu-general/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-通用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-分布式系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux 动态库so文件 动态加载
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《linux就该这么学》笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/43.linux-common-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux常用命令
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/44.linux-common-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux常用配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/45.linux-net-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux网络配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux多线程编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/9.linux-core-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux core dump配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.remainder-and-modulo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    取余和取模的区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    线性代数的几何意义
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    线性代数的几何意义
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      向量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性组合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性空间
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      基
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性相关和线性无关
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性变换和矩阵
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      矩阵乘法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      行列式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性方程组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      秩
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      非方阵
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      向量的点积
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="向量的点积">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      点积的作用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      向量的叉积
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="向量的叉积">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      叉积可以用来干嘛
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      基变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征向量和特征值
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      矩阵的相似对角化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象向量空间
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../63.affine-transformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    理解仿射变换
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../64.calculus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    微积分学习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Multi media
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Multi media
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-media/58.build_obs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编译obs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ffmpeg命令行例子
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Others
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/11.z3.time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    计算机中的时间
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/12.digital-signatures-certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数字签名, 数字证书以及加密通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蓝牙相关知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/40.bug-record/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一些开发过程中遇到的奇怪问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/38.bluetooth-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蓝牙调试工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/46.ssh-login-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ssh登陆脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/60.vscode-continue-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vscode continue AI插件配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/61.understand-scitools-keygen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scientific Toolworks Understand 7.0.x 破解机使用方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/build/21.makefile-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    makefile笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nginx
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            Nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nginx入门教程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nginx安装和配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Package manager
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            Package manager
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/package-manager/22.scl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    scl-rhel/centos软件运行环境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Windows
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/35.windows-devices-manage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows设备管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/39.windows-dump-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows下调试dump文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用IFEO映像劫持+windbg在进程运行过程中调试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一些和windows开发相关的小知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/56.char-wchar-on-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    char和wchar_t在windows上如何正确使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      向量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性组合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性空间
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      基
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性相关和线性无关
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性变换和矩阵
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      矩阵乘法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      行列式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性方程组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      秩
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      非方阵
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      向量的点积
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="向量的点积">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      点积的作用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      向量的叉积
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="向量的叉积">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      叉积可以用来干嘛
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      基变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征向量和特征值
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      矩阵的相似对角化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象向量空间
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>线性代数的几何意义</h1>
+
+<h2 id="_1">参考</h2>
+<ul>
+<li><a href="https://space.bilibili.com/88461692/channel/seriesdetail?sid=1528927">b 站 3Blue1Brown-线性代数的本质</a></li>
+<li><a href="https://github.com/3b1b/manim">https://github.com/3b1b/manim</a></li>
+<li>games 101线性代数基础课程</li>
+</ul>
+<h2 id="_2">向量</h2>
+<p>向量（vector）的起点永远是原点（origin），因此我们将向量表示为终点的坐标</p>
+<div class="arithmatex">\[\vec{a}=
+\begin{bmatrix}
+1\cr
+2\cr
+3\cr
+\end{bmatrix}
+\]</div>
+<p>一个向量可以理解为</p>
+<ul>
+<li>一个数字列表</li>
+<li>一个带方向的线段</li>
+<li>一个点在多个方向上运动的叠加</li>
+</ul>
+<p>向量的基本操作</p>
+<ul>
+<li>数乘，<span class="arithmatex">\(\vec{b} = 2\vec{a}\)</span>，这里<span class="arithmatex">\(2\)</span>是一个标量（scalar），代表对向量的拉伸或压缩（scaling）</li>
+<li>相加，<span class="arithmatex">\(\vec{c} = \vec{a} + \vec{b}\)</span>，如果将向量 a 的终点作为向量 b 的起点，那么 b 就是相对于 a 的偏移量，此时可以将向量相加理解为分别沿向量 a 和 b 的两次连续的运动</li>
+</ul>
+<h2 id="_3">线性组合</h2>
+<p>一个向量可以通过其他向量的数乘和相加来表示</p>
+<ul>
+<li><span class="arithmatex">\(\vec{c} =3 \vec{a} + 4\vec{b}\)</span></li>
+</ul>
+<p>我们把 c 称为 a 和 b 的线性组合（linear combination）</p>
+<p>任何一个向量都可以表示为另一些向量的线性组合，例如在一个二维坐标系中如果有 <span class="arithmatex">\(\vec{a}=\begin{bmatrix}2 \cr3 \end{bmatrix}\)</span></p>
+<p>那么我们可以将 a 表示为</p>
+<div class="arithmatex">\[\vec{a}=
+2\begin{bmatrix}1\cr0\cr\end{bmatrix}
++
+3\begin{bmatrix}0\cr1\cr\end{bmatrix}
+\]</div>
+<p>其中 <span class="arithmatex">\(\begin{bmatrix}1\cr0\cr\end{bmatrix}\)</span> 和 <span class="arithmatex">\(\begin{bmatrix}0\cr1\cr\end{bmatrix}\)</span> 是两个特殊的向量，我们称它们为单位向量，一般表示为 <span class="arithmatex">\(\vec{i}=\begin{bmatrix}1\cr0\cr\end{bmatrix}\)</span> 和 <span class="arithmatex">\(\vec{j}=\begin{bmatrix}1\cr0\cr\end{bmatrix}\)</span>，因此，上面的 a 向量就可以表示为</p>
+<div class="arithmatex">\[
+\vec{a} = 2\vec{i}+3\vec{j}
+\]</div>
+<h2 id="_4">线性空间</h2>
+<p>利用 i 和 j 向量的线性组合，我们可以得到无数个向量，这些向量构成了一个平面，我们把这些向量的集合称为由 i 和 j 张开的线性空间（span）。</p>
+<p>如果 i 和 j 是同方向的向量，例如，<span class="arithmatex">\(\vec{i} = 5\vec{j}\)</span>，那么由 i 和 j 构成的所有向量就无法张开成一个平面，只能汇聚在一条直线上，此时的线性空间就是一条直线。</p>
+<h2 id="_5">基</h2>
+<p>我们把能张开一个线性空间的一组向量称为线性空间的一组基（basis vectors）</p>
+<p>上面的 i 和 j 向量就构成了一组基（构成一组基的也可以是别的向量）。对于一个向量 <span class="arithmatex">\(\vec{a}=\begin{bmatrix}x\cr y\cr\end{bmatrix}\)</span>，我们默认它所在线性空间的基是 i 和 j 向量。</p>
+<h2 id="_6">线性相关和线性无关</h2>
+<p>如果一个向量 a 能够表示为另外一些向量的线性组合，那么 a 一定在另外那些向量张成的空间内，此时我们称 a 和另外一些向量是线性相关的（linearly dependent），否则是线性无关的（linearly independent）。</p>
+<p>那么显然，如果基中有两个线性无关的向量，它们张成的线性空间就是一个二维平面，如果只有一个线性无关的向量，它们张成的线性空间只能是一条一维的直线，如果有三个线性无关的向量，那么它们张成的线性空间就是一个三维的空间</p>
+<h2 id="_7">线性变换和矩阵</h2>
+<p>线性变换（linear transformation）是对一个向量做放缩、旋转等操作。</p>
+<p>我们用对基向量的线性变换来表示对线性空间内所有向量的线性变换。通常将其表示为一个矩阵（matrix），矩阵的每一列都表示一个变换后的基向量。</p>
+<p>对矩阵和向量做矩阵乘法，就完成了对向量的线性变换，实际上就是用新的基向量的线性组合来表示变换后的向量。</p>
+<h2 id="_8">矩阵乘法</h2>
+<p>对矩阵乘法有两种理解</p>
+<ul>
+<li>将两次连续的变换合并为一个</li>
+<li>将右边矩阵的每一列看成一个向量，矩阵乘法是要对这些向量做线性变换</li>
+</ul>
+<h2 id="_9">行列式</h2>
+<p>行列式（determinant）是想表达线性变换的拉伸程度，在 2 维向量空间，行列式的值表示新的基向量围成的平行四边形面积，在 3 维向量空间，行列式的值表示新的基向量围成的平行六面体的体积</p>
+<p>如果一个线性变换将一个高维的线性空间压缩成低维的线性空间，行列式的值就为 0</p>
+<p>行列式的值为负时，在一个二维线性空间内表示线性变换将平面做了一次翻转</p>
+<h2 id="_10">线性方程组</h2>
+<p>线性方程组实际上是想通过目标向量和线性变换矩阵求出原向量</p>
+<p>线性方程组的解有三种情况</p>
+<ol>
+<li>行列式的值不为 0，此时有唯一的解和目标向量对应，可以对矩阵求逆，然后对目标向量做逆变换<ol>
+<li>此时，不可能有非零向量变换为零向量。只有零向量可以变换为零向量，也只能变换为零向量。（因为线性变换要保证零向量不变） </li>
+</ol>
+</li>
+<li>行列式的值为 0，此时说明线性变换对向量空间做了压缩，这时我们无法对矩阵求逆，因为变换后的向量可以映射到一组原向量。</li>
+<li>如果目标向量不在变换后的线性空间内，那么方程组无解</li>
+<li>如果目标向量在变换后的线性空间内，那么方程组有一组解（无穷多个解）</li>
+</ol>
+<h2 id="_11">秩</h2>
+<p>矩阵的秩（rank）用来表示一个经过线性变换后的新空间是几维的。</p>
+<p>另外，如果一个三维空间被压缩到二维，那么原来的整个空间会映射为一个面，原来的一个面会映射为一条线，原来的一条线会映射为一个点（也就是一个向量）。</p>
+<p>如果一个三维空间直接被压缩到一维，那么原来的整个空间会映射为一条线，原来的一个面会映射为一个点。</p>
+<p>我们把线性变换后的得到的空间称为列空间（column space），即由矩阵列张成的空间，一般用变换矩阵表示列空间，因此秩的更准确的定义是列空间的维数。</p>
+<p>变换后，零向量对应的原向量构成的空间称为零空间（null space）或核（kernel）</p>
+<h2 id="_12">非方阵</h2>
+<p>对于一个 m&gt;n 的矩阵，例如</p>
+<div class="arithmatex">\[
+A =
+\begin{bmatrix}
+1 &amp; 3 \cr
+2 &amp; 2\cr
+3 &amp; 1\cr
+\end{bmatrix}
+\]</div>
+<p>它的作用是将一个 2 维向量映射到三维空间，其实很容易理解，把矩阵的两列看作是线性空间的基向量，由于只有两个基向量，它们只能张开一个二维的线性空间，但它们本身是三维的，因此它们在一个三维坐标系中张开了一个二维线性空间（是一个平面，有可能是斜着的平面）。矩阵有两列意味着原空间是二维的，矩阵有三行意味着新空间位于一个三维坐标系中。矩阵 A 仍然是个满秩矩阵。</p>
+<p>类似的，对于一个 m&lt;n 的矩阵，例如</p>
+<div class="arithmatex">\[B =
+\begin{bmatrix}
+1 &amp; 2 &amp; -1 \cr
+2 &amp; 3 &amp; 1\cr
+\end{bmatrix}
+\]</div>
+<p>它的作用是将一个三维向量映射到一个二维线性空间中去，也很容易理解，矩阵有三列意味着原空间是三维的，矩阵有两行意味着新空间位于一个二维坐标系中，同时也将线性空间压缩到了二维（换句话说，矩阵 B 必然不满秩）</p>
+<p>更极端一点，我们可以把几个一维向量映射到四维坐标系中，即</p>
+<div class="arithmatex">\[
+\begin{bmatrix}1\cr0\cr0\cr0\end{bmatrix}
+\begin{bmatrix}1 &amp; 2 &amp; 3\end{bmatrix}=
+\begin{bmatrix}
+1 &amp; 2 &amp; 3\cr
+0 &amp; 0 &amp; 0\cr
+0 &amp; 0 &amp; 0\cr
+0 &amp; 0 &amp; 0\cr
+\end{bmatrix}
+\]</div>
+<p>或者，把一个四维向量映射到一维空间中去，即</p>
+<div class="arithmatex">\[
+\begin{bmatrix}1 &amp; 2 &amp; 3 &amp; 4\end{bmatrix}
+\begin{bmatrix}1\cr2\cr3\cr4\end{bmatrix}=
+\begin{bmatrix}
+30\cr
+\end{bmatrix}
+\]</div>
+<h2 id="_13">向量的点积</h2>
+<p>点积（dot products）是对两个相同维度向量的各维度分别求积，然后将各个积相加。</p>
+<p>向量互相垂直时，点积为 0，方向相反时，点积为负</p>
+<p>点积和顺序无关，即 <span class="arithmatex">\(\vec{a}·\vec{b}\)</span> 和 <span class="arithmatex">\(\vec{b}·\vec{a}\)</span> 是等价的。</p>
+<p>点积可以理解为向量 a 向向量 b 投影，并用 a 投影后的长度乘以 b 的长度。</p>
+<p>向量的点积实际上可以表示为一个 1×n 的矩阵和一个 n×1 的矩阵乘法，前面我们讲过，这个乘法实际上是做了一个从 n 维线性空间到 1 维线性空间的压缩操作，并将一个 n 维向量映射为 1 维向量，左边的 1×n 的矩阵定义了映射规则。</p>
+<p>那么，上述的两个操作——向量投影和空间压缩，为什么会等价，即，为什么会存在下述等式？</p>
+<div class="arithmatex">\[
+\vec{a}^\top\vec{b}=
+\left|\vec{a}\right|·
+\left|\vec{b}\right|·
+cosθ
+\]</div>
+<p>从根本上来讲，是思维方式的不同</p>
+<ul>
+<li>等式右侧是用几何的思想来解决问题</li>
+<li>等式左侧的矩阵乘法是把向量 b 拆分成不同的维度，计算每个维度映射到向量 a 上的长度（向量 a 相当于指定了映射的倍率），最后将各维度的映射长度求和。</li>
+<li>从线性变换的角度来看，向量 a 的每一维都是一个新的位于一维空间上的基向量，而它们的值恰好等于最终合成的基向量在对应维度的投影，这是一种对偶性（duality）</li>
+<li>向量 a 的每个分量实际上是一个倍率，代表原空间的每一维对一维空间向量值的贡献。从这个意义上来看，线性变换有另外一种理解，即左边的矩阵实际上定义的是原向量的每一维向目标向量的每一维映射的倍率</li>
+</ul>
+<h3 id="_14">点积的作用</h3>
+<p><strong>判断两个向量的方向</strong></p>
+<p>方向相同，点积结果是正的，方向相反，点积结果是负的，相互垂直，点积结果为0</p>
+<p><strong>向量投影（projection）</strong></p>
+<p>当前一个向量<span class="arithmatex">\(\vec{p}\)</span>，我们想把它转换成另外一个由 <span class="arithmatex">\(\vec{u}\)</span>、<span class="arithmatex">\(\vec{v}\)</span> 和 <span class="arithmatex">\(\vec{w}\)</span> 构成的坐标系下的表示，可以使用下面这个方法，分别计算向量 <span class="arithmatex">\(\vec{p}\)</span> 在 <span class="arithmatex">\(\vec{u}\)</span>、<span class="arithmatex">\(\vec{v}\)</span> 和 <span class="arithmatex">\(\vec{w}\)</span>方向上的投影长度，就得到了转换后的结果。</p>
+<div class="arithmatex">\[
+\vec{p} = (\vec{p}\cdot\vec{u})\vec{u} + (\vec{p}\cdot\vec{v})\vec{v} + (\vec{p}\cdot\vec{w})\vec{w}
+\]</div>
+<h2 id="_15">向量的叉积</h2>
+<p>在二维空间中，严格来讲是求不了的，硬要求的话，叉积（cross product）是求两个向量围成的平行四边形面积。值和顺序有关，交换两个向量会导致结果取反，可以认为是平行四边形有方向。所以二维叉积就是求行列式的值。</p>
+<p>在三维空间中，叉积是从两个向量生成一个和它们垂直的新向量，新向量的长度是两个向量围成的平行四边形面积。即，</p>
+<div class="arithmatex">\[|\vec{v}×\vec{w}|= |\vec{v}|·|\vec{w}|·sinθ\]</div>
+<p>新向量的方向取决于两个向量相乘的顺序。例如，</p>
+<div class="arithmatex">\[\vec{v}×\vec{w}= \vec{u}\]</div>
+<p>向量 u 的方向满足右手定则（右手定则有两种，一种是将拇指、食指和中指分别指向三个互相垂直的方向，另外一种是右手握拳，伸出大拇指，这里的右手定则指的是第二种），右手握拳时，四指沿从 <span class="arithmatex">\(\vec{v}\)</span> 至 <span class="arithmatex">\(\vec{w}\)</span> 的方向握住，此时大拇指指向的就是向量 <span class="arithmatex">\(\vec{u}\)</span> 的方向。这也意味着，叉积是不满足交换律的，即 <span class="arithmatex">\(\vec{v}×\vec{w} \neq \vec{w}×\vec{v}\)</span>，实际上 <span class="arithmatex">\(\vec{v}×\vec{w} = -(\vec{w}×\vec{v})\)</span></p>
+<p>（上面关于右手定则的解释是从games 101第2课上学到的）</p>
+<p>同样可以将叉积表示为求行列式</p>
+<div class="arithmatex">\[
+\begin{bmatrix}v_1\cr v_2\cr v_3\end{bmatrix}
+\begin{bmatrix}w_1\cr w_2\cr w_3\end{bmatrix}=
+det\left(
+\begin{bmatrix}
+\vec{i} &amp; v_1 &amp; w_1\cr
+\vec{j} &amp; v_2 &amp; w_2\cr
+\vec{k} &amp; v_3 &amp; w_3\cr
+\end{bmatrix}
+\right)
+=\vec{i}(v_2w_3-v_3w_2)+\vec{j}(v_3w_1-v_1w_3)+\vec{k}(v_1w_2-v_2w_1)
+\]</div>
+<p>把基向量写到行列式里，结果正好是个向量，这是个符号上的技巧。</p>
+<p>如果要从几何的角度理解这个等式，可以这样理解，向量 u 是这样一个向量，任何一个向量 <span class="arithmatex">\([x,y,z]\)</span> 和 u 做点积，结果都是 <span class="arithmatex">\([x,y,z]\)</span> 和 v、w 围成的平行六面体的体积。所以，只有和 v、w 垂直，且长度等于 v、w 围成平行四边形的向量才能满足要求（由于 u 和 v、w 垂直，向量 <span class="arithmatex">\([x,y,z]\)</span> 投影到 u 上后就是六面体的高，u 的长度又是六面体的底面积，因此 u 和 <span class="arithmatex">\([x,y,z]\)</span> 做点积刚好是六面体的体积）。可以将 u 和 v、w 的关系描述成</p>
+<div class="arithmatex">\[
+\begin{bmatrix}u_1\cr u_2\cr u_3\end{bmatrix}
+·
+\begin{bmatrix}x\cr y\cr z\end{bmatrix}=
+det\left(
+\begin{bmatrix}
+x &amp; v_1 &amp; w_1\cr
+y &amp; v_2 &amp; w_2\cr
+z &amp; v_3 &amp; w_3\cr
+\end{bmatrix}
+\right)
+\]</div>
+<p>按这个理解，把行列式中的第一列换成 i、j、k 后就刚好能表示成所求的 u</p>
+<p>以下是叉积的一些一般规律，<span class="arithmatex">\(\vec{x}\)</span>、<span class="arithmatex">\(\vec{y}\)</span>、<span class="arithmatex">\(\vec{z}\)</span> 表示相互垂直的三个单位向量</p>
+<div class="arithmatex">\[
+\begin{align*}
+\vec{x}\times\vec{y}=+\vec{z} &amp;\quad \vec{a}\times\vec{b}=-\vec{b}\times\vec{a} \\
+\vec{y}\times\vec{x}=-\vec{z} &amp;\quad \vec{a}\times\vec{a}=\vec{0} \\
+\vec{y}\times\vec{z}=+\vec{x} &amp;\quad \vec{a}\times(\vec{b}+\vec{c})=\vec{a}\times\vec{b}+\vec{a}\times\vec{c} \\
+\vec{z}\times\vec{y}=-\vec{x} &amp;\quad \vec{a}\times(k\vec{b})=k(\vec{a}\times\vec{b}) \\
+\vec{z}\times\vec{x}=+\vec{y} &amp; \\
+\vec{x}\times\vec{z}=-\vec{y} &amp;
+\end{align*}
+\]</div>
+<p>向量叉积也可以表示为矩阵相乘的形式，其中<span class="arithmatex">\(A^*\)</span>是一个对偶矩阵（dual matrix）</p>
+<div class="arithmatex">\[
+\vec{a}\times\vec{b}=A^*\vec{b}=
+\begin{pmatrix}
+0 &amp; -a_3 &amp; a_2 \\
+a_3 &amp; 0 &amp; -a_1 \\
+-a_2 &amp; a_1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+b_1 \\ b_2 \\ b_3
+\end{pmatrix}
+\]</div>
+<h3 id="_16">叉积可以用来干嘛</h3>
+<p><strong>判断两个向量方向是否相同</strong></p>
+<p>方向相同，叉积结果为零向量</p>
+<p><strong>用来判断一个向量是否位于另一个向量右侧</strong></p>
+<p>例如，给定两个向量 <span class="arithmatex">\(\vec{a}\)</span> 和 <span class="arithmatex">\(\vec{b}\)</span>，可以通过计算它们的叉积 <span class="arithmatex">\(\vec{a} \times \vec{b}\)</span> 来判断 <span class="arithmatex">\(\vec{a}\)</span> 是否在 <span class="arithmatex">\(\vec{b}\)</span> 的右侧。如果叉积的结果指向z 轴正方向，则 <span class="arithmatex">\(\vec{a}\)</span> 在 <span class="arithmatex">\(\vec{b}\)</span> 的右侧；如果指向z 轴负方向，则在左侧。</p>
+<p>注意，向量的左右和正负是相对于某个参考系而言的，如果去掉了这个参考系，那么向量的左右和正负就没有意义了。对上面这个例子来说，向量 <span class="arithmatex">\(\vec{a}\)</span> 和 <span class="arithmatex">\(\vec{b}\)</span> 一定是位于x轴和y轴平面内的，否则无法判断它们叉积的正负，也就无法判断 <span class="arithmatex">\(\vec{a}\)</span> 和 <span class="arithmatex">\(\vec{b}\)</span> 的左右关系。</p>
+<p><strong>可以用来判断一个点是否在一个三角形内部</strong></p>
+<p>例如，有三个点A、B、C构成一个三角形，点P在三角形内部，如果我们将三角形的三条边视为三个向量 <span class="arithmatex">\(\vec{AB}\)</span>、<span class="arithmatex">\(\vec{BC}\)</span>、<span class="arithmatex">\(\vec{CA}\)</span>（注意这三个向量的方向，三个向量首尾相连），分别做三次叉积，<span class="arithmatex">\(\vec{AB} \times \vec{AP}\)</span>、<span class="arithmatex">\(\vec{BC} \times \vec{BP}\)</span>、<span class="arithmatex">\(\vec{CA} \times \vec{CP}\)</span>，如果三次叉积的结果方向一致（或者说点P都在这三个向量的左边或右边），那么就说明点P在三角形内部</p>
+<pre><code class="language-text">                 A
+                / \
+               /   \
+              /  ⋮  \
+             /   ↓   \
+            /    P    \
+           /           \
+          /             \
+         /               \
+        B-----------------C
+</code></pre>
+<h2 id="_17">基变换</h2>
+<p>基变换其实就是线性变换，只不过基变换强调的是不同基坐标系下的语义转换。例如</p>
+<div class="arithmatex">\[
+\begin{bmatrix}2 &amp; -1\cr 1 &amp; 1\end{bmatrix}
+\begin{bmatrix}-1 \cr 2\end{bmatrix}=
+\begin{bmatrix}-4 \cr 1\end{bmatrix}
+\]</div>
+<p>假如Jennifer定义了她自己的基向量，那么向量 <span class="arithmatex">\([2,1]\)</span> 和 <span class="arithmatex">\([-1,1]\)</span> 代表Jennifer的基向量在我们标准坐标系下的表示，那么上面这个转换是把Jennifer坐标系下的 <span class="arithmatex">\([-1,2]\)</span> 转换为我们标准坐标系下的向量。</p>
+<p>如果我们标准坐标系下的线性变换转换为Jennifer坐标系下的表示，可以这么做，先做一个基变换（从Jennifer坐标系转换为标准坐标系），然后做一个线性变换，最后使用基变换的逆变换将其转回Jennifer坐标系。例如，如果我们想把一个标准坐标系下的左旋转90度的操作表示为Jennifer坐标系下的表示，那么最终是这样的形式</p>
+<div class="arithmatex">\[
+\begin{bmatrix}2 &amp; -1\cr1 &amp; 1\end{bmatrix}^{-1}
+\begin{bmatrix}0 &amp; -1\cr1 &amp; 0\end{bmatrix}
+\begin{bmatrix}2 &amp; -1\cr1 &amp; 1\end{bmatrix}=
+\begin{bmatrix}1/3 &amp; -2/3 \cr 5/3 &amp; -1/3\end{bmatrix}
+\]</div>
+<p>注意，等式右边的变换对Jennifer来说并不是左旋90度，可能是一个什么奇怪变换，只是它最终的效果是实现了标准坐标系下的左旋90度。</p>
+<p>可以将其表示为一个通用的形式，其中M是标准坐标系下的线性变换，A是从目标坐标系到标准坐标系的基变换。</p>
+<div class="arithmatex">\[A^{-1}MA=T\]</div>
+<p>简而言之，这玩意儿的作用是，我可以在目标坐标系下实现标准坐标系下的某种变换。</p>
+<p>如果反过来，我想在标准坐标系下实现目标坐标系下的某种转换，那么可以使用M做转换</p>
+<div class="arithmatex">\[M = ATA^{-1}\]</div>
+<h2 id="_18">特征向量和特征值</h2>
+<p>对于有些变量来说，线性变换仅仅使它们产生了一个拉伸效果，也就是说，它们在线性变换后和变换前位于同一条直线上（向量在变换后仍然位于变换前张成的空间上），我们把这些向量称作特征向量(eigenvector)。</p>
+<p>特征值（eigenvalue）用来衡量线性变换对特征向量的放缩比例。</p>
+<p>例如，对于一个三维空间中的旋转操作，旋转轴就是特征向量，因为在旋转前后，旋转轴是不会变的，而且旋转操作不会放缩任何向量，因此特征值为1。</p>
+<p>特征向量和特征值有几种情况</p>
+<ol>
+<li>不存在特征向量，例如二维平面上的左旋90度操作，只会得到一个值为复数的特征值。</li>
+<li>只有一个特征值，但是特征向量不止在一条直线上。比如一个把所有向量长度延长一倍的线性变换，所有向量都是特征向量。</li>
+<li>有多个特征值，每个特征值对应不同的直线。例如线性变换 <span class="arithmatex">\(\begin{bmatrix}3 &amp; 0\cr0 &amp; 2\end{bmatrix}\)</span>，x和y轴方向的向量在变换后不会改变方向，x轴方向的特征向量对应的特征值为3，y轴方向的特征向量对应的特征值是2。</li>
+<li>不会出现一个直线对应多个特征值的情况，很容易理解，我们不可能把一个向量同时放大1倍或2倍。</li>
+</ol>
+<h2 id="_19">矩阵的相似对角化</h2>
+<p>对于一个线性变换，如果它有多个特征向量，并且多到能用特征向量组成一组基，那么我们可以把这个线性变换和基变换相结合，得到它在新基下的表示。由于线性变换只会对特征向量产生放缩效果，那么以特征向量作为基后表示出的线性变换必然是一个对角矩阵。这会简化很多矩阵计算。</p>
+<p>这组由特征向量构成的基向量称为特征基（eigenbasis）</p>
+<p>例如，现在有一个线性变换 <span class="arithmatex">\(A=\begin{bmatrix}3 &amp; 1\cr0 &amp; 2\end{bmatrix}\)</span>，它的特征值为2和3，由此可以得到两个特征向量，特征值为2时，对应的特征向量为 <span class="arithmatex">\(\begin{bmatrix}-1\cr1\end{bmatrix}\)</span>，特征值为3时，对应的特征向量为 <span class="arithmatex">\(\begin{bmatrix}1\cr0\end{bmatrix}\)</span>，那么我们这个线性变换转换为特征基下的表示，结果恰好为一个对角矩阵。</p>
+<div class="arithmatex">\[
+\begin{bmatrix}-1 &amp; 1\cr1 &amp; 0\end{bmatrix}^{-1}
+\begin{bmatrix}3 &amp; 1\cr0 &amp; 2\end{bmatrix}
+\begin{bmatrix}-1 &amp; 1\cr1 &amp; 0\end{bmatrix}=
+\begin{bmatrix}2 &amp; 0 \cr 0 &amp; 3\end{bmatrix}
+\]</div>
+<p>只有当特征向量的个数足够多，能够构成一个基的时候，才能做这种变换。</p>
+<h2 id="_20">抽象向量空间</h2>
+<p>如果一个东西具有可加性和成比例性，就可以把它当成向量来操作，例如一个函数。</p>
+<p>如果一个运算满足以下特性，我们会把它叫做线性运算，例如函数求导。</p>
+<div class="arithmatex">\[L(c\vec{v}) = cL(\vec{v})$$
+$$L(\vec{v}+\vec{w}) = L(\vec{v}) + L(\vec{w})\]</div>
+<p>有时候会把这种线性运算叫做线性算子（linear operators）</p>
+<p>例如，我们可以把一个多项式函数表示为向量，由于多项式函数总是表示成x的幂的线性组合的形式，因此可以将基函数定义为<span class="arithmatex">\(<span class="arithmatex">\(1,x,x^2,x^3...\)</span>\)</span></p>
+<p>此时，我们可以将多项式求导操作表示成一个线性变换</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; ...\cr
+0 &amp; 0 &amp; 2 &amp; 0 &amp; ...\cr
+0 &amp; 0 &amp; 0 &amp; 3 &amp; ...\cr
+0 &amp; 0 &amp; 0 &amp; 0 &amp; ...\cr
+... &amp; ... &amp; ... &amp; ... &amp; ...
+\end{bmatrix}
+\]</div>
+<p>其实很容易求，还是利用线性代数的思维，把矩阵的每一列看作是一个新的基函数，因此，只要对原来的每个基函数求导，就能得到新的基函数</p>
+<p>线性代数和函数的对应关系</p>
+<table>
+<thead>
+<tr>
+<th>线性代数</th>
+<th>函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性变换（linear transforamtion）</td>
+<td>线性算子（linear operator）</td>
+</tr>
+<tr>
+<td>点积（dot product）</td>
+<td>内积（inner product）</td>
+</tr>
+<tr>
+<td>特征向量（eigenvector）</td>
+<td>特征函数（eigenfunction）</td>
+</tr>
+</tbody>
+</table>
+<p>为了能正确的对一个东西做规范，搞清楚它究竟能不能视为一个向量空间，我们必须对向量定义一堆规则（向量加法要满足结合律和交换律、存在向量加法的单位元、标量乘法对向量加法满足分配律、标量乘法存在单位元等等），这些规则称为公理（axioms），一共八条，只有满足这八条公理，才能把一个东西当作向量空间来处理。下面列出这八条公理</p>
+<ol>
+<li><span class="arithmatex">\(\vec{u}+(\vec{v}+\vec{w}) = (\vec{u}+\vec{v})+\vec{w}\)</span></li>
+<li><span class="arithmatex">\(\vec{v}+\vec{w} = \vec{w}+\vec{v}\)</span></li>
+<li><span class="arithmatex">\(存在一个零向量，使得 0 + \vec{v} = \vec{v}\)</span></li>
+<li><span class="arithmatex">\(对于任意向量\vec{v}，存在逆向量-\vec{v}，使得\vec{v}+(-\vec{v} = 0)\)</span></li>
+<li><span class="arithmatex">\(a(b\vec{v}) = (ab)\vec{v}\)</span></li>
+<li><span class="arithmatex">\(1\vec{v} = \vec{v}\)</span></li>
+<li><span class="arithmatex">\(a(\vec{v}+\vec{w}) = a\vec{v} + a\vec{w}\)</span></li>
+<li><span class="arithmatex">\((a+b)\vec{v} = a\vec{v}+b\vec{v}\)</span></li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ©2020-2025 shiwj | 津ICP备2020010292号-1
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

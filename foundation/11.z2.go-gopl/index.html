@@ -1,0 +1,4411 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://blog.shiwj.com/foundation/11.z2.go-gopl/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../50.php-install-configuration/">
+      
+      
+      <link rel="icon" href="../../img/avatar.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>golang入门笔记 - Asteria</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Asteria
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              golang入门笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openjz/asteria" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Foundation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
+          
+  
+  
+  Front end
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../graphics/32.unity-webgl-deploy/" class="md-tabs__link">
+          
+  
+  
+  Graphics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interview/16.interview-bagu-golang/" class="md-tabs__link">
+          
+  
+  
+  Interview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
+          
+  
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/15.remainder-and-modulo/" class="md-tabs__link">
+          
+  
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi-media/58.build_obs/" class="md-tabs__link">
+          
+  
+  
+  Multi media
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../others/11.z3.time/" class="md-tabs__link">
+          
+  
+  
+  Others
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/38.bluetooth-tools/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../windows/35.windows-devices-manage/" class="md-tabs__link">
+          
+  
+  
+  Windows
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
+
+    </a>
+    Asteria
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openjz/asteria" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Foundation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Foundation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    golang入门笔记
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    golang入门笔记
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、程序结构
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、基本数据
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、基本数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 整型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 浮点型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 复数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 布尔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 常量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、复合数据类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、复合数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 数组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 slice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 结构体
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 其他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、接口
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、协程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、并发时如何共享变量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goroutine-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      九、goroutine 和 OS 线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、goroutine 和 OS 线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 栈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3 标识
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    <span class="md-ellipsis">
+      十、包和 go 工具
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十、包和 go 工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 go 为什么编译快
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 包
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      十一、测试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十一、测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 包内测试和外部测试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 测试覆盖率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 其他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      十二、反射
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      十三、低级编程
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../50.php-install-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    php安装和配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../72.clrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《算法导论第3版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../73.asemblly-wangshuang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《汇编语言第4版（王爽）》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code design
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Code design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-design/51.closure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    闭包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-design/70.design-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《设计模式》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Concurrent programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Concurrent programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concurrent-programming/30.coroutine-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    有栈协程和无栈协程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concurrent-programming/37.condition-variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    条件变量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    无锁环形Buffer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cpp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Cpp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++标准库算法概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/23.cpp-new-malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中new和malloc的区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/24.cpp-static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的static
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/25.cpp-dup-symbols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中符号重定义问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/26.cpp-copy-move/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的拷贝和移动语义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/27.cpp-const/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的const
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/28.cpp-inline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于C++ inline关键字
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/29.cpp-forward-declaration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于C++前向声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/57.effective-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《Effective C++ 第三版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/62.effective-modern-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《Effective Modern C++》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/65.cpp-template-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++模板使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/66.cpp-stl-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++ STL使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++ 运算符重载使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++内存分析：ASan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++内存分析：VLD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/11.z1.mysql-crash-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mysql入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/13.mysql-complex-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mysql中的复杂查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/12.z1.ip-address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于IP地址的发展
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../os/14.threadexit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    线程什么时候终止
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../os/74.csapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《深入理解计算机系统第3版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Front end
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Front end
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    js入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    css入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    html入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-end/18.webpage-print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    打印html页面
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Graphics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Graphics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/32.unity-webgl-deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何部署unity生成的WebGL包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/33.rendering-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    渲染管线介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/75.games101-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Interview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Interview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/16.interview-bagu-golang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-golang
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/19.interview-bagu-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-c++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/52.interview-bagu-general/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-通用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-分布式系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux 动态库so文件 动态加载
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《linux就该这么学》笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/43.linux-common-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux常用命令
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/44.linux-common-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux常用配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/45.linux-net-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux网络配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux多线程编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/9.linux-core-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux core dump配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/15.remainder-and-modulo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    取余和取模的区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/31.linear-algebra-3B1B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    线性代数的几何意义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/63.affine-transformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    理解仿射变换
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/64.calculus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    微积分学习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Multi media
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Multi media
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-media/58.build_obs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编译obs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ffmpeg命令行例子
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Others
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/11.z3.time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    计算机中的时间
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/12.digital-signatures-certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数字签名, 数字证书以及加密通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蓝牙相关知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/40.bug-record/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一些开发过程中遇到的奇怪问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/38.bluetooth-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蓝牙调试工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/46.ssh-login-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ssh登陆脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/60.vscode-continue-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vscode continue AI插件配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/61.understand-scitools-keygen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scientific Toolworks Understand 7.0.x 破解机使用方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/build/21.makefile-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    makefile笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nginx
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            Nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nginx入门教程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nginx安装和配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Package manager
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            Package manager
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/package-manager/22.scl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    scl-rhel/centos软件运行环境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Windows
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/35.windows-devices-manage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows设备管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/39.windows-dump-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows下调试dump文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用IFEO映像劫持+windbg在进程运行过程中调试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一些和windows开发相关的小知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/56.char-wchar-on-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    char和wchar_t在windows上如何正确使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、程序结构
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、基本数据
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、基本数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 整型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 浮点型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 复数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 布尔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 常量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、复合数据类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、复合数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 数组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 slice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 结构体
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 其他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、接口
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、协程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、并发时如何共享变量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goroutine-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      九、goroutine 和 OS 线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、goroutine 和 OS 线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 栈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3 标识
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    <span class="md-ellipsis">
+      十、包和 go 工具
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十、包和 go 工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 go 为什么编译快
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 包
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      十一、测试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十一、测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 包内测试和外部测试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 测试覆盖率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 其他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      十二、反射
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      十三、低级编程
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>golang入门笔记</h1>
+
+<p>参考《Go 程序设计语言》</p>
+<p>看本文前最好先看 google 的<a href="https://golang.google.cn/tour/welcome/1">a tour of go</a></p>
+<h2 id="_1">一、程序结构</h2>
+<ol>
+<li>go 程序使用驼峰式命名风格</li>
+<li>零值，变量的初始值。数字是 0，字符串是""，布尔值是 false，接口（interface）和引用类型（slice、指针、map、通道、函数）是 nil，数组和结构体的零值是其所有元素或成员的零值</li>
+<li>注意，零值也是有类型的，nil 也是</li>
+<li>短变量声明，<code>a,b := f()</code>，a 和 b 中至少有一个得是新变量，不能全是已经声明的变量</li>
+<li>一个例外，如果 a,b 是在外层作用域声明的，<code>:=</code>会将它们声明为新变量</li>
+<li>指针。函数返回局部变量的地址是安全的（见 6.变量的生命周期）</li>
+<li>new 函数，new 函数创建一个新值并返回其地址</li>
+<li>变量的生命周期通过其是否可达确定（变量可以在其初次声明的作用域之外存活），<strong>编译器根据变量生命周期确定变量在栈上还是堆上分配，而不是根据声明变量的时候使用的是 var 还是 new</strong></li>
+<li>多重赋值，例如<code>a,b := 1,"xxx"</code>或<code>x,y = y,x</code>，后者用来交换变量的值</li>
+<li>类型转换，<code>var a T = T(b)</code>，每个类型都会提供<code>T(x)</code>将 x 的值转换为 T（前提是允许这种转换）</li>
+<li>导出的标识符才能在包外被访问到，导出的标识符以大写字母开头</li>
+<li>包变量初始化，从初始化包级别变量开始，优先按照依赖顺序初始化变量，然后按照声明顺序初始化变量</li>
+<li>init 函数，可以有任意个，在程序启动时按照声明顺序自动执行</li>
+<li>包的初始化按导入顺序进行，依赖顺序优先（类似包级别变量初始化）</li>
+</ol>
+<h2 id="_2">二、基本数据</h2>
+<h3 id="21">2.1 整型</h3>
+<ol>
+<li>int8、int16、int32、int64、uint8、uint16、uint32、uint64</li>
+<li>int 和 uint，在不同平台上大小不同（通常是 32 位或 64 位）</li>
+<li>rune，等价于 int32，表示一个 unicode 码点</li>
+<li>byte，等价于 uint8，表示一个原始的字节</li>
+<li>uintptr，可以存放一个指针，用于底层编程</li>
+<li>golang 中%运算结果的正负号总是和被除数一致（取余，不是取模）</li>
+<li>位运算。<code>&amp;</code>是与运算（AND），<code>|</code>是或运算（OR），<code>^</code>是异或运算和非运算（XOR，NOT），<code>&amp;^</code>是与非运算（AND NOT），<code>&lt;&lt;</code>是左移，<code>&gt;&gt;</code>是右移</li>
+<li>1 和 a 做异或等价于对 a 取反，即 1^a = ^a（这里的 1 和 a 是单独的一位）</li>
+<li>与非运算的作用是按右操作数的位分布清空左操作数中的对应位</li>
+<li>右移操作<code>&gt;&gt;</code><ul>
+<li>有符号数左移是逻辑移位，符号位参与移位，低位补 0</li>
+<li>有符号数右移是算术移位按符号位填补空位（因为移的是补码，补码补 1 就等于原码补 0）</li>
+<li>无符号数都是逻辑移位</li>
+<li>右移操作<code>x&gt;&gt;n</code>等价于<code>x/2^n</code>，向下取整（朝负无穷方向取整，例如-5&gt;&gt;1 结果为-3）</li>
+</ul>
+</li>
+</ol>
+<h3 id="22">2.2 浮点型</h3>
+<ol>
+<li>两种浮点型，float32 和 float64</li>
+<li>math 包给出了浮点型的极限值，例如<code>math.MaxFloat32</code></li>
+<li>特殊值：正无穷、负无穷、无意义（+Inf、-Inf、NaN）。超出极限值的数和除以零的商归为正负无穷，0/0 或 sqrt(-1)为无意义</li>
+</ol>
+<h3 id="23">2.3 复数</h3>
+<ol>
+<li>两种复数，complex64，complex128</li>
+<li>写法：<code>3.14i</code>、<code>1+2i</code></li>
+<li>可以使用<code>==</code>和<code>!=</code>判断是否等值</li>
+</ol>
+<h3 id="24">2.4 布尔</h3>
+<ol>
+<li>逻辑运算的短路行为，如果运算符左边的操作数能直接确定最终结果，则右边的操作数不会计算在内</li>
+<li><code>&amp;&amp;</code>比<code>||</code>优先级高，助记技巧：<code>&amp;&amp;</code>是逻辑乘法，<code>||</code>是逻辑加法</li>
+</ol>
+<h3 id="25">2.5 字符串</h3>
+<ol>
+<li>len 函数返回的是字节数，不是字符数</li>
+<li>生成子串操作<code>s[i:j]</code>取的是字节，不是字符。</li>
+<li>下标访问操作<code>s[i]</code>访问的也是第 i 个字节，不是字符</li>
+<li>range 循环<code>i,r := range "xxx"</code>中的 i 表示字节序号，r 是字符（rune）</li>
+<li>字符串可以通过<code>==</code>、<code>&lt;</code>等比较运算符比较，<strong>比较运算按字节进行</strong>，结果服从其字典序排序</li>
+<li><strong>字符串值无法改变</strong>（字符串值所包含的字节序列永不可变），只能将一个新字符串赋值给字符串变量（例如，<code>s+="xxx"</code>只是将<code>+=</code>运算新生成的字符串赋值给了 s，并没有改变 s 原有的字符串值）。这么设计的好处是：</li>
+<li>两个字符串变量能够安全地共用同一段底层内存</li>
+<li>字符串拷贝的开销小</li>
+<li>字符串字面量</li>
+<li>转义。除了常见的<code>'\n'</code>等转义字符以外，<code>'\xhh'</code>用 16 进制数<code>hh</code>表示这个字节，<code>'\ooo'</code>用八进制数<code>ooo</code>表示这个字节，这两者都表示单字节</li>
+<li>原生字符串字面量用反引号<code>`...`</code>书写。原生字符串中转义不起作用，可以包含换行，字符串内容和书写内容完全一致。</li>
+<li>utf-8</li>
+<li>utf-8 是 go 的默认编码</li>
+<li>unicode 字符有两种表示形式，<code>'\uhhhh'</code>表示 16 位码点，<code>'\Uhhhhhhhh'</code>表示 32 位码点，区别是小写的 u 和大写的 U</li>
+<li>以下字符串是等价的，注意：直接用 16 进制转义（\x）书写的字符串是"世界"经 utf-8 编码后的实际字节，而\u 和\U 后面跟的是 unicode 码点，并不是实际的 utf-8 字节
+     <code>go
+     "世界"
+     "\xe4\xb8\x96\xe7\x95\x8c"
+     "\u4e16\u754c"
+     "\U00004e16\U0000754c"</code></li>
+<li>utf-8 编码规则（只有"xxx"部分才是 unicode 码点信息）
+     <code>0xxxxxxx
+     110xxxxx 10xxxxxx
+     1110xxxx 10xxxxxx 10xxxxxx
+     11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code></li>
+<li>使用函数<code>utf8.RuneCountInString(s)</code>计算字符串中的字符数量</li>
+<li>utf-8 解码器在遇到一个不合理的字节时，会用一个专门的 unicode 符号<code>\uFFFD</code>作为替换</li>
+<li>byte 和 rune 的区别，rune 保存的是 unicode 码点，并不是 utf-8 编码后的字节，因此，字符串转换为<code>[]rune</code>之后，使用<code>fmt.Printf("%x",s)</code>输出的结果并不一样</li>
+<li><code>string</code>、<code>[]byte</code>、<code>[]rune</code>之间可以相互转换，<code>byte</code>、<code>rune</code>可以转换为 string</li>
+<li>字面量<code>'A'</code>是 rune 类型</li>
+<li>四个标准包：strings、bytes、strconv、unicode<ul>
+<li>strings 包提供了字符串操作函数</li>
+<li>bytes 包提供了字节 slice 操作函数、可变字符串类型 bytes.Buffer</li>
+<li>strconv 包主要用于 string 和其他类型的转换</li>
+<li>unicode 包用于判别文字符号值</li>
+</ul>
+</li>
+</ol>
+<h3 id="26">2.6 常量</h3>
+<ol>
+<li>常量是在编译阶段确定值的数据类型，因此常量可以出现在涉及到类型声明的地方（例如数组长度）</li>
+<li>常量生成器 iota，用于创建一系列连续的常量值，从 0 开始取值，逐项加 1。iota 可以用在表达式里。</li>
+<li>无类型常量，无类型常量可以有比基本类型更高的精度，至少 256 位（可以超过基本类型的最值）</li>
+</ol>
+<h2 id="_3">三、复合数据类型</h2>
+<p>数组、slice、map、结构体</p>
+<h3 id="31">3.1 数组</h3>
+<ol>
+<li><code>var a [3]int = [3]int{1,2,3}</code>，也可以<code>a := [...]int{1,2,3}</code></li>
+<li>使用<code>len(a)</code>获取数组长度</li>
+<li>初始化时可以同时指定索引，例如<code>a := [...]string{2:"hello",3:"world"}</code></li>
+<li>如果数组元素类型可比较，则数组也是可比较的，只能用<code>==</code>和<code>!=</code></li>
+<li>传数组参数时不是传引用，而是值传递，拷贝一份副本</li>
+<li>数组长度不可变</li>
+</ol>
+<h3 id="32-slice">3.2 slice</h3>
+<ol>
+<li>slice 是一种可变长度的序列。slice 是一种轻量的数据结构，底层是个数组。</li>
+<li>slice 有三个属性，指针、长度和容量，长度是指 slice 的元素个数，长度小于等于容量。容量是从起始元素到底层数组的最后一个元素见元素的个数。使用<code>len</code>和<code>cap</code>获取长度和容量。</li>
+<li>一个底层数组可以对应多个 slice，slice 的范围可以相互重叠。</li>
+<li>slice 之间无法比较，可以用 bytes.Equal 比较两个字节 slice</li>
+<li>slice 值为 nil 时，长度和容量都为 0，也有不为 nil 但是长度和容量都是 0 的 slice，例如<code>[]int{}</code>、<code>make([]int,3)[3:]</code></li>
+<li><code>make([]T,len)</code>、<code>make([]T,len,cap)</code></li>
+<li>append 可以用来追加元素。append 可能会引起底层数据扩容，也可能不会，因此每次调用 append 都必须更新 slice。</li>
+<li>小知识，<code>func(y ...int)</code>，<code>...</code>代表 y 接受一个可变长度的参数列表</li>
+</ol>
+<h3 id="33-map">3.3 map</h3>
+<ol>
+<li><code>a := map[string]int{"hello":1,"world":5,}</code></li>
+<li>创建空 map：<code>make(map[K]V)</code>、<code>map[K]V{}</code></li>
+<li>通过下标的方式插入和访问，使用 delete 移除元素。即使 key 不存在，这些操作也是安全的，访问一个不存在的键时，其值为零值。</li>
+<li>map 中元素的迭代顺序不固定</li>
+<li>小知识，使用 range 迭代时可以使用空白标识符<code>_</code>忽略一个变量</li>
+<li>判断一个 key 是否存在，<code>age,ok := a[xxx]</code></li>
+<li>key 的类型必须是能用<code>==</code>比较的类型，所以 key 不能是 slice</li>
+<li>可以通过将 slice 映射成一个字符串来解决，例如<code>fmt.Sprintf("%q",[]int{1,2,3})</code>，谓词 q 是将一个值转换为对应的字符形式的字面值</li>
+</ol>
+<h3 id="34">3.4 结构体</h3>
+<ol>
+<li>点号既可以用在结构体上，也可以用在结构体指针上</li>
+<li>成员首字母大写说明变量可导出</li>
+<li>成员变量的顺序对结构体同一性很重要</li>
+<li>结构体的零值由结构体成员的零值组成</li>
+<li>没有任何成员的结构体被称为空结构体，<code>struct{}</code>，没有长度</li>
+<li>如果结构体所有成员都能比较，那么结构体就可以比较（使用<code>==</code>或<code>!=</code>）</li>
+<li>匿名成员</li>
+<li>如果一个成员是结构体，且不带名称，则为匿名成员</li>
+<li>可以直接访问匿名结构体的成员，而不用经过匿名结构体</li>
+<li>但初始化时必须把所有中间成员都列出来</li>
+<li>成员重名问题，如果匿名成员内部的一个成员和外部的一个成员重名了，访问时访问的是外部成员。如果两个匿名成员之间有成员重名了，则不允许直接访问重名成员，必须要指定中间成员</li>
+</ol>
+<h3 id="35">3.5 其他</h3>
+<ol>
+<li>json</li>
+<li><code>data,err := json.Marshal(xxx)</code>，Marshal 生成一个字节 slice。</li>
+<li><code>json.MarshalIndent()</code>可以生成一个格式化的 json 字符串。</li>
+<li><code>err := json.Unmarshal(data,&amp;xxx)</code>，Marshal 的逆操作</li>
+<li>结构体只有导出的成员才能被 Marshal，json 字段名称默认为成员名（区分大小写）</li>
+<li>可以用成员标签定义字段名，例如
+     <code>golang
+     type a struct{
+         Year int `json:"released"`
+     }</code>
+     （成员标签由一组空格分割的 key:"value"组成）</li>
+<li>模板（实现格式和代码彻底分离）</li>
+<li>模板是一个字符串</li>
+<li>一个<code>{{...}}</code>称为操作，可以输出值、选择结构体成员、调用函数、提供控制逻辑、实例化其他模板等</li>
+<li>点号<code>'.'</code>表示当前值，最开始表示模板的输入参数</li>
+<li><code>'|'</code>将前一个操作的结果当作下一个操作的输入</li>
+<li>将模板定义为一个字符串或文件、初始化时解析模板（并指定自定义函数）、运行时执行模板（提供输入输出）</li>
+<li>html/template 包会自动对 html 元字符转义，text/template 包不会，一定要用对包。（可以将输入数据指定为<code>template.HTML</code>类型不让 html/template 自动转义，也就是说，<code>template.HTML</code>类型会被看做是 html 数据，而不是纯文本）</li>
+</ol>
+<h2 id="_4">四、函数</h2>
+<ol>
+<li>可以对函数返回值命名，有命名的返回值可以不写在 return 语句里（但是这么做会降低代码可读性）。</li>
+<li>错误处理策略</li>
+<li>出错后应当能提供一个错误链</li>
+<li>错误消息首字母不应该被大写，而且尽量避免换行（方便使用 grep 这样的工具找错误）- 重试 + 超时</li>
+<li>匿名函数</li>
+<li>可以用来实现闭包</li>
+<li>可以在函数内部定义函数，例如
+     <code>golang
+     d := func() int {
+         var x int
+         return x * x
+     }
+     fmt.Println(d())</code></li>
+<li>当匿名函数需要递归时，必须先按照上面这样把函数赋值给一个变量</li>
+<li>捕获变量时要注意，如果捕获的是迭代变量，迭代变量是会不断更新的！</li>
+<li>变长函数</li>
+<li>在参数列表最后的类型名称之前使用省略号<code>"..."</code>，例如<code>func sum(vals ... int) int{...}</code></li>
+<li>如何调用变长函数：
+     <code>golang
+     sum(1,2,3)
+     //或
+     values := []int{1,2,3}
+     sum(values...)</code></li>
+<li>延迟函数调用，<code>defer</code></li>
+<li>panic，panic 发生时，正常程序会终止执行，goroutine 会执行所有 defer 函数，程序会异常退出并留下日志消息</li>
+<li>可以手动触发 panic，例如<code>panic(fmt.Sprint("xxx"))</code></li>
+<li>defer 函数以倒序执行，从调用栈最外层的函数开始，一直到 main</li>
+<li>panic 消息输出到标准错误流，包含调用栈信息</li>
+<li>runtime 包提供了获取调用栈的方法，例如
+     <code>golang
+     var buf [4096]byte
+     n := runtime.Stack(buf[:],false)
+     os.Stdout.Write(buf[:n])</code></li>
+<li>从 panic 中恢复，如果在发生 panic 的函数的 defer 语句中调用 recover 函数，panic 发生时程序就不会异常退出，而是将 panic 消息作为 recover 的返回值，如果没有 panic，recover 就返回 nil（<strong>可以在 defer 函数中修改函数返回值！</strong>），例如
+     <code>golang
+     func Parse() err error {
+         defer func(){
+             if p := recover(); p!=nil{
+                 err = fmt.Errorf("%v",p) //可以在recover时修改函数返回值
+             }
+         }()
+     }</code></li>
+<li>处理 panic 的一般原则是，不应该去恢复从另一个包发生的 panic，也不应该去恢复不是你维护的代码发生的 panic</li>
+<li>有选择性地处理 panic（但还是强调，预期之内的错误不应该通过 panic 来处理）
+     <code>golang
+     type bailout struct{}
+     ...
+     panic(bailout{})    //在某个地方发生了panic
+     ...
+     defer func() {
+         switch p := recover(); p {
+         case nil:
+             // no panic
+         case bailout{}:
+             // "expected" panic
+             err = fmt.Errorf("multiple title elements")
+         default:
+             panic(p) // unexpected panic; carry on panicking
+         }
+     }()</code></li>
+</ol>
+<h2 id="_5">五、方法</h2>
+<ol>
+<li>可以将一个方法绑定到一个类型上，例如<code>func (p Point) Distance(a int) int</code>，参数 p 被称为方法的接收者。</li>
+<li>go 可以将方法绑定到任何类型上，包括切片类型、甚至是函数类型。</li>
+<li>接收者可以是指针类型，但为了避免混淆，不允许绑定本身是指针类型的类型，例如
+   <code>golang
+   type P *int
+   func (p P) f(){...}  //不允许这样</code></li>
+<li>接收者是指针类型时，可以使用变量本身调用方法，编译器会对变量隐式转换为指针。反过来也是一样的。</li>
+<li>设计原则是，同一个类型的方法，接收者要么都是指针类型，要么都是值类型</li>
+<li><strong>注意，指针类型和对应的非指针类型是两种类型</strong>，只是在调方法时编译器会做隐式转换。</li>
+<li>nil 也是合法的接收者（但是要在代码中对 nil 做专门的处理）</li>
+<li>结构体嵌套匿名结构体，例如以下嵌套</li>
+</ol>
+<p><code>golang
+   type Point struct{ X,Y float }
+   type ColorPoint struct{
+       Point
+       Color color.RGBA
+   }</code></p>
+<p>可以直接通过 ColorPoint 调用 Point 的方法</p>
+<ol>
+<li>可以创建一个方法变量，不用提供接收者就能调方法，例如</li>
+</ol>
+<p><code>golang
+   dis := p.Distance   //方法变量
+   dis(q)</code></p>
+<ol>
+<li>可以创建一个方法表达式，调用时将接收者作为第一个参数，例如</li>
+</ol>
+<p><code>golang
+   dis := Point.Distance   //方法表达式
+   dis(p, q)</code></p>
+<ol>
+<li>fmt 默认调用 String 方法输出类型的值，因此，如果想自定义类型的格式化，可以给类型自定义 String 方法（注意，必须是为值类型定义 String 方法，而不是指针类型）</li>
+<li><strong>go 封装的单元是包而不是类型</strong>，结构体内的字段不管导没导出，对包内的所有代码都是可见的</li>
+<li>注意，<strong><code>type</code>关键字并不是定义了一个别名，而是定义了一种新类型</strong>，例如，<code>type Newint int</code>定义了一种新类型<code>Newint</code>，绑定到<code>Newint</code>上的方法并不会绑定到<code>int</code>上</li>
+</ol>
+<h2 id="_6">六、接口</h2>
+<ol>
+<li>接口是一种抽象类型，里面都是方法，没有数据。</li>
+<li>结构体中可以嵌套一个接口，和嵌套匿名结构体类似，也可以嵌套一个匿名接口，可以直接访问匿名接口的方法。</li>
+<li>接口 A 内部可以嵌套接口 B，这和把 B 的方法直接列在 A 里是一样的，并且接口中方法定义的顺序也无所谓。</li>
+<li>如果一个类型实现了一个接口的所有方法，那么这个类型实现了这个接口。</li>
+<li>当一个类型实现了接口时，该类型才能赋值给接口</li>
+<li><strong><code>T</code>和<code>*T</code>是两个类型，用<code>T</code>实现了一个接口，并不能认为<code>*T</code>也实现了</strong>。</li>
+<li>调用方法时，可以通过指针调用接收者为值类型的方法，反过来也一样，这只是语法糖在起作用（<strong>注意这和接口无关，这里说的不是通过接口类型调用方法</strong>）。</li>
+<li>关于接口实现的结论，<strong>实现了接收者是值类型的方法，相当于自动实现了接收者是指针类型的方法；而实现了接收者是指针类型的方法，不会自动生成对应接收者是值类型的方法</strong>。</li>
+<li>空接口类型<code>interface{}</code>可以用来代表任意类型</li>
+<li>接口例子</li>
+<li><code>io.writer</code>接口，<code>fmt.Fprintf</code>的第一个参数是<code>io.writer</code>类型<ul>
+<li><code>fmt.Printf</code> 和 <code>fmt.Sprintf</code> 都是对 <code>fmt.Fprintf</code> 的封装。</li>
+<li><code>fmt.Printf</code>提供的是<code>*os.File</code>类型（<code>os.Stdout</code>），<code>fmt.Sprintf</code>提供的是<code>*bytes.Buffer</code>。</li>
+</ul>
+</li>
+<li><code>fmt.Stringer</code>接口，这个接口有一个方法<code>String() string</code>，可以让一个类型自定义输出自己的方法。</li>
+<li><code>flag.Value</code>接口，用于表示一个命令行参数类型，同样有<code>String() string</code>方法。</li>
+<li><code>sort.Interface</code>接口，用于排序。</li>
+<li><code>http.Handler</code>接口，一个<code>http.Handler</code>就是一个 web 接口，可以用<code>ServeMux</code>将多个 handler 组合起来。<ul>
+<li>web 服务器每次都会用一个新的 goroutine 来调用处理函数，因此处理函数要注意并发问题</li>
+</ul>
+</li>
+<li><code>error</code>接口，go 预先定义了一些实现了 error 接口的类型，例如<code>*errorString</code>、<code>Errno</code></li>
+<li>对于一个接口变量来说，它有两个类型，静态类型和动态类型，静态类型就是这个接口类型，动态类型是它的实际类型</li>
+<li>接口类型的零值是 nil，对于一个 nil 接口，它的动态类型和动态值都是 nil，静态类型还是接口类型</li>
+<li>接口值可以使用<code>==</code>和<code>!=</code>比较，当接口值动态类型和动态值都相等时两个接口值相等<ul>
+<li>如果动态类型不可比较，比较时会 panic</li>
+</ul>
+</li>
+<li><strong>注意区分接口值为 nil 和接口动态值为 nil</strong>，容易引起 bug</li>
+<li>
+<p>类型断言，<code>x.(T)</code></p>
+<ul>
+<li>把接口值持有的具体类型 T 的值提取出来</li>
+<li>或者把接口转换为另外一个接口，保留接口的动态类型和动态值（前提是动态类型实现了要转换的接口）</li>
+<li>如果接口 A 是接口 B 的子集，接口 B 可以直接赋值给接口 A，不需要类型断言，反过来不行</li>
+<li>操作数为空接口值时类型断言失败</li>
+<li>可以获取类型断言的结果，<code>f,ok := x.(T)</code>，类型断言失败，ok 为 false，<strong>可以利用这个来检查接口是否能转换成一个具体类型或另外一个接口类型</strong></li>
+<li>可以使用类型分支来简化一长串类型断言，例如</li>
+</ul>
+<p><code>golang
+  switch x.(type) {
+     case nil:
+     case int:
+     case bool:
+     default:
+  }
+  //扩展写法，在这种写法中，x被赋予的是接口的动态值而不是类型，可以把这个值拿到case块中去使用
+  switch x:=x.(type) {
+     case nil:
+     case int:
+     case bool:
+     default:
+  }</code></p>
+</li>
+</ol>
+<blockquote>
+<p>另外，关于 golang 中的<strong>组合</strong></p>
+<p>组合是指结构体嵌套结构体、结构体嵌套接口</p>
+<p>这里面值得注意的<strong>匿名结构体和匿名接口的组合</strong></p>
+<p>假设结构体 A 实现了接口 I，结构体B中嵌套了匿名结构体A，结构体C中嵌套了匿名结构I，那么B和C都被视为实现了接口I，并且B和C都可以重写接口方法</p>
+</blockquote>
+<h2 id="_7">七、协程</h2>
+<p>主要是 goroutine 和 channel</p>
+<ol>
+<li>程序启动时只有一个协程，即 main 函数所在的协程，称为主协程</li>
+<li>启动一个协程，<code>go f()</code></li>
+<li>main 函数返回时，所有协程终止</li>
+<li>channel 用于协程间通信。channel 有类型，例如<code>chan int</code>是 int 类型的 channel。同种类型的 channel 可以使用<code>==</code>比较，这时如果它们的引用相同，结果为真，否则为假。</li>
+<li>channel 操作</li>
+<li>创建 channel，<code>ch := make(chan int)</code></li>
+<li>把 x 发送给 channel ch，<code>ch &lt;- x</code></li>
+<li>从 channel ch 中接受数据并赋值给 x，<code>x := &lt;- ch</code></li>
+<li>接受并丢弃结果，<code>&lt;- ch</code></li>
+<li>关闭 channel，<code>close(ch)</code></li>
+<li>创建 channel 时可以指定容量，例如<code>ch := make(chan int,3)</code>，不指定容量时容量默认为 0，创建出来的叫无缓冲通道</li>
+<li>无缓冲通道上的发送操作会阻塞，直到消息被接收，发送协程才会继续执行。反过来，接收操作也会阻塞，直到有协程向 channel 发送一个消息</li>
+<li>换句话说，无缓冲通道会将发送和接收协程同步化，因此无缓冲通道又称为同步通道</li>
+<li><strong>通道被关闭后，能收不能发</strong></li>
+<li>向关闭的通道发数据会 panic</li>
+<li>通道被关闭后，未接收完的数据会被继续接收，然后还能继续接收数据，只不过接收到的是零值</li>
+<li><code>x, ok := &lt;- ch</code>，当通道被关闭且数据被接受完后，ok 的值为 false</li>
+<li>也可以采用直接在通道上迭代的形式，通道关闭并且数据全部接收完后退出循环
+     <code>golang
+     for x := range ch {
+        ...
+     }</code></li>
+<li>close 操作不是必须的，只是一种同步手段而已（不像文件，打开后一定要关闭）</li>
+<li>单向通道，类型<code>chan &lt;- int</code>只能发送，类型<code>&lt;- chan int</code>只能接收</li>
+<li>可以用在函数参数类型上，让参数的用途更清晰</li>
+<li>双向通道可以转换为单向的，反过来不行</li>
+<li>
+<p>缓冲通道</p>
+</li>
+<li>
+<p>缓冲通道满了以后，发送操作会阻塞</p>
+</li>
+<li>使用 cap 函数获取通道容量</li>
+<li>
+<p>使用 len 函数获取通道内的数据个数</p>
+</li>
+<li>
+<p><code>sync.WaitGroup</code>，有时候创建的协程数量不固定，可以用它来对协程计数，它是并发安全的，下面是例子</p>
+<p><code>golang
+r := make(chan int)
+var wg sync.WaitGroup
+//主协程，从一个channel获取数据处理，因此事先不知道到底要创建多少协程
+for m := range ch {
+   wg.Add(1) //创建协程前计数+1
+   go func(m string){
+      defer wg.Done()  //在defer中对计数-1，确保一定能-1
+      r &lt;- 1
+   }(m)
+}
+//等待协程结束必须单独起一个协程，如果把等待操作放在主协程，放在下面这个循环之前，由于channel r是一个无缓冲channel，channel中的数据得不到处理，会导致所有协程都结束不了，如果放在循环后面，由于没人关闭channel r，循环结束不了，所以执行不到等待操作。（由于我们事先不知道到底有多少协程，因此也没办法使用缓冲channel）
+go func(){
+   wg.Wait()   //等待所有协程结束
+   close(r)
+}()
+total := 0
+//等r被关闭后才能结束循环
+for i := range r {
+   total += i
+}</code></p>
+</li>
+<li>
+<p>可以利用缓冲通道限制并发数，例如</p>
+<p><code>golang
+//设定并发数为20
+var tokens = make(chan struct{}, 20)
+//获取一个token
+token &lt;- struct{}{}
+//协程处理...
+//处理完成后释放token
+&lt;- token</code></p>
+</li>
+<li>
+<p>select 多路复用（注意不是 switch），如下所示，每个 case 指定一次通道的接收或发送操作，select 一次执行一个 case，<strong>如果同时满足多个 case，select 随机选择一个</strong></p>
+<p><code>golang
+select {
+case &lt;- ch1:
+case x := &lt;-ch2:
+case ch3 &lt;- y:
+default:
+}</code></p>
+<p>当我们不想在一个通道还没准备好的情况下被阻塞时，可以使用 select 多路复用</p>
+</li>
+<li>
+<p>nil 通道</p>
+<ul>
+<li>在 nil 通道上收发是合法的，只是会永远阻塞</li>
+<li>select 中的 nil 通道永远不会被选择</li>
+</ul>
+</li>
+<li>
+<p>小知识：go 中的标签不光可以用于 goto 语句</p>
+</li>
+<li>
+<p>可以让 break 跳出好几层，例如
+  <code>golang
+  loop:
+     for{
+        select{
+        case _,ok := &lt;- ch :
+           if !ok {
+              break loop
+           }
+        }
+     }</code></p>
+</li>
+<li>
+<p>continue 同理，可以跳出多层</p>
+</li>
+<li>
+<p>关闭通道操作可以作为一种广播机制，创建一个通道，不往里面发送任何数据，只要一关闭通道，所有监听这个通道的协程都会接收到一个零值，它们就知道通道被关闭了</p>
+</li>
+<li>goroutine 调式技巧，执行一个 panic 调用，运行时将转储程序中所有 goroutine 的栈</li>
+</ol>
+<p>总结一下，实现 goroutine 之间的同步可以采用以下方式：</p>
+<ol>
+<li>使用 channel 发送消息</li>
+<li>利用 channel 关闭实现广播机制</li>
+<li>利用 sync.WaitGroup 对 goroutine 计数</li>
+<li>利用缓冲 channel 实现一个计数信号量，来限制并发数</li>
+<li>容量为 1 的 channel 被称为二进制信号量</li>
+<li>利用 select 同时处理多个通道的读写操作</li>
+</ol>
+<h2 id="_8">八、并发时如何共享变量</h2>
+<ol>
+<li>竞态，竞态是指并发导致对数据的操作出现冲突的情况。</li>
+<li>如何避免竞态（2、3 是两种重要方案）</li>
+<li>并发前把变量初始化好，并发期间不修改变量</li>
+<li>避免多个 goroutine 访问同一个变量，（go 箴言，不要通过共享内存来通信，应该通过通信来共享内存）。<strong>一种方法是让一个 goroutine 代理一个共享变量的操作，其他 goroutine 通过通道来对这个变量进行操作，这个代理 goroutine 被称作监控 goroutine</strong>。</li>
+<li><strong>使用互斥机制</strong></li>
+<li>互斥锁<code>sync.Mutex</code></li>
+<li>有一种代替的办法是使用一个容量为 1 的 channel 作为二进制信号量，把对共享变量的并发访问数限制到 1</li>
+<li>mutex 的用法
+     <code>golang
+     var mu sync.Mutex
+     mu.Lock()
+     //...临界区域
+     mu.UnLock()</code></li>
+<li>为了确保释放锁，unlock 操作经常放在 defer 里</li>
+<li>读写锁<code>sync.RWMutex</code>，读锁<code>RLock()</code>、<code>RUnlock()</code>，读写锁<code>Lock()</code>、<code>Unlock()</code></li>
+<li>对一个变量，如果写操作加了锁，那么读操作也应该加锁，原因有两点</li>
+<li>防止读操作插入到写操作序列中</li>
+<li>现代 cpu 各个核心有各自独立的缓存，通道通信和互斥量操作等同步原语会导致处理器把积累的写操作刷回到内存，保证操作结果对运行在其他核心的 goroutine 可见。但是如果不使用同步原语，就有可能发生共享变量在各个核心上的缓存不一致的问题</li>
+<li><code>sync.Once</code>，是一个针对一次性初始化问题的解决方案</li>
+<li>一次性初始化问题，实际开发中经常会遇到这样的场景，访问一个共享变量前要先去判断这个变量有没有初始化，如果没有，要先将其初始化然后再访问，这是并发不安全的，用法：
+     <code>golang
+     var loadonce sync.Once
+     loadonce.Do(initfunc)   //initfunc用于初始化变量
+     //...访问操作</code></li>
+<li>sync.Once 内部包含一个互斥量和一个 bool 变量，bool 变量用于标记共享变量是否已完成初始化</li>
+<li>竞态检测器</li>
+<li>用于分析程序是否存在竞态</li>
+<li>在<code>go build</code>、<code>go run</code>、<code>go test</code>命令后面加上<code>-race</code>参数即可</li>
+<li>竞态检测器会记录所有对共享变量的访问，会记录所有同步操作</li>
+<li>竞态检测器只能检查出运行时发生的竞态，检查不出来没发生的竞态</li>
+</ol>
+<h2 id="goroutine-os">九、goroutine 和 OS 线程</h2>
+<h3 id="91">9.1 栈</h3>
+<p><strong>每个 OS 线程都有一个固定大小的栈空间</strong>（通常为 2MB），这个栈空间对 goroutine 来说太大了（go 中一次创建十万个 goroutine 也是常见的），但是对很多递归深度比较深的函数又太小了</p>
+<p><strong>goroutine 也有栈，但是大小不固定</strong>。goroutine 刚创建出来时栈很小（典型情况只有 2KB），并且可以按需扩大和缩小，最大限制甚至可以达到 1GB</p>
+<h3 id="92">9.2 调度</h3>
+<p>OS 线程由操作系统内核来调度，线程切换需要完整的上下文切换，这个操作很耗时。</p>
+<p>goroutine 由 go runtime 调度，goroutine 运行在线程上，是一种 m:n 的调度。goroutine 调度在用户态完成，开销很小。</p>
+<p>Go 调度器使用 GOMAXPROCS 参数确定需要使用多少 OS 线程，默认是 cpu 核数</p>
+<h3 id="93">9.3 标识</h3>
+<p>线程都有标识，goroutine 没有。（不鼓励 threadlocal 这种东西）</p>
+<h2 id="go">十、包和 go 工具</h2>
+<h3 id="101-go">10.1 go 为什么编译快</h3>
+<ol>
+<li>所有包依赖必须列在文件头部，编译器分析包依赖时不需要读取整个文件</li>
+<li>没有循环依赖，依赖构成一个有向无环图，可以包之间可以单独编译甚至并行编译</li>
+<li>编译出的目标文件不仅包含它自己的导出信息，还包含依赖包的导出信息，因此 go 编译一个包时，go 只需要去看导入依赖对应的目标文件，不需要层层去找依赖的目标文件</li>
+</ol>
+<h3 id="102">10.2 包</h3>
+<ol>
+<li>每个目录下面只能有一个包。</li>
+<li>main 包会告诉 go build 调用连接器生成一个可执行文件。</li>
+<li>一个目录下可以有一个额外的 test 包，包名以_test 结尾，文件名以_test.go 结尾，这会告诉 go test 两个包都需要构建。</li>
+<li>有些依赖管理工具会在包名末尾加上一个版本后缀，实际的包名不包含这个后缀，例如<code>xx/xx/yaml.v2</code>的包名应该是<code>yaml</code></li>
+<li>重命名导入，解决包名冲突</li>
+<li>空导入，只导入但是不引用包中的名字，例如<code>import _ "image/png"</code>（有时候导入仅仅是为了执行包的初始化）</li>
+<li>包的导入路径是相对于<code>$GOPATH/src</code></li>
+<li>包可以自定义导入域名，防止因托管网站的变化导致导入路径变化</li>
+<li>常用 go 工具</li>
+<li><code>go env</code></li>
+<li><code>go get</code></li>
+<li><code>go build</code>、<code>go install</code></li>
+<li><code>go doc</code>、<code>godoc</code><ul>
+<li><code>go doc</code>命令用于查看包、成员、方法的声明和注释</li>
+<li><code>godoc</code>命令用于在本地启动一个文档服务器，例如<code>godoc -http=localhost:6060</code>，里面包括所有标准库的包和用户自己的包，需要单独安装这个命令。</li>
+</ul>
+</li>
+<li><code>go list</code></li>
+<li>vendor 目录，维护依赖的本地副本</li>
+<li>内部包，位于 internal 目录中，只能被 internal 的父目录下的包引用</li>
+</ol>
+<h2 id="_9">十一、测试</h2>
+<p>一个典型的测试命令：<code>go test -v -run="xxx" xxx_test.go</code>，<code>-run</code>是一个正则表达式，用于过滤要测试的函数名，被测试对象不光可以是一个文件，也可以是一个包。</p>
+<h3 id="111">11.1 包内测试和外部测试</h3>
+<ul>
+<li>包内测试是指测试代码和产品代码的包名一致，外部测试是指测试代码在一个单独的包中，以产品包名拼上_test 作为包名</li>
+<li>有时候会将产品包内的一些方法暴露给测试包，这些方法一般写在一个单独的包内测试文件 export_test.go 中</li>
+</ul>
+<h3 id="112">11.2 测试覆盖率</h3>
+<ul>
+<li>著名计算机科学家 Edsger Dijkstra 说，“测试的目的是发现 bug，而不是证明其不存在”</li>
+<li>使用 go tool cover 查看覆盖工具的使用方法</li>
+<li>简单的测试覆盖率命令，<code>go test -cover</code></li>
+<li>复杂的测试覆盖率命令，<code>go test -coverprofile=c.out -covermode=count</code>，<code>-coverprofile</code>参数将覆盖率数据输出到文件中，<code>-covermode=count</code>表示每个语句块的执行测试将被计数</li>
+<li><code>go tool cover -html=c.out</code>命令将生成一个 html 版的测试报告</li>
+</ul>
+<h3 id="113">11.3 其他</h3>
+<ul>
+<li>testing 包还可以用来做基准测试</li>
+<li>测试函数前缀是<code>Benchmark</code>，参数是<code>*testing.B</code></li>
+<li>测试命令<code>go test -bench=xxx</code></li>
+<li>性能优化工具 pprof</li>
+<li>测试命令
+    <code>bash
+    go test -cpuprofile=cpu.out
+    go test -blockprofile=block.out
+    go test -memprofile=mem.out</code></li>
+<li>一般都是针对基准测试进行性能分析
+    <code>bash
+    go test -run=NONE -bench=xxx -cpuprofile=cpu.out</code></li>
+<li>使用 pprof 工具生成性能分析报告
+    <code>bash
+    go tool pprof ...各种参数 cpu.out</code></li>
+<li>示例函数，函数名的格式为<code>Example</code>拼上被演示函数的函数名，没有参数和返回值，</li>
+<li>目的是作为文档，godoc 会将示例函数和函数关联到一起</li>
+<li>在函数体末尾加上以下注释可以让 go test 运行示例函数并检查实际输出和注释中的输出是否匹配
+    <code>golang
+    // Output: 或 Unordered Output:
+    // Ava
+    // Jess
+    // [Jess Sarah Zoe]</code></li>
+</ul>
+<h2 id="_10">十二、反射</h2>
+<ol>
+<li><code>reflect.Type</code></li>
+<li><code>reflect.Type</code>是一个接口类型，这个接口只有一个实现，即类型描述符，接口值中的动态类型就是类型描述符</li>
+<li><code>reflect.TypeOf(x)</code>返回一个类型描述符，并且<strong>只会返回具体类型</strong>，不会返回接口类型</li>
+<li><code>refect.Value</code></li>
+<li><code>reflect.ValueOf(x)</code>返回一个<code>reflect.Value</code>类型，<strong>ValueOf 从接口值中提取值部分，所以永远返回一个具体的值</strong></li>
+<li><code>reflect.Value.Type()</code>方法会返回 value 的类型，返回值是<code>reflect.Type</code>类型</li>
+<li><code>reflect.Value.Interface()</code>方法将一个 Value 类型转为一个 interface{}接口值，是 valueof 的逆操作</li>
+<li><code>reflect.Value.Kind()</code>方法会返回类型分类（类型分类是<code>reflect.Kind</code>类型，其实是个 uint 类型，其零值是 reflect.Invalid）</li>
+<li>使用反射的例子可以参考<code>gopl.io/ch12/format</code>和<code>gopl.io/ch12/display</code></li>
+<li>非导出字段在反射下也是可见的</li>
+<li><strong>接口类型的值可以通过从其他 Value 类型值间接获得</strong></li>
+<li>使用<code>reflect.Value</code>设置值
+   <code>golang
+   x := 2
+   //获取一个可寻址的x
+   d := reflect.ValueOf(&amp;x).Elem()
+   //方法1，通过指针修改x的值
+   px := d.Addr().Interface().(*int)
+   *px = 3
+   //方法2，通过set方法修改d
+   d.Set(reflect.ValueOf(4))</code></li>
+<li>在不可寻址的 reflect.Value 上调用 Set 会崩溃<ul>
+<li>（在指向 interface{}的 reflect.Value 上调用 SetInt 等特化 Set 方法时会崩溃）</li>
+</ul>
+</li>
+<li>不能更新结构体未导出字段的值</li>
+<li><code>reflect.Value.CanAddr()</code>方法判断变量是否可寻址</li>
+<li><code>reflect.Value.CanSet()</code>方法判断变量是否可寻址且可修改</li>
+<li>可以通过<code>reflect.Type.Field</code>方法获取结构体字段名和 tag</li>
+<li>可以通过<code>reflect.Type.Method</code>方法获取类型的方法，但是只描述方法名和类型</li>
+<li>也可以通过<code>reflect.Value.Method</code>方法获取到绑定了接收者的方法，但是只描述方法名和类型，可以用<code>reflect.Value.Call</code>调用函数</li>
+<li>
+<p>慎用反射</p>
+</li>
+<li>
+<p>反射中存在的类型错误是编译时检查不出来的，只能在运行时以崩溃的方式报告</p>
+</li>
+<li>反射会造成代码的可读性降低</li>
+<li>反射慢</li>
+</ol>
+<h2 id="_11">十三、低级编程</h2>
+<p>本章主要介绍 unsafe 包和 cgo 工具</p>
+<p>unsafe 是提供了对 go 内置特性的访问，这些特性不安全，因为他们暴露了 go 的内存布局。unsafe 广泛用在和操作系统交互的底层包中（runtime、os、syscall、net）</p>
+<p>cgo 工具用来调用 c 程序</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ©2020-2025 shiwj | 津ICP备2020010292号-1
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

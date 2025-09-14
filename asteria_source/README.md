@@ -61,3 +61,19 @@ path = 'github.com/alex-shpak/hugo-book'
 
 3. hugo mod get -u，更新所有依赖
 
+## mkdocs
+
+[https://github.com/squidfunk/mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+
+### 用法
+
+- 安装mkdocs: 
+    ```bash
+    pip install mkdocs-material
+    pip install pymdown-extensions # math support
+    pip install mkdocs-material # theme，https://github.com/squidfunk/mkdocs-material
+    ```
+- 新建项目: `mkdocs new [目录名]`
+- 启动服务: `mkdocs serve`
+- 构建项目: `mkdocs build`
+- 打印帮助信息: `mkdocs -h`

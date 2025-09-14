@@ -1,0 +1,4769 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://blog.shiwj.com/front-end/10.js-mdn-tutorial/">
+      
+      
+        <link rel="prev" href="../../foundation/os/74.csapp/">
+      
+      
+        <link rel="next" href="../11.css-mdn-tutorial/">
+      
+      
+      <link rel="icon" href="../../img/avatar.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>js入门笔记 - Asteria</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Asteria
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              js入门笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openjz/asteria" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../foundation/11.z2.go-gopl/" class="md-tabs__link">
+          
+  
+  
+  Foundation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Front end
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../graphics/32.unity-webgl-deploy/" class="md-tabs__link">
+          
+  
+  
+  Graphics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interview/16.interview-bagu-golang/" class="md-tabs__link">
+          
+  
+  
+  Interview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
+          
+  
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/15.remainder-and-modulo/" class="md-tabs__link">
+          
+  
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multi-media/58.build_obs/" class="md-tabs__link">
+          
+  
+  
+  Multi media
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../others/11.z3.time/" class="md-tabs__link">
+          
+  
+  
+  Others
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/38.bluetooth-tools/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../windows/35.windows-devices-manage/" class="md-tabs__link">
+          
+  
+  
+  Windows
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
+
+    </a>
+    Asteria
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openjz/asteria" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Foundation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Foundation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/11.z2.go-gopl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    golang入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/50.php-install-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    php安装和配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/72.clrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《算法导论第3版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《汇编语言第4版（王爽）》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code design
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Code design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/code-design/51.closure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    闭包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/code-design/70.design-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《设计模式》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Concurrent programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Concurrent programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    有栈协程和无栈协程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    条件变量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    无锁环形Buffer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cpp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Cpp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++标准库算法概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中new和malloc的区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/24.cpp-static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的static
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中符号重定义问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的拷贝和移动语义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/27.cpp-const/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++中的const
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于C++ inline关键字
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于C++前向声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《Effective C++ 第三版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《Effective Modern C++》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++模板使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++ STL使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++ 运算符重载使用技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++内存分析：ASan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    c++内存分析：VLD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mysql入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mysql中的复杂查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/network/12.z1.ip-address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于IP地址的发展
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/os/14.threadexit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    线程什么时候终止
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundation/os/74.csapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《深入理解计算机系统第3版》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Front end
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Front end
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    js入门笔记
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    js入门笔记
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-js-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. JS API分为两类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 怎样向页面添加js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.运算符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 数组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 条件和循环
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 事件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      调试
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dom-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOM API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      从服务器获取数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三方API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      绘图API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      音视频API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      客户端存储
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      JS类和对象
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JS类和对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 直接定义一个对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 构造函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 使用Object创建对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 原型和原型链
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 继承
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-ecmascript-2015ecmascript-6es6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. ECMAScript 2015（ECMAScript 6，ES6）中的类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      异步编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="异步编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 传统异步
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 超时和间隔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4requestanimationframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.动画（requestAnimationFrame）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.自定义promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. async和await
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板字符串
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模板字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 带标签的模板字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 访问不经过转义的字符串
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.css-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    css入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.html-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    html入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.webpage-print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    打印html页面
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Graphics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Graphics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/32.unity-webgl-deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何部署unity生成的WebGL包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/33.rendering-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    渲染管线介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/75.games101-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Interview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Interview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/16.interview-bagu-golang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-golang
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/19.interview-bagu-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-c++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/52.interview-bagu-general/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-通用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    面试八股-分布式系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux 动态库so文件 动态加载
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    《linux就该这么学》笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/43.linux-common-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux常用命令
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/44.linux-common-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux常用配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/45.linux-net-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux网络配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux多线程编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/9.linux-core-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux core dump配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/15.remainder-and-modulo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    取余和取模的区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/31.linear-algebra-3B1B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    线性代数的几何意义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/63.affine-transformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    理解仿射变换
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/64.calculus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    微积分学习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Multi media
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Multi media
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-media/58.build_obs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编译obs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ffmpeg命令行例子
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Others
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/11.z3.time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    计算机中的时间
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/12.digital-signatures-certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数字签名, 数字证书以及加密通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蓝牙相关知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/40.bug-record/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一些开发过程中遇到的奇怪问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/38.bluetooth-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蓝牙调试工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/46.ssh-login-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ssh登陆脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/60.vscode-continue-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vscode continue AI插件配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/61.understand-scitools-keygen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scientific Toolworks Understand 7.0.x 破解机使用方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/build/21.makefile-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    makefile笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nginx
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            Nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nginx入门教程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nginx安装和配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Package manager
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            Package manager
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/package-manager/22.scl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    scl-rhel/centos软件运行环境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Windows
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/35.windows-devices-manage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows设备管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/39.windows-dump-debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows下调试dump文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用IFEO映像劫持+windbg在进程运行过程中调试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一些和windows开发相关的小知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/56.char-wchar-on-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    char和wchar_t在windows上如何正确使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-js-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. JS API分为两类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 怎样向页面添加js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.运算符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 数组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 条件和循环
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 事件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      调试
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dom-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOM API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      从服务器获取数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三方API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      绘图API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      音视频API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      客户端存储
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      JS类和对象
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JS类和对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 直接定义一个对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 构造函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 使用Object创建对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 原型和原型链
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 继承
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-ecmascript-2015ecmascript-6es6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. ECMAScript 2015（ECMAScript 6，ES6）中的类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      异步编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="异步编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 传统异步
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 超时和间隔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4requestanimationframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.动画（requestAnimationFrame）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.自定义promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. async和await
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板字符串
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模板字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 带标签的模板字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 访问不经过转义的字符串
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>js入门笔记</h1>
+
+<p>参考<a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps">MDN js教程</a></p>
+<h2 id="_1">基础知识</h2>
+<h3 id="1-js-api">1. JS API分为两类</h3>
+<ul>
+<li>浏览器API</li>
+<li>DOM API：DOM（Document Object Model，文档对象模型），DOM API能通过创建、移除和修改HTML，为页面动态应用新样式等手段来操作HTML和CSS</li>
+<li>从服务器获取数据的API：又称Ajax技术，例如XMLHttpRequest和Fetch API</li>
+<li>绘图API：Canvas和WebGL API</li>
+<li>音视频API：例如HTMLMediaElement，Web Audio API和WebRTC</li>
+<li>设备API：例如获取定位、系统通知、设备震动等</li>
+<li>客户端存储API：例如Web Storage API简单的键-值存储以及使用IndexedDB API的表数据存储。</li>
+<li>第三方API</li>
+<li>Twitter API、新浪微博API、谷歌地图API、高德地图API</li>
+</ul>
+<h3 id="2-js">2. 怎样向页面添加js</h3>
+<ul>
+<li>内部js<br />
+  在 <code>&lt;head&gt;</code> 标签结束前插入<code>&lt;script&gt;</code>标签</li>
+<li>外部js<br />
+<code>&lt;script src="script.js" async&gt;&lt;/script&gt;</code></li>
+<li>内联js（不好的做法）<br />
+<code>&lt;button onclick="createParagraph()"&gt;点我呀&lt;/button&gt;</code></li>
+</ul>
+<p>注意，html元素是按顺序加载的，为了防止js操作还未加载的元素，js要添加在页面最后。</p>
+<ul>
+<li><code>async</code>可以使js和html异步加载，互不影响<br />
+<code>&lt;script async src="js/vendor/jquery.js"&gt;&lt;/script&gt;</code></li>
+<li><code>defer</code>可以强行让js推迟到html加载完毕后再执行<br />
+<code>&lt;script defer src="js/vendor/jquery.js"&gt;&lt;/script&gt;</code></li>
+</ul>
+<h3 id="3">3. 注释</h3>
+<p><code>//</code>和<code>/* */</code>均可</p>
+<h3 id="4">4. 变量</h3>
+<p>如何定义变量：</p>
+<ul>
+<li><code>var</code>、<code>let</code>和<code>const</code></li>
+<li>不建议使用<code>var</code>，<code>var</code>可以多次声明同一个变量，还可以把变量的声明放在初始化后面，这会使程序很混乱</li>
+<li>变量提升（hoisting），是指所有的变量声明都会被移动到作用域的开头位置</li>
+<li><code>const</code>是常量</li>
+</ul>
+<p>变量类型：</p>
+<ul>
+<li>Number</li>
+<li>String，使用单引号或双引号定义，使用+连接字符串</li>
+<li>Boolean</li>
+<li>Array，<code>let myNameArray = ['Chris', 'Bob', 'Jim'];</code></li>
+<li>Object，<code>let dog = { name : 'Spot', breed : 'Dalmatian' };</code></li>
+<li>使用<code>typeof</code>查看变量类型，<code>typeof var</code>或<code>typeof(var)</code></li>
+</ul>
+<p>隐式类型转换（js是动态类型语言）：</p>
+<ul>
+<li><code>'front'+242</code>，<code>242</code>会被转换为<code>'242'</code></li>
+</ul>
+<p>显示类型转换</p>
+<ul>
+<li><code>let myString = '123'; let myNum = Number(myString);</code></li>
+<li><code>let myNum = 123; let myString = myNum.toString();</code></li>
+</ul>
+<h3 id="5">5.运算符</h3>
+<p>算数运算符：</p>
+<ul>
+<li>加、减、乘、除、取余：+、-、*、/、%</li>
+<li>幂：**，例如<code>2**5</code>表示2的5次幂，等同于<code>Math.pow(2, 5)</code></li>
+<li>自增和自减运算符：++、--，自增自减运算符和C/C++一样，也分前后</li>
+<li>赋值运算符：=、+=、-=、*=、/=</li>
+<li>比较运算符：===、!==、==、!=、&lt;、&gt;、&lt;=、&gt;=，==和!=只比较值，===和!==不仅比较值，还比较数据类型</li>
+</ul>
+<h3 id="6">6. 字符串</h3>
+<pre><code class="language-js">let browserType = 'mozilla';
+
+browserType.length;
+browserType[0];
+browserType.indexOf('zilla'); //结果是2，找不到返回-1
+
+//提取字符串
+browserType.slice(0,3);
+browserType.slice(2); //等于 browserType.slice(2,browserType.length);
+
+//大小写转换
+let radData = 'My NaMe Is MuD';
+radData.toLowerCase();
+radData.toUpperCase();
+
+//替换
+browserType = browserType.replace('moz','van');
+</code></pre>
+<h3 id="7">7. 数组</h3>
+<pre><code class="language-js">let myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+let myArray = myData.split(',');      //将字符串拆成数组
+let myNewString = myArray.join(',');  //相反的操作
+
+let dogNames = [&quot;Rocket&quot;,&quot;Flash&quot;,&quot;Bella&quot;,&quot;Slugger&quot;];
+dogNames.toString();  //相当于不带参数的join
+
+//在结尾添加删除
+myArray.push(xxx);
+myArray.pop();
+//在开头添加删除
+myArray.unshift(xxx);
+myArray.shift();
+</code></pre>
+<h3 id="8">8. 条件和循环</h3>
+<pre><code class="language-js">//条件
+if(cond) {} else{}
+switch(var){case val: break; default: break;}
+(condition)?run this code : run this code instead
+//循环
+for(let i = 0;i&lt;5;++i){}
+while(cond) {}
+do{}while(cond)
+</code></pre>
+<h3 id="9">9. 函数</h3>
+<pre><code class="language-js">//普通函数
+function myFunction(msgText, msgType) { return xxx;}
+//匿名函数
+function {}
+myButton.onclick = function() {alert('hello');}
+</code></pre>
+<h3 id="10">10. 事件</h3>
+<pre><code class="language-js">//设置监听器，btn是个按钮，check是个函数
+btn.addEventListener('click', check);
+btn.removeEventListener('click', bgChange);
+//设置click事件的处理函数
+button.onclick = function() {xxx}
+</code></pre>
+<p>设置监听器这种方法比使用<code>onclick</code>要好，我们可以使用<code>addEventListener</code>为同一个事件设置不同的处理函数，事件发生时这些函数都会执行，但使用<code>onclick</code>做不到这一点</p>
+<pre><code class="language-html">&lt;!-- 请勿在html元素属性中设置事件处理函数 --&gt;
+&lt;button onclick=&quot;bgChange()&quot;&gt;Press me&lt;/button&gt;
+</code></pre>
+<p><strong>事件对象</strong>，事件对象e会被自动传递给事件处理函数</p>
+<pre><code class="language-js">function bgChange(e) {
+  const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  e.target.style.backgroundColor = rndCol;
+  console.log(e);
+}
+
+btn.addEventListener('click', bgChange);
+</code></pre>
+<p>使用事件对象阻止事件默认行为，例如我们可以使用<code>preventDefault</code>阻止表单的提交，即使用户按下按钮，数据也不会被提交</p>
+<pre><code class="language-js">form.onsubmit = function(e) {
+  if (fname.value === '' || lname.value === '') {
+    e.preventDefault();
+    para.textContent = 'You need to fill in both names!';
+  }
+}
+</code></pre>
+<p><strong>事件冒泡和捕获</strong>，父元素和子元素都有可能注册了事件，现代浏览器在处理事件时，运行两个不同的阶段 - 捕获阶段和冒泡阶段。</p>
+<ul>
+<li>在捕获阶段：</li>
+<li>浏览器检查元素的最外层祖先<code>&lt;html&gt;</code>，是否在捕获阶段中注册了一个<code>onclick</code>事件处理程序，如果是，则运行它。</li>
+<li>然后，它移动到<code>&lt;html&gt;</code>中单击元素的下一个祖先元素，并执行相同的操作，然后是单击元素再下一个祖先元素，依此类推，直到到达实际点击的元素。</li>
+<li>在冒泡阶段，恰恰相反:</li>
+<li>浏览器检查实际点击的元素是否在冒泡阶段中注册了一个<code>onclick</code>事件处理程序，如果是，则运行它</li>
+<li>然后它移动到下一个直接的祖先元素，并做同样的事情，然后是下一个，等等，直到它到达<code>&lt;html&gt;</code>元素。</li>
+</ul>
+<p>在现代浏览器中，<strong>默认情况下，所有事件处理程序都在冒泡阶段进行注册</strong>。</p>
+<p>可以使用<code>stopPropagation</code>禁止向上冒泡，只处理当前事件</p>
+<pre><code class="language-js">video.onclick = function(e) {
+  e.stopPropagation();
+  video.play();
+};
+</code></pre>
+<p>还可以利用事件冒泡将所有子元素的事件都集中到父元素上进行处理。</p>
+<h2 id="_2">调试</h2>
+<p>按F12打开开发者工具，可以在控制台调试js。</p>
+<p>一些调试手段</p>
+<ul>
+<li>使用<code>typeof</code>获取变量类型</li>
+<li>返回值</li>
+<li>true/false</li>
+<li>undefined：表示变量不存在（没有定义）</li>
+<li>null</li>
+<li>0</li>
+<li>NaN</li>
+</ul>
+<h2 id="api">API</h2>
+<h3 id="dom-api">DOM API</h3>
+<p>web页面的主要部分（不是html标签）：</p>
+<ul>
+<li>window：代表浏览器上的标签页。可以用于获取窗口大小、绑定event handler等。</li>
+<li>navigator：代表浏览器在web上的状态和标识（即user agent），可以用来获取一些信息。</li>
+<li>document：实际的页面</li>
+</ul>
+<p>DOM术语：</p>
+<ul>
+<li>元素节点</li>
+<li>根节点、子节点、后代节点、父节点、祖先节点、兄弟节点</li>
+<li>文本节点</li>
+</ul>
+<p>可以用DOM API操作元素，但是最好不要用js操作元素，静态内容应该编写到html中，并且用js生成的内容不容易被爬虫抓取。</p>
+<p>以下是常见的元素操作：</p>
+<pre><code class="language-js">//=====
+//选择元素
+//=====
+//使用CSS选择器选择元素（选择第一个匹配到的元素）
+Document.querySelector()
+//选择每个匹配的元素，保存在一个array中
+Document.querySelectorAll()
+
+//旧方法：
+//根据ID选择元素
+Document.getElementById()
+//返回一个数组，包含页面中所有某类型节点。如&lt;p&gt;, &lt;a&gt;。元素类型作为参数传递给函数
+var elementRefArray = document.getElementsByTagName('p')
+
+//=====
+//节点操作
+//=====
+var para = document.createElement('p'); //创建
+sect.appendChild(para);  //放置
+
+var text = document.createTextNode('xxx'); //创建一个文本节点
+var linkPara = document.querySelector('p');//把文本节点放到&lt;p&gt;里面
+linkPara.appendChild(text); 
+
+sect.appendChild(linkPara); //直接移动一个段落
+Node.cloneNode(); //获得一个节点的副本
+Node.removeChild(xxx); //删除一个节点
+linkPara.parentNode.removeChild(linkPara);//删除自己
+</code></pre>
+<p>修改css样式的三种方法</p>
+<pre><code class="language-js">//方法1（不推荐）
+//使用 Document.stylesheets返回CSSStyleSheet数组，该数组保存了文档的所有样式表。
+let css = Document.stylesheets()
+
+//方法2
+//在元素内部添加内联样式，修改元素的style属性
+para.style.color = 'white';
+para.style.backgroundColor = 'black';
+
+//方法3
+//给元素指定css类
+para.setAttribute('class', 'highlight');
+</code></pre>
+<p>window api</p>
+<pre><code class="language-js">//获取窗口大小（这里获得的窗口大小只是当前大小，浏览器窗口缩放后窗口大小会发生变化）
+var WIDTH = window.innerWidth;
+var HEIGHT = window.innerHeight;
+//窗口调整大小事件
+window.onresize = function() {}
+</code></pre>
+<h3 id="_3">从服务器获取数据</h3>
+<p>这种技术又被称为Ajax（Asynchronous JavaScript and XML），</p>
+<p>XHR API</p>
+<pre><code class="language-js">let request = new XMLHttpRequest();
+request.open('GET', url);
+request.responseType = 'text';  //不必要，XHR默认返回文本
+request.onload = function() { //请求返回数据时的操作
+  poemDisplay.textContent = request.response;
+};
+request.send();
+</code></pre>
+<p>fecth API</p>
+<pre><code class="language-js">//response.text()函数会返回一个promise，解析结果文本字符串
+fetch(url).then(function(response) {
+  response.text().then(function(text) {
+    poemDisplay.textContent = text;
+  });
+});
+//另外一种更清晰易懂的写法
+fetch(url).then(function(response) {
+  return response.text()
+}).then(function(text) {
+  poemDisplay.textContent = text;
+});
+</code></pre>
+<h3 id="api_1">第三方API</h3>
+<p>第一种调用第三方API的方法</p>
+<pre><code class="language-html">&lt;!-- 先引入第三方js库 --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.google.com/maps/api/js?key=AIzaSyDDuGt0E5IEGkcE6ZfrKfUtE9Ko_de66pA&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  // 在js代码中直接使用第三方库中的js API
+&lt;/script&gt;
+</code></pre>
+<p>第三方API通常会检查调用者的权限，不同的API的权限系统不同，例如上面这个google地图的API，用户要实现在google地图的平台上申请一个密钥，作为引入js库的url参数。</p>
+<p>第二种：restful API</p>
+<p>通过发HTTP请求调用（XHR或fetch api）。</p>
+<h3 id="api_2">绘图API</h3>
+<p>canvas（html元素）、webGL</p>
+<h3 id="api_3">音视频API</h3>
+<p>video和audio元素允许我们把视频和音频嵌入到网页当中。</p>
+<p>HTMLMediaElement API（html5）</p>
+<h3 id="_4">客户端存储</h3>
+<p>cookies：传统方法，它们是网络上最早最常用的客户端存储形式。 它过时、存在各种安全问题，而且无法存储复杂数据，有更好的、更现代的方法可以在用户的计算机上存储种类更广泛的数据。其实cookie也没什么好说的，document.cookie一把梭就完事了。</p>
+<p>两种现代方法：</p>
+<ul>
+<li>Web Storage API：它提供了一种非常简单的语法，用于存储和检索较小的key-value数据项。</li>
+<li>IndexedDB API：它为浏览器提供了一个完整的数据库系统来存储复杂的数据。</li>
+<li>Cache API + Service Worker API：离线文件存储</li>
+</ul>
+<h2 id="js">JS类和对象</h2>
+<h3 id="1">1. 直接定义一个对象</h3>
+<pre><code class="language-js">//定义对象
+let person1 = {
+  age : 32,
+  name : {
+    first : 'Bob',
+    last : 'Smith'
+  },
+  greeting: function() {
+    alert('Hi! I\'m ' + this.name + '.');
+  }
+}
+//访问对象
+person.age
+person.interests[1]
+person.bio()
+person.name.first
+person.name.last
+//也可以这样访问，所以对象有时被称为关联数组
+person['age'] = 45
+person['name']['first']
+</code></pre>
+<h3 id="2">2. 构造函数</h3>
+<p>js可以通过构造函数给出类定义</p>
+<p>下面的代码虽然只定义了Person类的构造函数，但是可以在后面的代码中直接实例化一个Person对象。</p>
+<pre><code class="language-js">function Person(name) {
+    this.name = name;
+    this.greeting = function() {
+        alert('Hi! I\'m ' + this.name + '.');
+    };
+}
+
+var alice = new Person(&quot;Alice&quot;);
+alice.greeting();
+</code></pre>
+<h3 id="3-object">3. 使用Object创建对象</h3>
+<pre><code class="language-js">//创建一个空对象
+var person1 = new Object();
+
+person1.name = 'Chris';
+person1['age'] = 38;
+person1.greeting = function() {
+  alert('Hi! I\'m ' + this.name + '.');
+}
+
+//将对象作为参数传给object
+var person1 = new Object({
+  name : 'Chris',
+  age : 38,
+  greeting : function() {
+    alert('Hi! I\'m ' + this.name + '.');
+  }
+});
+
+//使用create方法创建现有类的对象
+var person2 = Object.create(person1);
+</code></pre>
+<h3 id="4_1">4. 原型和原型链</h3>
+<p>原型（prototype）和原型链（prototype chain）是与类和继承有关的概念。原型记录了类的继承关系和对象与对象的关系。</p>
+<p>前文提到，js通过函数定义一个类，可以通过<code>console.log( 函数名.prototype );</code>在控制台查看一个类的原型。</p>
+<p>下面<strong>查看函数<code>dosomething</code>的原型</strong>，可以看到浏览器默认将<code>dosomething</code>视为类的构造函数，并且这个类的原型是<code>Object</code>类。</p>
+<pre><code class="language-js">function doSomething(){}
+console.log( doSomething.prototype );
+//或
+var doSomething = function(){};
+console.log( doSomething.prototype );
+
+//控制台输出
+{
+    constructor: ƒ doSomething(),
+    __proto__: {
+        constructor: ƒ Object(),
+        hasOwnProperty: ƒ hasOwnProperty(),
+        isPrototypeOf: ƒ isPrototypeOf(),
+        propertyIsEnumerable: ƒ propertyIsEnumerable(),
+        toLocaleString: ƒ toLocaleString(),
+        toString: ƒ toString(),
+        valueOf: ƒ valueOf()
+    }
+}
+</code></pre>
+<p><strong>给<code>dosomething</code>的原型加属性</strong>，可以看到它的原型多了一个名为<code>foo</code>的属性</p>
+<pre><code class="language-js">function doSomething(){}
+doSomething.prototype.foo = &quot;bar&quot;;
+console.log( doSomething.prototype );
+
+//控制台输出
+{
+    foo: &quot;bar&quot;,
+    constructor: ƒ doSomething(),
+    __proto__: {
+        constructor: ƒ Object(),
+        hasOwnProperty: ƒ hasOwnProperty(),
+        isPrototypeOf: ƒ isPrototypeOf(),
+        propertyIsEnumerable: ƒ propertyIsEnumerable(),
+        toLocaleString: ƒ toLocaleString(),
+        toString: ƒ toString(),
+        valueOf: ƒ valueOf()
+    }
+}
+</code></pre>
+<p><strong>实例化一个<code>dosomething</code>的对象，并给这个对象增加一个属性</strong>，可以看到这个对象的原型是<code>dosomething</code></p>
+<pre><code class="language-js">function doSomething(){}
+doSomething.prototype.foo = &quot;bar&quot;;
+var doSomeInstancing = new doSomething();
+doSomeInstancing.prop = &quot;some value&quot;; //增加一个属性
+console.log( doSomeInstancing );
+
+//控制台输出
+{
+    prop: &quot;some value&quot;,
+    __proto__: {
+        foo: &quot;bar&quot;,
+        constructor: ƒ doSomething(),
+        __proto__: {
+            constructor: ƒ Object(),
+            hasOwnProperty: ƒ hasOwnProperty(),
+            isPrototypeOf: ƒ isPrototypeOf(),
+            propertyIsEnumerable: ƒ propertyIsEnumerable(),
+            toLocaleString: ƒ toLocaleString(),
+            toString: ƒ toString(),
+            valueOf: ƒ valueOf()
+        }
+    }
+}
+</code></pre>
+<p>如何查看原型</p>
+<pre><code class="language-js">//查看一个对象的原型
+//访问对象的__proto__属性会得到类的prototype。
+obj.__proto__;
+Object.getPrototypeOf(obj); 
+//查看一个类的原型
+doSomething.prototype
+</code></pre>
+<p>对象动态添加的成员不属于对象的原型的一部分，可以通过下面的方法动态修改类的原型。</p>
+<pre><code class="language-js">doSomething.prototype.foo = &quot;bar&quot;;
+</code></pre>
+<p>原型链是由原型构成的继承关系。<strong>只有原型中的成员会被继承</strong>（即只有定义在类的<code>prototype</code>属性中的成员才能被继承。）</p>
+<p>一般只在原型中定义方法，不会在原型中定义变量，因为这么做不太灵活。（可能只有在js里这么做不灵活- -、）。js中常见的对象定义模式是，<strong>在构造函数中定义属性（使用<code>this.xxx = xxx</code>）、在<code>prototype</code>属性上定义方法。如此，构造器只包含属性定义，而方法则分装在不同的代码块，代码更具可读性</strong>。</p>
+<h3 id="5_1">5. 继承</h3>
+<p>下面的定义了一个Teacher类，继承自Person类（<code>call</code>函数可以调用一个其他函数，并使用第一个参数指定函数运行在哪个对象上）。如果<code>call</code>函数只有第一个参数，则继承Person类的默认值。</p>
+<pre><code class="language-js">function Person(first, last, age, gender, interests) {
+  this.name = {
+    first,
+    last
+  };
+  this.age = age;
+  this.gender = gender;
+  this.interests = interests;
+};
+
+Person.prototype.greeting = function() {
+  alert('Hi! I\'m ' + this.name.first + '.');
+};
+
+function Teacher(first, last, age, gender, interests, subject) {
+  Person.call(this, first, last, age, gender, interests);
+
+  this.subject = subject;
+}
+</code></pre>
+<p>但是这种方法只是简单地将Person类的成员重新定义了一遍，并没有继承到Person类的原型（调用<code>Object.getOwnPropertyNames(Teacher.prototype)</code>只能看到Teacher的构造器，看不到<code>greeting</code>方法），<strong>下面的方法可以使Teacher继承到Person的原型</strong>。</p>
+<pre><code class="language-js">Teacher.prototype = Object.create(Person.prototype);
+//光执行上面那句不行，Teacher的构造器也是Person的，调用Object.getOwnPropertyNames(Teacher.prototype)会发现什么都没有
+//还得执行下面这句，把构造器换成Tercher自己的
+Teacher.prototype.constructor = Teacher;
+Object.defineProperty(Teacher.prototype, 'constructor', {
+    value: Teacher,
+    enumerable: false, // so that it does not appear in 'for in' loop
+    writable: true });
+</code></pre>
+<h3 id="6-ecmascript-2015ecmascript-6es6">6. ECMAScript 2015（ECMAScript 6，ES6）中的类</h3>
+<p>ES6提供类类似C++和Java的类语法（即class）</p>
+<pre><code class="language-js">class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
+  greeting() {
+    console.log(`Hi! I'm ${this.name.first}`);
+  };
+
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+</code></pre>
+<p>新的继承语法</p>
+<pre><code class="language-js">class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    //必须要先调用super（即调用父类的构造函数），否则this不会被自动初始化
+    super(first, last, age, gender, interests);
+
+    this.subject = subject;
+    this.grade = grade;
+  }
+  //定义通过getter和setter使得成员能被访问到
+  //（不定义也可以）
+  get subject() {
+    return this._subject;
+  }
+
+  set subject(newSubject) {
+    this._subject = newSubject;
+  }
+}
+</code></pre>
+<h3 id="7-json">7. JSON</h3>
+<p>JSON是一种数据格式。并可以直接被视为一个js对象</p>
+<pre><code class="language-json">//json结构
+{
+  &quot;squadName&quot; : &quot;Super hero squad&quot;,
+  &quot;homeTown&quot; : &quot;Metro City&quot;,
+  &quot;formed&quot; : 2016,
+  &quot;secretBase&quot; : &quot;Super tower&quot;,
+  &quot;active&quot; : true,
+  &quot;members&quot; : [
+    {
+      &quot;name&quot; : &quot;Molecule Man&quot;,
+      &quot;age&quot; : 29,
+      &quot;secretIdentity&quot; : &quot;Dan Jukes&quot;,
+      &quot;powers&quot; : [
+        &quot;Radiation resistance&quot;,
+        &quot;Turning tiny&quot;,
+        &quot;Radiation blast&quot;
+      ]
+    },
+    {
+      &quot;name&quot; : &quot;Madame Uppercut&quot;,
+      &quot;age&quot; : 39,
+      &quot;secretIdentity&quot; : &quot;Jane Wilson&quot;,
+      &quot;powers&quot; : [
+        &quot;Million tonne punch&quot;,
+        &quot;Damage resistance&quot;,
+        &quot;Superhuman reflexes&quot;
+      ]
+    }
+}
+</code></pre>
+<p>使用代码向服务器请求资源</p>
+<pre><code class="language-js">var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+//XMLHttpRequest（简称XHR），可以通过该对象向服务器请求资源文件
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';  //设定响应类型为json
+request.send();
+request.onload = function() {
+  var superHeroes = request.response; //设置响应类型为json以后，superHeros直接就是一个json
+  ...
+}
+</code></pre>
+<p>如果发送请求前设置了返回类型为text（即<code>request.responseType = 'text';</code>），要使用<code>parse</code>对response数据反序列化。使用以下方法序列化和反序列化json对象。</p>
+<pre><code class="language-js">//以文本字符串形式接受JSON对象作为参数，并返回相应的对象。
+parse()
+//接收一个对象作为参数，返回一个对应的JSON字符串。
+stringify()
+</code></pre>
+<h2 id="_5">异步编程</h2>
+<p>一些基本概念：同步/异步、阻塞/非阻塞、线程、进程。</p>
+<p>js在浏览器中运行时是单线程的。</p>
+<p>我们可以通过使用Web Workers API把一些任务交给一个名为worker的单独的线程，它是一个独立于主线程的后台线程。</p>
+<p>web workers的局限性是不能访问DOM，即不能更新UI。并且web worker只是一种非常粗糙的机制，并不能支持真正的异步编程，</p>
+<h3 id="1_1">1. 传统异步</h3>
+<p>传统的js使用回调函数实现异步，监听器就是一个js异步的例子，给监听器提供事件对应的回调函数（callback），事件发生后这个回调函数就会被调用。</p>
+<pre><code class="language-js">btn.addEventListener('click', () =&gt; {
+  alert('You clicked me!');
+  let pElem = document.createElement('p');
+  pElem.textContent = 'This is a newly-added paragraph.';
+  document.body.appendChild(pElem);
+});
+</code></pre>
+<p>例如使用<code>XMLHttpRequest</code>配合回调函数加载资源</p>
+<pre><code class="language-js">function loadAsset(url, type, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', url);
+  xhr.responseType = type;
+
+  xhr.onload = function() {
+    callback(xhr.response);
+  };
+
+  xhr.send();
+}
+
+function displayImage(blob) {
+  let objectURL = URL.createObjectURL(blob);
+
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+}
+
+loadAsset('coffee.jpg', 'blob', displayImage);
+</code></pre>
+<h3 id="2-promise">2. promise</h3>
+<p>promise是一种新式的js异步代码。例如，<code>fetch()</code>API是一个现代的，更高效的<code>XMLHttpRequest</code>。</p>
+<pre><code class="language-js">fetch('products.json').then(function(response) {
+  return response.json();
+}).then(function(json) {
+  products = json;
+  initialize();
+}).catch(function(err) {
+  console.log('Fetch problem: ' + err.message);
+}).finally(() =&gt; {
+  runFinalCode();
+});
+</code></pre>
+<ul>
+<li>promise：<code>fetch()</code>会返回一个promise，promise是一个表示异步操作成功或失败的对象。</li>
+<li><code>then()</code>：<code>then()</code>需要一个回调函数，当前一个操作成功时才会执行回调函数，前一个操作的成功结果会作为回调函数的输入。每个<code>then()</code>返回一个promise。</li>
+<li><code>catch()</code>：<code>catch()</code>用来处理错误（同步的<code>try...catch</code>不能与promise一起工作）</li>
+<li><code>finally()</code>：不管promise成功或失败最终都会执行的代码</li>
+</ul>
+<p>promise相比于传统的callback异步有如下好处：</p>
+<ul>
+<li>promise能够很容易将连续的几个异步操作链接起来，简化程序逻辑，而callback异步会造成“回调地狱”。</li>
+<li>promise总是按照顺序调用</li>
+<li>错误能够集中处理</li>
+</ul>
+<p>进一步理解promise：</p>
+<pre><code class="language-js">let promise = fetch('coffee.jpg');
+</code></pre>
+<p>此时的promise的官方术语叫作pending。当fetch操作成功完成时，会将response作为参数传递给then块的回调函数。</p>
+<pre><code class="language-js">// Fetch promises 不会产生 404 或 500错误，只有在产生像网路故障的情况时才会不工作。我们需要判断 response.ok ，如果是 false，抛出错误
+
+let promise2 = promise.then(response =&gt; {
+  if (!response.ok) {
+    //此处不太懂，这里抛出的异常能直接在catch里捕获吗？
+    throw new Error(`HTTP error! status: ${response.status}`);
+  } else {
+    return response.blob();
+  }
+});
+</code></pre>
+<p><strong>promise总结</strong>：</p>
+<ul>
+<li>创建promise时，它既不是成功也不是失败状态。这个状态叫作pending（待定）。</li>
+<li>当promise返回时，称为 resolved（已解决）.</li>
+<li><strong>一个成功resolved的promise称为fullfilled（实现）</strong>。它返回一个值，可以通过将.then()块链接到promise链的末尾来访问该值。then()块中的执行程序函数将包含promise的返回值。</li>
+<li><strong>一个不成功resolved的promise被称为rejected（拒绝）</strong>。它返回一个原因（reason），一条错误消息，说明为什么拒绝promise。可以通过将.catch()块链接到promise链的末尾来访问此原因。</li>
+</ul>
+<p>响应多个promise。<code>[a,b,c]</code>一个是promise数组，有一个promise被拒绝，then就不能执行。传递给回调函数的参数<code>values</code>也是一个数组，由各个promise的返回数据组成。</p>
+<pre><code class="language-js">let a = fetch(url1);
+let b = fetch(url2);
+let c = fetch(url3);
+
+Promise.all([a, b, c]).then(values =&gt; {
+  ...
+});
+</code></pre>
+<h3 id="3_1">3. 超时和间隔</h3>
+<p><strong>下面这些函数设置的异步代码实际上在主线程上运行</strong>（在其指定的计时器过去之后）。</p>
+<ul>
+<li><code>let myGreeting = setTimeout(fn, 5, ...)</code>：在指定的时间后执行一段代码。因为是在主线程内执行，因此实际执行间隔可能比指定时间稍长一点，直到主线程调用栈为空。</li>
+<li>参数1：函数</li>
+<li>参数2：时间间隔（ms）</li>
+<li>更多参数：传递给函数的参数</li>
+<li>返回：定时器的标识</li>
+<li><code>clearTimeout(myGreeting)</code>：清除定时</li>
+<li><code>const myInterval = setInterval(displayTime, 1000, ...)</code>：以固定的时间间隔，重复运行一段代码。<strong>时间间隔是从函数开始执行计算的</strong>，即时间间隔会将函数本身的执行时间也算进去。如果想指定函数结束执行到下次开始执行的时间，可以通过递归调用<code>setTimeout</code>实现。</li>
+<li><code>clearInterval(myInterval)</code></li>
+<li><code>requestAnimationFrame()</code>：<code>setInterval</code>的现代版本。在浏览器下一次重新绘制显示之前执行指定的代码块，从而允许动画在适当的帧率下运行，而不管它在什么环境中运行。它是针对<code>setInterval</code>遇到的问题创建的，比如<code>setInterval</code>并不是针对设备优化的帧率运行，有时会丢帧。还有即使该选项卡不是活动的选项卡或动画滚出页面等问题 。</li>
+</ul>
+<h3 id="4requestanimationframe">4.动画（requestAnimationFrame）</h3>
+<p>绘制动画帧</p>
+<pre><code class="language-js">//例1
+function draw() {
+   // Drawing code goes here
+   requestAnimationFrame(draw);
+}
+
+draw();
+
+//例2 requestAnimationFrame会在调用函数的时候将调用时间（timestamp）作为参数传入
+let startTime = null;
+
+function draw(timestamp) {
+    if(!startTime) {
+      startTime = timestamp;
+    }
+
+   currentTime = timestamp - startTime;
+
+   // Do something based on current time
+
+   requestAnimationFrame(draw);
+}
+
+draw(xxx);
+</code></pre>
+<p>撤销</p>
+<pre><code class="language-js">cancelAnimationFrame(xxx);
+</code></pre>
+<h3 id="5promise">5.自定义promise</h3>
+<p>下面这个例子用promise包装了一个setTimeout，resolve和reject是两个函数，分别用来处理和拒绝promise。（resolve和reject由promise负责实现，promise调用这个函数时将resolve和reject作为参数传入。）</p>
+<p><strong>resolve函数的作用是将其参数作为promise实现（fullfilled）时的输出，并将这个输出作为then块的参数，reject的作用是将其参数作为promise拒绝（rejected）时的输出，并将这个输出作为catch块的参数</strong>。</p>
+<pre><code class="language-js">let timeoutPromise = new Promise((resolve, reject) =&gt; {
+  setTimeout(function(){
+    resolve('Success!');
+  }, 2000);
+});
+
+timeoutPromise
+.then((message) =&gt; {
+   alert(message);
+})
+//或
+timeoutPromise.then(alert); //第一种种写法本身有点多此一举，教程里面为了体现出promise能够给then的回调函数传递一个参数才在alert外面又加了一层函数定义
+</code></pre>
+<p>再封装一下，使其能够像调用fetch()那样调用</p>
+<pre><code class="language-js">function timeoutPromise(message, interval) {
+  return new Promise((resolve, reject) =&gt; {
+    if (message === '' || typeof message !== 'string') {
+      reject('Message is empty or not a string');
+    } else if (interval &lt; 0 || typeof interval !== 'number') {
+      reject('Interval is negative or not a number');
+    } else {
+      setTimeout(function(){
+        resolve(message);
+      }, interval);
+    }
+  });
+};
+</code></pre>
+<p>一个真实的promise异步例子（不是用setTimeout模拟的）</p>
+<pre><code class="language-js">//具体的处理工作并不由promise完成，当request成功时，调用request.onsuccess()就能完成promise的实现工作。
+function promisifyRequest(request) {
+  return new Promise(function(resolve, reject) {
+    request.onsuccess = function() {
+      resolve(request.result);
+    };
+
+    request.onerror = function() {
+      reject(request.error);
+    };
+  });
+} 
+</code></pre>
+<h3 id="6-asyncawait">6. async和await</h3>
+<p>这是上面的promise写法</p>
+<pre><code class="language-js">fetch('coffee.jpg')
+.then(response =&gt; response.blob())
+.then(myBlob =&gt; {
+  let objectURL = URL.createObjectURL(myBlob);
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+})
+.catch(e =&gt; {
+  console.log('There has been a problem with your fetch operation: ' + e.message);
+});
+</code></pre>
+<p>使用async和await重新编写上面的代码，可以去掉then，使代码更容易理解</p>
+<pre><code class="language-js">async function myFetch() {
+  let response = await fetch('coffee.jpg');
+  let myBlob = await response.blob();
+
+  let objectURL = URL.createObjectURL(myBlob);
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+}
+
+myFetch()
+.catch(e =&gt; {
+  console.log('There has been a problem with your fetch operation: ' + e.message);
+});
+</code></pre>
+<p>混合使用async/await和promise</p>
+<pre><code class="language-js">async function myFetch() {
+  let response = await fetch('coffee.jpg');
+  return await response.blob(); //这里可能写错了，这里不应该带await
+}
+
+myFetch().then((blob) =&gt; {
+  let objectURL = URL.createObjectURL(blob);
+  let image = document.createElement('img');
+  image.src = objectURL;
+  document.body.appendChild(image);
+});
+</code></pre>
+<p>async/await可以和同步的try...catch一起使用</p>
+<pre><code class="language-js">async function myFetch() {
+  try {
+    let response = await fetch('coffee.jpg');
+    let myBlob = await response.blob();
+
+    let objectURL = URL.createObjectURL(myBlob);
+    let image = document.createElement('img');
+    image.src = objectURL;
+    document.body.appendChild(image);
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+myFetch();
+</code></pre>
+<p>async/await也可以和promise.all一起使用</p>
+<pre><code class="language-js">async function displayContent() {
+  let coffee = fetchAndDecode('coffee.jpg', 'blob');
+  let tea = fetchAndDecode('tea.jpg', 'blob');
+  let description = fetchAndDecode('description.txt', 'text');
+
+  let values = await Promise.all([coffee, tea, description]);
+  ...
+}
+</code></pre>
+<p><strong>不带await时返回的是pending状态的promise，带await时返回的是fullfilled状态的promise</strong>。</p>
+<p><strong>async/await的缺陷</strong>：await关键字会阻塞后面的代码，promise只能一个一个处理。解决办法，先返回几个pending状态的promise，让它们先同时开始处理，然后再集中await，例如</p>
+<pre><code class="language-js">//将这种写法
+async function timeTest() {
+  await timeoutPromise(3000);
+  await timeoutPromise(3000);
+  await timeoutPromise(3000);
+}
+
+//改为
+async function timeTest() {
+  const timeoutPromise1 = timeoutPromise(3000);
+  const timeoutPromise2 = timeoutPromise(3000);
+  const timeoutPromise3 = timeoutPromise(3000);
+
+  await timeoutPromise1;
+  await timeoutPromise2;
+  await timeoutPromise3;
+}
+</code></pre>
+<p>将类成员定义为async异步函数</p>
+<pre><code class="language-js">class Person {
+  //直接返回一个fullfilled状态的promise
+  async greeting() {
+    return await Promise.resolve(`Hi! I'm ${this.name.first}`);
+  };
+  ...
+
+//使用方法
+let han = new Person();
+han.greeting().then(console.log);
+</code></pre>
+<h2 id="_6">模板字符串</h2>
+<p>参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals</a></p>
+<p>模板字符串（Template literals、Template strings），字符串中可以插入表达式。</p>
+<p>语法：模板字符串使用反引号`<code>包裹字符串，使用</code>${expression}`插入表达式。可以在表达式中嵌套模板字符串。</p>
+<p>模板字符串中可以直接打回车换行，而不用<code>\n</code>，例如下面的例子最终输出的字符串中是带有换行的</p>
+<pre><code class="language-js">console.log(`string text line 1
+string text line 2`);
+</code></pre>
+<h3 id="1_2">1. 带标签的模板字符串</h3>
+<p>带有<code>mytag</code>标签的字符串，实际上是调用了模板函数<code>myTag</code>，它的第一个参数是一个字符串数组，原始字符串被<code>${}</code>分割后剩下的一个个字符串构成了这个数组</p>
+<pre><code class="language-js">var person = 'Mike';
+var age = 28;
+
+function myTag(strings, personExp, ageExp) {
+
+  var str0 = strings[0]; // &quot;that &quot;
+  var str1 = strings[1]; // &quot; is a &quot;
+
+  // There is technically a string after
+  // the final expression (in our example),
+  // but it is empty (&quot;&quot;), so disregard.
+  // var str2 = strings[2];
+
+  var ageStr;
+  if (ageExp &gt; 99){
+    ageStr = 'centenarian';
+  } else {
+    ageStr = 'youngster';
+  }
+
+  return str0 + personExp + str1 + ageStr;
+
+}
+
+var output = myTag`that ${ person } is a ${ age }`;
+
+console.log(output);
+// that Mike is a youngster
+</code></pre>
+<h3 id="2_1">2. 访问不经过转义的字符串</h3>
+<pre><code class="language-js">//方法1：使用模板函数第一个参数的raw属性
+function tag(strings) {
+  console.log(strings.raw[0]);
+}
+
+tag`string text line 1 \n string text line 2`;
+//方法2：调用String.raw方法
+var str = String.raw`Hi\n${2+3}!`;
+// &quot;Hi\n5!&quot;
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ©2020-2025 shiwj | 津ICP备2020010292号-1
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
