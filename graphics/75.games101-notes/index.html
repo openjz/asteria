@@ -1857,6 +1857,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#projection-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projection transformation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orthographic-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      正交投影 (Orthographic projection)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perspective-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      透视投影 (Perspective projection)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3264,6 +3291,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#projection-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projection transformation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orthographic-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      正交投影 (Orthographic projection)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perspective-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      透视投影 (Perspective projection)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3428,6 +3482,7 @@ y/w\\
 \quad w\neq 0
 \]</div>
 <p>其实就是两个点相加的结果是这两个点的中点</p>
+<p>这也意味着，我们对齐次坐标下的一个点的4个维度都乘以一个数k，它和原来的点是同一个点，后面的透视投影会用到这个性质。</p>
 <p><strong>仿射变换（Affine Transformation）</strong></p>
 <p>上面提到的线性变换+平移（Translation）的组合叫做仿射变换</p>
 <div class="arithmatex">\[
@@ -3558,9 +3613,11 @@ R_q(\vec{v}) = q\,\vec{v}\,q^{-1}
 <p>主要内容：</p>
 <ul>
 <li>View (视图) / Camera transformation</li>
-<li>Projection (投影) transformation</li>
+<li>Projection (投影) transformation<ul>
 <li>Orthographic (正交) projection</li>
 <li>Perspective (透视) projection</li>
+</ul>
+</li>
 </ul>
 <p>渲染一个场景总共需要3步</p>
 <ol>
@@ -3582,6 +3639,9 @@ R_q(\vec{v}) = q\,\vec{v}\,q^{-1}
 <li>相机永远看向z轴负方向（<span class="arithmatex">\(-\hat{z}\)</span>）</li>
 <li>相机的上方永远是y轴正方向（<span class="arithmatex">\(\hat{y}\)</span>）</li>
 </ul>
+<p>这里为什么是看向z轴负方向呢？因为我们使用的是右手坐标系，z轴正方向是从屏幕里指向屏幕外，而我们希望相机是看向屏幕里的方向，所以相机看向z轴负方向。</p>
+<p>很多图形api或者3d软件使用的是左手坐标系，这时相机看向z轴正方向。</p>
+<p>左手坐标系有个坏处，x叉乘y等于-z，这会让人很迷惑，本课程使用右手坐标系。</p>
 <p><strong>把相机从当前位置移动到原点，并且让它看向z轴负方向，这个过程叫做 View / Camera transformation</strong></p>
 <div class="arithmatex">\[
 M_{\mathrm{view}} = R_{\mathrm{view}}\,T_{\mathrm{view}}
@@ -3619,6 +3679,72 @@ x_{-\hat{g}} &amp; y_{-\hat{g}} &amp; z_{-\hat{g}} &amp; 0 \\
 \end{bmatrix}
 \]</div>
 <p><strong>这个过程也叫 Model / View transformation，因为相机和物体之间的关系不能变，场景中所有的物体也要做这个变换</strong>。</p>
+<h3 id="projection-transformation">Projection transformation</h3>
+<ul>
+<li>Orthographic (正交) projection</li>
+<li>Perspective (透视) projection</li>
+</ul>
+<p>正交投影和透视投影的区别：</p>
+<p><img alt="/img/games101-notes/orthographic-perspective-1.png" src="/img/games101-notes/orthographic-perspective-1.png" /></p>
+<p>对正交投影来说，无论摄像机离得有多远，投影的物体大小都不会变：</p>
+<p><img alt="/img/games101-notes/orthographic-perspective-2.png" src="/img/games101-notes/orthographic-perspective-2.png" /></p>
+<h3 id="orthographic-projection">正交投影 (Orthographic projection)</h3>
+<ol>
+<li>先做View/Camera transformation，把场景放到摄像机前面</li>
+<li>丢掉z坐标</li>
+<li>将结果矩形缩放到<span class="arithmatex">\([-1,1]\)</span>范围内</li>
+</ol>
+<p>一般来讲，正交投影是要把任意一个立方体变换为一个正则、规范、标准的（Canonical）立方体（<span class="arithmatex">\([-1,1]^3\)</span>）, 先做平移变换，然后缩放变换</p>
+<p><img alt="/img/games101-notes/orthographic-projection.png" src="/img/games101-notes/orthographic-projection.png" /></p>
+<p>假设我们要把一个立方体 <span class="arithmatex">\([l,r]\times[b,t]\times[n,f]\)</span> 变换为 <span class="arithmatex">\([-1,1]^3\)</span>，其中 <span class="arithmatex">\(l\)</span> 是 left，<span class="arithmatex">\(r\)</span> 是 right，<span class="arithmatex">\(b\)</span> 是 bottom，<span class="arithmatex">\(t\)</span> 是 top，<span class="arithmatex">\(n\)</span> 是 near，<span class="arithmatex">\(f\)</span> 是 far</p>
+<p>变换矩阵为：</p>
+<div class="arithmatex">\[
+M_{\mathrm{ortho}} =
+\begin{bmatrix}
+\frac{2}{r-l} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \frac{2}{t-b} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \frac{2}{n-f} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; -\frac{r+l}{2} \\
+0 &amp; 1 &amp; 0 &amp; -\frac{t+b}{2} \\
+0 &amp; 0 &amp; 1 &amp; -\frac{n+f}{2} \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</div>
+<h3 id="perspective-projection">透视投影 (Perspective projection)</h3>
+<p>透视投影中，相机在原点，相机和视角围成一个四棱锥体（Frustum），相机前面有两个平面，近景平面和远景平面，近景平面和远景平面分别截出这个四棱锥体的顶部和底部。</p>
+<p>透视投影分为两步：</p>
+<ol>
+<li>先把四棱锥体（Frustum）挤压成一个立方体（Cuboid），对应的变化写作 <span class="arithmatex">\(M_{\mathrm{persp}\to\mathrm{ortho}}\)</span></li>
+<li>然后对这个立方体做一次正交投影 <span class="arithmatex">\(M_{\mathrm{ortho}}\)</span></li>
+</ol>
+<p>最终，完整的透视投影为 <span class="arithmatex">\(M_{\mathrm{persp}} = M_{\mathrm{ortho}}\,M_{\mathrm{persp}\to\mathrm{ortho}}\)</span></p>
+<p>下图是透视投影挤压过程的示意图，其中，<span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(f\)</span> 分别表示近景平面和远景平面的 z 坐标</p>
+<p><img alt="perspective-projection.png" src="/img/games101-notes/perspective-projection.png" /></p>
+<p>挤压过程中，近景平面的点不变，远景平面的点 z 坐标不变，尺寸变为和近景平面一样的大小</p>
+<p>四棱锥远景平面和近景平面的 y 坐标呈现这样的关系：</p>
+<p><img alt="persp2ortho.png" src="/img/games101-notes/persp2ortho.png" /></p>
+<p>x 坐标同理。</p>
+<p>经过一顿推导，得到挤压矩阵：</p>
+<div class="arithmatex">\[
+M_{\mathrm{persp}\to\mathrm{ortho}} =
+\begin{pmatrix}
+n &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; n &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; n+f &amp; -nf \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
+\]</div>
+<p>Frustum这个四棱锥体又叫视锥，由垂直方向的Fov（Field of View，视野角度）和宽高比（Aspect Ratio）决定，用FovY表示垂直方向的Fov。</p>
+<p>用 <span class="arithmatex">\([l,r]\times[b,t]\)</span> 来表示近景平面，<span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(f\)</span> 仍然表示近景平面和远景平面的 z 坐标，那么FovY 和 aspect 与 <span class="arithmatex">\(l,r,b,t,n,f\)</span> 的关系为：</p>
+<div class="arithmatex">\[
+\tan\!\left(\frac{\mathrm{FovY}}{2}\right) = \frac{t}{\lvert n\rvert}
+\]</div>
+<div class="arithmatex">\[
+\mathrm{aspect} = \frac{r}{t}
+\]</div>
 
 
 
