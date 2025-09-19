@@ -2040,6 +2040,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      物体可见性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="物体可见性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z-Buffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      插值
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3630,6 +3672,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      物体可见性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="物体可见性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z-Buffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      插值
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4009,7 +4093,7 @@ x_{-\hat{g}} &amp; y_{-\hat{g}} &amp; z_{-\hat{g}} &amp; 0 \\
 <p>一般来讲，正交投影是要把任意一个立方体变换为一个正则、规范、标准的（Canonical）立方体（<span class="arithmatex">\([-1,1]^3\)</span>）, 先做平移变换，然后缩放变换</p>
 <p><img alt="/img/games101-notes/orthographic-projection.png" src="/img/games101-notes/orthographic-projection.png" /></p>
 <p>假设我们要把一个立方体 <span class="arithmatex">\([l,r]\times[b,t]\times[n,f]\)</span> 变换为 <span class="arithmatex">\([-1,1]^3\)</span>，其中 <span class="arithmatex">\(l\)</span> 是 left，<span class="arithmatex">\(r\)</span> 是 right，<span class="arithmatex">\(b\)</span> 是 bottom，<span class="arithmatex">\(t\)</span> 是 top，<span class="arithmatex">\(n\)</span> 是 near，<span class="arithmatex">\(f\)</span> 是 far</p>
-<p>变换矩阵为：</p>
+<p>变换矩阵为（注意，这里虽然视锥在-z轴一侧，但是 n 和 f 都是正值）：</p>
 <div class="arithmatex">\[
 M_{\mathrm{ortho}} =
 \begin{bmatrix}
@@ -4084,6 +4168,8 @@ M_{\mathrm{viewport}} =
 <p>下图是一个采样的例子，判断每个像素的中心是否在三角形内，这里要注意，像素的坐标是以像素的左下角为准，而采样是以像素的中心为准。</p>
 <p><img alt="sample.png" src="/img/games101-notes/sample.png" /></p>
 <p>Bounding Box（边界框）是指包含三角形的最小矩形，可以用来加速采样过程。意思是，只对边界框内的像素做采样，边界框外的像素不做采样。</p>
+<p>判断像素是否在三角形内部这个过程也叫覆盖测试（Coverage Test）。</p>
+<p>直线的采样和绘制可以参考（Bresenham直线绘制算法，代码可参考https://stackoverflow.com/a/16405254）</p>
 <h2 id="anti-aliasing">抗锯齿/反走样（Anti-aliasing）</h2>
 <p>采样错误是发生在给像素填色这个过程中，总有一些像素位于三角形的边缘，如果我们不做任何额外处理，这些像素要么填色，要么不填色，这就会造成锯齿现象。</p>
 <h3 id="sampling-error">采样错误（Sampling Error）</h3>
@@ -4146,6 +4232,46 @@ M_{\mathrm{viewport}} =
 <li>DLSS（Deep Learning Super Sampling）</li>
 </ul>
 </li>
+</ul>
+<h3 id="_13">总结</h3>
+<p>抗锯齿本质上是对像素颜色的调整，目的是让图像看起来更平滑，并不涉及坐标的处理。</p>
+<p>滤波方法是要将图像模糊化，降低图像的高频部分，而图像的频率是由图像的亮度（灰度）变换决定的，从这个角度来看，抗锯齿也仅仅是对图像颜色的处理。</p>
+<h2 id="_14">物体可见性</h2>
+<p>画家算法（Painter's Algorithm），从远道近画，近处的物体覆盖远处的物体。</p>
+<p>画家算法的问题是很多情况很难说清楚哪个物体在前，哪个物体在后，例如两个三角形相交的情况。</p>
+<h3 id="z-buffer">Z-Buffer</h3>
+<p>深度缓存（Depth Buffer），也叫z-buffer，给每个像素增加一个深度值，用z-buffer记录当前已绘制像素的深度值，新绘制的像素如果深度值更小，就覆盖当前像素，否则丢弃。</p>
+<p>利用深度缓存判断物体遮挡这个过程也叫深度测试（Depth Testing）。</p>
+<p>主要流程：</p>
+<ol>
+<li>先把深度缓存初始化为无限远</li>
+<li>对每个三角形做光栅化</li>
+<li>对每个像素做采样</li>
+<li>计算采样点的深度值</li>
+<li>如果深度值小于当前像素的深度值，就更新像素颜色和深度值，否则丢弃</li>
+</ol>
+<p>这里没讲多个三角形深度相同的情况如何处理。</p>
+<h3 id="_15">插值</h3>
+<p>由于我们只知道三角形顶点的深度值，如何计算三角形内部任意一点的深度值呢？这就需要插值。</p>
+<p>可以使用重心坐标插值（Barycentric Coordinates Interpolation）</p>
+<ul>
+<li>对屏幕空间三角形 ABC 内任意点 P，用三个权重 α, β, γ 表示<ul>
+<li>P = αA + βB + γC，且 α + β + γ = 1</li>
+<li>α, β, γ 分别等于子三角形 PBC、PCA、PAB 的面积占比（带符号面积）</li>
+</ul>
+</li>
+<li>这些权重有两个核心用途：<ul>
+<li>覆盖测试：若 α, β, γ 全同号（通常 ≥ 0），P 在三角形内或边上。</li>
+<li>属性插值（颜色、深度、法线、UV 等）：attr(P) = α·attr(A) + β·attr(B) + γ·attr(C)。</li>
+</ul>
+</li>
+<li>深度插值<br />
+  得到 α, β, γ 后，可以求z插值，这里<span class="arithmatex">\(A_w\)</span>、<span class="arithmatex">\(B_w\)</span>、<span class="arithmatex">\(C_w\)</span>都是齐次坐标：
+  $$
+  z_{\text{插值}}
+  = \frac{\alpha \frac{A_z}{A_w} + \beta \frac{B_z}{B_w} + \gamma \frac{C_z}{C_w}}
+        {\alpha \frac{1}{A_w} + \beta \frac{1}{B_w} + \gamma \frac{1}{C_w}}
+  $$</li>
 </ul>
 
 
