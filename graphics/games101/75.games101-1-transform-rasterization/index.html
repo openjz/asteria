@@ -8,25 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://blog.shiwj.com/graphics/75.games101-notes/">
+        <link rel="canonical" href="https://blog.shiwj.com/graphics/games101/75.games101-1-transform-rasterization/">
       
       
-        <link rel="prev" href="../33.rendering-pipeline/">
+        <link rel="prev" href="../../33.rendering-pipeline/">
       
       
-        <link rel="next" href="../../interview/16.interview-bagu-golang/">
+        <link rel="next" href="../games101-2-shading/">
       
       
-      <link rel="icon" href="../../img/avatar.png">
+      <link rel="icon" href="../../../img/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
-        <title>games101笔记 - Asteria</title>
+        <title>games101-1-变换和光栅化 - Asteria</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
       
       
 
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
+    <a href="../../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              games101笔记
+              games101-1-变换和光栅化
             
           </span>
         </div>
@@ -179,7 +179,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -200,7 +200,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../foundation/11.z2.go-gopl/" class="md-tabs__link">
+        <a href="../../../foundation/11.z2.go-gopl/" class="md-tabs__link">
           
   
   
@@ -220,7 +220,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
+        <a href="../../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
           
   
   
@@ -242,7 +242,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../32.unity-webgl-deploy/" class="md-tabs__link">
+        <a href="../../32.unity-webgl-deploy/" class="md-tabs__link">
           
   
   
@@ -262,7 +262,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../interview/16.interview-bagu-golang/" class="md-tabs__link">
+        <a href="../../../interview/16.interview-bagu-golang/" class="md-tabs__link">
           
   
   
@@ -282,7 +282,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
+        <a href="../../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
           
   
   
@@ -302,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../math/15.remainder-and-modulo/" class="md-tabs__link">
+        <a href="../../../math/15.remainder-and-modulo/" class="md-tabs__link">
           
   
   
@@ -322,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../multi-media/58.build_obs/" class="md-tabs__link">
+        <a href="../../../multi-media/58.build_obs/" class="md-tabs__link">
           
   
   
@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../others/11.z3.time/" class="md-tabs__link">
+        <a href="../../../others/11.z3.time/" class="md-tabs__link">
           
   
   
@@ -362,7 +362,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../tools/38.bluetooth-tools/" class="md-tabs__link">
+        <a href="../../../tools/38.bluetooth-tools/" class="md-tabs__link">
           
   
   
@@ -382,7 +382,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../windows/35.windows-devices-manage/" class="md-tabs__link">
+        <a href="../../../windows/35.windows-devices-manage/" class="md-tabs__link">
           
   
   
@@ -422,7 +422,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
+    <a href="../../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
@@ -452,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -515,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/11.z2.go-gopl/" class="md-nav__link">
+      <a href="../../../foundation/11.z2.go-gopl/" class="md-nav__link">
         
   
   
@@ -538,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/50.php-install-configuration/" class="md-nav__link">
+      <a href="../../../foundation/50.php-install-configuration/" class="md-nav__link">
         
   
   
@@ -561,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/72.clrs/" class="md-nav__link">
+      <a href="../../../foundation/72.clrs/" class="md-nav__link">
         
   
   
@@ -584,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
+      <a href="../../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
         
   
   
@@ -648,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/code-design/51.closure/" class="md-nav__link">
+      <a href="../../../foundation/code-design/51.closure/" class="md-nav__link">
         
   
   
@@ -671,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/code-design/70.design-patterns/" class="md-nav__link">
+      <a href="../../../foundation/code-design/70.design-patterns/" class="md-nav__link">
         
   
   
@@ -743,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
+      <a href="../../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
         
   
   
@@ -766,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
+      <a href="../../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
         
   
   
@@ -789,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
+      <a href="../../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
         
   
   
@@ -861,7 +861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
+      <a href="../../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
         
   
   
@@ -884,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
+      <a href="../../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
         
   
   
@@ -907,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/24.cpp-static/" class="md-nav__link">
+      <a href="../../../foundation/cpp/24.cpp-static/" class="md-nav__link">
         
   
   
@@ -930,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
+      <a href="../../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
         
   
   
@@ -953,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
+      <a href="../../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
         
   
   
@@ -976,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/27.cpp-const/" class="md-nav__link">
+      <a href="../../../foundation/cpp/27.cpp-const/" class="md-nav__link">
         
   
   
@@ -999,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
+      <a href="../../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
         
   
   
@@ -1022,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
+      <a href="../../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
         
   
   
@@ -1045,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
+      <a href="../../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
         
   
   
@@ -1068,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
+      <a href="../../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
         
   
   
@@ -1091,7 +1091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
+      <a href="../../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
         
   
   
@@ -1114,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
+      <a href="../../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
         
   
   
@@ -1137,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
+      <a href="../../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
         
   
   
@@ -1160,7 +1160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
+      <a href="../../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
         
   
   
@@ -1183,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
+      <a href="../../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
         
   
   
@@ -1255,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
+      <a href="../../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
         
   
   
@@ -1278,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
+      <a href="../../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
         
   
   
@@ -1350,7 +1350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/network/12.z1.ip-address/" class="md-nav__link">
+      <a href="../../../foundation/network/12.z1.ip-address/" class="md-nav__link">
         
   
   
@@ -1422,7 +1422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/os/14.threadexit/" class="md-nav__link">
+      <a href="../../../foundation/os/14.threadexit/" class="md-nav__link">
         
   
   
@@ -1445,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/os/74.csapp/" class="md-nav__link">
+      <a href="../../../foundation/os/74.csapp/" class="md-nav__link">
         
   
   
@@ -1524,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
+      <a href="../../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
         
   
   
@@ -1547,7 +1547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
+      <a href="../../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
         
   
   
@@ -1570,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
+      <a href="../../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
         
   
   
@@ -1593,7 +1593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/18.webpage-print/" class="md-nav__link">
+      <a href="../../../front-end/18.webpage-print/" class="md-nav__link">
         
   
   
@@ -1669,7 +1669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../32.unity-webgl-deploy/" class="md-nav__link">
+      <a href="../../32.unity-webgl-deploy/" class="md-nav__link">
         
   
   
@@ -1692,7 +1692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../33.rendering-pipeline/" class="md-nav__link">
+      <a href="../../33.rendering-pipeline/" class="md-nav__link">
         
   
   
@@ -1716,6 +1716,49 @@
   
   
   
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Games101
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Games101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1727,7 +1770,7 @@
   
   
   <span class="md-ellipsis">
-    games101笔记
+    games101-1-变换和光栅化
     
   </span>
   
@@ -1740,7 +1783,7 @@
   
   
   <span class="md-ellipsis">
-    games101笔记
+    games101-1-变换和光栅化
     
   </span>
   
@@ -2096,6 +2139,37 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-2-shading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101-2-着色
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2151,7 +2225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/16.interview-bagu-golang/" class="md-nav__link">
+      <a href="../../../interview/16.interview-bagu-golang/" class="md-nav__link">
         
   
   
@@ -2174,7 +2248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/19.interview-bagu-cpp/" class="md-nav__link">
+      <a href="../../../interview/19.interview-bagu-cpp/" class="md-nav__link">
         
   
   
@@ -2197,7 +2271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/52.interview-bagu-general/" class="md-nav__link">
+      <a href="../../../interview/52.interview-bagu-general/" class="md-nav__link">
         
   
   
@@ -2220,7 +2294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
+      <a href="../../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
         
   
   
@@ -2291,7 +2365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
+      <a href="../../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
         
   
   
@@ -2314,7 +2388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
+      <a href="../../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
         
   
   
@@ -2337,7 +2411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/43.linux-common-command/" class="md-nav__link">
+      <a href="../../../linux/43.linux-common-command/" class="md-nav__link">
         
   
   
@@ -2360,7 +2434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/44.linux-common-configuration/" class="md-nav__link">
+      <a href="../../../linux/44.linux-common-configuration/" class="md-nav__link">
         
   
   
@@ -2383,7 +2457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/45.linux-net-configuration/" class="md-nav__link">
+      <a href="../../../linux/45.linux-net-configuration/" class="md-nav__link">
         
   
   
@@ -2406,7 +2480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
+      <a href="../../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
         
   
   
@@ -2429,7 +2503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/9.linux-core-config/" class="md-nav__link">
+      <a href="../../../linux/9.linux-core-config/" class="md-nav__link">
         
   
   
@@ -2500,7 +2574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/15.remainder-and-modulo/" class="md-nav__link">
+      <a href="../../../math/15.remainder-and-modulo/" class="md-nav__link">
         
   
   
@@ -2523,7 +2597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/31.linear-algebra-3B1B/" class="md-nav__link">
+      <a href="../../../math/31.linear-algebra-3B1B/" class="md-nav__link">
         
   
   
@@ -2546,7 +2620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/63.affine-transformation/" class="md-nav__link">
+      <a href="../../../math/63.affine-transformation/" class="md-nav__link">
         
   
   
@@ -2569,7 +2643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/64.calculus/" class="md-nav__link">
+      <a href="../../../math/64.calculus/" class="md-nav__link">
         
   
   
@@ -2640,7 +2714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../multi-media/58.build_obs/" class="md-nav__link">
+      <a href="../../../multi-media/58.build_obs/" class="md-nav__link">
         
   
   
@@ -2663,7 +2737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
+      <a href="../../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
         
   
   
@@ -2734,7 +2808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/11.z3.time/" class="md-nav__link">
+      <a href="../../../others/11.z3.time/" class="md-nav__link">
         
   
   
@@ -2757,7 +2831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/12.digital-signatures-certificates/" class="md-nav__link">
+      <a href="../../../others/12.digital-signatures-certificates/" class="md-nav__link">
         
   
   
@@ -2780,7 +2854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
+      <a href="../../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
         
   
   
@@ -2803,7 +2877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/40.bug-record/" class="md-nav__link">
+      <a href="../../../others/40.bug-record/" class="md-nav__link">
         
   
   
@@ -2874,7 +2948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/38.bluetooth-tools/" class="md-nav__link">
+      <a href="../../../tools/38.bluetooth-tools/" class="md-nav__link">
         
   
   
@@ -2897,7 +2971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/46.ssh-login-script/" class="md-nav__link">
+      <a href="../../../tools/46.ssh-login-script/" class="md-nav__link">
         
   
   
@@ -2920,7 +2994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/60.vscode-continue-config/" class="md-nav__link">
+      <a href="../../../tools/60.vscode-continue-config/" class="md-nav__link">
         
   
   
@@ -2943,7 +3017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/61.understand-scitools-keygen/" class="md-nav__link">
+      <a href="../../../tools/61.understand-scitools-keygen/" class="md-nav__link">
         
   
   
@@ -3007,7 +3081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/build/21.makefile-tutorial/" class="md-nav__link">
+      <a href="../../../tools/build/21.makefile-tutorial/" class="md-nav__link">
         
   
   
@@ -3079,7 +3153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
+      <a href="../../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
         
   
   
@@ -3102,7 +3176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
+      <a href="../../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
         
   
   
@@ -3174,7 +3248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/package-manager/22.scl/" class="md-nav__link">
+      <a href="../../../tools/package-manager/22.scl/" class="md-nav__link">
         
   
   
@@ -3253,7 +3327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/35.windows-devices-manage/" class="md-nav__link">
+      <a href="../../../windows/35.windows-devices-manage/" class="md-nav__link">
         
   
   
@@ -3276,7 +3350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/39.windows-dump-debug/" class="md-nav__link">
+      <a href="../../../windows/39.windows-dump-debug/" class="md-nav__link">
         
   
   
@@ -3299,7 +3373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
+      <a href="../../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
         
   
   
@@ -3322,7 +3396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
+      <a href="../../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
         
   
   
@@ -3345,7 +3419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/56.char-wchar-on-windows/" class="md-nav__link">
+      <a href="../../../windows/56.char-wchar-on-windows/" class="md-nav__link">
         
   
   
@@ -3738,7 +3812,7 @@
   
 
 
-  <h1>games101笔记</h1>
+  <h1>games101-1-变换和光栅化</h1>
 
 <h2 id="transform">变换（Transform）</h2>
 <p>有几种常见的变换</p>
@@ -4333,12 +4407,12 @@ M_{\mathrm{viewport}} =
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
