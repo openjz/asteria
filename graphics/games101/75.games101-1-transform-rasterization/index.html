@@ -22,7 +22,7 @@
     
     
       
-        <title>games101-1-变换和光栅化 - Asteria</title>
+        <title>games101 一、变换和光栅化 - Asteria</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              games101-1-变换和光栅化
+              games101 一、变换和光栅化
             
           </span>
         </div>
@@ -1770,7 +1770,7 @@
   
   
   <span class="md-ellipsis">
-    games101-1-变换和光栅化
+    games101 一、变换和光栅化
     
   </span>
   
@@ -1783,7 +1783,7 @@
   
   
   <span class="md-ellipsis">
-    games101-1-变换和光栅化
+    games101 一、变换和光栅化
     
   </span>
   
@@ -2119,6 +2119,15 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
+      透视投影深度矫正
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
       插值
     </span>
   </a>
@@ -2151,7 +2160,7 @@
   
   
   <span class="md-ellipsis">
-    games101-2-着色
+    games101 二、着色
     
   </span>
   
@@ -3782,6 +3791,15 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
+      透视投影深度矫正
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
       插值
     </span>
   </a>
@@ -3812,7 +3830,7 @@
   
 
 
-  <h1>games101-1-变换和光栅化</h1>
+  <h1>games101 一、变换和光栅化</h1>
 
 <h2 id="transform">变换（Transform）</h2>
 <p>有几种常见的变换</p>
@@ -4330,7 +4348,18 @@ M_{\mathrm{viewport}} =
 <li>如果深度值小于当前像素的深度值，就更新像素颜色和深度值，否则丢弃</li>
 </ol>
 <p>这里没讲多个三角形深度相同的情况如何处理。</p>
-<h3 id="_15">插值</h3>
+<h3 id="_15">透视投影深度矫正</h3>
+<p>在深度测试时，不能直接用透视投影后的z坐标做深度值，因为对于透视投影来说，挤压视锥体的过程会改变z坐标的线性关系，如果直接用透视投影变换后的z坐标做深度值，会导致深度测试错误。</p>
+<p>因此，我们需要对z坐标做矫正，一般采用以下公式：</p>
+<div class="arithmatex">\[
+Z = \frac{1}{\dfrac{\alpha}{w_0} + \dfrac{\beta}{w_1} + \dfrac{\gamma}{w_2}} 
+\]</div>
+<div class="arithmatex">\[
+ z_p = \left(\frac{\alpha z_0}{w_0} + \frac{\beta z_1}{w_1} + \frac{\gamma z_2}{w_2}\right) Z
+\]</div>
+<p>其中，<span class="arithmatex">\(0,1,2\)</span> 分别代表三角形的三个顶点，<span class="arithmatex">\(w_0,w_1,w_2\)</span> 是三角形顶点的齐次坐标，<span class="arithmatex">\(\alpha,\beta,\gamma\)</span> 是重心坐标。</p>
+<p>这里利用到一个性质，经过投影变换后，点的齐次坐标 <span class="arithmatex">\(w\)</span> 的值刚好等于变换前的 z 坐标的值（即在视图空间下的z值）。</p>
+<h3 id="_16">插值</h3>
 <p>由于我们只知道三角形顶点的深度值，如何计算三角形内部任意一点的深度值呢？这就需要插值。</p>
 <p>可以使用重心坐标插值（Barycentric Coordinates Interpolation）</p>
 <ul>
