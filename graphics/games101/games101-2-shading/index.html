@@ -1990,9 +1990,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#texture-magnification" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      纹理放大（Texture Magnification）
+      纹理反走样
     </span>
   </a>
   
@@ -2020,6 +2020,42 @@
   <a href="#ewa-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       EWA Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境贴图（Environment Mapping）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bump-mapping-normal-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      凹凸贴图 / 法线贴图（Bump Mapping / Normal Mapping）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displacement-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      位移贴图（Displacement Mapping）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      纹理的其他应用
     </span>
   </a>
   
@@ -3507,9 +3543,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#texture-magnification" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      纹理放大（Texture Magnification）
+      纹理反走样
     </span>
   </a>
   
@@ -3537,6 +3573,42 @@
   <a href="#ewa-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       EWA Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境贴图（Environment Mapping）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bump-mapping-normal-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      凹凸贴图 / 法线贴图（Bump Mapping / Normal Mapping）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displacement-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      位移贴图（Displacement Mapping）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      纹理的其他应用
     </span>
   </a>
   
@@ -3663,7 +3735,7 @@
 </ul>
 <h2 id="texture-mapping">纹理映射（Texture Mapping）</h2>
 <p>纹理是对表面上的每个点赋予一个属性。</p>
-<p>纹理映射是把一张二维的图片映射到三维物体表面上的过程，纹理上的每一个点都要和物体表面的一个<strong>顶点</strong>对应。</p>
+<p>纹理映射是把一张二维的图片映射到三维物体表面上的过程，物体表面的每一个顶点都要对应纹理上的一个点。</p>
 <p>纹理上的坐标系通常称为uv坐标系，u表示水平方向，v表示垂直方向。</p>
 <p>Tilable texture（可平铺纹理），纹理在上下左右方向上重复使用的时候，起到一种无缝衔接的效果。</p>
 <p>纹理映射只规定了三维顶点和二维纹理坐标之间的映射关系，而对三角形面内的某一点来说，它的纹理坐标需要通过重心坐标插值来计算。</p>
@@ -3697,10 +3769,11 @@
 <p><strong>由于在投影变换过程中，三角形会被拉伸变换，点的重心坐标会变，所以什么时候做插值，要区分清楚。</strong></p>
 <h3 id="_5">应用纹理</h3>
 <ol>
-<li>光栅化后，对屏幕上的每一个采样点进行纹理坐标插值，得到对应的纹理坐标（<span class="arithmatex">\(u,v\)</span>）。</li>
+<li>光栅化后，对屏幕上的每一个采样点进行纹理坐标插值，得到对应的纹理坐标（<span class="arithmatex">\(u,v\)</span>），<span class="arithmatex">\(u,v\)</span> 坐标的值通常在0~1之间。</li>
 <li>着色时，将纹理图片上的颜色作为漫反射系数 <span class="arithmatex">\(k_d\)</span>。</li>
 </ol>
-<h3 id="texture-magnification">纹理放大（Texture Magnification）</h3>
+<h3 id="_6">纹理反走样</h3>
+<p><strong>纹理放大（Texture Magnification）和纹理缩小（Texture Minification）</strong></p>
 <p>纹理太大或太小，有可能发生在场景有一定深度时，近处的物体需要用大纹理，远处的物体需要用小纹理。</p>
 <p><strong>texture太小怎么办？</strong></p>
 <p>纹理图像中的一个像素叫做texel，纹理放大时需要对texel进行插值。</p>
@@ -3745,6 +3818,38 @@ L = \max\!\left(
 <h3 id="ewa-filtering">EWA Filtering</h3>
 <p>EWA Filtering（Elliptical Weighted Average Filtering，椭圆加权平均过滤）可以处理任意形状的区域查询。</p>
 <p>它的原理是把一个不规则的纹理区域近似为多个椭圆，需要查询多次，然后对结果进行加权平均。</p>
+<h3 id="environment-mapping">环境贴图（Environment Mapping）</h3>
+<p>环境贴图是为了模拟物体表面的反射效果。</p>
+<p>它是把不同方向的环境光照信息预先保存到纹理中，然后在渲染时根据物体表面的法线方向，从纹理中采样出对应的环境光照信息，作为物体表面的反射光照。</p>
+<p>假设环境光都是来自无限远处，只记录环境光的方向信息。</p>
+<p>球面环境贴图（Spherical Environment Mapping）是将环境光照信息映射到一个球面上。</p>
+<p>为了解决球面贴图展开为矩形时的扭曲问题，可以使用立方体贴图（Cubemap），将环境光照信息映射到一个立方体的六个面上。</p>
+<h3 id="bump-mapping-normal-mapping">凹凸贴图 / 法线贴图（Bump Mapping / Normal Mapping）</h3>
+<p>贴图中记录表面上每个点的相对高度信息，在渲染时根据高度调整表面法线，从而模拟出表面的凹凸效果。</p>
+<p>如何计算一点 <span class="arithmatex">\(P\)</span> 新的法线呢？</p>
+<p>假设原始的法线为 <span class="arithmatex">\((0,0,1)\)</span>，高度函数为 <span class="arithmatex">\(h(u,v)\)</span>，<span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 是纹理坐标。</p>
+<p>先求点 <span class="arithmatex">\(P\)</span> 分别在 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 方向的导数，分别在 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 方向上移动一个单位长度，点 <span class="arithmatex">\(P\)</span> 的高度分别为 <span class="arithmatex">\(h(u+1)-h(u)\)</span> 和 <span class="arithmatex">\(h(v+1)-h(v)\)</span>，那么点 <span class="arithmatex">\(P\)</span> 在 <span class="arithmatex">\(u\)</span> 方向上的导数为，其中，<span class="arithmatex">\(c_1\)</span> 和 <span class="arithmatex">\(c_2\)</span> 分别是两个固定的系数：</p>
+<div class="arithmatex">\[
+\frac{dp}{du} = c_1 * [h(u+1)-h(u)]
+\]</div>
+<div class="arithmatex">\[
+\frac{dp}{dv} = c_2 * [h(v+1)-h(v)]
+\]</div>
+<p>根据导数，可以求出切线方向向量，然后可以求出法线方向向量：</p>
+<div class="arithmatex">\[
+\vec{n} = (-dp/du, -dp/dv, 1).normalize()
+\]</div>
+<p>注意这里的法线是局部空间的法线，需要经过逆转置矩阵变换到世界空间。</p>
+<h3 id="displacement-mapping">位移贴图（Displacement Mapping）</h3>
+<p>位移贴图同样也是为了模拟表面的凹凸效果，不同的是，位移贴图直接改变表面上每个点的位置，而不是改变法线。</p>
+<p>位移贴图要求三角形网格足够密集，使得着色时的采样率能够跟得上贴图的顶点变化速度。</p>
+<p>directx有一套近似机制，动态曲面细分（Dynamic Tessellation），可以在渲染时动态增加三角形网格的密度，而不需要建模时就建好密集的网格。</p>
+<h3 id="_7">纹理的其他应用</h3>
+<ul>
+<li>三维噪声（3D Procedural Noise），是一种三维纹理。</li>
+<li>环境光遮蔽（Ambient Occlusion），用于模拟环境光照射下的阴影效果。</li>
+<li>用于体积渲染（Volume Rendering）的三维纹理（3D Texture），。</li>
+</ul>
 
 
 
