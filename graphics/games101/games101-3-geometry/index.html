@@ -8,25 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://blog.shiwj.com/front-end/11.css-mdn-tutorial/">
+        <link rel="canonical" href="https://blog.shiwj.com/graphics/games101/games101-3-geometry/">
       
       
-        <link rel="prev" href="../10.js-mdn-tutorial/">
+        <link rel="prev" href="../games101-2-shading/">
       
       
-        <link rel="next" href="../17.html-mdn-tutorial/">
+        <link rel="next" href="../../../interview/16.interview-bagu-golang/">
       
       
-      <link rel="icon" href="../../img/avatar.png">
+      <link rel="icon" href="../../../img/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
-        <title>css入门笔记 - Asteria</title>
+        <title>games101 三、几何 - Asteria</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
       
       
 
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#css" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
+    <a href="../../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              css入门笔记
+              games101 三、几何
             
           </span>
         </div>
@@ -179,7 +179,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -200,11 +200,31 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../foundation/11.z2.go-gopl/" class="md-tabs__link">
+        <a href="../../../foundation/11.z2.go-gopl/" class="md-tabs__link">
           
   
   
   Foundation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
+          
+  
+  
+  Front end
 
         </a>
       </li>
@@ -222,27 +242,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../10.js-mdn-tutorial/" class="md-tabs__link">
-          
-  
-  
-  Front end
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../graphics/32.unity-webgl-deploy/" class="md-tabs__link">
+        <a href="../../32.unity-webgl-deploy/" class="md-tabs__link">
           
   
   
@@ -262,7 +262,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../interview/16.interview-bagu-golang/" class="md-tabs__link">
+        <a href="../../../interview/16.interview-bagu-golang/" class="md-tabs__link">
           
   
   
@@ -282,7 +282,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
+        <a href="../../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
           
   
   
@@ -302,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../math/15.remainder-and-modulo/" class="md-tabs__link">
+        <a href="../../../math/15.remainder-and-modulo/" class="md-tabs__link">
           
   
   
@@ -322,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../multi-media/58.build_obs/" class="md-tabs__link">
+        <a href="../../../multi-media/58.build_obs/" class="md-tabs__link">
           
   
   
@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../others/11.z3.time/" class="md-tabs__link">
+        <a href="../../../others/11.z3.time/" class="md-tabs__link">
           
   
   
@@ -362,7 +362,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../tools/38.bluetooth-tools/" class="md-tabs__link">
+        <a href="../../../tools/38.bluetooth-tools/" class="md-tabs__link">
           
   
   
@@ -382,7 +382,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../windows/35.windows-devices-manage/" class="md-tabs__link">
+        <a href="../../../windows/35.windows-devices-manage/" class="md-tabs__link">
           
   
   
@@ -422,7 +422,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
+    <a href="../../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
@@ -452,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -515,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/11.z2.go-gopl/" class="md-nav__link">
+      <a href="../../../foundation/11.z2.go-gopl/" class="md-nav__link">
         
   
   
@@ -538,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/50.php-install-configuration/" class="md-nav__link">
+      <a href="../../../foundation/50.php-install-configuration/" class="md-nav__link">
         
   
   
@@ -561,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/72.clrs/" class="md-nav__link">
+      <a href="../../../foundation/72.clrs/" class="md-nav__link">
         
   
   
@@ -584,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
+      <a href="../../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
         
   
   
@@ -648,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/code-design/51.closure/" class="md-nav__link">
+      <a href="../../../foundation/code-design/51.closure/" class="md-nav__link">
         
   
   
@@ -671,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/code-design/70.design-patterns/" class="md-nav__link">
+      <a href="../../../foundation/code-design/70.design-patterns/" class="md-nav__link">
         
   
   
@@ -743,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
+      <a href="../../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
         
   
   
@@ -766,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
+      <a href="../../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
         
   
   
@@ -789,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
+      <a href="../../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
         
   
   
@@ -861,7 +861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
+      <a href="../../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
         
   
   
@@ -884,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
+      <a href="../../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
         
   
   
@@ -907,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/24.cpp-static/" class="md-nav__link">
+      <a href="../../../foundation/cpp/24.cpp-static/" class="md-nav__link">
         
   
   
@@ -930,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
+      <a href="../../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
         
   
   
@@ -953,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
+      <a href="../../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
         
   
   
@@ -976,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/27.cpp-const/" class="md-nav__link">
+      <a href="../../../foundation/cpp/27.cpp-const/" class="md-nav__link">
         
   
   
@@ -999,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
+      <a href="../../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
         
   
   
@@ -1022,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
+      <a href="../../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
         
   
   
@@ -1045,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
+      <a href="../../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
         
   
   
@@ -1068,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
+      <a href="../../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
         
   
   
@@ -1091,7 +1091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
+      <a href="../../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
         
   
   
@@ -1114,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
+      <a href="../../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
         
   
   
@@ -1137,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
+      <a href="../../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
         
   
   
@@ -1160,7 +1160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
+      <a href="../../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
         
   
   
@@ -1183,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
+      <a href="../../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
         
   
   
@@ -1255,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
+      <a href="../../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
         
   
   
@@ -1278,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
+      <a href="../../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
         
   
   
@@ -1350,7 +1350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/network/12.z1.ip-address/" class="md-nav__link">
+      <a href="../../../foundation/network/12.z1.ip-address/" class="md-nav__link">
         
   
   
@@ -1422,7 +1422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/os/14.threadexit/" class="md-nav__link">
+      <a href="../../../foundation/os/14.threadexit/" class="md-nav__link">
         
   
   
@@ -1445,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundation/os/74.csapp/" class="md-nav__link">
+      <a href="../../../foundation/os/74.csapp/" class="md-nav__link">
         
   
   
@@ -1464,6 +1464,146 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Front end
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Front end
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    js入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    css入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    html入门笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/18.webpage-print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    打印html页面
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1499,15 +1639,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    Front end
+    Graphics
     
   </span>
   
@@ -1515,10 +1655,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Front end
+            Graphics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1529,12 +1669,124 @@
   
   
     <li class="md-nav__item">
-      <a href="../10.js-mdn-tutorial/" class="md-nav__link">
+      <a href="../../32.unity-webgl-deploy/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    js入门笔记
+    如何部署unity生成的WebGL包
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../33.rendering-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    渲染管线介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Games101
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Games101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../75.games101-1-transform-rasterization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 一、变换和光栅化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-2-shading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 二、着色
     
   </span>
   
@@ -1564,7 +1816,7 @@
   
   
   <span class="md-ellipsis">
-    css入门笔记
+    games101 三、几何
     
   </span>
   
@@ -1577,7 +1829,7 @@
   
   
   <span class="md-ellipsis">
-    css入门笔记
+    games101 三、几何
     
   </span>
   
@@ -1598,18 +1850,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#css" class="md-nav__link">
-    <span class="md-ellipsis">
-      导入 css
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      语法
+      表示几何的不同方式
     </span>
   </a>
   
@@ -1618,188 +1861,44 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      选择器和选择符
+      隐式几何
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      继承
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      层叠
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      盒子
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      盒模型
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      背景和边框
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      文本方向与逻辑属性
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      处理内容溢出
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      值和单位
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      尺寸
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      替换元素和表单
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      字体
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      布局
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="布局">
+    <nav class="md-nav" aria-label="隐式几何">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#algebraic-surface" class="md-nav__link">
     <span class="md-ellipsis">
-      正常布局流
+      代数曲面（Algebraic Surface）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#flexbox" class="md-nav__link">
+  <a href="#constructive-solid-geometry-csg" class="md-nav__link">
     <span class="md-ellipsis">
-      flexbox（弹性盒子）
+      构造实体几何（Constructive Solid Geometry, CSG）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grid" class="md-nav__link">
+  <a href="#distance-function" class="md-nav__link">
     <span class="md-ellipsis">
-      grid（网格）
+      距离函数（Distance Function）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#float" class="md-nav__link">
+  <a href="#fractals" class="md-nav__link">
     <span class="md-ellipsis">
-      浮动（float）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#position" class="md-nav__link">
-    <span class="md-ellipsis">
-      定位（position）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      多列布局
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      响应式布局
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      媒体查询
+      分形（Fractals）
     </span>
   </a>
   
@@ -1810,260 +1909,118 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      显式几何
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="显式几何">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      点云（Point Cloud）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polygon-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      多边形网格（Polygon Mesh）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲线（Curve）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curve_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲线（Curve）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="曲线（Curve）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bezier-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝塞尔曲线（Bezier Curve）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spline" class="md-nav__link">
+    <span class="md-ellipsis">
+      样条（Spline）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲面
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="曲面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bezier-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝塞尔曲面（Bezier Surface）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      网格（Mesh）操作：几何处理
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17.html-mdn-tutorial/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    html入门笔记
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18.webpage-print/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    打印html页面
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Graphics
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Graphics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../graphics/32.unity-webgl-deploy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    如何部署unity生成的WebGL包
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../graphics/33.rendering-pipeline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    渲染管线介绍
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Games101
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Games101
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../graphics/games101/75.games101-1-transform-rasterization/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    games101 一、变换和光栅化
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../graphics/games101/games101-2-shading/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    games101 二、着色
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../graphics/games101/games101-3-geometry/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    games101 三、几何
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2132,7 +2089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/16.interview-bagu-golang/" class="md-nav__link">
+      <a href="../../../interview/16.interview-bagu-golang/" class="md-nav__link">
         
   
   
@@ -2155,7 +2112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/19.interview-bagu-cpp/" class="md-nav__link">
+      <a href="../../../interview/19.interview-bagu-cpp/" class="md-nav__link">
         
   
   
@@ -2178,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/52.interview-bagu-general/" class="md-nav__link">
+      <a href="../../../interview/52.interview-bagu-general/" class="md-nav__link">
         
   
   
@@ -2201,7 +2158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
+      <a href="../../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
         
   
   
@@ -2272,7 +2229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
+      <a href="../../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
         
   
   
@@ -2295,7 +2252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
+      <a href="../../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
         
   
   
@@ -2318,7 +2275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/43.linux-common-command/" class="md-nav__link">
+      <a href="../../../linux/43.linux-common-command/" class="md-nav__link">
         
   
   
@@ -2341,7 +2298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/44.linux-common-configuration/" class="md-nav__link">
+      <a href="../../../linux/44.linux-common-configuration/" class="md-nav__link">
         
   
   
@@ -2364,7 +2321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/45.linux-net-configuration/" class="md-nav__link">
+      <a href="../../../linux/45.linux-net-configuration/" class="md-nav__link">
         
   
   
@@ -2387,7 +2344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
+      <a href="../../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
         
   
   
@@ -2410,7 +2367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/9.linux-core-config/" class="md-nav__link">
+      <a href="../../../linux/9.linux-core-config/" class="md-nav__link">
         
   
   
@@ -2481,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/15.remainder-and-modulo/" class="md-nav__link">
+      <a href="../../../math/15.remainder-and-modulo/" class="md-nav__link">
         
   
   
@@ -2504,7 +2461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/31.linear-algebra-3B1B/" class="md-nav__link">
+      <a href="../../../math/31.linear-algebra-3B1B/" class="md-nav__link">
         
   
   
@@ -2527,7 +2484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/63.affine-transformation/" class="md-nav__link">
+      <a href="../../../math/63.affine-transformation/" class="md-nav__link">
         
   
   
@@ -2550,7 +2507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/64.calculus/" class="md-nav__link">
+      <a href="../../../math/64.calculus/" class="md-nav__link">
         
   
   
@@ -2621,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../multi-media/58.build_obs/" class="md-nav__link">
+      <a href="../../../multi-media/58.build_obs/" class="md-nav__link">
         
   
   
@@ -2644,7 +2601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
+      <a href="../../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
         
   
   
@@ -2715,7 +2672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/11.z3.time/" class="md-nav__link">
+      <a href="../../../others/11.z3.time/" class="md-nav__link">
         
   
   
@@ -2738,7 +2695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/12.digital-signatures-certificates/" class="md-nav__link">
+      <a href="../../../others/12.digital-signatures-certificates/" class="md-nav__link">
         
   
   
@@ -2761,7 +2718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
+      <a href="../../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
         
   
   
@@ -2784,7 +2741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/40.bug-record/" class="md-nav__link">
+      <a href="../../../others/40.bug-record/" class="md-nav__link">
         
   
   
@@ -2855,7 +2812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/38.bluetooth-tools/" class="md-nav__link">
+      <a href="../../../tools/38.bluetooth-tools/" class="md-nav__link">
         
   
   
@@ -2878,7 +2835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/46.ssh-login-script/" class="md-nav__link">
+      <a href="../../../tools/46.ssh-login-script/" class="md-nav__link">
         
   
   
@@ -2901,7 +2858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/60.vscode-continue-config/" class="md-nav__link">
+      <a href="../../../tools/60.vscode-continue-config/" class="md-nav__link">
         
   
   
@@ -2924,7 +2881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/61.understand-scitools-keygen/" class="md-nav__link">
+      <a href="../../../tools/61.understand-scitools-keygen/" class="md-nav__link">
         
   
   
@@ -2988,7 +2945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/build/21.makefile-tutorial/" class="md-nav__link">
+      <a href="../../../tools/build/21.makefile-tutorial/" class="md-nav__link">
         
   
   
@@ -3060,7 +3017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
+      <a href="../../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
         
   
   
@@ -3083,7 +3040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
+      <a href="../../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
         
   
   
@@ -3155,7 +3112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/package-manager/22.scl/" class="md-nav__link">
+      <a href="../../../tools/package-manager/22.scl/" class="md-nav__link">
         
   
   
@@ -3234,7 +3191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/35.windows-devices-manage/" class="md-nav__link">
+      <a href="../../../windows/35.windows-devices-manage/" class="md-nav__link">
         
   
   
@@ -3257,7 +3214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/39.windows-dump-debug/" class="md-nav__link">
+      <a href="../../../windows/39.windows-dump-debug/" class="md-nav__link">
         
   
   
@@ -3280,7 +3237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
+      <a href="../../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
         
   
   
@@ -3303,7 +3260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
+      <a href="../../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
         
   
   
@@ -3326,7 +3283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/56.char-wchar-on-windows/" class="md-nav__link">
+      <a href="../../../windows/56.char-wchar-on-windows/" class="md-nav__link">
         
   
   
@@ -3374,18 +3331,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#css" class="md-nav__link">
-    <span class="md-ellipsis">
-      导入 css
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      语法
+      表示几何的不同方式
     </span>
   </a>
   
@@ -3394,188 +3342,44 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      选择器和选择符
+      隐式几何
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      继承
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      层叠
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      盒子
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      盒模型
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      背景和边框
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      文本方向与逻辑属性
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      处理内容溢出
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      值和单位
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      尺寸
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      替换元素和表单
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      字体
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      布局
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="布局">
+    <nav class="md-nav" aria-label="隐式几何">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#algebraic-surface" class="md-nav__link">
     <span class="md-ellipsis">
-      正常布局流
+      代数曲面（Algebraic Surface）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#flexbox" class="md-nav__link">
+  <a href="#constructive-solid-geometry-csg" class="md-nav__link">
     <span class="md-ellipsis">
-      flexbox（弹性盒子）
+      构造实体几何（Constructive Solid Geometry, CSG）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grid" class="md-nav__link">
+  <a href="#distance-function" class="md-nav__link">
     <span class="md-ellipsis">
-      grid（网格）
+      距离函数（Distance Function）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#float" class="md-nav__link">
+  <a href="#fractals" class="md-nav__link">
     <span class="md-ellipsis">
-      浮动（float）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#position" class="md-nav__link">
-    <span class="md-ellipsis">
-      定位（position）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      多列布局
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      响应式布局
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      媒体查询
+      分形（Fractals）
     </span>
   </a>
   
@@ -3583,6 +3387,114 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      显式几何
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="显式几何">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      点云（Point Cloud）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polygon-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      多边形网格（Polygon Mesh）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲线（Curve）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curve_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲线（Curve）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="曲线（Curve）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bezier-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝塞尔曲线（Bezier Curve）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spline" class="md-nav__link">
+    <span class="md-ellipsis">
+      样条（Spline）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲面
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="曲面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bezier-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝塞尔曲面（Bezier Surface）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      网格（Mesh）操作：几何处理
+    </span>
+  </a>
   
 </li>
       
@@ -3605,486 +3517,132 @@
   
 
 
-  <h1>css入门笔记</h1>
+  <h1>games101 三、几何</h1>
 
-<p>参考<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS">MDN css入门教程</a></p>
-<h2 id="css">导入 css</h2>
-<p>1、导入外部样式：</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; /&gt;
-</code></pre>
-<p>2、内部样式</p>
-<p>使用 style 元素</p>
-<pre><code class="language-html">&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;title&gt;My CSS experiment&lt;/title&gt;
-    &lt;style&gt;
-      h1 {
-        color: blue;
-        background-color: yellow;
-        border: 1px solid black;
-      }
-
-      p {
-        color: red;
-      }
-    &lt;/style&gt;
-  &lt;/head&gt;
-  ...
-&lt;/html&gt;
-</code></pre>
-<p>3、内联样式</p>
-<p>使用 style 属性</p>
-<pre><code class="language-html">&lt;h1 style=&quot;color: blue;background-color: yellow;border: 1px solid black;&quot;&gt;
-  Hello World!
-&lt;/h1&gt;
-</code></pre>
-<h2 id="_1">语法</h2>
-<p>1、选择器+大括号，属性:值;</p>
-<pre><code class="language-css">h1 {
-  color: red;
-  font-size: 5em;
-}
-</code></pre>
-<p>2、函数</p>
-<p><code>width: calc(90% - 30px);</code></p>
-<p>3、@规则</p>
-<p>@import：导入样式表
-@media：媒体查询（当条件成立时才应用样式）</p>
-<p>4、速记属性</p>
-<p>允许在一行中设置多个属性值，如 padding、border 等，例如：</p>
-<pre><code class="language-css">padding: 10px 15px 15px 5px;
-/* 等价于 */
-padding-top: 10px;
-padding-right: 15px;
-padding-bottom: 15px;
-padding-left: 5px;
-
-background: red url(bg-graphic.png)
-/* 等价于 */
-background-color: red;
-background-image: url(bg-graphic.png);
-</code></pre>
-<h2 id="_2">选择器和选择符</h2>
-<table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>元素</td>
-<td>h1</td>
-</tr>
-<tr>
-<td>id</td>
-<td>#onething</td>
-</tr>
-<tr>
-<td>类</td>
-<td>.manythings、a.manythings、.classA.classB</td>
-</tr>
-<tr>
-<td>伪类</td>
-<td>a:link、*:link、:link</td>
-</tr>
-<tr>
-<td>属性</td>
-<td><code>a[title]</code>、<code>a[href="https://example.com"]</code>、<code>a[attr~=v]</code>、<code>a[attr\|=v]</code>、<code>a[attr]</code>、<code>[attr^=value]</code>、<code>[attr$=value]</code>、<code>[attr*=value]</code>、<code>[attr=value i]</code>（结尾加个 i 代表按大小写不敏感匹配）</td>
-</tr>
-<tr>
-<td>伪元素</td>
-<td>p::first-line</td>
-</tr>
-<tr>
-<td>通用选择器</td>
-<td>*</td>
-</tr>
-</tbody>
-</table>
-<p>注：</p>
-<ul>
-<li><strong>多个选择器连在一起写代表“与”的关系</strong>。</li>
-<li>伪类代表元素的状态，伪元素是一种虚拟的元素。<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements">参考：常见伪类和伪元素</a></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>空格：后代选择器</td>
-<td>article p</td>
-</tr>
-<tr>
-<td>&gt;：子代选择器</td>
-<td>article &gt; p</td>
-</tr>
-<tr>
-<td>+：相邻兄弟选择器</td>
-<td>h1 + p</td>
-</tr>
-<tr>
-<td>~：通用兄弟选择器</td>
-<td>h1 ~ p</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_3">继承</h2>
-<p>继承：有些父元素上的 css 属性可以被子元素继承，有些不能。</p>
-<p>使用 inherit、initial、unset、revert 这四个属性值控制继承，例如</p>
-<pre><code class="language-css">.my-class-1 a {
-  color: inherit;
-}
-</code></pre>
-<p>属性 all 可以用来代表所有属性</p>
-<h2 id="_4">层叠</h2>
+<h2 id="_1">表示几何的不同方式</h2>
+<p>隐式几何（Implicit Geometry）和显式几何（Explicit Geometry）</p>
+<p>隐式几何不显式指出顶点的位置，只给出点之间的关系，例如用一个方程来表示一个球。</p>
+<p>缺点是不够直观，好处是很容易判断一个点是否在几何体表面或者内外。</p>
+<p>显式几何给出几何体的每个顶点坐标。</p>
+<p>另一种显式几何是用参数映射的方式给出每个点，可以将二维平面映射到三维空间中，得到一个曲面，例如，点是以(u, v)参数的形式给出，然后将(u, v)映射到三维空间中，得到(x, y, z)。</p>
+<p>显式几何的缺点是不太容易判断一个点是在几何体的表面上还是内外。</p>
+<h2 id="_2">隐式几何</h2>
+<p><strong>隐式几何的好处</strong></p>
 <ol>
-<li>多个相同权重的规则应用到同一个元素时，后面的覆盖前面的</li>
-<li>选择器具有优先级，优先级计算公式</li>
-<li>千位：style 属性（内联属性）得一分</li>
-<li>百位：id 选择器得一分</li>
-<li>十位：类选择器、属性选择器、伪类选择器得一分</li>
-<li>个位：元素选择器、伪元素选择器得一份</li>
-<li>通用选择器 (*)，组合符 (+, &gt;, ~, ' ')，和否定伪类 (:not) 不会影响优先级。</li>
-<li>计算时不允许进位，无论多少个低位选择器的权重叠加，都不会超过一个高位选择器。</li>
-<li>!important：优先级高于其他所有</li>
-<li>当浏览器遇到无法解析的 css 时（比如 css 拼写错误）这个 css 会被忽略。</li>
+<li>描述简洁</li>
+<li>容易查询一个点和几何体的关系（在表面上、在内部还是在外部）</li>
+<li>容易做光线求交</li>
+<li>对于简单的形状，描述精确，不存在采样错误</li>
+<li>容易描述拓扑结构的改变</li>
 </ol>
-<h2 id="_5">盒子</h2>
-<p>块级盒子（Block Box）：</p>
-<ul>
-<li>盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间</li>
-<li>会换行</li>
-<li>可以设置宽高（width 和 height）</li>
-<li>padding、margin 和 border 会把周围的元素推开</li>
-</ul>
-<p>内联盒子（Inline Box）：</p>
-<ul>
-<li>不会换行</li>
-<li>宽高不起作用（width 和 height）</li>
-<li>垂直方向的 padding、margin 和 border 不会把其他 inline 盒子推开</li>
-<li>水平方向的 padding、margin 和 border 会把其他 inline 盒子推开</li>
-</ul>
-<p><strong>盒子的显示类型</strong>：</p>
-<ul>
-<li>外部显示类型：决定盒子在它的父元素内是如何布局的，display 值为 inline 或 block</li>
-<li>内部显示类型：决定盒子内部元素如何布局，display 值为 flex、grid 等。默认为正常文档流（inline 是 inline，block 是 block）</li>
-<li>其他类型：</li>
-<li>inline-flex：外部显示类型为 inline，内部显示类型为 flex</li>
-<li>inline-block：不换行的 block，能设置高宽、margin 和 padding，能把周围推开</li>
-</ul>
-<h2 id="_6">盒模型</h2>
-<p>完整的 CSS 盒模型应用于块级盒子，内联盒子只使用盒模型中定义的部分内容。</p>
-<p>盒模型组成：content、padding、border、margin</p>
-<ul>
-<li>标准盒模型：width 和 height 设置的是 content。box-sizing: content-box;</li>
-<li>替代（IE）盒模型：width 和 height 设置的是总长宽。box-sizing: border-box;</li>
-</ul>
-<p>外边距折叠：如果两个元素相邻，它们之间的距离不是两个元素的 margin 之和，而是取两个元素 margin 的较大值</p>
-<p>margin 可以为负值。padding 不可以为负</p>
-<p>属性写法（去掉后缀就是简写）：{margin/border/padding}-{top/right/bottom/left}-{width/style/color}</p>
-<h2 id="_7">背景和边框</h2>
-<p>背景（background）:</p>
-<ul>
-<li>background-image 属性可以有多个图片，图片会叠在一起显示</li>
-<li>{background}-{color/image/repeat/size/position/attachment}</li>
-<li>可以设置渐变（gradient）背景</li>
-</ul>
-<p>边框（border）:</p>
-<ul>
-<li>{border}-{width/style/color/radius}</li>
-</ul>
-<h2 id="_8">文本方向与逻辑属性</h2>
-<p>writing-mode: horizontal-tb、vertical-rl、vertical-lr</p>
-<p>逻辑属性是为了解决文本方向变化时盒子的高宽等属性不能正确变化的问题，例如</p>
-<ul>
-<li>inline-size 对应 width</li>
-<li>block-size 对应 height</li>
-<li>内外边距、边框也有对应的逻辑属性</li>
-<li>属性值也有对应的逻辑属性值</li>
-</ul>
-<h2 id="_9">处理内容溢出</h2>
-<p>内容溢出</p>
-<ul>
-<li>overflow:visible/hidden/scroll/auto</li>
-<li>overflow-x</li>
-<li>overflow-y</li>
-</ul>
-<p>文本换行</p>
-<ul>
-<li>word-break</li>
-<li>overflow-wraps</li>
-<li>hyphens</li>
-</ul>
-<h2 id="_10">值和单位</h2>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units">参考：CSS 的值与单位</a></p>
-<p>css 值可以使用关键字和值。关键字是指 red、top 等。</p>
-<ul>
-<li>数值类型：<code>integer</code>、<code>number</code>、<code>dimension</code>、<code>&lt;percentage&gt;</code>、<code>&lt;length&gt;</code></li>
-<li>长度（length）<ul>
-<li>绝对单位：px</li>
-<li>相对单位：rem</li>
-</ul>
-</li>
-<li>百分比（percentage）<ul>
-<li>百分比通常是相对于父元素</li>
-</ul>
-</li>
-<li>颜色（<code>&lt;color&gt;</code>）</li>
-<li>RGB 和 RGBA：RGBA 颜色在 RGB 的基础上增加了一个透明度值，与 opacity 属性不同，opacity 使得元素和它里面的所有东西都不透明，而 RGBA 颜色只让指定的颜色不透明。（<strong>可以用 RBGA 颜色来增加一层滤镜</strong>）</li>
-<li>HSL 和 HSLA：RGB 是红绿蓝，HSL 是色调、饱和度和亮度</li>
-<li>图片（<code>&lt;image&gt;</code>）和渐变（<code>&lt;gradient&gt;</code>）</li>
-<li>位置（<code>&lt;position&gt;</code>）</li>
-<li>标识符，标识符就是指上面提到的 css 关键字</li>
-<li>字符串，例如<code>content: "This is a string"</code></li>
-<li>函数，例如 rgb()、url()、calc()等</li>
-</ul>
-<h2 id="_11">尺寸</h2>
-<p>原始尺寸/固有尺寸：</p>
-<ul>
-<li>例如图像本身的尺寸</li>
-<li>空 div 没有尺寸，高度为 0，宽度由于其是块级元素会扩展到和父元素一样宽。</li>
-</ul>
-<p>用百分数设置尺寸时：</p>
-<ul>
-<li>对于 width 和 height，是相对于父元素宽度的百分比</li>
-<li>对于内外边距，不论是左右边距还是上下边距，都是相对于 inline-size（即宽度）的百分比</li>
-</ul>
-<p>min-和 max-尺寸：</p>
-<ul>
-<li>如果盒子内容会变化，用 min-和 max-设置最小或最大尺寸，盒子尺寸就会随内容自动变化</li>
-<li>这个技术就是用来使图片（<code>&lt;image&gt;</code>）可响应的，可响应是指图片随设备尺寸自动缩放。</li>
-</ul>
-<p>视口尺寸：</p>
-<ul>
-<li>vw 和 vh</li>
-</ul>
-<h2 id="_12">替换元素和表单</h2>
-<p>替换元素：指图像和视频元素，css 不能影响其内部布局</p>
-<ul>
-<li>调整大小，object-fit: cover/contain/fill;</li>
-<li>在 flex 和 grid 布局中，元素会被拉伸，而图像不会</li>
-</ul>
-<p>表单的样式在不同浏览器上不太统一，需要额外设置 css 样式保证其初始样式一致，已经有一些工具帮开发人员完成了这个工作，例如 Normalize.css。</p>
-<h2 id="_13">字体</h2>
-<p>web 安全字体：可以在任何一种操作系统上找到的字体。<a href="https://www.cssfontstack.com/">参考：cssfontstack</a></p>
-<p>五种字体的大类型：</p>
-<ul>
-<li>serif，有衬线字体，衬线是指字体笔画尾端的小装饰，常见于印刷体字体</li>
-<li>sans-serif，无衬线字体</li>
-<li>monospace，等宽字体，通常用于代码</li>
-<li>cursive，手写体</li>
-<li>fantasy，用来装饰的字体</li>
-</ul>
-<p>使用上面这五种字体时，由浏览器决定具体使用什么字体</p>
-<p>常见属性属性名：</p>
-<ul>
-<li>font-family/size/style/weight/transform/decoration</li>
-<li>color</li>
-<li>text-shadow</li>
-<li>text-align</li>
-<li>line-height</li>
-<li>letter-spacing</li>
-<li>word-spacing</li>
-</ul>
-<p>web 字体：访问时和页面一起下载，本不需要本地事先有这种字体</p>
-<pre><code class="language-css">@font-face {
-  font-family: &quot;myFont&quot;;
-  src: url(&quot;myFont.ttf&quot;);
-}
+<p><strong>隐式几何的问题</strong></p>
+<p>很难对复杂形状建模。</p>
+<h3 id="algebraic-surface">代数曲面（Algebraic Surface）</h3>
+<p>用 <span class="arithmatex">\(x^2 + y^2 + z^2 = 1\)</span> 表示球面。</p>
+<p>用 <span class="arithmatex">\((R-\sqrt{x^2 + y^2})^2 + z^2 = r^2\)</span> 表示甜甜圈，环形圆管（Torus）。</p>
+<h3 id="constructive-solid-geometry-csg">构造实体几何（Constructive Solid Geometry, CSG）</h3>
+<p>用基本几何体做布尔运算（Boolean Operation）得到复杂几何体。</p>
+<h3 id="distance-function">距离函数（Distance Function）</h3>
+<p>不直接描述表面，而是去描述点到表面的最近距离。</p>
+<p>距离函数或者有向距离函数（Signed Distance Function, SDF）适合处理几何体的融合操作。</p>
+<p><strong>水平集方法（Level Set Method）</strong></p>
+<p>是一种距离函数的表示方法，他将距离函数的值存储在一个网格中，如果把所有<span class="arithmatex">\(f(x)=0\)</span>的点找出来，就能得到图中所示的曲线，如果把<span class="arithmatex">\(f(x)=2\)</span>的点找出来，就能得到另外一条曲线，有点类似于等高线。</p>
+<p><img alt="level-set-method.png" src="/img/games101-notes/level-set-method.png" /></p>
+<p>水平集还可以定义在三维空间的格子上。</p>
+<p>还可以用于物理模拟，描述一个流体的边界。</p>
+<h3 id="fractals">分形（Fractals）</h3>
+<p>分形用来描述自相似的现象，即同样的结构在不同的尺度上重复出现。</p>
+<h2 id="_3">显式几何</h2>
+<h3 id="point-cloud">点云（Point Cloud）</h3>
+<p>就是一系列点，不构成任何表面，只要点足够多足够密集，就能表示一个物体。</p>
+<p>点云经常会被转换为多边形面（Polygon Mesh）。</p>
+<h3 id="polygon-mesh">多边形网格（Polygon Mesh）</h3>
+<p>由顶点和多边形组成的网格，通常用三角形或四边形。</p>
+<p><strong>obj文件格式</strong></p>
+<p>obj文件格式是一种常见的多边形网格文件格式。</p>
+<p>v表示顶点坐标，vn表示顶点法线，vt表示纹理坐标，f表示一个多边形。</p>
+<p>f的格式是这样的，它由三组<code>12/34/55</code>这样的数字组成，每组数字表示一个顶点，一组数字对应的其实是三个序号，分别是顶点序号、顶点法线序号、纹理坐标序号。</p>
+<pre><code class="language-obj">vn 0.713667 0.093012 -0.694283
+vt 0.854030 0.663650
+v 0.348799 -0.334989 -0.083233
+vn 0.742238 0.092067 0.663782
+vt 0.724960 0.675077
+v 0.313132 -0.399051 0.881192
+
+...
+
+f 739/739/739 735/735/735 736/736/736
+f 189/189/189 736/736/736 735/735/735
+f 192/192/192 738/738/738 737/737/737
+f 739/739/739 737/737/737 738/738/738
+f 190/190/190 741/741/741 740/740/740
+
+...
 </code></pre>
-<p>注意：</p>
+<h3 id="curve">曲线（Curve）</h3>
+<p>曲线能用在哪，比如说控制相机的移动路径，或者用来描述字体。</p>
+<h2 id="curve_1">曲线（Curve）</h2>
+<h3 id="bezier-curve">贝塞尔曲线（Bezier Curve）</h3>
+<p>贝塞尔曲线由四个点P0, P1, P2, P3定义，P0和P3分别是曲线的起点和终点，P0和P1构成了P0的切线方向，P2和P3构成了P3的切线方向。</p>
+<p><img alt="bezier-curve.png" src="/img/games101-notes/bezier-curve.png" /></p>
+<p><strong>De Casteljau算法</strong></p>
+<p>用任意数量个点来定义贝塞尔曲线。</p>
+<p>原理是这样的，给定一个范围在0到1之间的参数t，通过一定的规则找到贝塞尔曲线上对应t的点，然后我们枚举0到1之间所有的t值，就能得到贝塞尔曲线。</p>
+<p>怎么找对应t的点呢？</p>
+<p>考虑初始只有三个控制点的情况，这种情况也叫二次贝塞尔曲线（Quadratic Bezier），有三个点B0、B1、B2，B0和B1构成一个线段，B1和B2构成另一个线段，我们将每个线段看作一个0到1的范围，取t值对应的点，得到两个新点，然后再将两个新点连成一条线段，再取t值对应的点，这个点就是t值对应的贝塞尔曲线上的点。</p>
+<p>如此，我们通过枚举所有的t，就能找到贝塞尔曲线上的所有点。</p>
+<p>这个过程是一个递归插值的过程。</p>
+<p><strong>贝塞尔曲线代数方程（Bezier Curve Algebraic Formula）</strong></p>
+<p>给定n+1个控制点，每个点需要找n轮，可以写出一个n阶贝塞尔表达式，如下：</p>
+<div class="arithmatex">\[
+b^{n}(t) = b_{0}^{n}(t) = \sum_{j=0}^{n} b_{j}\, B_{j}^{n}(t)
+\]</div>
+<p><span class="arithmatex">\(b_j\)</span>表示控制点，<span class="arithmatex">\(B_{j}^{n}(t)\)</span>是伯恩斯坦多项式，定义如下：</p>
+<div class="arithmatex">\[
+B_{i}^{n}(t) = \binom{n}{i}\, t^{i} (1 - t)^{n-i}
+\]</div>
+<p>这里的 <span class="arithmatex">\(\binom{n}{i}\)</span> 是个组合数 <span class="arithmatex">\(C_{n}^{i}\)</span>。</p>
+<p>其实就是一个二项分布多项式。</p>
+<p><strong>注意，贝塞尔方程是一个最终的展开式，并不涉及中间得到的临时点</strong>。</p>
+<p>贝塞尔曲线有以下性质：</p>
 <ol>
-<li>有些字体有版权，不能随便用</li>
-<li>不同浏览器支持的字体格式可能不同，常见的格式有.ttf, .woff, .woff2 等</li>
-<li>在线字体服务，例如 google fonts，可以从第三方站点导入字体，例如用<code>&lt;link&gt;</code>或<code>@import</code>导入字体，不需要开发人员自己提供字体</li>
+<li>贝塞尔曲线起点是<span class="arithmatex">\(b_0\)</span>，终点是<span class="arithmatex">\(b_n\)</span>，因此，<span class="arithmatex">\(b^{n}(0) = b_0\)</span>，<span class="arithmatex">\(b^{n}(1) = b_n\)</span>。</li>
+<li>在四个控制点（三阶贝塞尔曲线）的情况下，起始位置的切线和结束位置的切线分别是，<span class="arithmatex">\(b^{'}(0) = 3(b_1-b_0)\)</span>，<span class="arithmatex">\(b^{'}(1) = 3(b_3-b_2)\)</span></li>
+<li>在仿射变换时，可以直接对控制点进行变换，利用变换后的控制点生成的贝塞尔曲线和对原始贝塞尔曲线上的每个点进行变换是一样的（<strong>只有仿射不变性，投影变换是不行的</strong>，因为投影变换的最后一步是做透视除法，即对x、y、z坐标分别除以齐次坐标w，这个过程是非线性的）。</li>
+<li>凸包性质：贝塞尔曲线总是位于控制点形成的凸包内。</li>
 </ol>
-<h2 id="_14">布局</h2>
-<h3 id="_15">正常布局流</h3>
-<p>正常布局流是指默认的布局。</p>
+<p><strong>分段贝塞尔曲线（Piecewise Bezier Curves）</strong></p>
+<p>逐段贝塞尔曲线。</p>
+<p>为了解决高阶贝塞尔曲线（由很多点定义的贝塞尔曲线）不易控制的问题，可以用多段低阶贝塞尔曲线来连接成高阶贝塞尔曲线，前一段的终点同时作为后一段的起点。</p>
+<p>一般使用三阶贝塞尔曲线（四个控制点）（Piecewise cubic Bezier）来连接。</p>
+<p>如何使得两段贝塞尔曲线之间的连接是光滑的呢？我们利用上面的三阶贝塞尔曲线的性质，让前一段的终点和后一段的起点重合，并且让前一段的终点切线和后一段的起点切线方向相反，切线长度一致。</p>
+<p>这里给出几种连续的定义：</p>
 <ul>
-<li>块元素的布局方向垂直于书写方向</li>
-<li>内联元素的布局方向和书写方向一致</li>
-<li>默认的，块元素的宽度是其父元素的 100%，高度与其内容高度一致。内联元素的 height 和 width 与内容一致。</li>
-<li>外边距叠加</li>
+<li><span class="arithmatex">\(C^0\)</span>连续：两段曲线的连接点重合，在几何上连续。</li>
+<li><span class="arithmatex">\(C^1\)</span>连续：两段曲线的连接点重合，并且切线方向相反，切线长度相同，并且一阶导数连续。</li>
 </ul>
-<h3 id="flexbox">flexbox（弹性盒子）</h3>
-<p>display:flex</p>
-<p>flexbox 用于创建横向或纵向的一维布局，里面的子元素被称为 flex 项，flex 有以下特点：</p>
+<p>可以使用<a href="https://math.hws.edu/eck/cs424/notes2013/canvas/bezier.html">https://math.hws.edu/eck/cs424/notes2013/canvas/bezier.html</a>这个网站来交互式地绘制贝塞尔曲线。</p>
+<h3 id="spline">样条（Spline）</h3>
+<p>简单来讲，一个利用多个控制点控制的曲线就是样条。</p>
+<p><strong>B样条（B-Spline）</strong></p>
+<p>B样条是基函数样条（Basis Spline）的缩写，它的大概思路是将伯恩斯坦多项式视为不同的基函数，然后通过线性组合这些基函数来得到曲线。</p>
+<p>B样条是对贝塞尔曲线的一个推广。</p>
+<p>B样条具有局部性，贝塞尔曲线是全局控制的，即一个控制点的移动会影响整条曲线，而B样条是局部控制的，一个控制点的移动只会影响曲线的一部分。</p>
+<h2 id="_4">曲面</h2>
+<h3 id="bezier-surface">贝塞尔曲面（Bezier Surface）</h3>
+<p>贝塞尔曲面是贝塞尔曲线的推广。</p>
+<p>下图是由16个控制点（4x4）定义的一个三阶贝塞尔曲面。</p>
+<p><img alt="bezier-surface.png" src="/img/games101-notes/bezier-surface.png" /></p>
+<p>它的原理是这样的，在原本的二维平面上，先用四个控制点画出一条贝塞尔曲线，然后沿着新增的维度方向，再其他三个平面上继续画出三条贝塞尔曲线，这样就得到了四条贝塞尔曲线，选择任意一个t，我们分别能在这四条贝塞尔曲线上找到对应的点，然后将这四个点作为新的控制点，再画一条贝塞尔曲线，枚举所有的t值，就能得到整个贝塞尔曲面。</p>
+<p>下图中蓝色的线扫过的地方就是贝塞尔曲面。</p>
+<p><img alt="bezier-surface-2.png" src="/img/games101-notes/bezier-surface-2.png" /></p>
+<p>由此可见，我们需要两个t参数，我们把这个二维的参数叫做(u, v)。</p>
+<p>这也是为什么贝塞尔曲面被归类到显式几何的原因，因为它是通过参数映射的方式来定义曲面的，给定(u, v)，就能找到曲面上的点。</p>
+<h2 id="mesh">网格（Mesh）操作：几何处理</h2>
 <ul>
-<li>默认方向是横向（父元素 flex-direction:row）</li>
-<li>元素会被拉伸到和最高的元素相同（父元素 align-items:stretch）</li>
-<li>所有 flex 项都默认从容器的开始位置进行排列，排列成一行后，在尾部留下一片空白。</li>
-</ul>
-<p>概念：</p>
-<ul>
-<li>主轴是指沿着 flex 项放置方向的轴，交叉轴是指垂直方向的轴</li>
-<li>设置了 display:flex 的父元素被称为 flex 容器，里面的子元素被称为 flex 项</li>
-</ul>
-<p>方向：</p>
-<ul>
-<li>flex-direction:row/column/row-reverse/column-reverse，设置主轴方向，-reverse 代表反向排列元素</li>
-<li>flex-wrap: wrap，允许换行</li>
-<li>flex-flow：以上两项的缩写</li>
-</ul>
-<p>动态尺寸：</p>
-<ul>
-<li>flex:1，无单位的数字代表一个比例，其所占宽度=(1/所有 flex 项所占比例之和)*屏幕宽度</li>
-<li>flex:1 200px，该 flex 项至少占 200px，剩余空间按比例分配</li>
-<li>flex-grow、flex-basis，分别是以上两个的全写</li>
-<li>flex-shrink：指定了从每个 flex 项中取出多少溢出量，以阻止它们溢出它们的容器。</li>
-</ul>
-<p>对齐：</p>
-<ul>
-<li>align-items 控制 flex 项在交叉轴上的位置</li>
-<li>justify-content 控制 flex 项在主轴上的位置，其值包括 flex-start、flex-end、flex-around、flex-between</li>
-</ul>
-<p>排序：使用 order 属性，默认值是 0，值越大，越往后排</p>
-<h3 id="grid">grid（网格）</h3>
-<p>display:grid</p>
-<p>默认只有一列，创建多个列：</p>
-<ul>
-<li>grid-template-columns: 200px 200px 200px;</li>
-<li>用<code>fr</code>单位创建多个列，grid-template-columns: 2fr 1fr 1fr，<code>fr</code>定义了一个比例，有点类似于flexbox不带单位的尺寸</li>
-<li>grid-template-columns: 300px 2fr 1fr，剩下的两列会根据除去300px后的可用空间按比例分配</li>
-<li>使用repeat函数重复生成列</li>
-</ul>
-<p>在网格系统中，行和列之间的间隙被称为 gutter（沟槽），如何修改gutter：</p>
-<ul>
-<li>grid-column/row-gap</li>
-</ul>
-<p>显式网格和隐式网格，隐式网格是指浏览器会自动将多出来的内容放到新的行/列里面去：</p>
-<ul>
-<li>参数默认是auto，大小会根据放入的内容自动调整</li>
-<li>grid-auto-rows/columns，指定显式网格的大小</li>
-</ul>
-<p>动态行列尺寸：</p>
-<ul>
-<li>使用minmax函数设置行列尺寸，minmax函数可以设置一个取值范围，例如minmax(100px, auto)，下面是一个例子</li>
-</ul>
-<p><code>css
-  .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: 20px;
-  }</code></p>
-<p>利用分隔线放置内容</p>
-<ul>
-<li>我们的网格有许多分隔线，第一条线的起始点与文档书写模式相关。在英文中，第一条列分隔线（即网格边缘线）在网格的最左边而第一条行分隔线在网格的最上面。</li>
-<li>grid-column/row-start/end</li>
-<li>gird-column/row：同时指定开始线和结束线，<strong>要使用/符号分开</strong>，例如：grid-column: 1 / 3;</li>
-</ul>
-<p>利用grid-template-areas和grid-area放置内容</p>
-<ul>
-<li>对于某个横跨多个格子的元素，重复写上那个元素grid-area属性定义的区域名字</li>
-<li>所有名字只能出现在一个连续的区域，不能在不同的位置出现</li>
-<li>一个连续的区域必须是一个矩形</li>
-<li>使用.符号让一个格子留空</li>
-</ul>
-<pre><code class="language-css">.container {
-  display: grid;
-  grid-template-areas:
-      &quot;header header&quot;
-      &quot;sidebar content&quot;
-      &quot;footer footer&quot;;
-  grid-template-columns: 1fr 3fr;
-  grid-gap: 20px;
-}
-
-header {
-  grid-area: header;
-}
-
-article {
-  grid-area: content;
-}
-
-aside {
-  grid-area: sidebar;
-}
-
-footer {
-  grid-area: footer;
-}
-</code></pre>
-<h3 id="float">浮动（float）</h3>
-<p>略</p>
-<h3 id="position">定位（position）</h3>
-<ul>
-<li>静态定位：<code>position: static;</code>，默认值，将元素放入文档布局流中的正常位置</li>
-<li>相对定位：<code>position: relative;</code>，使用top, bottom, left, 和 right定位</li>
-<li>绝对定位：<code>position: absolute;</code>，绝对定位的元素不再存在于正常文档布局流中，它在自己的层独立于一切。绝对定位元素相对于其“包含元素定位”。哪个元素是绝对定位元素的“包含元素”取决于绝对定位元素的父元素的position属性</li>
-<li>如果父元素都是static，绝对定位元素会被包含在初始快容器中（<code>&lt;html&gt;</code>元素外面，根据浏览器视口定位）</li>
-<li>如何修改绝对定位元素的相对元素？把它的一个父元素设置为相对定位（<code>position: relative</code>）就好了。</li>
-<li>z-index：如果有多个绝对定位元素，用z-index指定它们的堆叠顺序（z是指z轴，假设网页有高度）。z-index默认值是0，数字大的在上面，小的在下面。</li>
-<li>
-<p>固定定位：<code>position: fixed;</code>，固定定位固定元素相对于浏览器视口本身。</p>
-<p>```css
-/<em>让一个固定定位元素顶部居中</em>/
-h1 {
-  position: fixed;
-  top: 0;
-  margin: 0 auto; /<em>使用auto居中</em>/</p>
-<p>width: 500px;
-  background: white;
-  padding: 10px;
-}
-```</p>
-</li>
-<li>
-<p><code>position: sticky;</code>：相对定位和固定定位的混合体，被定位的元素一开始表现得像相对定位一样，直到它滚动到某个阈值点（例如，距视口顶部1​​0px）后它就变得固定了。</p>
-</li>
-</ul>
-<h3 id="_16">多列布局</h3>
-<p>通过这两个属性开启多列布局，column-count 或者 column-width</p>
-<ul>
-<li>column-count属性创建指定列数，由浏览器计算每一列分配多少空间。</li>
-<li>column-width属性指定列宽，由浏览器计算创建几列。</li>
-<li>用 column-gap 改变列间间隙。</li>
-<li>用 column-rule 在列间加入一条分割线。column-rule 是 column-rule-color 和 column-rule-style的缩写，接受和 border 一样的单位。</li>
-<li>禁止内容折断：break-inside: avoid 或 page-break-inside: avoid</li>
-</ul>
-<h3 id="_17">响应式布局</h3>
-<p>媒体查询：当满足指定条件时css才会被应用，例如</p>
-<pre><code class="language-css">@media screen and (min-width: 800px) {
-  .container {
-    margin: 1em 2em;
-  }
-} 
-</code></pre>
-<p>断点：媒体查询，以及样式改变时的点，被叫做断点（breakpoints），通常是一个阈值。</p>
-<p>现代布局方式，多栏布局，弹性盒子和网格默认是响应式的。</p>
-<p>视口元标签：</p>
-<ul>
-<li><code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</code>，它告诉移动端浏览器，应该将视口宽度设定为设备的宽度，将文档放大到其预期大小的100%。<strong>如果不加这个，用断点和媒体查询实现的响应式设计不会生效，因为视口大小还是PC端的大小</strong></li>
-<li>initial-scale：设定了页面的初始缩放，我们设定为1。</li>
-<li>height：特别为视口设定一个高度。</li>
-<li>阻止用户缩放<ul>
-<li>minimum-scale：设定最小缩放级别。</li>
-<li>maximum-scale：设定最大缩放级别。</li>
-<li>user-scalable：如果设为no的话阻止缩放。</li>
-</ul>
-</li>
-</ul>
-<h3 id="_18">媒体查询</h3>
-<pre><code class="language-css">@media media-type and (media-feature-rule) {
-  /* CSS rules go here */
-}
-</code></pre>
-<p>它由以下部分组成：</p>
-<ul>
-<li>一个媒体类型，告诉浏览器这段代码是用在什么类型的媒体上的（例如印刷品或者屏幕）；</li>
-<li>它的值可以是：all、print、screen、speech</li>
-<li>一个媒体表达式，是一个被包含的CSS生效所需的规则或者测试；</li>
-<li>min-width、max-width、width等</li>
-<li>一组CSS规则，会在测试通过且媒体类型正确的时候应用。</li>
+<li>Mesh subdivision（网格细分）：让三角形更密</li>
+<li>Mesh simplification（网格简化）：让三角形更少</li>
+<li>Mesh regularization（网格规整化）：让三角形大小形状都差不多。</li>
 </ul>
 
 
@@ -4141,12 +3699,12 @@ h1 {
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

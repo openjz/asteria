@@ -358,5 +358,5 @@ directx有一套近似机制，动态曲面细分（Dynamic Tessellation），�
 ### 纹理的其他应用
 
 - 三维噪声（3D Procedural Noise），是一种三维纹理。
-- 环境光遮蔽（Ambient Occlusion），用于模拟环境光照射下的阴影效果。
+- 环境光遮蔽（Ambient Occlusion），用于模拟环境光照射下在物体表面产生的阴影效果，比如物体表面倒映出屋子里的窗户，只有玻璃是亮的，其他地方是暗的。
 - 用于体积渲染（Volume Rendering）的三维纹理（3D Texture），。
