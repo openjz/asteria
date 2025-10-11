@@ -1917,7 +1917,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      如何计算顶点的法线？
+      题外话（一点思考）
     </span>
   </a>
   
@@ -1925,6 +1925,15 @@
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何计算顶点的法线？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       如何对法线插值？
     </span>
@@ -1981,7 +1990,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       应用纹理
     </span>
@@ -1990,7 +1999,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       纹理反走样
     </span>
@@ -2053,9 +2062,42 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       纹理的其他应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shadow-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      阴影贴图（Shadow Mapping）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阴影贴图（Shadow Mapping）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      软阴影
     </span>
   </a>
   
@@ -3493,7 +3535,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      如何计算顶点的法线？
+      题外话（一点思考）
     </span>
   </a>
   
@@ -3501,6 +3543,15 @@
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何计算顶点的法线？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       如何对法线插值？
     </span>
@@ -3557,7 +3608,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       应用纹理
     </span>
@@ -3566,7 +3617,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       纹理反走样
     </span>
@@ -3629,9 +3680,42 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       纹理的其他应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shadow-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      阴影贴图（Shadow Mapping）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="阴影贴图（Shadow Mapping）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      软阴影
     </span>
   </a>
   
@@ -3731,12 +3815,51 @@
 <p><strong>Phong Shading (Pixel)</strong></p>
 <p>注意这个并不是Blinn-Phong反射模型。</p>
 <p>求出几个顶点的法线，在三角形面内进行法线插值，然后计算出每个像素点的颜色。</p>
-<h3 id="_3">如何计算顶点的法线？</h3>
+<h3 id="_3">题外话（一点思考）</h3>
+<p>使用顶点法线插值，不会改变几何，只是光照时让几何体表面显得更平滑。</p>
+<blockquote>
+<p>这叫做法线平滑（Normal Smoothing）。</p>
+</blockquote>
+<p>如果我有个比较复杂的几何体，我希望它某一部分的渲染使用面法线，让他的棱角更分明，而其他部分使用顶点法线插值，让他的表面更圆滑，图形学上有这种技术吗？或者说，这对于图形学来说，是个问题吗？</p>
+<p>gpt告诉我:</p>
+<blockquote>
+<p>有，并且非常常见。这不是问题，而是标准做法。</p>
+<p>可用的技术与做法：</p>
+<p>硬边/平滑组（Smoothing Groups）/法线拆分（Normal Split）：在硬边处“拆分顶点”，给该边两侧三角形的顶点写入各自的面法线；其余区域用平滑顶点法线。大多数DCC/引擎支持（OBJ/FBX可存“面-顶点法线”）。
+按角度阈值生成法线：导入时按夹角&gt;阈值就断边，用面法线；否则合并求平均法线。
+着色器里混合：在片元着色器同时拿到“插值法线”（平滑）和“几何面法线”，用掩码（顶点属性或纹理）选择或混合二者。</p>
+<p>示例（GLSL 片元，世界或视空间一致）：</p>
+</blockquote>
+<pre><code class="language-glsl">// ...插值进来的数据...
+in vec3 vPosWS;         // 片元位置(世界/视空间)
+in vec3 vNormalWS;      // 插值后的平滑法线
+in vec2 vUV;            // 可选，用于区域掩码
+uniform sampler2D uMask; // R=1 用面法线，R=0 用平滑
+// ...existing code...
+void main() {
+    vec3 N_smooth = normalize(vNormalWS);
+    vec3 N_flat   = normalize(cross(dFdx(vPosWS), dFdy(vPosWS))); // 面法线
+    float w = texture(uMask, vUV).r; // 或者用顶点属性/材质开关
+    vec3 N = normalize(mix(N_smooth, N_flat, w));
+    // 用 N 做后续光照
+}
+</code></pre>
+<blockquote>
+<p>其他要点：</p>
+<ul>
+<li>用 flat 插值限定符也可让某个 varying 按“每面”传值，但要保证三顶点携带相同数据或用几何着色器/顶点复制。</li>
+<li>硬边会增加顶点数；若用 dFdx/dFdy 求面法线，请确保用同一空间的 vPos，并注意导数在分支/多采样处的连续性。</li>
+<li>若用法线贴图，平滑区应保持一致的切线空间（常用 MikkTSpace）。</li>
+</ul>
+<p>结论：同一几何体中混合“面法线的硬朗”和“顶点法线的圆滑”是行业常规工作流，直接用硬边/平滑组或着色器掩码即可实现。</p>
+</blockquote>
+<p>以上全部都是gpt告诉我的。</p>
+<h3 id="_4">如何计算顶点的法线？</h3>
 <p>对顶点所在面的法线进行平均。</p>
 <div class="arithmatex">\[
 \vec{n}_v = \frac{\sum_{i=1}^{k} \vec{n}_i}{|\sum_{i=1}^{k} \vec{n}_i|}
 \]</div>
-<h3 id="_4">如何对法线插值？</h3>
+<h3 id="_5">如何对法线插值？</h3>
 <p>Barycentric coordinates interpolation（重心坐标插值）</p>
 <h2 id="real-time-rendering-pipeline">实时渲染管线（Real-time Rendering Pipeline）</h2>
 <ol>
@@ -3790,12 +3913,12 @@
 <p>对于任意向量的插值，也是一样的：</p>
 <div class="arithmatex">\[V_P = \alpha V_A + \beta V_B + \gamma V_C\]</div>
 <p><strong>由于在投影变换过程中，三角形会被拉伸变换，点的重心坐标会变，所以什么时候做插值，要区分清楚。</strong></p>
-<h3 id="_5">应用纹理</h3>
+<h3 id="_6">应用纹理</h3>
 <ol>
 <li>光栅化后，对屏幕上的每一个采样点进行纹理坐标插值，得到对应的纹理坐标（<span class="arithmatex">\(u,v\)</span>），<span class="arithmatex">\(u,v\)</span> 坐标的值通常在0~1之间。</li>
 <li>着色时，将纹理图片上的颜色作为漫反射系数 <span class="arithmatex">\(k_d\)</span>。</li>
 </ol>
-<h3 id="_6">纹理反走样</h3>
+<h3 id="_7">纹理反走样</h3>
 <p><strong>纹理放大（Texture Magnification）和纹理缩小（Texture Minification）</strong></p>
 <p>纹理太大或太小，有可能发生在场景有一定深度时，近处的物体需要用大纹理，远处的物体需要用小纹理。</p>
 <p><strong>texture太小怎么办？</strong></p>
@@ -3867,12 +3990,38 @@ L = \max\!\left(
 <p>位移贴图同样也是为了模拟表面的凹凸效果，不同的是，位移贴图直接改变表面上每个点的位置，而不是改变法线。</p>
 <p>位移贴图要求三角形网格足够密集，使得着色时的采样率能够跟得上贴图的顶点变化速度。</p>
 <p>directx有一套近似机制，动态曲面细分（Dynamic Tessellation），可以在渲染时动态增加三角形网格的密度，而不需要建模时就建好密集的网格。</p>
-<h3 id="_7">纹理的其他应用</h3>
+<h3 id="_8">纹理的其他应用</h3>
 <ul>
 <li>三维噪声（3D Procedural Noise），是一种三维纹理。</li>
 <li>环境光遮蔽（Ambient Occlusion），用于模拟环境光照射下在物体表面产生的阴影效果，比如物体表面倒映出屋子里的窗户，只有玻璃是亮的，其他地方是暗的。</li>
-<li>用于体积渲染（Volume Rendering）的三维纹理（3D Texture），。</li>
+<li>用于体积渲染（Volume Rendering）的三维纹理（3D Texture）。</li>
 </ul>
+<h2 id="shadow-mapping">阴影贴图（Shadow Mapping）</h2>
+<p>如何运用光栅化技术来实现阴影效果？</p>
+<p>答案是Shadow Mapping（阴影贴图）</p>
+<ul>
+<li>在计算阴影的过程中，不需要知道场景中的几何信息</li>
+<li>可能会产生走样问题</li>
+</ul>
+<p>要点是只有当light和camera都能看到这个点的时候，我们才认为它不在阴影里，这个很好理解，camera能不能看到这个点决定这个点能不能着色，而light能不能看到这个点决定这个点着什么颜色。</p>
+<p>Shadow mapping只能处理点光源。</p>
+<p>只能生成硬阴影（Hard Shadow）</p>
+<ul>
+<li>硬阴影：阴影的轮廓清晰，一个点要么在阴影里，要么不在阴影里</li>
+<li>软阴影：阴影的轮廓比较模糊</li>
+</ul>
+<h3 id="_9">如何实现</h3>
+<p>第一步，假设光源的位置有个相机，我们先用光源相机渲染一张深度图（Depth Map），深度图中记录的是从光源看到的每个像素点的深度值。</p>
+<p>第二步，从真正的相机位置再次看向场景，对于每个像素点，拿到这个像素点对应的几何点，将这个点变换到光源相机空间，计算出这个点的深度值，然后比较这个深度值和深度图中的深度值之间的关系，如果光源和相机都能看到这个点，这个点不在阴影里，否则，这个点在阴影里。</p>
+<p>这个方案存在几个问题：</p>
+<ul>
+<li>深度图是有一个具体的分辨率的，可能会存在走样问题。</li>
+<li>每个光源都会增加一次渲染过程，提高了计算成本。</li>
+</ul>
+<h3 id="_10">软阴影</h3>
+<p>一个完全看不到光源的地方，叫本影（Umbra），一个部分看得到光源的地方，叫半影（Penumbra）。</p>
+<p>这是个自然现象，在自然界中有很多例子，比如日食。</p>
+<p>这是由于光源本身有一定大小导致的，如果是点光源，则不存在半影。</p>
 
 
 

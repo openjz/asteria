@@ -208,7 +208,82 @@ B样条具有局部性，贝塞尔曲线是全局控制的，即一个控制点�
 
 ## 网格（Mesh）操作：几何处理
 
-- Mesh subdivision（网格细分）：让三角形更密
-- Mesh simplification（网格简化）：让三角形更少
-- Mesh regularization（网格规整化）：让三角形大小形状都差不多。
+- Mesh subdivision（曲面细分）：让三角形更密
+- Mesh simplification（曲面简化）：让三角形更少
+- Mesh regularization（曲面规整化）：让三角形大小形状都差不多。
+
+### 曲面细分（Mesh Subdivision）
+
+分两步：
+
+1. 生成更多三角形
+2. 调整三角形顶点的位置，使表面更光滑
+
+**Loop Subdivision**
+
+（这个细分的发明人的名字叫Loop）
+
+**这个算法只能细分三角形**。
+
+该算法把一个三角形分成四个三角形，如下图所示，
+
+![loop-subdivision.png](/img/games101-notes/loop-subdivision.png)
+
+如何调整三角形顶点的位置呢？
+
+首先考虑新增顶点的位置，如下图所示，新增顶点位于一条边上，它被两个三角形共享，这个点的新位置由四个原有的点A, B, C, D加权平均得到。
+
+$$ \frac{3}{8}\,(A + B) + \frac{1}{8}\,(C + D) $$
+
+![loop-subdivision-2.png](/img/games101-notes/loop-subdivision-2.png)
+
+对于原有的顶点，它的新位置由它本身和它的邻居顶点加权平均得到。
+
+$$ (1 - n*u)*(\text{original position}) + u*(\text{neighbor position sum}) $$
+
+其中，$n$ 是顶点的度（degree），也就是连接了几条边。
+
+$u$ 的计算公式如下：
+
+$$ u = \frac{3}{16} \quad \text{if } n = 3 $$
+
+$$ u = \frac{3}{8n} \quad \text{if } n > 3 $$
+
+![loop-subdivision-3.png](/img/games101-notes/loop-subdivision-3.png)
+
+**Catmull-Clark细分（Catmull-Clark Subdivision）**
+
+**他可以细分任意多边形**。
+
+这个算法把面分为四边形面和非四边形面（Non-quad face）
+
+奇异点（Extraordinary Vertex）：度不等于4的顶点
+
+如何细分呢？
+
+对于任意一个面，取每条边的中点作为新的点，取每个面的中心作为新的点，把面中心点和每个边中心点连起来。
+
+这个细分算法有以下性质：
+
+- 只要一个面是非四边形面，它的中心点一定是奇异点。
+- 经过一次细分之后，所有的非四边形面全部消失
+
+这相当于，一次细分之后，所有非四边形面全部转化为相同数量的奇异点，再细分，奇异点不再增加（因为已经全是四边形面了）。
+
+每次细分后，要调整顶点位置。
+
+面中心点、边中心点和原有顶点的位置调整公式如下：
+
+![catmull-clark-subdivision.png](/img/games101-notes/catmull-clark-subdivision.png)
+
+### 曲面简化（Mesh Simplification）
+
+边坍缩（Edge Collapse），把一条边的两个顶点合并成一个顶点，从而减少三角形的数量。
+
+二次误差度量（Quadric Error Metric, QEM），是新点到原本连接的面的距离平方和，我们的目的是找到一个新点，让这个距离平方和最小，将这个新点作为边坍缩后的新顶点。
+
+如何选择要坍缩的边呢？
+
+为每个边计算出二次误差度量，然后选择误差最小的边进行坍缩，这里面存在问题，坍缩一条边后，其他边的二次误差度量也会变，所以需要重新计算。用优先队列或堆来保存所有已经计算出的二次误差度量，每次选择误差最小的边进行坍缩，如果发现它需要更新，就将它弹出队列，更新它的二次误差度量，再放入堆中。
+
 
