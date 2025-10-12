@@ -1945,6 +1945,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      包围盒
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3336,6 +3345,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      包围盒
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3460,7 +3478,7 @@ ax + by + cz + d = 0
 <p><img alt="moller-trumbore-algorithm.png" src="/img/games101-notes/moller-trumbore-algorithm.png" /></p>
 <p>上图中将求交过程转换为解线性方程组（因为公式中的向量和点都是三维的），利用克拉默法则（Cramer's Rule）求解，克拉默法则可以用来解n个式子和n个变量的线性方程组。</p>
 <p>得到解以后，只要t和三个重心坐标都是非负的，并且重心坐标之和为1，就说明交点在三角形内。</p>
-<p><strong>光线和三角形Mesh求交</strong></p>
+<h3 id="_4">包围盒</h3>
 <p>最简单的想法是，遍历所有三角形，计算光线和每个三角形的交点，找到最近的交点，但是这个方法很慢。</p>
 <p>如何加速计算呢？</p>
 <p>包围盒（Bounding Volume）是一个简单的几何体，能包住复杂的几何体。</p>
@@ -3493,6 +3511,31 @@ t_{exit} = \min(t_{max})
 t = \frac{\mathbf{p}'_x - \mathbf{o}_x}{\mathbf{d}_x}
 \]</div>
 <p>只需要用这些点和向量的x分量计算就行了，原因是这组对面的法线 <span class="arithmatex">\(N\)</span> 刚好就是x轴方向的单位向量，和 <span class="arithmatex">\(N\)</span> 做点积得到的就是x分量。</p>
+<p>在对包围盒求交后，如果光线和包围盒相交，那么就要计算光线和包围盒内部的物体求交，如何加速这个过程呢，这就要用到均匀网格（Uniform Grids）和空间划分（Spatial Partitions），这是两种加速计算光线和物体求交的方法。</p>
+<p><strong>均匀网格（Uniform Grids）</strong></p>
+<p>首先，对包围盒做预处理：</p>
+<ol>
+<li>构造包围盒。</li>
+<li>建立网格。</li>
+<li>标记和物体表面相交的格子。</li>
+</ol>
+<p>然后，光线追踪求交</p>
+<ol>
+<li>光线穿过包围盒，和每个格子求交（这个计算比直接和物体求交快）。</li>
+<li>经过被标记的格子时，光线是有可能和物体产生交点的。</li>
+<li>检查光线是否和上一步骤中被标记格子中的物体表面相交。</li>
+</ol>
+<p>光线穿过包围盒时，要去判断光线经过哪些格子，这有点类似光栅化时，对直线进行采样的过程，三维空间也有类似二维空间的直线光栅化算法（这个略过）。</p>
+<p>为了最优化光线和场景求交的速度，格子不能太多也不能太少，一个经验值是，在3D场景下，格子数目 = 27 * 物体数目。</p>
+<p><strong>空间划分（Spatial Partitions）</strong></p>
+<p>场景中的物体分布比较稀疏或者比较不均匀时，均匀网格就仍然会产生很多没必要的计算消耗，这时就可以用空间划分的方法。</p>
+<p>空间划分的思路是，根据物体在空间中的分布情况，将空间划分为大小不一的格子。</p>
+<p>下图列出了三种空间划分方法（简化成二维的形式），分别是八叉树（Oct-Tree），KD树（KD-Tree），BSP树（BSP-Tree）。</p>
+<p><img alt="spatial-partitions.png" src="/img/games101-notes/spatial-partitions.png" /></p>
+<p>八叉树是将空间递归地划分为8个子空间，直到每个子空间内的物体数目小于某个阈值（在二维空间中，就退化为了四叉树）</p>
+<p>KD树是将空间递归地划分为两个子空间，划分的平面是和坐标轴对齐的，他是一个二叉树。</p>
+<p>BSP树是将空间递归地划分为两个子空间，划分的平面可以是任意方向的。</p>
+<p>KD树是最简单的。</p>
 
 
 
