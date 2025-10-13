@@ -157,7 +157,7 @@ Moller Trumbore 算法是一种高效的光线和三角形求交算法，一下�
 
 得到解以后，只要t和三个重心坐标都是非负的，并且重心坐标之和为1，就说明交点在三角形内。
 
-### 包围盒
+### 包围盒（Bounding Volume）
 
 最简单的想法是，遍历所有三角形，计算光线和每个三角形的交点，找到最近的交点，但是这个方法很慢。
 
@@ -231,7 +231,7 @@ $$
 
 场景中的物体分布比较稀疏或者比较不均匀时，均匀网格就仍然会产生很多没必要的计算消耗，这时就可以用空间划分的方法。
 
-空间划分的思路是，根据物体在空间中的分布情况，将空间划分为大小不一的格子。
+空间划分的思路是，将包围盒按照树状结构划分，光线和格子求交的时候，按照树的结构计算，即使剪纸，能减少很多计算。
 
 下图列出了三种空间划分方法（简化成二维的形式），分别是八叉树（Oct-Tree），KD树（KD-Tree），BSP树（BSP-Tree）。
 
@@ -244,3 +244,114 @@ KD树是将空间递归地划分为两个子空间，划分的平面是和坐标
 BSP树是将空间递归地划分为两个子空间，划分的平面可以是任意方向的。
 
 KD树是最简单的。
+
+KD树构造了一颗二叉树，光线和包围盒求交时，按照树的结构，依次和每个中间节点和叶节点求交，如果发现中间节点和光线没有交点，就跳过这个子树，和叶节点求交时，如果发现和叶节点的空间有交点，才会去和叶节点内部的物体表面求交。
+
+空间划分的问题：
+
+- 划分格子时有可能把物体切开，很难判断一个格子和场景中的物体是否相交。
+- 一个物体有可能和多个格子相交。
+
+### 物体划分（Object Partition）和 层次包围盒（Bounding Volume Hierarchy, BVH）
+
+BVH是广泛使用的光线追踪加速结构。
+
+BVH划分的不是空间，是物体，可以理解为对包围盒中的三角形分组，然后对每组三角形重新构造包围盒，划分时，还是以二叉树的结构划分，当叶子节点里面包含的三角形足够少时，就停止划分。
+
+这样，一个物体只可能在一个格子里。
+
+如何划分一个格子呢？
+
+- 每次划分时都换一个坐标轴。
+- 每次划分最长的一轴。
+- 取位置在中间的三角形，以这个三角形为界划分，保证划分后的两个区域中三角形数量差不多，尽量保证构建出来的树是一个平衡二叉树。快速划分算法可以在O(n)时间复杂度内找到三角形重心的中位数，从而快速找到位置在中间的三角形。
+
+## 辐射度量学（Basic Radiometry）
+
+不同于Whitted-Style的光线追踪技术。
+
+辐射度量学精确地描述光和物体表面之间的作用，不像Blinn-Phong光照模型中对光强度之类的参数随便给定一个经验值。
+
+它定义了一系列物理光学属性，例如，
+
+- Radiant Flux：辐射通量
+- Radiant Intensity：辐射强度
+- Irradiance：辐射照度
+- Radiance：辐射亮度
+
+**Radiant Energy**
+
+能量，单位是$\mathrm{J}$焦耳
+
+$$
+Q\;[\mathrm{J}=\text{Joule}]
+$$
+
+**Radiant Flux**
+
+单位时间的能量，又叫功率（Power），单位是瓦特（W），在光学上叫流明（Lumen）。
+
+$$
+\Phi \equiv \frac{\mathrm{d}Q}{\mathrm{d}t}\;[\mathrm{W}=\text{Watt}]\;[\mathrm{lm}=\text{lumen}]^{*}
+$$
+
+**Radiant Intensity**
+
+度量光源发射出的光能量。
+
+Radiant Intensity指单位立体角（Solid angle）的功率（Power）（ω代表立体角）：
+
+$$
+I(\omega) \equiv \frac{\mathrm{d}\Phi}{\mathrm{d}\omega}
+$$
+
+单位是坎德拉（Candela）（sr是立体角的单位）：
+
+$$
+\left[\frac{\mathrm{W}}{\mathrm{sr}}\right]\;\left[\frac{\mathrm{lm}}{\mathrm{sr}}=\mathrm{cd}=\text{candela}\right]
+$$
+
+什么是立体角？
+
+通常的角是用弧度定义的，
+
+$$\theta = \frac{l}{r}$$
+
+三维空间中的角叫立体角，$A$ 代表球面面积
+
+$$\Omega = \frac{A}{r^2}$$
+
+单位立体角是指单位球面对应的立体角，怎么定义单位球面呢？
+
+用 $\theta$ 表示和z轴的夹角，用 $\phi$ 表示绕z轴的旋转角度，用这两个角度，可以定义球面上的一个方向。 
+
+![unit-solid-angle.png](/img/games101-notes/unit-solid-angle.png)
+
+那么单位面积为，
+
+$$
+\mathrm{d}A = (r\,\mathrm{d}\theta)(r\sin\theta\,\mathrm{d}\phi) = r^{2}\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi
+$$
+
+单位立体角为,
+
+$$
+\mathrm{d}\omega = \frac{\mathrm{d}A}{r^{2}} = \sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi
+$$
+
+显然，如果对单位立体角做二重积分，得到的就是球的表面积 $4\pi$
+
+所以，Flux 和 Intensity之间的关系为：
+
+$$\phi = 4\pi I$$
+
+（这是个很直观的结论）
+
+**Irradiance**
+
+度量物体表面接收到的光能量
+
+**Radiance**
+
+度量光传播过程中的光能量
+

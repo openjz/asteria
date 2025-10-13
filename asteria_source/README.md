@@ -69,9 +69,8 @@ path = 'github.com/alex-shpak/hugo-book'
 
 - 安装mkdocs: 
     ```bash
-    pip install mkdocs-material
-    pip install pymdown-extensions # math support
     pip install mkdocs-material # theme，https://github.com/squidfunk/mkdocs-material
+    pip install pymdown-extensions # math support
     ```
 - 新建项目: `mkdocs new [目录名]`
 - 启动服务: `mkdocs serve`
