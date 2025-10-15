@@ -339,7 +339,7 @@ $$
 \mathrm{d}\omega = \frac{\mathrm{d}A}{r^{2}} = \sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi
 $$
 
-显然，如果对单位立体角做二重积分，得到的就是球的表面积 $4\pi$
+显然，如果对单位立体角做二重积分（$\theta$的范围是$[0,\pi]$，$\phi$的范围是$[0,2\pi]$），得到的就是球的表面积 $4\pi$
 
 所以，Flux 和 Intensity之间的关系为：
 
