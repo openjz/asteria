@@ -349,9 +349,47 @@ $$\phi = 4\pi I$$
 
 **Irradiance**
 
-度量物体表面接收到的光能量
+度量物体表面接收到的光能量。
+
+Irradiance指单位面积上接收到的功率。
+
+$$
+E(x) \equiv \frac{\mathrm{d}\Phi(x)}{\mathrm{d}A}
+$$
+
+单位是Lux：
+
+$$
+\left[\frac{\mathrm{W}}{\mathrm{m}^2}\right]\;\left[\frac{\mathrm{lm}}{\mathrm{m}^2}=\mathrm{lux}\right]
+$$
+
+这个面积必须垂直于光线方向，如果平面不垂直于光线方向，那么将平面投影到光线的垂直方向上后的面积才是有效面积。
+
+前面介绍Blinn-Phong光照模型时，提到过光的强度衰减，实际上并不准确，在辐射度量学中，衰减的实际上是Irradiance，球面上的一点接收到的功率是：
+
+$$
+E' = \frac{\Phi}{4\pi r^2}
+$$
+
+其中，$\frac{\Phi}{4\pi}$ 是半径为1的球面上每个点接收到的功率。
 
 **Radiance**
 
-度量光传播过程中的光能量
+度量光传播过程中的光能量。
 
+Radiance是指表面发射、反射、透射或接收的功率，单位为单位立体角内的单位投影面积。
+
+![radiance.png](/img/games101-notes/radiance.png)
+
+$$
+L(p,\omega) \equiv \frac{\mathrm{d}^{2}\Phi(p,\omega)}{\mathrm{d}\omega\,\mathrm{d}A\,\cos\theta}
+$$
+
+其中，$\theta$ 是光线和表面法线的夹角，或者说，是平面向垂直于光线方向的投影角。
+
+$$
+\left[ \frac{\mathrm{W}}{\mathrm{sr}\,\mathrm{m}^{2}} \right]\quad
+\left[ \frac{\mathrm{cd}}{\mathrm{m}^{2}} = \frac{\mathrm{lm}}{\mathrm{sr}\,\mathrm{m}^{2}} = \mathrm{nit} \right]
+$$
+
+Radiance可以理解为单位立体角上的Irradiance，同时也可以理解为单位面积上的Intensity。

@@ -3639,9 +3639,34 @@ I(\omega) \equiv \frac{\mathrm{d}\Phi}{\mathrm{d}\omega}
 <div class="arithmatex">\[\phi = 4\pi I\]</div>
 <p>（这是个很直观的结论）</p>
 <p><strong>Irradiance</strong></p>
-<p>度量物体表面接收到的光能量</p>
+<p>度量物体表面接收到的光能量。</p>
+<p>Irradiance指单位面积上接收到的功率。</p>
+<div class="arithmatex">\[
+E(x) \equiv \frac{\mathrm{d}\Phi(x)}{\mathrm{d}A}
+\]</div>
+<p>单位是Lux：</p>
+<div class="arithmatex">\[
+\left[\frac{\mathrm{W}}{\mathrm{m}^2}\right]\;\left[\frac{\mathrm{lm}}{\mathrm{m}^2}=\mathrm{lux}\right]
+\]</div>
+<p>这个面积必须垂直于光线方向，如果平面不垂直于光线方向，那么将平面投影到光线的垂直方向上后的面积才是有效面积。</p>
+<p>前面介绍Blinn-Phong光照模型时，提到过光的强度衰减，实际上并不准确，在辐射度量学中，衰减的实际上是Irradiance，球面上的一点接收到的功率是：</p>
+<div class="arithmatex">\[
+E' = \frac{\Phi}{4\pi r^2}
+\]</div>
+<p>其中，<span class="arithmatex">\(\frac{\Phi}{4\pi}\)</span> 是半径为1的球面上每个点接收到的功率。</p>
 <p><strong>Radiance</strong></p>
-<p>度量光传播过程中的光能量</p>
+<p>度量光传播过程中的光能量。</p>
+<p>Radiance是指表面发射、反射、透射或接收的功率，单位为单位立体角内的单位投影面积。</p>
+<p><img alt="radiance.png" src="/img/games101-notes/radiance.png" /></p>
+<div class="arithmatex">\[
+L(p,\omega) \equiv \frac{\mathrm{d}^{2}\Phi(p,\omega)}{\mathrm{d}\omega\,\mathrm{d}A\,\cos\theta}
+\]</div>
+<p>其中，<span class="arithmatex">\(\theta\)</span> 是光线和表面法线的夹角，或者说，是平面向垂直于光线方向的投影角。</p>
+<div class="arithmatex">\[
+\left[ \frac{\mathrm{W}}{\mathrm{sr}\,\mathrm{m}^{2}} \right]\quad
+\left[ \frac{\mathrm{cd}}{\mathrm{m}^{2}} = \frac{\mathrm{lm}}{\mathrm{sr}\,\mathrm{m}^{2}} = \mathrm{nit} \right]
+\]</div>
+<p>Radiance可以理解为单位立体角上的Irradiance，同时也可以理解为单位面积上的Intensity。</p>
 
 
 
