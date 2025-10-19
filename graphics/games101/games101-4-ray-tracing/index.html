@@ -1975,6 +1975,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="辐射度量学（Basic Radiometry）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-reflectance-distribution-function-brdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      双向反射分布函数（Bidirectional Reflectance Distribution Function, BRDF）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      渲染方程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      全局光照
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率论回顾
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3393,6 +3435,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="辐射度量学（Basic Radiometry）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-reflectance-distribution-function-brdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      双向反射分布函数（Bidirectional Reflectance Distribution Function, BRDF）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      渲染方程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      全局光照
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率论回顾
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3594,7 +3678,7 @@ t = \frac{\mathbf{p}'_x - \mathbf{o}_x}{\mathbf{d}_x}
 <p>它定义了一系列物理光学属性，例如，</p>
 <ul>
 <li>Radiant Flux：辐射通量</li>
-<li>Radiant Intensity：辐射强度</li>
+<li>Intensity：辐射强度</li>
 <li>Irradiance：辐射照度</li>
 <li>Radiance：辐射亮度</li>
 </ul>
@@ -3608,9 +3692,9 @@ Q\;[\mathrm{J}=\text{Joule}]
 <div class="arithmatex">\[
 \Phi \equiv \frac{\mathrm{d}Q}{\mathrm{d}t}\;[\mathrm{W}=\text{Watt}]\;[\mathrm{lm}=\text{lumen}]^{*}
 \]</div>
-<p><strong>Radiant Intensity</strong></p>
+<p><strong>Intensity</strong></p>
 <p>度量光源发射出的光能量。</p>
-<p>Radiant Intensity指单位立体角（Solid angle）的功率（Power）（ω代表立体角）：</p>
+<p>Intensity指某个立体角（Solid angle）的功率（Power）（ω代表立体角）：</p>
 <div class="arithmatex">\[
 I(\omega) \equiv \frac{\mathrm{d}\Phi}{\mathrm{d}\omega}
 \]</div>
@@ -3654,6 +3738,7 @@ E(x) \equiv \frac{\mathrm{d}\Phi(x)}{\mathrm{d}A}
 E' = \frac{\Phi}{4\pi r^2}
 \]</div>
 <p>其中，<span class="arithmatex">\(\frac{\Phi}{4\pi}\)</span> 是半径为1的球面上每个点接收到的功率。</p>
+<p><strong>下面讲的能量一般都是指 Intensity 和 Irradiance，也就是功率。</strong></p>
 <p><strong>Radiance</strong></p>
 <p>度量光传播过程中的光能量。</p>
 <p>Radiance是指表面发射、反射、透射或接收的功率，单位为单位立体角内的单位投影面积。</p>
@@ -3666,7 +3751,85 @@ L(p,\omega) \equiv \frac{\mathrm{d}^{2}\Phi(p,\omega)}{\mathrm{d}\omega\,\mathrm
 \left[ \frac{\mathrm{W}}{\mathrm{sr}\,\mathrm{m}^{2}} \right]\quad
 \left[ \frac{\mathrm{cd}}{\mathrm{m}^{2}} = \frac{\mathrm{lm}}{\mathrm{sr}\,\mathrm{m}^{2}} = \mathrm{nit} \right]
 \]</div>
-<p>Radiance可以理解为单位立体角上的Irradiance，同时也可以理解为单位面积上的Intensity。</p>
+<p><strong>Radiance可以理解为单位立体角上的Irradiance</strong>。</p>
+<p>即入射辐射（Incident Radiance），单位面积上接收到的能量在<span class="arithmatex">\(\omega\)</span>方向上的部分：</p>
+<div class="arithmatex">\[
+L(p,\omega) = \frac{\mathrm{d}E(p)}{\mathrm{d}\omega\,\cos\theta}
+\]</div>
+<p><strong>Radiance也可以理解为单位面积上的Intensity</strong>。</p>
+<p>即出射辐射（Exiting Radiance），<span class="arithmatex">\(\omega\)</span>方向上发出的能量在单位面积上的部分：</p>
+<div class="arithmatex">\[
+L(p,\omega) = \frac{\mathrm{d}I(p,\omega)}{\mathrm{d}A\,\cos\theta}
+\]</div>
+<p>Radiance和Irradiance的区别是，Irradiance是单位面积上接收到的总功率，而Radiance是Irradiance在某个方向上的功率。</p>
+<p>对Radiance在单位半球面上做积分，就能得到Irradiance。</p>
+<h3 id="bidirectional-reflectance-distribution-function-brdf">双向反射分布函数（Bidirectional Reflectance Distribution Function, BRDF）</h3>
+<p>一束入射光，会向多个不同方向反射，入射光的 Radiance 会在单位表面转换为能量（Irradiance），然后沿某个方向反射出去，转换为该方向上的 Radiance。</p>
+<p><img alt="brdf.png" src="/img/games101-notes/brdf.png" /></p>
+<p>假设打到物体表面上单位面积的 Irradiance为 <span class="arithmatex">\(E\)</span>，那么可以将 <span class="arithmatex">\(E\)</span> 与入射和出射的 Radiance 联系起来：</p>
+<p>从 <span class="arithmatex">\(\omega_i\)</span> 方向的入射光满足：</p>
+<div class="arithmatex">\[
+\mathrm{d}E(\omega_i) = L(\omega_i)\cos\theta_i\,\mathrm{d}\omega_i
+\]</div>
+<p>从 <span class="arithmatex">\(\omega_r\)</span> 方向的反射光 Radiance 为 <span class="arithmatex">\(L_r(\omega_r)\)</span></p>
+<p>BRDF计算了从 <span class="arithmatex">\(\omega_i\)</span> 方向入射光的 Irradiance，有多少比例会被反射到 <span class="arithmatex">\(\omega_r\)</span> 方向：</p>
+<div class="arithmatex">\[
+f_r(\omega_i \rightarrow \omega_r)
+= \frac{\mathrm{d}L_r(\omega_r)}{\mathrm{d}E_i(\omega_i)}
+= \frac{\mathrm{d}L_r(\omega_r)}{L_i(\omega_i)\,\cos\theta_i\,\mathrm{d}\omega_i}
+\;\left[\frac{1}{\mathrm{sr}}\right]
+\]</div>
+<p><strong>反射方程</strong></p>
+<p>从反射光的角度来看，一束反射光是由所有不同角度的入射光在反射方向的分量叠加起来的：</p>
+<div class="arithmatex">\[
+L_r(p,\omega_r) = \int_{H^2} f_r(p,\omega_i \rightarrow \omega_r)\, L_i(p,\omega_i)\, \cos\theta_i\, \mathrm{d}\omega_i
+\]</div>
+<p>一个反射光对应的入射光不一定是光源，也有可能是其他物体表面的反射光，因此，这个计算过程是递归的。</p>
+<h3 id="_4">渲染方程</h3>
+<div class="arithmatex">\[
+L_o(p,\omega_o)=L_e(p,\omega_o)+\int_{\Omega^{+}} L_i(p,\omega_i)\,f_r(p,\omega_i,\omega_o)\,(\mathbf{n}\cdot\omega_i)\,\mathrm{d}\omega_i
+\]</div>
+<p><span class="arithmatex">\(L_e(p,\omega_o)\)</span> 是物体表面的自发光，公式后半部分是物体表面的反射光。</p>
+<p>如果只有一个或多个点光源，其实不需要积分，可以直接求和，如果是个面光源，就需要积分，相当于将面光源视为无数个点光源的集合。</p>
+<p>考虑其他物体的反射光作为光源的情况，<span class="arithmatex">\(L_r(x',-\omega_i)\)</span> 是其他物体上的一点 <span class="arithmatex">\(x'\)</span>，沿着 <span class="arithmatex">\(-\omega_i\)</span> 方向反射过来的 Radiance，我们直接将其作为当前点 <span class="arithmatex">\(x\)</span> 的入射 Radiance，注意这里为什么要给 <span class="arithmatex">\(\omega_i\)</span> 加个负号，是因为在反射方程中，<span class="arithmatex">\(\omega_i\)</span> 是指从点 <span class="arithmatex">\(x\)</span> 指向光源的方向，加上负号才能正确表示从其他物体的反射点 <span class="arithmatex">\(x'\)</span> 指向 点 <span class="arithmatex">\(x\)</span> 的方向。</p>
+<div class="arithmatex">\[
+L_r(x,\omega_r)=L_e(x,\omega_r)+\int_{\Omega} L_r(x',-\omega_i)\,f(x,\omega_i,\omega_r)\,\cos\theta_i\,\mathrm{d}\omega_i
+\]</div>
+<p>写成简化的形式，用 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 分别表示当前反射点和其他物体的反射点：</p>
+<div class="arithmatex">\[
+L(u)=e(u)+\int L(v)\,K(u,v)\,\mathrm{d}v
+\]</div>
+<p>进一步，可以简写为：</p>
+<div class="arithmatex">\[
+L = E + K L
+\]</div>
+<p>公式后半部分里的 <span class="arithmatex">\(L\)</span> 是所有光源直接或间接照射到物体表面的 Radiance。</p>
+<p>经过变换，可以得到：</p>
+<div class="arithmatex">\[
+L = (I + K + K^{2} + K^{3} + \cdots)E
+\]</div>
+<div class="arithmatex">\[
+L = E + KE + K^{2}E + K^{3}E + \cdots
+\]</div>
+<p>其中，<span class="arithmatex">\(K^{n}E\)</span> 是光源发出的光经过多次反射后到达物体表面的 Radiance。</p>
+<h3 id="_5">全局光照</h3>
+<p>光线弹射一次叫直接光照，光线弹射多次叫间接光照，这些光照的总和叫<strong>全局光照</strong>，也就是上面最后定义的 <span class="arithmatex">\(L\)</span>。</p>
+<p>光栅化只能处理直接光照，即物体的自发光+光源一次照射。</p>
+<h3 id="_6">概率论回顾</h3>
+<p><span class="arithmatex">\(X\)</span>，随机变量（Random Variable），取值不确定的变量, 比如骰子可以取1~6六个值。</p>
+<p><span class="arithmatex">\(X \sim p(x)\)</span>，概率密度函数（Probability Density Function, PDF），描述随机过程取某个值 <span class="arithmatex">\(x\)</span> 的概率。</p>
+<p>期望值（Expected Value），随机变量理论上的平均值，对概率的加权平均。</p>
+<div class="arithmatex">\[
+E[X] = \sum_{i=1}^{n} x_i\,p_i
+\]</div>
+<p>对概率密度函数 <span class="arithmatex">\(p(x)\)</span> 做积分的结果是1，</p>
+<div class="arithmatex">\[
+\int p(x)\,\mathrm{d}x = 1
+\]</div>
+<p>用 <span class="arithmatex">\(p(x)\)</span> 求数学期望，</p>
+<div class="arithmatex">\[
+E[X] = \int xp(x)\,\mathrm{d}x
+\]</div>
 
 
 
