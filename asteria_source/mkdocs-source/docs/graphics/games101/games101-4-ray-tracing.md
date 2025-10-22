@@ -523,4 +523,10 @@ $$
 
 ## 蒙特卡洛积分（Monte Carlo Integration）
 
+如果我们想求一个复杂函数 $f(x)$ 在区间 $[a,b]$ 上的积分：
+
+$$
+\int_{a}^{b} f(x)\,\mathrm{d}x
+$$
+
 ## 路径追踪（Path Tracing）
