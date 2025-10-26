@@ -2035,6 +2035,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="路径追踪（Path Tracing）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      利用蒙特卡洛积分求解渲染方程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      路径追踪
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#russian-roulette" class="md-nav__link">
+    <span class="md-ellipsis">
+      俄罗斯轮盘赌（Russian Roulette）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      对光源采样
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3513,6 +3555,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="路径追踪（Path Tracing）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      利用蒙特卡洛积分求解渲染方程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      路径追踪
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#russian-roulette" class="md-nav__link">
+    <span class="md-ellipsis">
+      俄罗斯轮盘赌（Russian Roulette）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      对光源采样
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3792,11 +3876,13 @@ L(p,\omega) \equiv \frac{\mathrm{d}^{2}\Phi(p,\omega)}{\mathrm{d}\omega\,\mathrm
 <div class="arithmatex">\[
 L(p,\omega) = \frac{\mathrm{d}E(p)}{\mathrm{d}\omega\,\cos\theta}
 \]</div>
+<p><span class="arithmatex">\(p\)</span> 是表面上的一个点，<span class="arithmatex">\(\omega\)</span> 是入射光的方向。</p>
 <p><strong>Radiance也可以理解为单位面积上的Intensity</strong>。</p>
 <p>即出射辐射（Exiting Radiance），<span class="arithmatex">\(\omega\)</span>方向上发出的能量在单位面积上的部分：</p>
 <div class="arithmatex">\[
 L(p,\omega) = \frac{\mathrm{d}I(p,\omega)}{\mathrm{d}A\,\cos\theta}
 \]</div>
+<p><span class="arithmatex">\(p\)</span> 是表面上的一个点，<span class="arithmatex">\(\omega\)</span> 是出射光的方向。</p>
 <p>Radiance和Irradiance的区别是，Irradiance是单位面积上接收到的总功率，而Radiance是Irradiance在某个方向上的功率。</p>
 <p>对Radiance在单位半球面上做积分，就能得到Irradiance。</p>
 <h3 id="bidirectional-reflectance-distribution-function-brdf">双向反射分布函数（Bidirectional Reflectance Distribution Function, BRDF）</h3>
@@ -3867,11 +3953,64 @@ E[X] = \sum_{i=1}^{n} x_i\,p_i
 E[X] = \int xp(x)\,\mathrm{d}x
 \]</div>
 <h2 id="monte-carlo-integration">蒙特卡洛积分（Monte Carlo Integration）</h2>
-<p>如果我们想求一个复杂函数 <span class="arithmatex">\(f(x)\)</span> 在区间 <span class="arithmatex">\([a,b]\)</span> 上的积分：</p>
+<p>蒙特卡洛积分是一种积分方法，如果我们想求一个复杂函数 <span class="arithmatex">\(f(x)\)</span> 在区间 <span class="arithmatex">\([a,b]\)</span> 上的积分：</p>
 <div class="arithmatex">\[
 \int_{a}^{b} f(x)\,\mathrm{d}x
 \]</div>
+<p>在区间 <span class="arithmatex">\([a,b]\)</span> 上根据某个概率密度函数 <span class="arithmatex">\(p(x)\)</span> 对 <span class="arithmatex">\(x\)</span> 采样 <span class="arithmatex">\(N\)</span> 个点，</p>
+<div class="arithmatex">\[
+F_N = \frac{1}{N}\sum_{i=1}^{N}\frac{f(X_i)}{p(X_i)}
+\]</div>
+<p><span class="arithmatex">\(F_N\)</span> 就是对积分的估计。</p>
+<p>如果 <span class="arithmatex">\(p(x)\)</span> 是均匀分布，且在区间 <span class="arithmatex">\([a,b]\)</span> 上的概率总和为1，那么<span class="arithmatex">\(p(x) = \frac{1}{b-a}\)</span>，<span class="arithmatex">\(F_N\)</span> 为：</p>
+<div class="arithmatex">\[F_N = \frac{b-a}{N}\sum_{i=1}^{N} f(X_i)\]</div>
+<p>可以这么理解上面这个解法，在区间 <span class="arithmatex">\([a,b]\)</span> 上采样一个点 <span class="arithmatex">\(x_i\)</span>，计算 <span class="arithmatex">\(f(x_i)\)</span>，然后将 <span class="arithmatex">\(f(x_i)\)</span> 乘以区间长度 <span class="arithmatex">\((b-a)\)</span>，得到这个点对应的面积，然后对所有采样点的面积求平均。</p>
 <h2 id="path-tracing">路径追踪（Path Tracing）</h2>
+<h3 id="_7">利用蒙特卡洛积分求解渲染方程</h3>
+<p>光滑的反射有两种，</p>
+<ul>
+<li>镜面反射（Specular/Mirror Reflection）：光线按照入射角等于反射角的方式反射。</li>
+<li>光泽反射（Glossy Reflection）：有反射，有高光，但表面不是完全光滑（比如带点磨砂质感）。</li>
+</ul>
+<p>whitted-style光线追踪有一些固有的问题，例如：</p>
+<ul>
+<li>只能处理镜面反射，不能处理光泽反射。</li>
+<li>光线反射到漫反射材质时就停止了。</li>
+</ul>
+<p>辐射度量学渲染方程可以解决这些问题。</p>
+<p>使用蒙特卡洛积分来求解渲染方程</p>
+<p>假设有一个面光源在照射物体，在半球面 <span class="arithmatex">\(\Omega^{+}\)</span> 上，对 <span class="arithmatex">\(\omega_i\)</span> 均匀采样，对应的概率密度函数为 <span class="arithmatex">\(p(\omega_i) = 1/2\pi\)</span>。（半球的面积是 <span class="arithmatex">\(2\pi\)</span>）</p>
+<div class="arithmatex">\[
+L_o(point,\omega_o)=\int_{\Omega^{+}} L_i(point,\omega_i)\,f_r(point,\omega_i,\omega_o)\,(\mathbf{n}\cdot\omega_i)\,\mathrm{d}\omega_i \\
+\approx \frac{1}{N}\sum_{i=1}^{N}\frac{L_i(point,\omega_i)\,f_r(point,\omega_i,\omega_o)\,(\mathbf{n}\cdot\omega_i)}{p(\omega_i)}
+\]</div>
+<p><strong>可以用入射光的数量作为采样点的数量 <span class="arithmatex">\(N\)</span></strong>。</p>
+<p>其他物体反射到当前物体表面的光照怎么计算呢？递归地计算其他物体表面的反射光，然后将其作为当前物体的入射光就好了。</p>
+<h3 id="_8">路径追踪</h3>
+<p>问题是，每次光线反射，都会新增 N 个光线，计算量会爆炸式增长，怎么办？</p>
+<p>最简单的办法是，每次反射时只随机采样一个光线，即 <span class="arithmatex">\(N=1\)</span>，这样，每次光线反射时，只会新增一个光线，计算量不会爆炸式增长。</p>
+<p><strong><span class="arithmatex">\(N=1\)</span> 时反射过程就叫做路径追踪（Path Tracing），<span class="arithmatex">\(N \neq 1\)</span> 时叫做分布式路径追踪（Distributed Path Tracing）</strong>。</p>
+<p>采样点太少的问题可以通过增加入射光线的数量来解决（增加采样次数），这很好理解，反射光线变少了，那就增加入射光线的数量。</p>
+<h3 id="russian-roulette">俄罗斯轮盘赌（Russian Roulette）</h3>
+<p>递归过程什么时候停止呢？如果简单指定一个最大递归深度，可能会导致一些光线路径被截断（相当于产生了能量损失），影响渲染质量。</p>
+<p>一种更好的办法是俄罗斯轮盘赌（Russian Roulette）方法，在每次反射时，给光线一个存活概率 <span class="arithmatex">\(P\)</span>，以概率 <span class="arithmatex">\(P\)</span> 继续反射，以概率 <span class="arithmatex">\(1-P\)</span> 停止反射，反射时，对光出射能量做一个放大，以补偿停止反射带来的能量损失，使 <span class="arithmatex">\(L_o\)</span> 满足：</p>
+<div class="arithmatex">\[L_o = P(L_o / P) + (1-P)*0\]</div>
+<h3 id="_9">对光源采样</h3>
+<p>路径追踪中，每个反射点只有一条反射光线，并且反射方向是随机的，因此，光源越小，光线直接打到光源的概率就越小，导致噪点增多，并且造成很多计算上的浪费。</p>
+<p>解决办法，生成反射光线时，不再采用均匀分布，而是直接在光源上采样。</p>
+<p><img alt="sampling-the-light.png" src="/img/games101-notes/sampling-the-light.png" /></p>
+<p>为此，我们需要将渲染方程改写为在光源上做积分的形式，对积分进行换元，将 <span class="arithmatex">\(d\omega\)</span> 换成 <span class="arithmatex">\(dA\)</span>。</p>
+<p>根据上图及立体角的定义，可以得到以下关系：</p>
+<div class="arithmatex">\[
+\mathrm{d}\omega = \frac{\mathrm{d}A \cos\theta'}{\lVert x' - x \rVert^{2}}
+\]</div>
+<p>积分换元：</p>
+<div class="arithmatex">\[
+L_o(x,\omega_o)
+= \int_{\Omega^{+}} L_i(x,\omega_i)\,f_r(x,\omega_i,\omega_o)\,\cos\theta\,\mathrm{d}\omega_i \\
+= \int_{A} L_i(x,\omega_i)\,f_r(x,\omega_i,\omega_o)\,\frac{\cos\theta\,\cos\theta'}{\lVert x' - x \rVert^{2}}\,\mathrm{d}A
+\]</div>
+<p>在计算着色点的反射时，将光照分为两部分，光源的直接贡献和其他物体的间接贡献，在光源上均匀采样，对于其他物体，仍然是使用俄罗斯轮盘赌的方法递归计算。</p>
 
 
 

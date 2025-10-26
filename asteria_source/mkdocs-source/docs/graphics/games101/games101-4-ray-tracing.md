@@ -402,6 +402,8 @@ $$
 L(p,\omega) = \frac{\mathrm{d}E(p)}{\mathrm{d}\omega\,\cos\theta}
 $$
 
+$p$ 是表面上的一个点，$\omega$ 是入射光的方向。
+
 **Radiance也可以理解为单位面积上的Intensity**。
 
 即出射辐射（Exiting Radiance），$\omega$方向上发出的能量在单位面积上的部分：
@@ -409,6 +411,8 @@ $$
 $$
 L(p,\omega) = \frac{\mathrm{d}I(p,\omega)}{\mathrm{d}A\,\cos\theta}
 $$
+
+$p$ 是表面上的一个点，$\omega$ 是出射光的方向。
 
 Radiance和Irradiance的区别是，Irradiance是单位面积上接收到的总功率，而Radiance是Irradiance在某个方向上的功率。
 
@@ -523,10 +527,97 @@ $$
 
 ## 蒙特卡洛积分（Monte Carlo Integration）
 
-如果我们想求一个复杂函数 $f(x)$ 在区间 $[a,b]$ 上的积分：
+蒙特卡洛积分是一种积分方法，如果我们想求一个复杂函数 $f(x)$ 在区间 $[a,b]$ 上的积分：
 
 $$
 \int_{a}^{b} f(x)\,\mathrm{d}x
 $$
 
+在区间 $[a,b]$ 上根据某个概率密度函数 $p(x)$ 对 $x$ 采样 $N$ 个点，
+
+$$
+F_N = \frac{1}{N}\sum_{i=1}^{N}\frac{f(X_i)}{p(X_i)}
+$$
+
+$F_N$ 就是对积分的估计。
+
+如果 $p(x)$ 是均匀分布，且在区间 $[a,b]$ 上的概率总和为1，那么$p(x) = \frac{1}{b-a}$，$F_N$ 为：
+
+$$F_N = \frac{b-a}{N}\sum_{i=1}^{N} f(X_i)$$
+
+可以这么理解上面这个解法，在区间 $[a,b]$ 上采样一个点 $x_i$，计算 $f(x_i)$，然后将 $f(x_i)$ 乘以区间长度 $(b-a)$，得到这个点对应的面积，然后对所有采样点的面积求平均。
+
 ## 路径追踪（Path Tracing）
+
+### 利用蒙特卡洛积分求解渲染方程
+
+光滑的反射有两种，
+
+- 镜面反射（Specular/Mirror Reflection）：光线按照入射角等于反射角的方式反射。
+- 光泽反射（Glossy Reflection）：有反射，有高光，但表面不是完全光滑（比如带点磨砂质感）。
+
+whitted-style光线追踪有一些固有的问题，例如：
+
+- 只能处理镜面反射，不能处理光泽反射。
+- 光线反射到漫反射材质时就停止了。
+
+辐射度量学渲染方程可以解决这些问题。
+
+使用蒙特卡洛积分来求解渲染方程
+
+假设有一个面光源在照射物体，在半球面 $\Omega^{+}$ 上，对 $\omega_i$ 均匀采样，对应的概率密度函数为 $p(\omega_i) = 1/2\pi$。（半球的面积是 $2\pi$）
+
+$$
+L_o(point,\omega_o)=\int_{\Omega^{+}} L_i(point,\omega_i)\,f_r(point,\omega_i,\omega_o)\,(\mathbf{n}\cdot\omega_i)\,\mathrm{d}\omega_i \\
+\approx \frac{1}{N}\sum_{i=1}^{N}\frac{L_i(point,\omega_i)\,f_r(point,\omega_i,\omega_o)\,(\mathbf{n}\cdot\omega_i)}{p(\omega_i)}
+$$
+
+**可以用入射光的数量作为采样点的数量 $N$**。
+
+其他物体反射到当前物体表面的光照怎么计算呢？递归地计算其他物体表面的反射光，然后将其作为当前物体的入射光就好了。
+
+### 路径追踪
+
+问题是，每次光线反射，都会新增 N 个光线，计算量会爆炸式增长，怎么办？
+
+最简单的办法是，每次反射时只随机采样一个光线，即 $N=1$，这样，每次光线反射时，只会新增一个光线，计算量不会爆炸式增长。
+
+**$N=1$ 时反射过程就叫做路径追踪（Path Tracing），$N \neq 1$ 时叫做分布式路径追踪（Distributed Path Tracing）**。
+
+采样点太少的问题可以通过增加入射光线的数量来解决（增加采样次数），这很好理解，反射光线变少了，那就增加入射光线的数量。
+
+### 俄罗斯轮盘赌（Russian Roulette）
+
+递归过程什么时候停止呢？如果简单指定一个最大递归深度，可能会导致一些光线路径被截断（相当于产生了能量损失），影响渲染质量。
+
+一种更好的办法是俄罗斯轮盘赌（Russian Roulette）方法，在每次反射时，给光线一个存活概率 $P$，以概率 $P$ 继续反射，以概率 $1-P$ 停止反射，反射时，对光出射能量做一个放大，以补偿停止反射带来的能量损失，使 $L_o$ 满足：
+
+$$L_o = P(L_o / P) + (1-P)*0$$
+
+### 对光源采样
+
+路径追踪中，每个反射点只有一条反射光线，并且反射方向是随机的，因此，光源越小，光线直接打到光源的概率就越小，导致噪点增多，并且造成很多计算上的浪费。
+
+解决办法，生成反射光线时，不再采用均匀分布，而是直接在光源上采样。
+
+![sampling-the-light.png](/img/games101-notes/sampling-the-light.png)
+
+为此，我们需要将渲染方程改写为在光源上做积分的形式，对积分进行换元，将 $d\omega$ 换成 $dA$。
+
+根据上图及立体角的定义，可以得到以下关系：
+
+$$
+\mathrm{d}\omega = \frac{\mathrm{d}A \cos\theta'}{\lVert x' - x \rVert^{2}}
+$$
+
+积分换元：
+
+$$
+L_o(x,\omega_o)
+= \int_{\Omega^{+}} L_i(x,\omega_i)\,f_r(x,\omega_i,\omega_o)\,\cos\theta\,\mathrm{d}\omega_i \\
+= \int_{A} L_i(x,\omega_i)\,f_r(x,\omega_i,\omega_o)\,\frac{\cos\theta\,\cos\theta'}{\lVert x' - x \rVert^{2}}\,\mathrm{d}A
+$$
+
+在计算着色点的反射时，将光照分为两部分，光源的直接贡献和其他物体的间接贡献，在光源上均匀采样，对于其他物体，仍然是使用俄罗斯轮盘赌的方法递归计算。
+
+
