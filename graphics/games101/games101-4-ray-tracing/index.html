@@ -3996,7 +3996,7 @@ L_o(point,\omega_o)=\int_{\Omega^{+}} L_i(point,\omega_i)\,f_r(point,\omega_i,\o
 <p>一种更好的办法是俄罗斯轮盘赌（Russian Roulette）方法，在每次反射时，给光线一个存活概率 <span class="arithmatex">\(P\)</span>，以概率 <span class="arithmatex">\(P\)</span> 继续反射，以概率 <span class="arithmatex">\(1-P\)</span> 停止反射，反射时，对光出射能量做一个放大，以补偿停止反射带来的能量损失，使 <span class="arithmatex">\(L_o\)</span> 满足：</p>
 <div class="arithmatex">\[L_o = P(L_o / P) + (1-P)*0\]</div>
 <h3 id="_9">对光源采样</h3>
-<p>路径追踪中，每个反射点只有一条反射光线，并且反射方向是随机的，因此，光源越小，光线直接打到光源的概率就越小，导致噪点增多，并且造成很多计算上的浪费。</p>
+<p>路径追踪中，每个反射点只有一条反射光线，并且反射方向是随机的，因此，光源越小，光线直接打到光源的概率就越小，导致噪点增多，如果向四周均匀采样，则会造成很多计算上的浪费。</p>
 <p>解决办法，生成反射光线时，不再采用均匀分布，而是直接在光源上采样。</p>
 <p><img alt="sampling-the-light.png" src="/img/games101-notes/sampling-the-light.png" /></p>
 <p>为此，我们需要将渲染方程改写为在光源上做积分的形式，对积分进行换元，将 <span class="arithmatex">\(d\omega\)</span> 换成 <span class="arithmatex">\(dA\)</span>。</p>
