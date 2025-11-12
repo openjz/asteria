@@ -2604,6 +2604,57 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      三角函数的导数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      简谐运动
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      一个有趣的函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      隐函数求导
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="隐函数求导">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关变化率
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3639,6 +3690,57 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      三角函数的导数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      简谐运动
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      一个有趣的函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      隐函数求导
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="隐函数求导">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关变化率
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3879,6 +3981,56 @@ f'''(x) = f^{(3)}(x) = \frac{d^3y}{dx^3} = \frac{d^3}{dx^3}(y) = \frac{d}{dx}\le
 <div class="arithmatex">\[
 \lim\limits_{x \to \infty} \frac{\sin (任何东西)}{x^\alpha} = 0, \quad \alpha &gt; 0
 \]</div>
+<h3 id="_16">三角函数的导数</h3>
+<div class="arithmatex">\[
+\frac{d}{dx}(\sin x) = \cos x
+\]</div>
+<div class="arithmatex">\[
+\frac{d}{dx}(\cos x) = -\sin x
+\]</div>
+<div class="arithmatex">\[
+\frac{d}{dx}(\tan x) = \sec^2 x = \frac{1}{\cos^2 x}
+\]</div>
+<h3 id="_17">简谐运动</h3>
+<p>简谐运动是指物体在某一平衡位置附近来回振荡的运动，例如弹簧振子。</p>
+<p>弹簧振子的运动用到了三角函数，假设 <span class="arithmatex">\(x\)</span> 是 弹簧振子在时刻 <span class="arithmatex">\(t\)</span> 的位置，<span class="arithmatex">\(x\)</span> 的方程大概可以写成：</p>
+<div class="arithmatex">\[x = 3\sin(4t)\]</div>
+<h3 id="_18">一个有趣的函数</h3>
+<div class="arithmatex">\[y = x^2\sin\left(\frac{1}{x}\right)\]</div>
+<p>这个函数在 <span class="arithmatex">\(x=0\)</span> 处没有意义，我们将其做个扩展，</p>
+<div class="arithmatex">\[
+f(x) = \begin{cases}
+x^2\sin\left(\frac{1}{x}\right), &amp; x \neq 0 \\
+0, &amp; x = 0 \end{cases}
+\]</div>
+<p>通过求 <span class="arithmatex">\(x = 0\)</span> 左右两侧的极限可知，函数在 <span class="arithmatex">\(x=0\)</span> 处连续。</p>
+<p>然后我们能够求出 <span class="arithmatex">\(x \neq 0\)</span> 时的导数：</p>
+<div class="arithmatex">\[
+f'(x) = 2x\sin\left(\frac{1}{x}\right) - \cos\left(\frac{1}{x}\right)
+\]</div>
+<p><span class="arithmatex">\(x=0\)</span> 处的导数只能通过导数的定义来求，</p>
+<div class="arithmatex">\[
+f'(0) = \lim\limits_{h \to 0} \frac{f(0+h)-f(0)}{h} = \lim\limits_{h \to 0} h\sin\left(\frac{1}{h}\right) = 0
+\]</div>
+<p>但当我们求 <span class="arithmatex">\(x \to 0\)</span> 时的导数极限时，发现左右极限都不存在，这意味着，函数在 <span class="arithmatex">\(x=0\)</span> 处导数不连续。</p>
+<p>从函数图像上来看，导数在 <span class="arithmatex">\(x=0\)</span> 处为 <span class="arithmatex">\(0\)</span>，而在 <span class="arithmatex">\(x=0\)</span> 附近震荡得非常厉害。</p>
+<p>这是一个本身连续且可导，但导数不连续的例子。</p>
+<h2 id="_19">隐函数求导</h2>
+<p>隐函数是指没有显式表示为 <span class="arithmatex">\(y=f(x)\)</span> 形式的函数。</p>
+<p>考虑圆的方程 <span class="arithmatex">\(x^2 + y^2 = 4\)</span>，求导数 <span class="arithmatex">\(\frac{dy}{dx}\)</span>，可以这么做：</p>
+<div class="arithmatex">\[
+\frac{d}{dx}(x^2 + y^2) = \frac{d}{dx}(4)
+\]</div>
+<div class="arithmatex">\[
+\frac{d}{dx}(x^2) + \frac{d}{dx}(y^2) = \frac{d}{dx}(4)
+\]</div>
+<div class="arithmatex">\[
+2x + 2y \frac{dy}{dx} = 0
+\]</div>
+<div class="arithmatex">\[
+\frac{dy}{dx} = -\frac{x}{y}
+\]</div>
+<h3 id="_20">相关变化率</h3>
 
 
 
