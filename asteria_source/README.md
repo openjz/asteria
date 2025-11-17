@@ -5,22 +5,9 @@ This is my personal web site.
 ## 目录结构介绍
 
 ```
-│  CNAME : github生成的域名文件，这个不能删
-│  其他文件 : hugo生成的网页文件
+│  CNAME : github的域名文件，这个不能删
+│  其他文件 : 生成的网页文件
 └─asteria_source : 源文件
-    │  README.md
-    │  
-    ├─hugo_bin
-    │      hugo.exe
-    │      build.ps1 : windows下的hugo build脚本
-    │      
-    └─source : hugo源文件
-        │  config.toml : hugo模板配置文件
-        ├─content
-        │  └─posts : 文章
-        │
-        └─themes : hugo主题模板目录  
-            └─LoveIt : LoveIt主题模板
 ```
 
 ## hugo
