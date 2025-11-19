@@ -3338,6 +3338,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        牛顿法
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4861,6 +4872,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        牛顿法
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5374,6 +5396,37 @@ f(6.01) &amp;\approx L(6.01) \\
 \end{aligned}
 \]</div>
 <p><strong>误差</strong></p>
+<p>设</p>
+<div class="arithmatex">\[
+r(x) = f(x) - L(x)
+\]</div>
+<p>r(x) 是 f 在 x=a 处的估计误差。</p>
+<p>如果 x 和 a 之间存在 f 的二阶导数，那么存在这样一个公式：</p>
+<div class="arithmatex">\[
+r(x) = \frac{1}{2}f''(c)(x-a)^2
+\]</div>
+<p>其中 c 是 x 和 a 之间的某个值。</p>
+<p>r(x) 和 f''(c) 同号，所以如果 f 在区间上是凹的（即 f''(x) &gt; 0, r(x)&gt;0），那么我们的估算是低估，反之则是高估。</p>
+<p>我们还能根据 f''(x) 的绝对值 在 x 和 a 之间的最大值 M 来估算误差最大绝对值：</p>
+<div class="arithmatex">\[
+|r(x)| \leqslant \frac{1}{2}M(x-a)^2
+\]</div>
+<h3 id="_39">牛顿法</h3>
+<p>一种线性估计方法。</p>
+<p>假设我们想要估算 <span class="arithmatex">\(f(x) = 0\)</span> 的解，我们可以先猜一个近似解 <span class="arithmatex">\(a\)</span>，然后计算该点处的切线与 x 轴的交点 <span class="arithmatex">\(b\)</span>（切线的 x 轴截距），再用 <span class="arithmatex">\(b\)</span> 作为新的近似解，重复这个过程，直到达到所需的精度为止。</p>
+<p>即，</p>
+<div class="arithmatex">\[
+b = a-\frac{f(a)}{f'(a)}
+\]</div>
+<p>（求解前面提到的的切线方程 <span class="arithmatex">\(L(x) = f(a) + f'(x)(x-a)\)</span> 的 x 轴截距即可得到 b。）</p>
+<p>牛顿法会在以下几种情况下失效：</p>
+<ul>
+<li>f'(x) 非常小，接近于0，这会使得切线几乎平行于 x 轴，从而导致新的近似解偏离得非常远。</li>
+<li>f(x) 不只有一个解，可能得到的不是我们想要的解。</li>
+<li>近似值越来越偏离实际值。</li>
+<li>可能陷入循环出不来。</li>
+</ul>
+<p>可以用牛顿迭代法估计 <span class="arithmatex">\(\sqrt 2\)</span> 的值，令 <span class="arithmatex">\(f(x) = x^2 - 2\)</span>，求解 <span class="arithmatex">\(f(x) = 0\)</span> 即可。</p>
 
 
 
