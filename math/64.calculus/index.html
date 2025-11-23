@@ -3403,7 +3403,18 @@
   <a href="#_43" class="md-nav__link">
     <span class="md-ellipsis">
       
-        估算积分
+        积分中值定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不可积的函数
       
     </span>
   </a>
@@ -4998,7 +5009,18 @@
   <a href="#_43" class="md-nav__link">
     <span class="md-ellipsis">
       
-        估算积分
+        积分中值定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不可积的函数
       
     </span>
   </a>
@@ -5584,10 +5606,21 @@ b = a-\frac{f(a)}{f'(a)}
 <h3 id="_42">求面积</h3>
 <p>定积分求的是有向面积。</p>
 <p>求面积时要注意，求的是无向面积，是求函数绝对值的积分。</p>
-<h3 id="_43">估算积分</h3>
+<h3 id="_43">积分中值定理</h3>
+<p>如果函数 f 在闭区间 [a,b] 上连续，那么在开区间 (a,b) 上至少存在一点 c，使得</p>
 <div class="arithmatex">\[
-\int_a^b C \, dx = C(b-a)
+f(c) = \frac{1}{b-a} \int_a^b f(x) \, dx
 \]</div>
+<h3 id="_44">不可积的函数</h3>
+<p>例如</p>
+<div class="arithmatex">\[
+f(x) = \begin{cases}
+1, &amp; x \text{为有理数} \\
+0, &amp; x \text{为无理数}
+\end{cases}
+\]</div>
+<p>如果使用黎曼积分，取黎曼上和（取小区间内的最大值作为长方形的高）和黎曼下和（和上和相反）的结果是不同的，所以这个函数在任何区间上都不可积。</p>
+<p>使用勒贝格积分可以解决这个问题，但这里不做展开。</p>
 
 
 
