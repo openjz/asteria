@@ -3354,6 +3354,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        洛必达法则
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        积分（Integration）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="积分（Integration）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定积分的性质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求面积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        估算积分
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4888,6 +4949,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        洛必达法则
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        积分（Integration）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="积分（Integration）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定积分的性质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求面积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        估算积分
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5427,6 +5549,45 @@ b = a-\frac{f(a)}{f'(a)}
 <li>可能陷入循环出不来。</li>
 </ul>
 <p>可以用牛顿迭代法估计 <span class="arithmatex">\(\sqrt 2\)</span> 的值，令 <span class="arithmatex">\(f(x) = x^2 - 2\)</span>，求解 <span class="arithmatex">\(f(x) = 0\)</span> 即可。</p>
+<h2 id="_40">洛必达法则</h2>
+<p>对于<span class="arithmatex">\(\frac{0}{0}\)</span>和<span class="arithmatex">\(\frac{\infty}{\infty}\)</span>两种不定式，可以使用洛必达法则来求极限。</p>
+<p>洛必达法则：</p>
+<div class="arithmatex">\[
+\lim\limits_{x \to a} \frac{f(x)}{g(x)} = \lim\limits_{x \to a} \frac{f'(x)}{g'(x)}
+\]</div>
+<h2 id="integration">积分（Integration）</h2>
+<p>伸缩级数：</p>
+<div class="arithmatex">\[
+\sum_{n=a}^{b}(f(n)-f(n-1)) = f(b) - f(a-1)
+\]</div>
+<p>定积分的定义：</p>
+<div class="arithmatex">\[
+\int_a^b f(x) \, dx = \lim\limits_{mesh \to 0} \sum_{j=1}^{n} f(c_j) (x_j-x_{j-1})
+\]</div>
+<p>求和部分叫做<strong>黎曼和</strong>，这种求积分的方式叫做<strong>黎曼积分</strong>。</p>
+<h3 id="_41">定积分的性质</h3>
+<div class="arithmatex">\[
+\int_b^a f(x) \, dx = -\int_a^b f(x) \, dx
+\]</div>
+<div class="arithmatex">\[
+\int_a^a f(x) \, dx = 0
+\]</div>
+<div class="arithmatex">\[
+\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx 
+\]</div>
+<div class="arithmatex">\[
+\int_a^b C f(x) \, dx = C \int_a^b f(x) \, dx
+\]</div>
+<div class="arithmatex">\[
+\int_a^b [f(x) \pm g(x)] \, dx = \int_a^b f(x) \, dx \pm \int_a^b g(x) \, dx
+\]</div>
+<h3 id="_42">求面积</h3>
+<p>定积分求的是有向面积。</p>
+<p>求面积时要注意，求的是无向面积，是求函数绝对值的积分。</p>
+<h3 id="_43">估算积分</h3>
+<div class="arithmatex">\[
+\int_a^b C \, dx = C(b-a)
+\]</div>
 
 
 
