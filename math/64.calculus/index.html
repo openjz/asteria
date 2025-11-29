@@ -5886,6 +5886,43 @@ y = \int_0^u \tan^{-1}(t^7+3t)dt
 <p>类型2，<span class="arithmatex">\(\sqrt{a^2+x^2}\)</span>，令 <span class="arithmatex">\(x = a \tan \theta\)</span>，<span class="arithmatex">\(dx = a \sec^2 \theta \, d\theta\)</span>，<span class="arithmatex">\(a^2+x^2 = a^2 \sec^2 \theta\)</span>。</p>
 <p>类型3，<span class="arithmatex">\(\sqrt{x^2 - a^2}\)</span>，令 <span class="arithmatex">\(x = a \sec \theta\)</span>，<span class="arithmatex">\(dx = a \sec \theta \tan \theta \, d\theta\)</span>，<span class="arithmatex">\(x^2 - a^2 = a^2 \tan^2 \theta\)</span>。</p>
 <h2 id="_51">反常积分</h2>
+<p>反常积分是指在积分区间上函数无界，或者积分区间本身无界的积分，如果出现下面的情况，积分<span class="arithmatex">\(\int_a^bf(x)dx\)</span>就是反常积分：</p>
+<ol>
+<li>函数 f 在区间 [a,b] 上无界</li>
+<li>a 为负无穷或 b 为正无穷。</li>
+</ol>
+<p>积分存在极限时，称该反常积分收敛，否则称其发散。</p>
+<p>当 f(x) 仅在接近点 a 处无界时，</p>
+<div class="arithmatex">\[
+\int_a^b f(x) \, dx = \lim\limits_{t \to 0^+} \int_{a+t}^b f(x) \, dx
+\]</div>
+<p>类似的，当 f(x) 仅在接近点 b 处无界时，</p>
+<div class="arithmatex">\[
+\int_a^b f(x) \, dx = \lim\limits_{t \to 0^+} \int_a^{b-t} f(x) \, dx
+\]</div>
+<p>如果 f 在 a 和 b 之间的某个点 c 处无界，那么只需要分别计算 <span class="arithmatex">\(\int_a^c f(x) \, dx\)</span> 和 <span class="arithmatex">\(\int_c^b f(x) \, dx\)</span> 即可。</p>
+<p>当积分区间无界时，例如 <span class="arithmatex">\(\int_a^{+\infty} f(x) \, dx\)</span>，</p>
+<div class="arithmatex">\[
+\int_a^{+\infty} f(x) \, dx = \lim\limits_{t \to +\infty} \int_a^t f(x) \, dx
+\]</div>
+<p><strong>比较判别法</strong>，是一种判断反常积分的收敛性的方法，思路是利用另外一个反常积分做辅助判断，</p>
+<p>如果 <span class="arithmatex">\(f(x) \geqslant g(x) \geqslant 0\)</span> 且 <span class="arithmatex">\(\int_a^{+\infty} g(x) \, dx\)</span> 发散，那么 <span class="arithmatex">\(\int_a^{+\infty} f(x) \, dx\)</span> 也发散。</p>
+<p>如果 <span class="arithmatex">\(0 \leqslant f(x) \leqslant g(x)\)</span> 且 <span class="arithmatex">\(\int_a^{+\infty} g(x) \, dx\)</span> 收敛，那么 <span class="arithmatex">\(\int_a^{+\infty} f(x) \, dx\)</span> 也收敛。</p>
+<p><strong>极限比较判别法</strong>，使用另外一个在瑕点上走势相近的函数代替原函数去判断积分的收敛性，两个函数必须满足以下关系：</p>
+<div class="arithmatex">\[
+\lim_{x \to a} \frac{f(x)}{g(x)} = 1
+\]</div>
+<p><strong>p判别法</strong>，p判决法的目的是使用相对简单的函数，来利用上述两种判别法来判断反常积分的收敛性。</p>
+<p><span class="arithmatex">\(\int^{\infty}\)</span> 的情况，对于任何有限值 a &gt; 0，积分</p>
+<div class="arithmatex">\[
+\int_a^\infty \frac{1}{x^p}dx
+\]</div>
+<p>在 p &gt; 1 时收敛，在 p ≤ 1 时发散。</p>
+<p>$\int_0 $ 的情况，对于任何有限制 a &gt; 0，积分</p>
+<div class="arithmatex">\[
+\int_a^\infty \frac{1}{x^p}dx
+\]</div>
+<p>在 p &lt; 1 时收敛，在 p ≥ 1 时发散。</p>
 
 
 
