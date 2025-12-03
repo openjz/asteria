@@ -3588,6 +3588,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无穷级数收敛性判别
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5361,6 +5372,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无穷级数收敛性判别
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6075,6 +6097,8 @@ y = \int_0^u \tan^{-1}(t^7+3t)dt
 \int_a^{+\infty} f(x) \, dx = \lim\limits_{t \to +\infty} \int_a^t f(x) \, dx
 \]</div>
 <h3 id="_53">收敛性判别方法</h3>
+<p>积分 <span class="arithmatex">\(\int_1^{\infty} \frac{1}{x} dx\)</span> 发散。</p>
+<p>积分 <span class="arithmatex">\(\int_1^{\infty} \frac{1}{x^2} dx\)</span> 收敛。</p>
 <p><strong>比较判别法</strong>，是一种判断反常积分的收敛性的方法，思路是利用另外一个反常积分做辅助判断，</p>
 <p>如果 <span class="arithmatex">\(f(x) \geqslant g(x) \geqslant 0\)</span> 且 <span class="arithmatex">\(\int_a^{+\infty} g(x) \, dx\)</span> 发散，那么 <span class="arithmatex">\(\int_a^{+\infty} f(x) \, dx\)</span> 也发散。</p>
 <p>如果 <span class="arithmatex">\(0 \leqslant f(x) \leqslant g(x)\)</span> 且 <span class="arithmatex">\(\int_a^{+\infty} g(x) \, dx\)</span> 收敛，那么 <span class="arithmatex">\(\int_a^{+\infty} f(x) \, dx\)</span> 也收敛。</p>
@@ -6145,6 +6169,41 @@ $</p>
 <p>这个级数叫几何级数。</p>
 <p>如果 -1 &lt; r &lt; 1，<span class="arithmatex">\(\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}\)</span>。</p>
 <p>否则，级数发散。</p>
+<h3 id="_58">无穷级数收敛性判别</h3>
+<p><strong>第n项判别法</strong></p>
+<p>如果 <span class="arithmatex">\(\lim\limits_{n \to \infty} a_n \neq 0\)</span>，那么级数 <span class="arithmatex">\(\sum_{n=1}^{\infty} a_n\)</span> 发散。</p>
+<p>级数 <span class="arithmatex">\(\sum_{n=1}^\infty \frac{1}{n^2}\)</span>收敛，<span class="arithmatex">\(\sum_{n=1}^\infty \frac{1}{\sqrt{n}}\)</span>发散。</p>
+<p><strong>比较判别法和极限比较判别法</strong></p>
+<p>和反常积分的收敛性判别方法一样，只不过比较的是数列的项而不是函数。</p>
+<p><strong>p判别法</strong></p>
+<p>和反常积分的p判别法类似，</p>
+<div class="arithmatex">\[
+\sum_{n=a}^{\infty} \frac{1}{n^p} \begin{cases} \text{收敛} &amp; p &gt; 1 \\ \text{发散} &amp; p \leqslant 1 \end{cases}
+\]</div>
+<p>调和级数：</p>
+<div class="arithmatex">\[
+\sum_{n=1}^{\infty} \frac{1}{n}
+\]</div>
+<p><strong>比式判别法</strong></p>
+<p>对于级数 <span class="arithmatex">\(\sum_{n=1}^{\infty} a_n\)</span>，定义</p>
+<div class="arithmatex">\[
+b_n = \left| \frac{a_{n+1}}{a_n} \right|
+\]</div>
+<p>如果 <span class="arithmatex">\(b_n\)</span> 收敛于一个小于1的数，则级数收敛，并且绝对收敛（绝对值收敛），如果 <span class="arithmatex">\(b_n\)</span> 收敛于一个大于1的数，则级数发散，如果 <span class="arithmatex">\(b_n\)</span> 收敛于1 或不收敛，则无法判断级数的收敛性。</p>
+<p>级数中包含阶乘，可用比式判别法。</p>
+<p><strong>根式判别法</strong></p>
+<p>对于级数 <span class="arithmatex">\(\sum_{n=1}^{\infty} a_n\)</span>，定义</p>
+<div class="arithmatex">\[
+b_n = \sqrt[n]{|a_n|}
+\]</div>
+<p>如果 <span class="arithmatex">\(b_n\)</span> 收敛于一个小于1的数，则级数收敛且绝对收敛，如果 <span class="arithmatex">\(b_n\)</span> 收敛于一个大于1的数，则级数发散，如果 <span class="arithmatex">\(b_n\)</span> 收敛于1 或不收敛，则无法判断级数的收敛性。</p>
+<p><strong>积分判别法</strong></p>
+<p>把数列 <span class="arithmatex">\(a_n\)</span> 看作是函数 f，如果 f 是非增函数，则<span class="arithmatex">\(\sum_{n=1}^{\infty} a_n\)</span> 和 <span class="arithmatex">\(\int_1^{\infty} f(x) \, dx\)</span> 收敛性相同。</p>
+<p><strong>交错级数判别法</strong></p>
+<p>条件收敛，当一个级数收敛，但是其绝对值形式发散，我们称它为条件收敛。</p>
+<p>级数 <span class="arithmatex">\(\sum_{n=1}^{\infty} \frac{-1^n}{n}\)</span> 条件收敛。</p>
+<p>交错级数是指级数的项符号交替变化的级数。</p>
+<p>如果一个交错级数各项的绝对值递减趋于0，则级数收敛。</p>
 
 
 
