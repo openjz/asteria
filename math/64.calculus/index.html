@@ -3599,6 +3599,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒多项式、泰勒级数和幂级数
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5383,6 +5394,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒多项式、泰勒级数和幂级数
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5861,7 +5883,7 @@ k = \frac{\ln(2)}{t_{1/2}}
 <p>函数临界点，是指函数导数为零或不存在的点。</p>
 <p><strong>极值定理</strong>，最大值和最小值一定位于函数的临界点或区间端点处。</p>
 <p><strong>罗尔定理</strong>，如果函数 <span class="arithmatex">\(f\)</span> 在闭区间 <span class="arithmatex">\([a,b]\)</span> 上连续，在开区间 <span class="arithmatex">\((a,b)\)</span> 上可导，且 <span class="arithmatex">\(f(a) = f(b)\)</span>，那么存在 <span class="arithmatex">\(c \in (a,b)\)</span> 使得 <span class="arithmatex">\(f'(c) = 0\)</span>。</p>
-<p><strong>中值定理</strong>，如果函数 <span class="arithmatex">\(f\)</span> 在闭区间 <span class="arithmatex">\([a,b]\)</span> 上连续，在开区间 <span class="arithmatex">\((a,b)\)</span> 上可导，那么存在 <span class="arithmatex">\(c \in (a,b)\)</span> 使得</p>
+<p><strong>中值定理</strong>（平均值定理，MVT），如果函数 <span class="arithmatex">\(f\)</span> 在闭区间 <span class="arithmatex">\([a,b]\)</span> 上连续，在开区间 <span class="arithmatex">\((a,b)\)</span> 上可导，那么存在 <span class="arithmatex">\(c \in (a,b)\)</span> 使得</p>
 <div class="arithmatex">\[f'(c) = \frac{f(b)-f(a)}{b-a}
 \]</div>
 <p>二阶导数可以用来判断函数的凹凸性，如果 <span class="arithmatex">\(f''(x) &gt; 0\)</span>，则函数在该点是凹的（向上开口），如果 <span class="arithmatex">\(f''(x) &lt; 0\)</span>，则函数在该点是凸的（向下开口）。</p>
@@ -6204,6 +6226,39 @@ b_n = \sqrt[n]{|a_n|}
 <p>级数 <span class="arithmatex">\(\sum_{n=1}^{\infty} \frac{-1^n}{n}\)</span> 条件收敛。</p>
 <p>交错级数是指级数的项符号交替变化的级数。</p>
 <p>如果一个交错级数各项的绝对值递减趋于0，则级数收敛。</p>
+<h3 id="_59">泰勒多项式、泰勒级数和幂级数</h3>
+<p>由前述内容可知，函数 f(x) 在 (a,f(a)) 处的 线性近似为</p>
+<div class="arithmatex">\[
+y = f(a) + f'(a)(x-a)
+\]</div>
+<p><strong>泰勒多项式（函数的高阶近似）</strong></p>
+<p>如果函数 f 在 x=a 处光滑，那么在 x=a 处最近似于 f(x) 的 n次多项式为</p>
+<div class="arithmatex">\[
+P_n(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
+\]</div>
+<p>用求和符号表示为</p>
+<div class="arithmatex">\[
+P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k
+\]</div>
+<p>我们将 <span class="arithmatex">\(P_n(x)\)</span> 称为函数 f 在 x=a 处的 n 阶泰勒多项式。</p>
+<p>我们使用 <span class="arithmatex">\(R_n(x)\)</span> 表示泰勒多项式和函数 f 之间的误差，<span class="arithmatex">\(R_n(x)\)</span> 被称为 n 阶误差项，也称为 n 阶余项。</p>
+<p><strong>泰勒定理</strong></p>
+<p>关于 x=a 的 n 阶余项为：</p>
+<div class="arithmatex">\[
+R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+\]</div>
+<p>其中 c 是 a 和 x 之间的某个值。</p>
+<div class="arithmatex">\[
+f(x) = P_n(x) + R_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+\]</div>
+<p>如果令 n = 0，则 <span class="arithmatex">\(f(x) = f(a) + f'(c)(x-a)\)</span>，这实际上就是中值定理，可见，泰勒定理是中值定理的推广。</p>
+<p>当我们给出一个函数的 n 阶泰勒多项式近似时，我们可以根据 n 阶余项的最大值来判断近似的精度（即误差最大不超过多少）。</p>
+<p><strong>一般幂级数</strong></p>
+<p>幂级数在 x=a 处的一般表达式：</p>
+<div class="arithmatex">\[
+\sum_{n=0}^{\infty} a_n (x-a)^n
+\]</div>
+<p>x=a 处幂级数收敛，因为只剩下 <span class="arithmatex">\(a_0\)</span>，a叫做幂级数的中心。</p>
 
 
 
