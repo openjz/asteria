@@ -3615,6 +3615,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用泰勒级数估算
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒级数和幂级数问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="泰勒级数和幂级数问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        幂级数的收敛性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5410,6 +5449,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用泰勒级数估算
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒级数和幂级数问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="泰勒级数和幂级数问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        幂级数的收敛性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6198,7 +6276,7 @@ $</p>
 <p><strong>比较判别法和极限比较判别法</strong></p>
 <p>和反常积分的收敛性判别方法一样，只不过比较的是数列的项而不是函数。</p>
 <p><strong>p判别法</strong></p>
-<p>和反常积分的p判别法类似，</p>
+<p>和反常积分的p判别法类似，当 a&gt;0 时</p>
 <div class="arithmatex">\[
 \sum_{n=a}^{\infty} \frac{1}{n^p} \begin{cases} \text{收敛} &amp; p &gt; 1 \\ \text{发散} &amp; p \leqslant 1 \end{cases}
 \]</div>
@@ -6225,7 +6303,7 @@ b_n = \sqrt[n]{|a_n|}
 <p>条件收敛，当一个级数收敛，但是其绝对值形式发散，我们称它为条件收敛。</p>
 <p>级数 <span class="arithmatex">\(\sum_{n=1}^{\infty} \frac{-1^n}{n}\)</span> 条件收敛。</p>
 <p>交错级数是指级数的项符号交替变化的级数。</p>
-<p>如果一个交错级数各项的绝对值递减趋于0，则级数收敛。</p>
+<p>如果一个交错级数各项的绝对值趋于0，并且绝对值递减，则级数收敛。</p>
 <h3 id="_59">泰勒多项式、泰勒级数和幂级数</h3>
 <p>由前述内容可知，函数 f(x) 在 (a,f(a)) 处的 线性近似为</p>
 <div class="arithmatex">\[
@@ -6254,11 +6332,77 @@ f(x) = P_n(x) + R_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \frac{f^{
 <p>如果令 n = 0，则 <span class="arithmatex">\(f(x) = f(a) + f'(c)(x-a)\)</span>，这实际上就是中值定理，可见，泰勒定理是中值定理的推广。</p>
 <p>当我们给出一个函数的 n 阶泰勒多项式近似时，我们可以根据 n 阶余项的最大值来判断近似的精度（即误差最大不超过多少）。</p>
 <p><strong>一般幂级数</strong></p>
-<p>幂级数在 x=a 处的一般表达式：</p>
+<p>幂级数是指级数的项中包含 <span class="arithmatex">\(x^n\)</span> 的无穷级数。</p>
+<p>幂级数在 x=0 处的一般表达式：</p>
+<div class="arithmatex">\[
+\sum_{n=0}^{\infty} a_n x^n
+\]</div>
+<p>（为什么要强调 x=0 处呢？因为幂级数在 x=0 处是必然收敛的，这是个特例，而在其他的 x 值处，级数不一定收敛）</p>
+<p>我们将幂级数扩展到 x=a 处后的一般表达式：</p>
 <div class="arithmatex">\[
 \sum_{n=0}^{\infty} a_n (x-a)^n
 \]</div>
-<p>x=a 处幂级数收敛，因为只剩下 <span class="arithmatex">\(a_0\)</span>，a叫做幂级数的中心。</p>
+<p>在x=a 处幂级数收敛，a 叫做幂级数的中心。</p>
+<p>泰勒多项式的无穷形式称为函数f 关于 x=a 的<strong>泰勒级数</strong>，它也是个幂级数，其系数为 <span class="arithmatex">\(\frac{f^{(n)}(a)}{n!}\)</span>。</p>
+<div class="arithmatex">\[
+\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n
+\]</div>
+<p>（注意，泰勒多项式和泰勒级数的区别在于，（1）前者是有限项多项式，后者是无穷项级数（2）泰勒级数不包含余项）</p>
+<p><strong>麦克劳林级数</strong></p>
+<p>函数 f 关于 x=0 的泰勒级数叫做 f 的麦克劳林级数。</p>
+<div class="arithmatex">\[
+\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n
+\]</div>
+<p><strong>泰勒级数的收敛性</strong></p>
+<p>如果能证明 N 趋于无穷大时，泰勒余项的极限为0，则函数 f(x) 等于其泰勒级数（即泰勒级数在f(x)的定义域范围内都收敛，且收敛于f(x)，而不仅仅只在x=a处收敛）。</p>
+<p>由此，我们可以得到一些函数的泰勒级数展开：</p>
+<div class="arithmatex">\[
+e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ...
+\]</div>
+<div class="arithmatex">\[
+\cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...
+\]</div>
+<p><strong>一个有用的极限</strong></p>
+<p>$$
+\lim_{n \to \infty} \frac{x^{n+1}}{(n+1)!} = 0
+$$
+书中额外提升到了麦克劳林级数和二项式定理的一个关联，对于<span class="arithmatex">\((a+b)^n\)</span>，当n 不是正整数时，二项式展开不再是有限的多项式，而是变成了一个无穷级数，这叫牛顿广义二项式定理。对于<span class="arithmatex">\((1+x)^n这种形式，\)</span>只有当 <span class="arithmatex">\(|x|&lt;1\)</span> 时无穷级数级数收敛，当 <span class="arithmatex">\(n = \frac{1}{2}\)</span> 时，<span class="arithmatex">\((1+x)^n\)</span> 的广义二项式展开恰好就是麦克劳林级数展开。</p>
+<h2 id="_60">利用泰勒级数估算</h2>
+<p><strong>方法1</strong></p>
+<p>使用泰勒多项式估算，通过计算余项的最大值来控制误差。</p>
+<p><strong>方法2</strong></p>
+<p>如果泰勒级数是交错级数，满足交错级数判别法的条件（级数项符号交错、绝对值递减、绝对值趋于0），并且在 x 的某些特定值处收敛于 f(x)，那么存在一个已知结论：泰勒余项的绝对值小于下一项的绝对值，即</p>
+<div class="arithmatex">\[
+|R_n(x)| \leqslant \left|\frac{f^{(n+1)}(a)}{(n+1)!}(x-a)^{N+1}\right|
+\]</div>
+<p>这里面不存在不确定的 c，所以可以用这个方法来估算误差。</p>
+<h2 id="_61">泰勒级数和幂级数问题</h2>
+<h3 id="_62">幂级数的收敛性</h3>
+<p>定义以下幂级数</p>
+<div class="arithmatex">\[
+\sum_{n=0}^{\infty} a_n (x-a)^n
+\]</div>
+<p>对于幂级数来说，我们不知道它在某个 x 值处是否收敛（除了幂级数中心），但事实上，幂级数的收敛性有以下三种情况：</p>
+<ol>
+<li>存在某数 R &gt;0，被称为幂级数的收敛半径，当 <span class="arithmatex">\(|x-a| &lt; R\)</span> 时，级数收敛，当 <span class="arithmatex">\(|x-a| &gt; R\)</span> 时，级数发散。当 <span class="arithmatex">\(|x-a| = R\)</span> 时，级数可能绝对收敛、条件收敛或者发散，需要对 x = a+R 和 x = a-R这两个点进行单独判断。</li>
+<li>幂级数对所有 x 绝对收敛，这种情况我们说收敛半径为 <span class="arithmatex">\(\infty\)</span>，例如 <span class="arithmatex">\(e^x\)</span>、<span class="arithmatex">\(\cos(x)\)</span>、<span class="arithmatex">\(\sin(x)\)</span> 的麦克劳林级数。</li>
+</ol>
+<p><strong>如何求幂级数的收敛半径？</strong></p>
+<p>使用比式判别法或根式判别法。</p>
+<p>比式判别法：</p>
+<div class="arithmatex">\[
+\lim_{n \to \infty} \left| \frac{a_{n+1}(x-a)^{n+1}}{a_n (x-a)^n} \right| =  \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right||x-a|
+\]</div>
+<p>根式判别法：</p>
+<div class="arithmatex">\[
+\lim_{n \to \infty} \sqrt[n]{|a_n (x-a)^n|} = \lim_{n \to \infty} \sqrt[n]{|a_n|} |x-a|
+\]</div>
+<p>不管是哪种方法，结果一定是 <span class="arithmatex">\(L|x-a|\)</span> 这种形式，因此，根据比式和根式判别法，</p>
+<ol>
+<li>如果 L 不为0，当 <span class="arithmatex">\(|x-a| &lt; 1/L\)</span>，幂级数绝对收敛，当 <span class="arithmatex">\(|x-a| &gt; 1/L\)</span>，幂级数发散，当 <span class="arithmatex">\(|x-a| = 1/L\)</span>，需要讨论两个端点。收敛半径为 1/L。</li>
+<li>如果 L 为 0，收敛半径为 <span class="arithmatex">\(\infty\)</span>，即不管x为什么值，幂级数都收敛。</li>
+<li>如果 L 为 <span class="arithmatex">\(\infty\)</span>，收敛半径为 0，即只有当x =a时，幂级数收敛。</li>
+</ol>
 
 
 
