@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://blog.shiwj.com/foundation/database/13.mysql-complex-sql/">
+        <link rel="canonical" href="https://blog.shiwj.com/math/introduction-to-linear-algebra-6th-edition/">
       
       
-        <link rel="prev" href="../11.z1.mysql-crash-course/">
+        <link rel="prev" href="../64.calculus/">
       
       
-        <link rel="next" href="../../network/12.z1.ip-address/">
+        <link rel="next" href="../../multi-media/58.build_obs/">
       
       
         
       
       
-      <link rel="icon" href="../../../img/avatar.png">
+      <link rel="icon" href="../../img/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>mysql中的复杂查询 - Asteria</title>
+        <title>《线性代数（第6版）》学习笔记 - Asteria</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
       
 
@@ -48,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#group-byhaving-where" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -82,7 +82,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
+    <a href="../.." title="Asteria" class="md-header__button md-logo" aria-label="Asteria" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              mysql中的复杂查询
+              《线性代数（第6版）》学习笔记
             
           </span>
         </div>
@@ -181,7 +181,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -198,13 +198,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../11.z2.go-gopl/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../foundation/11.z2.go-gopl/" class="md-tabs__link">
           
   
   
@@ -224,7 +222,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
+        <a href="../../front-end/10.js-mdn-tutorial/" class="md-tabs__link">
           
   
   
@@ -244,7 +242,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../graphics/32.unity-webgl-deploy/" class="md-tabs__link">
+        <a href="../../graphics/32.unity-webgl-deploy/" class="md-tabs__link">
           
   
   
@@ -264,7 +262,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../interview/16.interview-bagu-golang/" class="md-tabs__link">
+        <a href="../../interview/16.interview-bagu-golang/" class="md-tabs__link">
           
   
   
@@ -284,7 +282,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
+        <a href="../../linux/41.linux-so-dynamic-load/" class="md-tabs__link">
           
   
   
@@ -300,11 +298,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../math/15.remainder-and-modulo/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../15.remainder-and-modulo/" class="md-tabs__link">
           
   
   
@@ -324,7 +324,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../multi-media/58.build_obs/" class="md-tabs__link">
+        <a href="../../multi-media/58.build_obs/" class="md-tabs__link">
           
   
   
@@ -344,7 +344,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../others/11.z3.time/" class="md-tabs__link">
+        <a href="../../others/11.z3.time/" class="md-tabs__link">
           
   
   
@@ -364,7 +364,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../tools/38.bluetooth-tools/" class="md-tabs__link">
+        <a href="../../tools/38.bluetooth-tools/" class="md-tabs__link">
           
   
   
@@ -384,7 +384,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../windows/35.windows-devices-manage/" class="md-tabs__link">
+        <a href="../../windows/35.windows-devices-manage/" class="md-tabs__link">
           
   
   
@@ -424,7 +424,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
+    <a href="../.." title="Asteria" class="md-nav__button md-logo" aria-label="Asteria" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg>
@@ -454,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -478,29 +478,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -518,7 +513,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -536,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../11.z2.go-gopl/" class="md-nav__link">
+      <a href="../../foundation/11.z2.go-gopl/" class="md-nav__link">
         
   
   
@@ -564,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../50.php-install-configuration/" class="md-nav__link">
+      <a href="../../foundation/50.php-install-configuration/" class="md-nav__link">
         
   
   
@@ -592,7 +587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../72.clrs/" class="md-nav__link">
+      <a href="../../foundation/72.clrs/" class="md-nav__link">
         
   
   
@@ -620,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../73.asemblly-wangshuang/" class="md-nav__link">
+      <a href="../../foundation/73.asemblly-wangshuang/" class="md-nav__link">
         
   
   
@@ -698,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../code-design/51.closure/" class="md-nav__link">
+      <a href="../../foundation/code-design/51.closure/" class="md-nav__link">
         
   
   
@@ -726,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../code-design/70.design-patterns/" class="md-nav__link">
+      <a href="../../foundation/code-design/70.design-patterns/" class="md-nav__link">
         
   
   
@@ -812,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concurrent-programming/30.coroutine-stack/" class="md-nav__link">
+      <a href="../../foundation/concurrent-programming/30.coroutine-stack/" class="md-nav__link">
         
   
   
@@ -840,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concurrent-programming/37.condition-variable/" class="md-nav__link">
+      <a href="../../foundation/concurrent-programming/37.condition-variable/" class="md-nav__link">
         
   
   
@@ -868,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
+      <a href="../../foundation/concurrent-programming/71.lockfree-ringbuffer/" class="md-nav__link">
         
   
   
@@ -954,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
+      <a href="../../foundation/cpp/20.cpp-stl-algorithm-overview/" class="md-nav__link">
         
   
   
@@ -982,7 +977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/23.cpp-new-malloc/" class="md-nav__link">
+      <a href="../../foundation/cpp/23.cpp-new-malloc/" class="md-nav__link">
         
   
   
@@ -1010,7 +1005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/24.cpp-static/" class="md-nav__link">
+      <a href="../../foundation/cpp/24.cpp-static/" class="md-nav__link">
         
   
   
@@ -1038,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/25.cpp-dup-symbols/" class="md-nav__link">
+      <a href="../../foundation/cpp/25.cpp-dup-symbols/" class="md-nav__link">
         
   
   
@@ -1066,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/26.cpp-copy-move/" class="md-nav__link">
+      <a href="../../foundation/cpp/26.cpp-copy-move/" class="md-nav__link">
         
   
   
@@ -1094,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/27.cpp-const/" class="md-nav__link">
+      <a href="../../foundation/cpp/27.cpp-const/" class="md-nav__link">
         
   
   
@@ -1122,7 +1117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/28.cpp-inline/" class="md-nav__link">
+      <a href="../../foundation/cpp/28.cpp-inline/" class="md-nav__link">
         
   
   
@@ -1150,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/29.cpp-forward-declaration/" class="md-nav__link">
+      <a href="../../foundation/cpp/29.cpp-forward-declaration/" class="md-nav__link">
         
   
   
@@ -1178,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/57.effective-cpp/" class="md-nav__link">
+      <a href="../../foundation/cpp/57.effective-cpp/" class="md-nav__link">
         
   
   
@@ -1206,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/62.effective-modern-cpp/" class="md-nav__link">
+      <a href="../../foundation/cpp/62.effective-modern-cpp/" class="md-nav__link">
         
   
   
@@ -1234,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/65.cpp-template-tricks/" class="md-nav__link">
+      <a href="../../foundation/cpp/65.cpp-template-tricks/" class="md-nav__link">
         
   
   
@@ -1262,7 +1257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/66.cpp-stl-tricks/" class="md-nav__link">
+      <a href="../../foundation/cpp/66.cpp-stl-tricks/" class="md-nav__link">
         
   
   
@@ -1290,7 +1285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
+      <a href="../../foundation/cpp/67.cpp-operator-overloading-tricks/" class="md-nav__link">
         
   
   
@@ -1318,7 +1313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
+      <a href="../../foundation/cpp/68.cpp-memory-analysis-asan/" class="md-nav__link">
         
   
   
@@ -1346,7 +1341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
+      <a href="../../foundation/cpp/69.cpp-memory-analysis-vld/" class="md-nav__link">
         
   
   
@@ -1379,8 +1374,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1391,11 +1384,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
         
           
           <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
@@ -1416,7 +1409,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1434,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../11.z1.mysql-crash-course/" class="md-nav__link">
+      <a href="../../foundation/database/11.z1.mysql-crash-course/" class="md-nav__link">
         
   
   
@@ -1459,35 +1452,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    mysql中的复杂查询
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../foundation/database/13.mysql-complex-sql/" class="md-nav__link">
         
   
   
@@ -1503,135 +1471,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#group-byhaving-where" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        group by...having 和 where 的区别
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#joinon-where" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        join...on 和 where 的区别
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        窗口函数
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="窗口函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        介绍
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        用法
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常用窗口函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        其他
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="其他">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#if" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        if函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        case 函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1702,7 +1541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/12.z1.ip-address/" class="md-nav__link">
+      <a href="../../foundation/network/12.z1.ip-address/" class="md-nav__link">
         
   
   
@@ -1788,7 +1627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../os/14.threadexit/" class="md-nav__link">
+      <a href="../../foundation/os/14.threadexit/" class="md-nav__link">
         
   
   
@@ -1816,7 +1655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../os/74.csapp/" class="md-nav__link">
+      <a href="../../foundation/os/74.csapp/" class="md-nav__link">
         
   
   
@@ -1909,7 +1748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
+      <a href="../../front-end/10.js-mdn-tutorial/" class="md-nav__link">
         
   
   
@@ -1937,7 +1776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
+      <a href="../../front-end/11.css-mdn-tutorial/" class="md-nav__link">
         
   
   
@@ -1965,7 +1804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
+      <a href="../../front-end/17.html-mdn-tutorial/" class="md-nav__link">
         
   
   
@@ -1993,7 +1832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/18.webpage-print/" class="md-nav__link">
+      <a href="../../front-end/18.webpage-print/" class="md-nav__link">
         
   
   
@@ -2078,7 +1917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/32.unity-webgl-deploy/" class="md-nav__link">
+      <a href="../../graphics/32.unity-webgl-deploy/" class="md-nav__link">
         
   
   
@@ -2106,7 +1945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/33.rendering-pipeline/" class="md-nav__link">
+      <a href="../../graphics/33.rendering-pipeline/" class="md-nav__link">
         
   
   
@@ -2184,7 +2023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/games101/75.games101-1-transform-rasterization/" class="md-nav__link">
+      <a href="../../graphics/games101/75.games101-1-transform-rasterization/" class="md-nav__link">
         
   
   
@@ -2212,7 +2051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/games101/games101-2-shading/" class="md-nav__link">
+      <a href="../../graphics/games101/games101-2-shading/" class="md-nav__link">
         
   
   
@@ -2240,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/games101/games101-3-geometry/" class="md-nav__link">
+      <a href="../../graphics/games101/games101-3-geometry/" class="md-nav__link">
         
   
   
@@ -2268,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/games101/games101-4-ray-tracing/" class="md-nav__link">
+      <a href="../../graphics/games101/games101-4-ray-tracing/" class="md-nav__link">
         
   
   
@@ -2296,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphics/games101/games101-5-materials/" class="md-nav__link">
+      <a href="../../graphics/games101/games101-5-materials/" class="md-nav__link">
         
   
   
@@ -2389,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interview/16.interview-bagu-golang/" class="md-nav__link">
+      <a href="../../interview/16.interview-bagu-golang/" class="md-nav__link">
         
   
   
@@ -2417,7 +2256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interview/19.interview-bagu-cpp/" class="md-nav__link">
+      <a href="../../interview/19.interview-bagu-cpp/" class="md-nav__link">
         
   
   
@@ -2445,7 +2284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interview/52.interview-bagu-general/" class="md-nav__link">
+      <a href="../../interview/52.interview-bagu-general/" class="md-nav__link">
         
   
   
@@ -2473,7 +2312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
+      <a href="../../interview/53.interview-bagu-distribute-system/" class="md-nav__link">
         
   
   
@@ -2558,7 +2397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
+      <a href="../../linux/41.linux-so-dynamic-load/" class="md-nav__link">
         
   
   
@@ -2586,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
+      <a href="../../linux/42.linux-jiu-gai-zhe-me-xue-note/" class="md-nav__link">
         
   
   
@@ -2614,7 +2453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/43.linux-common-command/" class="md-nav__link">
+      <a href="../../linux/43.linux-common-command/" class="md-nav__link">
         
   
   
@@ -2642,7 +2481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/44.linux-common-configuration/" class="md-nav__link">
+      <a href="../../linux/44.linux-common-configuration/" class="md-nav__link">
         
   
   
@@ -2670,7 +2509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/45.linux-net-configuration/" class="md-nav__link">
+      <a href="../../linux/45.linux-net-configuration/" class="md-nav__link">
         
   
   
@@ -2698,7 +2537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
+      <a href="../../linux/47.linux-muti-thread-programming/" class="md-nav__link">
         
   
   
@@ -2726,7 +2565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/9.linux-core-config/" class="md-nav__link">
+      <a href="../../linux/9.linux-core-config/" class="md-nav__link">
         
   
   
@@ -2758,24 +2597,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -2793,7 +2637,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2811,7 +2655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/15.remainder-and-modulo/" class="md-nav__link">
+      <a href="../15.remainder-and-modulo/" class="md-nav__link">
         
   
   
@@ -2839,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/31.linear-algebra-3B1B/" class="md-nav__link">
+      <a href="../31.linear-algebra-3B1B/" class="md-nav__link">
         
   
   
@@ -2867,7 +2711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/63.affine-transformation/" class="md-nav__link">
+      <a href="../63.affine-transformation/" class="md-nav__link">
         
   
   
@@ -2895,7 +2739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/64.calculus/" class="md-nav__link">
+      <a href="../64.calculus/" class="md-nav__link">
         
   
   
@@ -2920,10 +2764,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../math/introduction-to-linear-algebra-6th-edition/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    《线性代数（第6版）》学习笔记
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2939,6 +2808,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性方程组的几何解释
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3008,7 +2906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../multi-media/58.build_obs/" class="md-nav__link">
+      <a href="../../multi-media/58.build_obs/" class="md-nav__link">
         
   
   
@@ -3036,7 +2934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
+      <a href="../../multi-media/59.ffmpeg_cmd_demo/" class="md-nav__link">
         
   
   
@@ -3121,7 +3019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/11.z3.time/" class="md-nav__link">
+      <a href="../../others/11.z3.time/" class="md-nav__link">
         
   
   
@@ -3149,7 +3047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/12.digital-signatures-certificates/" class="md-nav__link">
+      <a href="../../others/12.digital-signatures-certificates/" class="md-nav__link">
         
   
   
@@ -3177,7 +3075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
+      <a href="../../others/34.bluetooth-specification-introduction/" class="md-nav__link">
         
   
   
@@ -3205,7 +3103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/40.bug-record/" class="md-nav__link">
+      <a href="../../others/40.bug-record/" class="md-nav__link">
         
   
   
@@ -3290,7 +3188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/38.bluetooth-tools/" class="md-nav__link">
+      <a href="../../tools/38.bluetooth-tools/" class="md-nav__link">
         
   
   
@@ -3318,7 +3216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/46.ssh-login-script/" class="md-nav__link">
+      <a href="../../tools/46.ssh-login-script/" class="md-nav__link">
         
   
   
@@ -3346,7 +3244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/60.vscode-continue-config/" class="md-nav__link">
+      <a href="../../tools/60.vscode-continue-config/" class="md-nav__link">
         
   
   
@@ -3374,7 +3272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/61.understand-scitools-keygen/" class="md-nav__link">
+      <a href="../../tools/61.understand-scitools-keygen/" class="md-nav__link">
         
   
   
@@ -3452,7 +3350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/build/21.makefile-tutorial/" class="md-nav__link">
+      <a href="../../tools/build/21.makefile-tutorial/" class="md-nav__link">
         
   
   
@@ -3538,7 +3436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
+      <a href="../../tools/nginx/48.nginx-getting-started-tutorial/" class="md-nav__link">
         
   
   
@@ -3566,7 +3464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
+      <a href="../../tools/nginx/49.nginx-install-configuration/" class="md-nav__link">
         
   
   
@@ -3652,7 +3550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/package-manager/22.scl/" class="md-nav__link">
+      <a href="../../tools/package-manager/22.scl/" class="md-nav__link">
         
   
   
@@ -3745,7 +3643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/35.windows-devices-manage/" class="md-nav__link">
+      <a href="../../windows/35.windows-devices-manage/" class="md-nav__link">
         
   
   
@@ -3773,7 +3671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/39.windows-dump-debug/" class="md-nav__link">
+      <a href="../../windows/39.windows-dump-debug/" class="md-nav__link">
         
   
   
@@ -3801,7 +3699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
+      <a href="../../windows/54.windows_ifeo_windbg/" class="md-nav__link">
         
   
   
@@ -3829,7 +3727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
+      <a href="../../windows/55.winodws_develop_knowledge/" class="md-nav__link">
         
   
   
@@ -3857,7 +3755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/56.char-wchar-on-windows/" class="md-nav__link">
+      <a href="../../windows/56.char-wchar-on-windows/" class="md-nav__link">
         
   
   
@@ -3910,113 +3808,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#group-byhaving-where" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        group by...having 和 where 的区别
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#joinon-where" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        join...on 和 where 的区别
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        窗口函数
+        线性方程组的几何解释
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="窗口函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        介绍
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        用法
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常用窗口函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        其他
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="其他">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#if" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        if函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        case 函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4040,172 +3838,72 @@
   
 
 
-  <h1>mysql中的复杂查询</h1>
+  <h1>《线性代数（第6版）》学习笔记</h1>
 
-<h2 id="group-byhaving-where">group by...having 和 where 的区别</h2>
-<p>mysql 先对数据按照 where 子句过滤，然后在对返回的结果分组，最后对分组后的数据按照 having 子句过滤。</p>
-<p>where 是对行过滤，而 having 是对分组过滤，所以可以在 having 子句后面使用聚集函数，而在 where 子句后面使用聚集函数是没有意义的。</p>
-<h2 id="joinon-where">join...on 和 where 的区别</h2>
-<p>在联结查询中，join...on...子句和 where 子句是可以一起出现的，要想弄清楚它们的区别，首先要清楚联结查询的过程。联结查询时要先根据联结条件对两张表做笛卡尔积，生成一个大表，然后再对这个大表做过滤，最终得到查询结果。</p>
-<p>join...on 和 where 的区别在于，join...on...子句是在联结时生效，而 where 子句是在联结后生效。</p>
-<p>因此，当联结是外部联结（联结子句是 left join 或 right join）时，由于外部联结会将左表或右表中没有建立联结的行都返回，所以 on 后面的条件不会去掉那些不符合条件的行，而 where 子句是严格的，会将不等值的行都去掉。</p>
-<p>而当联结是内部联结（等值联结）的时候，联结子句（join...on...）只会返回等值的行，这时写在 on 后面的条件和 where 子句中的条件是等价的，因此，使用内部联结的时候，完全可以用 where 子句代替 join...on...</p>
-<h2 id="_1">窗口函数</h2>
-<p>参考<a href="https://dev.mysql.com/doc/refman/8.0/en/window-functions.html">mysql-8.0-documentation-window-functions</a></p>
-<h3 id="_2">介绍</h3>
-<p>窗口函数是 mysql 8.0 加入的功能，目的是为了满足分组统计场景的查询需求。</p>
-<p>我们使用 SQL 语句查数据时通常会有一些统计分析的需求（例如聚合和排序），一般有以下三类统计场景：</p>
+<p>《线性代数（第6版）》由Gilbert Strang（吉尔伯特·斯特朗）编写，是线性代数领域的经典教材。</p>
+<p>这个笔记的内容来自MIT的线性代数课程以及《线性代数（第6版）》这本教材。</p>
+<h2 id="_1">线性方程组的几何解释</h2>
+<p><strong>线性组合</strong></p>
+<div class="arithmatex">\[
+\begin{cases}
+2x-y=0 \\
+-x+2y=3
+\end{cases}
+\]</div>
+<p>我们可以将其表示为矩阵形式：</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+2 &amp; -1 \\
+-1 &amp; 2 \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+3 \\
+\end{bmatrix}
+\]</div>
+<p>我们可以将其记为 <span class="arithmatex">\(Ax=b\)</span>。</p>
+<p>站在行的角度来看，这个方程组中的每个方程都可以确定一条直线，方程组是在求两条直线的交点。</p>
+<p>站在列的角度来看，它的列视图可以表示为：</p>
+<div class="arithmatex">\[
+x\begin{bmatrix}
+2 \\
+-1 \\
+\end{bmatrix}
++
+y\begin{bmatrix}
+-1 \\
+2 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+3 \\
+\end{bmatrix}
+\]</div>
+<p>这实际上是两个列向量的<strong>线性组合（Linear Combination）</strong>。</p>
+<p>考虑以下三元线性方程组</p>
+<div class="arithmatex">\[
+\begin{cases}
+2x-y=0 \\
+-x+2y-z=-1 \\
+-3y+4z=4
+\end{cases}
+\]</div>
+<p>和二元线性方程组同理，站在行的角度，每个方程都可以确定一个平面，方程组是在求三个平面的交点。站在列的角度，可以将方程组表示为 <span class="arithmatex">\(Ax = b\)</span>。</p>
+<p><strong>奇异/不可逆</strong></p>
+<p>站在列的角度，考虑这样一个问题，对于 <span class="arithmatex">\(Ax = b\)</span>，是不是对于任意的 <span class="arithmatex">\(b\)</span>，都存在解 <span class="arithmatex">\(x\)</span> 呢？换句话说，列向量的线性组合能否覆盖整个三维空间？</p>
+<p>假设三个列向量处于同一个平面内，答案就是否定的，一个平面外的向量必然不能被这三个列向量的线性组合表示出来。这种情况，我们称之为<strong>奇异（Singular）</strong>或矩阵<strong>不可逆（Invertible）</strong>。（原因在于这三个列向量不是完全相互独立的）</p>
+<p><strong>矩阵乘向量</strong></p>
+<p>两种方法：</p>
 <ol>
-<li>简单统计<br />
-   按条件查出数据后，对返回数据整体做统计操作，这种统计使用<code>select...from...where...order by</code>配合聚合函数即可完成。</li>
-<li>分组聚合<br />
-   按条件查出数据后，对数据分组，然后对每个分组做聚合操作，每个分组返回一条数据即可，这种统计使用<code>group by</code>即可完成。</li>
-<li>分组统计<br />
-   很多时候我们既想分组，又想对分组聚合，又想把分组内部的数据全部返回，而不是每个分组只返回一个数据，这时光用<code>group by</code>是不能完成任务的，为了解决问题，我们经常要写一堆复杂的自联结，不仅 SQL 难以读懂，而且查询效率也很低下。</li>
+<li>将矩阵的每一行与向量做点积</li>
+<li>将矩阵的列向量与向量的每个分量做线性组合</li>
 </ol>
-<p>窗口函数的引入就是为了方便解决上述第三种查询场景，<strong>我们可以使用窗口函数对分组内部的数据做统计，然后把统计后的数据全部返回，并且可以按排序为每行计算出一个序号</strong>，方便我们使用序号对数据做二次过滤</p>
-<p>对于窗口函数来说，“窗口”的概念非常重要。窗口函数会对组内的每条记录执行统计，这需要给窗口函数规定一个统计范围（统计范围不一定是整个分组，也可能只对分组的一部分做统计），我们把这个统计范围称为窗口，有的窗口函数的窗口是固定的，有的是滑动的，需要用户指定</p>
-<h3 id="_3">用法</h3>
-<p>以下是窗口函数的用法</p>
-<pre><code class="language-sql">-- 简单写法（把窗口函数返回的行序号作为新的一列new_col）
-select
-window_function() over(partition by xxx order by xxx) as new_col from xxx
-
--- 上面也可以把分组条件拆成单独的window语句
-
-select
-window_function() over w as new_col
-from xxx
-window w as (partition by xxx order by xxx)
-</code></pre>
-<p>窗口函数的完整语法如下</p>
-<pre><code class="language-sql">window_function_name(expression)
-    OVER (
-        [partition_defintion]
-        [order_definition]
-        [frame_definition]
-    )
-</code></pre>
-<p><code>window_function_name(expression)</code>是窗口函数，<code>over()</code>为窗口函数指定了分组规则，如果里面什么都不写就是在整个表上运行窗口函数</p>
-<p><code>partition</code>子句定义了按哪些列分组，<code>order by</code>子句定义了按哪些列排序，<code>frame</code>子句定义了一个滑动窗口，分为按行定义和按范围定义</p>
-<p>窗口函数只能用在 select 列表和 order by 子句里。mysql 是对 where、group by、having 子句返回的结果上进行窗口函数的处理，处理顺序在 order by、limit、select distinct 之前</p>
-<p>frame语法</p>
-<pre><code class="language-sql">-- frame_units是窗口类型，frame_extent是窗口范围
-frame_units frame_extent
-
--- frame_units有两种，ROWS和RANGE，分别是按行的位置指定范围（行的位置就是指“第几行”）和按行的值指定范围（对RANGE模式不太理解，大概是值相同的行在统计上算作同一行）
-frame_units:
-    {ROWS | RANGE}
--- frame_extent也有两种，只指定开始行（结尾行默认是当前行），和同时指定开始和结束行
-frame_extent:
-    {frame_start | frame_between}
-
-frame_between:
-    BETWEEN frame_start AND frame_end
-
-frame_start, frame_end: {
-    CURRENT ROW  -- 当前行
-  | UNBOUNDED PRECEDING -- 分组第一行
-  | UNBOUNDED FOLLOWING -- 分组最后一行
-  | expr PRECEDING -- 当前行之前的expr行，例如10 PRECEDING的意思是当前行之前的10行
-  | expr FOLLOWING -- 当前行之后的expr行
-}
-
-</code></pre>
-<h3 id="_4">常用窗口函数</h3>
-<p>可以当作窗口函数的聚合函数：sum、min、max、avg、count</p>
-<p>以下是专用窗口函数</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>row_number()</td>
-<td>返回<strong>分组内</strong>排序后的行号</td>
-</tr>
-<tr>
-<td>rank()</td>
-<td>返回<strong>分组内</strong>排序后的序号，如果有并列的行，它们行号相同，行号是并列组前面的总记录数+1</td>
-</tr>
-<tr>
-<td>dense_rank()</td>
-<td>返回<strong>分组内</strong>排序后的序号，如果有并列的行，它们行号相同，行号是上一个并列组的序号+1</td>
-</tr>
-<tr>
-<td>first_value(expr)/last_value(expr)</td>
-<td>返回<strong>窗口中</strong>的第一个行或最后一个行，并对其做表达式计算</td>
-</tr>
-<tr>
-<td>lag(expr,N,default)</td>
-<td>返回<strong>分组内</strong>位于当前行之前N行（这里是指上方）的行，default是指如果没有之前N行返回的值，N和default的默认值分别为1和null</td>
-</tr>
-<tr>
-<td>lead(expr,N,default)</td>
-<td>返回<strong>分组内</strong>位于当前行之后N行（下方）的行。（这里的之前之后是指遍历顺序）</td>
-</tr>
-<tr>
-<td>nth_value(expr,N)</td>
-<td>返回<strong>窗口内</strong>的第n行</td>
-</tr>
-<tr>
-<td>ntile(n)</td>
-<td>将<strong>分组内</strong>行平均分成n个桶，返回每个行所属的桶号</td>
-</tr>
-</tbody>
-</table>
-<p>以下是row_number、rank和dense_rank的区别</p>
-<pre><code>+------+------------+------+------------+
-| val  | row_number | rank | dense_rank |
-+------+------------+------+------------+
-|    1 |          1 |    1 |          1 |
-|    1 |          2 |    1 |          1 |
-|    2 |          3 |    3 |          2 |
-|    3 |          4 |    4 |          3 |
-|    3 |          5 |    4 |          3 |
-|    3 |          6 |    4 |          3 |
-|    4 |          7 |    7 |          4 |
-|    4 |          8 |    7 |          4 |
-|    5 |          9 |    9 |          5 |
-+------+------------+------+------------+
-</code></pre>
-<h2 id="_5">其他</h2>
-<h3 id="if">if函数</h3>
-<p>if函数可以用在select子句中</p>
-<p>用法：<code>if(expr1,v1,v2)</code>，当expr1的值为真时，返回v1，否则返回v2</p>
-<h3 id="case">case 函数</h3>
-<p>case 函数可以用在 select 子句里，并将其结果命名为一个字段，还可以按这个字段分组，比如以下 sql</p>
-<pre><code class="language-sql">select case
-when age&gt;=25 then &quot;25岁及以上&quot;
-else &quot;25岁以下&quot;
-end as age_cut,count(id) as number
-from user_profile
-group by age_cut;
-</code></pre>
-<p>这个 sql 返回的结果如下所示</p>
-<pre><code>age_cut,number
-25岁以下,4
-25岁及以上,3
-</code></pre>
-<p>case 函数有两种写法，第一种，</p>
-<pre><code class="language-sql">CASE  &lt;表达式&gt;
-   WHEN &lt;值1&gt; THEN &lt;操作&gt;
-   WHEN &lt;值2&gt; THEN &lt;操作&gt;
-   ...
-   ELSE &lt;操作&gt;
-END CASE;
-</code></pre>
-<p>第二种（有点类似于 golang 的 switch 语句），</p>
-<pre><code class="language-sql">CASE
-    WHEN &lt;条件1&gt; THEN &lt;操作&gt;
-    WHEN &lt;条件2&gt; THEN &lt;操作&gt;
-    ...
-    ELSE &lt;操作&gt;
-END CASE;
-</code></pre>
 
 
 
@@ -4262,12 +3960,12 @@ END CASE;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
