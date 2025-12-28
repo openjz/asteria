@@ -2,306 +2,306 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://blog.shiwj.com/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/11.z2.go-gopl/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/50.php-install-configuration/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/72.clrs/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/73.asemblly-wangshuang/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/code-design/51.closure/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/code-design/70.design-patterns/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/concurrent-programming/30.coroutine-stack/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/concurrent-programming/37.condition-variable/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/concurrent-programming/71.lockfree-ringbuffer/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/20.cpp-stl-algorithm-overview/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/23.cpp-new-malloc/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/24.cpp-static/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/25.cpp-dup-symbols/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/26.cpp-copy-move/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/27.cpp-const/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/28.cpp-inline/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/29.cpp-forward-declaration/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/57.effective-cpp/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/62.effective-modern-cpp/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/65.cpp-template-tricks/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/66.cpp-stl-tricks/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/67.cpp-operator-overloading-tricks/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/68.cpp-memory-analysis-asan/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/cpp/69.cpp-memory-analysis-vld/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/database/11.z1.mysql-crash-course/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/database/13.mysql-complex-sql/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/network/12.z1.ip-address/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/os/14.threadexit/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/foundation/os/74.csapp/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/front-end/10.js-mdn-tutorial/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/front-end/11.css-mdn-tutorial/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/front-end/17.html-mdn-tutorial/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/front-end/18.webpage-print/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/32.unity-webgl-deploy/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/33.rendering-pipeline/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/games101/75.games101-1-transform-rasterization/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/games101/games101-2-shading/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/games101/games101-3-geometry/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/games101/games101-4-ray-tracing/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/graphics/games101/games101-5-materials/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/interview/16.interview-bagu-golang/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/interview/19.interview-bagu-cpp/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/interview/52.interview-bagu-general/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/interview/53.interview-bagu-distribute-system/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/41.linux-so-dynamic-load/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/42.linux-jiu-gai-zhe-me-xue-note/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/43.linux-common-command/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/44.linux-common-configuration/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/45.linux-net-configuration/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/47.linux-muti-thread-programming/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/linux/9.linux-core-config/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/math/15.remainder-and-modulo/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/math/31.linear-algebra-3B1B/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/math/63.affine-transformation/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/math/64.calculus/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/math/introduction-to-linear-algebra-6th-edition/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/multi-media/58.build_obs/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/multi-media/59.ffmpeg_cmd_demo/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/others/11.z3.time/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/others/12.digital-signatures-certificates/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/others/34.bluetooth-specification-introduction/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/others/40.bug-record/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/38.bluetooth-tools/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/46.ssh-login-script/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/60.vscode-continue-config/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/61.understand-scitools-keygen/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/build/21.makefile-tutorial/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/nginx/48.nginx-getting-started-tutorial/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/nginx/49.nginx-install-configuration/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/tools/package-manager/22.scl/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/windows/35.windows-devices-manage/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/windows/39.windows-dump-debug/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/windows/54.windows_ifeo_windbg/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/windows/55.winodws_develop_knowledge/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
     <url>
          <loc>https://blog.shiwj.com/windows/56.char-wchar-on-windows/</loc>
-         <lastmod>2025-12-14</lastmod>
+         <lastmod>2025-12-28</lastmod>
     </url>
 </urlset>
