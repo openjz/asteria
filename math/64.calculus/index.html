@@ -5700,8 +5700,7 @@ y = \int_0^u \tan^{-1}(t^7+3t)dt
 <p>函数的很多性质，对数列同样适用，例如夹逼定理、洛必达法则等。</p>
 <p><strong>两个重要数列</strong></p>
 <p>等比数列，<span class="arithmatex">\(a_n = r^{n}\)</span></p>
-<p>$\lim\limits_{n \to \infty} (1+\frac{k}{n})^n = e^k
-$</p>
+<p><span class="arithmatex">\(\lim\limits_{n \to \infty} (1+\frac{k}{n})^n = e^k\)</span></p>
 <h3 id="_57">级数</h3>
 <p>级数就是数列的和。</p>
 <p>无穷级数定义如下，</p>
@@ -5811,10 +5810,10 @@ e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3
 \cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...
 \]</div>
 <p><strong>一个有用的极限</strong></p>
-<p>$$
+<div class="arithmatex">\[
 \lim_{n \to \infty} \frac{x^{n+1}}{(n+1)!} = 0
-$$
-书中额外提升到了麦克劳林级数和二项式定理的一个关联，对于<span class="arithmatex">\((a+b)^n\)</span>，当n 不是正整数时，二项式展开不再是有限的多项式，而是变成了一个无穷级数，这叫牛顿广义二项式定理。对于<span class="arithmatex">\((1+x)^n这种形式，\)</span>只有当 <span class="arithmatex">\(|x|&lt;1\)</span> 时无穷级数级数收敛，当 <span class="arithmatex">\(n = \frac{1}{2}\)</span> 时，<span class="arithmatex">\((1+x)^n\)</span> 的广义二项式展开恰好就是麦克劳林级数展开。</p>
+\]</div>
+<p>书中额外提升到了麦克劳林级数和二项式定理的一个关联，对于<span class="arithmatex">\((a+b)^n\)</span>，当n 不是正整数时，二项式展开不再是有限的多项式，而是变成了一个无穷级数，这叫牛顿广义二项式定理。对于<span class="arithmatex">\((1+x)^n\)</span>这种形式，只有当 <span class="arithmatex">\(|x|&lt;1\)</span> 时无穷级数级数收敛，当 <span class="arithmatex">\(n = \frac{1}{2}\)</span> 时，<span class="arithmatex">\((1+x)^n\)</span> 的广义二项式展开恰好就是麦克劳林级数展开。</p>
 <h2 id="_60">利用泰勒级数估算</h2>
 <p><strong>方法1</strong></p>
 <p>使用泰勒多项式估算，通过计算余项的最大值来控制误差。</p>
@@ -6027,6 +6026,7 @@ V = \int_{a}^{b} A(x) dx
 <h2 id="_72">微分方程</h2>
 <p>微分方程是包含导数的方程。</p>
 <p>微分方程中最大的导数阶数就是微分方程的阶数。</p>
+<p>微分方程 IVP（Initial Value Problem，初值问题）。</p>
 <h3 id="_73">可分离变量微分方程</h3>
 <p>如果能把一阶微分方程所有关于 y 的部分放到一边，所有关于 x 的部分放到另一边，那么这个微分方程就是可分离变量微分方程。</p>
 <p>例如，<span class="arithmatex">\(dy/dx = ky\)</span> 可以写成 </p>
@@ -6073,7 +6073,7 @@ a \frac{d^2 y}{dx^2} + b \frac{dy}{dx} + c y = 0
 <ol>
 <li>先查表，写出特解形式</li>
 <li>将特解形式代入非齐次方程，解出未知系数</li>
-<li>如果特解形式和齐次方程的通解有重复，则将特解形式乘以 x 的适当幂次，直到不重复为止。</li>
+<li>如果特解形式和齐次方程的通解有冲突（特解和通解相互包含），则将特解形式乘以 x 的适当幂次，比如乘以 x 或 x的平方，直到不重复为止。</li>
 </ol>
 
 
