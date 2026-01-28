@@ -4254,7 +4254,7 @@ I &amp; F \\
 <p>当矩阵的零空间中只有零向量时，A 的列向量是线性无关的。</p>
 <p>如果 mxn 矩阵的列是线性无关的，矩阵的秩 r = n，秩代表线性无关的列向量的个数。</p>
 <p>生成/张成（Span），两个线性无关的向量的线性组合可以张成一个平面。</p>
-<p>基向量：一组线性无关的向量，并且张成一个空间，<strong>基向量的个数称为空间的维度</strong>。</p>
+<p>基向量：一组线性无关的向量，并且张成一个空间，<strong>基向量的个数称为空间的维度</strong>，只有零向量的空间是 0 维的。</p>
 <p>对于矩阵 A，列空间的维数是线性无关的列向量的个数，即矩阵的秩 r（列空间的维数和行数无关）。</p>
 <p><strong>零空间的维数是自由变量的个数，即 n - r</strong>，Ax = 0 有几个自由向量，就有几个特解。</p>
 <h2 id="_14">四个基本子空间</h2>
@@ -4385,7 +4385,32 @@ A =
 \]</div>
 <p>显然，这是个三维子空间。</p>
 <p>用 v 表示这个子空间中的一个向量，用 S 表示这个子空间，如果我们将 S 视为矩阵 A 的零空间，那么只要找到一个满足 Av = 0 的 A，就能知道 S 的维度和基向量。</p>
-<p>显然，A 只要为一个全 1 的行向量即可，即，<span class="arithmatex">\(A = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \end{bmatrix}\)</span>，A 的秩为 1，A 的零空间的维度为 4 - 1 = 3，这和我们前面得到的结果是一致的。</p>
+<p>显然，A 只要为一个全 1 的行向量即可，即，<span class="arithmatex">\(A = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \end{bmatrix}\)</span>，A 的秩为 1，A 的零空间的维度为 4 - 1 = 3，这和我们前面得到的结果是一致的，另外，A 的行空间维度为 1，A 的左零空间维度为 0。</p>
+<p><strong>一个图论的例子</strong></p>
+<p>假设一个图有 4 个节点，5 条边，我们可以将其表示为一个 5x4 的矩阵 A，行表示边，列表示结点，边有方向，这种矩阵叫关联矩阵（Incidence Matrix），关联矩阵中的元素表示结点和边的连接情况，-1 表示边从该结点出发，1 表示边指向该结点，0 表示该结点和该边不连接。</p>
+<p>例如，有以下图：</p>
+<p><img alt="graph.png" src="/img/introduction-to-linear-algebra-6th-edition/graph.png" /></p>
+<p>它的关联矩阵为：</p>
+<div class="arithmatex">\[
+A =
+\begin{bmatrix}
+-1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; -1 &amp; 1
+\end{bmatrix}
+\]</div>
+<p>前三行对应边 1、2、3，从图中可以看出，边 1、2、3 构成了一个回路（Loop），而在矩阵 A 中，前三行是线性相关的，其实回路就是线性相关的，没有回路时，矩阵的行是线性无关的，这时的图叫做树。</p>
+<p>考虑 A 的列空间和零空间，</p>
+<p>如果用 <span class="arithmatex">\(x_1, x_2, x_3,x_4\)</span> 表示各节点的电势，那么 Ax 表示各边从起点到终点的电势差，Ax = 0 是想求出各节点的电势为多少时，各边的电势差都为0。</p>
+<p>我们会发现，除了全零以外，全 1 向量也是 Ax = 0 的解，这意味着所有节点电势相等时，各边的电势差都为0，所以，A 的零空间是 1 维的，这也意味着，<strong>只要确定了一个节点的电势，其他三个节点的电势就都确定了，A 的 秩为 3</strong>。</p>
+<p>考虑 A 的行空间和左零空间，</p>
+<p>如果用 <span class="arithmatex">\(y_1, y_2, y_3, y_4, y_5\)</span> 表示各边的电流，那么 <span class="arithmatex">\(A^Ty\)</span> 表示各节点的电流总和，<span class="arithmatex">\(A^Ty = 0\)</span> 是想求出各边的电流为多少时，各节点的电流总和都为0。</p>
+<p><span class="arithmatex">\(A^Ty = 0\)</span> 就是基尔霍夫电流定律（KCL），即每个节点上的合电流为0。</p>
+<p>左零空间的维度为2，即 m-r=5-3=2，这意味着可以找到两组线性无关的解，这也意味着，可以在图中找到两条独立的回路。</p>
+<p>抛开物理意义，从几何上来看，任何一个图的拓扑结构都满足这个规律，即独立回路的数量 = <span class="arithmatex">\(dim(N(A^T))\)</span> = m - r = 边数 - (节点数 - 1) = 边数 - 节点数 + 1，这个规律也叫欧拉公式（Euler's Formula），这里是以线性代数的视角来看待这个问题。</p>
+<p>回到上面的电路例子，根据欧姆定律，我们有 电流 = 常数*电势差，这个常数是电导（电阻的倒数），即 <span class="arithmatex">\(y = Ce\)</span>，如果考虑外部的电源，输入电流 f 或输入电压 e，系统的总电势差和电流和则不再为0，会有<span class="arithmatex">\(Ax = e\)</span>，<span class="arithmatex">\(A^Ty = f\)</span>，最终能够得到一个平衡方程：<span class="arithmatex">\(A^TCAx = f\)</span>，<span class="arithmatex">\(A^TCA\)</span> 总是对称的。</p>
 
 
 
