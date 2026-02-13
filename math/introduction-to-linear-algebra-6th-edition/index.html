@@ -2822,7 +2822,16 @@
           <li class="md-nav__item">
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
-      克拉默法则
+      克拉默法则（克莱姆法则）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      用行列式求体积
     </span>
   </a>
   
@@ -4058,7 +4067,16 @@
           <li class="md-nav__item">
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
-      克拉默法则
+      克拉默法则（克莱姆法则）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      用行列式求体积
     </span>
   </a>
   
@@ -5061,10 +5079,22 @@ d &amp; -b \\
 <p>其中，C 是 A 的代数余子式矩阵，<span class="arithmatex">\(C^T\)</span> 叫做伴随矩阵（Adjoint Matrix）。</p>
 <p>如果计算 <span class="arithmatex">\(AC^T\)</span> 就会发现，<span class="arithmatex">\(AC^T\)</span> 的对角线元素都等于 A 的行列式值，其余元素都为0，因此，<span class="arithmatex">\(AC^T = det(A)I\)</span>，从而得到 <span class="arithmatex">\(A^{-1} = \frac{1}{det(A)}C^T\)</span>。</p>
 <p>从这里也能看出来，A 的某一行向量和其他任意行的代数余子式向量是正交的。</p>
-<h3 id="_21">克拉默法则</h3>
+<h3 id="_21">克拉默法则（克莱姆法则）</h3>
 <p>Ax = b 有唯一解的条件是 A 可逆，此时 <span class="arithmatex">\(x = A^{-1}b = \frac{1}{det(A)}C^Tb\)</span>。</p>
 <p><span class="arithmatex">\(C^T\)</span> 的每个元素都是一个代数余子式，<span class="arithmatex">\(C^T\)</span> 的一行和 b 的点积可以看作是求某个矩阵的行列式值，因此，我们将 x 的元素表示为这种形式：</p>
 <div class="arithmatex">\[x_i = \frac{det(B_i)}{det(A)}\]</div>
+<p>矩阵 <span class="arithmatex">\(B_i\)</span> 其实就是把矩阵 A 的第 i 列替换为向量 b 后得到的矩阵：</p>
+<div class="arithmatex">\[
+B_i =
+\begin{bmatrix}
+a_{1} &amp; ... &amp; a_{i-1} &amp; b_i &amp; a_{i+1} &amp; ... &amp; a_{n} \\
+\end{bmatrix}
+\]</div>
+<h3 id="_22">用行列式求体积</h3>
+<p>一个立方体（不一定是长方体，可能是个平行六面体），我们把从一个顶点看作是原点，把从这个顶点出发的三个边向量分别表示为 a，b，c，那么这个立方体的体积就等于 a，b，c 这三个向量组成的行列式的绝对值。</p>
+<p>正交矩阵的行列式值为 1 或 -1，因为正交矩阵是由标准正交向量组成的方阵，它相当于单位矩阵在空间中的旋转或者置换，这不会改变体积，单位矩阵对应的立方体的体积为1，因此正交矩阵的行列式值为 1 或 -1。</p>
+<p>利用 <span class="arithmatex">\(Q^TQ = I\)</span> 这个正交矩阵的性质也可以推导出正交矩阵的行列式绝对值为 1 这个结论。</p>
+<p>类似的，两个二维向量组成的行列式的绝对值等于这两个向量构成的平行四边形的面积，如果要求三角形的面积，除以 2 就行了。</p>
 
 
 
