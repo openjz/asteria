@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../img/avatar.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -4409,6 +4409,8 @@
 <p><strong>什么是协程</strong></p>
 <p>协程是一种运行在用户态的并发机制，类似于一种轻量级的用户态线程，协程一般运行在内核态线程之上（例如，可以按照n:m模型调度，即n个用户态协程运行在m个内核态线程上）。</p>
 <p>协程分为有栈和无栈协程，有栈协程是指协程有自己栈空间，类似线程一样，无栈协程是指协程没有自己的栈空间，所有协程共享一个栈空间。golang的goroutine是典型的有栈协程，C++的coroutine是无栈协程。</p>
+<p><strong>协程的 Work Stealing 机制</strong></p>
+<p>每个工作线程都有一个队列，队列里是等着干活的协程，当自己没活干时（队列为空），再从全局队列或其他线程的队列里偷可运行协程来执行，以提高 CPU 利用率和整体吞吐，是一种负载均衡机制。</p>
 <p><strong>进程和线程的区别</strong></p>
 <ul>
 <li>进程是资源分配的基本单位，线程是调度的基本单位</li>
@@ -5153,10 +5155,10 @@ CLOSED      |                               |
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
