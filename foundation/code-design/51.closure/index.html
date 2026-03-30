@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#js" class="md-skip">
+        <a href="#javascript" class="md-skip">
           Skip to content
         </a>
       
@@ -756,13 +756,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#js" class="md-nav__link">
+  <a href="#javascript" class="md-nav__link">
     <span class="md-ellipsis">
       
-        js闭包
+        JavaScript 中的闭包
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="JavaScript 中的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例一：返回一个捕获局部变量的函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例二：根据不同参数创建不同函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例三：用闭包封装私有状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -770,7 +809,7 @@
   <a href="#c" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C闭包
+        C 语言中的情况
       
     </span>
   </a>
@@ -781,10 +820,38 @@
   <a href="#c_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C++闭包
+        C++ 中的闭包
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="C++ 中的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何修改闭包中的状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3832,13 +3899,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#js" class="md-nav__link">
+  <a href="#javascript" class="md-nav__link">
     <span class="md-ellipsis">
       
-        js闭包
+        JavaScript 中的闭包
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="JavaScript 中的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例一：返回一个捕获局部变量的函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例二：根据不同参数创建不同函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例三：用闭包封装私有状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3846,7 +3952,7 @@
   <a href="#c" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C闭包
+        C 语言中的情况
       
     </span>
   </a>
@@ -3857,10 +3963,38 @@
   <a href="#c_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C++闭包
+        C++ 中的闭包
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="C++ 中的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何修改闭包中的状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数对象
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3886,90 +4020,197 @@
 
   <h1>闭包</h1>
 
-<p>闭包是指带有状态的函数。如果一个函数能和一个静态数据绑定，那么这个函数就是闭包。</p>
-<h2 id="js">js闭包</h2>
-<pre><code class="language-js">//例一
-function closureFunc() {
-    var counter = 0;
-    function addFunc() {return counter += 1;}
-    return addFunc;
+<p>闭包就是“一个记住了外部变量的函数”。</p>
+<p>比如一个函数已经执行完了，按理说它里面的局部变量也该消失了；但如果它返回出去的另一个函数还在用这些变量，那么这些变量就会继续存在。它返回出去的那个函数就叫闭包。</p>
+<h2 id="javascript">JavaScript 中的闭包</h2>
+<p>JavaScript 里闭包非常常见，很多回调、工厂函数、模块封装，本质上都在用它。</p>
+<h3 id="_1">例一：返回一个捕获局部变量的函数</h3>
+<pre><code class="language-js">function closureFunc() {
+  let counter = 0;
+
+  function addFunc() {
+    counter += 1;
+    return counter;
+  }
+
+  return addFunc;
 }
-let add = closurefunc();
-//在例一中，add就是一个闭包，它和counter绑定了，如果不想让外部访问到counter，可以将函数改为匿名函数，即写成如下的形式
 
-let add = (function () {
-    var counter = 0;
-    return function () {return counter += 1;}
-})();
+const add = closureFunc();
 
-//例二
-function makeAdder(x) {
-  return function(y) {
+console.log(add()); // 1
+console.log(add()); // 2
+console.log(add()); // 3
+</code></pre>
+<p>这里返回的 addFunc 记住了外层作用域里的 counter。</p>
+<p>虽然 closureFunc 已经执行结束了，但 counter 没有消失，因为 addFunc 还在用它。所以每次调用 add，都是在上一次的基础上继续加 1。</p>
+<h3 id="_2">例二：根据不同参数创建不同函数</h3>
+<pre><code class="language-js">function makeAdder(x) {
+  return function (y) {
     return x + y;
   };
 }
 
-var add5 = makeAdder(5);
-var add10 = makeAdder(10);
-//在例二中，add5和add10都是闭包
+const add5 = makeAdder(5);
+const add10 = makeAdder(10);
 
-//例三，用闭包模拟私有方法
-var Counter = (function() {
-  var privateCounter = 0;
-  function changeBy(val) {
-    privateCounter += val;
+console.log(add5(2));  // 7
+console.log(add10(2)); // 12
+</code></pre>
+<p>这里的 add5 和 add10 都是闭包。</p>
+<p>它们虽然来自同一个 makeAdder，但各自记住了不同的 x，所以一个总是在 5 的基础上加，一个总是在 10 的基础上加。</p>
+<h3 id="_3">例三：用闭包封装私有状态</h3>
+<pre><code class="language-js">const counter = (function () {
+  let privateCounter = 0;
+
+  function changeBy(value) {
+    privateCounter += value;
   }
+
   return {
-    increment: function() {
+    increment() {
       changeBy(1);
     },
-    decrement: function() {
+    decrement() {
       changeBy(-1);
     },
-    value: function() {
+    value() {
       return privateCounter;
     }
-  }
+  };
 })();
 
-console.log(Counter.value()); /* logs 0 */
-Counter.increment();
-Counter.increment();
-console.log(Counter.value()); /* logs 2 */
-Counter.decrement();
-console.log(Counter.value()); /* logs 1 */
+console.log(counter.value()); // 0
+counter.increment();
+counter.increment();
+console.log(counter.value()); // 2
+counter.decrement();
+console.log(counter.value()); // 1
 </code></pre>
-<h2 id="c">C闭包</h2>
-<pre><code class="language-c">/*callee就是一个闭包*/
-#include &lt;stdio.h&gt;
-void* caller() {
-    int cnt = 0;
-    void callee() {
-        cnt++;
-        printf(&quot;%d\n&quot;, cnt);
-    }
-    return callee;
+<p>这种写法很适合拿来封装内部状态。</p>
+<p>外部代码拿不到 privateCounter，只能通过 increment、decrement、value 这些接口间接操作它。很多早期 JavaScript 模块化写法，本质上就是在利用闭包做“私有变量”。</p>
+<h2 id="c">C 语言中的情况</h2>
+<p>标准 C 并不直接支持闭包。如果想表达类似的效果，常见做法是：</p>
+<ol>
+<li>使用函数指针，状态通过参数从外部传递进来。</li>
+<li>把状态放到结构体里，再把结构体指针显式传给函数。</li>
+</ol>
+<p>例如下面这种“函数 + 上下文”的设计，就是 C 里很常见的替代方案：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+typedef struct {
+    int counter;
+} Context;
+
+int add(Context* ctx) {
+    ctx-&gt;counter += 1;
+    return ctx-&gt;counter;
 }
-int main()
-{
-    void(*callee)(void) = caller();
-    callee();
+
+int main() {
+    Context ctx = {0};
+
+    printf(&quot;%d\n&quot;, add(&amp;ctx));
+    printf(&quot;%d\n&quot;, add(&amp;ctx));
     return 0;
 }
 </code></pre>
-<h2 id="c_1">C++闭包</h2>
-<pre><code class="language-cpp">//使用lambda实现闭包
-float round = 0.5;
-auto f = [round](float f) { return f + round; }
+<p>这不是严格意义上的闭包，而是程序员自己把状态手动传给函数。</p>
+<p>很多 C 风格库里的回调接口，其实都是这个思路：除了传一个函数指针，再额外传一个 user_data 或 context 指针。</p>
+<h2 id="c_1">C++ 中的闭包</h2>
+<p>C++ 里对闭包的支持就自然很多了，因为 lambda 可以直接捕获外部变量。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
-//使用函数适配器bind实现闭包
-int boost_func(float f, float round)
-{ return f + round; }
-float round = 0.5;
-boost::function&lt;int(float)&gt; f = boost::bind(boost_func, _1, round);
+int main() {
+    int base = 5;
+    auto add_base = [base](int x) {
+        return x + base;
+    };
+
+    std::cout &lt;&lt; add_base(3) &lt;&lt; '\n';
+    return 0;
+}
 </code></pre>
-<p>上面这两个闭包有缺陷，其内部的状态不可改变</p>
-<p>真正的闭包，可以用c++中的函数对象来实现</p>
+<p>这里的 lambda 捕获了外部变量 base，所以 add_base 就是一个闭包对象。你可以把它理解成“一个函数，顺手记住了 base 的值”。</p>
+<h3 id="_4">如何修改闭包中的状态</h3>
+<p>如果是按值捕获，那么默认不能修改捕获到的那份副本；如果确实想改，可以加上 mutable：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int main() {
+    int counter = 0;
+
+    auto next = [counter]() mutable {
+        counter += 1;
+        return counter;
+    };
+
+    std::cout &lt;&lt; next() &lt;&lt; '\n';
+    std::cout &lt;&lt; next() &lt;&lt; '\n';
+    return 0;
+}
+</code></pre>
+<p>如果你想改的是外部变量本身，那就要按引用捕获：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int main() {
+    int counter = 0;
+
+    auto next = [&amp;counter]() {
+        counter += 1;
+        return counter;
+    };
+
+    std::cout &lt;&lt; next() &lt;&lt; '\n';
+    std::cout &lt;&lt; next() &lt;&lt; '\n';
+    std::cout &lt;&lt; counter &lt;&lt; '\n';
+    return 0;
+}
+</code></pre>
+<h3 id="_5">函数对象</h3>
+<p>函数对象是指可以像函数一样被调用的对象。</p>
+<p>通常做法是定义一个类或结构体，然后给它实现函数调用运算符<code>operator()</code>，这样一来，这个对象就能像函数一样被调用。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+class Adder {
+  int base;
+
+  int operator()(int x) const {
+    return x + base;
+  }
+};
+
+int main() {
+  Adder add5{5};
+  Adder add10{10};
+
+  std::cout &lt;&lt; add5(2) &lt;&lt; '\n';
+  std::cout &lt;&lt; add10(2) &lt;&lt; '\n';
+  return 0;
+}
+</code></pre>
+<p>这个例子里，add5 和 add10 都是对象，但因为实现了 operator()，所以可以写成 add5(2) 这样的调用形式。</p>
+<p>它和前面的闭包例子很像：base 被保存在对象内部，因此不同对象可以带着不同状态工作。</p>
+<p>如果函数对象内部的状态需要变化，也可以直接改成员变量：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+class Counter {
+  int value = 0;
+
+  int operator()() {
+    value += 1;
+    return value;
+  }
+};
+
+int main() {
+  Counter next;
+
+  std::cout &lt;&lt; next() &lt;&lt; '\n';
+  std::cout &lt;&lt; next() &lt;&lt; '\n';
+  std::cout &lt;&lt; next() &lt;&lt; '\n';
+  return 0;
+}
+</code></pre>
 
 
 
