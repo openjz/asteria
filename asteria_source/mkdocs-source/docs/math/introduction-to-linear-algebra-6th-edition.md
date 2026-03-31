@@ -1499,7 +1499,7 @@ $$
 
 $\Lambda^2$ 仍然是对角矩阵，也可以得出结论，特征向量不变，特征值变为 $\lambda^2$。
 
-进一步，我们有 $A^k = S\Lambda^k S^{-1}$，其中 $\Lambda^k$ 仍然是对角矩阵，特征向量不变，特征值变为 $\lambda^k$。
+**进一步，我们有 $A^k = S\Lambda^k S^{-1}$，其中 $\Lambda^k$ 仍然是对角矩阵，特征向量不变，特征值变为 $\lambda^k$**。
 
 特征值是计算矩阵幂的一种方法。
 
@@ -1928,6 +1928,8 @@ $$
 
 ## 复习2
 
+**求逆矩阵的特征值和行列式**
+
 A 的逆矩阵的特征值为 $\frac{1}{\lambda}$，特征向量不变。
 
 推导：
@@ -1944,3 +1946,5 @@ $$
 $$
 \det(A^{-1}) = \left(\frac{1}{\lambda_1}\right)\left(\frac{1}{\lambda_2}\right)...\left(\frac{1}{\lambda_n}\right) = \frac{1}{\lambda_1\lambda_2...\lambda_n} = \frac{1}{\det(A)}
 $$
+
+
