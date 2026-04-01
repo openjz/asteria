@@ -1947,4 +1947,6 @@ $$
 \det(A^{-1}) = \left(\frac{1}{\lambda_1}\right)\left(\frac{1}{\lambda_2}\right)...\left(\frac{1}{\lambda_n}\right) = \frac{1}{\lambda_1\lambda_2...\lambda_n} = \frac{1}{\det(A)}
 $$
 
+## 对称矩阵和正定矩阵
+
 
