@@ -3649,6 +3649,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复矩阵和快速傅里叶变换（Fast Fourier Transform）
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5450,6 +5461,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复矩阵和快速傅里叶变换（Fast Fourier Transform）
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6940,10 +6962,26 @@ q_n^T \\
 <h3 id="_40">关于对称矩阵的特征值</h3>
 <p>对称矩阵的特征值有以下特点（注意必须是对称矩阵，并且消元时不能做行交换）：</p>
 <p><strong>主元的符号和特征值的符号相同，数量相同</strong>，即，大于0 的主元的数量等于大于0 的特征值的数量，等于0 的主元的数量等于等于0 的特征值的数量，小于0 的主元的数量等于小于0 的特征值的数量。</p>
-<p>主元的乘积等于特征值的乘积（两者都等于行列式的值）。</p>
-<p>这就引出一个判断特征值有多少大于某个数的方法，例如，如果我想判断一个对称矩阵的特征值有多少大于 7，我可以把矩阵减去 7I，得到一个新的矩阵，这时，原始特征值 = 新特征值 + 7，因此，原始特征值大于 7 的数量等于新特征值大于 0 的数量，而新特征值的符号和主元的符号相同，因此，原始特征值大于 7 的数量等于新矩阵的主元大于 0 的数量。</p>
+<p>主元的乘积等于特征值的乘积，两者都等于行列式的值，这对所有方阵都成立（前提是不能做行交换，根据行列式的性质，每做一次行交换，行列式的符号就变一次）。</p>
+<p>有一个判断有多少个特征值大于某个数的方法，例如，如果我想判断一个对称矩阵有多少个特征值大于 7，我可以把矩阵减去 7I，得到一个新的矩阵，这时，原始特征值 = 新特征值 + 7，因此，原始特征值大于 7 的数量等于新特征值大于 0 的数量，而新特征值的符号和主元的符号相同，因此，原始特征值大于 7 的数量等于新矩阵的主元大于 0 的数量。</p>
 <p>令新特征值为 <span class="arithmatex">\(\lambda '\)</span>，矩阵减去 7I 后，计算特征值的方程变成了 <span class="arithmatex">\(det(A - 7I - \lambda 'I) = 0\)</span>，即 <span class="arithmatex">\(det(A - (\lambda ' + 7)I) = 0\)</span>，可以看出，原始特征值等于新特征值加 7。</p>
 <h3 id="positive-definite-matrix">正定矩阵（Positive Definite Matrix）</h3>
+<p>正定矩阵是一种对称矩阵，它有以下特点</p>
+<ol>
+<li>它的所有特征值为正，他的所有主元也为正（上面讲的，主元符号和特征值符号相同，数量相同）。</li>
+<li>它的行列式值和所有的子行列式值都为正。</li>
+</ol>
+<h2 id="fast-fourier-transform">复矩阵和快速傅里叶变换（Fast Fourier Transform）</h2>
+<p>复向量 <span class="arithmatex">\(z = [z_0, z_1, ..., z_{n}]\)</span>，它位于 <span class="arithmatex">\(\mathbb{C}^n\)</span> 中，即 n 维复空间中。</p>
+<p>求复向量的模需要利用共轭转置，复向量和它的共轭转置向量的内积是模的平方，</p>
+<div class="arithmatex">\[
+\overline{z}^T z = \|z\|^2
+\]</div>
+<p>这也告诉我们，复向量的模的平方实际上是各元素的模的平方之和。</p>
+<p>复向量自身的共轭转置向量也叫厄米向量（Hermitian），记为 <span class="arithmatex">\(z^H\)</span>，因此，</p>
+<div class="arithmatex">\[
+z^Hz = \|z\|^2
+\]</div>
 
 
 
