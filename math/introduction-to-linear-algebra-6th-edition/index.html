@@ -3658,6 +3658,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="复矩阵和快速傅里叶变换（Fast Fourier Transform）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复向量、共轭转置、厄米矩阵、酉矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        傅里叶矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-fourier-transform_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快速傅里叶变换（Fast Fourier Transform）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5470,6 +5509,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="复矩阵和快速傅里叶变换（Fast Fourier Transform）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复向量、共轭转置、厄米矩阵、酉矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        傅里叶矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-fourier-transform_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快速傅里叶变换（Fast Fourier Transform）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -6934,7 +7012,7 @@ A = Q\Lambda Q^{-1} = Q\Lambda Q^T
 \overline{x}^T x = \|x\|^2
 \]</div>
 <p><strong>复矩阵</strong></p>
-<p>对于一个复矩阵，如果想要拥有上述对称矩阵的两条性质，需要满足 <span class="arithmatex">\(A = \overline{A}^T\)</span>，即它必须等于其共轭转置，注意，此时它并不是复对称矩阵。</p>
+<p>对于一个复矩阵，如果想要拥有上述对称矩阵的两条性质，需要满足 <span class="arithmatex">\(A = \overline{A}^T\)</span>，即它必须等于其共轭转置，这是复数域上的对称矩阵。</p>
 <h3 id="_39">对称矩阵的对角化分解</h3>
 <p>将 <span class="arithmatex">\(A = Q\Lambda Q^{-1}\)</span> 展开：</p>
 <div class="arithmatex">\[
@@ -6972,16 +7050,90 @@ q_n^T \\
 <li>它的行列式值和所有的子行列式值都为正。</li>
 </ol>
 <h2 id="fast-fourier-transform">复矩阵和快速傅里叶变换（Fast Fourier Transform）</h2>
+<h3 id="_41">复向量、共轭转置、厄米矩阵、酉矩阵</h3>
 <p>复向量 <span class="arithmatex">\(z = [z_0, z_1, ..., z_{n}]\)</span>，它位于 <span class="arithmatex">\(\mathbb{C}^n\)</span> 中，即 n 维复空间中。</p>
 <p>求复向量的模需要利用共轭转置，复向量和它的共轭转置向量的内积是模的平方，</p>
 <div class="arithmatex">\[
 \overline{z}^T z = \|z\|^2
 \]</div>
 <p>这也告诉我们，复向量的模的平方实际上是各元素的模的平方之和。</p>
-<p>复向量自身的共轭转置向量也叫厄米向量（Hermitian），记为 <span class="arithmatex">\(z^H\)</span>，因此，</p>
+<p>复向量自身的共轭转置也叫厄米转置（Hermitian transpose），共轭转置向量记为 <span class="arithmatex">\(z^H\)</span>，因此，</p>
 <div class="arithmatex">\[
-z^Hz = \|z\|^2
+\overline{z}^T z = z^Hz = \|z\|^2
 \]</div>
+<p>同样的，复向量内积也需要使用共轭转置，复向量 x 和 y 的内积为 <span class="arithmatex">\(y^Hx\)</span>。</p>
+<p><strong>厄米矩阵（Hermitian Matrix）是一种复数域上的具有对称性的矩阵</strong>，满足 <span class="arithmatex">\(A = A^H\)</span>，即它和它自身的共轭转置矩阵相等，它的特点是对角线上的元素是实数，对角线外的元素满足共轭对称，例如：</p>
+<div class="arithmatex">\[
+\overline{A}^T = A = 
+\begin{bmatrix}
+2 &amp; 3 + i \\
+3 - i &amp; 5 \\
+\end{bmatrix}
+\]</div>
+<p>厄米矩阵和实数域上的对称矩阵一样有以下特点：</p>
+<ol>
+<li>特征值都是实数。</li>
+<li>特征向量相互垂直（都是复向量）。</li>
+</ol>
+<p>用 <span class="arithmatex">\(q_1, q_2, ..., q_n\)</span> 表示特征向量，它们是标准正交的：</p>
+<div class="arithmatex">\[
+q_i^Hq_j =  \overline{q_i}^{\,T} q_j =
+\begin{cases}
+0, &amp; i \ne j \\
+1, &amp; i = j
+\end{cases}
+\]</div>
+<div class="arithmatex">\[
+令\ Q = [q_1, q_2, ..., q_n]
+\]</div>
+<p>然后有，</p>
+<div class="arithmatex">\[
+Q^HQ = I
+\]</div>
+<p>Q 是复数域下的正交矩阵，在复数域下叫<strong>酉矩阵（Unitary Matrix）</strong>。</p>
+<h3 id="_42">傅里叶矩阵</h3>
+<div class="arithmatex">\[
+F_n =
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 \\
+1 &amp; w &amp; w^2 &amp; \cdots &amp; w^{n-1} \\
+1 &amp; w^2 &amp; w^4 &amp; \cdots &amp; w^{2(n-1)} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; w^{n-1} &amp; w^{2(n-1)} &amp; \cdots &amp; w^{(n-1)^2}
+\end{bmatrix}
+\]</div>
+<p><span class="arithmatex">\(F_n\)</span> 是个对称矩阵（注意它不是厄米矩阵，它是复数域上的对称矩阵），且各列互相正交（但不是标准正交的，所以不能算酉矩阵）。</p>
+<p>令 <span class="arithmatex">\(i,j = 0, 1, ..., n-1\)</span>，则 <span class="arithmatex">\(F_n\)</span> 的元素为 <span class="arithmatex">\(F_{ij} = w^{ij}\)</span>。</p>
+<p>w 是一个特殊的复数，它位于复平面的单位圆上，满足以下性质：</p>
+<div class="arithmatex">\[
+w = e^{\frac{2\pi i}{n}}
+\]</div>
+<div class="arithmatex">\[
+w^n = e^{2\pi i} = 1
+\]</div>
+<p><span class="arithmatex">\(\frac{2\pi i}{n}\)</span> 相当于对单位圆进行 n 等分，或者说是对 1 求 n 次方根，一共有 n 个不同的根，均匀分布在单位圆上，w 是第一个分点，又称为原根。</p>
+<p>以 4 阶傅里叶矩阵为例：</p>
+<p>n = 4，因此，<span class="arithmatex">\(w = e^{\frac{2\pi i}{4}} = i\)</span></p>
+<div class="arithmatex">\[
+F_4 =
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; i &amp; -1 &amp; -i \\
+1 &amp; -1 &amp; 1 &amp; -1 \\
+1 &amp; -i &amp; -1 &amp; i \\
+\end{bmatrix}
+\]</div>
+<p>可以从这个矩阵得到一个 4 点离散傅里叶变换（Discrete Fourier Transform），它的逆矩阵代表对应的傅里叶逆变换。</p>
+<p><strong>傅里叶矩阵的逆矩阵</strong></p>
+<p><span class="arithmatex">\(F_4\)</span> 的逆矩阵也容易求，<span class="arithmatex">\(F_4\)</span> 各列相互正交，但不是标准正交向量，因此 <span class="arithmatex">\(F_4\)</span> 不是正交矩阵/酉矩阵，但它有个特点是<strong>各列长度相同</strong>，都是 4，将其标准化后得到 <span class="arithmatex">\(\frac{1}{2}F_4\)</span>，此时它变成了正交矩阵/酉矩阵，因此满足 <span class="arithmatex">\((\frac{1}{2}F_4)^{-1} = (\frac{1}{2}F_4)^H\)</span>，将两侧展开后得到 <span class="arithmatex">\(2 F_4^{-1} = \frac{1}{2} F_4^H\)</span>，然后可以得到 <span class="arithmatex">\(F_4^{-1} = \frac{1}{4} F_4^H\)</span>。</p>
+<p>换个推导过程，由于每一列长度的平方都是 4，因此 <span class="arithmatex">\(F_4^H F_4 = 4I\)</span>，可以直接得到 <span class="arithmatex">\(F_4^{-1} = \frac{1}{4} F_4^H\)</span>。</p>
+<p>因此，<span class="arithmatex">\(F_4\)</span> 的逆矩阵为 <span class="arithmatex">\(\frac{1}{4} F_4^H\)</span>。</p>
+<p>实际上这是个一般结论，</p>
+<div class="arithmatex">\[
+F_n^{-1} = \frac{1}{n} F_n^H
+\]</div>
+<h3 id="fast-fourier-transform_1">快速傅里叶变换（Fast Fourier Transform）</h3>
+<p>首先看一个傅里叶矩阵的规律，<span class="arithmatex">\(F_n\)</span> 和 <span class="arithmatex">\(F_{n/2}\)</span> 之间具有内在联系，例如，<span class="arithmatex">\(F_{64}\)</span> 的 w 是 <span class="arithmatex">\(e^{\frac{2\pi i}{64}}\)</span>，<span class="arithmatex">\(F_{32}\)</span> 的 w 是 <span class="arithmatex">\(e^{\frac{2\pi i}{32}}\)</span>，我们分别用 <span class="arithmatex">\(w_{64}\)</span> 和 <span class="arithmatex">\(w_{32}\)</span> 来表示，可以发现，<span class="arithmatex">\(w_{32} = w_{64}^2\)</span>，<span class="arithmatex">\(w_{64}\)</span> 和 <span class="arithmatex">\(w_{32}\)</span> 相当于对单位圆进行 64 等分和 32 等分，<span class="arithmatex">\(w_{64}^2\)</span> 相当于把辐角扩大了一倍。</p>
 
 
 
