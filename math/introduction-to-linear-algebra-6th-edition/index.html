@@ -3699,6 +3699,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正定矩阵
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="正定矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称矩阵的消元系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二次型极小值和正定矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主轴定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5550,6 +5600,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正定矩阵
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="正定矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称矩阵的消元系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二次型极小值和正定矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主轴定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -7133,7 +7233,123 @@ F_4 =
 F_n^{-1} = \frac{1}{n} F_n^H
 \]</div>
 <h3 id="fast-fourier-transform_1">快速傅里叶变换（Fast Fourier Transform）</h3>
-<p>首先看一个傅里叶矩阵的规律，<span class="arithmatex">\(F_n\)</span> 和 <span class="arithmatex">\(F_{n/2}\)</span> 之间具有内在联系，例如，<span class="arithmatex">\(F_{64}\)</span> 的 w 是 <span class="arithmatex">\(e^{\frac{2\pi i}{64}}\)</span>，<span class="arithmatex">\(F_{32}\)</span> 的 w 是 <span class="arithmatex">\(e^{\frac{2\pi i}{32}}\)</span>，我们分别用 <span class="arithmatex">\(w_{64}\)</span> 和 <span class="arithmatex">\(w_{32}\)</span> 来表示，可以发现，<span class="arithmatex">\(w_{32} = w_{64}^2\)</span>，<span class="arithmatex">\(w_{64}\)</span> 和 <span class="arithmatex">\(w_{32}\)</span> 相当于对单位圆进行 64 等分和 32 等分，<span class="arithmatex">\(w_{64}^2\)</span> 相当于把辐角扩大了一倍。</p>
+<p>首先看一个傅里叶矩阵的规律，<span class="arithmatex">\(F_n\)</span> 和 <span class="arithmatex">\(F_{n/2}\)</span> 之间具有内在联系，例如，<span class="arithmatex">\(F_{64}\)</span> 的 w 是 <span class="arithmatex">\(e^{\frac{2\pi i}{64}}\)</span>，<span class="arithmatex">\(F_{32}\)</span> 的 w 是 <span class="arithmatex">\(e^{\frac{2\pi i}{32}}\)</span>，我们分别用 <span class="arithmatex">\(w_{64}\)</span> 和 <span class="arithmatex">\({32}\)</span> 来表示，可以发现，<span class="arithmatex">\(w_{32} = w_{64}^2\)</span>，<span class="arithmatex">\(w_{64}\)</span> 和 <span class="arithmatex">\(w_{32}\)</span> 相当于对单位圆进行 64 等分和 32 等分，<span class="arithmatex">\(w_{64}^2\)</span> 相当于把辐角扩大了一倍。</p>
+<p>从矩阵的角度来看，可以将 <span class="arithmatex">\(F_n\)</span> 分解为 <span class="arithmatex">\(F_{n/2}\)</span> 乘以左右两个修正矩阵的形式，以简化傅里叶变换的计算，例如，</p>
+<div class="arithmatex">\[
+F_{64} =
+\begin{bmatrix}
+I &amp; D \\
+I &amp; -D \\
+\end{bmatrix}
+\begin{bmatrix}
+F_{32} &amp; 0 \\
+0 &amp; F_{32} \\
+\end{bmatrix}
+P
+\]</div>
+<p><span class="arithmatex">\(I\)</span> 是单位矩阵，<span class="arithmatex">\(D\)</span> 是一个对角矩阵，<span class="arithmatex">\(P\)</span> 是一个奇偶置换矩阵。</p>
+<p>奇偶置换矩阵是把偶数行放在前面，奇数行放在后面，例如，4x4 的奇偶置换矩阵为：</p>
+<div class="arithmatex">\[
+P_4=
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\]</div>
+<p>D 是由 w 的幂构成的对角矩阵，</p>
+<div class="arithmatex">\[
+D = 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; ... &amp; 0 \\
+0 &amp; w &amp; 0 &amp; ... &amp; 0 \\
+0 &amp; 0 &amp; w^2 &amp; ... &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; ... &amp; w^{n/2-1} \\
+\end{bmatrix}
+\]</div>
+<p>矩阵分解后，可以减少傅里叶变换的计算量，例如，<span class="arithmatex">\(F_{64}\)</span> 的计算量是 <span class="arithmatex">\(64^2\)</span> 次乘法，分解后，计算量变为两个 <span class="arithmatex">\(F_{32}\)</span> 的乘法次数外加修正矩阵的乘法次数。</p>
+<p>最终，对于 n 阶傅里叶矩阵，快速傅里叶变换的计算量为 <span class="arithmatex">\(O(\frac{1}{2}n \log_2 n)\)</span>，而直接计算的计算量为 <span class="arithmatex">\(O(n^2)\)</span>。</p>
+<h2 id="_43">正定矩阵</h2>
+<p><strong>正定矩阵是一种特殊的对称矩阵，它的特征值都是正数，主元也是正数，并且它的行列式值和所有的子行列式值都为正数。</strong></p>
+<p>通常，对正定性的定义如下所示：</p>
+<div class="arithmatex">\[
+x^TAx &gt; 0
+\]</div>
+<p><strong>对于所有非零向量 x，<span class="arithmatex">\(x^TAx\)</span> 的值都大于 0。</strong></p>
+<p><strong><span class="arithmatex">\(x^TAx\)</span> 叫做二次型（Quadratic Form），因为它展开后是一个二次函数，无论 A 是不是正定矩阵，它都是二次型，我们这里只讨论 A 是正定矩阵的情况。</strong></p>
+<p>我们可以用开头提到的几点来判断一个矩阵是不是二次型。</p>
+<h3 id="_44">对称矩阵的消元系数</h3>
+<p><strong>（这一节 Strang 是放在正定矩阵章节中讲的，实际上下面的规律也适用于一般的对称矩阵）</strong></p>
+<p>以 2x2 正定矩阵为例，如果我们将 <span class="arithmatex">\(x^TAx\)</span> 拆开来看的话，会得到形如 <span class="arithmatex">\(ax^2 + 2bxy + cy^2\)</span> 的二次函数，其中 <span class="arithmatex">\(a, b, c\)</span> 是由矩阵元素决定的，<span class="arithmatex">\(x, y\)</span> 是向量的分量。</p>
+<p>比如有如下 2x2 正定矩阵：</p>
+<div class="arithmatex">\[
+A = 
+\begin{bmatrix}
+2 &amp; 6 \\
+6 &amp; 20 \\
+\end{bmatrix}
+\]</div>
+<p>展开后会变成 <span class="arithmatex">\(2x^2 + 12xy + 20y^2\)</span>，配方后得到 <span class="arithmatex">\(2(x + 3y)^2 + 2y^2\)</span>，可以看出，这个二次函数的值总是大于 0 的。 </p>
+<div class="arithmatex">\[
+A = LU = 
+\begin{bmatrix}
+1 &amp; 0 \\
+3 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+2 &amp; 6 \\
+0 &amp; 2 \\
+\end{bmatrix}
+\]</div>
+<p>消元后 A 变成了 U，L 记录了消元过程中用到的倍数，上面配方后得到的二次函数，平方项中的 3 就是 L 中的消元倍数 3 ，剩下的 2 就是 U 中的主元。</p>
+<h3 id="_45">二次型极小值和正定矩阵</h3>
+<p>从微积分的角度来讲，函数的极小值需要根据 <span class="arithmatex">\(f(x)\)</span> 的一阶导数 和 二阶导数来判断，当一阶导数为 0，二阶导数大于 0 时，函数有极小值，位于一阶导数为 0 的点上。</p>
+<p>如果是二元函数，例如上面的 <span class="arithmatex">\(f(x) = ax^2 + 2bxy + cy^2\)</span>，<strong>当它的一阶导数为 0 、二阶导数矩阵为正定矩阵时，函数有极小值，位于一阶导数为 0 的点上</strong>。</p>
+<p>二阶导数矩阵：</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+d^2f/dx^2 &amp; d^2f/dxdy \\
+d^2f/dydx &amp; d^2f/dy^2 \\
+\end{bmatrix}
+\]</div>
+<h3 id="_46">主轴定理</h3>
+<p><strong>（这一节 Strang 同样是放在正定矩阵章节中讲，但主轴定理也适用于一般的对称矩阵）</strong></p>
+<p>我们从几何的角度来理解这个事。</p>
+<p>对于正定矩阵来说，<span class="arithmatex">\(x^TAx\)</span> 可以展开为一个二次函数，并且它的值总是大于 0 的。</p>
+<p>如果 <span class="arithmatex">\(x^TAx\)</span> 展开是一个一元二次函数，例如 <span class="arithmatex">\(f = ax^2\)</span>，那么这个函数的图像是一个开口向上的抛物线，函数的值总是大于 0 的，如果我们指定一个函数值 f = p，相当于沿着 f = p 这条线在抛物线上横着截了一刀，截面看起来是一个线段，实际上截面上只有两个点，在这两个点上，函数值都是 p。</p>
+<p>相应的，如果 <span class="arithmatex">\(x^TAx\)</span> 展开是一个二元二次函数，例如 <span class="arithmatex">\(f = ax^2 + 2bxy + cy^2\)</span>，这个函数的图像是一个开口向上的抛物面（一个碗），如果我们沿着 f = p 这个值在抛物面上截一下，截面看起来是一个椭圆，实际上截面上只包含这个椭圆的边缘（换句话说，椭圆是空心的），在这个椭圆上，函数值都是 p。</p>
+<p>那么，以此类推，如果 <span class="arithmatex">\(x^TAx\)</span> 展开是一个三元二次函数，如果我们沿着 f = p 这个值在抛物面上截一下，会得到一个椭球体，空心的椭球体，在这个椭球体的表面上，函数值都是 p。</p>
+<p>然后，椭球里面可以定义出三个互相垂直、长短不一的轴，这三个轴分别对应着 A 的三个特征向量，轴的长度由特征值的大小决定（半轴长度和特征值大小成反比）。</p>
+<p>这本质上是因为 A 可以被分解为 <span class="arithmatex">\(A = Q\Lambda Q^T\)</span>，分解后，二次型 <span class="arithmatex">\(x^TAx\)</span> 在新坐标 <span class="arithmatex">\(y = Q^Tx\)</span> 下变成了 </p>
+<div class="arithmatex">\[
+y^T\Lambda y = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \lambda_3 y_3^2
+\]</div>
+<div class="arithmatex">\[
+y = Q^Tx = 
+\begin{bmatrix}
+q_1^T \\
+q_2^T \\
+q_3^T \\
+\end{bmatrix}
+x =
+\begin{bmatrix}
+q_1^Tx \\
+q_2^Tx \\
+q_3^Tx \\
+\end{bmatrix}
+\]</div>
+<p>新坐标 y 是 x 在 Q 的各个特征向量方向上的投影。</p>
+<p>此时二次型的主方向就是特征向量方向。</p>
+<p>当 f = p 时，</p>
+<div class="arithmatex">\[
+y^T\Lambda y = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \lambda_3 y_3^2 = p
+\]</div>
+<div class="arithmatex">\[
+\frac{y_1^2}{p/\lambda_1} + \frac{y_2^2}{p/\lambda_2} + \frac{y_3^2}{p/\lambda_3} = 1
+\]</div>
+<p>可以看出，<span class="arithmatex">\(p/\lambda_i\)</span> 就是第 i 个轴的长度的平方，因此，轴的长度和特征值成反比。</p>
+<p><strong>将二次型 <span class="arithmatex">\(x^TAx\)</span> 变为 <span class="arithmatex">\(y^T\Lambda y\)</span>的过程叫做二次型化为标准型。</strong></p>
 
 
 

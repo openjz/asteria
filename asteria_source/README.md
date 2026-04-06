@@ -63,3 +63,9 @@ path = 'github.com/alex-shpak/hugo-book'
 - 启动服务: `mkdocs serve`
 - 构建项目: `mkdocs build`
 - 打印帮助信息: `mkdocs -h`
+
+### 注意
+
+mkdocs material 于 2026年3月27日 发布了 mkdocs-material 和 mkdocs 2.0 的不兼容警告
+
+[https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/](https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/)
