@@ -2476,5 +2476,13 @@ $$
 
 ## 奇异值分解（Singular Value Decomposition, SVD）
 
+$$
+A = U\Sigma V^T
+$$
 
+$\Sigma$ 是对角矩阵，U、V 是正交矩阵。
+
+A 可以是任意的 mxn 矩阵，U 是 mxm 的正交矩阵，V 是 nxn 的正交矩阵，$\Sigma$ 是 mxn 的对角矩阵，对角线上的元素为 A 的奇异值（Singular Value），奇异值为非负实数，并且按照从大到小的顺序排列。
+
+对称正定矩阵的对角化分解 $A = Q\Lambda Q^T$ 就是一种奇异值分解。
 
