@@ -2914,6 +2914,17 @@
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
+        和叉积相关的公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         叉积可以用来干嘛
       
     </span>
@@ -2927,7 +2938,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         基变换
@@ -2938,7 +2949,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
         特征向量和特征值
@@ -2949,7 +2960,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         矩阵的相似对角化
@@ -2960,7 +2971,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
         抽象向量空间
@@ -4204,6 +4215,17 @@
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
+        和叉积相关的公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         叉积可以用来干嘛
       
     </span>
@@ -4217,7 +4239,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         基变换
@@ -4228,7 +4250,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
         特征向量和特征值
@@ -4239,7 +4261,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         矩阵的相似对角化
@@ -4250,7 +4272,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
         抽象向量空间
@@ -4479,9 +4501,9 @@ z &amp; v_3 &amp; w_3\cr
 \vec{x}\times\vec{z}=-\vec{y} &amp;
 \end{align*}
 \]</div>
-<p>向量叉积也可以表示为矩阵相乘的形式，其中<span class="arithmatex">\(A^*\)</span>是一个对偶矩阵（dual matrix）</p>
+<p>向量叉积也可以表示为矩阵相乘的形式，如下所示，</p>
 <div class="arithmatex">\[
-\vec{a}\times\vec{b}=A^*\vec{b}=
+\vec{a}\times\vec{b}=A\vec{b}=
 \begin{pmatrix}
 0 &amp; -a_3 &amp; a_2 \\
 a_3 &amp; 0 &amp; -a_1 \\
@@ -4491,7 +4513,40 @@ a_3 &amp; 0 &amp; -a_1 \\
 b_1 \\ b_2 \\ b_3
 \end{pmatrix}
 \]</div>
-<h3 id="_16">叉积可以用来干嘛</h3>
+<p><span class="arithmatex">\(A\)</span>是一个反对称矩阵。</p>
+<h3 id="_16">和叉积相关的公式</h3>
+<div class="arithmatex">\[
+\begin{bmatrix}u_1\cr u_2\cr u_3\end{bmatrix}
+·
+\begin{bmatrix}x\cr y\cr z\end{bmatrix}=
+det\left(
+\begin{bmatrix}
+x &amp; v_1 &amp; w_1\cr
+y &amp; v_2 &amp; w_2\cr
+z &amp; v_3 &amp; w_3\cr
+\end{bmatrix}
+\right)
+\]</div>
+<div class="arithmatex">\[
+\vec{a}\times\vec{b}=A\vec{b}=
+\begin{pmatrix}
+0 &amp; -a_3 &amp; a_2 \\
+a_3 &amp; 0 &amp; -a_1 \\
+-a_2 &amp; a_1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+b_1 \\ b_2 \\ b_3
+\end{pmatrix}
+\]</div>
+<p>向量三重积展开：</p>
+<div class="arithmatex">\[
+\vec{a} \times (\vec{b} \times \vec{c}) = (\vec{a} \cdot \vec{c})\vec{b} - (\vec{a} \cdot \vec{b})\vec{c}
+\]</div>
+<p>叉乘分配律：</p>
+<div class="arithmatex">\[
+\vec{a} \times (\vec{b} + \vec{c}) = \vec{a} \times \vec{b} + \vec{a} \times \vec{c}
+\]</div>
+<h3 id="_17">叉积可以用来干嘛</h3>
 <p><strong>判断两个向量方向是否相同</strong></p>
 <p>方向相同，叉积结果为零向量</p>
 <p><strong>用来判断一个向量是否位于另一个向量右侧</strong></p>
@@ -4510,7 +4565,7 @@ b_1 \\ b_2 \\ b_3
          /               \
         B-----------------C
 </code></pre>
-<h2 id="_17">基变换</h2>
+<h2 id="_18">基变换</h2>
 <p>基变换其实就是线性变换，只不过基变换强调的是不同基坐标系下的语义转换。例如</p>
 <div class="arithmatex">\[
 \begin{bmatrix}2 &amp; -1\cr 1 &amp; 1\end{bmatrix}
@@ -4531,7 +4586,7 @@ b_1 \\ b_2 \\ b_3
 <p>简而言之，这玩意儿的作用是，我可以在目标坐标系下实现标准坐标系下的某种变换。</p>
 <p>如果反过来，我想在标准坐标系下实现目标坐标系下的某种转换，那么可以使用M做转换</p>
 <div class="arithmatex">\[M = ATA^{-1}\]</div>
-<h2 id="_18">特征向量和特征值</h2>
+<h2 id="_19">特征向量和特征值</h2>
 <p>对于有些变量来说，线性变换仅仅使它们产生了一个拉伸效果，也就是说，它们在线性变换后和变换前位于同一条直线上（向量在变换后仍然位于变换前张成的空间上），我们把这些向量称作特征向量(eigenvector)。</p>
 <p>特征值（eigenvalue）用来衡量线性变换对特征向量的放缩比例。</p>
 <p>例如，对于一个三维空间中的旋转操作，旋转轴就是特征向量，因为在旋转前后，旋转轴是不会变的，而且旋转操作不会放缩任何向量，因此特征值为1。</p>
@@ -4542,7 +4597,7 @@ b_1 \\ b_2 \\ b_3
 <li>有多个特征值，每个特征值对应不同的直线。例如线性变换 <span class="arithmatex">\(\begin{bmatrix}3 &amp; 0\cr0 &amp; 2\end{bmatrix}\)</span>，x和y轴方向的向量在变换后不会改变方向，x轴方向的特征向量对应的特征值为3，y轴方向的特征向量对应的特征值是2。</li>
 <li>不会出现一个直线对应多个特征值的情况，很容易理解，我们不可能把一个向量同时放大1倍或2倍。</li>
 </ol>
-<h2 id="_19">矩阵的相似对角化</h2>
+<h2 id="_20">矩阵的相似对角化</h2>
 <p>对于一个线性变换，如果它有多个特征向量，并且多到能用特征向量组成一组基，那么我们可以把这个线性变换和基变换相结合，得到它在新基下的表示。由于线性变换只会对特征向量产生放缩效果，那么以特征向量作为基后表示出的线性变换必然是一个对角矩阵。这会简化很多矩阵计算。</p>
 <p>这组由特征向量构成的基向量称为特征基（eigenbasis）</p>
 <p>例如，现在有一个线性变换 <span class="arithmatex">\(A=\begin{bmatrix}3 &amp; 1\cr0 &amp; 2\end{bmatrix}\)</span>，它的特征值为2和3，由此可以得到两个特征向量，特征值为2时，对应的特征向量为 <span class="arithmatex">\(\begin{bmatrix}-1\cr1\end{bmatrix}\)</span>，特征值为3时，对应的特征向量为 <span class="arithmatex">\(\begin{bmatrix}1\cr0\end{bmatrix}\)</span>，那么我们这个线性变换转换为特征基下的表示，结果恰好为一个对角矩阵。</p>
@@ -4553,7 +4608,7 @@ b_1 \\ b_2 \\ b_3
 \begin{bmatrix}2 &amp; 0 \cr 0 &amp; 3\end{bmatrix}
 \]</div>
 <p>只有当特征向量的个数足够多，能够构成一个基的时候，才能做这种变换。</p>
-<h2 id="_20">抽象向量空间</h2>
+<h2 id="_21">抽象向量空间</h2>
 <p>如果一个东西具有可加性和成比例性，就可以把它当成向量来操作，例如一个函数。</p>
 <p>如果一个运算满足以下特性，我们会把它叫做线性运算，例如函数求导。</p>
 <div class="arithmatex">\[L(c\vec{v}) = cL(\vec{v})$$

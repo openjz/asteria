@@ -4666,10 +4666,11 @@
 \sin\theta &amp; \cos\theta 
 \end{bmatrix}
 \]</div>
-<p>一个结论：旋转矩阵的逆矩阵等于它的转置矩阵（我们把这样的矩阵称为<strong>正交矩阵</strong>），即</p>
+<p>一个结论：旋转矩阵的逆矩阵等于它的转置矩阵，即</p>
 <div class="arithmatex">\[
 R^{-1} = R^T
 \]</div>
+<p>它是个<strong>正交矩阵</strong>。</p>
 <h3 id="shear">切变（Shear）</h3>
 <p>以下是一个x方向上切变的例子（这是一个2维变换）</p>
 <pre><code class="language-text">变换前
@@ -4698,7 +4699,7 @@ y'
 \end{bmatrix}
 =
 \begin{bmatrix}
-1 &amp; a\\
+1 &amp; k\\
 0 &amp; 1
 \end{bmatrix}
 \begin{bmatrix}
@@ -4764,7 +4765,7 @@ y+t_y\\
 1
 \end{pmatrix}
 \]</div>
-<p>为什么向量的第三维是0呢？是因为向量具有平移不变性，如果是对一个向量做变换，为了使向量不受平移变换的影响，它的第三维必须是0。</p>
+<p>为什么向量的第三维是0呢？是因为向量是无法平移的，它具有平移不变性，<strong>齐次坐标的引入是为了解决点的平移问题，而不是让向量平移</strong>，如果是对一个向量做变换，为了使向量不受平移变换的影响，它的第三维必须是0。</p>
 <p>在这个定义下（点的第三维是1，向量的第三维是0），以下这些操作都是有效的：</p>
 <ol>
 <li>vector + vector = vector</li>
@@ -4864,7 +4865,18 @@ z\\
 <p>这三种旋转类似飞机的滚转（Roll）、俯仰（Pitch）、偏航（Yaw）</p>
 <p>欧拉角旋转变换不太方便做插值，四元数变换可以解决这个问题。</p>
 <p><strong>罗德里格斯旋转公式（Rodrigues' rotation formula）</strong></p>
-<p>将绕<strong>任意过原点的轴</strong> <span class="arithmatex">\(\vec{n}=(n_x,n_y,n_z)\)</span> 旋转 <span class="arithmatex">\(\alpha\)</span> 角度的旋转矩阵表示为以下形式（其中，<span class="arithmatex">\(\vec{I}\)</span> 是单位矩阵）：</p>
+<p>罗德里格斯公式把向量 <span class="arithmatex">\(\vec{v}\)</span> 分成两部分：</p>
+<ul>
+<li>平行于轴 <span class="arithmatex">\(\vec{n}\)</span> 的分量</li>
+<li>垂直于轴 <span class="arithmatex">\(\vec{n}\)</span> 的分量</li>
+</ul>
+<p>旋转时：</p>
+<ul>
+<li>平行分量不变</li>
+<li>垂直分量在垂直于 <span class="arithmatex">\(\vec{n}\)</span> 的平面里做一个二维旋转</li>
+</ul>
+<p>以上是罗德里格斯旋转公式的原理，下面是它的定义：</p>
+<p>将一个向量 <span class="arithmatex">\(\vec{v}\)</span> 绕向量 <span class="arithmatex">\(\vec{n}=(n_x,n_y,n_z)\)</span> 旋转 <span class="arithmatex">\(\alpha\)</span> 角度的旋转矩阵如下所示（<span class="arithmatex">\(\vec{v}\)</span> 和 <span class="arithmatex">\(\vec{n}\)</span> 都是单位向量，<span class="arithmatex">\(\vec{n}\)</span> 是一个过原点的旋转轴）：</p>
 <div class="arithmatex">\[
 \vec{R}(\vec{n},\alpha)
 = \cos(\alpha)\,\vec{I}
@@ -4875,6 +4887,15 @@ z\\
 n_z &amp;  0  &amp; -n_x\\
 -n_y &amp; n_x &amp; 0
 \end{pmatrix}}_{\vec{N}}
+\]</div>
+<p>旋转之后的向量为：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\vec{v}'_{ro}&amp;= \vec{R}(\vec{n},\alpha)\,\vec{v} \\
+&amp;= \cos(\alpha)\,\vec{v}
+  + \bigl(1-\cos(\alpha)\bigr)\,(\vec{n}\!\cdot\!\vec{v})\,\vec{n}
+  + \sin(\alpha)\,(\vec{n}\!\times\!\vec{v})
+\end{aligned}
 \]</div>
 <p><strong>四元数旋转</strong></p>
 <p>四元数是一种代数结构，可以用来表示3维空间中的旋转。</p>
