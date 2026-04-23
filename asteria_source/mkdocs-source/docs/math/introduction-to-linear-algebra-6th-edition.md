@@ -63,7 +63,7 @@ y\begin{bmatrix}
 \end{bmatrix}
 $$
 
-这实际上是两个列向量的**线性组合（Linear Combination）**。
+这实际上是两个列向量的**线性组合（Linear Combination）**，线性组合就是把向量加法和数乘结合起来的运算，线性组合的结果是一个新的向量。
 
 考虑以下三元线性方程组
 
