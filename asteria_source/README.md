@@ -64,6 +64,8 @@ path = 'github.com/alex-shpak/hugo-book'
 - 构建项目: `mkdocs build`
 - 打印帮助信息: `mkdocs -h`
 
+其中数学公式支持参考[https://squidfunk.github.io/mkdocs-material/reference/math/](https://squidfunk.github.io/mkdocs-material/reference/math/)配置
+
 ### 注意
 
 mkdocs material 于 2026年3月27日 发布了 mkdocs-material 和 mkdocs 2.0 的不兼容警告
