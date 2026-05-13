@@ -4576,8 +4576,12 @@ M_{\mathrm{ortho}} =
 0 &amp; 0 &amp; 0 &amp; 1
 \end{bmatrix}
 \]</div>
+<blockquote>
+<p>上面提到的任意立方体，概念上对应的是透视投影的“视锥”，正式的名称叫做观察体（Viewing Volume），经过投影变换后，观察体变换为裁剪体（Clipping Volume），裁剪体是一个标准立方体，投影变换将坐标变换为 NDC 坐标（Normalized Device Coordinates，规范化设备坐标）。观察体的大小和位置是人为定义的，取决于我们想要看到什么样的场景。</p>
+<p>上面的正交投影变换是将缩放矩阵和平移矩阵组合起来，即使观察体的中心已经对准原点，平移矩阵也不能省略，因为之前视图变换是把相机放在了原点，而观察体通常在相机的前面一段距离，并不在原点上，平移操作将观察体的中心放到原点，便于后续的处理。</p>
+</blockquote>
 <h3 id="perspective-projection">透视投影 (Perspective projection)</h3>
-<p>透视投影中，相机在原点，相机和视角围成一个四棱锥体（Frustum），相机前面有两个平面，近景平面和远景平面，近景平面和远景平面分别截出这个四棱锥体的顶部和底部。</p>
+<p>透视投影中，相机在原点，相机和视角围成一个四棱锥体（Frustum），相机前面有两个平面，近景平面和远景平面，近景平面和远景平面分别截出这个四棱锥体的顶部和底部（截取后叫平截头体）。</p>
 <p>透视投影分为两步：</p>
 <ol>
 <li>先把四棱锥体（Frustum）挤压成一个立方体（Cuboid），对应的变化写作 <span class="arithmatex">\(M_{\mathrm{persp}\to\mathrm{ortho}}\)</span></li>
@@ -4586,10 +4590,115 @@ M_{\mathrm{ortho}} =
 <p>最终，完整的透视投影为 <span class="arithmatex">\(M_{\mathrm{persp}} = M_{\mathrm{ortho}}\,M_{\mathrm{persp}\to\mathrm{ortho}}\)</span></p>
 <p>下图是透视投影挤压过程的示意图，其中，<span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(f\)</span> 分别表示近景平面和远景平面的 z 坐标</p>
 <p><img alt="perspective-projection.png" src="/img/games101-notes/perspective-projection.png" /></p>
-<p>挤压过程中，近景平面的点不变，远景平面的点 z 坐标不变，尺寸变为和近景平面一样的大小。</p>
-<p>四棱锥远景平面和近景平面的 y 坐标呈现这样的关系（x 坐标同理）：</p>
+<p>挤压过程中，近景平面上的所有点不变，远景平面上点的 z 坐标不变，尺寸变为和近景平面一样的大小，远景平面的中心点不变，<strong>而其他位于远景平面和近景平面中间的点，他们的 z 坐标是会发生变化的</strong>，也就是，挤压不仅是两侧挤压，还会对点的 z 坐标重新排布。</p>
+<p>四棱锥远景平面和近景平面的 y 坐标呈现这样的关系（<span class="arithmatex">\(y' = \frac{n}{z}y\)</span>, <span class="arithmatex">\(x' = \frac{n}{z}x\)</span>）：</p>
 <p><img alt="persp2ortho.png" src="/img/games101-notes/persp2ortho.png" /></p>
-<p>经过一顿推导，得到挤压矩阵（利用了齐次坐标同时乘以一个数坐标不变的性质）：</p>
+<p><strong>推导过程</strong>：</p>
+<p>利用了齐次坐标同时乘以一个数坐标不变的性质，即 <span class="arithmatex">\([x,y,z,1]^T\)</span> 和 <span class="arithmatex">\([kx,ky,kz,k]^T\)</span> 表示同一个点。</p>
+<p>那么，点 <span class="arithmatex">\([x,y,z,1]^T\)</span> 应该会经过这样一个变换过程，z 坐标被变换成什么暂时不知道，</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+x\\
+y\\
+z\\
+1
+\end{pmatrix}
+\Rightarrow
+\begin{pmatrix}
+\frac{nx}{z}\\
+\frac{ny}{z}\\
+\text{unknown}\\
+1
+\end{pmatrix}
+\overset{\text{mult.\ by } z}{==}
+\begin{pmatrix}
+nx\\
+ny\\
+\text{still unknown}\\
+z
+\end{pmatrix}
+\]</div>
+<p>现在满足：</p>
+<div class="arithmatex">\[
+M_{\mathrm{persp}\to\mathrm{ortho}}^{(4\times 4)}
+\begin{pmatrix}
+x\\
+y\\
+z\\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+nx\\
+ny\\
+\text{unknown}\\
+z
+\end{pmatrix}
+\]</div>
+<p>可以将挤压矩阵的其中三行推断出来：</p>
+<div class="arithmatex">\[
+M_{\mathrm{persp}\to\mathrm{ortho}}
+=
+\begin{pmatrix}
+n &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; n &amp; 0 &amp; 0 \\
+? &amp; ? &amp; ? &amp; ? \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
+\]</div>
+<p>利用近景平面上点不变的条件，我们将近景平面上的点代入变换，得到：</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+n &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; n &amp; 0 &amp; 0 \\
+? &amp; ? &amp; ? &amp; ? \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+n \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+nx \\
+ny \\
+n^2 \\
+n
+\end{pmatrix}
+\]</div>
+<p>可知，第三行必然是 <span class="arithmatex">\([0,0,a,b]\)</span> 这样的结构，再利用远景平面上点的 z 坐标不变的条件，得到：</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+n &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; n &amp; 0 &amp; 0 \\
+? &amp; ? &amp; ? &amp; ? \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+0 \\
+0 \\
+f \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0 \\
+f^2 \\
+f
+\end{pmatrix}
+\]</div>
+<p>解方程组：</p>
+<div class="arithmatex">\[
+\begin{cases}
+an + b = n^2 \\
+af + b = f^2
+\end{cases}
+\]</div>
+<p>得到：<span class="arithmatex">\(a = n+f\)</span>，<span class="arithmatex">\(b = -nf\)</span></p>
+<p>经过一顿推导，得到挤压矩阵：</p>
 <div class="arithmatex">\[
 M_{\mathrm{persp}\to\mathrm{ortho}} =
 \begin{pmatrix}
@@ -4635,8 +4744,8 @@ M_{\mathrm{viewport}} =
 <p>为什么要采样，因为输入数据是一个个坐标，它们围成的多边形是连续的面，而屏幕是由一个个像素组成的，光栅化的过程是要把连续的面离散化到一个个像素上，因此这个过程就叫做采样，屏幕的分辨率就是采样率。</p>
 <p>下图是一个采样的例子，判断每个像素的中心是否在三角形内，这里要注意，像素的坐标是以像素的左下角为准，而采样是以像素的中心为准。</p>
 <p><img alt="sample.png" src="/img/games101-notes/sample.png" /></p>
-<p>Bounding Box（边界框）是指包含三角形的最小矩形，可以用来加速采样过程。意思是，只对边界框内的像素做采样，边界框外的像素不做采样。</p>
-<p>判断像素是否在三角形内部这个过程也叫覆盖测试（Coverage Test）。</p>
+<p><strong>Bounding Box</strong>（边界框）是指包含三角形的最小矩形，可以用来加速采样过程。意思是，只对边界框内的像素做采样，边界框外的像素不做采样。</p>
+<p>判断像素是否在三角形内部这个过程也叫<strong>覆盖测试</strong>（Coverage Test）。</p>
 <p>直线的采样和绘制可以参考（Bresenham直线绘制算法，代码可参考https://stackoverflow.com/a/16405254）</p>
 <h2 id="anti-aliasing">抗锯齿/反走样（Anti-aliasing）</h2>
 <p>采样错误是发生在给像素填色这个过程中，总有一些像素位于三角形的边缘，如果我们不做任何额外处理，这些像素要么填色，要么不填色，这就会造成锯齿现象。</p>
@@ -4654,6 +4763,7 @@ M_{\mathrm{viewport}} =
 <h3 id="_8">为什么会走样/失真</h3>
 <p>走样（Aliasing）是因为采样频率远低于信号频率，造成采样结果失真。</p>
 <p><img alt="aliases.png" src="/img/games101-notes/aliases.png" /></p>
+<p>根据奈奎斯特采样定理，采样频率必须至少是信号频率的两倍，才能避免走样现象。</p>
 <h3 id="_9">滤波</h3>
 <p>滤波（Filtering）是指丢掉某些特定频率。</p>
 <p>傅里叶变换是做从时域（Spatial domain）到频域（Frequency domain）的转换，将一个时域函数拆分成多个不同频率的正弦函数：</p>
