@@ -14,7 +14,7 @@
         <link rel="prev" href="../games101-4-ray-tracing/">
       
       
-        <link rel="next" href="../../../interview/16.interview-bagu-golang/">
+        <link rel="next" href="../games101-6-cameras/">
       
       
       <link rel="icon" href="../../../img/avatar.png">
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#diffuse-lambertian-material" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -1939,18 +1939,207 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diffuse-lambertian-material" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Diffuse / Lambertian Material
+      漫反射材质
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#glossy-material" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Glossy Material
+      光泽材质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      理想反射材质
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="理想反射材质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      完美镜面反射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      镜面折射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      菲涅尔反射
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      微表面理论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      各向同性/各向异性材质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRDF 的性质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brdf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      测量 BRDF
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他光线追踪方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他光线追踪方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      无偏和有偏蒙特卡洛估计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bdpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      双向路径追踪（BDPT）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metropolis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metropolis 光线传播
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      光子映射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-connection-and-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex Connection and Merging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      实时辐射度算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      外观建模
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="外观建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      非表面材质模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      表面材质模型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序化生成
     </span>
   </a>
   
@@ -1960,6 +2149,75 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-6-cameras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 六、相机
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-7-colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 七、颜色
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-8-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 八、动画
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3387,18 +3645,207 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diffuse-lambertian-material" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Diffuse / Lambertian Material
+      漫反射材质
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#glossy-material" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Glossy Material
+      光泽材质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      理想反射材质
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="理想反射材质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      完美镜面反射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      镜面折射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      菲涅尔反射
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      微表面理论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      各向同性/各向异性材质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRDF 的性质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brdf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      测量 BRDF
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他光线追踪方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他光线追踪方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      无偏和有偏蒙特卡洛估计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bdpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      双向路径追踪（BDPT）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metropolis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metropolis 光线传播
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      光子映射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-connection-and-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex Connection and Merging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      实时辐射度算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      外观建模
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="外观建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      非表面材质模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      表面材质模型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序化生成
     </span>
   </a>
   
@@ -3425,7 +3872,8 @@
 
   <h1>games101 五、材质</h1>
 
-<h2 id="diffuse-lambertian-material">Diffuse / Lambertian Material</h2>
+<h2 id="_1">漫反射材质</h2>
+<p>Diffuse / Lambertian Material</p>
 <p>对于漫反射材质，我们认为一束入射光线会向四面八方反射，根据前面所学内容，其中某一束反射光和入射光能量存在一个比例 <span class="arithmatex">\(f_r\)</span>，在光线追踪中，我们将其称为 brdf。</p>
 <p><img alt="diffuse-material.png" src="/img/games101-notes/diffuse-material.png" /></p>
 <p>光线追踪的渲染方程体现出一种入射光和反射光的能量关系，<strong>一束出射光 <span class="arithmatex">\(L_o(\omega_o)\)</span> 是所有入射光 <span class="arithmatex">\(L_i(\omega_i)\)</span> 经过材质反射后的总和</strong>（注意，这里所说的出射光不是某个入射光的反射分量，而是所有入射光的积分总和）：</p>
@@ -3441,8 +3889,167 @@ L_o(\omega_o)=f_r\,L_i\int_{H^2} \cos\theta_i\,\mathrm{d}\omega_i = \pi\,f_r\,L_
 <p>我们可以定义一个反射率 <span class="arithmatex">\(\rho\)</span>（albedo），范围为 0~1，体现材质反射多少光，<span class="arithmatex">\(\rho=1\)</span> 表示完全反射，<span class="arithmatex">\(\rho=0\)</span> 表示完全吸收，那么，最终的漫反射 brdf 定义为：</p>
 <div class="arithmatex">\[f_r = \frac{\rho}{\pi}\]</div>
 <p>如果 <span class="arithmatex">\(\rho\)</span> 是一个三通道的颜色值（三个 0~1 范围内的值），则可以定义不同颜色的 brdf，这就是漫反射材质的定义。</p>
-<h2 id="glossy-material">Glossy Material</h2>
+<p>漫反射材质渲染出的颜色可以看作是物体的本色。</p>
+<h2 id="_2">光泽材质</h2>
+<p>Glossy Material</p>
 <p>不完全是镜面反射，也不完全是漫反射，比如一个磨砂的金属表面。</p>
+<h2 id="_3">理想反射材质</h2>
+<p>Ideal Reflective Material(BSDF)</p>
+<p>这是指水面或者玻璃这种既能反射又能折射的材质。</p>
+<h3 id="_4">完美镜面反射</h3>
+<p>Perfect Specular Reflection</p>
+<p>令 入射光 <span class="arithmatex">\(\omega_i\)</span>、出射光 <span class="arithmatex">\(\omega_o\)</span>、法线 <span class="arithmatex">\(\mathbf{n}\)</span> 都以表面上的一点为原点指向空中，入射角为 <span class="arithmatex">\(\theta_i\)</span>，出射角为 <span class="arithmatex">\(\theta_o\)</span>，它们满足以下关系：</p>
+<div class="arithmatex">\[
+\theta = \theta_i = \theta_o
+\]</div>
+<div class="arithmatex">\[
+\omega_i + \omega_o = 2(\omega_i \cdot \mathbf{n})\mathbf{n} = 2\cos\theta\,\mathbf{n}
+\]</div>
+<p>如果从上往下看，入射光和出射光分别有一个方位角 <span class="arithmatex">\(\phi_i\)</span> 和 <span class="arithmatex">\(\phi_o\)</span>，它们满足：</p>
+<div class="arithmatex">\[
+\phi_o = (\phi_i + \pi) \mod 2\pi
+\]</div>
+<p><img alt="specular-reflection.png" src="/img/games101-notes/specular-reflection.png" /></p>
+<h3 id="_5">镜面折射</h3>
+<p>Specular Refraction</p>
+<p>斯涅尔定律：</p>
+<p><img alt="specular-refraction.png" src="/img/games101-notes/specular-refraction.png" /></p>
+<div class="arithmatex">\[
+\eta_i \sin\theta_i = \eta_t \sin\theta_t
+\]</div>
+<p>其中 <span class="arithmatex">\(\eta_i\)</span> 和 <span class="arithmatex">\(\eta_t\)</span> 分别是入射介质和折射介质的折射率，<span class="arithmatex">\(\theta_i\)</span> 和 <span class="arithmatex">\(\theta_t\)</span> 分别是入射角和折射角。</p>
+<p>常见介质的折射率：</p>
+<table>
+<thead>
+<tr>
+<th>介质</th>
+<th style="text-align: right;">折射率 <span class="arithmatex">\(\eta\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>真空</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr>
+<td>空气（海平面）</td>
+<td style="text-align: right;">1.00029</td>
+</tr>
+<tr>
+<td>水（20°C）</td>
+<td style="text-align: right;">1.333</td>
+</tr>
+<tr>
+<td>玻璃</td>
+<td style="text-align: right;">1.5–1.6</td>
+</tr>
+<tr>
+<td>金刚石</td>
+<td style="text-align: right;">2.42</td>
+</tr>
+</tbody>
+</table>
+<p>从公式和图像上可以看出来，如果折射率更大的那一侧的角度大于一个临界值，是没有折射光的，这就是全反射现象。</p>
+<p>斯涅尔窗效应：</p>
+<p><img alt="snell-window.png" src="/img/games101-notes/snell-window.png" /></p>
+<p>前面讲到的光线追踪的 BRDF 函数，对折射来讲应该叫 BTDF，二者合起来叫 BSDF（双向散射分布函数）。</p>
+<h3 id="_6">菲涅尔反射</h3>
+<p>Fresnel Reflection</p>
+<p>一束入射光线会有一部分光线被反射，另一部分光线被折射，入射角越大，反射的光线越多，折射的光线越少，这就是菲涅尔反射现象。</p>
+<p><img alt="fresnel-reflection.png" src="/img/games101-notes/fresnel-reflection.png" /></p>
+<p>不同材质的菲涅尔现象差距很大，准确的反射率计算公式非常复杂，通常我们会用一个近似的计算方法，叫做 Schlick 近似：</p>
+<div class="arithmatex">\[
+R(\theta)=R_0+(1-R_0)(1-\cos\theta)^5
+\]</div>
+<div class="arithmatex">\[
+R_0=\left(\frac{n_1-n_2}{n_1+n_2}\right)^2
+\]</div>
+<p>其中 <span class="arithmatex">\(n_1\)</span> 和 <span class="arithmatex">\(n_2\)</span> 分别是入射介质和折射介质的折射率，<span class="arithmatex">\(\theta\)</span> 是入射角。</p>
+<p><span class="arithmatex">\(R_0\)</span> 表示入射角为 0 时的反射率，<span class="arithmatex">\(R(\theta)\)</span> 表示入射角为 <span class="arithmatex">\(\theta\)</span> 时的反射率。</p>
+<h2 id="_7">微表面理论</h2>
+<p>Microfacet Theory</p>
+<p>一个凹凸不平的表面，从远处看（Macroscale），看起来是个粗糙的平面，但从近处看（Microscale），它是由很多小的平面组成的，每个小平面都可以看成是一个完美的镜面反射表面，这些小平面叫做微表面（Microfacet）。</p>
+<p>简单来说，离近了看，看到的是一个复杂的几何结构，离远了看，看到的是一整个平面或者一种材质。</p>
+<p>根据这个理论，可以将不同的材质看作是不同的法线分布，比如漫反射材质（Diffuse Material）可以看作是一个法线方向比较分散的材质，而光泽材质（Glossy Material）可以看作是一个法线方向比较集中的材质。</p>
+<p>有了这个理论，我们可以将 BRDF 中的反射比例 <span class="arithmatex">\(f_r\)</span> 写成更具体的形式：</p>
+<p><img alt="brdf-microfacet.png" src="/img/games101-notes/brdf-microfacet.png" /></p>
+<p><span class="arithmatex">\(F\)</span> 是菲涅尔项，代表平面的反射率，<span class="arithmatex">\(D\)</span> 是微表面的法线分布，只有当微表面的法线方向和半程向量方向一致时，才会有反射，法线分布描述的是微表面法线方向和半程向量方向一致的概率，
+<span class="arithmatex">\(G\)</span> 代表微表面之间的相互遮挡程度。</p>
+<h2 id="_8">各向同性/各向异性材质</h2>
+<p>Isotropic/Anisotropic Material</p>
+<p>各向同性：微表面没有明显的方向性，比如一个磨砂的金属表面。</p>
+<p>各项异性：微表面有明显的方向性，比如一个拉丝的金属表面。</p>
+<p>对于各项异性表面，入射光线的方位角变换， <span class="arithmatex">\(f_r\)</span> 也会随之变化。</p>
+<h2 id="brdf">BRDF 的性质</h2>
+<p>非负：<span class="arithmatex">\(f_r(\omega_i, \omega_o) \geq 0\)</span></p>
+<p>线性：一个点的着色结果可以拆成多个部分单独计算，最后再加起来。</p>
+<p>可逆：如果入射光线和出射光线交换位置，BRDF 的值不变，即 <span class="arithmatex">\(f_r(\omega_i, \omega_o) = f_r(\omega_o, \omega_i)\)</span>。</p>
+<p>能量守恒：对于任何入射光线 <span class="arithmatex">\(\omega_i\)</span>，所有出射光线 <span class="arithmatex">\(\omega_o\)</span> 的反射比例之和不能超过 1。</p>
+<p>各项异性和各向同性：<strong>对于各向同性材质，BRDF 的值只与入射光线和出射光线的相对方位角有关</strong>；对于各项异性材质，BRDF 的值还与绝对方位角有关。</p>
+<h2 id="brdf_1">测量 BRDF</h2>
+<p>现实中有一种材质，我们希望知道渲染这种材质时应该使用什么样的 BRDF，这时我们就需要测量这个材质的 BRDF。</p>
+<p>一种方法是使用一个光源和一个相机，分别放在不同的位置，测量入射光线和出射光线的能量，然后根据 BRDF 的定义计算出 BRDF 的值。</p>
+<p>MERL BRDF 数据库：一个公开的 BRDF 数据库，里面包含了很多不同材质的 BRDF 数据，可以用来渲染这些材质。</p>
+<h2 id="_9">其他光线追踪方法</h2>
+<h3 id="_10">无偏和有偏蒙特卡洛估计</h3>
+<p>无偏（Unbiased）就是指估计的期望值等于真实值，有偏（Biased）就是指估计的期望值不等于真实值，如果有偏估计的样本值足够多，使得估计值足够接近真实值，这时叫做一致的有偏估计（Consistent）。</p>
+<h3 id="bdpt">双向路径追踪（BDPT）</h3>
+<p>Bidirectional Path Tracing.</p>
+<p>核心思路是分别从光源和相机出发，生成两条光线路径，最后将两条路径连接起来，形成一条完整的光线路径，这样可以更高效地采样到一些重要的路径，比如直接从光源到相机的路径。</p>
+<p>实现困难并且计算量很大。</p>
+<h3 id="metropolis">Metropolis 光线传播</h3>
+<p>Metropolis Light Transport.</p>
+<p>这时另外一种光线追踪方法，叫做 Metropolis 光线传播。</p>
+<p>Metropolis 光线传播利用了马尔科夫链蒙特卡洛方法（MCMC）进行采样，这个方法可以以任意形状的概率密度函数进行采样，之前在蒙特卡洛方法中提到过，蒙特卡洛方法的效果很大程度上取决于采样的概率密度函数，概率密度函数和被积函数的形状越接近，效果越好，而马尔科夫链能生成任意形状的概率密度函数。</p>
+<p>Metropolis 光线传播的核心思路是，首先生成一条光线路径，然后在这条路径的基础上进行一些小的变动，生成一条新的路径，如果新的路径比旧的路径更重要（比如说它的贡献更大），就接受这条新路径，否则就拒绝这条新路径，继续使用旧的路径，这样就形成了一个马尔科夫链，最终可以得到一个很好的采样结果。</p>
+<p>收敛速度不确定，上一帧和下一帧的结果可能差距很大。</p>
+<h3 id="_11">光子映射</h3>
+<p>Photon Mapping.</p>
+<p>是一种有偏估计。</p>
+<p>适合处理镜面-漫反射-镜面这种渲染路径，适合渲染caustics（焦散）效果。</p>
+<h3 id="vertex-connection-and-merging">Vertex Connection and Merging</h3>
+<p>双向路径追踪和光子映射的结合。</p>
+<h3 id="_12">实时辐射度算法</h3>
+<p>Instant Radiosity（IR）.</p>
+<p>光源发出的光线照射到物体表面后，会在表面上形成一个虚拟的点光源，叫做虚拟点光源（Virtual Point Light，VPL），这些虚拟点光源可以用来近似地计算间接照明，从而实现实时渲染。</p>
+<h2 id="_13">外观建模</h2>
+<p>外观建模（Appearance Modeling）是指如何通过一些参数来描述一个材质的外观，这些参数可以是颜色、粗糙度、金属度等等，这些参数会改变 BRDF 函数形状，从而控制材质的外观。</p>
+<h3 id="_14">非表面材质模型</h3>
+<p><strong>散射介质</strong> </p>
+<p>Participanting Media</p>
+<p>云、雾等非表面材质，光线进去以后会被吸收和散射。</p>
+<p><strong>头发</strong></p>
+<p>Hair appearance model.</p>
+<p>Kajiya-Kay 模型：一种简单的头发渲染模型，效果不太好。</p>
+<p>Marschner 模型：一种更复杂的头发渲染模型，可以非常逼真地模拟头发的光学特性。</p>
+<p><strong>动物毛发</strong></p>
+<p>Fur appearance model.</p>
+<p>Double Cylinder 模型。</p>
+<p><strong>颗粒材质</strong></p>
+<p>Granular Material</p>
+<p>一粒一粒的材质，比如一堆小米、一堆绿豆、一堆沙子等等。</p>
+<h3 id="_15">表面材质模型</h3>
+<p><strong>透射材质</strong></p>
+<p>Translucent Material</p>
+<p>和半透明不太一样，光线在材质内部会发生散射，这种材质是指会透光的材质，例如玉石。</p>
+<p>次表面散射（Subsurface Scattering）模型：一种模拟透射材质的渲染模型，把 BRDF 扩展为了 BSSRDF，可以更逼真地模拟透射材质的光学特性，计算量较大。</p>
+<p>Dipole Approximation：一种次表面散射模型的近似方法，可以更高效地计算次表面散射效果。</p>
+<p>BSSRDF 方法可以把人脸渲染得非常逼真。</p>
+<p><strong>布料</strong></p>
+<p>布料渲染大概有三种方法：</p>
+<ol>
+<li>将布料看作是一个表面，直接测量布料的 BRDF，然后用这个 BRDF 来渲染布料。</li>
+<li>将布料看作是一个体积，光在布料内部发生散射，然后用体积渲染的方法来渲染布料。</li>
+<li>将布料看作是由很多细小的纤维组成的，像渲染头发一样一根一根渲染布料上的纤维。</li>
+</ol>
+<p><strong>细节渲染</strong></p>
+<p>一个现实中存在的复杂场景，经常会因为渲染的过于完美而显得不真实，现实中的物体表面通常会有一些细微的瑕疵，这些瑕疵会让渲染出来的物体看起来更真实。</p>
+<p>使用微表面理论来模拟这些细节，比如使用一个法线贴图（Normal Map）来模拟表面的细节，这样可以让渲染出来的物体看起来更真实。</p>
+<p>再比如，一个白色的磨砂金属表面，放大仔细看，会发现表面上实际上是各种颜色，这涉及到了波动光学的知识。</p>
+<h2 id="_16">程序化生成</h2>
+<p>Procedural Appearance.</p>
+<p>物体的表面材质是通过一些3D noise 函数生成出来的。</p>
+<p>比如花瓶上的花纹，木头的纹理等等，这些都是通过一些3D noise 函数生成出来的。</p>
 
 
 

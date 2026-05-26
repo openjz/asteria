@@ -1960,7 +1960,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      题外话（一点思考）
+      硬边和平滑边
     </span>
   </a>
   
@@ -2219,6 +2219,75 @@
   
   <span class="md-ellipsis">
     games101 五、材质
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-6-cameras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 六、相机
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-7-colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 七、颜色
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-8-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 八、动画
     
   </span>
   
@@ -3741,7 +3810,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      题外话（一点思考）
+      硬边和平滑边
     </span>
   </a>
   
@@ -3980,7 +4049,11 @@
 <p>但是法线不能直接用MV矩阵变换，因为法线是垂直于表面的向量，直接用MV矩阵变换后，可能不再垂直于表面。</p>
 <p>为了保证法线变换后仍然垂直于表面，我们需要用MV矩阵的逆转置矩阵（Inverse Transpose Matrix）来变换法线。</p>
 <p>逆转置矩阵，即：</p>
-<div class="arithmatex">\[(M^{-1})^T\]</div>
+<div class="arithmatex">\[((VM)^{-1})^T\]</div>
+<p>下面是推导过程：</p>
+<p>令 <span class="arithmatex">\(n\)</span> 为原始法线向量，<span class="arithmatex">\(n'\)</span> 为变换后的法线向量，<span class="arithmatex">\(t\)</span> 为表面上的一个切线向量，<span class="arithmatex">\(t'\)</span> 为变换后的切线向量，那么 <span class="arithmatex">\(n^Tt = 0\)</span>，我们希望变换后的法线和切线仍然满足垂直关系，即 <span class="arithmatex">\(n'^Tt' = 0\)</span>，又因为 <span class="arithmatex">\(t' = VMt\)</span>，所以 <span class="arithmatex">\(n'^TVMt = 0\)</span>，因此，<span class="arithmatex">\(n'^TVM = n^T\)</span>，<span class="arithmatex">\(n' = ((VM)^{-1})^T n\)</span>。</p>
+<p>为什么切线的变换，可以直接用MV矩阵变换呢？可以做个简单的推导，<span class="arithmatex">\(t' = P_2'-P_1' = VM(P_2-P_1) = VMt\)</span>。</p>
+<p><strong>简单来说，M变换（Model变换）有可能会破坏法线和平面的正交关系（因为会做向量缩放操作），而不会破坏切线和平面的平行关系，并且，只有M变换会破坏正交关系，V变换不会（V变换是纯粹的刚体变换，即旋转+平移）</strong>。</p>
 <h3 id="diffuse-reflection">漫反射（Diffuse Reflection）</h3>
 <p>漫反射模拟光线照射到粗糙表面上的效果。</p>
 <p>漫反射的入射光线会均匀地向各个方向反射。</p>
@@ -4021,45 +4094,12 @@
 <p><strong>Phong Shading (Pixel)</strong></p>
 <p>注意这个并不是Blinn-Phong反射模型。</p>
 <p>求出几个顶点的法线，在三角形面内进行法线插值，然后计算出每个像素点的颜色。</p>
-<h3 id="_3">题外话（一点思考）</h3>
+<h3 id="_3">硬边和平滑边</h3>
 <p>使用顶点法线插值，不会改变几何，只是光照时让几何体表面显得更平滑。</p>
-<blockquote>
-<p>这叫做法线平滑（Normal Smoothing）。</p>
-</blockquote>
-<p>如果我有个比较复杂的几何体，我希望它某一部分的渲染使用面法线，让他的棱角更分明，而其他部分使用顶点法线插值，让他的表面更圆滑，图形学上有这种技术吗？或者说，这对于图形学来说，是个问题吗？</p>
-<p>gpt告诉我:</p>
-<blockquote>
-<p>有，并且非常常见。这不是问题，而是标准做法。</p>
-<p>可用的技术与做法：</p>
-<p>硬边/平滑组（Smoothing Groups）/法线拆分（Normal Split）：在硬边处“拆分顶点”，给该边两侧三角形的顶点写入各自的面法线；其余区域用平滑顶点法线。大多数DCC/引擎支持（OBJ/FBX可存“面-顶点法线”）。
-按角度阈值生成法线：导入时按夹角&gt;阈值就断边，用面法线；否则合并求平均法线。
-着色器里混合：在片元着色器同时拿到“插值法线”（平滑）和“几何面法线”，用掩码（顶点属性或纹理）选择或混合二者。</p>
-<p>示例（GLSL 片元，世界或视空间一致）：</p>
-</blockquote>
-<pre><code class="language-glsl">// ...插值进来的数据...
-in vec3 vPosWS;         // 片元位置(世界/视空间)
-in vec3 vNormalWS;      // 插值后的平滑法线
-in vec2 vUV;            // 可选，用于区域掩码
-uniform sampler2D uMask; // R=1 用面法线，R=0 用平滑
-// ...existing code...
-void main() {
-    vec3 N_smooth = normalize(vNormalWS);
-    vec3 N_flat   = normalize(cross(dFdx(vPosWS), dFdy(vPosWS))); // 面法线
-    float w = texture(uMask, vUV).r; // 或者用顶点属性/材质开关
-    vec3 N = normalize(mix(N_smooth, N_flat, w));
-    // 用 N 做后续光照
-}
-</code></pre>
-<blockquote>
-<p>其他要点：</p>
-<ul>
-<li>用 flat 插值限定符也可让某个 varying 按“每面”传值，但要保证三顶点携带相同数据或用几何着色器/顶点复制。</li>
-<li>硬边会增加顶点数；若用 dFdx/dFdy 求面法线，请确保用同一空间的 vPos，并注意导数在分支/多采样处的连续性。</li>
-<li>若用法线贴图，平滑区应保持一致的切线空间（常用 MikkTSpace）。</li>
-</ul>
-<p>结论：同一几何体中混合“面法线的硬朗”和“顶点法线的圆滑”是行业常规工作流，直接用硬边/平滑组或着色器掩码即可实现。</p>
-</blockquote>
-<p>以上全部都是gpt告诉我的。</p>
+<p>如果一个正方体在渲染的时候采用上述方法，会渲染出来一个圆角的正方体，如果我们想渲染一个有棱有角的正方体，就不能采用上述方法，而是要把每个三角形面视为一个平坦的平面，计算出每个三角形面的法线，这样渲染出来的正方体就会有棱有角。</p>
+<p>为了区分这两种渲染效果，计算机图形学提出了硬边和平滑边的概念：</p>
+<p>硬边（Hard Edge）：每个三角形面只有一个法线，渲染出来的效果是有棱有角的，或者，每个顶点有多个法线，对应不同的面，渲染时使用对应面的法线。</p>
+<p>平滑边（Smooth Edge）：每个顶点的法线由多个面上的法线取平均得到。</p>
 <h3 id="_4">如何计算顶点的法线？</h3>
 <p>对顶点所在面的法线进行平均。</p>
 <div class="arithmatex">\[
@@ -4120,8 +4160,11 @@ void main() {
 <div class="arithmatex">\[V_P = \alpha V_A + \beta V_B + \gamma V_C\]</div>
 <p><strong>由于在投影变换过程中，三角形会被拉伸变换，点的重心坐标会变，所以什么时候做插值，要区分清楚。</strong></p>
 <h3 id="_6">应用纹理</h3>
+<p>纹理应用的过程是这样的：</p>
 <ol>
-<li>光栅化后，对屏幕上的每一个采样点进行纹理坐标插值，得到对应的纹理坐标（<span class="arithmatex">\(u,v\)</span>），<span class="arithmatex">\(u,v\)</span> 坐标的值通常在0~1之间。</li>
+<li>光栅化，对每个三角形划定一个边界框，对边界框内的每个像素点进行覆盖测试和深度测试，确定哪些像素点需要渲染。</li>
+<li>对于需要渲染的像素点，需要计算出它对应的纹理坐标，由于纹理映射只保存了顶点和纹理坐标之间的映射关系，所以需要通过重心坐标插值来计算出像素点的纹理坐标（<span class="arithmatex">\(u,v\)</span>），<span class="arithmatex">\(u,v\)</span> 坐标的值通常在0~1之间。</li>
+<li>计算纹理坐标的颜色，纹理坐标的颜色可以通过插值来计算，比如双线性插值，就是利用纹理坐标周围的四个纹理像素点的颜色来计算出纹理坐标的颜色。</li>
 <li>着色时，将纹理图片上的颜色作为漫反射系数 <span class="arithmatex">\(k_d\)</span>。</li>
 </ol>
 <h3 id="_7">纹理反走样</h3>
@@ -4135,8 +4178,8 @@ void main() {
 <div class="arithmatex">\[ lerp(x, \vec{v_0}, \vec{v_1}) = \vec{v_0} + x(\vec{v_1} - \vec{v_0})\]</div>
 <p>双线性插值是在二维平面上的四个点构成的矩形区域内进行插值，实际上就是做三次线性插值，先在水平方向上做两次线性插值，然后在垂直方向上做一次线性插值。</p>
 <p><strong>texture太大怎么办？</strong></p>
-<p>texture太大，要把它映射到一个小的区域上，这个过程实际上是对纹理降低采样率采样，和覆盖测试类似，同样会出现走样问题（摩尔纹，锯齿等）。</p>
-<p>从现象上看，出现走样是因为一个像素（即一个采样点）对应了一大块纹理区域。</p>
+<p>texture太大，要把它映射到一个小的区域上，这个过程实际上是对纹理降低采样率采样，和三角形着色类似，同样会出现走样问题（摩尔纹，锯齿等）。</p>
+<p>从现象上看，出现走样是因为采样率降低，屏幕上的一个像素（即一个采样点）对应了一大块纹理区域。</p>
 <p>解决方法:
 1. 增加采样点
 2. 不做采样，给定一个纹理区域，立刻得到这个区域的平均值</p>
@@ -4172,7 +4215,8 @@ L = \max\!\left(
 <p>它的原理是把一个不规则的纹理区域近似为多个椭圆，需要查询多次，然后对结果进行加权平均。</p>
 <h3 id="environment-mapping">环境贴图（Environment Mapping）</h3>
 <p>环境贴图是为了模拟物体表面的反射效果。</p>
-<p>它是把不同方向的环境光照信息预先保存到纹理中，然后在渲染时根据物体表面的法线方向，从纹理中采样出对应的环境光照信息，作为物体表面的反射光照。</p>
+<p>可以把环境贴图想成一个包围场景的球或天空盒，从球面向内部的场景发射环境光，把向场景内部射来的所有方向的环境光照信息记录到纹理中，就是环境贴图。</p>
+<p>然后在渲染时根据物体表面的法线方向，从纹理中采样出对应的环境光照信息，再根据物体自身表面的材质，计算物体表面的反射光照。</p>
 <p>假设环境光都是来自无限远处，只记录环境光的方向信息。</p>
 <p>球面环境贴图（Spherical Environment Mapping）是将环境光照信息映射到一个球面上。</p>
 <p>为了解决球面贴图展开为矩形时的扭曲问题，可以使用立方体贴图（Cubemap），将环境光照信息映射到一个立方体的六个面上。</p>
@@ -4187,11 +4231,18 @@ L = \max\!\left(
 <div class="arithmatex">\[
 \frac{dp}{dv} = c_2 * [h(v+1)-h(v)]
 \]</div>
-<p>根据导数，可以求出切线方向向量，然后可以求出法线方向向量：</p>
+<p>根据导数，可以求出两个切线向量，</p>
+<div class="arithmatex">\[
+\vec{t_u} = (1, 0, dp/du)
+\]</div>
+<div class="arithmatex">\[
+\vec{t_v} = (0, 1, dp/dv)
+\]</div>
+<p>然后对两个切线做叉积可以求出法线方向向量并单位化：</p>
 <div class="arithmatex">\[
 \vec{n} = (-dp/du, -dp/dv, 1).normalize()
 \]</div>
-<p>注意这里的法线是局部空间的法线，需要经过逆转置矩阵变换到世界空间。</p>
+<p>注意这里的法线是切线空间的法线（默认为 <span class="arithmatex">\((0,0,1)\)</span>），还需要利用 TBN 矩阵变换回世界空间。</p>
 <h3 id="displacement-mapping">位移贴图（Displacement Mapping）</h3>
 <p>位移贴图同样也是为了模拟表面的凹凸效果，不同的是，位移贴图直接改变表面上每个点的位置，而不是改变法线。</p>
 <p>位移贴图要求三角形网格足够密集，使得着色时的采样率能够跟得上贴图的顶点变化速度。</p>

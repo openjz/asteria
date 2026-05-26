@@ -2325,6 +2325,75 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-6-cameras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 六、相机
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-7-colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 七、颜色
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../games101-8-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 八、动画
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4752,7 +4821,7 @@ M_{\mathrm{viewport}} =
 <h3 id="sampling-error">采样错误（Sampling Error）</h3>
 <p>锯齿(Jaggies)</p>
 <p><img alt="aliasing-jaggies.png" src="/img/games101-notes/aliasing-jaggies.png" /></p>
-<p>摩尔纹（Moire Patterns），跳过奇数行和奇数列形成</p>
+<p>摩尔纹（Moire Patterns），比如跳过奇数行和奇数列就能形成</p>
 <p><img alt="moire-patterns.png" src="/img/games101-notes/moire-patterns.png" /></p>
 <p>车轮效应（Wagon-wheel Effect），这是一种时间采样错误，一个旋转的车轮看起来像是静止的，或者是反向旋转的。</p>
 <p>采样错误的原因基本上是信号变化太快，采样速度跟不上信号变化的速度。</p>
@@ -4838,16 +4907,16 @@ M_{\mathrm{viewport}} =
 </ol>
 <p>这里没讲多个三角形深度相同的情况如何处理。</p>
 <h3 id="_18">透视投影深度矫正</h3>
-<p>在深度测试时，不能直接用透视投影后的z坐标做深度值，因为对于透视投影来说，挤压视锥体的过程会改变z坐标的线性关系，如果直接用透视投影变换后的z坐标做深度值，会导致深度测试错误。</p>
-<p>因此，我们需要对z坐标做矫正，一般采用以下公式：</p>
+<p>在深度测试时，不能直接用透视投影后的z坐标做深度值，因为对于透视投影来说，挤压视锥体的过程会改变z坐标的线性关系，如果直接用透视投影变换后的z坐标做深度值，会导致深度测试错误，因此，我们需要使用投影变换之前，也就是在视图空间下的z坐标做深度值，这样才能保证深度测试的正确性。</p>
+<p>这里利用到一个性质，经过投影变换后，点的齐次坐标 <span class="arithmatex">\(w\)</span> 的值刚好等于变换前的 z 坐标的值（即在视图空间下的z值）。</p>
+<p>然后，通过对齐次坐标做插值，就可以得到任意点的深度值，一般采用以下公式：</p>
 <div class="arithmatex">\[
 Z = \frac{1}{\dfrac{\alpha}{w_0} + \dfrac{\beta}{w_1} + \dfrac{\gamma}{w_2}} 
 \]</div>
 <div class="arithmatex">\[
  z_p = \left(\frac{\alpha z_0}{w_0} + \frac{\beta z_1}{w_1} + \frac{\gamma z_2}{w_2}\right) Z
 \]</div>
-<p>其中，<span class="arithmatex">\(0,1,2\)</span> 分别代表三角形的三个顶点，<span class="arithmatex">\(w_0,w_1,w_2\)</span> 是三角形顶点的齐次坐标，<span class="arithmatex">\(\alpha,\beta,\gamma\)</span> 是重心坐标。</p>
-<p>这里利用到一个性质，经过投影变换后，点的齐次坐标 <span class="arithmatex">\(w\)</span> 的值刚好等于变换前的 z 坐标的值（即在视图空间下的z值）。</p>
+<p>其中，<span class="arithmatex">\(0,1,2\)</span> 分别代表三角形的三个顶点，<span class="arithmatex">\(w_0,w_1,w_2\)</span> 是三角形顶点的齐次坐标，<span class="arithmatex">\(\alpha,\beta,\gamma\)</span> 是重心坐标，<span class="arithmatex">\(z_0\)</span>、<span class="arithmatex">\(z_1\)</span>、<span class="arithmatex">\(z_2\)</span> 是三角形顶点在视图空间下的深度值，因此，<span class="arithmatex">\(z_p\)</span> 实际上就等于 <span class="arithmatex">\(Z\)</span>。</p>
 <h3 id="_19">插值</h3>
 <p>由于我们只知道三角形顶点的深度值，如何计算三角形内部任意一点的深度值呢？这就需要插值。</p>
 <p>可以使用重心坐标插值（Barycentric Coordinates Interpolation）</p>

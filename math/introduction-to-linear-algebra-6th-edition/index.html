@@ -1902,6 +1902,75 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/games101/games101-6-cameras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 六、相机
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/games101/games101-7-colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 七、颜色
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/games101/games101-8-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 八、动画
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -6059,7 +6128,7 @@ y = \frac{2}{3} + \frac{1}{2}t
 <h2 id="_17">正交基和正交矩阵</h2>
 <p>标准正交向量（Orthonormal Vectors）：向量不仅正交，而且每个向量的长度为1。</p>
 <p>标准正交基（Orthonormal Basis）：一组标准正交向量作为空间的基向量（基向量的数量不一定和空间维度相同，比如在 <span class="arithmatex">\(R^3\)</span> 中，我需要一个二维子空间，那么我只需要两个标准正交向量作为基向量）。</p>
-<p>用 Q 表示标准正交向量组成的矩阵（不一定是方阵），<span class="arithmatex">\(Q^TQ\)</span> 是 单位矩阵 I，如果 Q 是方阵，Q 本身就是 I。</p>
+<p>用 Q 表示标准正交向量组成的矩阵（不一定是方阵），<span class="arithmatex">\(Q^TQ\)</span> 是 单位矩阵 I。</p>
 <p><strong>正交矩阵</strong>是由标准正交向量组成列向量的<strong>方阵</strong>，<span class="arithmatex">\(Q^T = Q^{-1}\)</span>。</p>
 <p>前面提到的置换矩阵就是正交矩阵。</p>
 <p>旋转矩阵也是正交矩阵，例如二维空间中的旋转矩阵：</p>
@@ -6404,6 +6473,15 @@ A^2 = (S\Lambda S^{-1})(S\Lambda S^{-1}) = S\Lambda^2 S^{-1}
 <p>A 有 n 个线性无关的特征向量，S 是可逆的。</p>
 <p>只要特征值不重复，A 就一定有 n 个线性无关的特征向量。</p>
 <p>如果特征值重复则不一定，有可能没有足够的线性无关特征向量（前面讲过），也有可能有足够的线性无关特征向量，比如单位矩阵，它的特征值都是1，但任意向量都是特征向量。</p>
+<p>例如，前文提到的旋转矩阵</p>
+<div class="arithmatex">\[
+Q =
+\begin{bmatrix}
+0 &amp; -1 \\
+1 &amp; 0 \\
+\end{bmatrix}
+\]</div>
+<p>它就不能对角化，它的特征向量是虚数，并且找不到足够的线性无关特征向量。</p>
 <h3 id="difference-equation">差分方程（Difference Equation）</h3>
 <p>差分方程（Difference Equation）是描述序列之间递推关系的方程。它通过已知的前一项（或多项）来确定后一项的值。</p>
 <p>有这样一个一阶线性差分方程（一阶代表只依赖于前一项，线性代表只有一次幂），</p>
@@ -7221,6 +7299,15 @@ B = M^{-1}AM
 <p>对称矩阵、反对称矩阵、正交矩阵都满足 <span class="arithmatex">\(A^TA = AA^T\)</span>，因此，他们都具有以上两个特点。</p>
 <p>这类矩阵叫做<strong>正规矩阵（Normal Matrix）</strong>。</p>
 <p>正交矩阵的特征值的绝对值为 1。</p>
+<p>这里的对角化分解不仅包含实数域上的分解，也包含复数域上的分解，比如下面这个矩阵A，它是个正交矩阵（作用是将向量旋转90度）</p>
+<div class="arithmatex">\[
+A =
+\begin{bmatrix}
+0 &amp; -1 \\
+1 &amp; 0 \\
+\end{bmatrix}
+\]</div>
+<p>按照前文的介绍，它是不能分解 <span class="arithmatex">\(Q\Lambda Q^T\)</span> 这种对角化形式的，但是它可以分解成 <span class="arithmatex">\(U\Lambda U^H\)</span> 的形式，其中 <span class="arithmatex">\(U\)</span> 是酉矩阵，<span class="arithmatex">\(U^H\)</span> 是它的共轭转置，<span class="arithmatex">\(\Lambda\)</span> 是一个对角矩阵，对角线上的元素为 A 的特征值，A 的特征值为 <span class="arithmatex">\(i\)</span> 和 <span class="arithmatex">\(-i\)</span>，都是纯虚数。</p>
 <h3 id="_55">左右逆和伪逆</h3>
 <p>令 A 是 mxn 矩阵，以下讨论都以此为前提。</p>
 <h3 id="_56">左逆和右逆</h3>

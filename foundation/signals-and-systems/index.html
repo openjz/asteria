@@ -1088,6 +1088,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      采样
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="采样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      采样和信号重建
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠采样
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散时间采样
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      拉普拉斯变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      z变换
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2346,6 +2406,75 @@
   
   <span class="md-ellipsis">
     games101 五、材质
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/games101/games101-6-cameras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 六、相机
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/games101/games101-7-colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 七、颜色
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphics/games101/games101-8-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    games101 八、动画
     
   </span>
   
@@ -4188,6 +4317,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      采样
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="采样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      采样和信号重建
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠采样
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散时间采样
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      拉普拉斯变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      z变换
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4836,6 +5025,42 @@ y(t)=x(t-t_0)
 <p>模为 1 的频率响应叫做全通系统（All-pass system），也就是每个输入频率分量的幅度不变。</p>
 <p><strong>信号与系统的时域和频域特性这一章就是把常见的系统按照数学模型进行分类，总结成一个个通用的模板，以后遇到同样的系统，直接按照对应模板去分析即可</strong>。</p>
 <p><strong>基本上只要把一阶和二阶系统的时域和频域特性掌握好就行了</strong>。</p>
+<h2 id="_41">采样</h2>
+<h3 id="_42">采样和信号重建</h3>
+<p>采样定理：</p>
+<p>令 <span class="arithmatex">\(\omega_s\)</span> 表示采样频率，<span class="arithmatex">\(T\)</span> 表示采样周期（二者满足 <span class="arithmatex">\(\omega_s = \frac{2\pi}{T}\)</span>），设 <span class="arithmatex">\(x(t)\)</span> 是一个带限信号，当 <span class="arithmatex">\(|\omega| &gt; \omega_m\)</span> 时 <span class="arithmatex">\(X(j\omega) = 0\)</span> ，如果 <span class="arithmatex">\(\omega_s &gt; 2\omega_m\)</span>，那么 <span class="arithmatex">\(x(t)\)</span> 可以由其采样值 <span class="arithmatex">\(x(nT)\)</span> 唯一确定。</p>
+<p>已知这些样本值，我们能用如下办法重建 <span class="arithmatex">\(x(t)\)</span>：产生一个周期冲激串，其中冲激幅度就是这些依次而来的样本值；然后将该冲激串通过一个增益为 <span class="arithmatex">\(T\)</span>，截止频率大于 <span class="arithmatex">\(\omega_M\)</span> 而小于 <span class="arithmatex">\(\omega_s-\omega_M\)</span> 的理想低通滤波器，该滤波器的输出就是 <span class="arithmatex">\(x(t)\)</span>。</p>
+<p><img alt="/img/signals-and-systems/sampling.png" src="/img/signals-and-systems/sampling.png" /></p>
+<p>采样后，我们得到的是一个离散序列，而通过低通滤波器后，能将离散信号重建为连续信号。</p>
+<p>采样频率 <span class="arithmatex">\(\omega_s\)</span> 称为<strong>奈奎斯特采样率</strong>。</p>
+<p>还有两种不经过低通滤波器的信号重建方法是<strong>零阶保持</strong>和<strong>线性插值</strong>。</p>
+<p>零阶保持是让每个采样点的值保持一个采样周期，把一系列脉冲变成了连续的阶梯。</p>
+<p>线性插值是直接把相邻两个采样点用直线连起来，形成连续的折线。</p>
+<h3 id="_43">欠采样</h3>
+<p>如果采样频率不够高，不满足 <span class="arithmatex">\(\omega_s &gt; 2\omega_m\)</span>，就会发生<strong>混叠</strong>（Aliasing），采样正常的时候 <span class="arithmatex">\(X(j\omega)\)</span> 的频谱会在 <span class="arithmatex">\(X_p(j\omega)\)</span> 中重复，但欠采样的时候 <span class="arithmatex">\(X(j\omega)\)</span> 的频谱会互相重叠，使信号失真。</p>
+<p><img alt="/img/signals-and-systems/aliasing.png" src="/img/signals-and-systems/aliasing.png" /></p>
+<h3 id="_44">离散时间采样</h3>
+<p>对离散时间信号同样能进行采样，每隔 N 个点做一次采样，得到一个新的离散时间信号。</p>
+<p>新信号有很多值为 0 的点，如果我们将值为 0 的点去掉，只保留非 0 点，这个过程叫做<strong>抽取</strong>（Decimation）或减采样，抽取是对采样信号做了一个时间上的压缩。</p>
+<p>反过来，如果我们在每个采样点之间插入 N-1 个值为 0 的点，这个过程叫做<strong>内插</strong>（Interpolation）或增采样。</p>
+<h2 id="_45">拉普拉斯变换</h2>
+<p>令 <span class="arithmatex">\(s = \sigma + j\omega\)</span></p>
+<div class="arithmatex">\[
+X(s)\triangleq \int_{-\infty}^{+\infty} x(t)e^{-st}\,dt
+\]</div>
+<div class="arithmatex">\[
+x(t)=\frac{1}{2\pi j}\int_{\sigma-j\infty}^{\sigma+j\infty} X(s)e^{st}\,ds
+\]</div>
+<p>拉普拉斯变换是连续时间傅里叶变换在复数域上的推广，傅里叶变化可以看作是拉普拉斯变换的一种特殊情况，当 <span class="arithmatex">\(s = j\omega\)</span> 时，也就是 <span class="arithmatex">\(s\)</span> 为虚数时，拉普拉斯变换就退化成了傅里叶变换。</p>
+<h2 id="z">z变换</h2>
+<p>令 <span class="arithmatex">\(z = re^{j\omega}\)</span></p>
+<div class="arithmatex">\[
+X(z)\triangleq \sum_{n=-\infty}^{+\infty} x[n]z^{-n}
+\]</div>
+<div class="arithmatex">\[
+x[n]=\frac{1}{2\pi j}\oint X(z)z^{n-1}\,dz
+\]</div>
+<p>z变换是离散时间傅里叶变换在复数域上的推广，离散时间傅里叶变换可以看作是 z 变换的一种特殊情况，当 <span class="arithmatex">\(z = e^{j\omega}\)</span> 时，也就是 <span class="arithmatex">\(z\)</span> 在单位圆上时，z 变换就退化成了离散时间傅里叶变换。</p>
 
 
 
