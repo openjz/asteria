@@ -4182,12 +4182,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vibe-coding/how-to-vibe-coding/" class="md-nav__link">
+      <a href="../../vibe-coding/how-to-ai-coding/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    如何 Vibe Coding
+    如何 AI Coding
     
   </span>
   
@@ -7285,11 +7285,16 @@ c = W^{-1}p
 \]</div>
 <p>p 是原基向量下的坐标，c 是新基向量下的坐标。</p>
 <p>如果 W 是一个正交矩阵，那么，<span class="arithmatex">\(W^{-1} = W^T\)</span>，c 的计算就简单了。</p>
-<p>假设有一个线性变换 T，有两组不同的基 V 和 W，经过 T 变换后，分别得到两个矩阵 A 和 B，A 和 B 是相似矩阵。</p>
+<p>假设有一个线性变换 T，有两组不同的基 V 和 W，经过 T 变换后，存在这样的关系：</p>
+<div class="arithmatex">\[
+TV = VA \\
+TW = WB
+\]</div>
+<p>可以看出，A 和 B 分别是 V 和 W 经过 T 变换后在各自基下的坐标矩阵，那么，A 和 B 是相似矩阵。</p>
 <div class="arithmatex">\[
 B = M^{-1}AM
 \]</div>
-<p>M 称为基变换矩阵。</p>
+<p>M 称为基变换矩阵，<span class="arithmatex">\(M = V^{-1}W\)</span>，基变换将 w 的坐标转换为 v 的坐标。</p>
 <h2 id="_54">复习三</h2>
 <p>满足 <span class="arithmatex">\(A^TA = AA^T\)</span> 的矩阵具有以下特点：</p>
 <ol>
