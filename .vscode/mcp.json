@@ -1,0 +1,20 @@
+{
+	"servers": {
+		"git": {
+			"command": "uvx",
+			"args": [
+				"--with", "mcp[cli]==1.8.0",
+				"mcp-server-git"
+			],
+			"type": "stdio"
+		},
+		"microsoft-learn": {
+			"url": "https://learn.microsoft.com/api/mcp",
+			"type": "http"
+		},
+		"drawio": {
+			"url": "https://mcp.draw.io/mcp"
+		}
+	},
+	"inputs": []
+}
