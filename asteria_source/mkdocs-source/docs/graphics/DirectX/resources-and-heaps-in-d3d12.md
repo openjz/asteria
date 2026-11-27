@@ -1,7 +1,7 @@
 ---
 title: "D3D12 中的资源和堆"
 date: 2026-09-11T10:43:01+08:00
-tags: ["windows", "操作系统"]
+tags: ["windows", "图形"]
 categories: ["编程"]
 ---
 
